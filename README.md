@@ -1,67 +1,76 @@
 # Riyadh Jobs Aggregator
 
-A small Python program that fetches jobs in **Riyadh, Saudi Arabia** and builds a
-single browsable **HTML page** of links from every major job site and company
-career page.
+A **search page for jobs in Riyadh, Saudi Arabia**. A search bar sits at the top
+of the page — type a query (e.g. `Data`) and matching jobs appear **inline on
+the page**. Clicking a result opens the outside site so you can apply. The page
+also gives one-click links to run the same search on every other major job
+board and the career pages of major Riyadh employers.
 
-The generated page (`riyadh_jobs.html`) has three sections:
+## How searching works (hybrid)
 
-1. **Featured job listings** — real, current postings where each title links
-   straight to the application page.
-2. **Search all job sites** — one-click search links (pre-filtered to Riyadh)
-   for LinkedIn, Indeed, Bayt, GulfTalent, Glassdoor, Naukrigulf, Monster Gulf,
-   Akhtaboot, Tanqeeb, DrJobPro, Laimoon, Jooble, and the Saudi national
-   gateways (Jadarat / Taqat).
-3. **Company career pages** — official careers portals of 24 major employers
-   based in or hiring in Riyadh (Aramco, SABIC, stc, SNB, Al Rajhi, PIF, NEOM,
-   Qiddiya, ROSHN, Red Sea Global, Riyadh Air, Saudia, Almarai, Ma'aden, ACWA
-   Power, KFSHRC, and more).
+When you search, the page does two things and merges the results:
 
-## Usage
+1. **Bundled search (instant, offline):** filters a snapshot of ~95 real Riyadh
+   listings (`data/featured_jobs.json`) and shows matches immediately.
+2. **Live fetch (when online):** queries Indeed (Saudi Arabia) server-side and
+   merges any fresh results on top, tagged *“Live from Indeed.”*
+
+If the network is blocked or the live fetch returns nothing, search still works
+over the bundled listings — so the page is never empty.
+
+## Quick start
 
 ```bash
-python3 riyadh_jobs.py                       # build riyadh_jobs.html
-python3 riyadh_jobs.py -k "data scientist"   # tune the search keyword
-python3 riyadh_jobs.py -o out.html           # custom output path
-python3 riyadh_jobs.py --open                # build and open in a browser
-python3 riyadh_jobs.py --no-live             # skip live fetch, use snapshot
+# 1. (optional, enables the live-fetch half)
+pip install requests beautifulsoup4
+
+# 2. start the local server — opens your browser automatically
+python3 riyadh_jobs.py
 ```
 
-Then open `riyadh_jobs.html` in any browser.
+Your browser opens `http://localhost:8000/`. Type in the search bar; results
+update on the page as you type. Click any job title to open the site and apply.
 
-## How it fetches data
+### Commands
 
-The program is **hybrid**:
+```bash
+python3 riyadh_jobs.py                  # serve on http://localhost:8000 (default)
+python3 riyadh_jobs.py serve -p 8080    # custom port
+python3 riyadh_jobs.py serve --no-live  # bundled-only (skip live fetch)
+python3 riyadh_jobs.py serve --no-open  # don't auto-open the browser
+python3 riyadh_jobs.py build            # write a static offline riyadh_jobs.html
+```
 
-- **Live fetch** — when run on a machine with open internet access, it scrapes
-  fresh listings from Indeed (Saudi Arabia). Requires `requests` and
-  `beautifulsoup4`:
-  ```bash
-  pip install requests beautifulsoup4
-  ```
-- **Snapshot fallback** — if the network is blocked or the scrape fails, it
-  falls back to a bundled snapshot of real Indeed listings in
-  `data/featured_jobs.json`, so the page is always populated.
-- **Search + company links** — always generated locally, so they work with no
-  network and never go stale.
+`build` produces a single HTML file you can double-click — it still has the
+search bar and searches the bundled listings client-side (no server, no live
+fetch).
 
-## Why the hybrid design?
+## What's on the page
 
-Major job boards (LinkedIn, Indeed, Bayt, GulfTalent…) use bot protection and
-frequently block direct scraping or require API keys. Generating pre-filtered
-**search links** is therefore the reliable way to cover "all job sites," while
-the live fetch + bundled snapshot give you actual clickable listings on top.
+- **Results** — merged live + bundled listings, grouped by category. Each title
+  links to the application page on the source site.
+- **Run this search on other job sites** — opens the same query on LinkedIn,
+  Indeed, Bayt, GulfTalent, Glassdoor, Monster Gulf, Akhtaboot, Tanqeeb,
+  DrJobPro, Jooble, Naukrigulf, Laimoon, plus the Saudi national gateways
+  (Jadarat / Taqat). These open in a new tab because those sites block in-page
+  fetching from a browser.
+- **Company career pages** — official portals of 24 major Riyadh employers
+  (Aramco, SABIC, stc, SNB, Al Rajhi, PIF, NEOM, Qiddiya, ROSHN, Red Sea Global,
+  Riyadh Air, Saudia, Almarai, Ma'aden, ACWA Power, KFSHRC, and more).
+
+## Why can't the page fetch every site live in the browser?
+
+LinkedIn, Indeed, Bayt, GulfTalent and similar boards block cross-site browser
+requests (CORS) and bots. The live fetch therefore runs **server-side** inside
+`riyadh_jobs.py`. For boards that can't be fetched, the page gives you a
+pre-filled search link instead — one click runs your exact query on that site.
 
 ## Files
 
 | File | Purpose |
 |------|---------|
-| `riyadh_jobs.py` | Main program — fetches data and builds the HTML page |
-| `data/featured_jobs.json` | Snapshot of real Riyadh listings (fallback seed) |
-| `riyadh_jobs.html` | Generated output (open in a browser) |
+| `riyadh_jobs.py` | Server + search API + page; also builds the static file |
+| `data/featured_jobs.json` | Snapshot of ~95 real Riyadh listings (bundled search) |
+| `riyadh_jobs.html` | Optional static offline build (`python3 riyadh_jobs.py build`) |
 
-## Refreshing the snapshot
-
-Re-run `python3 riyadh_jobs.py` on a machine with internet access; live results
-replace the snapshot automatically for that run. To update the saved snapshot
-itself, edit `data/featured_jobs.json`.
+To refresh the bundled snapshot, edit `data/featured_jobs.json`.

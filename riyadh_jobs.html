@@ -5,364 +5,156 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Jobs in Riyadh, Saudi Arabia</title>
 <style>
-  :root {
-    --bg:#0f1419; --card:#1a2129; --ink:#e6edf3; --muted:#8b98a5;
-    --accent:#1f9d55; --accent2:#2da44e; --chip:#222c36; --border:#2d3742;
-  }
-  * { box-sizing:border-box; }
-  body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-         background:var(--bg); color:var(--ink); line-height:1.5; }
-  header { padding:32px 24px 20px; background:linear-gradient(135deg,#0b3d2e,#0f1419);
-            border-bottom:1px solid var(--border); }
-  header h1 { margin:0 0 6px; font-size:26px; }
-  header p { margin:0; color:var(--muted); font-size:14px; }
-  .wrap { max-width:1040px; margin:0 auto; padding:24px; }
-  h2 { font-size:19px; margin:34px 0 14px; border-left:3px solid var(--accent2); padding-left:10px; }
-  .badge { font-size:12px; padding:2px 9px; border-radius:20px; margin-left:10px; vertical-align:middle; }
-  .badge.live { background:#0d3320; color:#3fb950; border:1px solid #2da44e; }
-  .badge.snap { background:#2a2410; color:#d29922; border:1px solid #9e7912; }
-  .cat-block { background:var(--card); border:1px solid var(--border); border-radius:10px;
-               padding:14px 18px; margin-bottom:14px; }
-  .cat-block h3 { margin:4px 0 10px; font-size:15px; color:#cdd9e5; }
-  .count { background:var(--chip); color:var(--muted); border-radius:12px; font-size:12px;
-            padding:1px 8px; margin-left:6px; }
-  .job-list { list-style:none; margin:0; padding:0; }
-  .job { padding:8px 0; border-bottom:1px solid var(--border); }
-  .job:last-child { border-bottom:none; }
-  .job-title { color:#58a6ff; text-decoration:none; font-weight:600; font-size:15px; }
-  .job-title:hover { text-decoration:underline; }
-  .job-meta { color:var(--muted); font-size:13px; margin-top:2px; }
-  .company { color:#adbac7; }
-  .chips { display:flex; flex-wrap:wrap; gap:9px; }
-  .link-chip { display:inline-block; background:var(--chip); color:var(--ink); text-decoration:none;
-               padding:8px 14px; border-radius:8px; border:1px solid var(--border); font-size:14px;
-               transition:all .15s; }
-  .link-chip:hover { border-color:var(--accent2); color:#fff; background:#243a30; }
-  .link-chip.company { }
-  footer { color:var(--muted); font-size:12px; text-align:center; padding:30px 0 50px; }
-  a { color:#58a6ff; }
+  :root{--bg:#0f1419;--card:#1a2129;--ink:#e6edf3;--muted:#8b98a5;--accent:#2da44e;
+        --chip:#222c36;--border:#2d3742;--blue:#58a6ff;}
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+       background:var(--bg);color:var(--ink);line-height:1.5;}
+  /* Sticky search bar at the very top */
+  .topbar{position:sticky;top:0;z-index:20;background:linear-gradient(135deg,#0b3d2e,#0f1419);
+          border-bottom:1px solid var(--border);padding:18px 24px;}
+  .topbar h1{margin:0 0 12px;font-size:20px;}
+  .topbar h1 small{color:var(--muted);font-weight:400;font-size:13px;}
+  .searchrow{display:flex;gap:10px;max-width:760px;}
+  #q{flex:1;padding:13px 16px;font-size:16px;border-radius:10px;border:1px solid var(--border);
+     background:#0d1117;color:var(--ink);outline:none;}
+  #q:focus{border-color:var(--accent);}
+  #go{padding:13px 22px;font-size:15px;font-weight:600;border:none;border-radius:10px;
+      background:var(--accent);color:#fff;cursor:pointer;}
+  #go:hover{background:#3cb85f;}
+  .wrap{max-width:1040px;margin:0 auto;padding:22px 24px 60px;}
+  h2{font-size:18px;margin:30px 0 6px;border-left:3px solid var(--accent);padding-left:10px;}
+  .hint{color:var(--muted);font-size:13px;margin:0 0 14px;}
+  .status{color:var(--muted);font-size:13px;min-height:18px;margin:6px 0;}
+  .cat-block{background:var(--card);border:1px solid var(--border);border-radius:10px;
+             padding:12px 18px;margin-bottom:14px;}
+  .cat-block h3{margin:4px 0 8px;font-size:14px;color:#cdd9e5;}
+  .count{background:var(--chip);color:var(--muted);border-radius:12px;font-size:12px;padding:1px 8px;margin-left:6px;}
+  .job-list{list-style:none;margin:0;padding:0;}
+  .job{padding:8px 0;border-bottom:1px solid var(--border);}
+  .job:last-child{border-bottom:none;}
+  .job-title{color:var(--blue);text-decoration:none;font-weight:600;font-size:15px;}
+  .job-title:hover{text-decoration:underline;}
+  .job-meta{color:var(--muted);font-size:13px;margin-top:2px;}
+  .company{color:#adbac7;}
+  .chips{display:flex;flex-wrap:wrap;gap:9px;}
+  .link-chip{display:inline-block;background:var(--chip);color:var(--ink);text-decoration:none;
+             padding:8px 14px;border-radius:8px;border:1px solid var(--border);font-size:14px;transition:all .15s;}
+  .link-chip:hover{border-color:var(--accent);color:#fff;background:#243a30;}
+  .empty{color:var(--muted);font-style:italic;padding:6px 0;}
+  .badge{font-size:11px;padding:2px 8px;border-radius:20px;margin-left:8px;vertical-align:middle;}
+  .badge.live{background:#0d3320;color:#3fb950;border:1px solid #2da44e;}
+  .spin{display:inline-block;width:12px;height:12px;border:2px solid #2da44e44;border-top-color:#2da44e;
+        border-radius:50%;animation:s .7s linear infinite;vertical-align:middle;margin-right:6px;}
+  @keyframes s{to{transform:rotate(360deg);}}
 </style>
 </head>
 <body>
-<header>
-  <h1>🇸🇦 Jobs in Riyadh, Saudi Arabia</h1>
-  <p>Search keyword: <strong>software engineer</strong> &nbsp;·&nbsp; Generated 2026-06-03 10:42 &nbsp;·&nbsp; 54 featured listings</p>
-</header>
+<div class="topbar">
+  <h1>🇸🇦 Jobs in Riyadh, Saudi Arabia <small>offline · bundled search</small></h1>
+  <div class="searchrow">
+    <input id="q" type="text" placeholder="Search jobs (e.g. Data, Nurse, Accountant)…" autocomplete="off">
+    <button id="go">Search</button>
+  </div>
+</div>
+
 <div class="wrap">
+  <div class="status" id="status"></div>
 
-  <h2>Featured job listings <span class="badge snap">● bundled snapshot</span></h2>
-  <p style="color:var(--muted);font-size:13px;margin-top:-6px;">
-     Source: Indeed (sa.indeed.com) · captured 2026-06-03.
-     Click any title to open the application page.</p>
-  
-        <section class="cat-block">
-          <h3>Software &amp; IT <span class="count">10</span></h3>
-          <ul class="job-list">
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aag89jxfhxjl" target="_blank" rel="noopener">Senior Software Engineering Manager</a>
-              <div class="job-meta"><span class="company">IAUser Digital Solutions</span>
-              <span class="loc">Riyadh</span> · Permanent · May 06, 2026</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aaxkvrjwg99m" target="_blank" rel="noopener">Senior Software Engineer</a>
-              <div class="job-meta"><span class="company">Malaa</span>
-              <span class="loc">Riyadh</span> · Full-time · February 27, 2026</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aabt8vb7qfcq" target="_blank" rel="noopener">Senior Technical Office Engineer</a>
-              <div class="job-meta"><span class="company">ITALCONSULT</span>
-              <span class="loc">Riyadh</span> · Full-time · February 28, 2026</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aa92ccr7zxkv" target="_blank" rel="noopener">Senior QA Engineer - Backend</a>
-              <div class="job-meta"><span class="company">almosafer</span>
-              <span class="loc">Riyadh</span> · Permanent · November 23, 2024</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aatsrlmb74yl" target="_blank" rel="noopener">AI Engineering Manager</a>
-              <div class="job-meta"><span class="company">Unifonic</span>
-              <span class="loc">Riyadh</span> · Full-time · February 27, 2026</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aag4t2xn8trq" target="_blank" rel="noopener">Senior Project Engineer</a>
-              <div class="job-meta"><span class="company">MVP Tech GT LLC</span>
-              <span class="loc">Riyadh</span> · Full-time · February 28, 2026</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aa9dgrf72sjz" target="_blank" rel="noopener">Principal Backend Engineer</a>
-              <div class="job-meta"><span class="company">almosafer</span>
-              <span class="loc">Riyadh</span> · Permanent · November 23, 2024</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aadcnnfn9hlb" target="_blank" rel="noopener">Buyer - E&amp;I (Saudi Arabia - Dammam) for Cross country Pipe line Projects</a>
-              <div class="job-meta"><span class="company">Hudson Manpower</span>
-              <span class="loc">Riyadh</span> · Full-time · February 27, 2026</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aayhyvkhbqws" target="_blank" rel="noopener">Geomatics Engineer</a>
-              <div class="job-meta"><span class="company">Hudhud Maps</span>
-              <span class="loc">Riyadh</span> · Full-time · February 18, 2026</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aaqvlcnybcgv" target="_blank" rel="noopener">Senior Technical Lead</a>
-              <div class="job-meta"><span class="company">Uxbert Labs</span>
-              <span class="loc">Riyadh</span> · Full-time · February 27, 2026</div>
-            </li></ul>
-        </section>
-        <section class="cat-block">
-          <h3>Accounting &amp; Finance <span class="count">10</span></h3>
-          <ul class="job-list">
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aacqhcgpbmyf" target="_blank" rel="noopener">Accountant</a>
-              <div class="job-meta"><span class="company">AWTAD</span>
-              <span class="loc">Riyadh</span> · Full-time · March 03, 2026</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aah9vld96tlq" target="_blank" rel="noopener">Senior Accountant</a>
-              <div class="job-meta"><span class="company">One Tech Capital LLC</span>
-              <span class="loc">Riyadh</span> · Full-time · February 27, 2026</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aagg9fwj774v" target="_blank" rel="noopener">Accountant</a>
-              <div class="job-meta"><span class="company">One Tech Capital LLC</span>
-              <span class="loc">Riyadh</span> · Full-time · February 27, 2026</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aazhwbb4f479" target="_blank" rel="noopener">Senior Accountant (Arabic)</a>
-              <div class="job-meta"><span class="company">AGS International Trading</span>
-              <span class="loc">Riyadh</span> · Permanent · April 23, 2026</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aa6mmy84klqs" target="_blank" rel="noopener">Senior Accountant</a>
-              <div class="job-meta"><span class="company">Alkaffary Group</span>
-              <span class="loc">Riyadh</span> · Full-time · December 16, 2025</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aamt2lzr6cwh" target="_blank" rel="noopener">Accountant - Saudi Arabia</a>
-              <div class="job-meta"><span class="company">Azeus Convene</span>
-              <span class="loc">Riyadh</span> · Full-time · December 16, 2025</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aazr86hwmw2z" target="_blank" rel="noopener">Senior Accountant</a>
-              <div class="job-meta"><span class="company">EVA Pharma</span>
-              <span class="loc">Riyadh</span> · Full-time · February 03, 2026</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aamzk9w4pf6l" target="_blank" rel="noopener">Chief Accountant - EPC Telecommunication Company | Saudi Arabia</a>
-              <div class="job-meta"><span class="company">Rawaj - Human Capital Management</span>
-              <span class="loc">Riyadh</span> · Full-time · May 19, 2026</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aa7j6jtspw4k" target="_blank" rel="noopener">Senior Accountant</a>
-              <div class="job-meta"><span class="company">Datamatics Global Services Ltd</span>
-              <span class="loc">Riyadh</span> · Full-time · May 13, 2026</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aacmzr9xsqmh" target="_blank" rel="noopener">Operational Accountant | Riyadh, KSA</a>
-              <div class="job-meta"><span class="company">Talent 360</span>
-              <span class="loc">Riyadh</span> · Full-time · May 04, 2026</div>
-            </li></ul>
-        </section>
-        <section class="cat-block">
-          <h3>Healthcare <span class="count">10</span></h3>
-          <ul class="job-list">
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aa6rvcj9lqv7" target="_blank" rel="noopener">Home HealthCare Nurse</a>
-              <div class="job-meta"><span class="company">Domo Ventures</span>
-              <span class="loc">Riyadh</span> · N/A · February 27, 2026</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aacnhx2brgqb" target="_blank" rel="noopener">School Registered Nurse</a>
-              <div class="job-meta"><span class="company">American International School - Riyadh</span>
-              <span class="loc">Riyadh</span> · Part-time · May 06, 2026</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aaxfhglm4c8p" target="_blank" rel="noopener">Nurse</a>
-              <div class="job-meta"><span class="company">Career Land Center</span>
-              <span class="loc">Riyadh</span> · Full-time · May 19, 2026</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aastg4lhw69g" target="_blank" rel="noopener">Nurse for Private Clinic | Riyadh, KSA</a>
-              <div class="job-meta"><span class="company">Career Land Center</span>
-              <span class="loc">Riyadh</span> · Full-time · April 03, 2026</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aavtlkzckdhh" target="_blank" rel="noopener">Customer Success Specialist</a>
-              <div class="job-meta"><span class="company">FluidAI Medical</span>
-              <span class="loc">Riyadh</span> · Permanent · May 27, 2026</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aahrf4rn4sjp" target="_blank" rel="noopener">Head Nurse</a>
-              <div class="job-meta"><span class="company">Jobskey</span>
-              <span class="loc">Riyadh</span> · Full-time · May 19, 2026</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aacv84ddqh7p" target="_blank" rel="noopener">Quality and Medical Audit Manager (Healthcare Industry Exp) QHC0009</a>
-              <div class="job-meta"><span class="company">Qiddiya Investment Company</span>
-              <span class="loc">Riyadh</span> · N/A · May 06, 2026</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aa9qnyq77ynv" target="_blank" rel="noopener">Charge Nurse</a>
-              <div class="job-meta"><span class="company">Jobskey</span>
-              <span class="loc">Riyadh</span> · Full-time · May 19, 2026</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aazt2mxwqydx" target="_blank" rel="noopener">ER Nurse</a>
-              <div class="job-meta"><span class="company">Jobskey</span>
-              <span class="loc">Riyadh</span> · Full-time · May 19, 2026</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aa6rg8vs29fz" target="_blank" rel="noopener">Critical Care Nurse</a>
-              <div class="job-meta"><span class="company">Jobskey</span>
-              <span class="loc">Riyadh</span> · Full-time · May 19, 2026</div>
-            </li></ul>
-        </section>
-        <section class="cat-block">
-          <h3>Marketing <span class="count">8</span></h3>
-          <ul class="job-list">
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aaxbyxvbrdr9" target="_blank" rel="noopener">Senior Digital Marketing Manager</a>
-              <div class="job-meta"><span class="company">Ghezzi Digital Marketing &amp; Technology Group</span>
-              <span class="loc">Riyadh</span> · Permanent · May 11, 2026</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aa2vbhhtnssj" target="_blank" rel="noopener">Marketing Manager - F&amp;B | Saudi Arabia</a>
-              <div class="job-meta"><span class="company">Rawaj - Human Capital Management</span>
-              <span class="loc">Riyadh</span> · Full-time · February 27, 2026</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aalwsrf2q7gb" target="_blank" rel="noopener">Strategic Account Manager</a>
-              <div class="job-meta"><span class="company">WebEngage</span>
-              <span class="loc">Riyadh</span> · N/A · February 27, 2026</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aan6qmgbtlr8" target="_blank" rel="noopener">Strategic Account Manager - KSA</a>
-              <div class="job-meta"><span class="company">WebEngage</span>
-              <span class="loc">Riyadh</span> · N/A · February 27, 2026</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aaqq6yf42l9h" target="_blank" rel="noopener">Education Business Development Manager</a>
-              <div class="job-meta"><span class="company">Swiss Hospitality</span>
-              <span class="loc">Riyadh</span> · Permanent · November 23, 2024</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aavcskdx9hx7" target="_blank" rel="noopener">Business Development Manager</a>
-              <div class="job-meta"><span class="company">SEA Ventures</span>
-              <span class="loc">Riyadh</span> · Full-time · March 01, 2026</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aac96dvqnl8g" target="_blank" rel="noopener">Branch Operation Manager - F&amp;B | Saudi Arabia</a>
-              <div class="job-meta"><span class="company">Rawaj - Human Capital Management</span>
-              <span class="loc">Riyadh</span> · Full-time · February 28, 2026</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aajtztpwyb7t" target="_blank" rel="noopener">Business Development Manager</a>
-              <div class="job-meta"><span class="company">BIMTEC</span>
-              <span class="loc">Riyadh</span> · Permanent · February 27, 2026</div>
-            </li></ul>
-        </section>
-        <section class="cat-block">
-          <h3>Sales <span class="count">10</span></h3>
-          <ul class="job-list">
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aa7cnbzwkvz9" target="_blank" rel="noopener">Sales Representative</a>
-              <div class="job-meta"><span class="company">Waseel</span>
-              <span class="loc">Riyadh</span> · Full-time · May 06, 2026</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aa66kp98httb" target="_blank" rel="noopener">Digital Sales Representative</a>
-              <div class="job-meta"><span class="company">Lendo</span>
-              <span class="loc">Riyadh</span> · Full-time · February 27, 2026</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aa9vfltxqkvy" target="_blank" rel="noopener">Sales Development Representative (SDR)</a>
-              <div class="job-meta"><span class="company">TechBiz Global GmbH</span>
-              <span class="loc">Riyadh</span> · Full-time · February 27, 2026</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aa9qcnlz49l2" target="_blank" rel="noopener">Sales Executive (commission based)</a>
-              <div class="job-meta"><span class="company">Workhint</span>
-              <span class="loc">Riyadh</span> · Contract · November 23, 2024</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aakfy6hc2wzw" target="_blank" rel="noopener">Inside Sales Representative</a>
-              <div class="job-meta"><span class="company">Alkaffary Group</span>
-              <span class="loc">Riyadh</span> · Full-time · December 16, 2025</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aannwrkfxjc9" target="_blank" rel="noopener">Field Sales Representative</a>
-              <div class="job-meta"><span class="company">Rgheeb</span>
-              <span class="loc">Riyadh</span> · Full-time · February 26, 2026</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aazxpb9brt46" target="_blank" rel="noopener">Sales Representative</a>
-              <div class="job-meta"><span class="company">Sika Corporation</span>
-              <span class="loc">Riyadh</span> · Full-time · March 08, 2026</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aanjdnphl97v" target="_blank" rel="noopener">Sales Representative</a>
-              <div class="job-meta"><span class="company">Sky Ocean Logistics</span>
-              <span class="loc">Riyadh</span> · Permanent · May 09, 2026</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aaxqvnlm7b4d" target="_blank" rel="noopener">Sales Representative</a>
-              <div class="job-meta"><span class="company">Clean Life</span>
-              <span class="loc">Riyadh</span> · Full-time · May 16, 2026</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aab4wxd48jz6" target="_blank" rel="noopener">Sales Representative</a>
-              <div class="job-meta"><span class="company">DYAR</span>
-              <span class="loc">Riyadh</span> · Contract · May 31, 2026</div>
-            </li></ul>
-        </section>
-        <section class="cat-block">
-          <h3>Management &amp; Consulting <span class="count">6</span></h3>
-          <ul class="job-list">
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aah8r6jcd8ww" target="_blank" rel="noopener">Finance Manager</a>
-              <div class="job-meta"><span class="company">Muller&#x27;s Solutions</span>
-              <span class="loc">Riyadh</span> · Full-time · December 16, 2025</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aa8v87g9774v" target="_blank" rel="noopener">Project Manager</a>
-              <div class="job-meta"><span class="company">SEA Ventures</span>
-              <span class="loc">Riyadh</span> · Full-time · November 23, 2024</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aatrpmjt9f76" target="_blank" rel="noopener">Project Manager</a>
-              <div class="job-meta"><span class="company">Swiss Hospitality</span>
-              <span class="loc">Riyadh</span> · Permanent · November 23, 2024</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aagvkxzqllrh" target="_blank" rel="noopener">Project Manager - Construction (Residential Compounds &amp; Towers) | Saudi Arabia</a>
-              <div class="job-meta"><span class="company">Rawaj - Human Capital Management</span>
-              <span class="loc">Riyadh</span> · Full-time · February 28, 2026</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aahkvrxpffzv" target="_blank" rel="noopener">International Project Manager</a>
-              <div class="job-meta"><span class="company">WeRide.ai</span>
-              <span class="loc">Riyadh</span> · Full-time · February 27, 2026</div>
-            </li>
-            <li class="job">
-              <a class="job-title" href="https://to.indeed.com/aa88bnq8ksmd" target="_blank" rel="noopener">Inverto | Business &amp; Operations Senior Manager</a>
-              <div class="job-meta"><span class="company">Boston Consulting Group</span>
-              <span class="loc">Riyadh</span> · Full-time · February 18, 2026</div>
-            </li></ul>
-        </section>
+  <h2>Results <span id="rescount" class="count">0</span></h2>
+  <p class="hint">Matches from listings, shown here on the page. Click a title to open the site and apply.</p>
+  <div id="results"></div>
 
-  <h2>Search all job sites — pre-filtered to Riyadh</h2>
-  <p style="color:var(--muted);font-size:13px;margin-top:-6px;">
-     Each link runs a "<strong>software engineer</strong>" search in Riyadh on that site.</p>
-  <div class="chips"><a class="link-chip" href="https://www.linkedin.com/jobs/search/?keywords=software+engineer&amp;location=Riyadh%2C+Saudi+Arabia" target="_blank" rel="noopener">LinkedIn Jobs</a><a class="link-chip" href="https://sa.indeed.com/jobs?q=software+engineer&amp;l=Riyadh" target="_blank" rel="noopener">Indeed (Saudi Arabia)</a><a class="link-chip" href="https://www.bayt.com/en/saudi-arabia/jobs/jobs-in-riyadh/?text=software+engineer" target="_blank" rel="noopener">Bayt</a><a class="link-chip" href="https://www.gulftalent.com/jobs/search?keywords=software+engineer&amp;location=riyadh" target="_blank" rel="noopener">GulfTalent</a><a class="link-chip" href="https://www.glassdoor.com/Job/jobs.htm?sc.keyword=software+engineer&amp;locKeyword=Riyadh" target="_blank" rel="noopener">Glassdoor</a><a class="link-chip" href="https://www.naukrigulf.com/software-engineer-jobs-in-riyadh-saudi-arabia" target="_blank" rel="noopener">Naukrigulf</a><a class="link-chip" href="https://www.monstergulf.com/srp/results?query=software+engineer&amp;locations=Riyadh" target="_blank" rel="noopener">Monster Gulf</a><a class="link-chip" href="https://www.akhtaboot.com/en/saudi-arabia/jobs/riyadh?q=software+engineer" target="_blank" rel="noopener">Akhtaboot</a><a class="link-chip" href="https://saudi-arabia.tanqeeb.com/en/jobs/search?keywords=software+engineer&amp;q_location=Riyadh" target="_blank" rel="noopener">Tanqeeb</a><a class="link-chip" href="https://www.drjobpro.com/jobs?searchKey=software+engineer&amp;city=Riyadh&amp;country=Saudi%20Arabia" target="_blank" rel="noopener">DrJobPro</a><a class="link-chip" href="https://saudi.laimoon.com/jobs/keyword/software+engineer/in-riyadh" target="_blank" rel="noopener">Laimoon</a><a class="link-chip" href="https://jooble.org/SearchResult?rgns=Riyadh&amp;ukw=software+engineer" target="_blank" rel="noopener">Indeed Glassdoor / Jooble</a><a class="link-chip" href="https://www.jadarat.sa/" target="_blank" rel="noopener">Jadarat (National Labor Gateway)</a><a class="link-chip" href="https://www.taqat.sa/" target="_blank" rel="noopener">GOV Taqat / HRDF</a></div>
+  <h2>Run this search on other job sites</h2>
+  <p class="hint">These open the same search on each board in a new tab.</p>
+  <div class="chips" id="sitelinks"></div>
 
   <h2>Company career pages</h2>
-  <p style="color:var(--muted);font-size:13px;margin-top:-6px;">
-     Official careers portals of major employers based in / hiring in Riyadh.</p>
-  <div class="chips"><a class="link-chip company" href="https://www.aramco.com/en/careers" target="_blank" rel="noopener">Saudi Aramco</a><a class="link-chip company" href="https://www.sabic.com/en/careers" target="_blank" rel="noopener">SABIC</a><a class="link-chip company" href="https://careers.stc.com.sa/" target="_blank" rel="noopener">stc (Saudi Telecom)</a><a class="link-chip company" href="https://www.alahli.com/en-us/about-us/Pages/careers.aspx" target="_blank" rel="noopener">Saudi National Bank (SNB)</a><a class="link-chip company" href="https://www.alrajhibank.com.sa/en/careers" target="_blank" rel="noopener">Al Rajhi Bank</a><a class="link-chip company" href="https://www.riyadbank.com/en/about-us/careers" target="_blank" rel="noopener">Riyad Bank</a><a class="link-chip company" href="https://www.pif.gov.sa/en/careers/" target="_blank" rel="noopener">Public Investment Fund (PIF)</a><a class="link-chip company" href="https://www.neom.com/en-us/careers" target="_blank" rel="noopener">NEOM</a><a class="link-chip company" href="https://qiddiya.com/careers/" target="_blank" rel="noopener">Qiddiya</a><a class="link-chip company" href="https://www.roshn.sa/en/careers" target="_blank" rel="noopener">ROSHN</a><a class="link-chip company" href="https://www.redseaglobal.com/en/careers" target="_blank" rel="noopener">Red Sea Global</a><a class="link-chip company" href="https://www.diriyah.sa/en/careers" target="_blank" rel="noopener">Diriyah Company</a><a class="link-chip company" href="https://www.saudia.com/about-saudia/careers" target="_blank" rel="noopener">Saudia (Saudi Arabian Airlines)</a><a class="link-chip company" href="https://www.riyadhair.com/careers" target="_blank" rel="noopener">Riyadh Air</a><a class="link-chip company" href="https://www.almarai.com/en/careers/" target="_blank" rel="noopener">Almarai</a><a class="link-chip company" href="https://www.mobily.com.sa/en/careers" target="_blank" rel="noopener">Mobily</a><a class="link-chip company" href="https://www.se.com.sa/en-us/Careers" target="_blank" rel="noopener">Saudi Electricity Company (SEC)</a><a class="link-chip company" href="https://www.maaden.com.sa/en/careers" target="_blank" rel="noopener">Ma&#x27;aden (Saudi Arabian Mining)</a><a class="link-chip company" href="https://www.acwapower.com/en/careers/" target="_blank" rel="noopener">ACWA Power</a><a class="link-chip company" href="https://elm.sa/en/careers" target="_blank" rel="noopener">Elm Company</a><a class="link-chip company" href="https://lucidmotors.com/careers" target="_blank" rel="noopener">Lucid Motors (KSA)</a><a class="link-chip company" href="https://www.bupa.com.sa/en/careers" target="_blank" rel="noopener">Bupa Arabia</a><a class="link-chip company" href="https://www.kfshrc.edu.sa/en/home/careers" target="_blank" rel="noopener">King Faisal Specialist Hospital (KFSHRC)</a><a class="link-chip company" href="https://hmg.com.sa/en/careers/" target="_blank" rel="noopener">Dr. Sulaiman Al Habib (HMG)</a></div>
-
+  <p class="hint">Official careers portals of major employers in Riyadh.</p>
+  <div class="chips" id="companylinks"></div>
 </div>
-<footer>
-  Built by riyadh_jobs.py · Featured data from Indeed · Re-run with internet access to refresh live listings.
-</footer>
+
+<script>
+const MODE = "static";                 // "server" or "static"
+const SITES = [["LinkedIn Jobs", "https://www.linkedin.com/jobs/search/?keywords={q}&location=Riyadh%2C%20Saudi%20Arabia", "q"], ["Indeed (Saudi Arabia)", "https://sa.indeed.com/jobs?q={q}&l=Riyadh", "q"], ["Bayt", "https://www.bayt.com/en/saudi-arabia/jobs/jobs-in-riyadh/?text={q}", "q"], ["GulfTalent", "https://www.gulftalent.com/jobs/search?keywords={q}&location=riyadh", "q"], ["Glassdoor", "https://www.glassdoor.com/Job/jobs.htm?sc.keyword={q}&locKeyword=Riyadh", "q"], ["Monster Gulf", "https://www.monstergulf.com/srp/results?query={q}&locations=Riyadh", "q"], ["Akhtaboot", "https://www.akhtaboot.com/en/saudi-arabia/jobs/riyadh?q={q}", "q"], ["Tanqeeb", "https://saudi-arabia.tanqeeb.com/en/jobs/search?keywords={q}&q_location=Riyadh", "q"], ["DrJobPro", "https://www.drjobpro.com/jobs?searchKey={q}&city=Riyadh&country=Saudi%20Arabia", "q"], ["Jooble", "https://jooble.org/SearchResult?rgns=Riyadh&ukw={q}", "q"], ["Naukrigulf", "https://www.naukrigulf.com/{q}-jobs-in-riyadh-saudi-arabia", "slug"], ["Laimoon", "https://saudi.laimoon.com/jobs/keyword/{q}/in-riyadh", "slug"], ["Jadarat (National Gateway)", "https://www.jadarat.sa/", "fixed"], ["Taqat / HRDF", "https://www.taqat.sa/", "fixed"]];                  // [[name, template, kind], ...]
+const COMPANIES = [["Saudi Aramco", "https://www.aramco.com/en/careers"], ["SABIC", "https://www.sabic.com/en/careers"], ["stc (Saudi Telecom)", "https://careers.stc.com.sa/"], ["Saudi National Bank (SNB)", "https://www.alahli.com/en-us/about-us/Pages/careers.aspx"], ["Al Rajhi Bank", "https://www.alrajhibank.com.sa/en/careers"], ["Riyad Bank", "https://www.riyadbank.com/en/about-us/careers"], ["Public Investment Fund (PIF)", "https://www.pif.gov.sa/en/careers/"], ["NEOM", "https://www.neom.com/en-us/careers"], ["Qiddiya", "https://qiddiya.com/careers/"], ["ROSHN", "https://www.roshn.sa/en/careers"], ["Red Sea Global", "https://www.redseaglobal.com/en/careers"], ["Diriyah Company", "https://www.diriyah.sa/en/careers"], ["Saudia (Saudi Arabian Airlines)", "https://www.saudia.com/about-saudia/careers"], ["Riyadh Air", "https://www.riyadhair.com/careers"], ["Almarai", "https://www.almarai.com/en/careers/"], ["Mobily", "https://www.mobily.com.sa/en/careers"], ["Saudi Electricity Company (SEC)", "https://www.se.com.sa/en-us/Careers"], ["Ma'aden (Saudi Arabian Mining)", "https://www.maaden.com.sa/en/careers"], ["ACWA Power", "https://www.acwapower.com/en/careers/"], ["Elm Company", "https://elm.sa/en/careers"], ["Lucid Motors (KSA)", "https://lucidmotors.com/careers"], ["Bupa Arabia", "https://www.bupa.com.sa/en/careers"], ["King Faisal Specialist Hospital (KFSHRC)", "https://www.kfshrc.edu.sa/en/home/careers"], ["Dr. Sulaiman Al Habib (HMG)", "https://hmg.com.sa/en/careers/"]];          // [[name, url], ...]
+const EMBED_JOBS = [{"title": "Senior Software Engineering Manager", "company": "IAUser Digital Solutions", "location": "Riyadh", "posted": "May 06, 2026", "type": "Permanent", "category": "Software & IT", "url": "https://to.indeed.com/aag89jxfhxjl"}, {"title": "Senior Software Engineer", "company": "Malaa", "location": "Riyadh", "posted": "February 27, 2026", "type": "Full-time", "category": "Software & IT", "url": "https://to.indeed.com/aaxkvrjwg99m"}, {"title": "Senior Technical Office Engineer", "company": "ITALCONSULT", "location": "Riyadh", "posted": "February 28, 2026", "type": "Full-time", "category": "Software & IT", "url": "https://to.indeed.com/aabt8vb7qfcq"}, {"title": "Senior QA Engineer - Backend", "company": "almosafer", "location": "Riyadh", "posted": "November 23, 2024", "type": "Permanent", "category": "Software & IT", "url": "https://to.indeed.com/aa92ccr7zxkv"}, {"title": "AI Engineering Manager", "company": "Unifonic", "location": "Riyadh", "posted": "February 27, 2026", "type": "Full-time", "category": "Software & IT", "url": "https://to.indeed.com/aatsrlmb74yl"}, {"title": "Senior Project Engineer", "company": "MVP Tech GT LLC", "location": "Riyadh", "posted": "February 28, 2026", "type": "Full-time", "category": "Software & IT", "url": "https://to.indeed.com/aag4t2xn8trq"}, {"title": "Principal Backend Engineer", "company": "almosafer", "location": "Riyadh", "posted": "November 23, 2024", "type": "Permanent", "category": "Software & IT", "url": "https://to.indeed.com/aa9dgrf72sjz"}, {"title": "Buyer - E&I (Saudi Arabia - Dammam) for Cross country Pipe line Projects", "company": "Hudson Manpower", "location": "Riyadh", "posted": "February 27, 2026", "type": "Full-time", "category": "Software & IT", "url": "https://to.indeed.com/aadcnnfn9hlb"}, {"title": "Geomatics Engineer", "company": "Hudhud Maps", "location": "Riyadh", "posted": "February 18, 2026", "type": "Full-time", "category": "Software & IT", "url": "https://to.indeed.com/aayhyvkhbqws"}, {"title": "Senior Technical Lead", "company": "Uxbert Labs", "location": "Riyadh", "posted": "February 27, 2026", "type": "Full-time", "category": "Software & IT", "url": "https://to.indeed.com/aaqvlcnybcgv"}, {"title": "Accountant", "company": "AWTAD", "location": "Riyadh", "posted": "March 03, 2026", "type": "Full-time", "category": "Accounting & Finance", "url": "https://to.indeed.com/aacqhcgpbmyf"}, {"title": "Senior Accountant", "company": "One Tech Capital LLC", "location": "Riyadh", "posted": "February 27, 2026", "type": "Full-time", "category": "Accounting & Finance", "url": "https://to.indeed.com/aah9vld96tlq"}, {"title": "Accountant", "company": "One Tech Capital LLC", "location": "Riyadh", "posted": "February 27, 2026", "type": "Full-time", "category": "Accounting & Finance", "url": "https://to.indeed.com/aagg9fwj774v"}, {"title": "Senior Accountant (Arabic)", "company": "AGS International Trading", "location": "Riyadh", "posted": "April 23, 2026", "type": "Permanent", "category": "Accounting & Finance", "url": "https://to.indeed.com/aazhwbb4f479"}, {"title": "Senior Accountant", "company": "Alkaffary Group", "location": "Riyadh", "posted": "December 16, 2025", "type": "Full-time", "category": "Accounting & Finance", "url": "https://to.indeed.com/aa6mmy84klqs"}, {"title": "Accountant - Saudi Arabia", "company": "Azeus Convene", "location": "Riyadh", "posted": "December 16, 2025", "type": "Full-time", "category": "Accounting & Finance", "url": "https://to.indeed.com/aamt2lzr6cwh"}, {"title": "Senior Accountant", "company": "EVA Pharma", "location": "Riyadh", "posted": "February 03, 2026", "type": "Full-time", "category": "Accounting & Finance", "url": "https://to.indeed.com/aazr86hwmw2z"}, {"title": "Chief Accountant - EPC Telecommunication Company | Saudi Arabia", "company": "Rawaj - Human Capital Management", "location": "Riyadh", "posted": "May 19, 2026", "type": "Full-time", "category": "Accounting & Finance", "url": "https://to.indeed.com/aamzk9w4pf6l"}, {"title": "Senior Accountant", "company": "Datamatics Global Services Ltd", "location": "Riyadh", "posted": "May 13, 2026", "type": "Full-time", "category": "Accounting & Finance", "url": "https://to.indeed.com/aa7j6jtspw4k"}, {"title": "Operational Accountant | Riyadh, KSA", "company": "Talent 360", "location": "Riyadh", "posted": "May 04, 2026", "type": "Full-time", "category": "Accounting & Finance", "url": "https://to.indeed.com/aacmzr9xsqmh"}, {"title": "Home HealthCare Nurse", "company": "Domo Ventures", "location": "Riyadh", "posted": "February 27, 2026", "type": "N/A", "category": "Healthcare", "url": "https://to.indeed.com/aa6rvcj9lqv7"}, {"title": "School Registered Nurse", "company": "American International School - Riyadh", "location": "Riyadh", "posted": "May 06, 2026", "type": "Part-time", "category": "Healthcare", "url": "https://to.indeed.com/aacnhx2brgqb"}, {"title": "Nurse", "company": "Career Land Center", "location": "Riyadh", "posted": "May 19, 2026", "type": "Full-time", "category": "Healthcare", "url": "https://to.indeed.com/aaxfhglm4c8p"}, {"title": "Nurse for Private Clinic | Riyadh, KSA", "company": "Career Land Center", "location": "Riyadh", "posted": "April 03, 2026", "type": "Full-time", "category": "Healthcare", "url": "https://to.indeed.com/aastg4lhw69g"}, {"title": "Customer Success Specialist", "company": "FluidAI Medical", "location": "Riyadh", "posted": "May 27, 2026", "type": "Permanent", "category": "Healthcare", "url": "https://to.indeed.com/aavtlkzckdhh"}, {"title": "Head Nurse", "company": "Jobskey", "location": "Riyadh", "posted": "May 19, 2026", "type": "Full-time", "category": "Healthcare", "url": "https://to.indeed.com/aahrf4rn4sjp"}, {"title": "Quality and Medical Audit Manager (Healthcare Industry Exp) QHC0009", "company": "Qiddiya Investment Company", "location": "Riyadh", "posted": "May 06, 2026", "type": "N/A", "category": "Healthcare", "url": "https://to.indeed.com/aacv84ddqh7p"}, {"title": "Charge Nurse", "company": "Jobskey", "location": "Riyadh", "posted": "May 19, 2026", "type": "Full-time", "category": "Healthcare", "url": "https://to.indeed.com/aa9qnyq77ynv"}, {"title": "ER Nurse", "company": "Jobskey", "location": "Riyadh", "posted": "May 19, 2026", "type": "Full-time", "category": "Healthcare", "url": "https://to.indeed.com/aazt2mxwqydx"}, {"title": "Critical Care Nurse", "company": "Jobskey", "location": "Riyadh", "posted": "May 19, 2026", "type": "Full-time", "category": "Healthcare", "url": "https://to.indeed.com/aa6rg8vs29fz"}, {"title": "Senior Digital Marketing Manager", "company": "Ghezzi Digital Marketing & Technology Group", "location": "Riyadh", "posted": "May 11, 2026", "type": "Permanent", "category": "Marketing", "url": "https://to.indeed.com/aaxbyxvbrdr9"}, {"title": "Marketing Manager - F&B | Saudi Arabia", "company": "Rawaj - Human Capital Management", "location": "Riyadh", "posted": "February 27, 2026", "type": "Full-time", "category": "Marketing", "url": "https://to.indeed.com/aa2vbhhtnssj"}, {"title": "Strategic Account Manager", "company": "WebEngage", "location": "Riyadh", "posted": "February 27, 2026", "type": "N/A", "category": "Marketing", "url": "https://to.indeed.com/aalwsrf2q7gb"}, {"title": "Strategic Account Manager - KSA", "company": "WebEngage", "location": "Riyadh", "posted": "February 27, 2026", "type": "N/A", "category": "Marketing", "url": "https://to.indeed.com/aan6qmgbtlr8"}, {"title": "Education Business Development Manager", "company": "Swiss Hospitality", "location": "Riyadh", "posted": "November 23, 2024", "type": "Permanent", "category": "Marketing", "url": "https://to.indeed.com/aaqq6yf42l9h"}, {"title": "Business Development Manager", "company": "SEA Ventures", "location": "Riyadh", "posted": "March 01, 2026", "type": "Full-time", "category": "Marketing", "url": "https://to.indeed.com/aavcskdx9hx7"}, {"title": "Branch Operation Manager - F&B | Saudi Arabia", "company": "Rawaj - Human Capital Management", "location": "Riyadh", "posted": "February 28, 2026", "type": "Full-time", "category": "Marketing", "url": "https://to.indeed.com/aac96dvqnl8g"}, {"title": "Business Development Manager", "company": "BIMTEC", "location": "Riyadh", "posted": "February 27, 2026", "type": "Permanent", "category": "Marketing", "url": "https://to.indeed.com/aajtztpwyb7t"}, {"title": "Sales Representative", "company": "Waseel", "location": "Riyadh", "posted": "May 06, 2026", "type": "Full-time", "category": "Sales", "url": "https://to.indeed.com/aa7cnbzwkvz9"}, {"title": "Digital Sales Representative", "company": "Lendo", "location": "Riyadh", "posted": "February 27, 2026", "type": "Full-time", "category": "Sales", "url": "https://to.indeed.com/aa66kp98httb"}, {"title": "Sales Development Representative (SDR)", "company": "TechBiz Global GmbH", "location": "Riyadh", "posted": "February 27, 2026", "type": "Full-time", "category": "Sales", "url": "https://to.indeed.com/aa9vfltxqkvy"}, {"title": "Sales Executive (commission based)", "company": "Workhint", "location": "Riyadh", "posted": "November 23, 2024", "type": "Contract", "category": "Sales", "url": "https://to.indeed.com/aa9qcnlz49l2"}, {"title": "Inside Sales Representative", "company": "Alkaffary Group", "location": "Riyadh", "posted": "December 16, 2025", "type": "Full-time", "category": "Sales", "url": "https://to.indeed.com/aakfy6hc2wzw"}, {"title": "Field Sales Representative", "company": "Rgheeb", "location": "Riyadh", "posted": "February 26, 2026", "type": "Full-time", "category": "Sales", "url": "https://to.indeed.com/aannwrkfxjc9"}, {"title": "Sales Representative", "company": "Sika Corporation", "location": "Riyadh", "posted": "March 08, 2026", "type": "Full-time", "category": "Sales", "url": "https://to.indeed.com/aazxpb9brt46"}, {"title": "Sales Representative", "company": "Sky Ocean Logistics", "location": "Riyadh", "posted": "May 09, 2026", "type": "Permanent", "category": "Sales", "url": "https://to.indeed.com/aanjdnphl97v"}, {"title": "Sales Representative", "company": "Clean Life", "location": "Riyadh", "posted": "May 16, 2026", "type": "Full-time", "category": "Sales", "url": "https://to.indeed.com/aaxqvnlm7b4d"}, {"title": "Sales Representative", "company": "DYAR", "location": "Riyadh", "posted": "May 31, 2026", "type": "Contract", "category": "Sales", "url": "https://to.indeed.com/aab4wxd48jz6"}, {"title": "Finance Manager", "company": "Muller's Solutions", "location": "Riyadh", "posted": "December 16, 2025", "type": "Full-time", "category": "Management & Consulting", "url": "https://to.indeed.com/aah8r6jcd8ww"}, {"title": "Project Manager", "company": "SEA Ventures", "location": "Riyadh", "posted": "November 23, 2024", "type": "Full-time", "category": "Management & Consulting", "url": "https://to.indeed.com/aa8v87g9774v"}, {"title": "Project Manager", "company": "Swiss Hospitality", "location": "Riyadh", "posted": "November 23, 2024", "type": "Permanent", "category": "Management & Consulting", "url": "https://to.indeed.com/aatrpmjt9f76"}, {"title": "Project Manager - Construction (Residential Compounds & Towers) | Saudi Arabia", "company": "Rawaj - Human Capital Management", "location": "Riyadh", "posted": "February 28, 2026", "type": "Full-time", "category": "Management & Consulting", "url": "https://to.indeed.com/aagvkxzqllrh"}, {"title": "International Project Manager", "company": "WeRide.ai", "location": "Riyadh", "posted": "February 27, 2026", "type": "Full-time", "category": "Management & Consulting", "url": "https://to.indeed.com/aahkvrxpffzv"}, {"title": "Inverto | Business & Operations Senior Manager", "company": "Boston Consulting Group", "location": "Riyadh", "posted": "February 18, 2026", "type": "Full-time", "category": "Management & Consulting", "url": "https://to.indeed.com/aa88bnq8ksmd"}, {"title": "Data Engineer", "company": "Muller's Solutions", "location": "Riyadh", "posted": "December 16, 2025", "type": "N/A", "category": "Data & Analytics", "url": "https://to.indeed.com/aasj6ngsgrgq"}, {"title": "Senior Data Engineer", "company": "Uxbert Labs", "location": "Riyadh", "posted": "February 27, 2026", "type": "Full-time", "category": "Data & Analytics", "url": "https://to.indeed.com/aanrz9lgmmry"}, {"title": "Senior Data Management Engineer", "company": "Envision Employment Solutions", "location": "Riyadh", "posted": "February 21, 2026", "type": "Full-time", "category": "Data & Analytics", "url": "https://to.indeed.com/aany2l7q48jc"}, {"title": "Big Data Engineer", "company": "Muller's Solutions", "location": "Riyadh", "posted": "March 04, 2026", "type": "N/A", "category": "Data & Analytics", "url": "https://to.indeed.com/aa487bvqlmyv"}, {"title": "Senior Data Engineer", "company": "Foodics", "location": "Riyadh", "posted": "December 16, 2025", "type": "N/A", "category": "Data & Analytics", "url": "https://to.indeed.com/aacs8l7hkvtg"}, {"title": "Senior Business Analyst - KSA", "company": "Squadio", "location": "Riyadh", "posted": "December 16, 2025", "type": "Full-time", "category": "Data & Analytics", "url": "https://to.indeed.com/aac2jfpt96fq"}, {"title": "Head of Data Science", "company": "Mts Okul Dunyasi", "location": "Riyadh", "posted": "May 25, 2026", "type": "Full-time", "category": "Data & Analytics", "url": "https://to.indeed.com/aam6ymdpjnxr"}, {"title": "Business Analyst, Senior", "company": "MASTER-WORKS", "location": "Riyadh", "posted": "May 05, 2026", "type": "Full-time", "category": "Data & Analytics", "url": "https://to.indeed.com/aan2c4289qw6"}, {"title": "Data & AI Delivery, Head", "company": "MASTER-WORKS", "location": "Riyadh", "posted": "May 13, 2026", "type": "Full-time", "category": "Data & Analytics", "url": "https://to.indeed.com/aaxpgvpbjmsr"}, {"title": "Google Cloud Data Engineer", "company": "Muller's Solutions", "location": "Riyadh", "posted": "March 03, 2026", "type": "N/A", "category": "Data & Analytics", "url": "https://to.indeed.com/aaqvlg68gftq"}, {"title": "Data Analyst", "company": "Assystem", "location": "Riyadh", "posted": "April 15, 2026", "type": "Full-time", "category": "Data & Analytics", "url": "https://to.indeed.com/aaj744z7ky9x"}, {"title": "Senior Talent Acquisition Specialist", "company": "TheChefz", "location": "Riyadh", "posted": "May 25, 2026", "type": "Full-time", "category": "Human Resources", "url": "https://to.indeed.com/aa4v4cbh4p6h"}, {"title": "HR Manager (Saudi National)", "company": "ITALCONSULT", "location": "Riyadh", "posted": "February 27, 2026", "type": "Full-time", "category": "Human Resources", "url": "https://to.indeed.com/aajzfyg4zsql"}, {"title": "Director of People and Culture", "company": "Fairmont", "location": "Riyadh", "posted": "May 05, 2026", "type": "Full-time", "category": "Human Resources", "url": "https://to.indeed.com/aa726rpqkm29"}, {"title": "Human Resources Manager", "company": "Rgheeb", "location": "Riyadh", "posted": "January 29, 2026", "type": "Full-time", "category": "Human Resources", "url": "https://to.indeed.com/aa26sftxmyfz"}, {"title": "HR Business Partner", "company": "Agility", "location": "Riyadh", "posted": "March 02, 2026", "type": "Full-time", "category": "Human Resources", "url": "https://to.indeed.com/aarwq2dn4byn"}, {"title": "Senior Specialist - Organizational Development", "company": "Qiddiya Investment Company", "location": "Riyadh", "posted": "May 05, 2026", "type": "Full-time", "category": "Human Resources", "url": "https://to.indeed.com/aa9c6k4f2xrb"}, {"title": "HR Specialist", "company": "Jobskey", "location": "Riyadh", "posted": "May 19, 2026", "type": "Full-time", "category": "Human Resources", "url": "https://to.indeed.com/aabyhyvfrkt4"}, {"title": "HR Business Partner | Industrial | Saudi Arabia", "company": "Rawaj - Human Capital Management", "location": "Riyadh", "posted": "March 03, 2026", "type": "Full-time", "category": "Human Resources", "url": "https://to.indeed.com/aarmndjfq24k"}, {"title": "HR Manager", "company": "Jobskey", "location": "Riyadh", "posted": "May 19, 2026", "type": "Full-time", "category": "Human Resources", "url": "https://to.indeed.com/aapgbzj94p24"}, {"title": "Customer Service Representative - Saudi National", "company": "Tabby", "location": "Riyadh", "posted": "February 27, 2026", "type": "Full-time", "category": "Customer Service", "url": "https://to.indeed.com/aaydp4rz4kwn"}, {"title": "Customer Service Trainer - KSA Residence", "company": "Tabby", "location": "Riyadh", "posted": "February 27, 2026", "type": "Full-time", "category": "Customer Service", "url": "https://to.indeed.com/aak79wjldjnc"}, {"title": "Public Relations Officer (PRO) - Sales & Business Development", "company": "Capital International Group of Enterprises", "location": "Riyadh", "posted": "June 01, 2026", "type": "Permanent", "category": "Customer Service", "url": "https://to.indeed.com/aaqjv66vcprv"}, {"title": "Supply Chain General Manager | Saudi Arabia", "company": "Rawaj - Human Capital Management", "location": "Riyadh", "posted": "February 27, 2026", "type": "Full-time", "category": "Customer Service", "url": "https://to.indeed.com/aary9nxvf89v"}, {"title": "Senior Project Manager (Q-R)", "company": "JASARA PMC", "location": "Riyadh", "posted": "April 21, 2026", "type": "N/A", "category": "Engineering & Construction", "url": "https://to.indeed.com/aamxr9khn2n6"}, {"title": "Project Office Engineer", "company": "Alomar Holding Company", "location": "Riyadh", "posted": "April 09, 2026", "type": "Full-time", "category": "Engineering & Construction", "url": "https://to.indeed.com/aa4d8k6r84wg"}, {"title": "Senior Cost Manager", "company": "JASARA PMC", "location": "Riyadh", "posted": "December 16, 2025", "type": "N/A", "category": "Engineering & Construction", "url": "https://to.indeed.com/aa8cpx7sqvyq"}, {"title": "Senior Construction Manager", "company": "JASARA PMC", "location": "Riyadh", "posted": "March 02, 2026", "type": "N/A", "category": "Engineering & Construction", "url": "https://to.indeed.com/aarx69b4myyy"}, {"title": "Construction Projects Manager - Competitive Salary Package", "company": "Manzoma", "location": "Riyadh", "posted": "February 08, 2026", "type": "Full-time", "category": "Engineering & Construction", "url": "https://to.indeed.com/aahwgrpyk6wp"}, {"title": "Site Project Engineer", "company": "HanmiGlobal Saudi", "location": "Riyadh", "posted": "January 14, 2026", "type": "Full-time", "category": "Engineering & Construction", "url": "https://to.indeed.com/aat6cw79bp2s"}, {"title": "Site Manager", "company": "JASARA PMC", "location": "Riyadh", "posted": "December 16, 2025", "type": "N/A", "category": "Engineering & Construction", "url": "https://to.indeed.com/aavnwlvhn8kn"}, {"title": "Senior Project Engineer Riyadh", "company": "Doka Group", "location": "Riyadh", "posted": "November 02, 2025", "type": "Full-time", "category": "Engineering & Construction", "url": "https://to.indeed.com/aackzxcnjdg4"}, {"title": "Senior Project Control Engineer", "company": "JASARA PMC", "location": "Riyadh", "posted": "December 16, 2025", "type": "N/A", "category": "Engineering & Construction", "url": "https://to.indeed.com/aak8xtywzc4k"}, {"title": "(English/Math/Science) Grades Teachers Needed at International School in Riyadh", "company": "ESL Global Services", "location": "Riyadh", "posted": "March 30, 2026", "type": "Full-time", "category": "Education & Teaching", "url": "https://to.indeed.com/aarz26ls22mw"}, {"title": "Lower Elementary School Homeroom Teacher", "company": "American International School - Riyadh", "location": "Riyadh", "posted": "April 02, 2026", "type": "Full-time", "category": "Education & Teaching", "url": "https://to.indeed.com/aaytjryg42z2"}, {"title": "Education Coordinator", "company": "Victoria College", "location": "Riyadh", "posted": "May 19, 2026", "type": "Full-time", "category": "Education & Teaching", "url": "https://to.indeed.com/aa7b6k26hjlt"}, {"title": "Early Years (Pre-K/KG1 Teacher)", "company": "American International School - Riyadh", "location": "Riyadh", "posted": "December 09, 2025", "type": "Full-time", "category": "Education & Teaching", "url": "https://to.indeed.com/aaclm29n4pdq"}, {"title": "Upper Elementary School Homeroom Teacher", "company": "American International School - Riyadh", "location": "Riyadh", "posted": "April 02, 2026", "type": "Full-time", "category": "Education & Teaching", "url": "https://to.indeed.com/aa82t2wx7mx4"}, {"title": "Middle School Physical Education & Health Teacher", "company": "American International School - Riyadh", "location": "Riyadh", "posted": "April 26, 2026", "type": "Full-time", "category": "Education & Teaching", "url": "https://to.indeed.com/aa8gvmh8fs6m"}, {"title": "Private Arabic Teacher (Cambridge Curriculum)", "company": "AlGooru", "location": "Riyadh", "posted": "May 05, 2026", "type": "Full-time", "category": "Education & Teaching", "url": "https://to.indeed.com/aapqgwtzkpwb"}, {"title": "English Teacher", "company": "SABIS Network", "location": "Riyadh", "posted": "May 25, 2026", "type": "N/A", "category": "Education & Teaching", "url": "https://to.indeed.com/aa8fbr7wskvh"}];              // used in static mode
+
+function slugify(s){return s.trim().toLowerCase().replace(/\s+/g,'-').replace(/[^a-z0-9-]/g,'')||'jobs';}
+function buildSiteUrl(tpl, kind, q){
+  if(kind==='fixed') return tpl;
+  if(kind==='slug')  return tpl.replace('{q}', slugify(q));
+  return tpl.replace('{q}', encodeURIComponent(q.trim()));
+}
+function esc(s){const d=document.createElement('div');d.textContent=s==null?'':s;return d.innerHTML;}
+
+function renderLinks(q){
+  document.getElementById('sitelinks').innerHTML = SITES.map(([n,t,k])=>
+    `<a class="link-chip" target="_blank" rel="noopener" href="${esc(buildSiteUrl(t,k,q))}">${esc(n)}</a>`).join('');
+  document.getElementById('companylinks').innerHTML = COMPANIES.map(([n,u])=>
+    `<a class="link-chip" target="_blank" rel="noopener" href="${esc(u)}">${esc(n)}</a>`).join('');
+}
+
+function jobCard(j){
+  const meta=[j.type,j.posted].filter(Boolean).join(' · ');
+  return `<li class="job"><a class="job-title" target="_blank" rel="noopener" href="${esc(j.url)}">${esc(j.title)}</a>
+    <div class="job-meta"><span class="company">${esc(j.company||'—')}</span> · ${esc(j.location||'Riyadh')}${meta?(' · '+esc(meta)):''}</div></li>`;
+}
+function groupByCategory(jobs){
+  const m={}; jobs.forEach(j=>{(m[j.category||'Other']=m[j.category||'Other']||[]).push(j);}); return m;
+}
+function renderJobs(jobs){
+  const el=document.getElementById('results');
+  document.getElementById('rescount').textContent=jobs.length;
+  if(!jobs.length){el.innerHTML='<p class="empty">No matching listings. Try a broader keyword, or use the job-site links below.</p>';return;}
+  const g=groupByCategory(jobs);
+  el.innerHTML=Object.keys(g).map(cat=>
+    `<section class="cat-block"><h3>${esc(cat)} <span class="count">${g[cat].length}</span></h3>
+     <ul class="job-list">${g[cat].map(jobCard).join('')}</ul></section>`).join('');
+}
+
+function filterLocal(jobs,q){
+  q=(q||'').trim().toLowerCase(); if(!q) return jobs.slice();
+  const toks=q.split(/\s+/);
+  return jobs.filter(j=>{const h=((j.title||'')+' '+(j.company||'')+' '+(j.category||'')+' '+(j.type||'')).toLowerCase();
+    return toks.every(t=>h.includes(t));});
+}
+
+let seq=0;
+async function doSearch(q){
+  renderLinks(q);
+  const status=document.getElementById('status');
+  if(MODE==='static'){
+    renderJobs(filterLocal(EMBED_JOBS,q));
+    status.textContent='Searched '+EMBED_JOBS.length+' bundled listings (offline mode).';
+    return;
+  }
+  const my=++seq;
+  // Phase 1: instant bundled filter
+  status.innerHTML='Searching bundled listings…';
+  let bundled=[];
+  try{const r=await fetch('/api/search?live=0&q='+encodeURIComponent(q));const d=await r.json();bundled=d.jobs||[];}catch(e){}
+  if(my!==seq) return;
+  renderJobs(bundled);
+  // Phase 2: live fetch, merged on top
+  status.innerHTML='<span class="spin"></span>Fetching live results from Indeed…';
+  let live=[];
+  try{const r=await fetch('/api/search?live=1&q='+encodeURIComponent(q));const d=await r.json();live=d.jobs||[];}catch(e){}
+  if(my!==seq) return;
+  // de-dupe by title+company
+  const seen=new Set(bundled.map(j=>(j.title+'|'+j.company).toLowerCase()));
+  const extra=live.filter(j=>!seen.has((j.title+'|'+j.company).toLowerCase()));
+  renderJobs(extra.concat(bundled));
+  status.textContent = (extra.length? (extra.length+' live + ') : '') + bundled.length +
+                       ' bundled listings.' + (extra.length? '' : ' (Live fetch returned nothing — network may be blocked.)');
+}
+
+let t;
+const input=document.getElementById('q');
+input.addEventListener('input',()=>{clearTimeout(t);t=setTimeout(()=>doSearch(input.value),350);});
+input.addEventListener('keydown',e=>{if(e.key==='Enter'){clearTimeout(t);doSearch(input.value);}});
+document.getElementById('go').addEventListener('click',()=>{clearTimeout(t);doSearch(input.value);});
+doSearch('');   // initial load shows everything
+</script>
 </body>
 </html>
