@@ -1,7 +1,8 @@
 # Riyadh IT Jobs — daily job search
 
-Automatically searches **LinkedIn** every day at 06:00 Riyadh time for jobs in
-**Riyadh, Saudi Arabia** matching these keywords:
+Automatically searches **LinkedIn, Akhtaboot, GulfTalent and Tanqeeb** every
+day at 06:00 Riyadh time for jobs in **Riyadh, Saudi Arabia** matching these
+keywords:
 
 - IT Management
 - IT Project Manager
@@ -12,11 +13,17 @@ All jobs found are stored in [`docs/data/jobs.json`](docs/data/jobs.json) and
 shown on a website where you can filter, search, and click through to apply.
 Jobs are never deleted — newly found jobs are flagged **NEW**.
 
-**Bayt.com** and **Naukrigulf** are also tried on every run, but both sites
-currently block requests from GitHub's servers (Bayt answers 403, Naukrigulf
-stalls connections). The scraper keeps probing them once per day and will pick
-them up automatically if they ever stop blocking. Until then, the website has
-one-click manual search links for Bayt, Naukrigulf, and Indeed.
+Source status (verified through live workflow runs):
+
+- **LinkedIn** — works, main source of results.
+- **Akhtaboot** — works; its keyword search is limited, so results are
+  filtered for relevance from its newest Riyadh listings.
+- **GulfTalent, Tanqeeb** — currently return 403 to GitHub's servers; probed
+  once per run and picked up automatically if they ever unblock.
+- **Mihnati** — loads job listings only via JavaScript, impossible to read
+  from plain HTTP; available as a manual link on the site.
+- **Google Jobs, Indeed, Bayt, Naukrigulf** — no free automated access;
+  one-click manual search links are on the website.
 
 ## One-time setup
 
