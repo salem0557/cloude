@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-10T20:41:30+00:00",
+ "updated": "2026-06-10T20:44:57+00:00",
  "jobs": [
   {
    "title": "Transport Data Science Manager",
@@ -890,6 +890,18 @@
    "source": "LinkedIn",
    "keywords": [
     "Digital Transformation"
+   ],
+   "first_seen": "2026-06-10"
+  },
+  {
+   "title": "Data Analyst",
+   "company": "Assystem",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/data-analyst-at-assystem-4399953102",
+   "posted": "2026-04-15",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Management"
    ],
    "first_seen": "2026-06-10"
   },
