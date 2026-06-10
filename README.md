@@ -23,6 +23,10 @@ Source status (verified through live workflow runs):
   filtered for relevance from its newest Riyadh listings.
 - **GulfTalent, Tanqeeb** — currently return 403 to GitHub's servers; probed
   once per run and picked up automatically if they ever unblock.
+- **Jooble** — public site returns 403, but it offers a free official API:
+  request a key at <https://jooble.org/api/about>, then add it as a repository
+  secret named `JOOBLE_API_KEY` (Settings → Secrets and variables → Actions).
+  The daily search starts using the API automatically.
 - **Mihnati** — loads job listings only via JavaScript, impossible to read
   from plain HTTP; available as a manual link on the site.
 - **Google Jobs, Indeed, Bayt, Naukrigulf** — no free automated access;
