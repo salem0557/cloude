@@ -1,0 +1,37 @@
+name: Daily Riyadh job search
+
+on:
+  schedule:
+    - cron: "0 3 * * *" # 06:00 Riyadh time, every day
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  search:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r scraper/requirements.txt
+
+      - name: Search for jobs
+        run: python scraper/search_jobs.py
+
+      - name: Commit updated job list
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/data/jobs.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update job list ($(date -u +%F))"
+            git push
+          fi

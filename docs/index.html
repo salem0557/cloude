@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Riyadh IT Jobs</title>
+<style>
+  :root {
+    --bg: #f4f6fa;
+    --card: #ffffff;
+    --text: #1a2233;
+    --muted: #66718a;
+    --accent: #1f6feb;
+    --new: #16a34a;
+    --border: #e2e7f0;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding-bottom: 60px;
+  }
+  header {
+    background: linear-gradient(135deg, #142850, #1f6feb);
+    color: #fff;
+    padding: 28px 20px 22px;
+    text-align: center;
+  }
+  header h1 { font-size: 1.6rem; }
+  header p { opacity: .85; margin-top: 6px; font-size: .9rem; }
+  .stats {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    margin-top: 14px;
+    font-size: .95rem;
+  }
+  .stats b { font-size: 1.25rem; display: block; }
+  .controls {
+    max-width: 900px;
+    margin: 18px auto 0;
+    padding: 0 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+  }
+  .controls input, .controls select {
+    padding: 9px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: .95rem;
+    background: var(--card);
+    color: var(--text);
+  }
+  .controls input { flex: 1; min-width: 180px; }
+  .chips { max-width: 900px; margin: 10px auto 0; padding: 0 16px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip {
+    border: 1px solid var(--border);
+    background: var(--card);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: .85rem;
+    cursor: pointer;
+    color: var(--muted);
+  }
+  .chip.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+  #list { max-width: 900px; margin: 18px auto 0; padding: 0 16px; display: grid; gap: 12px; }
+  .job {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .job .title-row { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .job a.title {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 1.05rem;
+    text-decoration: none;
+  }
+  .job a.title:hover { text-decoration: underline; }
+  .badge-new {
+    background: var(--new);
+    color: #fff;
+    font-size: .7rem;
+    font-weight: 700;
+    border-radius: 6px;
+    padding: 2px 8px;
+    letter-spacing: .5px;
+  }
+  .job .meta { color: var(--muted); font-size: .88rem; display: flex; flex-wrap: wrap; gap: 6px 16px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
+  .tag {
+    font-size: .75rem;
+    border-radius: 6px;
+    padding: 3px 8px;
+    background: #eef3fc;
+    color: #28509e;
+  }
+  .tag.source { background: #fdf0e2; color: #92520c; }
+  #empty { text-align: center; color: var(--muted); padding: 50px 20px; display: none; }
+  footer { text-align: center; color: var(--muted); font-size: .8rem; margin-top: 30px; }
+  .manual {
+    max-width: 900px;
+    margin: 12px auto 0;
+    padding: 10px 16px;
+    font-size: .85rem;
+    color: var(--muted);
+  }
+  .manual a { color: var(--accent); text-decoration: none; margin-right: 14px; font-weight: 600; }
+  .manual a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Riyadh IT Jobs</h1>
+  <p>IT Management &middot; IT Project Manager &middot; Data Acquisition &amp; Sharing Lead &middot; Digital Transformation</p>
+  <div class="stats">
+    <span><b id="stat-total">–</b>total jobs</span>
+    <span><b id="stat-new">–</b>new</span>
+    <span><b id="stat-updated">–</b>last update</span>
+  </div>
+</header>
+
+<div class="controls">
+  <input id="search" type="search" placeholder="Search title or company...">
+  <select id="source">
+    <option value="">All sources</option>
+    <option>LinkedIn</option>
+    <option>Bayt</option>
+    <option>Naukrigulf</option>
+  </select>
+  <select id="when">
+    <option value="">Any date found</option>
+    <option value="1">New only</option>
+    <option value="7">Last 7 days</option>
+    <option value="30">Last 30 days</option>
+  </select>
+</div>
+<div class="chips" id="chips"></div>
+
+<div class="manual">
+  Bayt and Naukrigulf block automated search &mdash; check them manually (links follow the selected keyword):
+  <br>
+  <a id="lnk-bayt" href="#" target="_blank" rel="noopener">Bayt</a>
+  <a id="lnk-ng" href="#" target="_blank" rel="noopener">Naukrigulf</a>
+  <a id="lnk-indeed" href="#" target="_blank" rel="noopener">Indeed</a>
+  <a id="lnk-li" href="#" target="_blank" rel="noopener">LinkedIn</a>
+</div>
+
+<div id="list"></div>
+<p id="empty">No jobs match these filters yet. The search runs automatically every morning.</p>
+
+<footer>Updates daily at 06:00 Riyadh time via GitHub Actions.</footer>
+
+<script>
+const KEYWORDS = ["IT Management", "IT Project Manager", "Data Acquisition & Sharing Lead", "Digital Transformation"];
+let jobs = [], updated = null, activeKeyword = "";
+
+const chipsEl = document.getElementById("chips");
+KEYWORDS.forEach(kw => {
+  const b = document.createElement("button");
+  b.className = "chip";
+  b.textContent = kw;
+  b.onclick = () => {
+    activeKeyword = activeKeyword === kw ? "" : kw;
+    [...chipsEl.children].forEach(c => c.classList.toggle("active", c.textContent === activeKeyword));
+    updateManualLinks();
+    render();
+  };
+  chipsEl.appendChild(b);
+});
+
+function updateManualLinks() {
+  const kw = activeKeyword || "IT Project Manager";
+  const q = encodeURIComponent(kw);
+  const slug = kw.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  document.getElementById("lnk-bayt").href = `https://www.bayt.com/en/saudi-arabia/jobs/${slug}-jobs-in-riyadh/`;
+  document.getElementById("lnk-ng").href = `https://www.naukrigulf.com/${slug}-jobs-in-riyadh`;
+  document.getElementById("lnk-indeed").href = `https://sa.indeed.com/jobs?q=${q}&l=Riyadh`;
+  document.getElementById("lnk-li").href = `https://www.linkedin.com/jobs/search/?keywords=${q}&location=Riyadh%2C%20Saudi%20Arabia`;
+}
+
+function daysAgo(dateStr) {
+  if (!dateStr) return Infinity;
+  return (Date.now() - new Date(dateStr + "T00:00:00Z").getTime()) / 86400000;
+}
+
+function isNew(job) { return daysAgo(job.first_seen) < 1.5; }
+
+function render() {
+  const q = document.getElementById("search").value.toLowerCase();
+  const src = document.getElementById("source").value;
+  const when = document.getElementById("when").value;
+  const list = document.getElementById("list");
+  list.innerHTML = "";
+
+  const visible = jobs.filter(j =>
+    (!q || (j.title + " " + j.company).toLowerCase().includes(q)) &&
+    (!src || j.source === src) &&
+    (!activeKeyword || j.keywords.includes(activeKeyword)) &&
+    (!when || daysAgo(j.first_seen) <= Number(when))
+  );
+
+  document.getElementById("empty").style.display = visible.length ? "none" : "block";
+
+  for (const j of visible) {
+    const card = document.createElement("div");
+    card.className = "job";
+    card.innerHTML = `
+      <div class="title-row">
+        <a class="title" href="${j.url}" target="_blank" rel="noopener"></a>
+        ${isNew(j) ? '<span class="badge-new">NEW</span>' : ""}
+      </div>
+      <div class="meta">
+        <span class="company"></span>
+        <span class="loc"></span>
+        <span>${j.posted ? "Posted " + j.posted : "Found " + j.first_seen}</span>
+      </div>
+      <div class="tags">
+        <span class="tag source">${j.source}</span>
+        ${j.keywords.map(k => `<span class="tag">${k}</span>`).join("")}
+      </div>`;
+    card.querySelector("a.title").textContent = j.title;
+    card.querySelector(".company").textContent = j.company || "";
+    card.querySelector(".loc").textContent = j.location || "";
+    list.appendChild(card);
+  }
+}
+
+["search", "source", "when"].forEach(id =>
+  document.getElementById(id).addEventListener("input", render));
+
+updateManualLinks();
+
+fetch("data/jobs.json?_=" + Date.now())
+  .then(r => r.json())
+  .then(data => {
+    jobs = data.jobs || [];
+    updated = data.updated;
+    document.getElementById("stat-total").textContent = jobs.length;
+    document.getElementById("stat-new").textContent = jobs.filter(isNew).length;
+    document.getElementById("stat-updated").textContent = updated ? updated.slice(0, 10) : "never";
+    render();
+  })
+  .catch(() => {
+    document.getElementById("empty").style.display = "block";
+    document.getElementById("empty").textContent = "Could not load job data yet. Run the workflow once from the Actions tab.";
+  });
+</script>
+</body>
+</html>
