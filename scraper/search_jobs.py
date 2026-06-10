@@ -53,6 +53,16 @@ def clean_text(value):
     return re.sub(r"\s+", " ", value or "").strip()
 
 
+def matches_keyword(title, keyword):
+    """True when the job title shares at least one word with the keyword."""
+    tokens = re.findall(r"[A-Za-z]+", keyword)
+    return any(
+        re.search(rf"\b{re.escape(t)}\b", title, re.IGNORECASE)
+        for t in tokens
+        if len(t) >= 2
+    )
+
+
 def slugify(keyword):
     return re.sub(r"[^a-z0-9]+", "-", keyword.lower()).strip("-")
 
@@ -154,8 +164,8 @@ def parse_jsonld_jobs(html, base_url, source):
     return jobs
 
 
-def try_urls(source, urls, extra_parser=None):
-    """Fetch candidate URLs until one yields jobs.
+def try_urls(source, keyword, urls, extra_parser=None):
+    """Fetch candidate URLs until one yields jobs relevant to the keyword.
 
     Raises SourceBlocked when every URL fails at the network level, so the
     caller can skip the source's remaining keywords for this run.
@@ -174,7 +184,10 @@ def try_urls(source, urls, extra_parser=None):
             continue
         jobs = parse_jsonld_jobs(resp.text, resp.url, source)
         if not jobs and extra_parser:
-            jobs = extra_parser(resp)
+            jobs = extra_parser(resp, keyword)
+        # Sites sometimes ignore unknown search parameters and return their
+        # newest jobs instead, so keep only titles related to the keyword.
+        jobs = [j for j in jobs if matches_keyword(j["title"], keyword)]
         if jobs:
             return jobs
         debug_dump(source, resp, 0)
@@ -227,7 +240,7 @@ def search_linkedin(keyword):
 # GulfTalent
 # --------------------------------------------------------------------------
 
-def parse_gulftalent_rows(resp):
+def parse_gulftalent_rows(resp, keyword):
     """GulfTalent lists jobs in table rows: title link, company, location."""
     soup = BeautifulSoup(resp.text, "html.parser")
     jobs = []
@@ -255,6 +268,7 @@ def search_gulftalent(keyword):
     slug = slugify(keyword)
     return try_urls(
         "GulfTalent",
+        keyword,
         [
             f"https://www.gulftalent.com/saudi-arabia/jobs/title/{slug}",
             f"https://www.gulftalent.com/jobs/search?keywords={quote(keyword)}&country=saudi-arabia",
@@ -267,13 +281,40 @@ def search_gulftalent(keyword):
 # Mihnati
 # --------------------------------------------------------------------------
 
+def parse_mihnati_links(resp, keyword):
+    """Mihnati job links carry a numeric id; navigation links do not."""
+    soup = BeautifulSoup(resp.text, "html.parser")
+    jobs = []
+    seen = set()
+    for link in soup.find_all("a", href=True):
+        href = link["href"]
+        title = clean_text(link.get_text())
+        if not title or len(title) < 4 or "job" not in href.lower():
+            continue
+        if not re.search(r"\d{4,}", href) or href in seen:
+            continue
+        seen.add(href)
+        jobs.append({
+            "title": title,
+            "company": "",
+            "location": CITY,
+            "url": canonical_url(urljoin(resp.url, href)),
+            "posted": None,
+            "source": "Mihnati",
+        })
+    return jobs
+
+
 def search_mihnati(keyword):
+    slug = slugify(keyword)
     return try_urls(
         "Mihnati",
+        keyword,
         [
-            f"https://www.mihnati.com/jobs?q={quote(keyword)}&location={quote(CITY)}",
-            f"https://www.mihnati.com/search?query={quote(keyword)}",
+            f"https://www.mihnati.com/search/{slug}-jobs-in-riyadh",
+            f"https://www.mihnati.com/search/{slug}-jobs-in-saudi-arabia",
         ],
+        extra_parser=parse_mihnati_links,
     )
 
 
@@ -281,14 +322,17 @@ def search_mihnati(keyword):
 # Akhtaboot
 # --------------------------------------------------------------------------
 
-def parse_akhtaboot_links(resp):
+def parse_akhtaboot_links(resp, keyword):
+    """Real Akhtaboot listings look like /en/saudi-arabia/jobs/riyadh/166912-Title."""
     soup = BeautifulSoup(resp.text, "html.parser")
     jobs = []
     seen = set()
-    for link in soup.select("a[href*='/jobs/'], a[href*='job-details'], a[href*='/job/']"):
+    for link in soup.select("a[href*='/jobs/']"):
         title = clean_text(link.get_text())
         href = link.get("href", "")
         if not title or len(title) < 4 or href in seen:
+            continue
+        if not re.search(r"/jobs/.*\d{4,}", href) or "riyadh" not in href.lower():
             continue
         seen.add(href)
         jobs.append({
@@ -305,9 +349,10 @@ def parse_akhtaboot_links(resp):
 def search_akhtaboot(keyword):
     return try_urls(
         "Akhtaboot",
+        keyword,
         [
+            f"https://www.akhtaboot.com/en/jobs/search?q={quote(keyword)}&country=Saudi+Arabia",
             f"https://www.akhtaboot.com/en/jobs/search?keywords={quote(keyword)}&country=Saudi+Arabia&city={quote(CITY)}",
-            f"https://www.akhtaboot.com/en/jobs/search?keywords={quote(keyword)}",
         ],
         extra_parser=parse_akhtaboot_links,
     )
@@ -317,7 +362,7 @@ def search_akhtaboot(keyword):
 # Tanqeeb (Middle East job search engine)
 # --------------------------------------------------------------------------
 
-def parse_tanqeeb_links(resp):
+def parse_tanqeeb_links(resp, keyword):
     soup = BeautifulSoup(resp.text, "html.parser")
     jobs = []
     seen = set()
@@ -344,6 +389,7 @@ def search_tanqeeb(keyword):
     slug = slugify(keyword)
     return try_urls(
         "Tanqeeb",
+        keyword,
         [
             f"https://saudi.tanqeeb.com/en/jobs/search?keywords={quote(keyword)}&state=riyadh",
             f"https://www.tanqeeb.com/en/saudi-arabia/{slug}-jobs-in-riyadh",
