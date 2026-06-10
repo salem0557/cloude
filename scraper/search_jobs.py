@@ -94,6 +94,16 @@ def debug_dump(source, resp, parsed_count):
         f"{len(links)} links, samples={joblinks}",
         file=sys.stderr,
     )
+    # Raw probe: listings may live in embedded JSON rather than <a> tags.
+    matches = re.finditer(
+        r".{60}(?:jobid|job_id|jobtitle|job-title|\"jobs\"|/job/|wzyfa).{60}",
+        resp.text,
+        re.IGNORECASE,
+    )
+    for n, match in enumerate(matches):
+        if n >= 5:
+            break
+        print(f"    raw: ...{clean_text(match.group(0))}...", file=sys.stderr)
 
 
 # --------------------------------------------------------------------------
