@@ -25,8 +25,11 @@ from bs4 import BeautifulSoup
 KEYWORDS = [
     "IT Management",
     "IT Project Manager",
-    "Data Acquisition & Sharing Lead",
     "Digital Transformation",
+    "Data Management",
+    "Program Manager",
+    "Data Acquisition",
+    "Data Sharing",
 ]
 
 CITY = "Riyadh"

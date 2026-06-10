@@ -6,8 +6,11 @@ keywords:
 
 - IT Management
 - IT Project Manager
-- Data Acquisition & Sharing Lead
 - Digital Transformation
+- Data Management
+- Program Manager
+- Data Acquisition
+- Data Sharing
 
 All jobs found are stored in [`docs/data/jobs.json`](docs/data/jobs.json) and
 shown on a website where you can filter, search, and click through to apply.
