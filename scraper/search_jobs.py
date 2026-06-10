@@ -13,6 +13,7 @@ blocks automated queries, so the website links to it for manual searching.
 """
 
 import json
+import os
 import re
 import sys
 from datetime import datetime, timezone
@@ -371,6 +372,48 @@ def search_tanqeeb(keyword):
 
 
 # --------------------------------------------------------------------------
+# Jooble (job aggregator; official free API at jooble.org/api/about)
+# --------------------------------------------------------------------------
+
+def search_jooble(keyword):
+    api_key = os.environ.get("JOOBLE_API_KEY")
+    if api_key:
+        resp = requests.post(
+            f"https://jooble.org/api/{api_key}",
+            json={"keywords": keyword, "location": CITY},
+            headers={"Content-Type": "application/json"},
+            timeout=REQUEST_TIMEOUT,
+        )
+        resp.raise_for_status()
+        jobs = []
+        for item in resp.json().get("jobs", []):
+            title = clean_text(item.get("title", ""))
+            url = item.get("link", "")
+            if not title or not url:
+                continue
+            jobs.append({
+                "title": title,
+                "company": clean_text(item.get("company", "")),
+                "location": clean_text(item.get("location", "")) or CITY,
+                "url": canonical_url(url),
+                "posted": (item.get("updated") or "")[:10] or None,
+                "source": "Jooble",
+            })
+        return jobs
+
+    # Without an API key, try the public Saudi site.
+    slug = slugify(keyword)
+    return try_urls(
+        "Jooble",
+        keyword,
+        [
+            f"https://sa.jooble.org/jobs-{slug}/{CITY}",
+            f"https://sa.jooble.org/SearchResult?rgns={quote(CITY)}&ukw={quote(keyword)}",
+        ],
+    )
+
+
+# --------------------------------------------------------------------------
 # Merge + persist
 # --------------------------------------------------------------------------
 
@@ -381,6 +424,7 @@ SOURCES = {
     "GulfTalent": search_gulftalent,
     "Akhtaboot": search_akhtaboot,
     "Tanqeeb": search_tanqeeb,
+    "Jooble": search_jooble,
 }
 
 

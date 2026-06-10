@@ -23,6 +23,8 @@ jobs:
 
       - name: Search for jobs
         run: python scraper/search_jobs.py
+        env:
+          JOOBLE_API_KEY: ${{ secrets.JOOBLE_API_KEY }}
 
       - name: Commit updated job list
         run: |
