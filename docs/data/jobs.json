@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-10T20:18:26+00:00",
+ "updated": "2026-06-10T20:41:30+00:00",
  "jobs": [
   {
    "title": "Transport Data Science Manager",
@@ -15,6 +15,18 @@
    "first_seen": "2026-06-10"
   },
   {
+   "title": "Human Resources Officer",
+   "company": "Zeoof Group",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/human-resources-officer-at-zeoof-group-4423135695",
+   "posted": "2026-06-10",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Acquisition"
+   ],
+   "first_seen": "2026-06-10"
+  },
+  {
    "title": "Senior Project Manager",
    "company": "Chestertons MENA",
    "location": "Riyadh Region",
@@ -22,7 +34,8 @@
    "posted": "2026-06-09",
    "source": "LinkedIn",
    "keywords": [
-    "IT Project Manager"
+    "IT Project Manager",
+    "Program Manager"
    ],
    "first_seen": "2026-06-10"
   },
@@ -47,7 +60,32 @@
    "source": "LinkedIn",
    "keywords": [
     "IT Management",
-    "Digital Transformation"
+    "Digital Transformation",
+    "Data Sharing"
+   ],
+   "first_seen": "2026-06-10"
+  },
+  {
+   "title": "Project Assistant",
+   "company": "AECOM",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/project-assistant-at-aecom-4422255687",
+   "posted": "2026-06-09",
+   "source": "LinkedIn",
+   "keywords": [
+    "Program Manager"
+   ],
+   "first_seen": "2026-06-10"
+  },
+  {
+   "title": "Senior HR Specialist, EEMEA",
+   "company": "Edwards Lifesciences",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/senior-hr-specialist-eemea-at-edwards-lifesciences-4373142253",
+   "posted": "2026-06-09",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Acquisition"
    ],
    "first_seen": "2026-06-10"
   },
@@ -85,6 +123,30 @@
    "source": "LinkedIn",
    "keywords": [
     "IT Management"
+   ],
+   "first_seen": "2026-06-10"
+  },
+  {
+   "title": "Head of Programs (Riyadh, Saudi Arabia) – Saudization Program",
+   "company": "eMagine Solutions",
+   "location": "Riyadh Region",
+   "url": "https://sa.linkedin.com/jobs/view/head-of-programs-riyadh-saudi-arabia-%E2%80%93-saudization-program-at-emagine-solutions-4425177841",
+   "posted": "2026-06-07",
+   "source": "LinkedIn",
+   "keywords": [
+    "Program Manager"
+   ],
+   "first_seen": "2026-06-10"
+  },
+  {
+   "title": "Strategist, Saudi Arabia",
+   "company": "Scale AI",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/strategist-saudi-arabia-at-scale-ai-4364364161",
+   "posted": "2026-06-06",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Sharing"
    ],
    "first_seen": "2026-06-10"
   },
@@ -139,6 +201,18 @@
    "first_seen": "2026-06-10"
   },
   {
+   "title": "Senior program planning specialist ||",
+   "company": "Confidential Government",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/senior-program-planning-specialist-at-confidential-government-4424417495",
+   "posted": "2026-06-04",
+   "source": "LinkedIn",
+   "keywords": [
+    "Program Manager"
+   ],
+   "first_seen": "2026-06-10"
+  },
+  {
    "title": "IT Manager",
    "company": "Applus+ Asia Middle East and Africa",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -159,6 +233,30 @@
    "source": "LinkedIn",
    "keywords": [
     "IT Management"
+   ],
+   "first_seen": "2026-06-10"
+  },
+  {
+   "title": "Data Analyst",
+   "company": "Confidential Careers",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/data-analyst-at-confidential-careers-4422901198",
+   "posted": "2026-06-03",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Management"
+   ],
+   "first_seen": "2026-06-10"
+  },
+  {
+   "title": "Flight Data Analysis Officer",
+   "company": "Riyadh Air | طيران الرياض",
+   "location": "Riyadh Region",
+   "url": "https://sa.linkedin.com/jobs/view/flight-data-analysis-officer-at-riyadh-air-%D8%B7%D9%8A%D8%B1%D8%A7%D9%86-%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6-4382282827",
+   "posted": "2026-06-03",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Acquisition"
    ],
    "first_seen": "2026-06-10"
   },
@@ -195,6 +293,30 @@
    "source": "LinkedIn",
    "keywords": [
     "IT Project Manager"
+   ],
+   "first_seen": "2026-06-10"
+  },
+  {
+   "title": "DATA ENTRY",
+   "company": "alfanar",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/data-entry-at-alfanar-4423913713",
+   "posted": "2026-06-02",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Management"
+   ],
+   "first_seen": "2026-06-10"
+  },
+  {
+   "title": "Program Manager, Professional Services, KSA",
+   "company": "Nutanix",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/program-manager-professional-services-ksa-at-nutanix-4422145896",
+   "posted": "2026-06-01",
+   "source": "LinkedIn",
+   "keywords": [
+    "Program Manager"
    ],
    "first_seen": "2026-06-10"
   },
@@ -248,6 +370,18 @@
    "first_seen": "2026-06-10"
   },
   {
+   "title": "Manager Resource Planning and Analysis",
+   "company": "Riyadh Air | طيران الرياض",
+   "location": "Riyadh Region",
+   "url": "https://sa.linkedin.com/jobs/view/manager-resource-planning-and-analysis-at-riyadh-air-%D8%B7%D9%8A%D8%B1%D8%A7%D9%86-%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6-4371114764",
+   "posted": "2026-05-29",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Acquisition"
+   ],
+   "first_seen": "2026-06-10"
+  },
+  {
    "title": "Principal Specialist, Engineering and ETL (OT)",
    "company": "Maaden",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -275,6 +409,18 @@
    "first_seen": "2026-06-10"
   },
   {
+   "title": "Project Manager",
+   "company": "Milliman",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/project-manager-at-milliman-4408435362",
+   "posted": "2026-05-27",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Sharing"
+   ],
+   "first_seen": "2026-06-10"
+  },
+  {
    "title": "Senior Project Manager",
    "company": "Jasara Program Management Company",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -282,7 +428,8 @@
    "posted": "2026-05-26",
    "source": "LinkedIn",
    "keywords": [
-    "IT Project Manager"
+    "IT Project Manager",
+    "Program Manager"
    ],
    "first_seen": "2026-06-10"
   },
@@ -319,6 +466,54 @@
    "source": "LinkedIn",
    "keywords": [
     "Digital Transformation"
+   ],
+   "first_seen": "2026-06-10"
+  },
+  {
+   "title": "Data Management Officer",
+   "company": "Müller's Solutions",
+   "location": "Al Dar Al Baida District, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/data-management-officer-at-m%C3%BCller-s-solutions-4415286652",
+   "posted": "2026-05-26",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Management"
+   ],
+   "first_seen": "2026-06-10"
+  },
+  {
+   "title": "Data Management Specialist",
+   "company": "Müller's Solutions",
+   "location": "Al Dar Al Baida District, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/data-management-specialist-at-m%C3%BCller-s-solutions-4416802539",
+   "posted": "2026-05-26",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Management"
+   ],
+   "first_seen": "2026-06-10"
+  },
+  {
+   "title": "Business Data Analyst",
+   "company": "Devoteam",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/business-data-analyst-at-devoteam-4317936514",
+   "posted": "2026-05-26",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Management"
+   ],
+   "first_seen": "2026-06-10"
+  },
+  {
+   "title": "Manager Cabin Crew Performance",
+   "company": "Riyadh Air | طيران الرياض",
+   "location": "Riyadh Region",
+   "url": "https://sa.linkedin.com/jobs/view/manager-cabin-crew-performance-at-riyadh-air-%D8%B7%D9%8A%D8%B1%D8%A7%D9%86-%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6-4400729074",
+   "posted": "2026-05-26",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Acquisition"
    ],
    "first_seen": "2026-06-10"
   },
@@ -371,6 +566,18 @@
    "first_seen": "2026-06-10"
   },
   {
+   "title": "Talent Acquisition Manager",
+   "company": "CBS Comprehensive Business Services",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/talent-acquisition-manager-at-cbs-comprehensive-business-services-4417485926",
+   "posted": "2026-05-21",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Acquisition"
+   ],
+   "first_seen": "2026-06-10"
+  },
+  {
    "title": "Digital Transformation and AI Manager",
    "company": "AtkinsRéalis",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -408,6 +615,18 @@
    "first_seen": "2026-06-10"
   },
   {
+   "title": "Contact Center Agent",
+   "company": "HALA",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/contact-center-agent-at-hala-4416653758",
+   "posted": "2026-05-19",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Management"
+   ],
+   "first_seen": "2026-06-10"
+  },
+  {
    "title": "Lead Strategy Consultant - Digital Innovation",
    "company": "CodeNinja Inc.",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -439,7 +658,32 @@
    "posted": "2026-05-11",
    "source": "LinkedIn",
    "keywords": [
-    "IT Project Manager"
+    "IT Project Manager",
+    "Data Sharing"
+   ],
+   "first_seen": "2026-06-10"
+  },
+  {
+   "title": "Senior Talent Partner",
+   "company": "Mirai, a Scopely company",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/senior-talent-partner-at-mirai-a-scopely-company-4412709932",
+   "posted": "2026-05-11",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Acquisition"
+   ],
+   "first_seen": "2026-06-10"
+  },
+  {
+   "title": "BI Solution Engineer",
+   "company": "Incorta",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/bi-solution-engineer-at-incorta-4264786350",
+   "posted": "2026-05-10",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Sharing"
    ],
    "first_seen": "2026-06-10"
   },
@@ -492,6 +736,30 @@
    "first_seen": "2026-06-10"
   },
   {
+   "title": "Subject Matter (STEM) Expert - Remote",
+   "company": "YO IT Consulting",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/subject-matter-stem-expert-remote-at-yo-it-consulting-4408314496",
+   "posted": "2026-05-02",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Sharing"
+   ],
+   "first_seen": "2026-06-10"
+  },
+  {
+   "title": "Program Manager",
+   "company": "Takamol Holding",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/program-manager-at-takamol-holding-4408759732",
+   "posted": "2026-04-30",
+   "source": "LinkedIn",
+   "keywords": [
+    "Program Manager"
+   ],
+   "first_seen": "2026-06-10"
+  },
+  {
    "title": "Data Manager (Saudi National)",
    "company": "Parsons Corporation",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -512,7 +780,8 @@
    "posted": "2026-04-28",
    "source": "LinkedIn",
    "keywords": [
-    "Digital Transformation"
+    "Digital Transformation",
+    "Program Manager"
    ],
    "first_seen": "2026-06-10"
   },
@@ -525,6 +794,18 @@
    "source": "LinkedIn",
    "keywords": [
     "IT Management"
+   ],
+   "first_seen": "2026-06-10"
+  },
+  {
+   "title": "Go-to-Market Strategy Lead",
+   "company": "Jeeny",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/go-to-market-strategy-lead-at-jeeny-4404677985",
+   "posted": "2026-04-27",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Acquisition"
    ],
    "first_seen": "2026-06-10"
   },
@@ -549,6 +830,30 @@
    "source": "LinkedIn",
    "keywords": [
     "IT Project Manager"
+   ],
+   "first_seen": "2026-06-10"
+  },
+  {
+   "title": "Data Engineer",
+   "company": "Müller's Solutions",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/data-engineer-at-m%C3%BCller-s-solutions-4415851553",
+   "posted": "2026-04-21",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Sharing"
+   ],
+   "first_seen": "2026-06-10"
+  },
+  {
+   "title": "Talent Acquisition Specialist",
+   "company": "Ultimate Peaks Talent & Strategy",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/talent-acquisition-specialist-at-ultimate-peaks-talent-strategy-4404383923",
+   "posted": "2026-04-20",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Acquisition"
    ],
    "first_seen": "2026-06-10"
   },
@@ -614,6 +919,30 @@
    "first_seen": "2026-06-10"
   },
   {
+   "title": "Growth Manager - Insights & Analytics",
+   "company": "Jeeny",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/growth-manager-insights-analytics-at-jeeny-4397707836",
+   "posted": "2026-04-05",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Acquisition"
+   ],
+   "first_seen": "2026-06-10"
+  },
+  {
+   "title": "Workforce Management Assistant",
+   "company": "Tamkeen Technologies",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/workforce-management-assistant-at-tamkeen-technologies-4395281805",
+   "posted": "2026-04-02",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Management"
+   ],
+   "first_seen": "2026-06-10"
+  },
+  {
    "title": "Technology Strategy/Enterprise Architect Senior Manager- Oil & Gas/Utilities",
    "company": "Accenture Middle East",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -645,7 +974,8 @@
    "posted": "2026-03-18",
    "source": "LinkedIn",
    "keywords": [
-    "Digital Transformation"
+    "Digital Transformation",
+    "Data Management"
    ],
    "first_seen": "2026-06-10"
   },
@@ -698,6 +1028,30 @@
    "first_seen": "2026-06-10"
   },
   {
+   "title": "Big Data Engineer",
+   "company": "Müller's Solutions",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/big-data-engineer-at-m%C3%BCller-s-solutions-4380789110",
+   "posted": "2026-03-04",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Sharing"
+   ],
+   "first_seen": "2026-06-10"
+  },
+  {
+   "title": "Google Cloud Data Engineer",
+   "company": "Müller's Solutions",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/google-cloud-data-engineer-at-m%C3%BCller-s-solutions-4380186778",
+   "posted": "2026-03-03",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Sharing"
+   ],
+   "first_seen": "2026-06-10"
+  },
+  {
    "title": "Manager - Digital Transformation",
    "company": "FP",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -730,6 +1084,30 @@
    "source": "LinkedIn",
    "keywords": [
     "Digital Transformation"
+   ],
+   "first_seen": "2026-06-10"
+  },
+  {
+   "title": "Data Management Consultant",
+   "company": "Müller's Solutions",
+   "location": "Al Dar Al Baida District, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/data-management-consultant-at-m%C3%BCller-s-solutions-4388345641",
+   "posted": "2026-02-23",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Management"
+   ],
+   "first_seen": "2026-06-10"
+  },
+  {
+   "title": "Data Scientist",
+   "company": "Müller's Solutions",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/data-scientist-at-m%C3%BCller-s-solutions-4388351476",
+   "posted": "2026-02-23",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Management"
    ],
    "first_seen": "2026-06-10"
   },
@@ -782,6 +1160,18 @@
    "first_seen": "2026-06-10"
   },
   {
+   "title": "Program Manager - KSA",
+   "company": "SSC HR Solutions",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/program-manager-ksa-at-ssc-hr-solutions-4365265764",
+   "posted": "2026-01-22",
+   "source": "LinkedIn",
+   "keywords": [
+    "Program Manager"
+   ],
+   "first_seen": "2026-06-10"
+  },
+  {
    "title": "Technical Project Manager - Riyadh - Saudi National",
    "company": "Jari Solutions",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -790,6 +1180,18 @@
    "source": "LinkedIn",
    "keywords": [
     "IT Project Manager"
+   ],
+   "first_seen": "2026-06-10"
+  },
+  {
+   "title": "Junior Consultant",
+   "company": "Kanz",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/junior-consultant-at-kanz-4334342161",
+   "posted": "2025-10-11",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Sharing"
    ],
    "first_seen": "2026-06-10"
   },
@@ -815,7 +1217,8 @@
    "source": "Akhtaboot",
    "keywords": [
     "Data Acquisition",
-    "Data Sharing"
+    "Data Sharing",
+    "Data Management"
    ],
    "first_seen": "2026-06-10"
   }
