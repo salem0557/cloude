@@ -1,7 +1,7 @@
 # Riyadh IT Jobs — daily job search
 
-Automatically searches **LinkedIn**, **Bayt.com** and **Naukrigulf** every day at
-06:00 Riyadh time for jobs in **Riyadh, Saudi Arabia** matching these keywords:
+Automatically searches **LinkedIn** every day at 06:00 Riyadh time for jobs in
+**Riyadh, Saudi Arabia** matching these keywords:
 
 - IT Management
 - IT Project Manager
@@ -11,6 +11,12 @@ Automatically searches **LinkedIn**, **Bayt.com** and **Naukrigulf** every day a
 All jobs found are stored in [`docs/data/jobs.json`](docs/data/jobs.json) and
 shown on a website where you can filter, search, and click through to apply.
 Jobs are never deleted — newly found jobs are flagged **NEW**.
+
+**Bayt.com** and **Naukrigulf** are also tried on every run, but both sites
+currently block requests from GitHub's servers (Bayt answers 403, Naukrigulf
+stalls connections). The scraper keeps probing them once per day and will pick
+them up automatically if they ever stop blocking. Until then, the website has
+one-click manual search links for Bayt, Naukrigulf, and Indeed.
 
 ## One-time setup
 

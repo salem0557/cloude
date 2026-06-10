@@ -40,6 +40,10 @@ BROWSER_HEADERS = {
 }
 
 
+class SourceBlocked(Exception):
+    """The site is refusing automated requests; skip its remaining keywords."""
+
+
 def clean_text(value):
     return re.sub(r"\s+", " ", value or "").strip()
 
@@ -50,11 +54,11 @@ def canonical_url(url):
     return urlunsplit((parts.scheme, parts.netloc, parts.path, "", ""))
 
 
-def fetch(url, *, params=None, headers=None, as_json=False):
+def fetch(url, *, params=None, headers=None, as_json=False, timeout=REQUEST_TIMEOUT):
     merged = dict(BROWSER_HEADERS)
     if headers:
         merged.update(headers)
-    resp = requests.get(url, params=params, headers=merged, timeout=REQUEST_TIMEOUT)
+    resp = requests.get(url, params=params, headers=merged, timeout=timeout)
     resp.raise_for_status()
     return resp.json() if as_json else resp.text
 
@@ -109,16 +113,19 @@ def search_bayt(keyword):
         f"https://www.bayt.com/en/saudi-arabia/jobs/{slug}-jobs-in-riyadh/",
         f"https://www.bayt.com/en/saudi-arabia/jobs/?text={quote(keyword)}&loc={quote(CITY)}",
     ]
+    errors = []
     for url in urls:
         try:
             html = fetch(url)
         except requests.RequestException as exc:
-            print(f"  bayt: {url} -> {exc}", file=sys.stderr)
+            errors.append(exc)
             continue
         jobs = parse_bayt_page(html)
         if jobs:
             return jobs
         print(f"  bayt: {url} -> 200 but 0 jobs parsed ({len(html)} bytes)", file=sys.stderr)
+    if len(errors) == len(urls):
+        raise SourceBlocked(f"Bayt refused all requests: {errors[-1]}")
     return []
 
 
@@ -208,6 +215,7 @@ def search_naukrigulf(keyword):
                 "Accept": "application/json",
             },
             as_json=True,
+            timeout=15,
         )
     except (requests.RequestException, json.JSONDecodeError) as exc:
         print(f"  naukrigulf api: {exc}; falling back to HTML", file=sys.stderr)
@@ -236,7 +244,9 @@ def search_naukrigulf(keyword):
 def search_naukrigulf_html(keyword):
     slug = re.sub(r"[^a-z0-9]+", "-", keyword.lower()).strip("-")
     try:
-        html = fetch(f"https://www.naukrigulf.com/{slug}-jobs-in-riyadh")
+        html = fetch(f"https://www.naukrigulf.com/{slug}-jobs-in-riyadh", timeout=15)
+    except requests.Timeout as exc:
+        raise SourceBlocked(f"Naukrigulf timing out (connection stalled): {exc}")
     except requests.RequestException as exc:
         print(f"  naukrigulf html: {exc}", file=sys.stderr)
         return []
@@ -292,6 +302,10 @@ def main():
         for keyword in KEYWORDS:
             try:
                 results = searcher(keyword)[:MAX_PER_SOURCE_KEYWORD]
+            except SourceBlocked as exc:
+                print(f"WARN {source} is blocking automation, skipping it today: {exc}",
+                      file=sys.stderr)
+                break
             except Exception as exc:  # one failing source must not kill the run
                 print(f"WARN {source} / '{keyword}': {exc}", file=sys.stderr)
                 continue
