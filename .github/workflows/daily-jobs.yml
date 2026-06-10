@@ -4,8 +4,6 @@ on:
   schedule:
     - cron: "0 3 * * *" # 06:00 Riyadh time, every day
   workflow_dispatch:
-  push:
-    branches: [claude/stoic-gates-vwkjef] # temporary: verify before merge
 
 permissions:
   contents: write

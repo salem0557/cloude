@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 """Daily Riyadh job search.
 
-Searches LinkedIn, GulfTalent, Mihnati, Akhtaboot and Tanqeeb for a fixed
-set of keywords in Riyadh, Saudi Arabia, merges the results with previously
-found jobs and writes everything to docs/data/jobs.json (served by GitHub
-Pages).
+Searches LinkedIn, GulfTalent, Akhtaboot and Tanqeeb for a fixed set of
+keywords in Riyadh, Saudi Arabia, merges the results with previously found
+jobs and writes everything to docs/data/jobs.json (served by GitHub Pages).
 
 Jobs are never deleted: newly discovered jobs get today's date as
 ``first_seen`` so the website can flag them as NEW.
@@ -288,47 +287,6 @@ def search_gulftalent(keyword):
 
 
 # --------------------------------------------------------------------------
-# Mihnati
-# --------------------------------------------------------------------------
-
-def parse_mihnati_links(resp, keyword):
-    """Mihnati job links carry a numeric id; navigation links do not."""
-    soup = BeautifulSoup(resp.text, "html.parser")
-    jobs = []
-    seen = set()
-    for link in soup.find_all("a", href=True):
-        href = link["href"]
-        title = clean_text(link.get_text())
-        if not title or len(title) < 4 or "job" not in href.lower():
-            continue
-        if not re.search(r"\d{4,}", href) or href in seen:
-            continue
-        seen.add(href)
-        jobs.append({
-            "title": title,
-            "company": "",
-            "location": CITY,
-            "url": canonical_url(urljoin(resp.url, href)),
-            "posted": None,
-            "source": "Mihnati",
-        })
-    return jobs
-
-
-def search_mihnati(keyword):
-    slug = slugify(keyword)
-    return try_urls(
-        "Mihnati",
-        keyword,
-        [
-            f"https://www.mihnati.com/search/{slug}-jobs-in-riyadh",
-            f"https://www.mihnati.com/search/{slug}-jobs-in-saudi-arabia",
-        ],
-        extra_parser=parse_mihnati_links,
-    )
-
-
-# --------------------------------------------------------------------------
 # Akhtaboot
 # --------------------------------------------------------------------------
 
@@ -413,10 +371,11 @@ def search_tanqeeb(keyword):
 # Merge + persist
 # --------------------------------------------------------------------------
 
+# Mihnati is not included: its result pages load listings purely with
+# JavaScript, so there is nothing to parse from plain HTTP responses.
 SOURCES = {
     "LinkedIn": search_linkedin,
     "GulfTalent": search_gulftalent,
-    "Mihnati": search_mihnati,
     "Akhtaboot": search_akhtaboot,
     "Tanqeeb": search_tanqeeb,
 }
