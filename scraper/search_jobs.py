@@ -112,11 +112,13 @@ def search_bayt(keyword):
     for url in urls:
         try:
             html = fetch(url)
-        except requests.RequestException:
+        except requests.RequestException as exc:
+            print(f"  bayt: {url} -> {exc}", file=sys.stderr)
             continue
         jobs = parse_bayt_page(html)
         if jobs:
             return jobs
+        print(f"  bayt: {url} -> 200 but 0 jobs parsed ({len(html)} bytes)", file=sys.stderr)
     return []
 
 
@@ -207,7 +209,8 @@ def search_naukrigulf(keyword):
             },
             as_json=True,
         )
-    except (requests.RequestException, json.JSONDecodeError):
+    except (requests.RequestException, json.JSONDecodeError) as exc:
+        print(f"  naukrigulf api: {exc}; falling back to HTML", file=sys.stderr)
         return search_naukrigulf_html(keyword)
 
     jobs = []
@@ -234,7 +237,8 @@ def search_naukrigulf_html(keyword):
     slug = re.sub(r"[^a-z0-9]+", "-", keyword.lower()).strip("-")
     try:
         html = fetch(f"https://www.naukrigulf.com/{slug}-jobs-in-riyadh")
-    except requests.RequestException:
+    except requests.RequestException as exc:
+        print(f"  naukrigulf html: {exc}", file=sys.stderr)
         return []
     soup = BeautifulSoup(html, "html.parser")
     jobs = []
