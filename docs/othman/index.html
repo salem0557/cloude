@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Riyadh IT Jobs</title>
+<title>Riyadh IT Jobs — Othman</title>
 <style>
   :root {
     --bg: #f4f6fa;
@@ -119,8 +119,8 @@
 <body>
 
 <header>
-  <h1>Riyadh IT Jobs</h1>
-  <p>IT Management &middot; IT Project Manager &middot; Digital Transformation &middot; Data Management &middot; Program Manager &middot; Data Acquisition &middot; Data Sharing</p>
+  <h1>Riyadh IT Jobs — Othman</h1>
+  <p>IT Support &middot; Help Desk &middot; Technical Support &middot; IT Specialist &middot; System Administrator &middot; IT Fresh Graduate</p>
   <div class="stats">
     <span><b id="stat-total">–</b>total jobs</span>
     <span><b id="stat-new">–</b>new</span>
@@ -168,10 +168,10 @@
 <div id="list"></div>
 <p id="empty">No jobs match these filters yet. The search runs automatically every morning.</p>
 
-<footer>Updates twice daily via GitHub Actions. <a href="othman/">Othman's job board</a></footer>
+<footer>Updates twice daily via GitHub Actions. <a href="../">Salem's job board</a></footer>
 
 <script>
-const KEYWORDS = ["IT Management", "IT Project Manager", "Digital Transformation", "Data Management", "Program Manager", "Data Acquisition", "Data Sharing"];
+const KEYWORDS = ["IT Support", "Help Desk", "Technical Support", "IT Specialist", "System Administrator", "IT Fresh Graduate"];
 let jobs = [], updated = null, activeKeyword = "";
 
 const chipsEl = document.getElementById("chips");
@@ -189,7 +189,7 @@ KEYWORDS.forEach(kw => {
 });
 
 function updateManualLinks() {
-  const kw = activeKeyword || "IT Project Manager";
+  const kw = activeKeyword || "IT Support";
   const q = encodeURIComponent(kw);
   const slug = kw.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
   document.getElementById("lnk-google").href = `https://www.google.com/search?q=${q}%20jobs%20in%20Riyadh&ibp=htl;jobs`;

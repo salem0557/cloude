@@ -1,6 +1,42 @@
 {
- "updated": "2026-06-11T06:24:43+00:00",
+ "updated": "2026-06-11T09:53:10+00:00",
  "jobs": [
+  {
+   "title": "IT Specialist",
+   "company": "eSense",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/it-specialist-at-esense-4423181869",
+   "posted": "2026-06-11",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Management"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "DATA ENTRY",
+   "company": "alfanar",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/data-entry-at-alfanar-4427166778",
+   "posted": "2026-06-11",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Management"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Performance Marketing Specialist",
+   "company": "Prospex Development",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/performance-marketing-specialist-at-prospex-development-4426180426",
+   "posted": "2026-06-11",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Acquisition"
+   ],
+   "first_seen": "2026-06-11"
+  },
   {
    "title": "Senior Data Scientist",
    "company": "Devsinc",
@@ -38,11 +74,71 @@
    "first_seen": "2026-06-11"
   },
   {
+   "title": "Associate Director, C4I Program Manager",
+   "company": "Raytheon",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/associate-director-c4i-program-manager-at-raytheon-4407197295",
+   "posted": "2026-06-08",
+   "source": "LinkedIn",
+   "keywords": [
+    "Program Manager"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Release Manager and PMO",
+   "company": "Riyadh Air | طيران الرياض",
+   "location": "Riyadh Region",
+   "url": "https://sa.linkedin.com/jobs/view/release-manager-and-pmo-at-riyadh-air-%D8%B7%D9%8A%D8%B1%D8%A7%D9%86-%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6-4425262963",
+   "posted": "2026-06-08",
+   "source": "LinkedIn",
+   "keywords": [
+    "Program Manager"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Associate Director – Programme Management - Rail",
+   "company": "Mace",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/associate-director-%E2%80%93-programme-management-rail-at-mace-4414627550",
+   "posted": "2026-06-05",
+   "source": "LinkedIn",
+   "keywords": [
+    "Program Manager"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
    "title": "Data Governance & Personal Data Protection, Expert Consultant",
    "company": "Master Works",
    "location": "Riyadh, Riyadh, Saudi Arabia",
    "url": "https://sa.linkedin.com/jobs/view/data-governance-personal-data-protection-expert-consultant-at-master-works-4422355373",
    "posted": "2026-06-02",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Sharing"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Principle Project Manager - Middle East",
+   "company": "Adobe",
+   "location": "Riyadh Region",
+   "url": "https://sa.linkedin.com/jobs/view/principle-project-manager-middle-east-at-adobe-4403308549",
+   "posted": "2026-06-02",
+   "source": "LinkedIn",
+   "keywords": [
+    "Program Manager"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Expert in Data Licensing",
+   "company": "Müller's Solutions",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/expert-in-data-licensing-at-m%C3%BCller-s-solutions-4419444281",
+   "posted": "2026-05-26",
    "source": "LinkedIn",
    "keywords": [
     "Data Sharing"
@@ -58,6 +154,18 @@
    "source": "LinkedIn",
    "keywords": [
     "Data Sharing"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Saudi S&T Transformation Sr. Manager",
+   "company": "PepsiCo",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/saudi-s-t-transformation-sr-manager-at-pepsico-4348481929",
+   "posted": "2026-05-23",
+   "source": "LinkedIn",
+   "keywords": [
+    "Program Manager"
    ],
    "first_seen": "2026-06-11"
   },
@@ -94,6 +202,18 @@
    "source": "LinkedIn",
    "keywords": [
     "Digital Transformation"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Project Manager",
+   "company": "Lucidya | لوسيديا",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/project-manager-at-lucidya-%D9%84%D9%88%D8%B3%D9%8A%D8%AF%D9%8A%D8%A7-4413442124",
+   "posted": "2026-05-12",
+   "source": "LinkedIn",
+   "keywords": [
+    "Program Manager"
    ],
    "first_seen": "2026-06-11"
   },
@@ -377,7 +497,8 @@
    "posted": "2026-06-02",
    "source": "LinkedIn",
    "keywords": [
-    "IT Project Manager"
+    "IT Project Manager",
+    "Program Manager"
    ],
    "first_seen": "2026-06-10"
   },

@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Daily Riyadh job search.
 
-Searches LinkedIn, GulfTalent, Akhtaboot and Tanqeeb for a fixed set of
-keywords in Riyadh, Saudi Arabia, merges the results with previously found
-jobs and writes everything to docs/data/jobs.json (served by GitHub Pages).
+Searches LinkedIn, GulfTalent, Akhtaboot, Tanqeeb (and Jooble when an API
+key is configured) for each profile's keywords in Riyadh, Saudi Arabia,
+merges the results with previously found jobs and writes them to that
+profile's jobs.json (served by GitHub Pages).
 
 Jobs are never deleted: newly discovered jobs get today's date as
 ``first_seen`` so the website can flag them as NEW.
@@ -23,18 +24,35 @@ from urllib.parse import quote, urljoin, urlsplit, urlunsplit
 import requests
 from bs4 import BeautifulSoup
 
-KEYWORDS = [
-    "IT Management",
-    "IT Project Manager",
-    "Digital Transformation",
-    "Data Management",
-    "Program Manager",
-    "Data Acquisition",
-    "Data Sharing",
-]
+DOCS = Path(__file__).resolve().parent.parent / "docs"
+
+PROFILES = {
+    "Salem": {
+        "keywords": [
+            "IT Management",
+            "IT Project Manager",
+            "Digital Transformation",
+            "Data Management",
+            "Program Manager",
+            "Data Acquisition",
+            "Data Sharing",
+        ],
+        "data_file": DOCS / "data" / "jobs.json",
+    },
+    "Othman": {
+        "keywords": [
+            "IT Support",
+            "Help Desk",
+            "Technical Support",
+            "IT Specialist",
+            "System Administrator",
+            "IT Fresh Graduate",
+        ],
+        "data_file": DOCS / "othman" / "data" / "jobs.json",
+    },
+}
 
 CITY = "Riyadh"
-DATA_FILE = Path(__file__).resolve().parent.parent / "docs" / "data" / "jobs.json"
 MAX_PER_SOURCE_KEYWORD = 40
 REQUEST_TIMEOUT = 25
 
@@ -428,26 +446,29 @@ SOURCES = {
 }
 
 
-def load_existing():
-    if DATA_FILE.exists():
-        with open(DATA_FILE, encoding="utf-8") as fh:
+def load_existing(data_file):
+    if data_file.exists():
+        with open(data_file, encoding="utf-8") as fh:
             return json.load(fh)
     return {"updated": None, "jobs": []}
 
 
-def main():
+def run_profile(name, keywords, data_file, blocked):
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    existing = load_existing()
+    existing = load_existing(data_file)
     by_url = {job["url"]: job for job in existing["jobs"]}
 
     new_count = 0
     for source, searcher in SOURCES.items():
-        for keyword in KEYWORDS:
+        if source in blocked:
+            continue
+        for keyword in keywords:
             try:
                 results = searcher(keyword)[:MAX_PER_SOURCE_KEYWORD]
             except SourceBlocked as exc:
                 print(f"WARN {source} is blocking automation, skipping it today: {exc}",
                       file=sys.stderr)
+                blocked.add(source)
                 break
             except Exception as exc:  # one failing source must not kill the run
                 print(f"WARN {source} / '{keyword}': {exc}", file=sys.stderr)
@@ -471,15 +492,22 @@ def main():
         key=lambda j: (j["first_seen"], j.get("posted") or ""),
         reverse=True,
     )
-    DATA_FILE.parent.mkdir(parents=True, exist_ok=True)
-    with open(DATA_FILE, "w", encoding="utf-8") as fh:
+    data_file.parent.mkdir(parents=True, exist_ok=True)
+    with open(data_file, "w", encoding="utf-8") as fh:
         json.dump(
             {"updated": datetime.now(timezone.utc).isoformat(timespec="seconds"), "jobs": jobs},
             fh,
             ensure_ascii=False,
             indent=1,
         )
-    print(f"\nTotal jobs stored: {len(jobs)} ({new_count} new today)")
+    print(f"\n{name}: {len(jobs)} jobs stored ({new_count} new today)\n")
+
+
+def main():
+    blocked = set()
+    for name, profile in PROFILES.items():
+        print(f"===== Searching for {name} =====")
+        run_profile(name, profile["keywords"], profile["data_file"], blocked)
 
 
 if __name__ == "__main__":
