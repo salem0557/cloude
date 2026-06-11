@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-11T18:30:08+00:00",
+ "updated": "2026-06-11T22:19:55+00:00",
  "jobs": [
   {
    "title": "IT Specialist",
@@ -25,7 +25,9 @@
    "source": "LinkedIn",
    "keywords": [
     "IT Support",
-    "Help Desk"
+    "Help Desk",
+    "Technical Support",
+    "IT Fresh Graduate"
    ],
    "first_seen": "2026-06-11"
   },
@@ -90,6 +92,30 @@
    "first_seen": "2026-06-11"
   },
   {
+   "title": "أخصائي تقنية معلومات (IT Specialist)",
+   "company": "Hulul | حلول",
+   "location": "Riyadh Region",
+   "url": "https://sa.linkedin.com/jobs/view/%D8%A3%D8%AE%D8%B5%D8%A7%D8%A6%D9%8A-%D8%AA%D9%82%D9%86%D9%8A%D8%A9-%D9%85%D8%B9%D9%84%D9%88%D9%85%D8%A7%D8%AA-it-specialist-at-hulul-%D8%AD%D9%84%D9%88%D9%84-4412580176",
+   "posted": "2026-06-11",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Fresh Graduate"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "SOC Analyst",
+   "company": "DETASAD",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/soc-analyst-at-detasad-4423616392",
+   "posted": "2026-06-11",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Fresh Graduate"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
    "title": "Information Technology Operations Specialist",
    "company": "Saudi Center for Commercial Arbitration (SCCA)",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -112,7 +138,8 @@
    "posted": "2026-06-10",
    "source": "LinkedIn",
    "keywords": [
-    "Technical Support"
+    "Technical Support",
+    "IT Fresh Graduate"
    ],
    "first_seen": "2026-06-11"
   },
@@ -138,6 +165,18 @@
    "source": "LinkedIn",
    "keywords": [
     "System Administrator"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Ops Tech SME, Quick Commerce",
+   "company": "Amazon",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/ops-tech-sme-quick-commerce-at-amazon-4338869968",
+   "posted": "2026-06-10",
+   "source": "LinkedIn",
+   "keywords": [
+    "Technical Support"
    ],
    "first_seen": "2026-06-11"
   },
@@ -200,7 +239,8 @@
    "source": "LinkedIn",
    "keywords": [
     "Help Desk",
-    "IT Support"
+    "IT Support",
+    "Technical Support"
    ],
    "first_seen": "2026-06-11"
   },
@@ -213,6 +253,18 @@
    "source": "LinkedIn",
    "keywords": [
     "System Administrator"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Analyst, Information Security",
+   "company": "Tabby | تابي",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/analyst-information-security-at-tabby-%D8%AA%D8%A7%D8%A8%D9%8A-4425475778",
+   "posted": "2026-06-08",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Fresh Graduate"
    ],
    "first_seen": "2026-06-11"
   },
@@ -237,6 +289,18 @@
    "source": "LinkedIn",
    "keywords": [
     "System Administrator"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Technical Support Engineer",
+   "company": "Nozomi Networks",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/technical-support-engineer-at-nozomi-networks-4424223721",
+   "posted": "2026-06-03",
+   "source": "LinkedIn",
+   "keywords": [
+    "Technical Support"
    ],
    "first_seen": "2026-06-11"
   },
@@ -372,7 +436,8 @@
    "keywords": [
     "IT Support",
     "Help Desk",
-    "IT Specialist"
+    "IT Specialist",
+    "IT Fresh Graduate"
    ],
    "first_seen": "2026-06-11"
   },
@@ -444,7 +509,20 @@
    "posted": "2026-05-17",
    "source": "LinkedIn",
    "keywords": [
-    "IT Specialist"
+    "IT Specialist",
+    "IT Fresh Graduate"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "IT Analyst",
+   "company": "Massar Business Solutions",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/it-analyst-at-massar-business-solutions-4416036396",
+   "posted": "2026-05-17",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Fresh Graduate"
    ],
    "first_seen": "2026-06-11"
   },
@@ -469,7 +547,20 @@
    "posted": "2026-05-13",
    "source": "LinkedIn",
    "keywords": [
-    "Help Desk"
+    "Help Desk",
+    "Technical Support"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "SA-Technical Specialist (Saudi and GCC Nationals)",
+   "company": "Apple",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/sa-technical-specialist-saudi-and-gcc-nationals-at-apple-4414157556",
+   "posted": "2026-05-13",
+   "source": "LinkedIn",
+   "keywords": [
+    "Technical Support"
    ],
    "first_seen": "2026-06-11"
   },
@@ -558,7 +649,20 @@
     "Help Desk",
     "IT Specialist",
     "System Administrator",
-    "IT Support"
+    "IT Support",
+    "IT Fresh Graduate"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Business Technical Support Specialist",
+   "company": "Sahm Capital",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/business-technical-support-specialist-at-sahm-capital-4401920998",
+   "posted": "2026-04-21",
+   "source": "LinkedIn",
+   "keywords": [
+    "Technical Support"
    ],
    "first_seen": "2026-06-11"
   },
@@ -584,7 +688,8 @@
    "keywords": [
     "Help Desk",
     "IT Specialist",
-    "IT Support"
+    "IT Support",
+    "Technical Support"
    ],
    "first_seen": "2026-06-11"
   },
@@ -741,7 +846,8 @@
    "source": "LinkedIn",
    "keywords": [
     "Help Desk",
-    "IT Support"
+    "IT Support",
+    "IT Fresh Graduate"
    ],
    "first_seen": "2026-06-11"
   },
@@ -779,7 +885,8 @@
    "keywords": [
     "Help Desk",
     "IT Specialist",
-    "IT Support"
+    "IT Support",
+    "Technical Support"
    ],
    "first_seen": "2026-06-11"
   },

@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-11T18:30:35+00:00",
+ "updated": "2026-06-11T22:20:18+00:00",
  "jobs": [
   {
    "title": "Custom Clearance Broker",
@@ -94,6 +94,30 @@
    "source": "LinkedIn",
    "keywords": [
     "Maintenance Engineer"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Supply Associate",
+   "company": "Mnzil | منزل",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/supply-associate-at-mnzil-%D9%85%D9%86%D8%B2%D9%84-4424802420",
+   "posted": "2026-06-11",
+   "source": "LinkedIn",
+   "keywords": [
+    "Supply Chain"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Senior Cargo Operations Agent - Riyadh",
+   "company": "Qatar Airways",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/senior-cargo-operations-agent-riyadh-at-qatar-airways-4426629260",
+   "posted": "2026-06-11",
+   "source": "LinkedIn",
+   "keywords": [
+    "Logistics"
    ],
    "first_seen": "2026-06-11"
   },
