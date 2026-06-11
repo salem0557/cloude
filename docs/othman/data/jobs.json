@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-11T10:03:32+00:00",
+ "updated": "2026-06-11T10:09:13+00:00",
  "jobs": [
   {
    "title": "IT Specialist",
@@ -162,7 +162,8 @@
    "posted": "2026-06-08",
    "source": "LinkedIn",
    "keywords": [
-    "Help Desk"
+    "Help Desk",
+    "IT Support"
    ],
    "first_seen": "2026-06-11"
   },
@@ -234,7 +235,8 @@
    "posted": "2026-05-30",
    "source": "LinkedIn",
    "keywords": [
-    "Help Desk"
+    "Help Desk",
+    "IT Support"
    ],
    "first_seen": "2026-06-11"
   },
@@ -322,6 +324,18 @@
     "IT Support",
     "Help Desk",
     "IT Specialist"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Network technician",
+   "company": "PrimeGate for Communications and IT",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/network-technician-at-primegate-for-communications-and-it-4415985677",
+   "posted": "2026-05-20",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Support"
    ],
    "first_seen": "2026-06-11"
   },
@@ -433,7 +447,8 @@
    "keywords": [
     "Help Desk",
     "IT Specialist",
-    "System Administrator"
+    "System Administrator",
+    "IT Support"
    ],
    "first_seen": "2026-06-11"
   },
@@ -458,7 +473,8 @@
    "source": "LinkedIn",
    "keywords": [
     "Help Desk",
-    "IT Specialist"
+    "IT Specialist",
+    "IT Support"
    ],
    "first_seen": "2026-06-11"
   },
@@ -578,7 +594,8 @@
    "posted": "2026-01-25",
    "source": "LinkedIn",
    "keywords": [
-    "Help Desk"
+    "Help Desk",
+    "IT Support"
    ],
    "first_seen": "2026-06-11"
   },
@@ -615,7 +632,8 @@
    "source": "LinkedIn",
    "keywords": [
     "Help Desk",
-    "IT Specialist"
+    "IT Specialist",
+    "IT Support"
    ],
    "first_seen": "2026-06-11"
   },
