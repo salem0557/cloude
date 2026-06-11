@@ -1,8 +1,8 @@
 # Riyadh IT Jobs — daily job search
 
-Automatically searches **LinkedIn, Akhtaboot, GulfTalent and Tanqeeb** every
-day at 06:00 Riyadh time for jobs in **Riyadh, Saudi Arabia** matching these
-keywords:
+Automatically searches **LinkedIn, Akhtaboot, GulfTalent and Tanqeeb** twice
+a day (about 06:23 and 15:23 Riyadh time) for jobs in **Riyadh, Saudi
+Arabia** matching these keywords:
 
 - IT Management
 - IT Project Manager
