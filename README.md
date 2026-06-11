@@ -1,7 +1,7 @@
 # Riyadh IT Jobs — daily job search
 
-Two job boards, updated automatically twice a day (about 06:23 and 15:23
-Riyadh time) with jobs in **Riyadh, Saudi Arabia**:
+Three job boards, updated automatically every 5 hours with jobs in
+**Riyadh and Hail, Saudi Arabia**:
 
 - **Salem** — `https://salem0557.github.io/cloude/` — keywords: IT
   Management, IT Project Manager, Digital Transformation, Data Management,

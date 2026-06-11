@@ -2,9 +2,8 @@ name: Daily Riyadh job search
 
 on:
   schedule:
-    # Off-peak minutes: on-the-hour crons are often dropped by GitHub under load.
-    - cron: "23 3 * * *" # 06:23 Riyadh, morning run
-    - cron: "23 12 * * *" # 15:23 Riyadh, afternoon backup run
+    # Off-peak minute: on-the-hour crons are often dropped by GitHub under load.
+    - cron: "23 */5 * * *" # every 5 hours
   workflow_dispatch:
 
 permissions:
