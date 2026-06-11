@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-11T14:13:45+00:00",
+ "updated": "2026-06-11T18:29:49+00:00",
  "jobs": [
   {
    "title": "IT Specialist",
@@ -90,6 +90,30 @@
    "company": "Visa",
    "location": "Riyadh, Riyadh, Saudi Arabia",
    "url": "https://sa.linkedin.com/jobs/view/sr-manager-at-visa-4416161280",
+   "posted": "2026-06-11",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Sharing"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Strategy Manager",
+   "company": "Accenture Middle East",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/strategy-manager-at-accenture-middle-east-4426623957",
+   "posted": "2026-06-11",
+   "source": "LinkedIn",
+   "keywords": [
+    "Digital Transformation"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "BIM Coordinator",
+   "company": "C-BLOC",
+   "location": "Riyadh Region",
+   "url": "https://sa.linkedin.com/jobs/view/bim-coordinator-at-c-bloc-4423657658",
    "posted": "2026-06-11",
    "source": "LinkedIn",
    "keywords": [
@@ -348,7 +372,8 @@
    "posted": "2026-05-17",
    "source": "LinkedIn",
    "keywords": [
-    "Digital Transformation"
+    "Digital Transformation",
+    "IT Project Manager"
    ],
    "first_seen": "2026-06-11"
   },
@@ -1272,7 +1297,8 @@
    "posted": "2026-04-21",
    "source": "LinkedIn",
    "keywords": [
-    "IT Project Manager"
+    "IT Project Manager",
+    "Program Manager"
    ],
    "first_seen": "2026-06-10"
   },

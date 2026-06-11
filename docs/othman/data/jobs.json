@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-11T14:14:04+00:00",
+ "updated": "2026-06-11T18:30:08+00:00",
  "jobs": [
   {
    "title": "IT Specialist",
@@ -74,6 +74,18 @@
    "source": "LinkedIn",
    "keywords": [
     "IT Fresh Graduate"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Principal Specialist, TechOps Solution II",
+   "company": "Maaden",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/principal-specialist-techops-solution-ii-at-maaden-4426607839",
+   "posted": "2026-06-11",
+   "source": "LinkedIn",
+   "keywords": [
+    "System Administrator"
    ],
    "first_seen": "2026-06-11"
   },

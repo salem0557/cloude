@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-11T14:14:30+00:00",
+ "updated": "2026-06-11T18:30:35+00:00",
  "jobs": [
   {
    "title": "Custom Clearance Broker",
@@ -74,6 +74,30 @@
    "first_seen": "2026-06-11"
   },
   {
+   "title": "Logistics Manager",
+   "company": "AtkinsRéalis",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/logistics-manager-at-atkinsr%C3%A9alis-4427523513",
+   "posted": "2026-06-11",
+   "source": "LinkedIn",
+   "keywords": [
+    "Logistics"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Automation Engineer, Reliability Maintenance Engineering",
+   "company": "Amazon",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/automation-engineer-reliability-maintenance-engineering-at-amazon-4361109784",
+   "posted": "2026-06-11",
+   "source": "LinkedIn",
+   "keywords": [
+    "Maintenance Engineer"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
    "title": "مدير عمليات",
    "company": "PW (PhysicsWallah)",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -96,6 +120,18 @@
    "source": "LinkedIn",
    "keywords": [
     "Mechanical Engineer"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Field Service Engineer",
+   "company": "GE HealthCare",
+   "location": "Riyadh Region",
+   "url": "https://sa.linkedin.com/jobs/view/field-service-engineer-at-ge-healthcare-4417309237",
+   "posted": "2026-06-10",
+   "source": "LinkedIn",
+   "keywords": [
+    "Maintenance Engineer"
    ],
    "first_seen": "2026-06-11"
   },
@@ -230,7 +266,8 @@
    "posted": "2026-06-09",
    "source": "LinkedIn",
    "keywords": [
-    "Facilities Management"
+    "Facilities Management",
+    "Maintenance Engineer"
    ],
    "first_seen": "2026-06-11"
   },
@@ -468,6 +505,30 @@
    "first_seen": "2026-06-11"
   },
   {
+   "title": "Data Center Facility Engineer (Mechanical), AWS",
+   "company": "Amazon Web Services (AWS)",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/data-center-facility-engineer-mechanical-aws-at-amazon-web-services-aws-4424108242",
+   "posted": "2026-06-05",
+   "source": "LinkedIn",
+   "keywords": [
+    "Maintenance Engineer"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Data Center Facility Engineer (Controls), AWS",
+   "company": "Amazon Web Services (AWS)",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/data-center-facility-engineer-controls-aws-at-amazon-web-services-aws-4424103554",
+   "posted": "2026-06-05",
+   "source": "LinkedIn",
+   "keywords": [
+    "Maintenance Engineer"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
    "title": "Facility Management Director",
    "company": "Egis",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -566,6 +627,42 @@
    "first_seen": "2026-06-11"
   },
   {
+   "title": "Field Service Engineer",
+   "company": "Leica Biosystems",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/field-service-engineer-at-leica-biosystems-4410612141",
+   "posted": "2026-06-03",
+   "source": "LinkedIn",
+   "keywords": [
+    "Maintenance Engineer"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Structural Service Engineer",
+   "company": "NOV",
+   "location": "Baqa Ash Sharqiyah, Ha'il, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/structural-service-engineer-at-nov-4419683963",
+   "posted": "2026-06-03",
+   "source": "LinkedIn",
+   "keywords": [
+    "Maintenance Engineer"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Facilities Management Senior Consultant",
+   "company": "Egis",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/facilities-management-senior-consultant-at-egis-4418918061",
+   "posted": "2026-06-03",
+   "source": "LinkedIn",
+   "keywords": [
+    "Facilities Management"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
    "title": "Facilities Manager - Maintenance & Engineering, MENA RME",
    "company": "Amazon",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -573,7 +670,8 @@
    "posted": "2026-06-02",
    "source": "LinkedIn",
    "keywords": [
-    "Maintenance Engineer"
+    "Maintenance Engineer",
+    "Facilities Management"
    ],
    "first_seen": "2026-06-11"
   },
@@ -598,6 +696,19 @@
    "source": "LinkedIn",
    "keywords": [
     "Operations Manager"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Facility Engineer",
+   "company": "HanmiGlobal MENA",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/facility-engineer-at-hanmiglobal-mena-4422355785",
+   "posted": "2026-06-02",
+   "source": "LinkedIn",
+   "keywords": [
+    "Maintenance Engineer",
+    "Facilities Management"
    ],
    "first_seen": "2026-06-11"
   },
@@ -672,6 +783,18 @@
    "source": "LinkedIn",
    "keywords": [
     "Supply Chain"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Project Engineering Manager",
+   "company": "Larsen & Toubro",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/project-engineering-manager-at-larsen-toubro-4402985418",
+   "posted": "2026-05-30",
+   "source": "LinkedIn",
+   "keywords": [
+    "Mechanical Engineer"
    ],
    "first_seen": "2026-06-11"
   },
@@ -904,6 +1027,18 @@
    "first_seen": "2026-06-11"
   },
   {
+   "title": "Senior Team Manager (Automation Engineering)",
+   "company": "Almarai - المراعي",
+   "location": "Hail Region",
+   "url": "https://sa.linkedin.com/jobs/view/senior-team-manager-automation-engineering-at-almarai-%D8%A7%D9%84%D9%85%D8%B1%D8%A7%D8%B9%D9%8A-4417314543",
+   "posted": "2026-05-20",
+   "source": "LinkedIn",
+   "keywords": [
+    "Maintenance Engineer"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
    "title": "SPECIALIST, PURCHASING",
    "company": "alfanar",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -997,6 +1132,18 @@
    "source": "LinkedIn",
    "keywords": [
     "Mechanical Engineer"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Mgr-Engineering",
+   "company": "Four Points by Sheraton",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/mgr-engineering-at-four-points-by-sheraton-4413573734",
+   "posted": "2026-05-12",
+   "source": "LinkedIn",
+   "keywords": [
+    "Facilities Management"
    ],
    "first_seen": "2026-06-11"
   },
@@ -1224,7 +1371,8 @@
    "posted": "2026-02-04",
    "source": "LinkedIn",
    "keywords": [
-    "Facilities Management"
+    "Facilities Management",
+    "Maintenance Engineer"
    ],
    "first_seen": "2026-06-11"
   },
@@ -1265,6 +1413,18 @@
    "first_seen": "2026-06-11"
   },
   {
+   "title": "E-Commerce Operations Coordinator",
+   "company": "webook.com",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/e-commerce-operations-coordinator-at-webook-com-4361531472",
+   "posted": "2026-01-13",
+   "source": "LinkedIn",
+   "keywords": [
+    "Supply Chain"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
    "title": "Operations Manager - Warehouse",
    "company": "Ninja 🥷🏽 نينجا",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -1273,6 +1433,19 @@
    "source": "LinkedIn",
    "keywords": [
     "Operations Manager"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Facility Engineer",
+   "company": "Awtad",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/facility-engineer-at-awtad-4346555180",
+   "posted": "2025-12-29",
+   "source": "LinkedIn",
+   "keywords": [
+    "Maintenance Engineer",
+    "Facilities Management"
    ],
    "first_seen": "2026-06-11"
   },
