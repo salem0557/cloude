@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-11T10:03:44+00:00",
+ "updated": "2026-06-11T10:09:40+00:00",
  "jobs": [
   {
    "title": "Custom Clearance Broker",
@@ -38,6 +38,18 @@
    "first_seen": "2026-06-11"
   },
   {
+   "title": "Fleet Supervisor",
+   "company": "Ninja 🥷🏽 نينجا",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/fleet-supervisor-at-ninja-%F0%9F%A5%B7%F0%9F%8F%BD-%D9%86%D9%8A%D9%86%D8%AC%D8%A7-4423626351",
+   "posted": "2026-06-11",
+   "source": "LinkedIn",
+   "keywords": [
+    "Logistics"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
    "title": "مدير عمليات",
    "company": "PW (PhysicsWallah)",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -45,7 +57,20 @@
    "posted": "2026-06-10",
    "source": "LinkedIn",
    "keywords": [
-    "Operations Manager"
+    "Operations Manager",
+    "Logistics"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Colocation Regional Engineer (Mechanical), Colo Regional Engineering",
+   "company": "Amazon Web Services (AWS)",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/colocation-regional-engineer-mechanical-colo-regional-engineering-at-amazon-web-services-aws-4398034621",
+   "posted": "2026-06-10",
+   "source": "LinkedIn",
+   "keywords": [
+    "Mechanical Engineer"
    ],
    "first_seen": "2026-06-11"
   },
@@ -159,6 +184,18 @@
    "first_seen": "2026-06-11"
   },
   {
+   "title": "Unit Manager",
+   "company": "Almarai - المراعي",
+   "location": "Ha'il, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/unit-manager-at-almarai-%D8%A7%D9%84%D9%85%D8%B1%D8%A7%D8%B9%D9%8A-4422246521",
+   "posted": "2026-06-09",
+   "source": "LinkedIn",
+   "keywords": [
+    "Operations Manager"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
    "title": "Oracle Supply Chain Planning Consultant",
    "company": "Cognizant",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -256,6 +293,30 @@
    "first_seen": "2026-06-11"
   },
   {
+   "title": "Warehouse keeper (Saudi National)",
+   "company": "Accor",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/warehouse-keeper-saudi-national-at-accor-4425603970",
+   "posted": "2026-06-08",
+   "source": "LinkedIn",
+   "keywords": [
+    "Logistics"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Mechanical Engineer",
+   "company": "AtkinsRéalis",
+   "location": "Riyadh Region",
+   "url": "https://sa.linkedin.com/jobs/view/mechanical-engineer-at-atkinsr%C3%A9alis-4422942332",
+   "posted": "2026-06-08",
+   "source": "LinkedIn",
+   "keywords": [
+    "Mechanical Engineer"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
    "title": "Operations Excellence Senior Manager",
    "company": "HungerStation | هنقرستيشن",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -299,7 +360,8 @@
    "posted": "2026-06-05",
    "source": "LinkedIn",
    "keywords": [
-    "Mechanical Engineer"
+    "Mechanical Engineer",
+    "Maintenance Engineer"
    ],
    "first_seen": "2026-06-11"
   },
@@ -316,6 +378,30 @@
    "first_seen": "2026-06-11"
   },
   {
+   "title": "Logistics Officer",
+   "company": "JD.COM",
+   "location": "Riyadh Region",
+   "url": "https://sa.linkedin.com/jobs/view/logistics-officer-at-jd-com-4414690065",
+   "posted": "2026-06-05",
+   "source": "LinkedIn",
+   "keywords": [
+    "Logistics"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Tooling Engineer",
+   "company": "Nextpower",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/tooling-engineer-at-nextpower-4414708420",
+   "posted": "2026-06-05",
+   "source": "LinkedIn",
+   "keywords": [
+    "Mechanical Engineer"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
    "title": "Facility Management Director",
    "company": "Egis",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -324,6 +410,30 @@
    "source": "LinkedIn",
    "keywords": [
     "Facilities Management"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Tamheer Opportunity – Sales Coordinator",
+   "company": "Abdullah Hashim Co. Ltd",
+   "location": "Ḩā’il, Ha'il, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/tamheer-opportunity-%E2%80%93-sales-coordinator-at-abdullah-hashim-co-ltd-4424283732",
+   "posted": "2026-06-04",
+   "source": "LinkedIn",
+   "keywords": [
+    "Logistics"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "RCM Manager",
+   "company": "Saudi German Health",
+   "location": "Ha'il, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/rcm-manager-at-saudi-german-health-4420712777",
+   "posted": "2026-06-04",
+   "source": "LinkedIn",
+   "keywords": [
+    "Operations Manager"
    ],
    "first_seen": "2026-06-11"
   },
@@ -365,6 +475,30 @@
    "first_seen": "2026-06-11"
   },
   {
+   "title": "Critical Infrastructure Mechanical Engineer, Mechanical Field Engineering",
+   "company": "Amazon Web Services (AWS)",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/critical-infrastructure-mechanical-engineer-mechanical-field-engineering-at-amazon-web-services-aws-4422629597",
+   "posted": "2026-06-03",
+   "source": "LinkedIn",
+   "keywords": [
+    "Mechanical Engineer"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Facilities Management Consultant, Infrastructure",
+   "company": "Egis",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/facilities-management-consultant-infrastructure-at-egis-4418919062",
+   "posted": "2026-06-03",
+   "source": "LinkedIn",
+   "keywords": [
+    "Facilities Management"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
    "title": "Facilities Manager - Maintenance & Engineering, MENA RME",
    "company": "Amazon",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -373,6 +507,18 @@
    "source": "LinkedIn",
    "keywords": [
     "Maintenance Engineer"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Applications Engineer - Temperature Control",
+   "company": "Aggreko",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/applications-engineer-temperature-control-at-aggreko-4413282878",
+   "posted": "2026-06-02",
+   "source": "LinkedIn",
+   "keywords": [
+    "Mechanical Engineer"
    ],
    "first_seen": "2026-06-11"
   },
@@ -522,6 +668,30 @@
    "first_seen": "2026-06-11"
   },
   {
+   "title": "Stock and Back Office Executive",
+   "company": "Cartier",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/stock-and-back-office-executive-at-cartier-4417870057",
+   "posted": "2026-05-25",
+   "source": "LinkedIn",
+   "keywords": [
+    "Logistics"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Mechanical Engineer",
+   "company": "Parsons Corporation",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/mechanical-engineer-at-parsons-corporation-4418672777",
+   "posted": "2026-05-25",
+   "source": "LinkedIn",
+   "keywords": [
+    "Mechanical Engineer"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
    "title": "Inbound Placement Analyst, Inbound Supply Chain",
    "company": "Amazon",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -530,6 +700,18 @@
    "source": "LinkedIn",
    "keywords": [
     "Supply Chain"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "ISG Staff Manufacturing Engineer",
+   "company": "Lenovo",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/isg-staff-manufacturing-engineer-at-lenovo-4398122438",
+   "posted": "2026-05-22",
+   "source": "LinkedIn",
+   "keywords": [
+    "Mechanical Engineer"
    ],
    "first_seen": "2026-06-11"
   },
@@ -554,6 +736,30 @@
    "source": "LinkedIn",
    "keywords": [
     "Supply Chain"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Mechanical Engineer – site experience required",
+   "company": "PROGER s.p.a.",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/mechanical-engineer-%E2%80%93-site-experience-required-at-proger-s-p-a-4417777447",
+   "posted": "2026-05-21",
+   "source": "LinkedIn",
+   "keywords": [
+    "Mechanical Engineer"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Quality & Operation Manager",
+   "company": "FlyAkeed",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/quality-operation-manager-at-flyakeed-4417028624",
+   "posted": "2026-05-20",
+   "source": "LinkedIn",
+   "keywords": [
+    "Operations Manager"
    ],
    "first_seen": "2026-06-11"
   },
@@ -606,6 +812,30 @@
    "first_seen": "2026-06-11"
   },
   {
+   "title": "Cargo Supervisor (Riyadh)",
+   "company": "Etihad",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/cargo-supervisor-riyadh-at-etihad-4412297080",
+   "posted": "2026-05-18",
+   "source": "LinkedIn",
+   "keywords": [
+    "Logistics"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Team Manager",
+   "company": "Almarai - المراعي",
+   "location": "Ha'il, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/team-manager-at-almarai-%D8%A7%D9%84%D9%85%D8%B1%D8%A7%D8%B9%D9%8A-4416230031",
+   "posted": "2026-05-18",
+   "source": "LinkedIn",
+   "keywords": [
+    "Operations Manager"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
    "title": "Senior Procurement Officer",
    "company": "Golf Saudi",
    "location": "Riyadh Region",
@@ -614,6 +844,30 @@
    "source": "LinkedIn",
    "keywords": [
     "Procurement"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Mechanical Site Engineer (Data Center)",
+   "company": "Decima International",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/mechanical-site-engineer-data-center-at-decima-international-4413936775",
+   "posted": "2026-05-13",
+   "source": "LinkedIn",
+   "keywords": [
+    "Mechanical Engineer"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "مراقب خدمات عامة ( تمهير )",
+   "company": "Dkhoon Emirates",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/%D9%85%D8%B1%D8%A7%D9%82%D8%A8-%D8%AE%D8%AF%D9%85%D8%A7%D8%AA-%D8%B9%D8%A7%D9%85%D8%A9-%D8%AA%D9%85%D9%87%D9%8A%D8%B1-at-dkhoon-emirates-4412734099",
+   "posted": "2026-05-11",
+   "source": "LinkedIn",
+   "keywords": [
+    "Logistics"
    ],
    "first_seen": "2026-06-11"
   },
@@ -702,6 +956,18 @@
    "first_seen": "2026-06-11"
   },
   {
+   "title": "Senior Facility Management",
+   "company": "Blacksand",
+   "location": "Riyadh Region",
+   "url": "https://sa.linkedin.com/jobs/view/senior-facility-management-at-blacksand-4381282068",
+   "posted": "2026-03-09",
+   "source": "LinkedIn",
+   "keywords": [
+    "Facilities Management"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
    "title": "Operations Manager",
    "company": "Infinite pl",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -710,6 +976,18 @@
    "source": "LinkedIn",
    "keywords": [
     "Operations Manager"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Transportation Officer",
+   "company": "Ninja 🥷🏽 نينجا",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/transportation-officer-at-ninja-%F0%9F%A5%B7%F0%9F%8F%BD-%D9%86%D9%8A%D9%86%D8%AC%D8%A7-4372486121",
+   "posted": "2026-02-18",
+   "source": "LinkedIn",
+   "keywords": [
+    "Logistics"
    ],
    "first_seen": "2026-06-11"
   },
@@ -767,6 +1045,18 @@
    "location": "Riyadh, Riyadh, Saudi Arabia",
    "url": "https://sa.linkedin.com/jobs/view/specialist-logistics-fulfilment-at-majid-al-futtaim-4345198777",
    "posted": "2025-12-20",
+   "source": "LinkedIn",
+   "keywords": [
+    "Logistics"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Inventory Accountant",
+   "company": "MAZ HOLDING",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/inventory-accountant-at-maz-holding-4344685094",
+   "posted": "2025-12-18",
    "source": "LinkedIn",
    "keywords": [
     "Logistics"

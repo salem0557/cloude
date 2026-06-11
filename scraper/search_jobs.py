@@ -37,6 +37,7 @@ PROFILES = {
             "Data Acquisition",
             "Data Sharing",
         ],
+        "cities": ["Riyadh"],
         "data_file": DOCS / "data" / "jobs.json",
     },
     "Othman": {
@@ -48,6 +49,7 @@ PROFILES = {
             "System Administrator",
             "IT Fresh Graduate",
         ],
+        "cities": ["Riyadh"],
         "data_file": DOCS / "othman" / "data" / "jobs.json",
     },
     "Omer": {
@@ -60,11 +62,11 @@ PROFILES = {
             "Maintenance Engineer",
             "Facilities Management",
         ],
+        "cities": ["Riyadh", "Hail"],
         "data_file": DOCS / "omer" / "data" / "jobs.json",
     },
 }
 
-CITY = "Riyadh"
 MAX_PER_SOURCE_KEYWORD = 40
 REQUEST_TIMEOUT = 25
 
@@ -176,7 +178,7 @@ def posting_location(posting):
     return ""
 
 
-def parse_jsonld_jobs(html, base_url, source):
+def parse_jsonld_jobs(html, base_url, source, city):
     soup = BeautifulSoup(html, "html.parser")
     jobs = []
     for script in soup.find_all("script", type="application/ld+json"):
@@ -190,16 +192,16 @@ def parse_jsonld_jobs(html, base_url, source):
             if not url or not title:
                 continue
             location = clean_text(posting_location(posting))
-            # Keep Riyadh jobs; keep unknown locations too (page is already
-            # filtered to Riyadh/Saudi searches).
-            if location and "riyadh" not in location.lower():
+            # Keep jobs in the searched city; keep unknown locations too
+            # (the page is already filtered to a city/Saudi search).
+            if location and city.lower() not in location.lower():
                 continue
             org = posting.get("hiringOrganization") or {}
             company = org.get("name", "") if isinstance(org, dict) else str(org)
             jobs.append({
                 "title": clean_text(title),
                 "company": clean_text(company),
-                "location": location or CITY,
+                "location": location or city,
                 "url": canonical_url(urljoin(base_url, url)),
                 "posted": (posting.get("datePosted") or "")[:10] or None,
                 "source": source,
@@ -207,7 +209,7 @@ def parse_jsonld_jobs(html, base_url, source):
     return jobs
 
 
-def try_urls(source, keyword, urls, extra_parser=None):
+def try_urls(source, keyword, city, urls, extra_parser=None):
     """Fetch candidate URLs until one yields jobs relevant to the keyword.
 
     Raises SourceBlocked when every URL fails at the network level, so the
@@ -225,9 +227,9 @@ def try_urls(source, keyword, urls, extra_parser=None):
             errors.append(exc)
             print(f"  {source}: {url} -> {exc}", file=sys.stderr)
             continue
-        jobs = parse_jsonld_jobs(resp.text, resp.url, source)
+        jobs = parse_jsonld_jobs(resp.text, resp.url, source, city)
         if not jobs and extra_parser:
-            jobs = extra_parser(resp, keyword)
+            jobs = extra_parser(resp, keyword, city)
         # Sites sometimes ignore unknown search parameters and return their
         # newest jobs instead, so keep only titles related to the keyword.
         jobs = [j for j in jobs if matches_keyword(j["title"], keyword)]
@@ -243,14 +245,14 @@ def try_urls(source, keyword, urls, extra_parser=None):
 # LinkedIn (public guest job feed, no login required)
 # --------------------------------------------------------------------------
 
-def search_linkedin(keyword):
+def search_linkedin(keyword, city):
     jobs = []
     for start in (0, 25):
         resp = fetch(
             "https://www.linkedin.com/jobs-guest/jobs/api/seeMoreJobPostings/search",
             params={
                 "keywords": keyword,
-                "location": "Riyadh, Saudi Arabia",
+                "location": f"{city}, Saudi Arabia",
                 "start": start,
             },
         )
@@ -269,7 +271,7 @@ def search_linkedin(keyword):
             jobs.append({
                 "title": clean_text(title.get_text()),
                 "company": clean_text(company.get_text()) if company else "",
-                "location": clean_text(location.get_text()) if location else CITY,
+                "location": clean_text(location.get_text()) if location else city,
                 "url": canonical_url(link["href"]),
                 "posted": posted["datetime"] if posted else None,
                 "source": "LinkedIn",
@@ -283,7 +285,7 @@ def search_linkedin(keyword):
 # GulfTalent
 # --------------------------------------------------------------------------
 
-def parse_gulftalent_rows(resp, keyword):
+def parse_gulftalent_rows(resp, keyword, city):
     """GulfTalent lists jobs in table rows: title link, company, location."""
     soup = BeautifulSoup(resp.text, "html.parser")
     jobs = []
@@ -293,13 +295,13 @@ def parse_gulftalent_rows(resp, keyword):
             continue
         cells = [clean_text(td.get_text()) for td in row.find_all("td")]
         row_text = " ".join(cells).lower()
-        if "riyadh" not in row_text:
+        if city.lower() not in row_text:
             continue
         company = cells[1] if len(cells) > 1 else ""
         jobs.append({
             "title": clean_text(link.get_text()),
             "company": company,
-            "location": CITY,
+            "location": city,
             "url": canonical_url(urljoin(resp.url, link["href"])),
             "posted": None,
             "source": "GulfTalent",
@@ -307,11 +309,12 @@ def parse_gulftalent_rows(resp, keyword):
     return jobs
 
 
-def search_gulftalent(keyword):
+def search_gulftalent(keyword, city):
     slug = slugify(keyword)
     return try_urls(
         "GulfTalent",
         keyword,
+        city,
         [
             f"https://www.gulftalent.com/saudi-arabia/jobs/title/{slug}",
             f"https://www.gulftalent.com/jobs/search?keywords={quote(keyword)}&country=saudi-arabia",
@@ -324,7 +327,7 @@ def search_gulftalent(keyword):
 # Akhtaboot
 # --------------------------------------------------------------------------
 
-def parse_akhtaboot_links(resp, keyword):
+def parse_akhtaboot_links(resp, keyword, city):
     """Real Akhtaboot listings look like /en/saudi-arabia/jobs/riyadh/166912-Title."""
     soup = BeautifulSoup(resp.text, "html.parser")
     jobs = []
@@ -334,13 +337,13 @@ def parse_akhtaboot_links(resp, keyword):
         href = link.get("href", "")
         if not title or len(title) < 4 or href in seen:
             continue
-        if not re.search(r"/jobs/.*\d{4,}", href) or "riyadh" not in href.lower():
+        if not re.search(r"/jobs/.*\d{4,}", href) or city.lower() not in href.lower():
             continue
         seen.add(href)
         jobs.append({
             "title": title,
             "company": "",
-            "location": CITY,
+            "location": city,
             "url": canonical_url(urljoin(resp.url, href)),
             "posted": None,
             "source": "Akhtaboot",
@@ -348,13 +351,14 @@ def parse_akhtaboot_links(resp, keyword):
     return jobs
 
 
-def search_akhtaboot(keyword):
+def search_akhtaboot(keyword, city):
     return try_urls(
         "Akhtaboot",
         keyword,
+        city,
         [
             f"https://www.akhtaboot.com/en/jobs/search?q={quote(keyword)}&country=Saudi+Arabia",
-            f"https://www.akhtaboot.com/en/jobs/search?keywords={quote(keyword)}&country=Saudi+Arabia&city={quote(CITY)}",
+            f"https://www.akhtaboot.com/en/jobs/search?keywords={quote(keyword)}&country=Saudi+Arabia&city={quote(city)}",
         ],
         extra_parser=parse_akhtaboot_links,
     )
@@ -364,7 +368,7 @@ def search_akhtaboot(keyword):
 # Tanqeeb (Middle East job search engine)
 # --------------------------------------------------------------------------
 
-def parse_tanqeeb_links(resp, keyword):
+def parse_tanqeeb_links(resp, keyword, city):
     soup = BeautifulSoup(resp.text, "html.parser")
     jobs = []
     seen = set()
@@ -379,7 +383,7 @@ def parse_tanqeeb_links(resp, keyword):
         jobs.append({
             "title": title,
             "company": "",
-            "location": CITY,
+            "location": city,
             "url": canonical_url(urljoin(resp.url, href)),
             "posted": None,
             "source": "Tanqeeb",
@@ -387,14 +391,16 @@ def parse_tanqeeb_links(resp, keyword):
     return jobs
 
 
-def search_tanqeeb(keyword):
+def search_tanqeeb(keyword, city):
     slug = slugify(keyword)
+    cityslug = city.lower()
     return try_urls(
         "Tanqeeb",
         keyword,
+        city,
         [
-            f"https://saudi.tanqeeb.com/en/jobs/search?keywords={quote(keyword)}&state=riyadh",
-            f"https://www.tanqeeb.com/en/saudi-arabia/{slug}-jobs-in-riyadh",
+            f"https://saudi.tanqeeb.com/en/jobs/search?keywords={quote(keyword)}&state={cityslug}",
+            f"https://www.tanqeeb.com/en/saudi-arabia/{slug}-jobs-in-{cityslug}",
             f"https://www.tanqeeb.com/en/jobs/search?keywords={quote(keyword)}&country=saudi-arabia",
         ],
         extra_parser=parse_tanqeeb_links,
@@ -405,12 +411,12 @@ def search_tanqeeb(keyword):
 # Jooble (job aggregator; official free API at jooble.org/api/about)
 # --------------------------------------------------------------------------
 
-def search_jooble(keyword):
+def search_jooble(keyword, city):
     api_key = os.environ.get("JOOBLE_API_KEY")
     if api_key:
         resp = requests.post(
             f"https://jooble.org/api/{api_key}",
-            json={"keywords": keyword, "location": CITY},
+            json={"keywords": keyword, "location": city},
             headers={"Content-Type": "application/json"},
             timeout=REQUEST_TIMEOUT,
         )
@@ -424,7 +430,7 @@ def search_jooble(keyword):
             jobs.append({
                 "title": title,
                 "company": clean_text(item.get("company", "")),
-                "location": clean_text(item.get("location", "")) or CITY,
+                "location": clean_text(item.get("location", "")) or city,
                 "url": canonical_url(url),
                 "posted": (item.get("updated") or "")[:10] or None,
                 "source": "Jooble",
@@ -436,9 +442,10 @@ def search_jooble(keyword):
     return try_urls(
         "Jooble",
         keyword,
+        city,
         [
-            f"https://sa.jooble.org/jobs-{slug}/{CITY}",
-            f"https://sa.jooble.org/SearchResult?rgns={quote(CITY)}&ukw={quote(keyword)}",
+            f"https://sa.jooble.org/jobs-{slug}/{city}",
+            f"https://sa.jooble.org/SearchResult?rgns={quote(city)}&ukw={quote(keyword)}",
         ],
     )
 
@@ -465,7 +472,7 @@ def load_existing(data_file):
     return {"updated": None, "jobs": []}
 
 
-def run_profile(name, keywords, data_file, blocked):
+def run_profile(name, keywords, cities, data_file, blocked):
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     existing = load_existing(data_file)
     by_url = {job["url"]: job for job in existing["jobs"]}
@@ -475,29 +482,32 @@ def run_profile(name, keywords, data_file, blocked):
         if source in blocked:
             continue
         for keyword in keywords:
-            try:
-                results = searcher(keyword)[:MAX_PER_SOURCE_KEYWORD]
-            except SourceBlocked as exc:
-                print(f"WARN {source} is blocking automation, skipping it today: {exc}",
-                      file=sys.stderr)
-                blocked.add(source)
+            if source in blocked:
                 break
-            except Exception as exc:  # one failing source must not kill the run
-                print(f"WARN {source} / '{keyword}': {exc}", file=sys.stderr)
-                continue
-            print(f"{source:<11} '{keyword}': {len(results)} jobs")
-            for job in results:
-                seen = by_url.get(job["url"])
-                if seen:
-                    if keyword not in seen["keywords"]:
-                        seen["keywords"].append(keyword)
-                    if job.get("posted") and not seen.get("posted"):
-                        seen["posted"] = job["posted"]
-                else:
-                    job["keywords"] = [keyword]
-                    job["first_seen"] = today
-                    by_url[job["url"]] = job
-                    new_count += 1
+            for city in cities:
+                try:
+                    results = searcher(keyword, city)[:MAX_PER_SOURCE_KEYWORD]
+                except SourceBlocked as exc:
+                    print(f"WARN {source} is blocking automation, skipping it today: {exc}",
+                          file=sys.stderr)
+                    blocked.add(source)
+                    break
+                except Exception as exc:  # one failing source must not kill the run
+                    print(f"WARN {source} / '{keyword}' ({city}): {exc}", file=sys.stderr)
+                    continue
+                print(f"{source:<11} '{keyword}' ({city}): {len(results)} jobs")
+                for job in results:
+                    seen = by_url.get(job["url"])
+                    if seen:
+                        if keyword not in seen["keywords"]:
+                            seen["keywords"].append(keyword)
+                        if job.get("posted") and not seen.get("posted"):
+                            seen["posted"] = job["posted"]
+                    else:
+                        job["keywords"] = [keyword]
+                        job["first_seen"] = today
+                        by_url[job["url"]] = job
+                        new_count += 1
 
     jobs = sorted(
         by_url.values(),
@@ -519,7 +529,8 @@ def main():
     blocked = set()
     for name, profile in PROFILES.items():
         print(f"===== Searching for {name} =====")
-        run_profile(name, profile["keywords"], profile["data_file"], blocked)
+        run_profile(name, profile["keywords"], profile["cities"],
+                    profile["data_file"], blocked)
 
 
 if __name__ == "__main__":
