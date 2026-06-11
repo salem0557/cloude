@@ -1,7 +1,9 @@
 # Riyadh IT Jobs — daily job search
 
 Three job boards, updated automatically every 5 hours with jobs in
-**Riyadh and Hail, Saudi Arabia**:
+**Riyadh and Hail, Saudi Arabia** — plus a **LinkedIn posts page**
+(refreshed every 2 hours) for finding posts to reply to, described
+[below](#linkedin-posts-page--posts-to-reply-to).
 
 - **Salem** — `https://salem0557.github.io/cloude/` — keywords: IT
   Management, IT Project Manager, Digital Transformation, Data Management,
@@ -54,3 +56,51 @@ The job list updates within a couple of minutes.
 
 Edit the `PROFILES` dict (or `CITY`) at the top of
 [`scraper/search_jobs.py`](scraper/search_jobs.py) and commit.
+
+## LinkedIn posts page — posts to reply to
+
+`https://salem0557.github.io/cloude/posts/` — finds **LinkedIn posts**
+(not jobs) about *IT Management, IT Project Manager, Data Acquisition,
+Data Sharing, Digital Transformation, HR, Saudi* from people in
+Riyadh / Saudi Arabia, so you can reply to them and grow your visibility.
+Refreshed **every 2 hours** by the *LinkedIn posts search* workflow
+([`.github/workflows/posts.yml`](.github/workflows/posts.yml)); collected
+posts are stored forever in
+[`docs/posts/data/posts.json`](docs/posts/data/posts.json) and new ones
+are flagged **NEW**. Each post has a **Mark replied** button (saved in
+your browser) so you can track what you already answered.
+
+How it finds posts — important honesty notes:
+
+- **Live search buttons (always work)**: LinkedIn does not allow outside
+  tools to read its feed, so the most reliable path is the row of
+  one-click buttons at the top of the page. Each opens LinkedIn's own
+  post search for a keyword + Riyadh, sorted by latest, filtered to the
+  last 24 hours. This always shows the freshest posts.
+- **Free auto-collection (best effort)**: every 2 hours the workflow asks
+  Bing and DuckDuckGo for public LinkedIn posts
+  (`site:linkedin.com/posts "<keyword>" Riyadh`). Search engines index
+  only a fraction of LinkedIn posts and sometimes block automation, so
+  expect a trickle, not a flood. Blocked engines are skipped and retried
+  automatically next run.
+- **Paid auto-collection (optional upgrade)**: add an Apify token
+  (apify.com, roughly $5 free credit monthly, then pay-as-you-go) as a
+  repository secret named `APIFY_TOKEN` and the workflow automatically
+  also runs a LinkedIn post-search actor (default
+  `harvestapi~linkedin-post-search`) that searches LinkedIn itself and
+  returns fresh posts with author profile data; authors whose profile
+  location is known and outside Saudi Arabia are filtered out. If the
+  default actor's input schema doesn't match, set repository **variables**
+  `APIFY_ACTOR` (actor id) and/or `APIFY_INPUT` (exact JSON input) — check
+  the actor's page on Apify for its input format.
+- **Author location is approximate**: without LinkedIn's permission no
+  tool can truly filter by "author lives in Riyadh". Free mode keeps
+  posts whose text mentions Riyadh / Saudi (English or Arabic); paid mode
+  uses the author's profile location when the actor returns it.
+- **Replies are always manual** — you click through and write your own
+  reply. Auto-posting replies violates LinkedIn's terms and is the
+  fastest way to get an account restricted instead of growing it.
+
+Change the post keywords in the `KEYWORDS` list at the top of
+[`scraper/search_posts.py`](scraper/search_posts.py) (and the matching
+`KEYWORDS` constant in [`docs/posts/index.html`](docs/posts/index.html)).
