@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Riyadh IT Jobs</title>
+<title>Riyadh Jobs — Omer</title>
 <style>
   :root {
     --bg: #f4f6fa;
@@ -119,8 +119,8 @@
 <body>
 
 <header>
-  <h1>Riyadh IT Jobs</h1>
-  <p>IT Management &middot; IT Project Manager &middot; Digital Transformation &middot; Data Management &middot; Program Manager &middot; Data Acquisition &middot; Data Sharing</p>
+  <h1>Riyadh Jobs — Omer</h1>
+  <p>Supply Chain &middot; Procurement &middot; Logistics &middot; Operations Manager &middot; Mechanical Engineer &middot; Maintenance Engineer &middot; Facilities Management</p>
   <div class="stats">
     <span><b id="stat-total">–</b>total jobs</span>
     <span><b id="stat-new">–</b>new</span>
@@ -168,10 +168,10 @@
 <div id="list"></div>
 <p id="empty">No jobs match these filters yet. The search runs automatically every morning.</p>
 
-<footer>Updates twice daily via GitHub Actions. <a href="othman/">Othman's board</a> &middot; <a href="omer/">Omer's board</a></footer>
+<footer>Updates twice daily via GitHub Actions. <a href="../">Salem's board</a> &middot; <a href="../othman/">Othman's board</a></footer>
 
 <script>
-const KEYWORDS = ["IT Management", "IT Project Manager", "Digital Transformation", "Data Management", "Program Manager", "Data Acquisition", "Data Sharing"];
+const KEYWORDS = ["Supply Chain", "Procurement", "Logistics", "Operations Manager", "Mechanical Engineer", "Maintenance Engineer", "Facilities Management"];
 let jobs = [], updated = null, activeKeyword = "";
 
 const chipsEl = document.getElementById("chips");
@@ -189,7 +189,7 @@ KEYWORDS.forEach(kw => {
 });
 
 function updateManualLinks() {
-  const kw = activeKeyword || "IT Project Manager";
+  const kw = activeKeyword || "Supply Chain";
   const q = encodeURIComponent(kw);
   const slug = kw.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
   document.getElementById("lnk-google").href = `https://www.google.com/search?q=${q}%20jobs%20in%20Riyadh&ibp=htl;jobs`;

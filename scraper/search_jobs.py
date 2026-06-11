@@ -50,6 +50,18 @@ PROFILES = {
         ],
         "data_file": DOCS / "othman" / "data" / "jobs.json",
     },
+    "Omer": {
+        "keywords": [
+            "Supply Chain",
+            "Procurement",
+            "Logistics",
+            "Operations Manager",
+            "Mechanical Engineer",
+            "Maintenance Engineer",
+            "Facilities Management",
+        ],
+        "data_file": DOCS / "omer" / "data" / "jobs.json",
+    },
 }
 
 CITY = "Riyadh"

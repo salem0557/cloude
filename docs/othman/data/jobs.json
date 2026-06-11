@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-11T09:53:18+00:00",
+ "updated": "2026-06-11T10:03:32+00:00",
  "jobs": [
   {
    "title": "IT Specialist",
@@ -62,7 +62,8 @@
    "source": "LinkedIn",
    "keywords": [
     "IT Support",
-    "Technical Support"
+    "Technical Support",
+    "IT Specialist"
    ],
    "first_seen": "2026-06-11"
   },
@@ -116,6 +117,30 @@
    "first_seen": "2026-06-11"
   },
   {
+   "title": "Asst Housekeeping Manager (Saudi Only)",
+   "company": "Mövenpick Hotels & Resorts",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/asst-housekeeping-manager-saudi-only-at-m%C3%B6venpick-hotels-resorts-4426389545",
+   "posted": "2026-06-09",
+   "source": "LinkedIn",
+   "keywords": [
+    "Help Desk"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Infrastructure Services",
+   "company": "DXC Technology",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/infrastructure-services-at-dxc-technology-4425845902",
+   "posted": "2026-06-09",
+   "source": "LinkedIn",
+   "keywords": [
+    "System Administrator"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
    "title": "IT Support Specialist II - Riyadh",
    "company": "Veeam Software",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -124,7 +149,8 @@
    "source": "LinkedIn",
    "keywords": [
     "IT Support",
-    "Help Desk"
+    "Help Desk",
+    "IT Specialist"
    ],
    "first_seen": "2026-06-11"
   },
@@ -225,6 +251,30 @@
    "first_seen": "2026-06-11"
   },
   {
+   "title": "Endpoint Applications Specialist",
+   "company": "Greenberg Traurig, LLP",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/endpoint-applications-specialist-at-greenberg-traurig-llp-4380182828",
+   "posted": "2026-05-28",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Specialist"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Proactive Monitoring Specialist",
+   "company": "Müller's Solutions",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/proactive-monitoring-specialist-at-m%C3%BCller-s-solutions-4415287627",
+   "posted": "2026-05-26",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Specialist"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
    "title": "IT Specialist – Zoho Platform",
    "company": "FAST FIT EMS",
    "location": "Riyadh Region",
@@ -238,6 +288,30 @@
    "first_seen": "2026-06-11"
   },
   {
+   "title": "Soft Services and Logistics Coordinator",
+   "company": "AtkinsRéalis",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/soft-services-and-logistics-coordinator-at-atkinsr%C3%A9alis-4417307008",
+   "posted": "2026-05-25",
+   "source": "LinkedIn",
+   "keywords": [
+    "Help Desk"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Deal Desk Lead",
+   "company": "IFS",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/deal-desk-lead-at-ifs-4413660403",
+   "posted": "2026-05-21",
+   "source": "LinkedIn",
+   "keywords": [
+    "Help Desk"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
    "title": "Information Technology Support Specialist",
    "company": "Red Steel Technologies",
    "location": "Riyadh Region",
@@ -246,7 +320,8 @@
    "source": "LinkedIn",
    "keywords": [
     "IT Support",
-    "Help Desk"
+    "Help Desk",
+    "IT Specialist"
    ],
    "first_seen": "2026-06-11"
   },
@@ -301,6 +376,18 @@
    "first_seen": "2026-06-11"
   },
   {
+   "title": "IT Support Admin",
+   "company": "معهد الصناعات الغذائية-Food Industries Polytechnic",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/it-support-admin-at-%D9%85%D8%B9%D9%87%D8%AF-%D8%A7%D9%84%D8%B5%D9%86%D8%A7%D8%B9%D8%A7%D8%AA-%D8%A7%D9%84%D8%BA%D8%B0%D8%A7%D8%A6%D9%8A%D8%A9-food-industries-polytechnic-4423843599",
+   "posted": "2026-05-08",
+   "source": "LinkedIn",
+   "keywords": [
+    "Help Desk"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
    "title": "Senior Specialist - IT Strategy and Planning",
    "company": "Qiddiya | القدية",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -351,11 +438,36 @@
    "first_seen": "2026-06-11"
   },
   {
+   "title": "Technical Support Specialist (ManageEngine)",
+   "company": "Alnafitha IT",
+   "location": "Riyadh Region",
+   "url": "https://sa.linkedin.com/jobs/view/technical-support-specialist-manageengine-at-alnafitha-it-4414494403",
+   "posted": "2026-04-19",
+   "source": "LinkedIn",
+   "keywords": [
+    "Help Desk"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
    "title": "IT Systems Specialist",
    "company": "UFCGYMKSA",
    "location": "Riyadh, Riyadh, Saudi Arabia",
    "url": "https://sa.linkedin.com/jobs/view/it-systems-specialist-at-ufcgymksa-4399969125",
    "posted": "2026-04-15",
+   "source": "LinkedIn",
+   "keywords": [
+    "Help Desk",
+    "IT Specialist"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Hospitality Auditor(Hotels) - Hotel Operations and IT",
+   "company": "Müller's Solutions",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/hospitality-auditor-hotels-hotel-operations-and-it-at-m%C3%BCller-s-solutions-4401715141",
+   "posted": "2026-04-14",
    "source": "LinkedIn",
    "keywords": [
     "Help Desk"
@@ -423,6 +535,30 @@
    "first_seen": "2026-06-11"
   },
   {
+   "title": "Senior Facilities Coordinator",
+   "company": "Parsons Corporation",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/senior-facilities-coordinator-at-parsons-corporation-4377870907",
+   "posted": "2026-02-27",
+   "source": "LinkedIn",
+   "keywords": [
+    "Help Desk"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "CAFM & EA Manager",
+   "company": "Parsons Corporation",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/cafm-ea-manager-at-parsons-corporation-4377870904",
+   "posted": "2026-02-26",
+   "source": "LinkedIn",
+   "keywords": [
+    "Help Desk"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
    "title": "Senior IT Support Specialist",
    "company": "Mirai, a Scopely company",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -478,7 +614,8 @@
    "posted": "2025-10-08",
    "source": "LinkedIn",
    "keywords": [
-    "Help Desk"
+    "Help Desk",
+    "IT Specialist"
    ],
    "first_seen": "2026-06-11"
   },
