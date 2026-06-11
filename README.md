@@ -1,16 +1,17 @@
 # Riyadh IT Jobs — daily job search
 
-Automatically searches **LinkedIn, Akhtaboot, GulfTalent and Tanqeeb** twice
-a day (about 06:23 and 15:23 Riyadh time) for jobs in **Riyadh, Saudi
-Arabia** matching these keywords:
+Two job boards, updated automatically twice a day (about 06:23 and 15:23
+Riyadh time) with jobs in **Riyadh, Saudi Arabia**:
 
-- IT Management
-- IT Project Manager
-- Digital Transformation
-- Data Management
-- Program Manager
-- Data Acquisition
-- Data Sharing
+- **Salem** — `https://salem0557.github.io/cloude/` — keywords: IT
+  Management, IT Project Manager, Digital Transformation, Data Management,
+  Program Manager, Data Acquisition, Data Sharing
+- **Othman** — `https://salem0557.github.io/cloude/othman/` — keywords: IT
+  Support, Help Desk, Technical Support, IT Specialist, System
+  Administrator, IT Fresh Graduate
+
+Sources searched: **LinkedIn, Akhtaboot, GulfTalent, Tanqeeb** (and Jooble
+once an API key is configured).
 
 All jobs found are stored in [`docs/data/jobs.json`](docs/data/jobs.json) and
 shown on a website where you can filter, search, and click through to apply.
@@ -48,5 +49,5 @@ The job list updates within a couple of minutes.
 
 ## Change keywords or city
 
-Edit the `KEYWORDS` list (or `CITY`) at the top of
+Edit the `PROFILES` dict (or `CITY`) at the top of
 [`scraper/search_jobs.py`](scraper/search_jobs.py) and commit.
