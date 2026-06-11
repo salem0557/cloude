@@ -144,6 +144,10 @@
     <option value="7">Last 7 days</option>
     <option value="30">Last 30 days</option>
   </select>
+  <select id="sort">
+    <option value="posted">Newest posted first</option>
+    <option value="found">Recently found first</option>
+  </select>
 </div>
 <div class="chips" id="chips"></div>
 
@@ -220,6 +224,10 @@ function render() {
     (!when || daysAgo(j.first_seen) <= Number(when))
   );
 
+  const sortBy = document.getElementById("sort").value;
+  const dateOf = j => (sortBy === "found" ? j.first_seen : (j.posted || j.first_seen)) || "";
+  visible.sort((a, b) => dateOf(b).localeCompare(dateOf(a)));
+
   document.getElementById("empty").style.display = visible.length ? "none" : "block";
 
   for (const j of visible) {
@@ -246,7 +254,7 @@ function render() {
   }
 }
 
-["search", "source", "when"].forEach(id =>
+["search", "source", "when", "sort"].forEach(id =>
   document.getElementById(id).addEventListener("input", render));
 
 updateManualLinks();
