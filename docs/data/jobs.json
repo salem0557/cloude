@@ -1,6 +1,102 @@
 {
- "updated": "2026-06-10T20:44:57+00:00",
+ "updated": "2026-06-11T06:24:43+00:00",
  "jobs": [
+  {
+   "title": "Senior Data Scientist",
+   "company": "Devsinc",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/senior-data-scientist-at-devsinc-4426339867",
+   "posted": "2026-06-09",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Management"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Data Governance Consultant",
+   "company": "Devoteam",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/data-governance-consultant-at-devoteam-4415784985",
+   "posted": "2026-06-09",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Sharing"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Associate Principal Job",
+   "company": "Elm Company",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/associate-principal-job-at-elm-company-4425075586",
+   "posted": "2026-06-08",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Acquisition"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Data Governance & Personal Data Protection, Expert Consultant",
+   "company": "Master Works",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/data-governance-personal-data-protection-expert-consultant-at-master-works-4422355373",
+   "posted": "2026-06-02",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Sharing"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Data Privacy Consultant",
+   "company": "Devoteam",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/data-privacy-consultant-at-devoteam-4317922936",
+   "posted": "2026-05-25",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Sharing"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Data Management, Specialist",
+   "company": "Master Works",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/data-management-specialist-at-master-works-4417027605",
+   "posted": "2026-05-20",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Sharing"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Data Protection & Governance Specialist",
+   "company": "SiFi",
+   "location": "Riyadh Region",
+   "url": "https://sa.linkedin.com/jobs/view/data-protection-governance-specialist-at-sifi-4426049764",
+   "posted": "2026-05-16",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Sharing"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Senior Manager - Project Manager - Digital Transformation and Value (DEL3)",
+   "company": "Qiddiya | القدية",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/senior-manager-project-manager-digital-transformation-and-value-del3-at-qiddiya-%D8%A7%D9%84%D9%82%D8%AF%D9%8A%D8%A9-4425031065",
+   "posted": "2026-05-13",
+   "source": "LinkedIn",
+   "keywords": [
+    "Digital Transformation"
+   ],
+   "first_seen": "2026-06-11"
+  },
   {
    "title": "Transport Data Science Manager",
    "company": "Mace",
@@ -47,7 +143,8 @@
    "posted": "2026-06-09",
    "source": "LinkedIn",
    "keywords": [
-    "IT Project Manager"
+    "IT Project Manager",
+    "Program Manager"
    ],
    "first_seen": "2026-06-10"
   },
@@ -477,7 +574,8 @@
    "posted": "2026-05-26",
    "source": "LinkedIn",
    "keywords": [
-    "Data Management"
+    "Data Management",
+    "Data Sharing"
    ],
    "first_seen": "2026-06-10"
   },
@@ -489,7 +587,8 @@
    "posted": "2026-05-26",
    "source": "LinkedIn",
    "keywords": [
-    "Data Management"
+    "Data Management",
+    "Data Sharing"
    ],
    "first_seen": "2026-06-10"
   },
