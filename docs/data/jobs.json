@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-11T10:09:03+00:00",
+ "updated": "2026-06-11T10:16:38+00:00",
  "jobs": [
   {
    "title": "IT Specialist",
@@ -69,7 +69,8 @@
    "posted": "2026-06-09",
    "source": "LinkedIn",
    "keywords": [
-    "Data Sharing"
+    "Data Sharing",
+    "Data Management"
    ],
    "first_seen": "2026-06-11"
   },
@@ -81,7 +82,8 @@
    "posted": "2026-06-09",
    "source": "LinkedIn",
    "keywords": [
-    "Data Acquisition"
+    "Data Acquisition",
+    "Data Management"
    ],
    "first_seen": "2026-06-11"
   },
@@ -94,6 +96,18 @@
    "source": "LinkedIn",
    "keywords": [
     "Data Acquisition"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Engineering Manager - Utilities",
+   "company": "Almarai - المراعي",
+   "location": "Hail Region",
+   "url": "https://sa.linkedin.com/jobs/view/engineering-manager-utilities-at-almarai-%D8%A7%D9%84%D9%85%D8%B1%D8%A7%D8%B9%D9%8A-4426333255",
+   "posted": "2026-06-09",
+   "source": "LinkedIn",
+   "keywords": [
+    "Program Manager"
    ],
    "first_seen": "2026-06-11"
   },
@@ -126,6 +140,18 @@
    "company": "Riyadh Air | طيران الرياض",
    "location": "Riyadh Region",
    "url": "https://sa.linkedin.com/jobs/view/release-manager-and-pmo-at-riyadh-air-%D8%B7%D9%8A%D8%B1%D8%A7%D9%86-%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6-4425262963",
+   "posted": "2026-06-08",
+   "source": "LinkedIn",
+   "keywords": [
+    "Program Manager"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Quality Assurance Manager",
+   "company": "Almarai - المراعي",
+   "location": "Hail Region",
+   "url": "https://sa.linkedin.com/jobs/view/quality-assurance-manager-at-almarai-%D8%A7%D9%84%D9%85%D8%B1%D8%A7%D8%B9%D9%8A-4425610372",
    "posted": "2026-06-08",
    "source": "LinkedIn",
    "keywords": [
@@ -225,7 +251,32 @@
    "posted": "2026-05-20",
    "source": "LinkedIn",
    "keywords": [
-    "Data Sharing"
+    "Data Sharing",
+    "Data Management"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Senior Team Manager (Automation Engineering)",
+   "company": "Almarai - المراعي",
+   "location": "Hail Region",
+   "url": "https://sa.linkedin.com/jobs/view/senior-team-manager-automation-engineering-at-almarai-%D8%A7%D9%84%D9%85%D8%B1%D8%A7%D8%B9%D9%8A-4417314543",
+   "posted": "2026-05-20",
+   "source": "LinkedIn",
+   "keywords": [
+    "Program Manager"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Senior Team Manager",
+   "company": "Almarai - المراعي",
+   "location": "Ha'il, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/senior-team-manager-at-almarai-%D8%A7%D9%84%D9%85%D8%B1%D8%A7%D8%B9%D9%8A-4416220150",
+   "posted": "2026-05-18",
+   "source": "LinkedIn",
+   "keywords": [
+    "Program Manager"
    ],
    "first_seen": "2026-06-11"
   },
@@ -274,6 +325,18 @@
    "source": "LinkedIn",
    "keywords": [
     "Program Manager"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Data Management Consultant",
+   "company": "Datamatics Technologies",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/data-management-consultant-at-datamatics-technologies-4409260900",
+   "posted": "2026-05-07",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Management"
    ],
    "first_seen": "2026-06-11"
   },
@@ -497,7 +560,8 @@
    "source": "LinkedIn",
    "keywords": [
     "Data Acquisition",
-    "Data Sharing"
+    "Data Sharing",
+    "Data Management"
    ],
    "first_seen": "2026-06-10"
   },
@@ -655,7 +719,8 @@
    "source": "LinkedIn",
    "keywords": [
     "Data Acquisition",
-    "Data Sharing"
+    "Data Sharing",
+    "Data Management"
    ],
    "first_seen": "2026-06-10"
   },
@@ -706,7 +771,8 @@
    "keywords": [
     "IT Management",
     "Data Acquisition",
-    "Data Sharing"
+    "Data Sharing",
+    "Data Management"
    ],
    "first_seen": "2026-06-10"
   },
@@ -1072,7 +1138,8 @@
    "source": "LinkedIn",
    "keywords": [
     "Data Acquisition",
-    "Data Sharing"
+    "Data Sharing",
+    "Data Management"
    ],
    "first_seen": "2026-06-10"
   },
