@@ -9,6 +9,9 @@ Riyadh time) with jobs in **Riyadh, Saudi Arabia**:
 - **Othman** — `https://salem0557.github.io/cloude/othman/` — keywords: IT
   Support, Help Desk, Technical Support, IT Specialist, System
   Administrator, IT Fresh Graduate
+- **Omer** — `https://salem0557.github.io/cloude/omer/` — keywords: Supply
+  Chain, Procurement, Logistics, Operations Manager, Mechanical Engineer,
+  Maintenance Engineer, Facilities Management
 
 Sources searched: **LinkedIn, Akhtaboot, GulfTalent, Tanqeeb** (and Jooble
 once an API key is configured).
