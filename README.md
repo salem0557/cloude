@@ -82,7 +82,21 @@ How it finds posts — important honesty notes:
   (`site:linkedin.com/posts "<keyword>" Riyadh`). Search engines index
   only a fraction of LinkedIn posts and sometimes block automation, so
   expect a trickle, not a flood. Blocked engines are skipped and retried
-  automatically next run.
+  automatically next run. Verified through live workflow runs: Bing
+  responds but loosely relaxes rare queries (irrelevant results are
+  filtered out, often leaving nothing); DuckDuckGo's HTML endpoint
+  currently serves GitHub's servers an empty page.
+- **Free auto-collection that actually works — Google (recommended,
+  5-minute setup)**: Google's official Programmable Search API gives 100
+  free searches/day, which exactly covers the 2-hour schedule.
+  1. Go to <https://programmablesearchengine.google.com> → **Add** → choose
+     **Search the entire web**, create it, and copy the **Search engine ID**.
+  2. Go to <https://developers.google.com/custom-search/v1/introduction>,
+     click **Get a key**, pick/create a project, and copy the **API key**.
+  3. In this repository: **Settings → Secrets and variables → Actions →
+     New repository secret**, add `GOOGLE_CSE_ID` (step 1) and
+     `GOOGLE_CSE_KEY` (step 2).
+  The next scheduled run picks them up automatically.
 - **Paid auto-collection (optional upgrade)**: add an Apify token
   (apify.com, roughly $5 free credit monthly, then pay-as-you-go) as a
   repository secret named `APIFY_TOKEN` and the workflow automatically

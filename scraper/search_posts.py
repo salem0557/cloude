@@ -27,10 +27,9 @@ import json
 import os
 import re
 import sys
-import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from pathlib import Path
-from urllib.parse import parse_qs, quote_plus, unquote, urlsplit, urlunsplit
+from urllib.parse import parse_qs, unquote, urlsplit, urlunsplit
 
 import requests
 from bs4 import BeautifulSoup
@@ -144,22 +143,28 @@ def unwrap_bing(url):
 
 
 def search_bing(query):
+    """Bing HTML results. The RSS endpoint silently relaxes exact queries
+    into single-word searches, so it is useless here; HTML honours them."""
     resp = fetch(
         "https://www.bing.com/search",
-        params={"q": query, "format": "rss", "count": MAX_PER_QUERY},
+        params={"q": query, "count": MAX_PER_QUERY},
     )
+    soup = BeautifulSoup(resp.text, "html.parser")
     results = []
-    try:
-        root = ET.fromstring(resp.content)
-    except ET.ParseError as exc:
-        print(f"  Bing: RSS parse error: {exc}", file=sys.stderr)
-        return results
-    for item in root.iter("item"):
+    for block in soup.select("li.b_algo"):
+        link = block.select_one("h2 a[href]")
+        if not link:
+            continue
+        caption = block.select_one(".b_caption p") or block.select_one("p")
         results.append({
-            "title": strip_result_title(item.findtext("title")),
-            "snippet": clean_text(item.findtext("description")),
-            "url": unwrap_bing(clean_text(item.findtext("link"))),
+            "title": strip_result_title(link.get_text()),
+            "snippet": clean_text(caption.get_text()) if caption else "",
+            "url": unwrap_bing(link["href"]),
         })
+    if not results:
+        title = soup.title.get_text() if soup.title else "(no title)"
+        print(f"  Bing: 0 results; {len(resp.text)} bytes, "
+              f"title={clean_text(title)!r}", file=sys.stderr)
     return results
 
 
@@ -173,6 +178,8 @@ def unwrap_ddg(url):
 
 
 def search_duckduckgo(query):
+    """html.duckduckgo.com serves bots an empty shell; lite.* sometimes
+    still works, so try both."""
     resp = fetch("https://html.duckduckgo.com/html/", params={"q": query})
     soup = BeautifulSoup(resp.text, "html.parser")
     results = []
@@ -186,6 +193,18 @@ def search_duckduckgo(query):
             "snippet": clean_text(snippet.get_text()) if snippet else "",
             "url": unwrap_ddg(link["href"]),
         })
+    if results:
+        return results
+
+    resp = fetch("https://lite.duckduckgo.com/lite/", params={"q": query})
+    soup = BeautifulSoup(resp.text, "html.parser")
+    snippets = [clean_text(td.get_text()) for td in soup.select("td.result-snippet")]
+    for n, link in enumerate(soup.select("a[rel=nofollow][href]")):
+        results.append({
+            "title": strip_result_title(link.get_text()),
+            "snippet": snippets[n] if n < len(snippets) else "",
+            "url": unwrap_ddg(link["href"]),
+        })
     if not results:
         title = soup.title.get_text() if soup.title else "(no title)"
         print(f"  DuckDuckGo: 0 results; {len(resp.text)} bytes, "
@@ -193,10 +212,33 @@ def search_duckduckgo(query):
     return results
 
 
+def search_google_cse(query):
+    """Google Programmable Search API: official, free 100 queries/day.
+    Needs GOOGLE_CSE_KEY + GOOGLE_CSE_ID secrets (see README)."""
+    resp = requests.get(
+        "https://www.googleapis.com/customsearch/v1",
+        params={
+            "key": os.environ["GOOGLE_CSE_KEY"],
+            "cx": os.environ["GOOGLE_CSE_ID"],
+            "q": query,
+            "num": 10,
+        },
+        timeout=REQUEST_TIMEOUT,
+    )
+    resp.raise_for_status()
+    return [{
+        "title": strip_result_title(item.get("title", "")),
+        "snippet": clean_text(item.get("snippet", "")),
+        "url": item.get("link", ""),
+    } for item in resp.json().get("items", [])]
+
+
 ENGINES = {
     "Bing": search_bing,
     "DuckDuckGo": search_duckduckgo,
 }
+if os.environ.get("GOOGLE_CSE_KEY") and os.environ.get("GOOGLE_CSE_ID"):
+    ENGINES["Google"] = search_google_cse
 
 
 def free_search(keyword):
@@ -207,6 +249,10 @@ def free_search(keyword):
             continue  # redundant query
         query = f'site:linkedin.com/posts "{keyword}" {location}'
         for engine, searcher in list(ENGINES.items()):
+            # Google's free tier is 100 queries/day; 7 keywords x 12 runs
+            # fits only with a single location variant.
+            if engine == "Google" and location != LOCATION_TERMS[0]:
+                continue
             try:
                 results = searcher(query)
             except requests.RequestException as exc:
