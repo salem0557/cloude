@@ -186,8 +186,10 @@ def search_duckduckgo(query):
             "snippet": clean_text(snippet.get_text()) if snippet else "",
             "url": unwrap_ddg(link["href"]),
         })
-    if not results and "detected an anomaly" in resp.text.lower():
-        print("  DuckDuckGo: blocked (anomaly page)", file=sys.stderr)
+    if not results:
+        title = soup.title.get_text() if soup.title else "(no title)"
+        print(f"  DuckDuckGo: 0 results; {len(resp.text)} bytes, "
+              f"title={clean_text(title)!r}", file=sys.stderr)
     return results
 
 
@@ -212,14 +214,18 @@ def free_search(keyword):
                 ENGINES.pop(engine, None)
                 continue
             kept = 0
+            dropped = {"not_post": 0, "keyword": 0, "location": 0}
             for r in results:
                 url = canonical_post_url(r["url"])
                 text = f'{r["title"]} {r["snippet"]}'
                 if not url:
+                    dropped["not_post"] += 1
                     continue
                 if not matches_keyword(text, keyword):
+                    dropped["keyword"] += 1
                     continue
                 if not LOCATION_RE.search(text + " " + url):
+                    dropped["location"] += 1
                     continue
                 kept += 1
                 posts.append({
@@ -233,6 +239,10 @@ def free_search(keyword):
                 })
             print(f'{engine:<11} "{keyword}" + {location}: '
                   f"{len(results)} results, {kept} LinkedIn posts kept")
+            if results and not kept:
+                print(f"  dropped: {dropped}; samples:", file=sys.stderr)
+                for r in results[:3]:
+                    print(f"    {r['url']} | {r['title'][:80]}", file=sys.stderr)
     return posts
 
 
