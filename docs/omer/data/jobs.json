@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-11T10:09:40+00:00",
+ "updated": "2026-06-11T10:17:16+00:00",
  "jobs": [
   {
    "title": "Custom Clearance Broker",
@@ -196,6 +196,18 @@
    "first_seen": "2026-06-11"
   },
   {
+   "title": "Engineering Manager - Utilities",
+   "company": "Almarai - المراعي",
+   "location": "Hail Region",
+   "url": "https://sa.linkedin.com/jobs/view/engineering-manager-utilities-at-almarai-%D8%A7%D9%84%D9%85%D8%B1%D8%A7%D8%B9%D9%8A-4426333255",
+   "posted": "2026-06-09",
+   "source": "LinkedIn",
+   "keywords": [
+    "Facilities Management"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
    "title": "Oracle Supply Chain Planning Consultant",
    "company": "Cognizant",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -215,7 +227,8 @@
    "posted": "2026-06-08",
    "source": "LinkedIn",
    "keywords": [
-    "Supply Chain"
+    "Supply Chain",
+    "Procurement"
    ],
    "first_seen": "2026-06-11"
   },
@@ -313,6 +326,18 @@
    "source": "LinkedIn",
    "keywords": [
     "Mechanical Engineer"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Quality Assurance Manager",
+   "company": "Almarai - المراعي",
+   "location": "Hail Region",
+   "url": "https://sa.linkedin.com/jobs/view/quality-assurance-manager-at-almarai-%D8%A7%D9%84%D9%85%D8%B1%D8%A7%D8%B9%D9%8A-4425610372",
+   "posted": "2026-06-08",
+   "source": "LinkedIn",
+   "keywords": [
+    "Supply Chain"
    ],
    "first_seen": "2026-06-11"
   },
@@ -421,7 +446,8 @@
    "posted": "2026-06-04",
    "source": "LinkedIn",
    "keywords": [
-    "Logistics"
+    "Logistics",
+    "Supply Chain"
    ],
    "first_seen": "2026-06-11"
   },
@@ -704,6 +730,18 @@
    "first_seen": "2026-06-11"
   },
   {
+   "title": "Procurement Manager - KSA National",
+   "company": "Mace",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/procurement-manager-ksa-national-at-mace-4387667979",
+   "posted": "2026-05-23",
+   "source": "LinkedIn",
+   "keywords": [
+    "Procurement"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
    "title": "ISG Staff Manufacturing Engineer",
    "company": "Lenovo",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -884,6 +922,18 @@
    "first_seen": "2026-06-11"
   },
   {
+   "title": "Procurement Specialist",
+   "company": "OHC | العمر القابضة",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/procurement-specialist-at-ohc-%D8%A7%D9%84%D8%B9%D9%85%D8%B1-%D8%A7%D9%84%D9%82%D8%A7%D8%A8%D8%B6%D8%A9-4410015582",
+   "posted": "2026-05-04",
+   "source": "LinkedIn",
+   "keywords": [
+    "Procurement"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
    "title": "Procurement Lead",
    "company": "Jasara Program Management Company",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -920,6 +970,18 @@
    "first_seen": "2026-06-11"
   },
   {
+   "title": "Tendering & Procurement Senior Specialist",
+   "company": "Star",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/tendering-procurement-senior-specialist-at-star-4413423439",
+   "posted": "2026-04-17",
+   "source": "LinkedIn",
+   "keywords": [
+    "Procurement"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
    "title": "Senior Manager - Operational Readiness",
    "company": "Qiddiya | القدية",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -928,6 +990,30 @@
    "source": "LinkedIn",
    "keywords": [
     "Operations Manager"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Procurement Specialist",
+   "company": "CSI Global",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/procurement-specialist-at-csi-global-4393060474",
+   "posted": "2026-04-01",
+   "source": "LinkedIn",
+   "keywords": [
+    "Procurement"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Procurement Manager",
+   "company": "ESL FACEIT Group - EFG",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/procurement-manager-at-esl-faceit-group-efg-4388561158",
+   "posted": "2026-03-20",
+   "source": "LinkedIn",
+   "keywords": [
+    "Procurement"
    ],
    "first_seen": "2026-06-11"
   },
@@ -988,6 +1074,18 @@
    "source": "LinkedIn",
    "keywords": [
     "Logistics"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "General Technician",
+   "company": "Matar Holding company",
+   "location": "Ḩā’il, Ha'il, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/general-technician-at-matar-holding-company-4369018912",
+   "posted": "2026-02-04",
+   "source": "LinkedIn",
+   "keywords": [
+    "Facilities Management"
    ],
    "first_seen": "2026-06-11"
   },

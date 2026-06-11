@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-11T10:09:13+00:00",
+ "updated": "2026-06-11T10:16:54+00:00",
  "jobs": [
   {
    "title": "IT Specialist",
@@ -63,7 +63,8 @@
    "keywords": [
     "IT Support",
     "Technical Support",
-    "IT Specialist"
+    "IT Specialist",
+    "System Administrator"
    ],
    "first_seen": "2026-06-11"
   },
@@ -265,6 +266,18 @@
    "first_seen": "2026-06-11"
   },
   {
+   "title": "Cloudera Administrator",
+   "company": "MAGNOOS Information Systems",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/cloudera-administrator-at-magnoos-information-systems-4387510751",
+   "posted": "2026-05-27",
+   "source": "LinkedIn",
+   "keywords": [
+    "System Administrator"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
    "title": "Proactive Monitoring Specialist",
    "company": "Müller's Solutions",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -340,6 +353,42 @@
    "first_seen": "2026-06-11"
   },
   {
+   "title": "Senior Team Manager (Automation Engineering)",
+   "company": "Almarai - المراعي",
+   "location": "Hail Region",
+   "url": "https://sa.linkedin.com/jobs/view/senior-team-manager-automation-engineering-at-almarai-%D8%A7%D9%84%D9%85%D8%B1%D8%A7%D8%B9%D9%8A-4417314543",
+   "posted": "2026-05-20",
+   "source": "LinkedIn",
+   "keywords": [
+    "Technical Support"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Information Technology Solutions Specialist",
+   "company": "Red Steel Technologies",
+   "location": "Riyadh Region",
+   "url": "https://sa.linkedin.com/jobs/view/information-technology-solutions-specialist-at-red-steel-technologies-4416156784",
+   "posted": "2026-05-20",
+   "source": "LinkedIn",
+   "keywords": [
+    "System Administrator"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Technical & Quality Engineer Equipment and Support",
+   "company": "Applus+ Asia Middle East and Africa",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/technical-quality-engineer-equipment-and-support-at-applus%2B-asia-middle-east-and-africa-4416687859",
+   "posted": "2026-05-19",
+   "source": "LinkedIn",
+   "keywords": [
+    "Technical Support"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
    "title": "IT Consultant",
    "company": "Massar Business Solutions",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -397,7 +446,8 @@
    "posted": "2026-05-08",
    "source": "LinkedIn",
    "keywords": [
-    "Help Desk"
+    "Help Desk",
+    "System Administrator"
    ],
    "first_seen": "2026-06-11"
   },
@@ -410,6 +460,18 @@
    "source": "LinkedIn",
    "keywords": [
     "IT Specialist"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "IT Administrator (Location: KSA)",
+   "company": "James L Williams Middle East",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/it-administrator-location-ksa-at-james-l-williams-middle-east-4412111762",
+   "posted": "2026-05-07",
+   "source": "LinkedIn",
+   "keywords": [
+    "System Administrator"
    ],
    "first_seen": "2026-06-11"
   },
@@ -575,6 +637,18 @@
    "first_seen": "2026-06-11"
   },
   {
+   "title": "Infrastructure Engineer",
+   "company": "InterSystems",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/infrastructure-engineer-at-intersystems-4364313318",
+   "posted": "2026-02-20",
+   "source": "LinkedIn",
+   "keywords": [
+    "System Administrator"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
    "title": "Senior IT Support Specialist",
    "company": "Mirai, a Scopely company",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -583,6 +657,18 @@
    "source": "LinkedIn",
    "keywords": [
     "IT Specialist"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Systems Administrator - Azure Cloud (OCONUS) (SECRET Clearance Required)",
+   "company": "Seneca Holdings",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/systems-administrator-azure-cloud-oconus-secret-clearance-required-at-seneca-holdings-4355969903",
+   "posted": "2026-01-28",
+   "source": "LinkedIn",
+   "keywords": [
+    "System Administrator"
    ],
    "first_seen": "2026-06-11"
   },

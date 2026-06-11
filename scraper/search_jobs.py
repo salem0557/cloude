@@ -37,7 +37,7 @@ PROFILES = {
             "Data Acquisition",
             "Data Sharing",
         ],
-        "cities": ["Riyadh"],
+        "cities": ["Riyadh", "Hail"],
         "data_file": DOCS / "data" / "jobs.json",
     },
     "Othman": {
@@ -49,7 +49,7 @@ PROFILES = {
             "System Administrator",
             "IT Fresh Graduate",
         ],
-        "cities": ["Riyadh"],
+        "cities": ["Riyadh", "Hail"],
         "data_file": DOCS / "othman" / "data" / "jobs.json",
     },
     "Omer": {

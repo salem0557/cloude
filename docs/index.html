@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Riyadh IT Jobs</title>
+<title>Riyadh &amp; Hail IT Jobs</title>
 <style>
   :root {
     --bg: #f4f6fa;
@@ -119,7 +119,7 @@
 <body>
 
 <header>
-  <h1>Riyadh IT Jobs</h1>
+  <h1>Riyadh &amp; Hail IT Jobs</h1>
   <p>IT Management &middot; IT Project Manager &middot; Digital Transformation &middot; Data Management &middot; Program Manager &middot; Data Acquisition &middot; Data Sharing</p>
   <div class="stats">
     <span><b id="stat-total">–</b>total jobs</span>
@@ -137,6 +137,11 @@
     <option>Jooble</option>
     <option>GulfTalent</option>
     <option>Tanqeeb</option>
+  </select>
+  <select id="city">
+    <option value="">All cities</option>
+    <option value="riyadh">Riyadh</option>
+    <option value="hail">Hail</option>
   </select>
   <select id="when">
     <option value="">Any date found</option>
@@ -168,7 +173,7 @@
 <div id="list"></div>
 <p id="empty">No jobs match these filters yet. The search runs automatically every morning.</p>
 
-<footer>Updates twice daily via GitHub Actions. <a href="othman/">Othman's board</a> &middot; <a href="omer/">Omer's board</a></footer>
+<footer>Updates every 5 hours via GitHub Actions. <a href="othman/">Othman's board</a> &middot; <a href="omer/">Omer's board</a></footer>
 
 <script>
 const KEYWORDS = ["IT Management", "IT Project Manager", "Digital Transformation", "Data Management", "Program Manager", "Data Acquisition", "Data Sharing"];
@@ -192,15 +197,18 @@ function updateManualLinks() {
   const kw = activeKeyword || "IT Project Manager";
   const q = encodeURIComponent(kw);
   const slug = kw.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-  document.getElementById("lnk-google").href = `https://www.google.com/search?q=${q}%20jobs%20in%20Riyadh&ibp=htl;jobs`;
-  document.getElementById("lnk-bayt").href = `https://www.bayt.com/en/saudi-arabia/jobs/${slug}-jobs-in-riyadh/`;
-  document.getElementById("lnk-ng").href = `https://www.naukrigulf.com/${slug}-jobs-in-riyadh`;
+  const citySel = document.getElementById("city");
+  const cityName = citySel && citySel.value === "hail" ? "Hail" : "Riyadh";
+  const citySlug = cityName.toLowerCase();
+  document.getElementById("lnk-google").href = `https://www.google.com/search?q=${q}%20jobs%20in%20${cityName}&ibp=htl;jobs`;
+  document.getElementById("lnk-bayt").href = `https://www.bayt.com/en/saudi-arabia/jobs/${slug}-jobs-in-${citySlug}/`;
+  document.getElementById("lnk-ng").href = `https://www.naukrigulf.com/${slug}-jobs-in-${citySlug}`;
   document.getElementById("lnk-gt").href = `https://www.gulftalent.com/saudi-arabia/jobs/title/${slug}`;
-  document.getElementById("lnk-tq").href = `https://www.tanqeeb.com/en/saudi-arabia/${slug}-jobs-in-riyadh`;
-  document.getElementById("lnk-mh").href = `https://www.mihnati.com/search/${slug}-jobs-in-riyadh`;
-  document.getElementById("lnk-jb").href = `https://sa.jooble.org/jobs-${slug}/Riyadh`;
-  document.getElementById("lnk-indeed").href = `https://sa.indeed.com/jobs?q=${q}&l=Riyadh`;
-  document.getElementById("lnk-li").href = `https://www.linkedin.com/jobs/search/?keywords=${q}&location=Riyadh%2C%20Saudi%20Arabia`;
+  document.getElementById("lnk-tq").href = `https://www.tanqeeb.com/en/saudi-arabia/${slug}-jobs-in-${citySlug}`;
+  document.getElementById("lnk-mh").href = `https://www.mihnati.com/search/${slug}-jobs-in-${citySlug}`;
+  document.getElementById("lnk-jb").href = `https://sa.jooble.org/jobs-${slug}/${cityName}`;
+  document.getElementById("lnk-indeed").href = `https://sa.indeed.com/jobs?q=${q}&l=${cityName}`;
+  document.getElementById("lnk-li").href = `https://www.linkedin.com/jobs/search/?keywords=${q}&location=${cityName}%2C%20Saudi%20Arabia`;
 }
 
 function daysAgo(dateStr) {
@@ -217,9 +225,12 @@ function render() {
   const list = document.getElementById("list");
   list.innerHTML = "";
 
+  const city = document.getElementById("city").value;
+  const normCity = s => (s || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z]/g, "");
   const visible = jobs.filter(j =>
     (!q || (j.title + " " + j.company).toLowerCase().includes(q)) &&
     (!src || j.source === src) &&
+    (!city || normCity(j.location).includes(city)) &&
     (!activeKeyword || j.keywords.includes(activeKeyword)) &&
     (!when || daysAgo(j.first_seen) <= Number(when))
   );
@@ -256,6 +267,7 @@ function render() {
 
 ["search", "source", "when", "sort"].forEach(id =>
   document.getElementById(id).addEventListener("input", render));
+document.getElementById("city").addEventListener("input", () => { updateManualLinks(); render(); });
 
 updateManualLinks();
 
