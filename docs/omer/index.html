@@ -226,10 +226,11 @@ function render() {
   list.innerHTML = "";
 
   const city = document.getElementById("city").value;
+  const normCity = s => (s || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z]/g, "");
   const visible = jobs.filter(j =>
     (!q || (j.title + " " + j.company).toLowerCase().includes(q)) &&
     (!src || j.source === src) &&
-    (!city || (j.location || "").toLowerCase().includes(city)) &&
+    (!city || normCity(j.location).includes(city)) &&
     (!activeKeyword || j.keywords.includes(activeKeyword)) &&
     (!when || daysAgo(j.first_seen) <= Number(when))
   );
