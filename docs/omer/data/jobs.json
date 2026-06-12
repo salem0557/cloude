@@ -1,6 +1,30 @@
 {
- "updated": "2026-06-12T09:17:44+00:00",
+ "updated": "2026-06-12T13:45:56+00:00",
  "jobs": [
+  {
+   "title": "Soft Services Manager",
+   "company": "Macro",
+   "location": "Riyadh Region",
+   "url": "https://sa.linkedin.com/jobs/view/soft-services-manager-at-macro-4427944836",
+   "posted": "2026-06-12",
+   "source": "LinkedIn",
+   "keywords": [
+    "Facilities Management"
+   ],
+   "first_seen": "2026-06-12"
+  },
+  {
+   "title": "Document Controller",
+   "company": "Mace",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/document-controller-at-mace-4386929229",
+   "posted": "2026-06-12",
+   "source": "LinkedIn",
+   "keywords": [
+    "Facilities Management"
+   ],
+   "first_seen": "2026-06-12"
+  },
   {
    "title": "Material Planning Section Manager, Supply Chain | alfanar Electric",
    "company": "alfanar",
@@ -10,6 +34,18 @@
    "source": "LinkedIn",
    "keywords": [
     "Supply Chain"
+   ],
+   "first_seen": "2026-06-12"
+  },
+  {
+   "title": "Shipping Cordinator ( Analyst I ) • Logistics",
+   "company": "Beckman Coulter Diagnostics",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/shipping-cordinator-analyst-i-%E2%80%A2-logistics-at-beckman-coulter-diagnostics-4422296874",
+   "posted": "2026-06-09",
+   "source": "LinkedIn",
+   "keywords": [
+    "Logistics"
    ],
    "first_seen": "2026-06-12"
   },
@@ -952,7 +988,8 @@
    "posted": "2026-05-25",
    "source": "LinkedIn",
    "keywords": [
-    "Procurement"
+    "Procurement",
+    "Supply Chain"
    ],
    "first_seen": "2026-06-11"
   },

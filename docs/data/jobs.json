@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-12T09:16:53+00:00",
+ "updated": "2026-06-12T13:45:01+00:00",
  "jobs": [
   {
    "title": "Auth and Fraud Consultant",
@@ -22,6 +22,18 @@
    "source": "LinkedIn",
    "keywords": [
     "IT Management"
+   ],
+   "first_seen": "2026-06-12"
+  },
+  {
+   "title": "IT/OT Integration Engineer",
+   "company": "Arabian Digital Solutions",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/it-ot-integration-engineer-at-arabian-digital-solutions-4426236428",
+   "posted": "2026-06-11",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Acquisition"
    ],
    "first_seen": "2026-06-12"
   },

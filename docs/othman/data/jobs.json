@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-12T09:17:15+00:00",
+ "updated": "2026-06-12T13:45:25+00:00",
  "jobs": [
   {
    "title": "Technical Support Specialist",
@@ -12,6 +12,18 @@
     "IT Support",
     "Help Desk",
     "Technical Support"
+   ],
+   "first_seen": "2026-06-12"
+  },
+  {
+   "title": "Technical Support Specialist",
+   "company": "Gartner",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/technical-support-specialist-at-gartner-4426948014",
+   "posted": "2026-06-12",
+   "source": "LinkedIn",
+   "keywords": [
+    "Help Desk"
    ],
    "first_seen": "2026-06-12"
   },
@@ -48,6 +60,18 @@
    "source": "LinkedIn",
    "keywords": [
     "Technical Support"
+   ],
+   "first_seen": "2026-06-12"
+  },
+  {
+   "title": "Senior SAS & Credit Risk Systems Administrator",
+   "company": "Müller's Solutions",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/senior-sas-credit-risk-systems-administrator-at-m%C3%BCller-s-solutions-4373217281",
+   "posted": "2026-02-14",
+   "source": "LinkedIn",
+   "keywords": [
+    "System Administrator"
    ],
    "first_seen": "2026-06-12"
   },
@@ -776,7 +800,8 @@
    "posted": "2026-03-26",
    "source": "LinkedIn",
    "keywords": [
-    "IT Specialist"
+    "IT Specialist",
+    "System Administrator"
    ],
    "first_seen": "2026-06-11"
   },
