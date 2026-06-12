@@ -1,0 +1,89 @@
+/* عام */
+"app.name" = "أقساطي";
+"tab.home" = "الرئيسية";
+"tab.settings" = "الإعدادات";
+
+/* الشاشة الفارغة */
+"empty.title" = "لا توجد التزامات بعد";
+"empty.message" = "أضف أول قسط أو اشتراك لتعرف بالضبط كم تدفع كل شهر.";
+"empty.addButton" = "إضافة التزام";
+
+/* الرئيسية */
+"section.active" = "الالتزامات النشطة";
+"section.completed" = "المكتملة";
+"summary.monthlyTotal" = "إجمالي التزاماتك الشهرية";
+"summary.remainingDebt" = "المتبقي من الأقساط";
+"row.overdue" = "متأخرة!";
+"row.progress" = "%1$d من %2$d دفعة";
+"action.markPaid" = "تم الدفع";
+"action.delete" = "حذف";
+
+/* إضافة التزام */
+"add.title" = "إضافة التزام";
+"add.namePlaceholder" = "الاسم — مثال: جوال آيفون";
+"add.kind" = "النوع";
+"add.provider" = "الجهة";
+"add.providerPlaceholder" = "تابي، تمارا، البنك…";
+"add.payment" = "الدفعة";
+"add.amount" = "قيمة الدفعة";
+"add.frequency" = "التكرار";
+"add.nextDue" = "تاريخ الدفعة القادمة";
+"add.installmentDetails" = "تفاصيل القسط";
+"add.totalPayments" = "عدد الدفعات الكلي";
+"add.paidPayments" = "دفعات مدفوعة سابقًا";
+"add.reminder" = "ذكّرني قبل الاستحقاق";
+"add.save" = "حفظ";
+"add.cancel" = "إلغاء";
+
+/* الأنواع */
+"kind.installment" = "قسط";
+"kind.subscription" = "اشتراك";
+
+/* التكرار */
+"frequency.weekly" = "أسبوعي";
+"frequency.monthly" = "شهري";
+"frequency.quarterly" = "كل 3 أشهر";
+"frequency.yearly" = "سنوي";
+
+/* الجهات المقترحة */
+"provider.tabby" = "تابي";
+"provider.tamara" = "تمارا";
+"provider.bank" = "البنك";
+"provider.store" = "متجر";
+
+/* التفاصيل */
+"detail.amountPerPayment" = "قيمة الدفعة";
+"detail.nextDue" = "الدفعة القادمة";
+"detail.progress" = "التقدم";
+"detail.remaining" = "المبلغ المتبقي";
+"detail.markPaid" = "تسجيل دفعة";
+"detail.completed" = "مكتمل 🎉";
+"detail.deleteConfirm" = "هل تريد حذف هذا الالتزام نهائيًا؟";
+
+/* الاشتراك المدفوع */
+"paywall.title" = "أقساطي بريميوم";
+"paywall.subtitle" = "تابع كل التزاماتك المالية بلا حدود";
+"paywall.limitMessage" = "وصلت إلى الحد المجاني (5 التزامات). اشترك لإضافة المزيد.";
+"paywall.feature1" = "التزامات غير محدودة";
+"paywall.feature2" = "تذكيرات لكل الدفعات";
+"paywall.feature3" = "دعم تطوير التطبيق";
+"paywall.unavailable" = "خطط الاشتراك ستظهر هنا بعد ربط التطبيق بـ App Store Connect.";
+"paywall.restore" = "استعادة المشتريات";
+
+/* الإعدادات */
+"settings.title" = "الإعدادات";
+"settings.premium" = "بريميوم";
+"settings.premiumActive" = "اشتراك بريميوم مفعّل";
+"settings.upgrade" = "الترقية إلى بريميوم";
+"settings.reminders" = "التذكيرات";
+"settings.leadDays" = "التذكير قبل الاستحقاق بـ";
+"leadDays.1" = "يوم واحد";
+"leadDays.2" = "يومين";
+"leadDays.3" = "3 أيام";
+"leadDays.7" = "أسبوع";
+"settings.about" = "حول التطبيق";
+"settings.version" = "الإصدار";
+
+/* الإشعارات */
+"notification.title" = "تذكير بدفعة قادمة 💸";
+"notification.body" = "%1$@ — دفعة بقيمة %2$@ مستحقة قريبًا";

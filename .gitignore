@@ -1,2 +1,7 @@
 __pycache__/
 *.pyc
+
+# Xcode (generated — run `xcodegen generate` in AqsatiApp/)
+AqsatiApp/Aqsati.xcodeproj/
+AqsatiApp/**/xcuserdata/
+.DS_Store

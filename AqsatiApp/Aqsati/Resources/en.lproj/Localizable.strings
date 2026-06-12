@@ -1,0 +1,89 @@
+/* General */
+"app.name" = "Aqsati";
+"tab.home" = "Home";
+"tab.settings" = "Settings";
+
+/* Empty state */
+"empty.title" = "No commitments yet";
+"empty.message" = "Add your first installment or subscription to see exactly how much you pay every month.";
+"empty.addButton" = "Add commitment";
+
+/* Dashboard */
+"section.active" = "Active commitments";
+"section.completed" = "Completed";
+"summary.monthlyTotal" = "Your total monthly obligations";
+"summary.remainingDebt" = "Remaining installments";
+"row.overdue" = "Overdue!";
+"row.progress" = "%1$d of %2$d payments";
+"action.markPaid" = "Paid";
+"action.delete" = "Delete";
+
+/* Add commitment */
+"add.title" = "Add commitment";
+"add.namePlaceholder" = "Name — e.g. iPhone";
+"add.kind" = "Type";
+"add.provider" = "Provider";
+"add.providerPlaceholder" = "Tabby, Tamara, bank…";
+"add.payment" = "Payment";
+"add.amount" = "Payment amount";
+"add.frequency" = "Repeats";
+"add.nextDue" = "Next payment date";
+"add.installmentDetails" = "Installment details";
+"add.totalPayments" = "Total number of payments";
+"add.paidPayments" = "Already paid";
+"add.reminder" = "Remind me before due date";
+"add.save" = "Save";
+"add.cancel" = "Cancel";
+
+/* Kinds */
+"kind.installment" = "Installment";
+"kind.subscription" = "Subscription";
+
+/* Frequency */
+"frequency.weekly" = "Weekly";
+"frequency.monthly" = "Monthly";
+"frequency.quarterly" = "Every 3 months";
+"frequency.yearly" = "Yearly";
+
+/* Provider suggestions */
+"provider.tabby" = "Tabby";
+"provider.tamara" = "Tamara";
+"provider.bank" = "Bank";
+"provider.store" = "Store";
+
+/* Detail */
+"detail.amountPerPayment" = "Payment amount";
+"detail.nextDue" = "Next payment";
+"detail.progress" = "Progress";
+"detail.remaining" = "Remaining amount";
+"detail.markPaid" = "Register payment";
+"detail.completed" = "Completed 🎉";
+"detail.deleteConfirm" = "Delete this commitment permanently?";
+
+/* Paywall */
+"paywall.title" = "Aqsati Premium";
+"paywall.subtitle" = "Track all your financial commitments without limits";
+"paywall.limitMessage" = "You reached the free limit (5 commitments). Subscribe to add more.";
+"paywall.feature1" = "Unlimited commitments";
+"paywall.feature2" = "Reminders for every payment";
+"paywall.feature3" = "Support development";
+"paywall.unavailable" = "Subscription plans will appear here once the app is connected to App Store Connect.";
+"paywall.restore" = "Restore purchases";
+
+/* Settings */
+"settings.title" = "Settings";
+"settings.premium" = "Premium";
+"settings.premiumActive" = "Premium is active";
+"settings.upgrade" = "Upgrade to Premium";
+"settings.reminders" = "Reminders";
+"settings.leadDays" = "Remind me before due date by";
+"leadDays.1" = "1 day";
+"leadDays.2" = "2 days";
+"leadDays.3" = "3 days";
+"leadDays.7" = "1 week";
+"settings.about" = "About";
+"settings.version" = "Version";
+
+/* Notifications */
+"notification.title" = "Upcoming payment reminder 💸";
+"notification.body" = "%1$@ — a payment of %2$@ is due soon";
