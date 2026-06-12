@@ -1,6 +1,30 @@
 {
- "updated": "2026-06-11T10:17:16+00:00",
+ "updated": "2026-06-12T05:11:26+00:00",
  "jobs": [
+  {
+   "title": "Stock Controller",
+   "company": "Louis Vuitton",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/stock-controller-at-louis-vuitton-4418675104",
+   "posted": "2026-05-24",
+   "source": "LinkedIn",
+   "keywords": [
+    "Supply Chain"
+   ],
+   "first_seen": "2026-06-12"
+  },
+  {
+   "title": "Continuous Airworthiness engineer",
+   "company": "Airbus Helicopters",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/continuous-airworthiness-engineer-at-airbus-helicopters-4398635851",
+   "posted": "2026-05-22",
+   "source": "LinkedIn",
+   "keywords": [
+    "Mechanical Engineer"
+   ],
+   "first_seen": "2026-06-12"
+  },
   {
    "title": "Custom Clearance Broker",
    "company": "DHL Global Forwarding",
@@ -50,6 +74,78 @@
    "first_seen": "2026-06-11"
   },
   {
+   "title": "Logistics Officer (Construction/PMC)",
+   "company": "AtkinsRéalis",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/logistics-officer-construction-pmc-at-atkinsr%C3%A9alis-4427524453",
+   "posted": "2026-06-11",
+   "source": "LinkedIn",
+   "keywords": [
+    "Logistics"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Function Admin",
+   "company": "PepsiCo",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/function-admin-at-pepsico-4407823599",
+   "posted": "2026-06-11",
+   "source": "LinkedIn",
+   "keywords": [
+    "Logistics"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Logistics Manager",
+   "company": "AtkinsRéalis",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/logistics-manager-at-atkinsr%C3%A9alis-4427523513",
+   "posted": "2026-06-11",
+   "source": "LinkedIn",
+   "keywords": [
+    "Logistics"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Automation Engineer, Reliability Maintenance Engineering",
+   "company": "Amazon",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/automation-engineer-reliability-maintenance-engineering-at-amazon-4361109784",
+   "posted": "2026-06-11",
+   "source": "LinkedIn",
+   "keywords": [
+    "Maintenance Engineer"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Supply Associate",
+   "company": "Mnzil | منزل",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/supply-associate-at-mnzil-%D9%85%D9%86%D8%B2%D9%84-4424802420",
+   "posted": "2026-06-11",
+   "source": "LinkedIn",
+   "keywords": [
+    "Supply Chain"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Senior Cargo Operations Agent - Riyadh",
+   "company": "Qatar Airways",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/senior-cargo-operations-agent-riyadh-at-qatar-airways-4426629260",
+   "posted": "2026-06-11",
+   "source": "LinkedIn",
+   "keywords": [
+    "Logistics"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
    "title": "مدير عمليات",
    "company": "PW (PhysicsWallah)",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -58,7 +154,8 @@
    "source": "LinkedIn",
    "keywords": [
     "Operations Manager",
-    "Logistics"
+    "Logistics",
+    "Supply Chain"
    ],
    "first_seen": "2026-06-11"
   },
@@ -75,6 +172,18 @@
    "first_seen": "2026-06-11"
   },
   {
+   "title": "Field Service Engineer",
+   "company": "GE HealthCare",
+   "location": "Riyadh Region",
+   "url": "https://sa.linkedin.com/jobs/view/field-service-engineer-at-ge-healthcare-4417309237",
+   "posted": "2026-06-10",
+   "source": "LinkedIn",
+   "keywords": [
+    "Maintenance Engineer"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
    "title": "Supply Chain Specialist",
    "company": "Ninja 🥷🏽 نينجا",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -82,7 +191,8 @@
    "posted": "2026-06-09",
    "source": "LinkedIn",
    "keywords": [
-    "Procurement"
+    "Procurement",
+    "Supply Chain"
    ],
    "first_seen": "2026-06-11"
   },
@@ -94,7 +204,8 @@
    "posted": "2026-06-09",
    "source": "LinkedIn",
    "keywords": [
-    "Logistics"
+    "Logistics",
+    "Supply Chain"
    ],
    "first_seen": "2026-06-11"
   },
@@ -203,7 +314,9 @@
    "posted": "2026-06-09",
    "source": "LinkedIn",
    "keywords": [
-    "Facilities Management"
+    "Facilities Management",
+    "Maintenance Engineer",
+    "Mechanical Engineer"
    ],
    "first_seen": "2026-06-11"
   },
@@ -240,7 +353,8 @@
    "posted": "2026-06-08",
    "source": "LinkedIn",
    "keywords": [
-    "Logistics"
+    "Logistics",
+    "Supply Chain"
    ],
    "first_seen": "2026-06-11"
   },
@@ -342,6 +456,18 @@
    "first_seen": "2026-06-11"
   },
   {
+   "title": "Administrative Operations",
+   "company": "JD.COM",
+   "location": "Riyadh Region",
+   "url": "https://sa.linkedin.com/jobs/view/administrative-operations-at-jd-com-4425191165",
+   "posted": "2026-06-07",
+   "source": "LinkedIn",
+   "keywords": [
+    "Supply Chain"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
    "title": "Operations Excellence Senior Manager",
    "company": "HungerStation | هنقرستيشن",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -410,7 +536,8 @@
    "posted": "2026-06-05",
    "source": "LinkedIn",
    "keywords": [
-    "Logistics"
+    "Logistics",
+    "Supply Chain"
    ],
    "first_seen": "2026-06-11"
   },
@@ -423,6 +550,30 @@
    "source": "LinkedIn",
    "keywords": [
     "Mechanical Engineer"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Data Center Facility Engineer (Mechanical), AWS",
+   "company": "Amazon Web Services (AWS)",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/data-center-facility-engineer-mechanical-aws-at-amazon-web-services-aws-4424108242",
+   "posted": "2026-06-05",
+   "source": "LinkedIn",
+   "keywords": [
+    "Maintenance Engineer"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Data Center Facility Engineer (Controls), AWS",
+   "company": "Amazon Web Services (AWS)",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/data-center-facility-engineer-controls-aws-at-amazon-web-services-aws-4424103554",
+   "posted": "2026-06-05",
+   "source": "LinkedIn",
+   "keywords": [
+    "Maintenance Engineer"
    ],
    "first_seen": "2026-06-11"
   },
@@ -525,6 +676,43 @@
    "first_seen": "2026-06-11"
   },
   {
+   "title": "Field Service Engineer",
+   "company": "Leica Biosystems",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/field-service-engineer-at-leica-biosystems-4410612141",
+   "posted": "2026-06-03",
+   "source": "LinkedIn",
+   "keywords": [
+    "Maintenance Engineer"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Structural Service Engineer",
+   "company": "NOV",
+   "location": "Baqa Ash Sharqiyah, Ha'il, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/structural-service-engineer-at-nov-4419683963",
+   "posted": "2026-06-03",
+   "source": "LinkedIn",
+   "keywords": [
+    "Maintenance Engineer",
+    "Mechanical Engineer"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Facilities Management Senior Consultant",
+   "company": "Egis",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/facilities-management-senior-consultant-at-egis-4418918061",
+   "posted": "2026-06-03",
+   "source": "LinkedIn",
+   "keywords": [
+    "Facilities Management"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
    "title": "Facilities Manager - Maintenance & Engineering, MENA RME",
    "company": "Amazon",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -532,7 +720,8 @@
    "posted": "2026-06-02",
    "source": "LinkedIn",
    "keywords": [
-    "Maintenance Engineer"
+    "Maintenance Engineer",
+    "Facilities Management"
    ],
    "first_seen": "2026-06-11"
   },
@@ -545,6 +734,31 @@
    "source": "LinkedIn",
    "keywords": [
     "Mechanical Engineer"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Helix Business Operations Manager - Saudi Arabia based in Riyadh",
+   "company": "BMC Helix",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/helix-business-operations-manager-saudi-arabia-based-in-riyadh-at-bmc-helix-4419618499",
+   "posted": "2026-06-02",
+   "source": "LinkedIn",
+   "keywords": [
+    "Operations Manager"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Facility Engineer",
+   "company": "HanmiGlobal MENA",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/facility-engineer-at-hanmiglobal-mena-4422355785",
+   "posted": "2026-06-02",
+   "source": "LinkedIn",
+   "keywords": [
+    "Maintenance Engineer",
+    "Facilities Management"
    ],
    "first_seen": "2026-06-11"
   },
@@ -573,6 +787,18 @@
    "first_seen": "2026-06-11"
   },
   {
+   "title": "Senior Bus Operations Manager",
+   "company": "AtkinsRéalis",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/senior-bus-operations-manager-at-atkinsr%C3%A9alis-4418945488",
+   "posted": "2026-06-01",
+   "source": "LinkedIn",
+   "keywords": [
+    "Operations Manager"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
    "title": "Senior Manager Supply Chain",
    "company": "Riyadh Air | طيران الرياض",
    "location": "Riyadh Region",
@@ -593,7 +819,32 @@
    "posted": "2026-05-31",
    "source": "LinkedIn",
    "keywords": [
-    "Procurement"
+    "Procurement",
+    "Supply Chain"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Coordinator - Logistics",
+   "company": "Apparel Group",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/coordinator-logistics-at-apparel-group-4375676935",
+   "posted": "2026-05-30",
+   "source": "LinkedIn",
+   "keywords": [
+    "Supply Chain"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Project Engineering Manager",
+   "company": "Larsen & Toubro",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/project-engineering-manager-at-larsen-toubro-4402985418",
+   "posted": "2026-05-30",
+   "source": "LinkedIn",
+   "keywords": [
+    "Mechanical Engineer"
    ],
    "first_seen": "2026-06-11"
   },
@@ -718,6 +969,18 @@
    "first_seen": "2026-06-11"
   },
   {
+   "title": "Operations and Maintenance Manager RAMS Expertise",
+   "company": "AtkinsRéalis",
+   "location": "Riyadh Region",
+   "url": "https://sa.linkedin.com/jobs/view/operations-and-maintenance-manager-rams-expertise-at-atkinsr%C3%A9alis-4417094195",
+   "posted": "2026-05-25",
+   "source": "LinkedIn",
+   "keywords": [
+    "Operations Manager"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
    "title": "Inbound Placement Analyst, Inbound Supply Chain",
    "company": "Amazon",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -761,7 +1024,8 @@
    "posted": "2026-05-21",
    "source": "LinkedIn",
    "keywords": [
-    "Supply Chain"
+    "Supply Chain",
+    "Procurement"
    ],
    "first_seen": "2026-06-11"
   },
@@ -790,6 +1054,18 @@
    "first_seen": "2026-06-11"
   },
   {
+   "title": "Inverto | Business & Operations Senior Manager",
+   "company": "Boston Consulting Group (BCG)",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/inverto-business-operations-senior-manager-at-boston-consulting-group-bcg-4407344980",
+   "posted": "2026-05-21",
+   "source": "LinkedIn",
+   "keywords": [
+    "Operations Manager"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
    "title": "Quality & Operation Manager",
    "company": "FlyAkeed",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -798,6 +1074,18 @@
    "source": "LinkedIn",
    "keywords": [
     "Operations Manager"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Senior Team Manager (Automation Engineering)",
+   "company": "Almarai - المراعي",
+   "location": "Hail Region",
+   "url": "https://sa.linkedin.com/jobs/view/senior-team-manager-automation-engineering-at-almarai-%D8%A7%D9%84%D9%85%D8%B1%D8%A7%D8%B9%D9%8A-4417314543",
+   "posted": "2026-05-20",
+   "source": "LinkedIn",
+   "keywords": [
+    "Maintenance Engineer"
    ],
    "first_seen": "2026-06-11"
   },
@@ -857,7 +1145,8 @@
    "posted": "2026-05-18",
    "source": "LinkedIn",
    "keywords": [
-    "Logistics"
+    "Logistics",
+    "Supply Chain"
    ],
    "first_seen": "2026-06-11"
   },
@@ -894,6 +1183,18 @@
    "source": "LinkedIn",
    "keywords": [
     "Mechanical Engineer"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Mgr-Engineering",
+   "company": "Four Points by Sheraton",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/mgr-engineering-at-four-points-by-sheraton-4413573734",
+   "posted": "2026-05-12",
+   "source": "LinkedIn",
+   "keywords": [
+    "Facilities Management"
    ],
    "first_seen": "2026-06-11"
   },
@@ -970,6 +1271,18 @@
    "first_seen": "2026-06-11"
   },
   {
+   "title": "Senior Manager - Operational Readiness",
+   "company": "Qiddiya | القدية",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/senior-manager-operational-readiness-at-qiddiya-%D8%A7%D9%84%D9%82%D8%AF%D9%8A%D8%A9-4403355860",
+   "posted": "2026-04-20",
+   "source": "LinkedIn",
+   "keywords": [
+    "Operations Manager"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
    "title": "Tendering & Procurement Senior Specialist",
    "company": "Star",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -1002,6 +1315,18 @@
    "source": "LinkedIn",
    "keywords": [
     "Procurement"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Operational Excellence Manager",
+   "company": "Hill International, Inc.",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/operational-excellence-manager-at-hill-international-inc-4391693400",
+   "posted": "2026-03-29",
+   "source": "LinkedIn",
+   "keywords": [
+    "Operations Manager"
    ],
    "first_seen": "2026-06-11"
   },
@@ -1054,6 +1379,18 @@
    "first_seen": "2026-06-11"
   },
   {
+   "title": "Manager - Operational Readiness",
+   "company": "Qiddiya | القدية",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/manager-operational-readiness-at-qiddiya-%D8%A7%D9%84%D9%82%D8%AF%D9%8A%D8%A9-4381820431",
+   "posted": "2026-03-09",
+   "source": "LinkedIn",
+   "keywords": [
+    "Operations Manager"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
    "title": "Operations Manager",
    "company": "Infinite pl",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -1085,7 +1422,8 @@
    "posted": "2026-02-04",
    "source": "LinkedIn",
    "keywords": [
-    "Facilities Management"
+    "Facilities Management",
+    "Maintenance Engineer"
    ],
    "first_seen": "2026-06-11"
   },
@@ -1126,6 +1464,18 @@
    "first_seen": "2026-06-11"
   },
   {
+   "title": "E-Commerce Operations Coordinator",
+   "company": "webook.com",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/e-commerce-operations-coordinator-at-webook-com-4361531472",
+   "posted": "2026-01-13",
+   "source": "LinkedIn",
+   "keywords": [
+    "Supply Chain"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
    "title": "Operations Manager - Warehouse",
    "company": "Ninja 🥷🏽 نينجا",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -1134,6 +1484,19 @@
    "source": "LinkedIn",
    "keywords": [
     "Operations Manager"
+   ],
+   "first_seen": "2026-06-11"
+  },
+  {
+   "title": "Facility Engineer",
+   "company": "Awtad",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/facility-engineer-at-awtad-4346555180",
+   "posted": "2025-12-29",
+   "source": "LinkedIn",
+   "keywords": [
+    "Maintenance Engineer",
+    "Facilities Management"
    ],
    "first_seen": "2026-06-11"
   },
@@ -1157,7 +1520,8 @@
    "posted": "2025-12-18",
    "source": "LinkedIn",
    "keywords": [
-    "Logistics"
+    "Logistics",
+    "Supply Chain"
    ],
    "first_seen": "2026-06-11"
   },
