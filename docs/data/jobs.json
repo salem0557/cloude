@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-12T05:10:35+00:00",
+ "updated": "2026-06-12T09:16:53+00:00",
  "jobs": [
   {
    "title": "Auth and Fraud Consultant",
@@ -34,6 +34,18 @@
    "source": "LinkedIn",
    "keywords": [
     "IT Management"
+   ],
+   "first_seen": "2026-06-12"
+  },
+  {
+   "title": "Senior Program Manager",
+   "company": "Takamol Holding",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/senior-program-manager-at-takamol-holding-4407895173",
+   "posted": "2026-04-28",
+   "source": "LinkedIn",
+   "keywords": [
+    "Program Manager"
    ],
    "first_seen": "2026-06-12"
   },

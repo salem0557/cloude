@@ -1,6 +1,20 @@
 {
- "updated": "2026-06-12T05:10:57+00:00",
+ "updated": "2026-06-12T09:17:15+00:00",
  "jobs": [
+  {
+   "title": "Technical Support Specialist",
+   "company": "Gartner",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/technical-support-specialist-at-gartner-4426934100",
+   "posted": "2026-06-12",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Support",
+    "Help Desk",
+    "Technical Support"
+   ],
+   "first_seen": "2026-06-12"
+  },
   {
    "title": "IT Infrastructure and Systems Design Expert",
    "company": "Zakat, Tax and Customs Authority",
@@ -10,6 +24,18 @@
    "source": "LinkedIn",
    "keywords": [
     "IT Support"
+   ],
+   "first_seen": "2026-06-12"
+  },
+  {
+   "title": "Technical, Lead",
+   "company": "Master Works",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/technical-lead-at-master-works-4401080014",
+   "posted": "2026-04-13",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Specialist"
    ],
    "first_seen": "2026-06-12"
   },
