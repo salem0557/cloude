@@ -1,6 +1,30 @@
 {
- "updated": "2026-06-11T22:20:18+00:00",
+ "updated": "2026-06-12T05:11:26+00:00",
  "jobs": [
+  {
+   "title": "Stock Controller",
+   "company": "Louis Vuitton",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/stock-controller-at-louis-vuitton-4418675104",
+   "posted": "2026-05-24",
+   "source": "LinkedIn",
+   "keywords": [
+    "Supply Chain"
+   ],
+   "first_seen": "2026-06-12"
+  },
+  {
+   "title": "Continuous Airworthiness engineer",
+   "company": "Airbus Helicopters",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/continuous-airworthiness-engineer-at-airbus-helicopters-4398635851",
+   "posted": "2026-05-22",
+   "source": "LinkedIn",
+   "keywords": [
+    "Mechanical Engineer"
+   ],
+   "first_seen": "2026-06-12"
+  },
   {
    "title": "Custom Clearance Broker",
    "company": "DHL Global Forwarding",
@@ -291,7 +315,8 @@
    "source": "LinkedIn",
    "keywords": [
     "Facilities Management",
-    "Maintenance Engineer"
+    "Maintenance Engineer",
+    "Mechanical Engineer"
    ],
    "first_seen": "2026-06-11"
   },
@@ -670,7 +695,8 @@
    "posted": "2026-06-03",
    "source": "LinkedIn",
    "keywords": [
-    "Maintenance Engineer"
+    "Maintenance Engineer",
+    "Mechanical Engineer"
    ],
    "first_seen": "2026-06-11"
   },
@@ -998,7 +1024,8 @@
    "posted": "2026-05-21",
    "source": "LinkedIn",
    "keywords": [
-    "Supply Chain"
+    "Supply Chain",
+    "Procurement"
    ],
    "first_seen": "2026-06-11"
   },
