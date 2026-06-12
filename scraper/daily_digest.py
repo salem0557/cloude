@@ -16,6 +16,7 @@ so the script is safe to run anywhere.
 import html
 import json
 import os
+import re
 import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -34,6 +35,17 @@ KEYWORDS = [
     "Digital Transformation",
     "HR",
     "Saudi",
+]
+
+# Job-board keywords (Salem's profile) for the other-sites search links.
+JOB_KEYWORDS = [
+    "IT Management",
+    "IT Project Manager",
+    "Digital Transformation",
+    "Data Management",
+    "Program Manager",
+    "Data Acquisition",
+    "Data Sharing",
 ]
 
 MAX_ITEMS = 5
@@ -58,6 +70,26 @@ def live_search_url(keyword):
     q = quote(f'"{keyword}" Riyadh')
     return ("https://www.linkedin.com/search/results/content/"
             f"?keywords={q}&sortBy=%22date_posted%22&datePosted=%22past-24h%22")
+
+
+def job_site_links(keyword):
+    """One-click Riyadh searches on the sites that block automation —
+    same links as the job board's manual-search row."""
+    q = quote(keyword)
+    slug = re.sub(r"[^a-z0-9]+", "-", keyword.lower()).strip("-")
+    sites = [
+        ("Google Jobs",
+         f"https://www.google.com/search?q={q}%20jobs%20in%20Riyadh&ibp=htl;jobs"),
+        ("Indeed", f"https://sa.indeed.com/jobs?q={q}&l=Riyadh"),
+        ("Bayt", f"https://www.bayt.com/en/saudi-arabia/jobs/{slug}-jobs-in-riyadh/"),
+        ("Naukrigulf", f"https://www.naukrigulf.com/{slug}-jobs-in-riyadh"),
+        ("GulfTalent", f"https://www.gulftalent.com/saudi-arabia/jobs/title/{slug}"),
+        ("Tanqeeb", f"https://www.tanqeeb.com/en/saudi-arabia/{slug}-jobs-in-riyadh"),
+        ("Mihnati", f"https://www.mihnati.com/search/{slug}-jobs-in-riyadh"),
+        ("Jooble", f"https://sa.jooble.org/jobs-{slug}/Riyadh"),
+    ]
+    return " | ".join(f'<a href="{url}">{html.escape(name)}</a>'
+                      for name, url in sites)
 
 
 def main():
@@ -98,6 +130,11 @@ def main():
         if len(jobs) > MAX_ITEMS:
             lines.append(f"  …and {len(jobs) - MAX_ITEMS} more: "
                          f"<a href=\"{SITE}\">job board</a>")
+
+    job_kw = JOB_KEYWORDS[day % len(JOB_KEYWORDS)]
+    lines += ["", f"\U0001F310 <b>Search the other job sites — "
+              f"“{esc(job_kw)}” in Riyadh:</b>",
+              job_site_links(job_kw)]
 
     if now.weekday() == 6:  # Sunday
         lines += ["", "\U0001F4CA <b>Weekly market report day!</b> Your "
