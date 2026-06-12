@@ -233,12 +233,46 @@ def search_google_cse(query):
     } for item in resp.json().get("items", [])]
 
 
+def search_tavily(query):
+    """Tavily search API: free 1,000 queries/month, no card required.
+    Needs a TAVILY_API_KEY secret (see README)."""
+    # Tavily has its own domain filter, so drop the site: operator.
+    plain = query.replace("site:linkedin.com/posts ", "")
+    resp = requests.post(
+        "https://api.tavily.com/search",
+        headers={"Authorization": f"Bearer {os.environ['TAVILY_API_KEY']}"},
+        json={
+            "query": f"{plain} LinkedIn post",
+            "max_results": 10,
+            "include_domains": ["linkedin.com"],
+        },
+        timeout=REQUEST_TIMEOUT,
+    )
+    resp.raise_for_status()
+    return [{
+        "title": strip_result_title(item.get("title", "")),
+        "snippet": clean_text(item.get("content", ""))[:400],
+        "url": item.get("url", ""),
+    } for item in resp.json().get("results", [])]
+
+
 ENGINES = {
     "Bing": search_bing,
     "DuckDuckGo": search_duckduckgo,
 }
 if os.environ.get("GOOGLE_CSE_KEY") and os.environ.get("GOOGLE_CSE_ID"):
     ENGINES["Google"] = search_google_cse
+# Tavily's free tier is 1,000 queries/month: 7 keywords x 3 runs/day fits.
+# Scheduled runs only join in at 00:41, 08:41 and 16:41 UTC; manual runs
+# (workflow_dispatch) always include it so tests give instant feedback.
+if os.environ.get("TAVILY_API_KEY") and (
+    os.environ.get("GITHUB_EVENT_NAME") == "workflow_dispatch"
+    or datetime.now(timezone.utc).hour in (0, 8, 16)
+):
+    ENGINES["Tavily"] = search_tavily
+
+# Engines with per-query quotas search only the primary location variant.
+QUOTA_LIMITED = ("Google", "Tavily")
 
 
 def free_search(keyword):
@@ -249,9 +283,7 @@ def free_search(keyword):
             continue  # redundant query
         query = f'site:linkedin.com/posts "{keyword}" {location}'
         for engine, searcher in list(ENGINES.items()):
-            # Google's free tier is 100 queries/day; 7 keywords x 12 runs
-            # fits only with a single location variant.
-            if engine == "Google" and location != LOCATION_TERMS[0]:
+            if engine in QUOTA_LIMITED and location != LOCATION_TERMS[0]:
                 continue
             try:
                 results = searcher(query)
@@ -392,19 +424,30 @@ def main():
         found.append(post)
 
     new_count = 0
+    changed = False
     for post in found:
         seen = by_url.get(post["url"])
         if seen:
             for kw in post["keywords"]:
                 if kw not in seen["keywords"]:
                     seen["keywords"].append(kw)
+                    changed = True
             for field in ("posted", "author_location", "snippet", "author"):
                 if post.get(field) and not seen.get(field):
                     seen[field] = post[field]
+                    changed = True
         else:
             post["first_seen"] = today
             by_url[post["url"]] = post
             new_count += 1
+            changed = True
+
+    # Timestamp-only rewrites would create a commit every run (and merge
+    # conflicts for any open PR), so leave the file alone when nothing
+    # actually changed.
+    if not changed and DATA_FILE.exists():
+        print(f"\n{len(by_url)} posts stored (nothing new this run; file untouched)")
+        return
 
     posts = sorted(
         by_url.values(),

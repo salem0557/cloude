@@ -32,6 +32,7 @@ jobs:
         env:
           GOOGLE_CSE_KEY: ${{ secrets.GOOGLE_CSE_KEY }}
           GOOGLE_CSE_ID: ${{ secrets.GOOGLE_CSE_ID }}
+          TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
           APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
           APIFY_ACTOR: ${{ vars.APIFY_ACTOR }}
           APIFY_INPUT: ${{ vars.APIFY_INPUT }}
