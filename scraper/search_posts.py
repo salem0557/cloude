@@ -27,7 +27,7 @@ import json
 import os
 import re
 import sys
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from urllib.parse import parse_qs, unquote, urlsplit, urlunsplit
 
@@ -54,6 +54,15 @@ LOCATION_RE = re.compile(r"riyadh|saudi|الرياض|السعودية", re.IGNOR
 
 MAX_PER_QUERY = 30
 REQUEST_TIMEOUT = 25
+
+# Posts older than this are dropped at collection time, and stored posts
+# are pruned once they age past it.
+MAX_POST_AGE_DAYS = 7
+
+
+def age_cutoff():
+    return (datetime.now(timezone.utc)
+            - timedelta(days=MAX_POST_AGE_DAYS)).strftime("%Y-%m-%d")
 
 BROWSER_HEADERS = {
     "User-Agent": (
@@ -121,6 +130,22 @@ def author_from_url(url):
 
 def strip_result_title(title):
     return clean_text(re.sub(r"\s*[|\-–]\s*LinkedIn\s*$", "", title or ""))
+
+
+def post_date_from_url(url):
+    """LinkedIn post ids encode the creation time: the top 41 bits of the
+    activity/ugcPost/share id are a Unix millisecond timestamp."""
+    match = re.search(r"(?:activity|ugcPost|share)[-:](\d{15,20})", url)
+    if not match:
+        return None
+    try:
+        ms = int(match.group(1)) >> 22
+        dt = datetime.fromtimestamp(ms / 1000, tz=timezone.utc)
+    except (ValueError, OSError, OverflowError):
+        return None
+    if dt.year < 2015 or dt > datetime.now(timezone.utc) + timedelta(days=1):
+        return None
+    return dt.strftime("%Y-%m-%d")
 
 
 # --------------------------------------------------------------------------
@@ -278,6 +303,7 @@ QUOTA_LIMITED = ("Google", "Tavily")
 def free_search(keyword):
     """Posts for one keyword from all search engines that are not blocked."""
     posts = []
+    cutoff = age_cutoff()
     for location in LOCATION_TERMS:
         if keyword == "Saudi" and location == "Saudi Arabia":
             continue  # redundant query
@@ -292,7 +318,7 @@ def free_search(keyword):
                 ENGINES.pop(engine, None)
                 continue
             kept = 0
-            dropped = {"not_post": 0, "keyword": 0, "location": 0}
+            dropped = {"not_post": 0, "keyword": 0, "location": 0, "old": 0}
             for r in results:
                 url = canonical_post_url(r["url"])
                 text = f'{r["title"]} {r["snippet"]}'
@@ -305,6 +331,11 @@ def free_search(keyword):
                 if not LOCATION_RE.search(text + " " + url):
                     dropped["location"] += 1
                     continue
+                posted = post_date_from_url(url)
+                # Only verifiably recent posts are worth replying to.
+                if not posted or posted < cutoff:
+                    dropped["old"] += 1
+                    continue
                 kept += 1
                 posts.append({
                     "title": r["title"] or url,
@@ -312,7 +343,7 @@ def free_search(keyword):
                     "author": author_from_url(url),
                     "author_location": None,
                     "url": url,
-                    "posted": None,
+                    "posted": posted,
                     "source": engine,
                 })
             print(f'{engine:<11} "{keyword}" + {location}: '
@@ -379,8 +410,9 @@ def search_apify():
         # Author location is the real filter; drop clearly non-Saudi authors.
         if location and not LOCATION_RE.search(location):
             continue
-        posted = str(pick(item, "postedAt", "date", "publishedAt",
-                          "postedDate", "time") or "")[:10] or None
+        posted = (str(pick(item, "postedAt", "date", "publishedAt",
+                           "postedDate", "time") or "")[:10]
+                  or post_date_from_url(url))
         posts.append({
             "title": text[:140] or url,
             "snippet": text[:400],
@@ -441,6 +473,17 @@ def main():
             by_url[post["url"]] = post
             new_count += 1
             changed = True
+
+    # Prune stored posts once they age past the window (or have no
+    # verifiable date) — the page should only offer posts still worth
+    # replying to.
+    cutoff = age_cutoff()
+    fresh = {u: p for u, p in by_url.items() if (p.get("posted") or "") >= cutoff}
+    if len(fresh) != len(by_url):
+        print(f"pruned {len(by_url) - len(fresh)} posts older than "
+              f"{MAX_POST_AGE_DAYS} days (or undatable)")
+        by_url = fresh
+        changed = True
 
     # Timestamp-only rewrites would create a commit every run (and merge
     # conflicts for any open PR), so leave the file alone when nothing

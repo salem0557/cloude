@@ -65,9 +65,13 @@ Data Sharing, Digital Transformation, HR, Saudi* from people in
 Riyadh / Saudi Arabia, so you can reply to them and grow your visibility.
 Refreshed **every 2 hours** by the *LinkedIn posts search* workflow
 ([`.github/workflows/posts.yml`](.github/workflows/posts.yml)); collected
-posts are stored forever in
+posts are stored in
 [`docs/posts/data/posts.json`](docs/posts/data/posts.json) and new ones
-are flagged **NEW**. Each post has a **Mark replied** button (saved in
+are flagged **NEW**. Only posts from the **last 7 days** are kept: the
+posting date is decoded from the timestamp LinkedIn embeds in every post
+id, anything older (or undatable) is dropped, and stored posts are
+pruned as they age past a week — so the page only offers posts still
+worth replying to. Each post has a **Mark replied** button (saved in
 your browser) so you can track what you already answered.
 
 How it finds posts — important honesty notes:
