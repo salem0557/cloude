@@ -86,17 +86,26 @@ How it finds posts — important honesty notes:
   responds but loosely relaxes rare queries (irrelevant results are
   filtered out, often leaving nothing); DuckDuckGo's HTML endpoint
   currently serves GitHub's servers an empty page.
-- **Free auto-collection that actually works — Google (recommended,
-  5-minute setup)**: Google's official Programmable Search API gives 100
-  free searches/day, which exactly covers the 2-hour schedule.
-  1. Go to <https://programmablesearchengine.google.com> → **Add** → choose
-     **Search the entire web**, create it, and copy the **Search engine ID**.
-  2. Go to <https://developers.google.com/custom-search/v1/introduction>,
-     click **Get a key**, pick/create a project, and copy the **API key**.
-  3. In this repository: **Settings → Secrets and variables → Actions →
-     New repository secret**, add `GOOGLE_CSE_ID` (step 1) and
-     `GOOGLE_CSE_KEY` (step 2).
-  The next scheduled run picks them up automatically.
+- **Free auto-collection that actually works — Tavily (recommended, no
+  card)**: [Tavily](https://app.tavily.com) gives 1,000 free searches a
+  month with no payment card. Sign up, copy the API key (`tvly-...`) from
+  the dashboard, and add it as a repository secret named
+  `TAVILY_API_KEY`. To fit the free quota, scheduled runs use Tavily
+  three times a day (00:41, 08:41, 16:41 UTC); manual runs always include
+  it.
+- **Google option**: Google's official Programmable Search API gives 100
+  free searches/day. **Caveat discovered in live testing: on newly created
+  Google accounts this API returns 403 ("This project does not have the
+  access to Custom Search JSON API") until a billing account (payment
+  card) is linked** — and individual billing onboarding is not available
+  in every country. If your Google account can link billing:
+  1. Go to <https://programmablesearchengine.google.com> → **Add** → create
+     an engine, and copy the **Search engine ID**.
+  2. In Google Cloud Console, enable the **Custom Search API** and create
+     an **API key** — both in the same project (watch out: accounts often
+     have several projects with identical names).
+  3. Add repository secrets `GOOGLE_CSE_ID` and `GOOGLE_CSE_KEY`.
+  The next scheduled run picks either source up automatically.
 - **Paid auto-collection (optional upgrade)**: add an Apify token
   (apify.com, roughly $5 free credit monthly, then pay-as-you-go) as a
   repository secret named `APIFY_TOKEN` and the workflow automatically
