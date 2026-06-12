@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-12T17:44:43+00:00",
+ "updated": "2026-06-12T22:03:30+00:00",
  "jobs": [
   {
    "title": "Soft Services Manager",
@@ -22,6 +22,18 @@
    "source": "LinkedIn",
    "keywords": [
     "Facilities Management"
+   ],
+   "first_seen": "2026-06-12"
+  },
+  {
+   "title": "Mechanical Engineer",
+   "company": "MBA Office",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/mechanical-engineer-at-mba-office-4425307989",
+   "posted": "2026-06-12",
+   "source": "LinkedIn",
+   "keywords": [
+    "Mechanical Engineer"
    ],
    "first_seen": "2026-06-12"
   },
@@ -50,6 +62,30 @@
    "first_seen": "2026-06-12"
   },
   {
+   "title": "Team Leader I",
+   "company": "Almarai - المراعي",
+   "location": "Ha'il, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/team-leader-i-at-almarai-%D8%A7%D9%84%D9%85%D8%B1%D8%A7%D8%B9%D9%8A-4422267290",
+   "posted": "2026-06-09",
+   "source": "LinkedIn",
+   "keywords": [
+    "Operations Manager"
+   ],
+   "first_seen": "2026-06-12"
+  },
+  {
+   "title": "Team Leader I (Poultry)",
+   "company": "Almarai - المراعي",
+   "location": "Ha'il, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/team-leader-i-poultry-at-almarai-%D8%A7%D9%84%D9%85%D8%B1%D8%A7%D8%B9%D9%8A-4422259380",
+   "posted": "2026-06-09",
+   "source": "LinkedIn",
+   "keywords": [
+    "Operations Manager"
+   ],
+   "first_seen": "2026-06-12"
+  },
+  {
    "title": "Stock Controller",
    "company": "Louis Vuitton",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -70,6 +106,18 @@
    "source": "LinkedIn",
    "keywords": [
     "Mechanical Engineer"
+   ],
+   "first_seen": "2026-06-12"
+  },
+  {
+   "title": "Procurement Manager",
+   "company": "Parsons Corporation",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/procurement-manager-at-parsons-corporation-4409918197",
+   "posted": "2026-05-07",
+   "source": "LinkedIn",
+   "keywords": [
+    "Procurement"
    ],
    "first_seen": "2026-06-12"
   },
@@ -1134,7 +1182,9 @@
    "posted": "2026-05-20",
    "source": "LinkedIn",
    "keywords": [
-    "Maintenance Engineer"
+    "Maintenance Engineer",
+    "Operations Manager",
+    "Facilities Management"
    ],
    "first_seen": "2026-06-11"
   },
