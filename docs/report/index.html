@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Riyadh IT Job Market — Weekly Report</title>
+<style>
+  :root {
+    --bg: #f4f6fa;
+    --card: #ffffff;
+    --text: #1a2233;
+    --muted: #66718a;
+    --accent: #1f6feb;
+    --border: #e2e7f0;
+    --ok: #16a34a;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding-bottom: 60px;
+  }
+  header {
+    background: linear-gradient(135deg, #142850, #1f6feb);
+    color: #fff;
+    padding: 28px 20px 22px;
+    text-align: center;
+  }
+  header h1 { font-size: 1.6rem; }
+  header p { opacity: .85; margin-top: 6px; font-size: .9rem; }
+  .wrap { max-width: 760px; margin: 18px auto 0; padding: 0 16px; display: grid; gap: 14px; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px;
+  }
+  .card h2 { font-size: 1.05rem; margin-bottom: 8px; }
+  .hint { color: var(--muted); font-size: .85rem; margin-bottom: 10px; }
+  .stats { display: flex; flex-wrap: wrap; gap: 20px; font-size: .95rem; }
+  .stats b { font-size: 1.3rem; display: block; color: var(--accent); }
+  textarea {
+    width: 100%;
+    min-height: 320px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px;
+    font: inherit;
+    font-size: .92rem;
+    resize: vertical;
+    background: var(--bg);
+  }
+  .btn {
+    display: inline-block;
+    border: 0;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-size: .95rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    margin: 10px 8px 0 0;
+  }
+  .btn.copied { background: var(--ok); }
+  img.chart { width: 100%; border: 1px solid var(--border); border-radius: 8px; }
+  select { padding: 8px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: .9rem; background: var(--card); }
+  ol.steps { padding-left: 20px; color: var(--muted); font-size: .9rem; display: grid; gap: 4px; }
+  footer { text-align: center; color: var(--muted); font-size: .8rem; margin-top: 30px; }
+  footer a { color: var(--accent); text-decoration: none; }
+  #empty { text-align: center; color: var(--muted); padding: 40px; display: none; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>📊 Riyadh IT Job Market — Weekly Report</h1>
+  <p>Auto-generated every Sunday morning from the job board data. Copy, attach the chart, post on LinkedIn.</p>
+</header>
+
+<div class="wrap">
+  <div class="card" id="report-card" style="display:none">
+    <h2 id="week-title"></h2>
+    <div class="stats">
+      <span><b id="stat-total">–</b>new jobs this week</span>
+      <span><b id="stat-top">–</b>hottest area</span>
+      <span><b id="stat-gen">–</b>generated</span>
+    </div>
+  </div>
+
+  <div class="card" id="how" style="display:none">
+    <h2>Post it in 3 steps</h2>
+    <ol class="steps">
+      <li>Press <b>Copy post text</b> below, then paste into a new LinkedIn post.</li>
+      <li>Press <b>Download chart</b> and attach the image to the post.</li>
+      <li>Post in the morning (8–10am) — then reply to every comment you get.</li>
+    </ol>
+  </div>
+
+  <div class="card" id="text-card" style="display:none">
+    <h2>Ready-to-post text</h2>
+    <p class="hint">Feel free to edit — add one personal sentence at the top for extra reach.</p>
+    <textarea id="post-text" spellcheck="false"></textarea>
+    <button class="btn" id="copy">Copy post text</button>
+    <a class="btn" id="download" href="../report/chart.png" download="riyadh-it-jobs-chart.png">Download chart</a>
+  </div>
+
+  <div class="card" id="chart-card" style="display:none">
+    <h2>Chart to attach</h2>
+    <img class="chart" id="chart" src="chart.png" alt="Weekly chart">
+  </div>
+
+  <div class="card" id="history-card" style="display:none">
+    <h2>Past editions</h2>
+    <select id="history"></select>
+  </div>
+
+  <p id="empty">No report yet — it generates automatically every Sunday morning,
+  or run the “Weekly job market report” workflow from the Actions tab.</p>
+</div>
+
+<footer>
+  Generated every Sunday by GitHub Actions from <a href="../">the job board</a> data.
+  <br><a href="../">Job board</a> · <a href="../posts/">Posts to reply</a>
+</footer>
+
+<script>
+let reports = [];
+
+function show(report) {
+  document.getElementById("report-card").style.display = "";
+  document.getElementById("how").style.display = "";
+  document.getElementById("text-card").style.display = "";
+  document.getElementById("chart-card").style.display = "";
+  document.getElementById("week-title").textContent = "Week of " + report.week_label;
+  document.getElementById("stat-total").textContent = report.total;
+  document.getElementById("stat-top").textContent =
+    report.top_keywords && report.top_keywords.length ? report.top_keywords[0][0] : "–";
+  document.getElementById("stat-gen").textContent = (report.generated || "").slice(0, 10);
+  document.getElementById("post-text").value = report.post_text || "";
+}
+
+document.getElementById("copy").onclick = () => {
+  const ta = document.getElementById("post-text");
+  ta.select();
+  navigator.clipboard.writeText(ta.value).then(() => {
+    const btn = document.getElementById("copy");
+    btn.textContent = "✓ Copied!";
+    btn.classList.add("copied");
+    setTimeout(() => { btn.textContent = "Copy post text"; btn.classList.remove("copied"); }, 2500);
+  });
+};
+
+fetch("data/report.json?_=" + Date.now())
+  .then(r => r.json())
+  .then(data => {
+    reports = data.reports || [];
+    if (!reports.length) {
+      document.getElementById("empty").style.display = "block";
+      return;
+    }
+    show(reports[0]);
+    if (reports.length > 1) {
+      document.getElementById("history-card").style.display = "";
+      const sel = document.getElementById("history");
+      reports.forEach((r, i) => {
+        const o = document.createElement("option");
+        o.value = i;
+        o.textContent = "Week of " + r.week_label + " (" + r.total + " jobs)";
+        sel.appendChild(o);
+      });
+      sel.onchange = () => show(reports[Number(sel.value)]);
+    }
+  })
+  .catch(() => { document.getElementById("empty").style.display = "block"; });
+</script>
+</body>
+</html>

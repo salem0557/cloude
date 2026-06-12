@@ -131,3 +131,39 @@ How it finds posts — important honesty notes:
 Change the post keywords in the `KEYWORDS` list at the top of
 [`scraper/search_posts.py`](scraper/search_posts.py) (and the matching
 `KEYWORDS` constant in [`docs/posts/index.html`](docs/posts/index.html)).
+
+## Weekly market report — ready-to-post LinkedIn content
+
+`https://salem0557.github.io/cloude/report/` — every **Sunday at 08:07
+Riyadh time**, [`scraper/weekly_report.py`](scraper/weekly_report.py)
+turns the week's collected jobs (Salem + Othman boards) into a
+ready-to-paste LinkedIn post: total new openings, most in-demand areas,
+top hiring companies, hashtags, plus a **chart image** to attach. The
+report page has one-click *Copy post text* and *Download chart* buttons
+and keeps every past edition. Posting stays manual — copy, attach,
+post. Run it any time from **Actions → Weekly job market report**.
+
+## Daily Telegram digest — your 15-minute LinkedIn routine
+
+Every morning at **08:13 Riyadh time**,
+[`scraper/daily_digest.py`](scraper/daily_digest.py) sends a Telegram
+message with: fresh LinkedIn posts to reply to, two rotating live-search
+links (posts from the last 24h), new jobs found on the board, and a
+Sunday reminder to post the weekly report.
+
+One-time setup (~3 minutes):
+
+1. In Telegram, open **@BotFather** → send `/newbot` → pick any name and
+   username → copy the **token** it gives you (looks like
+   `1234567:ABC-xyz...`).
+2. Open a chat with your new bot and press **Start** (required, or it
+   cannot message you).
+3. Open **@userinfobot** in Telegram and press Start — it replies with
+   your numeric **id**.
+4. Add two repository secrets (Settings → Secrets and variables →
+   Actions): `TELEGRAM_BOT_TOKEN` (step 1) and `TELEGRAM_CHAT_ID`
+   (step 3).
+
+Until the secrets exist, the digest workflow just prints the message in
+its log instead of sending it. Test any time from **Actions → Daily
+Telegram digest → Run workflow**.
