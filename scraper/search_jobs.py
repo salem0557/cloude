@@ -426,9 +426,22 @@ def search_jooble(keyword, city):
         if not getattr(search_jooble, "_debugged", False):
             search_jooble._debugged = True
             sample = raw[0] if raw else {}
+            # Control probe: a query with many known results and no location,
+            # to tell "key not active yet" (control 0) from "region/location
+            # mismatch" (control > 0 but Riyadh 0).
+            try:
+                ctrl = requests.post(
+                    f"https://jooble.org/api/{api_key}",
+                    json={"keywords": "developer"},
+                    headers={"Content-Type": "application/json"},
+                    timeout=REQUEST_TIMEOUT,
+                ).json().get("totalCount")
+            except Exception as exc:
+                ctrl = f"err:{exc}"
             print(f"  Jooble debug [{keyword}/{city}]: status={resp.status_code}, "
                   f"totalCount={payload.get('totalCount')}, raw_jobs={len(raw)}, "
-                  f"top_keys={list(payload.keys())}, item_keys={list(sample.keys())}",
+                  f"top_keys={list(payload.keys())}, item_keys={list(sample.keys())}, "
+                  f"control(keywords=developer,no-location)={ctrl}",
                   file=sys.stderr)
         jobs = []
         for item in raw:
