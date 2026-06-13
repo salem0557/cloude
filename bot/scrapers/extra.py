@@ -50,7 +50,7 @@ class ExtraScraper(BaseScraper):
                 extra_headers={"Referer": "https://www.extra.com/en-sa/"},
             )
             if not resp:
-                continue
+                break  # All Extra URLs share the same domain/WAF — stop on first block
 
             soup = self._soup(resp.text)
             category = _cat_from_url(url)

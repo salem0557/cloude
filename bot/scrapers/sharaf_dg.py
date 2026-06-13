@@ -49,7 +49,7 @@ class SharafDGScraper(BaseScraper):
                 extra_headers={"Referer": "https://www.sharafdg.com/sa/en/"},
             )
             if not resp:
-                continue
+                break  # All SharafDG URLs share the same domain/WAF — stop on first block
 
             soup = self._soup(resp.text)
             category = _cat_from_url(url)

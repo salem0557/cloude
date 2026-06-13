@@ -12,7 +12,11 @@ from .. import config
 
 log = logging.getLogger(__name__)
 
-_API_BASE = "https://www.noon.com/api/v1/u/catalog/"
+# Try multiple API versions/endpoints in case one is accessible
+_API_ENDPOINTS = [
+    "https://www.noon.com/api/v2/u/catalog/search/",
+    "https://www.noon.com/api/v1/u/catalog/",
+]
 
 _CATEGORIES = [
     ("electronics",             "Electronics"),
@@ -49,16 +53,38 @@ class NoonScraper(BaseScraper):
     base_url = "https://www.noon.com"
 
     def _fetch_deals(self) -> Iterator[Deal]:
+        # Probe with the first category to check API availability before iterating all categories.
+        # Both ScraperAPI (401, domain-blocked on free tier) and direct curl_cffi (403, Cloudflare)
+        # fail from GitHub Actions IPs. Exit early to avoid wasting ~90 seconds.
+        probe = self._try_fetch_category(_CATEGORIES[0][0], _CATEGORIES[0][1])
+        if probe is None:
+            log.warning("Noon: API not reachable (blocked). Skipping all categories.")
+            return
+
         seen: set[str] = set()
-        for cat_slug, cat_label in _CATEGORIES:
-            for deal in self._fetch_category(cat_slug, cat_label):
+        for deal in probe:
+            if deal.deal_id not in seen:
+                seen.add(deal.deal_id)
+                yield deal
+
+        for cat_slug, cat_label in _CATEGORIES[1:]:
+            if len(seen) >= config.MAX_DEALS_PER_SITE:
+                break
+            for deal in self._try_fetch_category(cat_slug, cat_label) or []:
                 if deal.deal_id not in seen:
                     seen.add(deal.deal_id)
                     yield deal
-            if len(seen) >= config.MAX_DEALS_PER_SITE:
-                break
 
-    def _fetch_category(self, cat_slug: str, cat_label: str) -> Iterator[Deal]:
+    def _try_fetch_category(self, cat_slug: str, cat_label: str) -> list[Deal] | None:
+        """Returns None if the API is unreachable, empty list if reachable but no deals."""
+        for api_base in _API_ENDPOINTS:
+            result = self._fetch_category(api_base, cat_slug, cat_label)
+            if result is not None:
+                return result
+        return None
+
+    def _fetch_category(self, api_base: str, cat_slug: str, cat_label: str) -> list[Deal] | None:
+        """Returns None if the endpoint is blocked/unreachable, list (possibly empty) if reachable."""
         params = {
             "app": "consumer",
             "version": "v2",
@@ -80,13 +106,14 @@ class NoonScraper(BaseScraper):
             "Accept": "application/json, */*",
         }
 
-        # Try direct first (Noon's JSON API doesn't need a proxy), then via ScraperAPI
-        data = self._get_json(_API_BASE, params=params, extra_headers=headers, direct=True)
-        if not data:
-            data = self._get_json(_API_BASE, params=params, extra_headers=headers)
-        if not data:
-            log.warning("Noon: no data returned for category %s", cat_slug)
-            return
+        # Try direct first (Noon's JSON API doesn't need a proxy in theory), then via ScraperAPI
+        data = self._get_json(api_base, params=params, extra_headers=headers, direct=True)
+        if data is None:
+            data = self._get_json(api_base, params=params, extra_headers=headers)
+
+        if data is None:
+            log.warning("Noon: no data returned for category %s (API unreachable)", cat_slug)
+            return None  # Signal: API is blocked
 
         # Log the actual response structure to identify the right keys
         if isinstance(data, dict):
@@ -109,10 +136,12 @@ class NoonScraper(BaseScraper):
         elif isinstance(data, list):
             hits = data
 
+        deals = []
         for item in hits:
             deal = self._parse(item, cat_label)
             if deal:
-                yield deal
+                deals.append(deal)
+        return deals
 
     def _parse(self, item: dict, default_cat: str) -> Deal | None:
         try:
