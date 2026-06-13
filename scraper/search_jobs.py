@@ -414,56 +414,41 @@ def search_tanqeeb(keyword, city):
 def search_jooble(keyword, city):
     api_key = os.environ.get("JOOBLE_API_KEY")
     if api_key:
-        resp = requests.post(
-            f"https://jooble.org/api/{api_key}",
-            json={"keywords": keyword, "location": city},
-            headers={"Content-Type": "application/json"},
-            timeout=REQUEST_TIMEOUT,
-        )
-        resp.raise_for_status()
-        payload = resp.json()
-        raw = payload.get("jobs", [])
-        if not getattr(search_jooble, "_debugged", False):
-            search_jooble._debugged = True
-            sample = raw[0] if raw else {}
-            # Probe several query shapes to find which one returns Saudi
-            # jobs (the key works globally; the location filter is the issue).
-            def probe(body):
-                try:
-                    return requests.post(
-                        f"https://jooble.org/api/{api_key}",
-                        json=body, headers={"Content-Type": "application/json"},
-                        timeout=REQUEST_TIMEOUT,
-                    ).json().get("totalCount")
-                except Exception as exc:
-                    return f"err:{exc}"
-            variants = {
-                "loc=Riyadh": {"keywords": "IT", "location": "Riyadh"},
-                "loc=Riyadh, Saudi Arabia":
-                    {"keywords": "IT", "location": "Riyadh, Saudi Arabia"},
-                "loc=Saudi Arabia": {"keywords": "IT", "location": "Saudi Arabia"},
-                "loc=السعودية": {"keywords": "IT", "location": "السعودية"},
-                "kw=IT Riyadh,no-loc": {"keywords": "IT Riyadh"},
-            }
-            probes = {name: probe(body) for name, body in variants.items()}
-            print(f"  Jooble debug [{keyword}/{city}]: totalCount={payload.get('totalCount')}, "
-                  f"raw_jobs={len(raw)}; variant counts={probes}",
-                  file=sys.stderr)
-        jobs = []
-        for item in raw:
-            title = clean_text(item.get("title", ""))
-            url = item.get("link", "")
-            if not title or not url:
-                continue
-            jobs.append({
-                "title": title,
-                "company": clean_text(item.get("company", "")),
-                "location": clean_text(item.get("location", "")) or city,
-                "url": canonical_url(url),
-                "posted": (item.get("updated") or "")[:10] or None,
-                "source": "Jooble",
-            })
-        return jobs
+        # Jooble's geocoder is picky about the location string: a bare city
+        # can return nothing while "City, Saudi Arabia" matches. Try the most
+        # specific form first and fall back, using the first query that
+        # returns jobs. (The country-only query is filtered to the city.)
+        for loc in (f"{city}, Saudi Arabia", city, "Saudi Arabia"):
+            resp = requests.post(
+                f"https://jooble.org/api/{api_key}",
+                json={"keywords": keyword, "location": loc},
+                headers={"Content-Type": "application/json"},
+                timeout=REQUEST_TIMEOUT,
+            )
+            resp.raise_for_status()
+            raw = resp.json().get("jobs", [])
+            jobs = []
+            for item in raw:
+                title = clean_text(item.get("title", ""))
+                url = item.get("link", "")
+                if not title or not url:
+                    continue
+                location = clean_text(item.get("location", ""))
+                # The country-only fallback returns all of Saudi Arabia, so
+                # keep only jobs that actually name the target city.
+                if loc == "Saudi Arabia" and city.lower() not in location.lower():
+                    continue
+                jobs.append({
+                    "title": title,
+                    "company": clean_text(item.get("company", "")),
+                    "location": location or city,
+                    "url": canonical_url(url),
+                    "posted": (item.get("updated") or "")[:10] or None,
+                    "source": "Jooble",
+                })
+            if jobs:
+                return jobs
+        return []
 
     # Without an API key, try the public Saudi site.
     slug = slugify(keyword)
