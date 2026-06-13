@@ -82,24 +82,27 @@ class NoonScraper(BaseScraper):
 
         data = self._get_json(_API_BASE, params=params, extra_headers=headers)
         if not data:
-            log.debug("Noon: no data for category %s", cat_slug)
+            log.warning("Noon: no data returned for category %s", cat_slug)
             return
+
+        # Log the actual response structure to identify the right keys
+        if isinstance(data, dict):
+            log.info("  Noon API keys [%s]: %s", cat_slug, list(data.keys())[:15])
+        elif isinstance(data, list):
+            log.info("  Noon API list [%s]: %d items", cat_slug, len(data))
 
         # Noon API wraps results differently depending on version
         hits = []
         if isinstance(data, dict):
-            # Try multiple known response shapes
             hits = (
                 data.get("hits") or
                 data.get("products") or
                 data.get("items") or
                 data.get("results") or
                 (data.get("data", {}) or {}).get("hits") or
+                (data.get("data", {}) or {}).get("products") or
                 []
             )
-            if not hits:
-                # Log the top-level keys to help debug
-                log.debug("Noon API keys for %s: %s", cat_slug, list(data.keys())[:10])
         elif isinstance(data, list):
             hits = data
 
