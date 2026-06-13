@@ -132,6 +132,8 @@ class SharafDGScraper(BaseScraper):
             inner = data.get("item", data)
             yield from self._parse_jsonld(inner, default_cat)
 
+    _ld_offer_logged = False  # log first offer structure once per run
+
     def _product_from_ld(self, item: dict, default_cat: str) -> Deal | None:
         try:
             title = item.get("name", "")
@@ -143,10 +145,23 @@ class SharafDGScraper(BaseScraper):
             offers = item.get("offers", {})
             if isinstance(offers, list):
                 offers = offers[0] if offers else {}
-            sale_price = float(offers.get("price", 0))
+
+            # Handle both Offer (price) and AggregateOffer (lowPrice/highPrice)
+            sale_price = float(offers.get("price") or offers.get("lowPrice") or 0)
             if sale_price == 0:
                 return None
-            orig_price = float(offers.get("highPrice", offers.get("price", sale_price)))
+            orig_price = float(
+                offers.get("highPrice") or offers.get("price") or sale_price
+            )
+
+            if not SharafDGScraper._ld_offer_logged:
+                SharafDGScraper._ld_offer_logged = True
+                log.info(
+                    "  SharafDG JSON-LD offer fields: type=%s price=%s lowPrice=%s highPrice=%s",
+                    offers.get("@type"), offers.get("price"),
+                    offers.get("lowPrice"), offers.get("highPrice"),
+                )
+
             image = item.get("image", "")
             if isinstance(image, list):
                 image = image[0] if image else ""

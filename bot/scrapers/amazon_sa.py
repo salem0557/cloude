@@ -76,8 +76,13 @@ class AmazonSAScraper(BaseScraper):
             log.info("  Amazon.sa: %d result cards found on %s", len(cards), url[:70])
 
             if cards:
-                # Log first card HTML to diagnose price selector issues
-                log.info("  Amazon.sa first card (500 chars): %s", str(cards[0])[:500])
+                first = cards[0]
+                offscreens = first.select("span.a-offscreen")
+                samples = [el.get_text(strip=True)[:30] for el in offscreens[:4]]
+                log.info(
+                    "  Amazon.sa first card: %d a-offscreen spans → %s",
+                    len(offscreens), samples,
+                )
 
             for i, card in enumerate(cards):
                 deal = self._parse_search_card(card)
@@ -149,29 +154,30 @@ class AmazonSAScraper(BaseScraper):
             if not url or url == self.base_url:
                 return None
 
-            # Sale price: the FIRST .a-price that is NOT the strikethrough price
-            # Use descendant selector (space, not >) to match nested spans
+            # Sale price: walk all .a-offscreen spans; take first one NOT inside a strikethrough
+            # (avoids relying on CSS :not() which can behave unexpectedly across parsers)
             sale_price = 0.0
-            for sel in [
-                "span.a-price:not(.a-text-price) span.a-offscreen",
-                "span.a-price span.a-offscreen",
-                ".a-price-whole",
-            ]:
-                el = card.select_one(sel)
+            for el in card.select("span.a-offscreen"):
+                if el.find_parent(class_="a-text-price"):
+                    continue
+                p = self._parse_price(el.get_text())
+                if p > 0:
+                    sale_price = p
+                    break
+
+            # Fallback to whole-number span
+            if sale_price == 0:
+                el = card.select_one(".a-price-whole")
                 if el:
-                    p = self._parse_price(el.get_text())
-                    if p > 0:
-                        sale_price = p
-                        break
+                    sale_price = self._parse_price(el.get_text())
 
             if sale_price == 0:
                 return None
 
-            # Original / strikethrough price
+            # Original / strikethrough price — inside .a-text-price
             orig_price = 0.0
             for sel in [
                 "span.a-text-price span.a-offscreen",
-                "span.a-price.a-text-price span.a-offscreen",
                 "span[data-a-strike='true'] span.a-offscreen",
             ]:
                 el = card.select_one(sel)

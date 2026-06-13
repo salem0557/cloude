@@ -61,6 +61,11 @@ def run_once():
             if database.already_posted(deal.deal_id):
                 continue
             if not filters.passes(deal):
+                log.info(
+                    "  Filtered: %s | disc=%.1f%% orig=%.0f sale=%.0f cat=%s",
+                    deal.title[:45], deal.discount_percent,
+                    deal.original_price, deal.sale_price, deal.category,
+                )
                 continue
 
             sent = telegram_sender.send(deal)
