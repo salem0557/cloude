@@ -1,11 +1,9 @@
 """Noon.com (Saudi Arabia) electronics deals scraper.
 
-Primary: Noon's internal catalog search API (JSON, no JS rendering needed).
-Fallback: JS-rendered HTML page.
+Uses Noon's internal catalog search API which returns JSON directly.
+No JS rendering needed — the API endpoint is public.
 """
-import json
 import logging
-import re
 from typing import Iterator
 
 from .base import BaseScraper
@@ -14,27 +12,36 @@ from .. import config
 
 log = logging.getLogger(__name__)
 
-# Noon's search API — works without authentication
-_SEARCH_API = "https://www.noon.com/api/v3/u/catalog/"
+_API_BASE = "https://www.noon.com/api/v1/u/catalog/"
+
+_CATEGORIES = [
+    ("electronics",             "Electronics"),
+    ("mobiles-tablets",         "Phones"),
+    ("computers-accessories",   "Computers & Laptops"),
+    ("televisions-video",       "TVs"),
+    ("audio",                   "Audio"),
+    ("gaming",                  "Gaming"),
+    ("cameras-accessories",     "Cameras"),
+]
 
 _CAT_MAP = {
-    "mobile": "Phones", "phone": "Phones", "smartphone": "Phones",
-    "laptop": "Computers & Laptops", "computer": "Computers & Laptops",
+    "mobile": "Phones", "phone": "Phones", "smartphone": "Phones", "iphone": "Phones",
+    "laptop": "Computers & Laptops", "computer": "Computers & Laptops", "macbook": "Computers & Laptops",
     "tablet": "Tablets", "ipad": "Tablets",
     "tv": "TVs", "television": "TVs",
-    "headphone": "Audio", "earphone": "Audio", "speaker": "Audio", "earbuds": "Audio",
+    "headphone": "Audio", "earphone": "Audio", "speaker": "Audio", "earbuds": "Audio", "airpods": "Audio",
     "camera": "Cameras",
-    "gaming": "Gaming",
+    "gaming": "Gaming", "playstation": "Gaming", "xbox": "Gaming",
     "watch": "Wearables",
 }
 
 
-def _cat(name: str) -> str:
-    low = name.lower()
+def _cat(title: str, default: str = "Electronics") -> str:
+    low = title.lower()
     for k, v in _CAT_MAP.items():
         if k in low:
             return v
-    return "Electronics"
+    return default
 
 
 class NoonScraper(BaseScraper):
@@ -42,71 +49,101 @@ class NoonScraper(BaseScraper):
     base_url = "https://www.noon.com"
 
     def _fetch_deals(self) -> Iterator[Deal]:
-        # Try the JSON API first (fast, no JS rendering)
-        yield from self._via_search_api()
+        seen: set[str] = set()
+        for cat_slug, cat_label in _CATEGORIES:
+            for deal in self._fetch_category(cat_slug, cat_label):
+                if deal.deal_id not in seen:
+                    seen.add(deal.deal_id)
+                    yield deal
+            if len(seen) >= config.MAX_DEALS_PER_SITE:
+                break
 
-    def _via_search_api(self) -> Iterator[Deal]:
+    def _fetch_category(self, cat_slug: str, cat_label: str) -> Iterator[Deal]:
         params = {
             "app": "consumer",
             "version": "v2",
             "q": "",
-            "limit": str(config.MAX_DEALS_PER_SITE),
+            "limit": "30",
             "offset": "0",
             "sort_by": "discount",
             "channel": "desktop-web",
             "country": "SA",
             "lang": "en",
+            "cat": cat_slug,
+            f"f[discount_percent][min]": str(int(config.MIN_DISCOUNT_PERCENT)),
         }
         headers = {
+            "Referer": f"https://www.noon.com/saudi-en/{cat_slug}/",
             "x-country-code": "SA",
             "x-locale": "en",
             "x-channel": "web",
-            "Referer": "https://www.noon.com/saudi-en/electronics/",
-            "Origin": "https://www.noon.com",
+            "Accept": "application/json, */*",
         }
 
-        # Try multiple category slugs
-        for cat_slug in ["electronics", "mobiles-tablets", "computers-accessories", "televisions-video"]:
-            params["cat"] = cat_slug
-            data = self._get_json(_SEARCH_API, params=params, extra_headers=headers)
-            if not data:
-                continue
-            hits = []
-            if isinstance(data, dict):
-                hits = data.get("hits", data.get("items", data.get("products", [])))
-            for item in hits:
-                deal = self._parse_item(item)
-                if deal:
-                    yield deal
+        data = self._get_json(_API_BASE, params=params, extra_headers=headers)
+        if not data:
+            log.debug("Noon: no data for category %s", cat_slug)
+            return
 
-    def _parse_item(self, item: dict) -> Deal | None:
+        # Noon API wraps results differently depending on version
+        hits = []
+        if isinstance(data, dict):
+            # Try multiple known response shapes
+            hits = (
+                data.get("hits") or
+                data.get("products") or
+                data.get("items") or
+                data.get("results") or
+                (data.get("data", {}) or {}).get("hits") or
+                []
+            )
+            if not hits:
+                # Log the top-level keys to help debug
+                log.debug("Noon API keys for %s: %s", cat_slug, list(data.keys())[:10])
+        elif isinstance(data, list):
+            hits = data
+
+        for item in hits:
+            deal = self._parse(item, cat_label)
+            if deal:
+                yield deal
+
+    def _parse(self, item: dict, default_cat: str) -> Deal | None:
         try:
-            title = item.get("name", item.get("title", ""))
+            title = item.get("name") or item.get("title") or item.get("product_name", "")
             if not title:
                 return None
 
-            sku = item.get("sku", item.get("id", ""))
-            url = f"https://www.noon.com/saudi-en/-p/{sku}/" if sku else item.get("url", "")
+            sku = item.get("sku") or item.get("id") or item.get("product_id", "")
+            url = (
+                item.get("url") or
+                item.get("product_url") or
+                (f"https://www.noon.com/saudi-en/-p/{sku}/" if sku else "")
+            )
             if not url:
                 return None
 
-            prices = item.get("price", {})
-            if isinstance(prices, dict):
-                sale_price = float(prices.get("now", prices.get("sale_price", prices.get("selling", 0))))
-                orig_price = float(prices.get("was", prices.get("regular_price", prices.get("original", 0))))
+            # Price — Noon uses various shapes
+            price_data = item.get("price") or {}
+            if isinstance(price_data, dict):
+                sale = float(price_data.get("now") or price_data.get("sale_price") or
+                             price_data.get("selling_price") or price_data.get("current") or 0)
+                orig = float(price_data.get("was") or price_data.get("original_price") or
+                             price_data.get("mrp") or price_data.get("regular") or sale)
             else:
-                sale_price = float(item.get("sale_price", item.get("price", item.get("sellingPrice", 0))))
-                orig_price = float(item.get("regular_price", item.get("original_price", item.get("mrp", 0))))
+                sale = float(item.get("sale_price") or item.get("selling_price") or
+                             item.get("price") or 0)
+                orig = float(item.get("original_price") or item.get("mrp") or sale)
 
-            if sale_price == 0:
+            if sale == 0:
                 return None
 
-            discount = float(item.get("discount_percent", item.get("discount", item.get("discountPercent", 0))))
+            discount = float(
+                item.get("discount_percent") or item.get("discount") or
+                item.get("discount_percentage") or 0
+            )
 
-            cat_raw = item.get("category_name", item.get("category", item.get("primaryCategory", "")))
-            category = _cat(str(cat_raw) + " " + title)
-
-            image = item.get("image", item.get("thumbnail", item.get("imageUrl", "")))
+            image = item.get("image") or item.get("thumbnail") or item.get("image_url") or ""
             if isinstance(image, list):
                 image = image[0] if image else ""
 
@@ -114,11 +151,12 @@ class NoonScraper(BaseScraper):
                 site_name=self.site_name,
                 title=title,
                 url=url,
-                sale_price=sale_price,
-                original_price=orig_price,
+                sale_price=sale,
+                original_price=orig,
                 discount_percent=discount,
-                category=category,
+                category=_cat(title, default_cat),
                 image_url=str(image),
             )
-        except Exception:
+        except Exception as exc:
+            log.debug("Noon parse error: %s", exc)
             return None

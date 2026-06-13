@@ -37,7 +37,6 @@ class AmazonSAScraper(BaseScraper):
         resp = self._get(
             _DEALS_URL,
             extra_headers={"Referer": "https://www.amazon.sa/"},
-            render_js=True,
         )
         if not resp:
             return

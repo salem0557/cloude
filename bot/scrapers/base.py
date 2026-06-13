@@ -93,10 +93,10 @@ class BaseScraper:
             proxy_params = {
                 "api_key": config.SCRAPER_API_KEY,
                 "url": url,
-                "render": "true" if render_js else "false",
                 "country_code": "sa",
-                "premium": "true",   # residential IPs — bypasses stronger bot protection
             }
+            if render_js:
+                proxy_params["render"] = "true"
             if params:
                 proxy_params.update(params)
             return "http://api.scraperapi.com", proxy_params
@@ -123,15 +123,21 @@ class BaseScraper:
         )
 
     def _get(self, url: str, extra_headers: dict | None = None, params=None, render_js: bool = False):
-        """GET with retry, random delay, and optional Cloudflare + JS-render bypass."""
-        for attempt in range(2):   # fewer retries for JS rendering (slow + expensive)
+        """GET with retry. Uses ScraperAPI if configured, falls back to direct curl_cffi."""
+        for attempt in range(2):
             try:
                 time.sleep(random.uniform(1.0, 2.5))
                 resp = self._fetch(url, extra_headers=extra_headers, params=params, render_js=render_js)
                 if resp.status_code == 200:
                     return resp
-                if resp.status_code == 403:
-                    log.warning("  %s blocked (403) on %s", self.site_name, url)
+                if resp.status_code in (401, 403):
+                    # ScraperAPI auth failure or site block — try direct curl_cffi
+                    if config.SCRAPER_API_KEY and attempt == 0:
+                        log.debug("  %s ScraperAPI %d — trying direct request", self.site_name, resp.status_code)
+                        direct = self._fetch_direct(url, extra_headers)
+                        if direct and direct.status_code == 200:
+                            return direct
+                    log.warning("  %s blocked (%d) on %s", self.site_name, resp.status_code, url)
                     return None
                 if resp.status_code == 429:
                     log.warning("  %s rate-limited — waiting 30s", self.site_name)
@@ -142,6 +148,21 @@ class BaseScraper:
                 log.warning("  %s attempt %d: %s", self.site_name, attempt + 1, exc)
             time.sleep(2 ** attempt)
         return None
+
+    def _fetch_direct(self, url: str, extra_headers: dict | None = None):
+        """Direct request bypassing ScraperAPI (uses curl_cffi TLS impersonation)."""
+        headers = self._build_headers(extra_headers)
+        try:
+            if _HAS_CURL_CFFI:
+                return self._session.get(
+                    url, headers=headers,
+                    timeout=config.REQUEST_TIMEOUT,
+                    impersonate=self._impersonate,
+                )
+            import requests as _req
+            return _req.get(url, headers=headers, timeout=config.REQUEST_TIMEOUT)
+        except Exception:
+            return None
 
     def _get_json(self, url: str, params=None, extra_headers: dict | None = None):
         """GET JSON endpoint (never uses JS rendering)."""
