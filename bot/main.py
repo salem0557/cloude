@@ -5,6 +5,7 @@ Usage:
     python -m bot.main               # run once then exit
     python -m bot.main --daemon      # run on schedule (every 15 min by default)
     python -m bot.main --dry-run     # run once, print deals, don't send
+    python -m bot.main --send-test   # send one sample deal to verify Telegram works
 """
 import argparse
 import logging
@@ -18,6 +19,30 @@ logging.basicConfig(
     datefmt="%Y-%m-%d %H:%M:%S",
 )
 log = logging.getLogger("deals_bot")
+
+
+def send_test_deal():
+    """Send a hardcoded sample deal to verify the Telegram pipeline works."""
+    from .models import Deal
+    from . import telegram_sender
+
+    deal = Deal(
+        site_name="Amazon.sa",
+        title="Samsung Galaxy S24 Ultra 256GB — Titanium Black",
+        url="https://www.amazon.sa/dp/B0CMDRCZBX",
+        sale_price=3299.0,
+        original_price=4199.0,
+        discount_percent=21.0,
+        category="Phones",
+        image_url="",
+    )
+    log.info("Sending test deal to Telegram …")
+    ok = telegram_sender.send(deal)
+    if ok:
+        print("✅ Test deal sent! Check your Telegram group.")
+    else:
+        print("❌ Failed to send. Check DEALS_BOT_TOKEN and DEALS_CHANNEL_ID.")
+    return ok
 
 
 def run_once():
@@ -65,6 +90,7 @@ def main():
     parser = argparse.ArgumentParser(description="SA Electronics Deals Telegram Bot")
     parser.add_argument("--daemon", action="store_true", help="Run on schedule")
     parser.add_argument("--dry-run", action="store_true", help="Print deals, don't send")
+    parser.add_argument("--send-test", action="store_true", help="Send a sample deal to verify Telegram")
     parser.add_argument(
         "--interval",
         type=int,
@@ -77,6 +103,9 @@ def main():
         os.environ["DRY_RUN"] = "1"
 
     from . import config
+
+    if args.send_test:
+        sys.exit(0 if send_test_deal() else 1)
 
     interval = args.interval or config.CHECK_INTERVAL_MINUTES
 
