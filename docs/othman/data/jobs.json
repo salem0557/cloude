@@ -1,6 +1,30 @@
 {
- "updated": "2026-06-12T22:03:05+00:00",
+ "updated": "2026-06-13T04:55:46+00:00",
  "jobs": [
+  {
+   "title": "Work from Home Saudi Arabia",
+   "company": "TELUS Digital",
+   "location": "Al Khuttah, Ha'il, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/work-from-home-saudi-arabia-at-telus-digital-4423397134",
+   "posted": "2026-06-04",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Fresh Graduate"
+   ],
+   "first_seen": "2026-06-13"
+  },
+  {
+   "title": "QA Technician",
+   "company": "Almarai - المراعي",
+   "location": "Ha'il, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/qa-technician-at-almarai-%D8%A7%D9%84%D9%85%D8%B1%D8%A7%D8%B9%D9%8A-4416232024",
+   "posted": "2026-05-18",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Fresh Graduate"
+   ],
+   "first_seen": "2026-06-13"
+  },
   {
    "title": "Technical Support Specialist",
    "company": "Gartner",
@@ -960,7 +984,8 @@
    "posted": "2026-01-14",
    "source": "LinkedIn",
    "keywords": [
-    "System Administrator"
+    "System Administrator",
+    "IT Specialist"
    ],
    "first_seen": "2026-06-11"
   },
