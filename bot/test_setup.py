@@ -63,7 +63,7 @@ def check_scraper_api():
 
     if not key:
         print("⚠️   SCRAPER_API_KEY is not set")
-        print("    Without it, sites will block requests from GitHub Actions.")
+        print("    Without it, only Noon's JSON API will work.")
         print("    Get a free key at https://www.scraperapi.com")
         return False
 
@@ -74,10 +74,16 @@ def check_scraper_api():
         timeout=30,
     )
     if r.status_code == 200:
-        print(f"✅  ScraperAPI key is valid — connected via {r.text[:100].strip()}")
+        print(f"✅  ScraperAPI key is valid")
         return True
     elif r.status_code == 401:
         print("❌  ScraperAPI key is invalid or expired")
+        print("    → Go to https://www.scraperapi.com → Dashboard → copy your API key")
+        print("    → Update the SCRAPER_API_KEY secret in GitHub with the correct key")
+        return False
+    elif r.status_code == 403:
+        print("⚠️   ScraperAPI credits exhausted (free tier: 1,000/month)")
+        print("    → Wait for monthly reset or upgrade your plan")
         return False
     else:
         print(f"❌  ScraperAPI test failed (HTTP {r.status_code}): {r.text[:200]}")
