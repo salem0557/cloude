@@ -35,6 +35,11 @@ jobs:
         continue-on-error: true
         run: python -m bot.test_setup
 
+      - name: Debug scraper selectors
+        env:
+          SCRAPER_API_KEY: ${{ secrets.SCRAPER_API_KEY }}
+        run: python -m bot.debug_scrapers
+
       - name: Send test deal to Telegram
         env:
           DEALS_BOT_TOKEN: ${{ secrets.DEALS_BOT_TOKEN }}
