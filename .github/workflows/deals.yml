@@ -35,6 +35,12 @@ jobs:
         continue-on-error: true
         run: python -m bot.test_setup
 
+      - name: Send test deal to Telegram
+        env:
+          DEALS_BOT_TOKEN: ${{ secrets.DEALS_BOT_TOKEN }}
+          DEALS_CHANNEL_ID: ${{ secrets.DEALS_CHANNEL_ID }}
+        run: python -m bot.main --send-test
+
       - name: Run deals bot
         env:
           DEALS_BOT_TOKEN: ${{ secrets.DEALS_BOT_TOKEN }}
