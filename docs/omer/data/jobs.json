@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-13T08:33:19+00:00",
+ "updated": "2026-06-13T08:37:12+00:00",
  "jobs": [
   {
    "title": "Helix Business Operations Manager - Saudi Arabia based in Riyadh",
@@ -10,6 +10,30 @@
    "source": "LinkedIn",
    "keywords": [
     "Operations Manager"
+   ],
+   "first_seen": "2026-06-13"
+  },
+  {
+   "title": "Technical Manager",
+   "company": "Macro",
+   "location": "Riyadh Region",
+   "url": "https://sa.linkedin.com/jobs/view/technical-manager-at-macro-4427931956",
+   "posted": "2026-06-12",
+   "source": "LinkedIn",
+   "keywords": [
+    "Facilities Management"
+   ],
+   "first_seen": "2026-06-13"
+  },
+  {
+   "title": "Servicetechniker Gas Region Walensee / Rheintal / Linthgebiet (m/w/d)",
+   "company": "Hoval Schweiz",
+   "location": "Hail Region",
+   "url": "https://sa.linkedin.com/jobs/view/servicetechniker-gas-region-walensee-rheintal-linthgebiet-m-w-d-at-hoval-schweiz-4418807944",
+   "posted": "2026-05-27",
+   "source": "LinkedIn",
+   "keywords": [
+    "Maintenance Engineer"
    ],
    "first_seen": "2026-06-13"
   },
@@ -928,7 +952,8 @@
    "source": "LinkedIn",
    "keywords": [
     "Procurement",
-    "Supply Chain"
+    "Supply Chain",
+    "Logistics"
    ],
    "first_seen": "2026-06-11"
   },

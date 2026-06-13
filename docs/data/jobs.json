@@ -1,6 +1,18 @@
 {
- "updated": "2026-06-13T08:32:31+00:00",
+ "updated": "2026-06-13T08:36:28+00:00",
  "jobs": [
+  {
+   "title": "Business Analyst, Senior",
+   "company": "Adree",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/business-analyst-senior-at-adree-4428340151",
+   "posted": "2026-06-13",
+   "source": "LinkedIn",
+   "keywords": [
+    "Digital Transformation"
+   ],
+   "first_seen": "2026-06-13"
+  },
   {
    "title": "Principal Specialist, Data Science & Analytics",
    "company": "Maaden",
@@ -22,6 +34,18 @@
    "source": "LinkedIn",
    "keywords": [
     "Data Acquisition"
+   ],
+   "first_seen": "2026-06-13"
+  },
+  {
+   "title": "Data Entry Specialist",
+   "company": "webook.com",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/data-entry-specialist-at-webook-com-4362800239",
+   "posted": "2026-01-15",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Management"
    ],
    "first_seen": "2026-06-13"
   },
