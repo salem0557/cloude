@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-13T16:52:46+00:00",
+ "updated": "2026-06-13T21:41:53+00:00",
  "jobs": [
   {
    "title": "Business Analyst, Senior",
@@ -18,6 +18,20 @@
    "company": "Boston Consulting Group (BCG)",
    "location": "Riyadh, Riyadh, Saudi Arabia",
    "url": "https://sa.linkedin.com/jobs/view/principal-it-digital-bcg-platinion-at-boston-consulting-group-bcg-4427276695",
+   "posted": "2026-06-13",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Management",
+    "Digital Transformation",
+    "Data Sharing"
+   ],
+   "first_seen": "2026-06-13"
+  },
+  {
+   "title": "Associate Manager-Infrastructure Services(Windows/ADFS/Virtualization)-Saudi",
+   "company": "Müller's Solutions",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/associate-manager-infrastructure-services-windows-adfs-virtualization-saudi-at-m%C3%BCller-s-solutions-4428345245",
    "posted": "2026-06-13",
    "source": "LinkedIn",
    "keywords": [
@@ -50,6 +64,18 @@
    "first_seen": "2026-06-13"
   },
   {
+   "title": "Principal Specialist, Data Science & Analytics",
+   "company": "Maaden",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/principal-specialist-data-science-analytics-at-maaden-4404727925",
+   "posted": "2026-06-05",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Acquisition"
+   ],
+   "first_seen": "2026-06-13"
+  },
+  {
    "title": "Innovation Consultant",
    "company": "Devoteam",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -58,6 +84,18 @@
    "source": "LinkedIn",
    "keywords": [
     "IT Management"
+   ],
+   "first_seen": "2026-06-13"
+  },
+  {
+   "title": "Data Modeler / Big Data Engineer",
+   "company": "TAWANTECH",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/data-modeler-big-data-engineer-at-tawantech-4422947584",
+   "posted": "2026-06-03",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Acquisition"
    ],
    "first_seen": "2026-06-13"
   },
