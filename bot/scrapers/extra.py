@@ -48,6 +48,7 @@ class ExtraScraper(BaseScraper):
             resp = self._get(
                 url + f"?onSale=true&pageSize={config.MAX_DEALS_PER_SITE}",
                 extra_headers={"Referer": "https://www.extra.com/en-sa/"},
+                render_js=True,
             )
             if not resp:
                 continue
