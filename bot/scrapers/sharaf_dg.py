@@ -47,7 +47,6 @@ class SharafDGScraper(BaseScraper):
             resp = self._get(
                 url + f"?discounted=1&page_size={config.MAX_DEALS_PER_SITE}",
                 extra_headers={"Referer": "https://www.sharafdg.com/sa/en/"},
-                render_js=True,
             )
             if not resp:
                 continue

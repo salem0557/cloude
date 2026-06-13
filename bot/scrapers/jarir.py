@@ -43,7 +43,6 @@ class JarirScraper(BaseScraper):
             resp = self._get(
                 url + f"?special_price=1&page_size={config.MAX_DEALS_PER_SITE}",
                 extra_headers={"Referer": "https://www.jarir.com/sa-en/"},
-                render_js=True,
             )
             if not resp:
                 continue
