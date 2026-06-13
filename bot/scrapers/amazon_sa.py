@@ -42,6 +42,8 @@ class AmazonSAScraper(BaseScraper):
             return
 
         soup = self._soup(resp.text)
+        title = soup.title.string.strip() if soup.title else "no title"
+        log.info("  Amazon.sa page: %s | %d bytes", title[:80], len(resp.text))
         seen: set[str] = set()
 
         # Strategy 1: JSON-LD product schema
