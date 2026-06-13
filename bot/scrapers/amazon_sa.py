@@ -1,10 +1,13 @@
 """Amazon.sa electronics deals scraper."""
 import json
+import logging
 import re
 from typing import Iterator
 
 from .base import BaseScraper
 from ..models import Deal
+
+log = logging.getLogger(__name__)
 
 _DEALS_URL = "https://www.amazon.sa/s?i=electronics&rh=n%3A16129781031&s=price-desc-rank&ref=sr_nr_p_n_is_sns_eligible_0"
 

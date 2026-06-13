@@ -164,20 +164,30 @@ class BaseScraper:
         except Exception:
             return None
 
-    def _get_json(self, url: str, params=None, extra_headers: dict | None = None):
-        """GET JSON endpoint (never uses JS rendering)."""
+    def _get_json(self, url: str, params=None, extra_headers: dict | None = None, direct: bool = False):
+        """GET JSON endpoint. Set direct=True to skip ScraperAPI and call the URL directly."""
         merged_headers = {"Accept": "application/json, */*;q=0.9"}
         if extra_headers:
             merged_headers.update(extra_headers)
         for attempt in range(2):
             try:
                 time.sleep(random.uniform(0.8, 2.0))
-                resp = self._fetch(url, extra_headers=merged_headers, params=params, render_js=False)
+                if direct:
+                    resp = self._fetch_direct(url, merged_headers)
+                else:
+                    resp = self._fetch(url, extra_headers=merged_headers, params=params, render_js=False)
+                if resp is None:
+                    continue
                 if resp.status_code == 200:
                     return resp.json()
-                if resp.status_code == 403:
-                    log.warning("  %s API blocked (403) on %s", self.site_name, url)
-                    return None
+                log.warning("  %s API HTTP %d on %s", self.site_name, resp.status_code, url)
+                if resp.status_code in (401, 403) and not direct:
+                    # ScraperAPI blocked it — try calling the API directly
+                    log.debug("  %s retrying API call directly (no proxy)", self.site_name)
+                    direct_resp = self._fetch_direct(url, merged_headers)
+                    if direct_resp and direct_resp.status_code == 200:
+                        return direct_resp.json()
+                return None
             except Exception as exc:
                 log.warning("  %s JSON attempt %d: %s", self.site_name, attempt + 1, exc)
             time.sleep(2 ** attempt)

@@ -80,7 +80,10 @@ class NoonScraper(BaseScraper):
             "Accept": "application/json, */*",
         }
 
-        data = self._get_json(_API_BASE, params=params, extra_headers=headers)
+        # Try direct first (Noon's JSON API doesn't need a proxy), then via ScraperAPI
+        data = self._get_json(_API_BASE, params=params, extra_headers=headers, direct=True)
+        if not data:
+            data = self._get_json(_API_BASE, params=params, extra_headers=headers)
         if not data:
             log.warning("Noon: no data returned for category %s", cat_slug)
             return
