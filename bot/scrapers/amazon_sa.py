@@ -75,6 +75,10 @@ class AmazonSAScraper(BaseScraper):
             cards = soup.select('[data-component-type="s-search-result"]')
             log.info("  Amazon.sa: %d result cards found on %s", len(cards), url[:70])
 
+            if cards:
+                # Log first card HTML to diagnose price selector issues
+                log.info("  Amazon.sa first card (500 chars): %s", str(cards[0])[:500])
+
             for i, card in enumerate(cards):
                 deal = self._parse_search_card(card)
                 if deal:

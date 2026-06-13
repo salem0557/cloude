@@ -179,14 +179,27 @@ class BaseScraper:
                 if resp is None:
                     continue
                 if resp.status_code == 200:
-                    return resp.json()
+                    # Guard against empty/non-JSON responses (e.g. Cloudflare challenge or
+                    # ScraperAPI domain-blocked empty body) — don't bother retrying.
+                    content = resp.content
+                    if not content or (len(content) < 50 and not content.lstrip()[:1] in (b"{", b"[")):
+                        log.debug("  %s: tiny/non-JSON 200 body (%d bytes)", self.site_name, len(content))
+                        return None
+                    try:
+                        return resp.json()
+                    except Exception:
+                        log.warning("  %s: JSON parse failed on %d-byte body", self.site_name, len(content))
+                        return None  # Retrying won't help — same response
                 log.warning("  %s API HTTP %d on %s", self.site_name, resp.status_code, url)
                 if resp.status_code in (401, 403) and not direct:
                     # ScraperAPI blocked it — try calling the API directly
                     log.debug("  %s retrying API call directly (no proxy)", self.site_name)
                     direct_resp = self._fetch_direct(url, merged_headers)
                     if direct_resp and direct_resp.status_code == 200:
-                        return direct_resp.json()
+                        try:
+                            return direct_resp.json()
+                        except Exception:
+                            return None
                 return None
             except Exception as exc:
                 log.warning("  %s JSON attempt %d: %s", self.site_name, attempt + 1, exc)
