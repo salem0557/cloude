@@ -421,8 +421,17 @@ def search_jooble(keyword, city):
             timeout=REQUEST_TIMEOUT,
         )
         resp.raise_for_status()
+        payload = resp.json()
+        raw = payload.get("jobs", [])
+        if not getattr(search_jooble, "_debugged", False):
+            search_jooble._debugged = True
+            sample = raw[0] if raw else {}
+            print(f"  Jooble debug [{keyword}/{city}]: status={resp.status_code}, "
+                  f"totalCount={payload.get('totalCount')}, raw_jobs={len(raw)}, "
+                  f"top_keys={list(payload.keys())}, item_keys={list(sample.keys())}",
+                  file=sys.stderr)
         jobs = []
-        for item in resp.json().get("jobs", []):
+        for item in raw:
             title = clean_text(item.get("title", ""))
             url = item.get("link", "")
             if not title or not url:
