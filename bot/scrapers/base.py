@@ -87,46 +87,47 @@ class BaseScraper:
             h.update(extra)
         return h
 
-    def _resolve_url(self, url: str, params: dict | None = None) -> tuple[str, dict]:
+    def _resolve_url(self, url: str, params: dict | None = None, render_js: bool = False) -> tuple[str, dict]:
         """Apply ScraperAPI proxy if configured; return (final_url, final_params)."""
         if config.SCRAPER_API_KEY:
-            # ScraperAPI wraps any URL — handles JS rendering & residential proxies
             proxy_params = {
                 "api_key": config.SCRAPER_API_KEY,
                 "url": url,
-                "render": "false",
+                "render": "true" if render_js else "false",
                 "country_code": "sa",
+                "premium": "true",   # residential IPs — bypasses stronger bot protection
             }
             if params:
                 proxy_params.update(params)
             return "http://api.scraperapi.com", proxy_params
         return url, params or {}
 
-    def _fetch(self, url: str, extra_headers: dict | None = None, params=None):
+    def _fetch(self, url: str, extra_headers: dict | None = None, params=None, render_js: bool = False):
         """Internal: make one HTTP GET, return Response or None."""
-        final_url, final_params = self._resolve_url(url, params)
+        final_url, final_params = self._resolve_url(url, params, render_js=render_js)
         headers = self._build_headers(extra_headers)
+        timeout = 90 if render_js else config.REQUEST_TIMEOUT
         if _HAS_CURL_CFFI:
             return self._session.get(
                 final_url,
                 headers=headers,
                 params=final_params or None,
-                timeout=config.REQUEST_TIMEOUT,
+                timeout=timeout,
                 impersonate=self._impersonate,
             )
         return self._session.get(
             final_url,
             headers=headers,
             params=final_params or None,
-            timeout=config.REQUEST_TIMEOUT,
+            timeout=timeout,
         )
 
-    def _get(self, url: str, extra_headers: dict | None = None, params=None):
-        """GET with retry, random delay, and optional Cloudflare bypass."""
-        for attempt in range(3):
+    def _get(self, url: str, extra_headers: dict | None = None, params=None, render_js: bool = False):
+        """GET with retry, random delay, and optional Cloudflare + JS-render bypass."""
+        for attempt in range(2):   # fewer retries for JS rendering (slow + expensive)
             try:
-                time.sleep(random.uniform(1.5, 3.5))
-                resp = self._fetch(url, extra_headers=extra_headers, params=params)
+                time.sleep(random.uniform(1.0, 2.5))
+                resp = self._fetch(url, extra_headers=extra_headers, params=params, render_js=render_js)
                 if resp.status_code == 200:
                     return resp
                 if resp.status_code == 403:
@@ -143,14 +144,14 @@ class BaseScraper:
         return None
 
     def _get_json(self, url: str, params=None, extra_headers: dict | None = None):
-        """GET JSON endpoint."""
+        """GET JSON endpoint (never uses JS rendering)."""
         merged_headers = {"Accept": "application/json, */*;q=0.9"}
         if extra_headers:
             merged_headers.update(extra_headers)
-        for attempt in range(3):
+        for attempt in range(2):
             try:
                 time.sleep(random.uniform(0.8, 2.0))
-                resp = self._fetch(url, extra_headers=merged_headers, params=params)
+                resp = self._fetch(url, extra_headers=merged_headers, params=params, render_js=False)
                 if resp.status_code == 200:
                     return resp.json()
                 if resp.status_code == 403:
