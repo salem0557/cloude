@@ -1,11 +1,60 @@
 {
- "updated": "2026-06-14T08:52:57+00:00",
+ "updated": "2026-06-14T12:19:41+00:00",
  "jobs": [
+  {
+   "title": "Purchasing officer",
+   "company": "Riyadh Pharma",
+   "location": "Riyadh Region",
+   "url": "https://sa.linkedin.com/jobs/view/purchasing-officer-at-riyadh-pharma-4425723587",
+   "posted": "2026-06-14",
+   "source": "LinkedIn",
+   "keywords": [
+    "Procurement",
+    "Logistics"
+   ],
+   "first_seen": "2026-06-14"
+  },
+  {
+   "title": "Technical Mechanical Engineer",
+   "company": "Saudi Constructioneers Ltd. (SAUDICO)",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/technical-mechanical-engineer-at-saudi-constructioneers-ltd-saudico-4425735545",
+   "posted": "2026-06-14",
+   "source": "LinkedIn",
+   "keywords": [
+    "Maintenance Engineer"
+   ],
+   "first_seen": "2026-06-14"
+  },
   {
    "title": "Inverto | Business & Operations Senior Manager",
    "company": "Boston Consulting Group (BCG)",
    "location": "Riyadh, Riyadh, Saudi Arabia",
    "url": "https://sa.linkedin.com/jobs/view/inverto-business-operations-senior-manager-at-boston-consulting-group-bcg-4427278730",
+   "posted": "2026-06-13",
+   "source": "LinkedIn",
+   "keywords": [
+    "Operations Manager"
+   ],
+   "first_seen": "2026-06-14"
+  },
+  {
+   "title": "Inverto | Consultant, Procurement",
+   "company": "Boston Consulting Group (BCG)",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/inverto-consultant-procurement-at-boston-consulting-group-bcg-4427284258",
+   "posted": "2026-06-13",
+   "source": "LinkedIn",
+   "keywords": [
+    "Supply Chain"
+   ],
+   "first_seen": "2026-06-14"
+  },
+  {
+   "title": "Operations Domain Manager",
+   "company": "Ericsson",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/operations-domain-manager-at-ericsson-4416509606",
    "posted": "2026-06-13",
    "source": "LinkedIn",
    "keywords": [
@@ -1075,7 +1124,8 @@
    "posted": "2026-05-26",
    "source": "LinkedIn",
    "keywords": [
-    "Procurement"
+    "Procurement",
+    "Supply Chain"
    ],
    "first_seen": "2026-06-11"
   },

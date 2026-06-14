@@ -1,6 +1,42 @@
 {
- "updated": "2026-06-14T08:52:01+00:00",
+ "updated": "2026-06-14T12:18:47+00:00",
  "jobs": [
+  {
+   "title": "IT Specialist",
+   "company": "Fakeeh Care Group",
+   "location": "Al Yasmin District, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/it-specialist-at-fakeeh-care-group-4428617699",
+   "posted": "2026-06-14",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Management"
+   ],
+   "first_seen": "2026-06-14"
+  },
+  {
+   "title": "Senior Project Manager",
+   "company": "ADFAR Tech",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/senior-project-manager-at-adfar-tech-4427422695",
+   "posted": "2026-06-14",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Project Manager"
+   ],
+   "first_seen": "2026-06-14"
+  },
+  {
+   "title": "Senior Project Manager",
+   "company": "Mace",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/senior-project-manager-at-mace-4409491843",
+   "posted": "2026-06-14",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Project Manager"
+   ],
+   "first_seen": "2026-06-14"
+  },
   {
    "title": "Project Manager - Learning & Development",
    "company": "Star",
@@ -661,7 +697,8 @@
    "posted": "2026-05-23",
    "source": "LinkedIn",
    "keywords": [
-    "Program Manager"
+    "Program Manager",
+    "Digital Transformation"
    ],
    "first_seen": "2026-06-11"
   },
