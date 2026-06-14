@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-14T12:19:41+00:00",
+ "updated": "2026-06-14T16:50:59+00:00",
  "jobs": [
   {
    "title": "Purchasing officer",
@@ -10,7 +10,8 @@
    "source": "LinkedIn",
    "keywords": [
     "Procurement",
-    "Logistics"
+    "Logistics",
+    "Supply Chain"
    ],
    "first_seen": "2026-06-14"
   },
@@ -23,6 +24,30 @@
    "source": "LinkedIn",
    "keywords": [
     "Maintenance Engineer"
+   ],
+   "first_seen": "2026-06-14"
+  },
+  {
+   "title": "Senior Mechanical Site Engineer",
+   "company": "Saudi Constructioneers Ltd. (SAUDICO)",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/senior-mechanical-site-engineer-at-saudi-constructioneers-ltd-saudico-4425737534",
+   "posted": "2026-06-14",
+   "source": "LinkedIn",
+   "keywords": [
+    "Mechanical Engineer"
+   ],
+   "first_seen": "2026-06-14"
+  },
+  {
+   "title": "Director - Operational Readiness",
+   "company": "Qiddiya | القدية",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/director-operational-readiness-at-qiddiya-%D8%A7%D9%84%D9%82%D8%AF%D9%8A%D8%A9-4427421358",
+   "posted": "2026-06-14",
+   "source": "LinkedIn",
+   "keywords": [
+    "Facilities Management"
    ],
    "first_seen": "2026-06-14"
   },

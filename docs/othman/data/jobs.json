@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-14T12:19:11+00:00",
+ "updated": "2026-06-14T16:50:32+00:00",
  "jobs": [
   {
    "title": "IT Specialist",
@@ -11,7 +11,21 @@
    "keywords": [
     "IT Support",
     "Technical Support",
-    "IT Specialist"
+    "IT Specialist",
+    "IT Fresh Graduate"
+   ],
+   "first_seen": "2026-06-14"
+  },
+  {
+   "title": "Sr. IT Systems Specialist",
+   "company": "SAMI Advanced Electronics",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/sr-it-systems-specialist-at-sami-advanced-electronics-4427423924",
+   "posted": "2026-06-14",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Support",
+    "System Administrator"
    ],
    "first_seen": "2026-06-14"
   },
@@ -24,6 +38,18 @@
    "source": "LinkedIn",
    "keywords": [
     "IT Specialist"
+   ],
+   "first_seen": "2026-06-14"
+  },
+  {
+   "title": "Analyst, Information Security",
+   "company": "Tabby | تابي",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/analyst-information-security-at-tabby-%D8%AA%D8%A7%D8%A8%D9%8A-4425458562",
+   "posted": "2026-06-08",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Fresh Graduate"
    ],
    "first_seen": "2026-06-14"
   },
