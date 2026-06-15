@@ -1,0 +1,23 @@
+{
+    "actorSpecification": 1,
+    "views": {
+        "overview": {
+            "title": "Jobs found",
+            "transformation": {
+                "fields": ["title", "company", "location", "source", "posted", "keywords", "url"]
+            },
+            "display": {
+                "component": "table",
+                "properties": {
+                    "title": { "label": "Title", "format": "text" },
+                    "company": { "label": "Company", "format": "text" },
+                    "location": { "label": "Location", "format": "text" },
+                    "source": { "label": "Source", "format": "text" },
+                    "posted": { "label": "Posted", "format": "text" },
+                    "keywords": { "label": "Matched keywords", "format": "array" },
+                    "url": { "label": "Link", "format": "link" }
+                }
+            }
+        }
+    }
+}

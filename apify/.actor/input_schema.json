@@ -1,0 +1,71 @@
+{
+    "title": "Saudi Arabia Jobs Scraper",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "keywords": {
+            "title": "Job title keywords",
+            "type": "array",
+            "description": "Titles / roles to search for. Each is searched on every selected source and city.",
+            "editor": "stringList",
+            "prefill": [
+                "IT Management",
+                "IT Project Manager",
+                "Digital Transformation",
+                "Data Management",
+                "Program Manager"
+            ]
+        },
+        "cities": {
+            "title": "Cities",
+            "type": "array",
+            "description": "Cities to search within the country below.",
+            "editor": "stringList",
+            "prefill": ["Riyadh", "Hail"]
+        },
+        "country": {
+            "title": "Country",
+            "type": "string",
+            "description": "Country the cities belong to. Defaults target Saudi Arabia.",
+            "editor": "textfield",
+            "default": "Saudi Arabia"
+        },
+        "sources": {
+            "title": "Sources",
+            "type": "array",
+            "description": "Which job boards to query.",
+            "editor": "select",
+            "items": {
+                "type": "string",
+                "enum": ["LinkedIn", "GulfTalent", "Akhtaboot", "Tanqeeb", "Jooble"],
+                "enumTitles": ["LinkedIn", "GulfTalent", "Akhtaboot", "Tanqeeb", "Jooble"]
+            },
+            "default": ["LinkedIn", "GulfTalent", "Akhtaboot", "Tanqeeb", "Jooble"]
+        },
+        "maxItemsPerKeyword": {
+            "title": "Max jobs per source + keyword",
+            "type": "integer",
+            "description": "Caps how many jobs are kept from each source for each keyword/city combination.",
+            "editor": "number",
+            "default": 40,
+            "minimum": 1,
+            "maximum": 200
+        },
+        "joobleApiKey": {
+            "title": "Jooble API key (optional)",
+            "type": "string",
+            "description": "Free key from https://jooble.org/api/about. When set, Jooble is queried through its official API instead of the public site.",
+            "editor": "textfield",
+            "isSecret": true
+        },
+        "proxyConfiguration": {
+            "title": "Proxy configuration",
+            "type": "object",
+            "description": "Use a proxy for outbound requests. Residential proxies unblock GulfTalent / Tanqeeb, which return 403 to data-centre IPs.",
+            "editor": "proxy",
+            "prefill": { "useApifyProxy": true },
+            "default": { "useApifyProxy": true }
+        }
+    },
+    "required": []
+}

@@ -1,0 +1,6 @@
+# Apify local run storage
+storage/
+apify_storage/
+.venv/
+__pycache__/
+*.pyc
