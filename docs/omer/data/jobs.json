@@ -1,6 +1,114 @@
 {
- "updated": "2026-06-14T21:46:32+00:00",
+ "updated": "2026-06-15T05:32:59+00:00",
  "jobs": [
+  {
+   "title": "Mechanical Technician",
+   "company": "Jazera Arabia Contracting",
+   "location": "Hail, Ha'il, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/mechanical-technician-at-jazera-arabia-contracting-4425741542",
+   "posted": "2026-06-14",
+   "source": "LinkedIn",
+   "keywords": [
+    "Maintenance Engineer"
+   ],
+   "first_seen": "2026-06-15"
+  },
+  {
+   "title": "Electrical Technician",
+   "company": "Jazera Arabia Contracting",
+   "location": "Hail, Ha'il, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/electrical-technician-at-jazera-arabia-contracting-4425746044",
+   "posted": "2026-06-14",
+   "source": "LinkedIn",
+   "keywords": [
+    "Maintenance Engineer"
+   ],
+   "first_seen": "2026-06-15"
+  },
+  {
+   "title": "Field Service Technician - Saudi",
+   "company": "Rapiscan Systems",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/field-service-technician-saudi-at-rapiscan-systems-4420712928",
+   "posted": "2026-06-04",
+   "source": "LinkedIn",
+   "keywords": [
+    "Mechanical Engineer"
+   ],
+   "first_seen": "2026-06-15"
+  },
+  {
+   "title": "Facilities Management Consultant, Community Management",
+   "company": "Egis",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/facilities-management-consultant-community-management-at-egis-4418923079",
+   "posted": "2026-06-03",
+   "source": "LinkedIn",
+   "keywords": [
+    "Facilities Management"
+   ],
+   "first_seen": "2026-06-15"
+  },
+  {
+   "title": "Mechanical Engineer",
+   "company": "Qureos",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/mechanical-engineer-at-qureos-4414063032",
+   "posted": "2026-05-21",
+   "source": "LinkedIn",
+   "keywords": [
+    "Mechanical Engineer"
+   ],
+   "first_seen": "2026-06-15"
+  },
+  {
+   "title": "Licensed B1/B2 Engineer",
+   "company": "Aviation JobSearch Europa",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/licensed-b1-b2-engineer-at-aviation-jobsearch-europa-4428372730",
+   "posted": "2026-05-19",
+   "source": "LinkedIn",
+   "keywords": [
+    "Mechanical Engineer"
+   ],
+   "first_seen": "2026-06-15"
+  },
+  {
+   "title": "Technical Engineer",
+   "company": "OHC | العمر القابضة",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/technical-engineer-at-ohc-%D8%A7%D9%84%D8%B9%D9%85%D8%B1-%D8%A7%D9%84%D9%82%D8%A7%D8%A8%D8%B6%D8%A9-4410029092",
+   "posted": "2026-05-01",
+   "source": "LinkedIn",
+   "keywords": [
+    "Mechanical Engineer"
+   ],
+   "first_seen": "2026-06-15"
+  },
+  {
+   "title": "Senior MEP Engineer",
+   "company": "Parsons Corporation",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/senior-mep-engineer-at-parsons-corporation-4406526443",
+   "posted": "2026-04-29",
+   "source": "LinkedIn",
+   "keywords": [
+    "Mechanical Engineer"
+   ],
+   "first_seen": "2026-06-15"
+  },
+  {
+   "title": "Site Project Engineer",
+   "company": "HanmiGlobal MENA",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/site-project-engineer-at-hanmiglobal-mena-4397701558",
+   "posted": "2026-03-11",
+   "source": "LinkedIn",
+   "keywords": [
+    "Mechanical Engineer"
+   ],
+   "first_seen": "2026-06-15"
+  },
   {
    "title": "Purchasing officer",
    "company": "Riyadh Pharma",
@@ -1699,7 +1807,8 @@
    "posted": "2026-01-18",
    "source": "LinkedIn",
    "keywords": [
-    "Maintenance Engineer"
+    "Maintenance Engineer",
+    "Mechanical Engineer"
    ],
    "first_seen": "2026-06-11"
   },
