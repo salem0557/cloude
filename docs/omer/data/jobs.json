@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-15T16:08:07+00:00",
+ "updated": "2026-06-15T22:32:35+00:00",
  "jobs": [
   {
    "title": "TRUCK SKILLED DRIVER",
@@ -9,7 +9,8 @@
    "posted": "2026-06-15",
    "source": "LinkedIn",
    "keywords": [
-    "Supply Chain"
+    "Supply Chain",
+    "Logistics"
    ],
    "first_seen": "2026-06-15"
   },
@@ -21,7 +22,56 @@
    "posted": "2026-06-15",
    "source": "LinkedIn",
    "keywords": [
+    "Procurement",
+    "Logistics"
+   ],
+   "first_seen": "2026-06-15"
+  },
+  {
+   "title": "P&M",
+   "company": "Larsen & Toubro",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/p-m-at-larsen-toubro-4370175222",
+   "posted": "2026-06-15",
+   "source": "LinkedIn",
+   "keywords": [
     "Procurement"
+   ],
+   "first_seen": "2026-06-15"
+  },
+  {
+   "title": "DPM Logistics Executive, DPM",
+   "company": "Amazon",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/dpm-logistics-executive-dpm-at-amazon-4428886892",
+   "posted": "2026-06-15",
+   "source": "LinkedIn",
+   "keywords": [
+    "Logistics"
+   ],
+   "first_seen": "2026-06-15"
+  },
+  {
+   "title": "Colocation Regional Mechanical Engineer, Colo Regional Engineering",
+   "company": "Amazon Web Services (AWS)",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/colocation-regional-mechanical-engineer-colo-regional-engineering-at-amazon-web-services-aws-4428899709",
+   "posted": "2026-06-15",
+   "source": "LinkedIn",
+   "keywords": [
+    "Mechanical Engineer"
+   ],
+   "first_seen": "2026-06-15"
+  },
+  {
+   "title": "Senior Workplace Manager",
+   "company": "JLL",
+   "location": "Riyadh Region",
+   "url": "https://sa.linkedin.com/jobs/view/senior-workplace-manager-at-jll-4428835000",
+   "posted": "2026-06-15",
+   "source": "LinkedIn",
+   "keywords": [
+    "Facilities Management"
    ],
    "first_seen": "2026-06-15"
   },
@@ -55,6 +105,18 @@
    "company": "Parsons Corporation",
    "location": "Riyadh, Riyadh, Saudi Arabia",
    "url": "https://sa.linkedin.com/jobs/view/logistic-manager-at-parsons-corporation-4428646408",
+   "posted": "2026-06-14",
+   "source": "LinkedIn",
+   "keywords": [
+    "Logistics"
+   ],
+   "first_seen": "2026-06-15"
+  },
+  {
+   "title": "Logistic Manager",
+   "company": "Parsons Corporation",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/logistic-manager-at-parsons-corporation-4428651394",
    "posted": "2026-06-14",
    "source": "LinkedIn",
    "keywords": [
