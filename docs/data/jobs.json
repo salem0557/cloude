@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-16T15:24:12+00:00",
+ "updated": "2026-06-16T22:24:18+00:00",
  "jobs": [
   {
    "title": "Information Technology Manager",
@@ -58,6 +58,18 @@
    "source": "LinkedIn",
    "keywords": [
     "Data Sharing"
+   ],
+   "first_seen": "2026-06-16"
+  },
+  {
+   "title": "Management Consultant",
+   "company": "Nuqtah Business Solutions",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/management-consultant-at-nuqtah-business-solutions-4426888155",
+   "posted": "2026-06-16",
+   "source": "LinkedIn",
+   "keywords": [
+    "Digital Transformation"
    ],
    "first_seen": "2026-06-16"
   },
