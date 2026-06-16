@@ -1,6 +1,30 @@
 {
- "updated": "2026-06-16T05:40:08+00:00",
+ "updated": "2026-06-16T15:25:01+00:00",
  "jobs": [
+  {
+   "title": "Mechanical Engineer.",
+   "company": "Awtad",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/mechanical-engineer-at-awtad-4426813176",
+   "posted": "2026-06-16",
+   "source": "LinkedIn",
+   "keywords": [
+    "Mechanical Engineer"
+   ],
+   "first_seen": "2026-06-16"
+  },
+  {
+   "title": "Procurement Manager",
+   "company": "JD.COM",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/procurement-manager-at-jd-com-4427489131",
+   "posted": "2026-06-15",
+   "source": "LinkedIn",
+   "keywords": [
+    "Supply Chain"
+   ],
+   "first_seen": "2026-06-16"
+  },
   {
    "title": "TRUCK SKILLED DRIVER",
    "company": "Napco National",
@@ -1247,7 +1271,8 @@
    "posted": "2026-06-01",
    "source": "LinkedIn",
    "keywords": [
-    "Facilities Management"
+    "Facilities Management",
+    "Operations Manager"
    ],
    "first_seen": "2026-06-11"
   },
