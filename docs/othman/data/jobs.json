@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-17T14:05:47+00:00",
+ "updated": "2026-06-17T18:01:26+00:00",
  "jobs": [
   {
    "title": "Field Service Engineer",
@@ -10,6 +10,30 @@
    "source": "LinkedIn",
    "keywords": [
     "Technical Support"
+   ],
+   "first_seen": "2026-06-17"
+  },
+  {
+   "title": "IT Systems Specialist Film Studios (SPA5-QPFS0030)",
+   "company": "Qiddiya | القدية",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/it-systems-specialist-film-studios-spa5-qpfs0030-at-qiddiya-%D8%A7%D9%84%D9%82%D8%AF%D9%8A%D8%A9-4416397867",
+   "posted": "2026-06-17",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Support"
+   ],
+   "first_seen": "2026-06-17"
+  },
+  {
+   "title": "Information Security Analyst l (PenTester)",
+   "company": "Tabby | تابي",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/information-security-analyst-l-pentester-at-tabby-%D8%AA%D8%A7%D8%A8%D9%8A-4429901595",
+   "posted": "2026-06-17",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Fresh Graduate"
    ],
    "first_seen": "2026-06-17"
   },
@@ -148,7 +172,8 @@
    "source": "LinkedIn",
    "keywords": [
     "IT Support",
-    "System Administrator"
+    "System Administrator",
+    "IT Specialist"
    ],
    "first_seen": "2026-06-14"
   },
