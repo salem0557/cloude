@@ -30,11 +30,11 @@ PROFILES = {
     "Salem": {
         "keywords": [
             "IT Management",
+            "IT Manager",
             "IT Project Manager",
+            "IT Infrastructure",
             "Digital Transformation",
-            "Data Management",
             "Program Manager",
-            "Data Acquisition",
             "Data Sharing",
         ],
         "cities": ["Riyadh", "Hail"],

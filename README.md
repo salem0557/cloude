@@ -4,8 +4,8 @@ Three job boards, updated automatically every 5 hours with jobs in
 **Riyadh and Hail, Saudi Arabia**.
 
 - **Salem** — `https://salem0557.github.io/cloude/` — keywords: IT
-  Management, IT Project Manager, Digital Transformation, Data Management,
-  Program Manager, Data Acquisition, Data Sharing
+  Management, IT Manager, IT Project Manager, IT Infrastructure, Digital
+  Transformation, Program Manager, Data Sharing
 - **Othman** — `https://salem0557.github.io/cloude/othman/` — keywords: IT
   Support, Help Desk, Technical Support, IT Specialist, System
   Administrator, IT Fresh Graduate
