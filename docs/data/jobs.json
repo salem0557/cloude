@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-17T18:00:58+00:00",
+ "updated": "2026-06-17T22:16:40+00:00",
  "jobs": [
   {
    "title": "Senior Manager IT Infrastructure",
@@ -75,6 +75,18 @@
    "first_seen": "2026-06-17"
   },
   {
+   "title": "Senior Manager - Cloud Resilience Governance",
+   "company": "Qiddiya | القدية",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/senior-manager-cloud-resilience-governance-at-qiddiya-%D8%A7%D9%84%D9%82%D8%AF%D9%8A%D8%A9-4426237392",
+   "posted": "2026-06-17",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Manager"
+   ],
+   "first_seen": "2026-06-17"
+  },
+  {
    "title": "IT Manager",
    "company": "Mantis",
    "location": "Riyadh Region",
@@ -84,6 +96,18 @@
    "keywords": [
     "IT Manager",
     "IT Management"
+   ],
+   "first_seen": "2026-06-17"
+  },
+  {
+   "title": "Integration Lead",
+   "company": "Gathern | جاذر إن",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/integration-lead-at-gathern-%D8%AC%D8%A7%D8%B0%D8%B1-%D8%A5%D9%86-4429536511",
+   "posted": "2026-06-16",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Manager"
    ],
    "first_seen": "2026-06-17"
   },
@@ -588,7 +612,8 @@
    "posted": "2026-05-26",
    "source": "LinkedIn",
    "keywords": [
-    "Data Acquisition"
+    "Data Acquisition",
+    "Digital Transformation"
    ],
    "first_seen": "2026-06-13"
   },
@@ -1606,7 +1631,8 @@
    "posted": "2026-05-31",
    "source": "LinkedIn",
    "keywords": [
-    "IT Project Manager"
+    "IT Project Manager",
+    "IT Management"
    ],
    "first_seen": "2026-06-10"
   },

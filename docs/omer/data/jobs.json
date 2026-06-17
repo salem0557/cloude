@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-17T18:02:00+00:00",
+ "updated": "2026-06-17T22:17:29+00:00",
  "jobs": [
   {
    "title": "Warehouse coordinator",
@@ -185,6 +185,18 @@
    "first_seen": "2026-06-17"
   },
   {
+   "title": "Site Engineer",
+   "company": "Climatech Saudi",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/site-engineer-at-climatech-saudi-4427807128",
+   "posted": "2026-06-17",
+   "source": "LinkedIn",
+   "keywords": [
+    "Maintenance Engineer"
+   ],
+   "first_seen": "2026-06-17"
+  },
+  {
    "title": "Chief Engineer",
    "company": "Mantis",
    "location": "Riyadh Region",
@@ -221,6 +233,18 @@
    "first_seen": "2026-06-17"
   },
   {
+   "title": "Store Associate | alfanar Electric",
+   "company": "alfanar",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/store-associate-alfanar-electric-at-alfanar-4425825424",
+   "posted": "2026-06-09",
+   "source": "LinkedIn",
+   "keywords": [
+    "Logistics"
+   ],
+   "first_seen": "2026-06-17"
+  },
+  {
    "title": "Operator - GSE",
    "company": "Riyadh Air | طيران الرياض",
    "location": "Riyadh Region",
@@ -229,6 +253,30 @@
    "source": "LinkedIn",
    "keywords": [
     "Logistics"
+   ],
+   "first_seen": "2026-06-17"
+  },
+  {
+   "title": "Business Operations Performance Lead",
+   "company": "Gathern | جاذر إن",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/business-operations-performance-lead-at-gathern-%D8%AC%D8%A7%D8%B0%D8%B1-%D8%A5%D9%86-4429532480",
+   "posted": "2026-05-22",
+   "source": "LinkedIn",
+   "keywords": [
+    "Supply Chain"
+   ],
+   "first_seen": "2026-06-17"
+  },
+  {
+   "title": "Business Operations Senior Manager",
+   "company": "Takamol Holding",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/business-operations-senior-manager-at-takamol-holding-4408500898",
+   "posted": "2026-04-29",
+   "source": "LinkedIn",
+   "keywords": [
+    "Operations Manager"
    ],
    "first_seen": "2026-06-17"
   },
