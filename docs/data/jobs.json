@@ -1,6 +1,138 @@
 {
- "updated": "2026-06-17T05:20:24+00:00",
+ "updated": "2026-06-17T10:11:00+00:00",
  "jobs": [
+  {
+   "title": "IT Manager",
+   "company": "Mantis",
+   "location": "Riyadh Region",
+   "url": "https://sa.linkedin.com/jobs/view/it-manager-at-mantis-4428026960",
+   "posted": "2026-06-16",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Manager"
+   ],
+   "first_seen": "2026-06-17"
+  },
+  {
+   "title": "Senior IT Infrastructure Engineer",
+   "company": "Alnafitha IT",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/senior-it-infrastructure-engineer-at-alnafitha-it-4413327095",
+   "posted": "2026-06-15",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Infrastructure"
+   ],
+   "first_seen": "2026-06-17"
+  },
+  {
+   "title": "Principal Specialist, Data Modeling & Arch (OT)",
+   "company": "Maaden",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/principal-specialist-data-modeling-arch-ot-at-maaden-4401443728",
+   "posted": "2026-05-29",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Sharing"
+   ],
+   "first_seen": "2026-06-17"
+  },
+  {
+   "title": "Lead Civil Engineer",
+   "company": "Egis",
+   "location": "Ḩā’il, Ha'il, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/lead-civil-engineer-at-egis-4416205314",
+   "posted": "2026-05-27",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Infrastructure"
+   ],
+   "first_seen": "2026-06-17"
+  },
+  {
+   "title": "Inspectors ( Electrical) - Najran City",
+   "company": "PROGER s.p.a.",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/inspectors-electrical-najran-city-at-proger-s-p-a-4417765749",
+   "posted": "2026-05-21",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Infrastructure"
+   ],
+   "first_seen": "2026-06-17"
+  },
+  {
+   "title": "Information Technology Support Specialist",
+   "company": "Red Steel Technologies",
+   "location": "Riyadh Region",
+   "url": "https://sa.linkedin.com/jobs/view/information-technology-support-specialist-at-red-steel-technologies-4416167147",
+   "posted": "2026-05-20",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Infrastructure"
+   ],
+   "first_seen": "2026-06-17"
+  },
+  {
+   "title": "IT Specialist",
+   "company": "PetroApp | بتروآب",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/it-specialist-at-petroapp-%D8%A8%D8%AA%D8%B1%D9%88%D8%A2%D8%A8-4405233440",
+   "posted": "2026-04-22",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Infrastructure"
+   ],
+   "first_seen": "2026-06-17"
+  },
+  {
+   "title": "IT Systems Specialist",
+   "company": "UFCGYMKSA",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/it-systems-specialist-at-ufcgymksa-4399969125",
+   "posted": "2026-04-15",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Infrastructure"
+   ],
+   "first_seen": "2026-06-17"
+  },
+  {
+   "title": "Information Technology Manager - 008 - HB4",
+   "company": "Qiddiya | القدية",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/information-technology-manager-008-hb4-at-qiddiya-%D8%A7%D9%84%D9%82%D8%AF%D9%8A%D8%A9-4400739160",
+   "posted": "2026-04-08",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Manager"
+   ],
+   "first_seen": "2026-06-17"
+  },
+  {
+   "title": "Technical Lead",
+   "company": "Saudi Azm عزم السعودية",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/technical-lead-at-saudi-azm-%D8%B9%D8%B2%D9%85-%D8%A7%D9%84%D8%B3%D8%B9%D9%88%D8%AF%D9%8A%D8%A9-4403826338",
+   "posted": "2026-03-24",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Manager"
+   ],
+   "first_seen": "2026-06-17"
+  },
+  {
+   "title": "Data Center Technician - Saudi Arabia - Riyadh - On-site",
+   "company": "Reboot Monkey",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/data-center-technician-saudi-arabia-riyadh-on-site-at-reboot-monkey-4382615613",
+   "posted": "2026-03-07",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Infrastructure"
+   ],
+   "first_seen": "2026-06-17"
+  },
   {
    "title": "Information Technology Manager",
    "company": "IFG Holding",
@@ -9,7 +141,8 @@
    "posted": "2026-06-16",
    "source": "LinkedIn",
    "keywords": [
-    "IT Management"
+    "IT Management",
+    "IT Manager"
    ],
    "first_seen": "2026-06-16"
   },
@@ -21,7 +154,8 @@
    "posted": "2026-06-16",
    "source": "LinkedIn",
    "keywords": [
-    "IT Management"
+    "IT Management",
+    "IT Manager"
    ],
    "first_seen": "2026-06-16"
   },
@@ -57,7 +191,8 @@
    "posted": "2026-06-16",
    "source": "LinkedIn",
    "keywords": [
-    "Data Sharing"
+    "Data Sharing",
+    "IT Manager"
    ],
    "first_seen": "2026-06-16"
   },
@@ -143,7 +278,9 @@
    "posted": "2026-06-14",
    "source": "LinkedIn",
    "keywords": [
-    "IT Management"
+    "IT Management",
+    "IT Manager",
+    "IT Infrastructure"
    ],
    "first_seen": "2026-06-14"
   },
@@ -555,7 +692,8 @@
    "posted": "2026-06-11",
    "source": "LinkedIn",
    "keywords": [
-    "IT Management"
+    "IT Management",
+    "IT Infrastructure"
    ],
    "first_seen": "2026-06-11"
   },
@@ -1230,7 +1368,9 @@
    "posted": "2026-06-03",
    "source": "LinkedIn",
    "keywords": [
-    "IT Management"
+    "IT Management",
+    "IT Manager",
+    "IT Infrastructure"
    ],
    "first_seen": "2026-06-10"
   },
@@ -2044,7 +2184,8 @@
    "posted": "2026-03-07",
    "source": "LinkedIn",
    "keywords": [
-    "IT Management"
+    "IT Management",
+    "IT Manager"
    ],
    "first_seen": "2026-06-10"
   },
@@ -2176,7 +2317,9 @@
    "posted": "2026-01-30",
    "source": "LinkedIn",
    "keywords": [
-    "IT Management"
+    "IT Management",
+    "IT Manager",
+    "IT Infrastructure"
    ],
    "first_seen": "2026-06-10"
   },
@@ -2237,7 +2380,9 @@
    "source": "Akhtaboot",
    "keywords": [
     "IT Management",
-    "IT Project Manager"
+    "IT Project Manager",
+    "IT Manager",
+    "IT Infrastructure"
    ],
    "first_seen": "2026-06-10"
   },
