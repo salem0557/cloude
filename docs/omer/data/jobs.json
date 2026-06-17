@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-17T10:11:49+00:00",
+ "updated": "2026-06-17T14:06:20+00:00",
  "jobs": [
   {
    "title": "Warehouse coordinator",
@@ -9,7 +9,8 @@
    "posted": "2026-06-17",
    "source": "LinkedIn",
    "keywords": [
-    "Logistics"
+    "Logistics",
+    "Supply Chain"
    ],
    "first_seen": "2026-06-17"
   },
@@ -22,6 +23,42 @@
    "source": "LinkedIn",
    "keywords": [
     "Logistics"
+   ],
+   "first_seen": "2026-06-17"
+  },
+  {
+   "title": "Operations Manager",
+   "company": "Vast Group",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/operations-manager-at-vast-group-4427363135",
+   "posted": "2026-06-17",
+   "source": "LinkedIn",
+   "keywords": [
+    "Operations Manager"
+   ],
+   "first_seen": "2026-06-17"
+  },
+  {
+   "title": "Project Engineer",
+   "company": "Ibdaa Company for Advertising and Media Production",
+   "location": "Riyadh Region",
+   "url": "https://sa.linkedin.com/jobs/view/project-engineer-at-ibdaa-company-for-advertising-and-media-production-4427326943",
+   "posted": "2026-06-17",
+   "source": "LinkedIn",
+   "keywords": [
+    "Mechanical Engineer"
+   ],
+   "first_seen": "2026-06-17"
+  },
+  {
+   "title": "Sr. Mechanical Engineer",
+   "company": "HanmiGlobal MENA",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/sr-mechanical-engineer-at-hanmiglobal-mena-4429799161",
+   "posted": "2026-06-17",
+   "source": "LinkedIn",
+   "keywords": [
+    "Mechanical Engineer"
    ],
    "first_seen": "2026-06-17"
   },
