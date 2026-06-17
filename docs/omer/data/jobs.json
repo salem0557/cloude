@@ -1,6 +1,42 @@
 {
- "updated": "2026-06-16T22:25:05+00:00",
+ "updated": "2026-06-17T05:21:13+00:00",
  "jobs": [
+  {
+   "title": "Chief Engineer",
+   "company": "Mantis",
+   "location": "Riyadh Region",
+   "url": "https://sa.linkedin.com/jobs/view/chief-engineer-at-mantis-4428037870",
+   "posted": "2026-06-16",
+   "source": "LinkedIn",
+   "keywords": [
+    "Facilities Management"
+   ],
+   "first_seen": "2026-06-17"
+  },
+  {
+   "title": "Operator - GSE",
+   "company": "Riyadh Air | طيران الرياض",
+   "location": "Riyadh Region",
+   "url": "https://sa.linkedin.com/jobs/view/operator-gse-at-riyadh-air-%D8%B7%D9%8A%D8%B1%D8%A7%D9%86-%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6-4423221449",
+   "posted": "2026-06-01",
+   "source": "LinkedIn",
+   "keywords": [
+    "Logistics"
+   ],
+   "first_seen": "2026-06-17"
+  },
+  {
+   "title": "Warehouse Assistant",
+   "company": "SIHAMCO",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/warehouse-assistant-at-sihamco-4400988476",
+   "posted": "2026-04-12",
+   "source": "LinkedIn",
+   "keywords": [
+    "Supply Chain"
+   ],
+   "first_seen": "2026-06-17"
+  },
   {
    "title": "Mechanical Engineer.",
    "company": "Awtad",
@@ -364,7 +400,8 @@
    "posted": "2026-06-13",
    "source": "LinkedIn",
    "keywords": [
-    "Supply Chain"
+    "Supply Chain",
+    "Procurement"
    ],
    "first_seen": "2026-06-14"
   },
@@ -1360,7 +1397,8 @@
    "posted": "2026-05-30",
    "source": "LinkedIn",
    "keywords": [
-    "Supply Chain"
+    "Supply Chain",
+    "Logistics"
    ],
    "first_seen": "2026-06-11"
   },
