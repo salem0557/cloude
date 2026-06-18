@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-18T18:12:55+00:00",
+ "updated": "2026-06-18T22:27:39+00:00",
  "jobs": [
   {
    "title": "IT MANAGER",
@@ -42,6 +42,66 @@
    "first_seen": "2026-06-18"
   },
   {
+   "title": "IT Infrastructure Designer - (Airport Exp preferred)",
+   "company": "Egis",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/it-infrastructure-designer-airport-exp-preferred-at-egis-4427006233",
+   "posted": "2026-06-18",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Infrastructure"
+   ],
+   "first_seen": "2026-06-18"
+  },
+  {
+   "title": "Event Operations Excellence Manager",
+   "company": "webook.com",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/event-operations-excellence-manager-at-webook-com-4430489086",
+   "posted": "2026-06-18",
+   "source": "LinkedIn",
+   "keywords": [
+    "Program Manager"
+   ],
+   "first_seen": "2026-06-18"
+  },
+  {
+   "title": "Pre-Sales Engineer (Enterprise IT Infrastructure)",
+   "company": "Best Solutions For ICT Co.",
+   "location": "Riyadh Region",
+   "url": "https://sa.linkedin.com/jobs/view/pre-sales-engineer-enterprise-it-infrastructure-at-best-solutions-for-ict-co-4425787502",
+   "posted": "2026-06-17",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Infrastructure"
+   ],
+   "first_seen": "2026-06-18"
+  },
+  {
+   "title": "Sr. IT Systems Specialist",
+   "company": "SAMI Advanced Electronics",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/sr-it-systems-specialist-at-sami-advanced-electronics-4427423924",
+   "posted": "2026-06-14",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Infrastructure"
+   ],
+   "first_seen": "2026-06-18"
+  },
+  {
+   "title": "Inspector - Telecom & IT",
+   "company": "AtkinsRéalis",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/inspector-telecom-it-at-atkinsr%C3%A9alis-4428644563",
+   "posted": "2026-06-14",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Infrastructure"
+   ],
+   "first_seen": "2026-06-18"
+  },
+  {
    "title": "IT Architect | BCG Platinion",
    "company": "Boston Consulting Group (BCG)",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -54,6 +114,18 @@
    "first_seen": "2026-06-18"
   },
   {
+   "title": "Infrastructure Architect & Capacity Manager",
+   "company": "DXC Technology",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/infrastructure-architect-capacity-manager-at-dxc-technology-4324139747",
+   "posted": "2026-06-05",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Infrastructure"
+   ],
+   "first_seen": "2026-06-18"
+  },
+  {
    "title": "Sr. IT Support Engineer - Manager - Saudi Nationals, OTS",
    "company": "Amazon",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -62,6 +134,42 @@
    "source": "LinkedIn",
    "keywords": [
     "IT Manager"
+   ],
+   "first_seen": "2026-06-18"
+  },
+  {
+   "title": "ICT Engineer - Aviation",
+   "company": "Parsons Corporation",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/ict-engineer-aviation-at-parsons-corporation-4407189987",
+   "posted": "2026-04-28",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Infrastructure"
+   ],
+   "first_seen": "2026-06-18"
+  },
+  {
+   "title": "Infrastructure Engineer",
+   "company": "InterSystems",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/infrastructure-engineer-at-intersystems-4364313318",
+   "posted": "2026-02-20",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Infrastructure"
+   ],
+   "first_seen": "2026-06-18"
+  },
+  {
+   "title": "ICT Engineer",
+   "company": "Egis",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/ict-engineer-at-egis-4370245399",
+   "posted": "2026-02-09",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Infrastructure"
    ],
    "first_seen": "2026-06-18"
   },
@@ -160,7 +268,8 @@
    "source": "LinkedIn",
    "keywords": [
     "IT Manager",
-    "IT Management"
+    "IT Management",
+    "IT Infrastructure"
    ],
    "first_seen": "2026-06-17"
   },

@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-18T18:13:21+00:00",
+ "updated": "2026-06-18T22:28:04+00:00",
  "jobs": [
   {
    "title": "IT MANAGER",
@@ -18,6 +18,18 @@
    "company": "Applus+ Asia Middle East and Africa",
    "location": "Riyadh, Riyadh, Saudi Arabia",
    "url": "https://sa.linkedin.com/jobs/view/case-execution-assessment-officers-at-applus%2B-asia-middle-east-and-africa-4430469428",
+   "posted": "2026-06-18",
+   "source": "LinkedIn",
+   "keywords": [
+    "Technical Support"
+   ],
+   "first_seen": "2026-06-18"
+  },
+  {
+   "title": "Support Engineer",
+   "company": "eSense",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/support-engineer-at-esense-4430725431",
    "posted": "2026-06-18",
    "source": "LinkedIn",
    "keywords": [
@@ -928,7 +940,8 @@
    "posted": "2026-05-28",
    "source": "LinkedIn",
    "keywords": [
-    "IT Specialist"
+    "IT Specialist",
+    "System Administrator"
    ],
    "first_seen": "2026-06-11"
   },
