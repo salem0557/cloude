@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-18T13:45:11+00:00",
+ "updated": "2026-06-18T18:13:21+00:00",
  "jobs": [
   {
    "title": "IT MANAGER",
@@ -10,6 +10,18 @@
    "source": "LinkedIn",
    "keywords": [
     "IT Support"
+   ],
+   "first_seen": "2026-06-18"
+  },
+  {
+   "title": "Case Execution & Assessment Officers",
+   "company": "Applus+ Asia Middle East and Africa",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/case-execution-assessment-officers-at-applus%2B-asia-middle-east-and-africa-4430469428",
+   "posted": "2026-06-18",
+   "source": "LinkedIn",
+   "keywords": [
+    "Technical Support"
    ],
    "first_seen": "2026-06-18"
   },
@@ -940,7 +952,8 @@
    "posted": "2026-05-26",
    "source": "LinkedIn",
    "keywords": [
-    "IT Specialist"
+    "IT Specialist",
+    "System Administrator"
    ],
    "first_seen": "2026-06-11"
   },
