@@ -1,6 +1,30 @@
 {
- "updated": "2026-06-17T22:17:02+00:00",
+ "updated": "2026-06-18T05:10:26+00:00",
  "jobs": [
+  {
+   "title": "RR-0317143 - Sr Analyst I",
+   "company": "DXC Technology",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/rr-0317143-sr-analyst-i-at-dxc-technology-4425845903",
+   "posted": "2026-06-09",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Specialist"
+   ],
+   "first_seen": "2026-06-18"
+  },
+  {
+   "title": "ICT Engineer - Aviation",
+   "company": "Parsons Corporation",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/ict-engineer-aviation-at-parsons-corporation-4407189987",
+   "posted": "2026-04-28",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Specialist"
+   ],
+   "first_seen": "2026-06-18"
+  },
   {
    "title": "Field Service Engineer",
    "company": "Badger Meter",
@@ -948,7 +972,8 @@
    "posted": "2026-05-07",
    "source": "LinkedIn",
    "keywords": [
-    "System Administrator"
+    "System Administrator",
+    "IT Specialist"
    ],
    "first_seen": "2026-06-11"
   },

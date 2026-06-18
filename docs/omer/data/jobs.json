@@ -1,6 +1,78 @@
 {
- "updated": "2026-06-17T22:17:29+00:00",
+ "updated": "2026-06-18T05:10:58+00:00",
  "jobs": [
+  {
+   "title": "Supply Chain & Procurement Specialist (F&B)",
+   "company": "أقاهي",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/supply-chain-procurement-specialist-f-b-at-%D8%A3%D9%82%D8%A7%D9%87%D9%8A-4427383605",
+   "posted": "2026-06-17",
+   "source": "LinkedIn",
+   "keywords": [
+    "Supply Chain"
+   ],
+   "first_seen": "2026-06-18"
+  },
+  {
+   "title": "AFR Ops Specialist",
+   "company": "DHL Global Forwarding",
+   "location": "Riyadh Region",
+   "url": "https://sa.linkedin.com/jobs/view/afr-ops-specialist-at-dhl-global-forwarding-4429948764",
+   "posted": "2026-06-17",
+   "source": "LinkedIn",
+   "keywords": [
+    "Logistics"
+   ],
+   "first_seen": "2026-06-18"
+  },
+  {
+   "title": "Cargo HUB Operations and Sales Officer",
+   "company": "Riyadh Air | طيران الرياض",
+   "location": "Riyadh Region",
+   "url": "https://sa.linkedin.com/jobs/view/cargo-hub-operations-and-sales-officer-at-riyadh-air-%D8%B7%D9%8A%D8%B1%D8%A7%D9%86-%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6-4428721334",
+   "posted": "2026-06-17",
+   "source": "LinkedIn",
+   "keywords": [
+    "Logistics"
+   ],
+   "first_seen": "2026-06-18"
+  },
+  {
+   "title": "Planning/Logistics Engineer",
+   "company": "fortil",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/planning-logistics-engineer-at-fortil-4429969690",
+   "posted": "2026-06-17",
+   "source": "LinkedIn",
+   "keywords": [
+    "Logistics"
+   ],
+   "first_seen": "2026-06-18"
+  },
+  {
+   "title": "Data Center Facility Engineer (Electrical), AWS",
+   "company": "Amazon Web Services (AWS)",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/data-center-facility-engineer-electrical-aws-at-amazon-web-services-aws-4423596749",
+   "posted": "2026-06-05",
+   "source": "LinkedIn",
+   "keywords": [
+    "Maintenance Engineer"
+   ],
+   "first_seen": "2026-06-18"
+  },
+  {
+   "title": "L3 O&M Technician",
+   "company": "Alstom",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/l3-o-m-technician-at-alstom-4399356889",
+   "posted": "2026-04-20",
+   "source": "LinkedIn",
+   "keywords": [
+    "Maintenance Engineer"
+   ],
+   "first_seen": "2026-06-18"
+  },
   {
    "title": "Warehouse coordinator",
    "company": "Tamimi Commercial",
@@ -325,7 +397,8 @@
    "posted": "2026-06-16",
    "source": "LinkedIn",
    "keywords": [
-    "Supply Chain"
+    "Supply Chain",
+    "Logistics"
    ],
    "first_seen": "2026-06-16"
   },
