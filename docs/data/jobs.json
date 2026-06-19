@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-19T17:28:30+00:00",
+ "updated": "2026-06-19T21:38:31+00:00",
  "jobs": [
   {
    "title": "Information Technology Administrator",
@@ -10,6 +10,31 @@
    "source": "LinkedIn",
    "keywords": [
     "IT Infrastructure"
+   ],
+   "first_seen": "2026-06-19"
+  },
+  {
+   "title": "Infrastructure Manager",
+   "company": "SiFi",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/infrastructure-manager-at-sifi-4431153045",
+   "posted": "2026-06-19",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Management",
+    "IT Manager"
+   ],
+   "first_seen": "2026-06-19"
+  },
+  {
+   "title": "AI & Data | Data Management | Consultant/Senior Consultant",
+   "company": "Deloitte",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/ai-data-data-management-consultant-senior-consultant-at-deloitte-4429031855",
+   "posted": "2026-06-18",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Sharing"
    ],
    "first_seen": "2026-06-19"
   },
@@ -50,6 +75,54 @@
    "first_seen": "2026-06-19"
   },
   {
+   "title": "IT Consultant Enterprise Solutions | BCG Platinion",
+   "company": "Boston Consulting Group (BCG)",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/it-consultant-enterprise-solutions-bcg-platinion-at-boston-consulting-group-bcg-4427284250",
+   "posted": "2026-06-13",
+   "source": "LinkedIn",
+   "keywords": [
+    "Digital Transformation"
+   ],
+   "first_seen": "2026-06-19"
+  },
+  {
+   "title": "Senior Analyst – BCG Vantage, Implementation (Transformation)",
+   "company": "Boston Consulting Group (BCG)",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/senior-analyst-%E2%80%93-bcg-vantage-implementation-transformation-at-boston-consulting-group-bcg-4427272721",
+   "posted": "2026-06-13",
+   "source": "LinkedIn",
+   "keywords": [
+    "Digital Transformation"
+   ],
+   "first_seen": "2026-06-19"
+  },
+  {
+   "title": "Principal Enterprise Architect - KSA Based only",
+   "company": "SAP",
+   "location": "Riyadh Region",
+   "url": "https://sa.linkedin.com/jobs/view/principal-enterprise-architect-ksa-based-only-at-sap-4366857681",
+   "posted": "2026-06-11",
+   "source": "LinkedIn",
+   "keywords": [
+    "Digital Transformation"
+   ],
+   "first_seen": "2026-06-19"
+  },
+  {
+   "title": "Oracle Fusion ERP Project Manager",
+   "company": "Devoteam",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/oracle-fusion-erp-project-manager-at-devoteam-4415781744",
+   "posted": "2026-06-09",
+   "source": "LinkedIn",
+   "keywords": [
+    "Digital Transformation"
+   ],
+   "first_seen": "2026-06-19"
+  },
+  {
    "title": "Client Deployment Lead, AI (MENA market)",
    "company": "TheSoul Group",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -70,6 +143,30 @@
    "source": "LinkedIn",
    "keywords": [
     "IT Manager"
+   ],
+   "first_seen": "2026-06-19"
+  },
+  {
+   "title": "ServiceNow | Operations Manager | KSA - Saudi National",
+   "company": "Deloitte",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/servicenow-operations-manager-ksa-saudi-national-at-deloitte-4371099399",
+   "posted": "2026-05-30",
+   "source": "LinkedIn",
+   "keywords": [
+    "Digital Transformation"
+   ],
+   "first_seen": "2026-06-19"
+  },
+  {
+   "title": "Lead Digital Process Automation Architect",
+   "company": "Parsons Corporation",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/lead-digital-process-automation-architect-at-parsons-corporation-4418686057",
+   "posted": "2026-05-25",
+   "source": "LinkedIn",
+   "keywords": [
+    "Digital Transformation"
    ],
    "first_seen": "2026-06-19"
   },
