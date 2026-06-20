@@ -145,6 +145,19 @@
   .own:hover { border-color: var(--up); color: #38e0a6; }
   .own.on { background: rgba(22,199,132,.18); border-color: var(--up); color: #38e0a6; }
   .dot.own { background: #38e0a6; box-shadow: 0 0 10px #38e0a6; }
+  .owned-total { padding: 10px 16px; border-bottom: 1px solid var(--border); font-size: .85rem; color: var(--muted); background: var(--card2); }
+  .owned-total b { color: var(--text); }
+  .owned-total .pl-up { color: var(--up); font-weight: 800; }
+  .owned-total .pl-down { color: var(--down); font-weight: 800; }
+  .fc-pl-inputs { display: flex; gap: 8px; margin-top: 10px; }
+  .fc-pl-inputs label { flex: 1; font-size: .7rem; color: var(--muted); display: flex; flex-direction: column; gap: 3px; }
+  .fc-pl-inputs input { width: 100%; padding: 6px 8px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg2); color: var(--text); font-size: .85rem; direction: ltr; }
+  .fc-pl { margin-top: 8px; font-size: .78rem; border-top: 1px dashed var(--border); padding-top: 8px; }
+  .fc-pl .pl-row { display: flex; justify-content: space-between; gap: 8px; padding: 2px 0; direction: ltr; }
+  .fc-pl .pl-row span { color: var(--muted); }
+  .fc-pl .pl-row.up b { color: var(--up); }
+  .fc-pl .pl-row.down b { color: var(--down); }
+  .fc-pl .pl-hint { color: var(--muted); font-size: .74rem; }
 
   /* ---- favourites box ---- */
   .fav-box .dot.fav { background: #ff4d7d; box-shadow: 0 0 10px #ff4d7d; }
@@ -293,6 +306,7 @@
       <h2><span class="dot own"></span> 🛒 محفظتي — العملات التي اشتريتها</h2>
       <span class="when" id="owned-count"></span>
     </div>
+    <div class="owned-total" id="owned-total"></div>
     <div class="fav-grid" id="owned-grid"></div>
   </div>
 
@@ -345,16 +359,23 @@ let newsPool = [];   // news + rumours, used by the 24h prediction heuristic
 // ---------- formatting ----------
 function fmtUSD(n) {
   if (n == null || isNaN(n)) return "—";
-  if (n >= 1) return "$" + n.toLocaleString("en-US", { maximumFractionDigits: 2 });
-  if (n >= 0.01) return "$" + n.toFixed(4);
-  if (n >= 0.000001) return "$" + n.toFixed(8).replace(/0+$/, "");
-  return "$" + n.toExponential(2);
+  const neg = n < 0, a = Math.abs(n);
+  let s;
+  if (a === 0) s = "$0";
+  else if (a >= 1) s = "$" + a.toLocaleString("en-US", { maximumFractionDigits: 2 });
+  else if (a >= 0.01) s = "$" + a.toFixed(4);
+  else if (a >= 0.000001) s = "$" + a.toFixed(8).replace(/0+$/, "");
+  else s = "$" + a.toExponential(2);
+  return neg ? "-" + s : s;
 }
 function fmtSAR(n) {
   if (n == null || isNaN(n)) return "";
-  const v = n * SAR_RATE;
-  if (v >= 1) return v.toLocaleString("en-US", { maximumFractionDigits: 2 }) + " ر.س";
-  return v.toFixed(6).replace(/0+$/, "") + " ر.س";
+  const neg = n < 0, v = Math.abs(n) * SAR_RATE;
+  let s;
+  if (v === 0) s = "0";
+  else if (v >= 1) s = v.toLocaleString("en-US", { maximumFractionDigits: 2 });
+  else s = v.toFixed(6).replace(/0+$/, "");
+  return (neg ? "-" : "") + s + " ر.س";
 }
 function chgHtml(p) {
   if (p == null || isNaN(p)) return '<div class="chg">—</div>';
@@ -679,6 +700,7 @@ async function loadNews() {
 
 // ---------- favourites: 24h sparkline ----------
 const chartCache = {};
+const lastPrice = {};   // uid -> latest known price, for profit/loss
 function cssId(uid) { return uid.replace(/[^a-z0-9]/gi, "_"); }
 
 function sparklineSVG(prices) {
@@ -744,6 +766,7 @@ async function updateCard(kind, uid, store) {
   if (prices && prices.length > 1) {
     sparkEl.innerHTML = sparklineSVG(prices);
     const last = prices[prices.length - 1], first = prices[0];
+    lastPrice[uid] = last;
     const pct = first ? ((last - first) / first) * 100 : null;
     const lo = Math.min(...prices), hi = Math.max(...prices);
     if (priceEl) priceEl.innerHTML = `<div class="usd">${fmtUSD(last)}</div><div class="sar">${fmtSAR(last)}</div>` +
@@ -755,6 +778,52 @@ async function updateCard(kind, uid, store) {
     if (chgEl) chgEl.innerHTML = "";
   }
   renderPredictionEl(cid, f);
+  if (kind === "own") { renderPL(uid); renderPortfolioTotal(); }
+}
+
+// ---------- profit / loss for holdings ----------
+function plInputsHtml(uid, f) {
+  return `
+    <div class="fc-pl-inputs">
+      <label>سعر الدخول ($)
+        <input class="pl-input" type="number" step="any" inputmode="decimal" data-uid="${escapeHtml(uid)}" data-field="entry" value="${f.entry != null ? f.entry : ""}" placeholder="0.00">
+      </label>
+      <label>الكمية
+        <input class="pl-input" type="number" step="any" inputmode="decimal" data-uid="${escapeHtml(uid)}" data-field="qty" value="${f.qty != null ? f.qty : ""}" placeholder="0">
+      </label>
+    </div>
+    <div class="fc-pl" id="pl-own-${cssId(uid)}"></div>`;
+}
+
+function renderPL(uid) {
+  const f = owned[uid];
+  if (!f) return;
+  const el = document.getElementById("pl-own-" + cssId(uid));
+  if (!el) return;
+  const entry = Number(f.entry), qty = Number(f.qty), price = lastPrice[uid];
+  if (!entry || !qty) { el.innerHTML = '<span class="pl-hint">أدخل سعر الدخول والكمية لحساب الربح/الخسارة.</span>'; return; }
+  if (price == null) { el.innerHTML = '<span class="pl-hint">السعر الحالي قيد التحميل…</span>'; return; }
+  const cost = entry * qty, value = price * qty, pl = value - cost, pct = ((price - entry) / entry) * 100;
+  const up = pl >= 0, sign = up ? "+" : "";
+  el.innerHTML = `
+    <div class="pl-row"><span>التكلفة</span><b>${fmtUSD(cost)} · ${fmtSAR(cost)}</b></div>
+    <div class="pl-row"><span>القيمة الآن</span><b>${fmtUSD(value)} · ${fmtSAR(value)}</b></div>
+    <div class="pl-row ${up ? "up" : "down"}"><span>الربح/الخسارة</span><b>${sign}${fmtUSD(pl)} (${sign}${pct.toFixed(2)}%)</b></div>`;
+}
+
+function renderPortfolioTotal() {
+  const el = document.getElementById("owned-total");
+  if (!el) return;
+  let cost = 0, value = 0, has = false;
+  Object.keys(owned).forEach(uid => {
+    const f = owned[uid], price = lastPrice[uid];
+    const e = Number(f.entry), q = Number(f.qty);
+    if (e && q && price != null) { has = true; cost += e * q; value += price * q; }
+  });
+  if (!has) { el.innerHTML = ""; return; }
+  const pl = value - cost, pct = cost ? (pl / cost) * 100 : 0, up = pl >= 0, sign = up ? "+" : "";
+  el.innerHTML = `إجمالي المحفظة: <b>${fmtUSD(value)}</b> · التكلفة ${fmtUSD(cost)} · ` +
+    `<span class="${up ? "pl-up" : "pl-down"}">${sign}${fmtUSD(pl)} (${sign}${pct.toFixed(2)}%)</span>`;
 }
 
 // ---------- experimental 24h prediction (NOT advice) ----------
@@ -883,11 +952,17 @@ function renderCollection(kind, store, boxId, gridId, countId, emptyMsg, btnFn) 
         <div class="fc-price" id="price-${cid}"></div>
         <div id="chg-${cid}"></div>
       </div>
+      ${kind === "own" ? plInputsHtml(uid, f) : ""}
       <div class="fc-pred" id="pred-${cid}"></div>
     </div>`;
   }).join("");
-  // show the news-based prediction right away, then enrich with the chart
-  ids.forEach(uid => { renderPredictionEl(kind + "-" + cssId(uid), store[uid]); updateCard(kind, uid, store); });
+  // show the news-based prediction (and any saved P/L) right away, then enrich with the chart
+  ids.forEach(uid => {
+    renderPredictionEl(kind + "-" + cssId(uid), store[uid]);
+    if (kind === "own") renderPL(uid);
+    updateCard(kind, uid, store);
+  });
+  if (kind === "own") renderPortfolioTotal();
 }
 
 function renderFavorites() {
@@ -929,6 +1004,19 @@ function renderOwnedNews() {
     ? items.slice(0, 30).map(a => articleHtml(a, false)).join("")
     : '<div class="feed-empty">لا توجد أخبار حديثة تخصّ عملاتك المشتراة الآن.</div>';
 }
+
+// entry price / quantity inputs for holdings (event delegation; no re-render so focus stays)
+document.addEventListener("input", e => {
+  const inp = e.target.closest(".pl-input");
+  if (!inp) return;
+  const uid = inp.dataset.uid, field = inp.dataset.field;
+  if (!owned[uid]) return;
+  const v = inp.value.trim();
+  owned[uid][field] = v === "" ? undefined : Number(v);
+  saveOwned();
+  renderPL(uid);
+  renderPortfolioTotal();
+});
 
 // toggle favourite (♡) or holding (🛒) — event delegation
 document.addEventListener("click", e => {
