@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>أخبار العملات الرقمية والشائعات</title>
+<style>
+  :root {
+    --bg: #0b0f1a;
+    --bg2: #111827;
+    --card: #151c2c;
+    --card2: #1b2436;
+    --text: #e8edf6;
+    --muted: #93a0bd;
+    --accent: #f7931a;       /* bitcoin orange */
+    --accent2: #5b8def;
+    --up: #16c784;
+    --down: #ea3943;
+    --rumor: #b06cf0;
+    --border: #243049;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    font-family: "Segoe UI", Tahoma, system-ui, -apple-system, sans-serif;
+    background: radial-gradient(1200px 600px at 80% -10%, #1a2540 0%, var(--bg) 60%);
+    color: var(--text);
+    padding-bottom: 70px;
+    min-height: 100vh;
+  }
+  a { color: inherit; }
+  header {
+    background: linear-gradient(135deg, #0d1326 0%, #1a2748 100%);
+    padding: 26px 18px 22px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+  }
+  header h1 { font-size: 1.7rem; letter-spacing: .2px; }
+  header h1 .coin { color: var(--accent); }
+  header p { color: var(--muted); margin-top: 8px; font-size: .92rem; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+
+  .updated-bar {
+    text-align: center; color: var(--muted); font-size: .82rem;
+    margin-top: 14px;
+  }
+  .updated-bar b { color: var(--text); }
+
+  /* ---- price boxes ---- */
+  .boxes {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+    margin-top: 22px;
+  }
+  @media (max-width: 820px) { .boxes { grid-template-columns: 1fr; } }
+  .box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,.25);
+  }
+  .box-head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 16px; border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, var(--card2), var(--card));
+  }
+  .box-head h2 { font-size: 1.05rem; display: flex; align-items: center; gap: 8px; }
+  .box-head .dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+  .dot.pop { background: var(--accent); box-shadow: 0 0 10px var(--accent); }
+  .dot.new { background: var(--accent2); box-shadow: 0 0 10px var(--accent2); }
+
+  .tabs { display: flex; gap: 6px; }
+  .tab {
+    border: 1px solid var(--border); background: transparent; color: var(--muted);
+    padding: 6px 12px; border-radius: 20px; font-size: .8rem; cursor: pointer;
+    font-family: inherit;
+  }
+  .tab.active { background: var(--accent2); color: #fff; border-color: var(--accent2); }
+
+  .coin-list { max-height: 560px; overflow-y: auto; }
+  .coin-row {
+    display: grid; grid-template-columns: 28px 1fr auto auto;
+    align-items: center; gap: 10px;
+    padding: 11px 16px; border-bottom: 1px solid var(--border);
+    text-decoration: none; transition: background .15s;
+  }
+  .coin-row:hover { background: var(--card2); }
+  .coin-row:last-child { border-bottom: none; }
+  .rank { color: var(--muted); font-size: .8rem; text-align: center; }
+  .coin-id { display: flex; align-items: center; gap: 9px; min-width: 0; }
+  .coin-id img { width: 26px; height: 26px; border-radius: 50%; background: #0006; flex: none; }
+  .coin-id .ph {
+    width: 26px; height: 26px; border-radius: 50%; flex: none;
+    background: var(--card2); display: grid; place-items: center;
+    font-size: .7rem; color: var(--accent); font-weight: 700;
+  }
+  .coin-name { overflow: hidden; }
+  .coin-name .nm { font-weight: 600; font-size: .92rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .coin-name .sym { color: var(--muted); font-size: .74rem; text-transform: uppercase; }
+  .price { text-align: left; direction: ltr; }
+  .price .usd { font-weight: 700; font-size: .9rem; }
+  .price .sar { color: var(--muted); font-size: .74rem; }
+  .chg { text-align: left; direction: ltr; font-size: .82rem; font-weight: 700; min-width: 64px; }
+  .chg.up { color: var(--up); }
+  .chg.down { color: var(--down); }
+  .box-loading, .box-error { padding: 26px 16px; text-align: center; color: var(--muted); font-size: .9rem; }
+  .box-error { color: var(--down); }
+
+  /* ---- news / rumours ---- */
+  .section { margin-top: 30px; }
+  .section-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .section-head h2 { font-size: 1.25rem; }
+  .section-head .pill { font-size: .72rem; color: var(--muted); border: 1px solid var(--border); padding: 3px 9px; border-radius: 20px; }
+
+  .rumor-disclaimer {
+    background: rgba(176,108,240,.1);
+    border: 1px solid rgba(176,108,240,.4);
+    color: #d9bdf7; border-radius: 12px;
+    padding: 12px 14px; font-size: .85rem; line-height: 1.6;
+    margin-bottom: 16px;
+  }
+  .rumor-disclaimer b { color: #fff; }
+
+  .feed { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 820px) { .feed { grid-template-columns: 1fr; } }
+  .article {
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 15px 16px; text-decoration: none; display: block; transition: transform .12s, border-color .12s;
+  }
+  .article:hover { transform: translateY(-2px); border-color: var(--accent2); }
+  .article.rumor:hover { border-color: var(--rumor); }
+  .article .a-title { font-weight: 700; font-size: .98rem; line-height: 1.45; }
+  .article .a-sum { color: var(--muted); font-size: .82rem; line-height: 1.6; margin-top: 7px; }
+  .article .a-meta { display: flex; flex-wrap: wrap; gap: 7px; align-items: center; margin-top: 10px; }
+  .src { font-size: .72rem; color: var(--accent2); border: 1px solid var(--border); padding: 2px 8px; border-radius: 20px; }
+  .when { font-size: .72rem; color: var(--muted); }
+  .tag { font-size: .68rem; background: rgba(176,108,240,.16); color: #d9bdf7; padding: 2px 8px; border-radius: 20px; }
+  .feed-empty { color: var(--muted); padding: 20px; text-align: center; grid-column: 1/-1; font-size: .9rem; }
+
+  .news-controls { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
+  .news-controls input, .news-controls select {
+    padding: 9px 12px; border: 1px solid var(--border); border-radius: 10px;
+    background: var(--card); color: var(--text); font-family: inherit; font-size: .9rem;
+  }
+  .news-controls input { flex: 1; min-width: 180px; }
+
+  footer { text-align: center; color: var(--muted); font-size: .78rem; margin-top: 40px; padding: 0 16px; line-height: 1.7; }
+  footer a { color: var(--accent2); }
+</style>
+</head>
+<body>
+<header>
+  <h1><span class="coin">₿</span> أخبار العملات الرقمية والشائعات</h1>
+  <p>أحدث أخبار الكريبتو، وشائعات العملات الجديدة التي قد تقفز بالسعر — مع أسعار العملات المشهورة والجديدة بالدولار والريال.</p>
+</header>
+
+<div class="wrap">
+  <div class="updated-bar" id="updated-bar">جاري التحميل…</div>
+
+  <!-- ===== price boxes ===== -->
+  <div class="boxes">
+    <!-- popular -->
+    <div class="box">
+      <div class="box-head">
+        <h2><span class="dot pop"></span> العملات المشهورة</h2>
+        <span class="when" id="pop-note">USD / SAR</span>
+      </div>
+      <div class="coin-list" id="popular">
+        <div class="box-loading">جاري جلب الأسعار…</div>
+      </div>
+    </div>
+
+    <!-- new coins (two tabs) -->
+    <div class="box">
+      <div class="box-head">
+        <h2><span class="dot new"></span> العملات الجديدة</h2>
+        <div class="tabs">
+          <button class="tab active" data-tab="trending">رائجة 🔥</button>
+          <button class="tab" data-tab="listed">مُدرجة حديثًا 🆕</button>
+        </div>
+      </div>
+      <div class="coin-list" id="new-coins">
+        <div class="box-loading">جاري جلب الأسعار…</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== rumours ===== -->
+  <div class="section">
+    <div class="section-head">
+      <h2>🚀 شائعات العملات التي قد تقفز</h2>
+      <span class="pill" id="rumor-count">—</span>
+    </div>
+    <div class="rumor-disclaimer">
+      ⚠️ <b>تنبيه:</b> هذا القسم يجمع عناوين ذات طابع <b>تكهّني/شائعات</b> (طروحات أولية، إدراجات متوقعة، توقعات أسعار…)
+      من مواقع إخبارية. <b>ليست نصيحة استثمارية</b> وقد تكون غير دقيقة أو ترويجية — اقرأها للاطلاع فقط وتحقّق بنفسك قبل أي قرار.
+    </div>
+    <div class="feed" id="rumors">
+      <div class="feed-empty">جاري التحميل…</div>
+    </div>
+  </div>
+
+  <!-- ===== news ===== -->
+  <div class="section">
+    <div class="section-head">
+      <h2>📰 آخر الأخبار</h2>
+      <span class="pill" id="news-count">—</span>
+    </div>
+    <div class="news-controls">
+      <input id="news-search" placeholder="ابحث في العناوين… (مثال: Bitcoin, ETF, Solana)">
+      <select id="news-source"><option value="">كل المصادر</option></select>
+    </div>
+    <div class="feed" id="news">
+      <div class="feed-empty">جاري التحميل…</div>
+    </div>
+  </div>
+
+  <footer>
+    الأسعار مباشرة من <a href="https://www.coingecko.com" target="_blank" rel="noopener">CoinGecko</a>
+    و <a href="https://coinpaprika.com" target="_blank" rel="noopener">CoinPaprika</a>،
+    والأخبار من خلاصات RSS عامة. سعر الريال محسوب على الربط الثابت 1 USD = 3.75 SAR.<br>
+    صفحة للاطلاع فقط — لا تُعدّ نصيحة مالية. <a href="../">← العودة للرئيسية</a>
+  </footer>
+</div>
+
+<script>
+const SAR_RATE = 3.75; // ر.س pegged to USD
+
+// ---------- formatting ----------
+function fmtUSD(n) {
+  if (n == null || isNaN(n)) return "—";
+  if (n >= 1) return "$" + n.toLocaleString("en-US", { maximumFractionDigits: 2 });
+  if (n >= 0.01) return "$" + n.toFixed(4);
+  if (n >= 0.000001) return "$" + n.toFixed(8).replace(/0+$/, "");
+  return "$" + n.toExponential(2);
+}
+function fmtSAR(n) {
+  if (n == null || isNaN(n)) return "";
+  const v = n * SAR_RATE;
+  if (v >= 1) return v.toLocaleString("en-US", { maximumFractionDigits: 2 }) + " ر.س";
+  return v.toFixed(6).replace(/0+$/, "") + " ر.س";
+}
+function chgHtml(p) {
+  if (p == null || isNaN(p)) return '<div class="chg">—</div>';
+  const up = p >= 0;
+  return `<div class="chg ${up ? "up" : "down"}">${up ? "▲" : "▼"} ${Math.abs(p).toFixed(2)}%</div>`;
+}
+function timeAgo(iso) {
+  if (!iso) return "";
+  const diff = (Date.now() - new Date(iso).getTime()) / 1000;
+  if (isNaN(diff)) return "";
+  if (diff < 3600) return "منذ " + Math.max(1, Math.round(diff / 60)) + " د";
+  if (diff < 86400) return "منذ " + Math.round(diff / 3600) + " س";
+  return "منذ " + Math.round(diff / 86400) + " يوم";
+}
+function escapeHtml(s) {
+  return (s || "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+}
+
+// ---------- coin row ----------
+function coinRow({ rank, img, name, symbol, price, change, url }) {
+  const icon = img
+    ? `<img src="${img}" alt="" loading="lazy" onerror="this.style.display='none'">`
+    : `<div class="ph">${escapeHtml((symbol || "?").slice(0, 3).toUpperCase())}</div>`;
+  return `
+    <a class="coin-row" href="${url}" target="_blank" rel="noopener">
+      <div class="rank">${rank || ""}</div>
+      <div class="coin-id">
+        ${icon}
+        <div class="coin-name">
+          <div class="nm">${escapeHtml(name)}</div>
+          <div class="sym">${escapeHtml(symbol)}</div>
+        </div>
+      </div>
+      <div class="price">
+        <div class="usd">${fmtUSD(price)}</div>
+        <div class="sar">${fmtSAR(price)}</div>
+      </div>
+      ${chgHtml(change)}
+    </a>`;
+}
+function fillBox(id, rows, emptyMsg) {
+  const el = document.getElementById(id);
+  el.innerHTML = rows.length ? rows.map(coinRow).join("") : `<div class="box-error">${emptyMsg}</div>`;
+}
+
+// ---------- popular (CoinGecko markets) ----------
+async function loadPopular() {
+  try {
+    const r = await fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=15&page=1&price_change_percentage=24h");
+    if (!r.ok) throw new Error(r.status);
+    const data = await r.json();
+    fillBox("popular", data.map(c => ({
+      rank: c.market_cap_rank,
+      img: c.image,
+      name: c.name,
+      symbol: c.symbol,
+      price: c.current_price,
+      change: c.price_change_percentage_24h,
+      url: `https://www.coingecko.com/en/coins/${c.id}`,
+    })), "تعذّر جلب العملات المشهورة.");
+  } catch (e) {
+    document.getElementById("popular").innerHTML = '<div class="box-error">تعذّر تحميل الأسعار. حدّث الصفحة بعد قليل.</div>';
+  }
+}
+
+// ---------- trending (CoinGecko) ----------
+async function loadTrending() {
+  const r = await fetch("https://api.coingecko.com/api/v3/search/trending");
+  if (!r.ok) throw new Error(r.status);
+  const data = await r.json();
+  return (data.coins || []).map(({ item }) => ({
+    rank: item.market_cap_rank || "",
+    img: item.thumb || item.small,
+    name: item.name,
+    symbol: item.symbol,
+    price: item.data ? item.data.price : null,
+    change: item.data && item.data.price_change_percentage_24h ? item.data.price_change_percentage_24h.usd : null,
+    url: `https://www.coingecko.com/en/coins/${item.id}`,
+  }));
+}
+
+// ---------- recently listed (CoinPaprika is_new) ----------
+async function loadListed() {
+  const r = await fetch("https://api.coinpaprika.com/v1/coins");
+  if (!r.ok) throw new Error(r.status);
+  const coins = await r.json();
+  const fresh = coins
+    .filter(c => c.is_new && c.is_active && c.type === "coin")
+    .sort((a, b) => (a.rank || 99999) - (b.rank || 99999))
+    .slice(0, 12);
+  const rows = await Promise.all(fresh.map(async c => {
+    let price = null, change = null;
+    try {
+      const tr = await fetch(`https://api.coinpaprika.com/v1/tickers/${c.id}?quotes=USD`);
+      if (tr.ok) {
+        const t = await tr.json();
+        if (t.quotes && t.quotes.USD) {
+          price = t.quotes.USD.price;
+          change = t.quotes.USD.percent_change_24h;
+        }
+      }
+    } catch (e) { /* keep nulls */ }
+    return {
+      rank: c.rank || "",
+      img: null,
+      name: c.name,
+      symbol: c.symbol,
+      price,
+      change,
+      url: `https://coinpaprika.com/coin/${c.id}/`,
+    };
+  }));
+  return rows;
+}
+
+// tab cache + switching
+const newCache = {};
+async function showTab(tab) {
+  const el = document.getElementById("new-coins");
+  if (newCache[tab]) { fillBox("new-coins", newCache[tab], "لا توجد بيانات حاليًا."); return; }
+  el.innerHTML = '<div class="box-loading">جاري جلب الأسعار…</div>';
+  try {
+    const rows = tab === "trending" ? await loadTrending() : await loadListed();
+    newCache[tab] = rows;
+    fillBox("new-coins", rows, "لا توجد بيانات حاليًا.");
+  } catch (e) {
+    el.innerHTML = '<div class="box-error">تعذّر تحميل هذه القائمة. حدّث الصفحة بعد قليل.</div>';
+  }
+}
+document.querySelectorAll(".tab").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".tab").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    showTab(btn.dataset.tab);
+  });
+});
+
+// ---------- news + rumours (local JSON from scraper) ----------
+let allNews = [];
+function articleHtml(a, isRumor) {
+  const tags = isRumor && a.tags ? a.tags.map(t => `<span class="tag">${escapeHtml(t)}</span>`).join("") : "";
+  return `
+    <a class="article ${isRumor ? "rumor" : ""}" href="${escapeHtml(a.url)}" target="_blank" rel="noopener">
+      <div class="a-title">${escapeHtml(a.title)}</div>
+      ${a.summary ? `<div class="a-sum">${escapeHtml(a.summary)}</div>` : ""}
+      <div class="a-meta">
+        <span class="src">${escapeHtml(a.source)}</span>
+        ${a.published ? `<span class="when">${timeAgo(a.published)}</span>` : ""}
+        ${tags}
+      </div>
+    </a>`;
+}
+function renderNews() {
+  const q = document.getElementById("news-search").value.trim().toLowerCase();
+  const src = document.getElementById("news-source").value;
+  const filtered = allNews.filter(a =>
+    (!q || (a.title + " " + (a.summary || "")).toLowerCase().includes(q)) &&
+    (!src || a.source === src)
+  );
+  const el = document.getElementById("news");
+  el.innerHTML = filtered.length
+    ? filtered.map(a => articleHtml(a, false)).join("")
+    : '<div class="feed-empty">لا توجد أخبار مطابقة.</div>';
+  document.getElementById("news-count").textContent = filtered.length + " خبر";
+}
+document.getElementById("news-search").addEventListener("input", renderNews);
+document.getElementById("news-source").addEventListener("change", renderNews);
+
+async function loadNews() {
+  try {
+    const r = await fetch("data/news.json?_=" + Date.now());
+    if (!r.ok) throw new Error(r.status);
+    const data = await r.json();
+    allNews = data.news || [];
+    const rumors = data.rumors || [];
+
+    document.getElementById("updated-bar").innerHTML = data.updated
+      ? "آخر تحديث للأخبار: <b>" + new Date(data.updated).toLocaleString("ar", { dateStyle: "medium", timeStyle: "short" }) + "</b>"
+      : "";
+
+    // source dropdown
+    const sel = document.getElementById("news-source");
+    [...new Set(allNews.map(a => a.source))].sort().forEach(s => {
+      const o = document.createElement("option"); o.value = s; o.textContent = s; sel.appendChild(o);
+    });
+
+    // rumours
+    const rel = document.getElementById("rumors");
+    rel.innerHTML = rumors.length
+      ? rumors.map(a => articleHtml(a, true)).join("")
+      : '<div class="feed-empty">لا توجد شائعات جديدة بعد. تتحدّث القائمة تلقائيًا كل بضع ساعات.</div>';
+    document.getElementById("rumor-count").textContent = rumors.length + " شائعة";
+
+    renderNews();
+  } catch (e) {
+    const msg = 'لم تُجمَع الأخبار بعد. شغّل workflow «Crypto news» مرة واحدة من تبويب Actions على GitHub.';
+    document.getElementById("news").innerHTML = `<div class="feed-empty">${msg}</div>`;
+    document.getElementById("rumors").innerHTML = `<div class="feed-empty">${msg}</div>`;
+    document.getElementById("updated-bar").textContent = "";
+  }
+}
+
+// ---------- go ----------
+loadPopular();
+showTab("trending");
+loadNews();
+</script>
+</body>
+</html>

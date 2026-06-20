@@ -36,6 +36,24 @@ Source status (verified through live workflow runs):
 - **Google Jobs, Indeed, Bayt, Naukrigulf** — no free automated access;
   one-click manual search links are on the website.
 
+## Crypto news & prices page
+
+A second page lives at `https://salem0557.github.io/cloude/crypto/` (linked from
+the top of the jobs site). It shows:
+
+- **العملات المشهورة** — top coins by market cap (live from CoinGecko).
+- **العملات الجديدة** — two tabs: *رائجة* (trending, CoinGecko) and *مُدرجة
+  حديثًا* (newly listed, CoinPaprika). Prices in USD **and** SAR.
+- **شائعات العملات التي قد تقفز** — speculative/rumour headlines (presales,
+  upcoming listings, "could 100x"…), clearly flagged as unverified.
+- **آخر الأخبار** — straight crypto news, searchable and filterable by source.
+
+Prices are fetched live in the browser. News and rumours are collected by
+[`scraper/crypto_news.py`](scraper/crypto_news.py) from public RSS feeds and
+written to [`docs/crypto/data/news.json`](docs/crypto/data/news.json), refreshed
+every 3 hours by the **Crypto news** workflow. Run it once manually (Actions →
+*Crypto news* → *Run workflow*) to populate the news on first use.
+
 ## One-time setup
 
 1. **Merge this branch to `main`** (the daily schedule only runs from the
