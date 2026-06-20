@@ -1,40 +1,68 @@
 {
-  "updated": "2026-06-20T13:29:56.320304+00:00",
+  "updated": "2026-06-20T17:06:25.188787+00:00",
   "news": [
     {
-      "title": "Apple faces price hikes for iPhone 18 Pro as AI-fueled chip shortage bites",
-      "url": "https://cryptobriefing.com/?p=262356",
+      "title": "Israeli airstrikes kill family of four in Lebanon as crypto markets shed $1B in liquidations",
+      "url": "https://cryptobriefing.com/?p=262533",
       "source": "Crypto Briefing",
-      "published": "2026-06-20T13:26:17+00:00",
-      "summary": "<p>The AI-driven chip shortage may reshape tech pricing strategies, impacting consumer affordability and competitive dynamics in the smartphone market.</p> <p>The post <a href=\"https://cryptobriefing.com/apple-iphone-18-pro-price-hike-chip-shortage-2/\">Apple faces price hikes for"
+      "published": "2026-06-20T16:58:28+00:00",
+      "summary": "<p>The airstrikes exacerbate geopolitical tensions, destabilizing markets and highlighting the fragility of recent diplomatic efforts.</p> <p>The post <a href=\"https://cryptobriefing.com/israeli-airstrikes-lebanon-crypto-liquidations/\">Israeli airstrikes kill family of four in Le"
     },
     {
-      "title": "US House Bill Seeks To Ban Lawmakers From Wagering On Prediction Markets",
-      "url": "https://www.newsbtc.com/?p=902182",
-      "source": "NewsBTC",
-      "published": "2026-06-20T13:07:50+00:00",
-      "summary": "A new US House bill seeks to ban members of Congress and their families from wagering on political and policy outcomes."
-    },
-    {
-      "title": "AI is pushing crypto media into a fight over trusted market data",
-      "url": "https://cryptoslate.com/?p=541860",
-      "source": "CryptoSlate",
-      "published": "2026-06-20T12:43:59+00:00",
-      "summary": "<p>Artificial intelligence is commoditizing news and routine research across the industry, and it's pushing crypto media companies to rebuild themselves as data platforms, analytics providers, and institutional infrastructure. The firms racing to assemble AI-ready databases are p"
-    },
-    {
-      "title": "Students are Ditching Computer Science as AI Job Fears Grow",
-      "url": "https://beincrypto.com/?p=841420",
-      "source": "BeInCrypto",
-      "published": "2026-06-20T12:12:15+00:00",
-      "summary": "<p>Goldman data and a weak entry-level market push students out of AI-exposed college majors toward safer fields.</p> <p>The post <a href=\"https://beincrypto.com/ai-college-majors-computer-science-enrollment-drop/\">Students are Ditching Computer Science as AI Job Fears Grow</a> a"
-    },
-    {
-      "title": "Analyst Warns: Strategy Will Have to Sell Over 50,000 BTC by 2028",
-      "url": "https://cryptopotato.com/?p=1440396",
+      "title": "Why Isn’t Robert Kiyosaki Buying the Dip in BTC, ETH, Gold, and Silver?",
+      "url": "https://cryptopotato.com/?p=1440534",
       "source": "CryptoPotato",
-      "published": "2026-06-20T12:05:51+00:00",
-      "summary": "Kaleo actually said this could be the company's best option."
+      "published": "2026-06-20T16:57:27+00:00",
+      "summary": "The popular investor and author believes the environment is more important."
+    },
+    {
+      "title": "Bitcoin shrugged off Japan’s rate hike – The bigger liquidity test came from Washington",
+      "url": "https://cryptoslate.com/?p=542272",
+      "source": "CryptoSlate",
+      "published": "2026-06-20T16:15:34+00:00",
+      "summary": "<p>The Bank of Japan raised its benchmark interest rate to 1% on June 16, the highest level the country has seen since September 1995 and the furthest point yet in a normalization campaign that has slowly dismantled three decades of near-free money. Going into the decision, the t"
+    },
+    {
+      "title": "Michael Saylor Touts $48 Billion Bitcoin Turnaround, But Can MicroStrategy’s STRC Survive 2026?",
+      "url": "https://beincrypto.com/?p=841427",
+      "source": "BeInCrypto",
+      "published": "2026-06-20T16:03:03+00:00",
+      "summary": "<p>Saylor says Strategy reserves top debt by $48 billion, but STRC trades below par as traders debate the funding model.</p> <p>The post <a href=\"https://beincrypto.com/saylor-bitcoin-strc-survive-2026/\">Michael Saylor Touts $48 Billion Bitcoin Turnaround, But Can MicroStrategy&#"
+    },
+    {
+      "title": "CFTC And SEC Seek Input On Derivatives Definitions As Crypto Perpetuals Face Legal Test",
+      "url": "https://www.newsbtc.com/?p=902180",
+      "source": "NewsBTC",
+      "published": "2026-06-20T15:50:57+00:00",
+      "summary": "The CFTC and SEC are seeking public comment on derivatives definitions as crypto perpetual futures face a key legal and regulatory test."
+    },
+    {
+      "title": "Michael Saylor Shares Strategy's Resilience and Growth Since 2022",
+      "url": "https://u.today/michael-saylor-shares-strategys-resilience-and-growth-since-2022",
+      "source": "U.Today",
+      "published": "2026-06-20T15:40:55+00:00",
+      "summary": "Michael Saylor reflects on Strategy’s dark moments and recovery over the years, all thanks to its resilience in Bitcoin regardless of the market condition."
+    },
+    {
+      "title": "Major Cardano Upgrade Moves Forward With Critical Dates Now in Focus",
+      "url": "https://u.today/major-cardano-upgrade-moves-forward-with-critical-dates-now-in-focus",
+      "source": "U.Today",
+      "published": "2026-06-20T15:00:50+00:00",
+      "summary": "Cardano’s next hard fork clears key governance milestone with timelines emerging."
+    },
+    {
+      "title": "Bitcoin Network Activity Is Rising as BTC Falls Nearly 50% Below Peak Price: CryptoQuant",
+      "url": "https://decrypt.co/?p=371702",
+      "source": "Decrypt",
+      "published": "2026-06-20T14:59:51+00:00",
+      "summary": "Activity on the Bitcoin network is surging, CryptoQuant said, but it's not correlating with price movement for its native asset."
+    },
+    {
+      "title": "Swift Warns of Key ISO 20022 Deadline Amid Compliance Pressure: Is Ripple Ready?",
+      "url": "https://u.today/swift-warns-of-key-iso-20022-deadline-amid-compliance-pressure-is-ripple-ready",
+      "source": "U.Today",
+      "published": "2026-06-20T14:00:20+00:00",
+      "summary": "2026 deadline puts spotlight on ISO 20022 compliance readiness."
     },
     {
       "title": "Satoshi Bitcoin Case Faces Strong Counterargument in Latest Update",
@@ -70,13 +98,6 @@
       "source": "U.Today",
       "published": "2026-06-19T20:22:58+00:00",
       "summary": "Hoskinson has stated that while an appearance on Joe Rogan is \"part of the plan,\" the timing isn't quite right just yet."
-    },
-    {
-      "title": "Charles Schwab Planning to Roll Out S&#038;P 500 Prediction Markets With Cboe: WSJ",
-      "url": "https://decrypt.co/?p=371708",
-      "source": "Decrypt",
-      "published": "2026-06-19T20:02:32+00:00",
-      "summary": "Global financial institution Charles Schwab is the latest firm hoping to steal a piece of the growing prediction market pie."
     },
     {
       "title": "'No More!': FBI Director Vows to Hunt Down Crypto Fraudsters",
@@ -161,37 +182,19 @@
       "source": "U.Today",
       "published": "2026-06-19T08:02:00+00:00",
       "summary": "Schiff, a staunch Bitcoin critic, claims that the company's heavily leveraged crypto-treasury model is a \"financial house of cards.\""
-    },
-    {
-      "title": "Bitcoin Close to Dropping Out of Top 20",
-      "url": "https://u.today/bitcoin-close-to-dropping-out-of-top-20",
-      "source": "U.Today",
-      "published": "2026-06-19T05:32:08+00:00",
-      "summary": "The leading cryptocurrency is facing the unprecedented risk of falling out of the top 20 entirely."
-    },
-    {
-      "title": "Bitcoin (BTC), Dogecoin (DOGE), XRP and Shiba Inu (SHIB) Price Analysis for June 19: Cryptocurrency Market Needs Momentum",
-      "url": "https://u.today/bitcoin-btc-dogecoin-doge-xrp-and-shiba-inu-shib-price-analysis-for-june-19-cryptocurrency-market",
-      "source": "U.Today",
-      "published": "2026-06-19T00:01:00+00:00",
-      "summary": "Buyers have slowed the decline, yet weakening rebound volume and strong resistance overhead suggest volatility will remain elevated until key support-turned-resistance levels are decisively reclaimed."
-    },
-    {
-      "title": "Ripple CEO: 'This Moment Is Real'",
-      "url": "https://u.today/ripple-ceo-this-moment-is-real",
-      "source": "U.Today",
-      "published": "2026-06-18T19:35:39+00:00",
-      "summary": "Ripple Swell's star-studded speaker lineup features high-profile figures from both Hollywood and Wall Street."
-    },
-    {
-      "title": "Ethereum Foundation Loses Co-Executive Director",
-      "url": "https://u.today/ethereum-foundation-loses-co-executive-director",
-      "source": "U.Today",
-      "published": "2026-06-18T18:37:38+00:00",
-      "summary": "Hsiao-Wei Wang has stepped down as co-executive director and board member of the Ethereum Foundation (EF)."
     }
   ],
   "rumors": [
+    {
+      "title": "17% XRP Surge in Network Activity Could Trigger Next Leg Up",
+      "url": "https://u.today/17-xrp-surge-in-network-activity-could-trigger-next-leg-up",
+      "source": "U.Today",
+      "published": "2026-06-20T14:17:20+00:00",
+      "summary": "XRP notes 17% surge in its burn rate as its network continues to strengthen despite the broader market weakness, flashing signs of a potential recovery.",
+      "tags": [
+        "Speculation"
+      ]
+    },
     {
       "title": "Ethereum Gears Up for $2,850 Recovery as Price Hits Break-Even Point",
       "url": "https://u.today/ethereum-gears-up-for-2850-recovery-as-price-hits-break-even-point",
