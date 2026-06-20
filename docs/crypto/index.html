@@ -78,12 +78,12 @@
 
   .coin-list { max-height: 560px; overflow-y: auto; }
   .coin-row {
-    display: grid; grid-template-columns: 24px 1fr auto auto auto;
-    align-items: center; gap: 9px;
-    padding: 11px 14px; border-bottom: 1px solid var(--border);
+    display: grid; grid-template-columns: 22px 1fr auto auto auto auto;
+    align-items: center; gap: 8px;
+    padding: 11px 12px; border-bottom: 1px solid var(--border);
     text-decoration: none; transition: background .15s;
   }
-  @media (max-width: 480px) { .coin-row { grid-template-columns: 1fr auto auto; gap: 7px; padding: 10px 12px; } .coin-row .rank, .coin-row .chg { display: none; } }
+  @media (max-width: 480px) { .coin-row { grid-template-columns: 1fr auto auto auto; gap: 6px; padding: 10px 10px; } .coin-row .rank, .coin-row .chg { display: none; } }
   .coin-row:hover { background: var(--card2); }
   .coin-row:last-child { border-bottom: none; }
   .rank { color: var(--muted); font-size: .8rem; text-align: center; }
@@ -127,6 +127,33 @@
     max-width: 760px; margin: 8px auto 0; text-align: center;
     color: var(--muted); font-size: .78rem; line-height: 1.7;
   }
+  .heart {
+    background: none; border: none; cursor: pointer; padding: 2px 3px;
+    font-size: 1.15rem; line-height: 1; color: #6b7691;
+    transition: transform .1s, color .15s; flex: none;
+  }
+  .heart::before { content: "\2661"; }      /* ♡ */
+  .heart.on::before { content: "\2665"; }    /* ♥ */
+  .heart.on { color: #ff4d7d; }
+  .heart:hover { transform: scale(1.25); color: #ff4d7d; }
+
+  /* ---- favourites box ---- */
+  .fav-box .dot.fav { background: #ff4d7d; box-shadow: 0 0 10px #ff4d7d; }
+  .fav-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 14px; padding: 16px;
+  }
+  .fav-card { background: var(--card2); border: 1px solid var(--border); border-radius: 14px; padding: 13px 14px; }
+  .fav-card .fc-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+  .fav-card .fc-name { font-weight: 700; font-size: .95rem; line-height: 1.3; }
+  .fav-card .fc-sym { color: var(--muted); font-size: .72rem; text-transform: uppercase; margin-top: 2px; }
+  .fav-card .fc-spark { margin: 12px 0 10px; min-height: 60px; }
+  .fav-card .fc-spark svg.spark { display: block; width: 100%; height: 60px; }
+  .fc-loading, .fc-nochart { color: var(--muted); font-size: .78rem; text-align: center; padding: 20px 4px; }
+  .fav-card .fc-stats { display: flex; align-items: flex-end; justify-content: space-between; gap: 8px; direction: ltr; }
+  .fav-card .fc-price .usd { font-weight: 800; font-size: .98rem; }
+  .fav-card .fc-price .sar { color: var(--muted); font-size: .74rem; }
+  .fav-card .fc-range { color: var(--muted); font-size: .68rem; margin-top: 4px; direction: ltr; }
   .box-loading, .box-error { padding: 26px 16px; text-align: center; color: var(--muted); font-size: .9rem; }
   .box-error { color: var(--down); }
 
@@ -222,6 +249,15 @@
     (قد لا تكون العملة الجديدة جدًا مُدرجة هناك بعد — وهذا بحدّ ذاته إشارة مخاطرة).
   </div>
 
+  <!-- ===== favourites ===== -->
+  <div class="box fav-box" id="fav-box" style="display:none; margin-top:22px;">
+    <div class="box-head">
+      <h2><span class="dot fav"></span> ⭐ مفضّلتي — تذبذب آخر 24 ساعة</h2>
+      <span class="when" id="fav-count"></span>
+    </div>
+    <div class="fav-grid" id="fav-grid"></div>
+  </div>
+
   <!-- ===== rumours ===== -->
   <div class="section">
     <div class="section-head">
@@ -262,6 +298,11 @@
 
 <script>
 const SAR_RATE = 3.75; // ر.س pegged to USD
+
+// ---------- favourites state ----------
+let favs = {};
+try { favs = JSON.parse(localStorage.getItem("cryptoFavs") || "{}") || {}; } catch (e) { favs = {}; }
+function saveFavs() { try { localStorage.setItem("cryptoFavs", JSON.stringify(favs)); } catch (e) {} }
 
 // ---------- formatting ----------
 function fmtUSD(n) {
@@ -333,7 +374,14 @@ function riskOf({ marketCap, volume, rank, change }) {
 }
 
 // ---------- coin row ----------
-function coinRow({ rank, img, name, symbol, price, change, url, marketCap, volume }) {
+function heartBtn({ source, id, name, symbol, url }) {
+  const uid = `${source}:${id}`;
+  return `<button class="heart ${favs[uid] ? "on" : ""}" type="button"
+    data-source="${escapeHtml(source || "")}" data-id="${escapeHtml(String(id || ""))}"
+    data-name="${escapeHtml(name || "")}" data-symbol="${escapeHtml(symbol || "")}"
+    data-url="${escapeHtml(url || "")}" title="إضافة/إزالة من المفضلة"></button>`;
+}
+function coinRow({ rank, img, name, symbol, price, change, url, marketCap, volume, source, id }) {
   const icon = img
     ? `<img src="${img}" alt="" loading="lazy" onerror="this.style.display='none'">`
     : `<div class="ph">${escapeHtml((symbol || "?").slice(0, 3).toUpperCase())}</div>`;
@@ -356,6 +404,7 @@ function coinRow({ rank, img, name, symbol, price, change, url, marketCap, volum
       </div>
       ${chgHtml(change)}
       <a class="buy" href="${buyUrl}" target="_blank" rel="noopener" title="فتح صفحة التداول على Binance">شراء</a>
+      ${heartBtn({ source, id, name, symbol, url })}
     </div>`;
 }
 function fillBox(id, rows, emptyMsg) {
@@ -379,6 +428,8 @@ async function loadPopular() {
       marketCap: c.market_cap,
       volume: c.total_volume,
       url: `https://www.coingecko.com/en/coins/${c.id}`,
+      source: "gecko",
+      id: c.id,
     })), "تعذّر جلب العملات المشهورة.");
   } catch (e) {
     document.getElementById("popular").innerHTML = '<div class="box-error">تعذّر تحميل الأسعار. حدّث الصفحة بعد قليل.</div>';
@@ -400,6 +451,8 @@ async function loadTrending() {
     marketCap: item.data ? parseMoney(item.data.market_cap) : null,
     volume: item.data ? parseMoney(item.data.total_volume) : null,
     url: `https://www.coingecko.com/en/coins/${item.id}`,
+    source: "gecko",
+    id: item.id,
   }));
 }
 
@@ -436,6 +489,8 @@ async function loadListed() {
       marketCap,
       volume,
       url: `https://coinpaprika.com/coin/${c.id}/`,
+      source: "paprika",
+      id: c.id,
     };
   }));
   return rows;
@@ -528,10 +583,122 @@ async function loadNews() {
   }
 }
 
+// ---------- favourites: 24h sparkline ----------
+const chartCache = {};
+function cssId(uid) { return uid.replace(/[^a-z0-9]/gi, "_"); }
+
+function sparklineSVG(prices) {
+  if (!prices || prices.length < 2) return "";
+  const w = 240, h = 60, pad = 5;
+  const min = Math.min(...prices), max = Math.max(...prices);
+  const span = (max - min) || (Math.abs(max) || 1);
+  const n = prices.length;
+  const pts = prices.map((p, i) => {
+    const x = pad + (i / (n - 1)) * (w - 2 * pad);
+    const y = pad + (1 - (p - min) / span) * (h - 2 * pad);
+    return `${x.toFixed(1)},${y.toFixed(1)}`;
+  });
+  const up = prices[n - 1] >= prices[0];
+  const color = up ? "var(--up)" : "var(--down)";
+  const area = `${pad},${h - pad} ${pts.join(" ")} ${(w - pad)},${h - pad}`;
+  return `<svg class="spark" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" role="img" aria-label="تذبذب 24 ساعة">
+    <polygon points="${area}" fill="${color}" opacity="0.12"></polygon>
+    <polyline points="${pts.join(" ")}" fill="none" stroke="${color}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></polyline>
+  </svg>`;
+}
+
+async function fetchChart(fav) {
+  const uid = `${fav.source}:${fav.id}`;
+  if (chartCache[uid]) return chartCache[uid];
+  let prices = null;
+  try {
+    if (fav.source === "gecko") {
+      const r = await fetch(`https://api.coingecko.com/api/v3/coins/${fav.id}/market_chart?vs_currency=usd&days=1`);
+      if (r.ok) { const d = await r.json(); prices = (d.prices || []).map(p => p[1]); }
+    } else {
+      const start = new Date(Date.now() - 25 * 3600 * 1000).toISOString().slice(0, 10);
+      const r = await fetch(`https://api.coinpaprika.com/v1/tickers/${fav.id}/historical?start=${start}&interval=1h&quotes=USD`);
+      if (r.ok) { const d = await r.json(); prices = (d || []).map(x => x.price); }
+    }
+  } catch (e) { /* leave null */ }
+  chartCache[uid] = { prices };
+  return chartCache[uid];
+}
+
+async function updateFavCard(uid) {
+  const f = favs[uid];
+  if (!f) return;
+  const cid = cssId(uid);
+  const sparkEl = document.getElementById("spark-" + cid);
+  const priceEl = document.getElementById("price-" + cid);
+  const chgEl = document.getElementById("chg-" + cid);
+  if (!sparkEl) return;
+  const { prices } = await fetchChart(f);
+  if (prices && prices.length > 1) {
+    sparkEl.innerHTML = sparklineSVG(prices);
+    const last = prices[prices.length - 1], first = prices[0];
+    const pct = first ? ((last - first) / first) * 100 : null;
+    const lo = Math.min(...prices), hi = Math.max(...prices);
+    if (priceEl) priceEl.innerHTML = `<div class="usd">${fmtUSD(last)}</div><div class="sar">${fmtSAR(last)}</div>` +
+      `<div class="fc-range">24h: ${fmtUSD(lo)} – ${fmtUSD(hi)}</div>`;
+    if (chgEl) chgEl.innerHTML = chgHtml(pct);
+  } else {
+    sparkEl.innerHTML = '<div class="fc-nochart">تعذّر جلب بيانات التذبذب لهذه العملة.</div>';
+    if (priceEl) priceEl.innerHTML = "";
+    if (chgEl) chgEl.innerHTML = "";
+  }
+}
+
+function renderFavorites() {
+  const ids = Object.keys(favs);
+  const box = document.getElementById("fav-box");
+  const grid = document.getElementById("fav-grid");
+  if (!ids.length) { box.style.display = "none"; grid.innerHTML = ""; return; }
+  box.style.display = "";
+  document.getElementById("fav-count").textContent = ids.length + " عملة";
+  grid.innerHTML = ids.map(uid => {
+    const f = favs[uid], cid = cssId(uid);
+    return `<div class="fav-card">
+      <div class="fc-head">
+        <div>
+          <div class="fc-name">${escapeHtml(f.name)}</div>
+          <div class="fc-sym">${escapeHtml(f.symbol)}</div>
+        </div>
+        ${heartBtn(f)}
+      </div>
+      <div class="fc-spark" id="spark-${cid}"><div class="fc-loading">جاري تحميل التذبذب…</div></div>
+      <div class="fc-stats">
+        <div class="fc-price" id="price-${cid}"></div>
+        <div id="chg-${cid}"></div>
+      </div>
+    </div>`;
+  }).join("");
+  ids.forEach(updateFavCard);
+}
+
+// toggle favourite when any heart is clicked (event delegation)
+document.addEventListener("click", e => {
+  const h = e.target.closest(".heart");
+  if (!h) return;
+  e.preventDefault();
+  const fav = {
+    source: h.dataset.source, id: h.dataset.id, name: h.dataset.name,
+    symbol: h.dataset.symbol, url: h.dataset.url,
+  };
+  const uid = `${fav.source}:${fav.id}`;
+  if (favs[uid]) delete favs[uid]; else favs[uid] = fav;
+  saveFavs();
+  document.querySelectorAll(".heart").forEach(btn => {
+    if (`${btn.dataset.source}:${btn.dataset.id}` === uid) btn.classList.toggle("on", !!favs[uid]);
+  });
+  renderFavorites();
+});
+
 // ---------- go ----------
 loadPopular();
 showTab("trending");
 loadNews();
+renderFavorites();
 </script>
 </body>
 </html>
