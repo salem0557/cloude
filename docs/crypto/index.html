@@ -2,8 +2,16 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>أخبار العملات الرقمية والشائعات</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0b0f1a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="كريبتو">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" href="icon-192.png">
 <style>
   :root {
     --bg: #0b0f1a;
@@ -158,6 +166,18 @@
   .fc-pl .pl-row.up b { color: var(--up); }
   .fc-pl .pl-row.down b { color: var(--down); }
   .fc-pl .pl-hint { color: var(--muted); font-size: .74rem; }
+  .alerts-bar { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; margin-top: 14px; padding: 12px 16px; background: var(--card); border: 1px solid var(--border); border-radius: 14px; font-size: .85rem; }
+  .alerts-bar .a-title { font-weight: 700; }
+  .alerts-bar button { font-family: inherit; cursor: pointer; border: 1px solid var(--accent2); background: var(--accent2); color: #fff; padding: 8px 14px; border-radius: 10px; font-size: .85rem; font-weight: 700; }
+  .alerts-bar button.off { background: transparent; color: var(--accent2); }
+  .alerts-bar label { color: var(--muted); display: flex; align-items: center; gap: 6px; }
+  .alerts-bar input { width: 64px; padding: 6px 8px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg2); color: var(--text); font-size: .85rem; direction: ltr; text-align: center; }
+  .alerts-status { color: var(--muted); font-size: .78rem; flex-basis: 100%; line-height: 1.7; }
+  .alerts-status b { color: var(--text); }
+  #toast-wrap { position: fixed; left: 0; right: 0; bottom: 16px; display: flex; flex-direction: column; align-items: center; gap: 8px; z-index: 9999; pointer-events: none; padding: 0 12px; }
+  .toast { pointer-events: auto; background: #1b2436; border: 1px solid var(--accent2); color: var(--text); padding: 12px 16px; border-radius: 12px; font-size: .9rem; box-shadow: 0 10px 30px rgba(0,0,0,.45); max-width: 520px; width: 100%; line-height: 1.5; }
+  .toast.up { border-color: var(--up); }
+  .toast.down { border-color: var(--down); }
 
   /* ---- favourites box ---- */
   .fav-box .dot.fav { background: #ff4d7d; box-shadow: 0 0 10px #ff4d7d; }
@@ -245,6 +265,16 @@
 
 <div class="wrap">
   <div class="updated-bar" id="updated-bar">جاري التحميل…</div>
+
+  <!-- ===== price alerts ===== -->
+  <div class="alerts-bar" id="alerts-bar">
+    <span class="a-title">🔔 تنبيهات الأسعار</span>
+    <button id="alerts-toggle" class="off" type="button">تفعيل التنبيهات</button>
+    <label>عند تحرّك ±
+      <input id="alerts-pct" type="number" step="1" min="1" value="10"> %
+    </label>
+    <div class="alerts-status" id="alerts-status"></div>
+  </div>
 
   <!-- ===== price boxes ===== -->
   <div class="boxes">
@@ -1039,6 +1069,108 @@ document.addEventListener("click", e => {
   if (isOwn) renderOwned(); else renderFavorites();
 });
 
+// ---------- PWA + price alerts ----------
+if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
+
+let alertPct = 10, alertsOn = false, alertTimer = null;
+const notifyCooldown = {};
+try { alertPct = Number(localStorage.getItem("alertPct")) || 10; } catch (e) {}
+try { alertsOn = localStorage.getItem("alertsOn") === "1"; } catch (e) {}
+
+function toast(body, cls) {
+  const wrap = document.getElementById("toast-wrap");
+  if (!wrap) return;
+  const el = document.createElement("div");
+  el.className = "toast " + (cls || "");
+  el.textContent = body;
+  wrap.appendChild(el);
+  setTimeout(() => el.remove(), 9000);
+}
+function showAlert(body, cls) {
+  toast(body, cls);
+  if (typeof Notification !== "undefined" && Notification.permission === "granted" && navigator.serviceWorker) {
+    navigator.serviceWorker.ready
+      .then(reg => reg.showNotification("تنبيه أسعار 🔔", { body, icon: "icon-192.png", badge: "icon-192.png", dir: "rtl", lang: "ar", tag: body }))
+      .catch(() => {});
+  }
+}
+function maybeNotify(key, body, cls) {
+  const now = Date.now();
+  if (notifyCooldown[key] && now - notifyCooldown[key] < 60 * 60 * 1000) return; // 1h cooldown per coin+direction
+  notifyCooldown[key] = now;
+  showAlert(body, cls);
+}
+function checkThresholds(uid, f, prices) {
+  const th = alertPct, sym = (f.symbol || "").toUpperCase();
+  const change = ((prices[prices.length - 1] - prices[0]) / prices[0]) * 100;
+  if (change >= th) maybeNotify(uid + ":up", `📈 ${f.name} (${sym}) ارتفع ${change.toFixed(1)}% خلال 24 ساعة`, "up");
+  else if (change <= -th) maybeNotify(uid + ":down", `📉 ${f.name} (${sym}) هبط ${Math.abs(change).toFixed(1)}% خلال 24 ساعة`, "down");
+  if (owned[uid]) {
+    const o = owned[uid], e = Number(o.entry), q = Number(o.qty), price = prices[prices.length - 1];
+    if (e && q) {
+      const pl = ((price - e) / e) * 100;
+      if (pl <= -th) maybeNotify(uid + ":loss", `🔻 خسارة كبيرة في محفظتك: ${f.name} ${pl.toFixed(1)}%`, "down");
+      else if (pl >= th) maybeNotify(uid + ":gain", `🔺 ربح كبير في محفظتك: ${f.name} +${pl.toFixed(1)}%`, "up");
+    }
+  }
+}
+async function pollAlerts() {
+  const watched = Object.assign({}, favs, owned);
+  for (const uid of Object.keys(watched)) {
+    const f = watched[uid];
+    let prices;
+    try { prices = await fetchChartPrices(f); } catch (e) { continue; }
+    if (!prices || prices.length < 2) continue;
+    chartCache[uid] = { prices };
+    lastPrice[uid] = prices[prices.length - 1];
+    if (favs[uid]) updateCard("fav", uid, favs);
+    if (owned[uid]) updateCard("own", uid, owned);
+    checkThresholds(uid, f, prices);
+  }
+}
+function startAlerts() {
+  if (alertTimer) clearInterval(alertTimer);
+  pollAlerts();
+  alertTimer = setInterval(pollAlerts, 120000); // every 2 min while the app is open
+}
+function setAlertsUI() {
+  const btn = document.getElementById("alerts-toggle");
+  const status = document.getElementById("alerts-status");
+  document.getElementById("alerts-pct").value = alertPct;
+  if (alertsOn) {
+    btn.textContent = "التنبيهات مُفعّلة ✓"; btn.classList.remove("off");
+    const granted = (typeof Notification !== "undefined" && Notification.permission === "granted");
+    status.innerHTML = granted
+      ? `ستصلك تنبيهات النظام عند تحرّك أي عملة في مفضّلتك أو محفظتك بنسبة ±<b>${alertPct}%</b> أو أكثر — <b>طالما التطبيق مفتوح</b> (آيفون لا يسمح بالتنبيه والتطبيق مغلق دون خادم خاص).`
+      : "مفعّلة داخل الصفحة فقط (لم يُسمح بإشعارات النظام). على آيفون: أضِف الموقع للشاشة الرئيسية ثم اسمح بالإشعارات.";
+  } else {
+    btn.textContent = "تفعيل التنبيهات"; btn.classList.add("off");
+    status.innerHTML = 'فعّل التنبيهات لتصلك إشارة عند ارتفاع أو هبوط كبير لأي عملة في مفضّلتك أو محفظتك. <b>على آيفون:</b> أضِف الموقع إلى الشاشة الرئيسية أولًا (زر المشاركة ← «إضافة إلى الشاشة الرئيسية») لتعمل إشعارات النظام.';
+  }
+}
+async function enableAlerts() {
+  alertsOn = true;
+  try { localStorage.setItem("alertsOn", "1"); } catch (e) {}
+  if (typeof Notification !== "undefined" && Notification.permission === "default") {
+    try { await Notification.requestPermission(); } catch (e) {}
+  }
+  setAlertsUI();
+  startAlerts();
+}
+function disableAlerts() {
+  alertsOn = false;
+  try { localStorage.setItem("alertsOn", "0"); } catch (e) {}
+  if (alertTimer) { clearInterval(alertTimer); alertTimer = null; }
+  setAlertsUI();
+}
+document.getElementById("alerts-toggle").addEventListener("click", () => { alertsOn ? disableAlerts() : enableAlerts(); });
+document.getElementById("alerts-pct").addEventListener("input", e => {
+  const v = Number(e.target.value);
+  if (v >= 1) { alertPct = v; try { localStorage.setItem("alertPct", String(v)); } catch (_) {} }
+});
+setAlertsUI();
+if (alertsOn) startAlerts();
+
 // ---------- go ----------
 loadPopular();
 showTab("trending");
@@ -1046,5 +1178,6 @@ loadNews();
 renderFavorites();
 renderOwned();
 </script>
+<div id="toast-wrap"></div>
 </body>
 </html>
