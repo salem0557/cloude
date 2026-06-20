@@ -433,12 +433,64 @@ function fillBox(id, rows, emptyMsg) {
   el.innerHTML = rows.length ? rows.map(coinRow).join("") : `<div class="box-error">${emptyMsg}</div>`;
 }
 
-// ---------- popular (CoinGecko markets) ----------
+// ---------- resilient fetch (CoinGecko free API rate-limits with 429) ----------
+function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+async function fetchJSON(url, retries = 2) {
+  let lastErr;
+  for (let i = 0; i <= retries; i++) {
+    try {
+      const r = await fetch(url, { cache: "no-store" });
+      if (r.status === 429) { await sleep(800 * (i + 1)); lastErr = new Error("429"); continue; }
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      return await r.json();
+    } catch (e) {
+      lastErr = e;
+      if (i < retries) await sleep(500 * (i + 1));
+    }
+  }
+  throw lastErr || new Error("fetch failed");
+}
+
+// curated majors used as a fallback when CoinGecko is unavailable
+const TOP_FALLBACK = [
+  { symbol: "BTC", name: "Bitcoin", id: "bitcoin" },
+  { symbol: "ETH", name: "Ethereum", id: "ethereum" },
+  { symbol: "BNB", name: "BNB", id: "binancecoin" },
+  { symbol: "SOL", name: "Solana", id: "solana" },
+  { symbol: "XRP", name: "XRP", id: "ripple" },
+  { symbol: "ADA", name: "Cardano", id: "cardano" },
+  { symbol: "DOGE", name: "Dogecoin", id: "dogecoin" },
+  { symbol: "TRX", name: "TRON", id: "tron" },
+  { symbol: "AVAX", name: "Avalanche", id: "avalanche-2" },
+  { symbol: "LINK", name: "Chainlink", id: "chainlink" },
+  { symbol: "DOT", name: "Polkadot", id: "polkadot" },
+  { symbol: "LTC", name: "Litecoin", id: "litecoin" },
+  { symbol: "SHIB", name: "Shiba Inu", id: "shiba-inu" },
+  { symbol: "BCH", name: "Bitcoin Cash", id: "bitcoin-cash" },
+  { symbol: "XLM", name: "Stellar", id: "stellar" },
+];
+async function loadPopularBinance() {
+  const syms = TOP_FALLBACK.map(c => c.symbol + "USDT");
+  const data = await fetchJSON("https://api.binance.com/api/v3/ticker/24hr?symbols=" + encodeURIComponent(JSON.stringify(syms)));
+  const map = {};
+  (data || []).forEach(d => { map[d.symbol] = d; });
+  return TOP_FALLBACK.map((c, i) => {
+    const d = map[c.symbol + "USDT"] || {};
+    return {
+      rank: i + 1, img: null, name: c.name, symbol: c.symbol,
+      price: d.lastPrice ? Number(d.lastPrice) : null,
+      change: d.priceChangePercent != null ? Number(d.priceChangePercent) : null,
+      marketCap: 5e10, // known major -> keeps risk indicator "low"
+      volume: d.quoteVolume ? Number(d.quoteVolume) : null,
+      url: `https://www.coingecko.com/en/coins/${c.id}`, source: "gecko", id: c.id,
+    };
+  });
+}
+
+// ---------- popular (CoinGecko markets, Binance fallback) ----------
 async function loadPopular() {
   try {
-    const r = await fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=15&page=1&price_change_percentage=24h");
-    if (!r.ok) throw new Error(r.status);
-    const data = await r.json();
+    const data = await fetchJSON("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=15&page=1&price_change_percentage=24h");
     fillBox("popular", data.map(c => ({
       rank: c.market_cap_rank,
       img: c.image,
@@ -453,15 +505,17 @@ async function loadPopular() {
       id: c.id,
     })), "تعذّر جلب العملات المشهورة.");
   } catch (e) {
-    document.getElementById("popular").innerHTML = '<div class="box-error">تعذّر تحميل الأسعار. حدّث الصفحة بعد قليل.</div>';
+    try {
+      fillBox("popular", await loadPopularBinance(), "تعذّر جلب العملات المشهورة.");
+    } catch (e2) {
+      document.getElementById("popular").innerHTML = '<div class="box-error">تعذّر تحميل الأسعار (قد يكون المزوّد مشغولًا الآن). حدّث الصفحة بعد قليل.</div>';
+    }
   }
 }
 
 // ---------- trending (CoinGecko) ----------
 async function loadTrending() {
-  const r = await fetch("https://api.coingecko.com/api/v3/search/trending");
-  if (!r.ok) throw new Error(r.status);
-  const data = await r.json();
+  const data = await fetchJSON("https://api.coingecko.com/api/v3/search/trending");
   return (data.coins || []).map(({ item }) => ({
     rank: item.market_cap_rank || "",
     img: item.thumb || item.small,
@@ -479,9 +533,7 @@ async function loadTrending() {
 
 // ---------- recently listed (CoinPaprika is_new) ----------
 async function loadListed() {
-  const r = await fetch("https://api.coinpaprika.com/v1/coins");
-  if (!r.ok) throw new Error(r.status);
-  const coins = await r.json();
+  const coins = await fetchJSON("https://api.coinpaprika.com/v1/coins");
   const fresh = coins
     .filter(c => c.is_new && c.is_active && c.type === "coin")
     .sort((a, b) => (a.rank || 99999) - (b.rank || 99999))
@@ -489,15 +541,12 @@ async function loadListed() {
   const rows = await Promise.all(fresh.map(async c => {
     let price = null, change = null, marketCap = null, volume = null;
     try {
-      const tr = await fetch(`https://api.coinpaprika.com/v1/tickers/${c.id}?quotes=USD`);
-      if (tr.ok) {
-        const t = await tr.json();
-        if (t.quotes && t.quotes.USD) {
-          price = t.quotes.USD.price;
-          change = t.quotes.USD.percent_change_24h;
-          marketCap = t.quotes.USD.market_cap;
-          volume = t.quotes.USD.volume_24h;
-        }
+      const t = await fetchJSON(`https://api.coinpaprika.com/v1/tickers/${c.id}?quotes=USD`, 1);
+      if (t.quotes && t.quotes.USD) {
+        price = t.quotes.USD.price;
+        change = t.quotes.USD.percent_change_24h;
+        marketCap = t.quotes.USD.market_cap;
+        volume = t.quotes.USD.volume_24h;
       }
     } catch (e) { /* keep nulls */ }
     return {
@@ -636,17 +685,25 @@ async function fetchChart(fav) {
   const uid = `${fav.source}:${fav.id}`;
   if (chartCache[uid]) return chartCache[uid];
   let prices = null;
-  try {
-    if (fav.source === "gecko") {
-      const r = await fetch(`https://api.coingecko.com/api/v3/coins/${fav.id}/market_chart?vs_currency=usd&days=1`);
-      if (r.ok) { const d = await r.json(); prices = (d.prices || []).map(p => p[1]); }
-    } else {
-      const start = new Date(Date.now() - 25 * 3600 * 1000).toISOString().slice(0, 10);
-      const r = await fetch(`https://api.coinpaprika.com/v1/tickers/${fav.id}/historical?start=${start}&interval=1h&quotes=USD`);
-      if (r.ok) { const d = await r.json(); prices = (d || []).map(x => x.price); }
+  if (fav.source === "gecko") {
+    try {
+      const d = await fetchJSON(`https://api.coingecko.com/api/v3/coins/${fav.id}/market_chart?vs_currency=usd&days=1`);
+      prices = (d.prices || []).map(p => p[1]);
+    } catch (e) { /* try fallback */ }
+    if (!prices || prices.length < 2) {
+      try { // Binance hourly closes for the last 24h
+        const k = await fetchJSON(`https://api.binance.com/api/v3/klines?symbol=${(fav.symbol || "").toUpperCase()}USDT&interval=1h&limit=24`, 1);
+        prices = (k || []).map(x => Number(x[4]));
+      } catch (e) { /* leave null */ }
     }
-  } catch (e) { /* leave null */ }
-  chartCache[uid] = { prices };
+  } else {
+    try {
+      const start = new Date(Date.now() - 25 * 3600 * 1000).toISOString().slice(0, 10);
+      const d = await fetchJSON(`https://api.coinpaprika.com/v1/tickers/${fav.id}/historical?start=${start}&interval=1h&quotes=USD`, 1);
+      prices = (d || []).map(x => x.price);
+    } catch (e) { /* leave null */ }
+  }
+  chartCache[uid] = { prices: (prices && prices.length >= 2) ? prices : null };
   return chartCache[uid];
 }
 
@@ -803,7 +860,8 @@ function renderFavorites() {
       <div class="fc-pred" id="pred-${cid}"></div>
     </div>`;
   }).join("");
-  ids.forEach(updateFavCard);
+  // show the news-based prediction right away, then enrich with the chart
+  ids.forEach(uid => { renderPrediction(uid); updateFavCard(uid); });
 }
 
 // toggle favourite when any heart is clicked (event delegation)
