@@ -154,6 +154,22 @@
   .fav-card .fc-price .usd { font-weight: 800; font-size: .98rem; }
   .fav-card .fc-price .sar { color: var(--muted); font-size: .74rem; }
   .fav-card .fc-range { color: var(--muted); font-size: .68rem; margin-top: 4px; direction: ltr; }
+  .fc-pred { margin-top: 12px; border-top: 1px dashed var(--border); padding-top: 10px; }
+  .pred-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-weight: 800; font-size: .82rem; padding: 4px 11px; border-radius: 20px;
+  }
+  .pred-badge.up   { background: rgba(22,199,132,.16); color: #38e0a6; }
+  .pred-badge.down { background: rgba(234,57,67,.16);  color: #ff6470; }
+  .pred-badge.flat { background: rgba(147,160,189,.16); color: #aab6d0; }
+  .pred-conf { font-size: .68rem; color: var(--muted); margin-inline-start: 6px; }
+  .pred-why { color: var(--muted); font-size: .76rem; line-height: 1.6; margin-top: 7px; }
+  .pred-rel { margin-top: 8px; display: flex; flex-direction: column; gap: 4px; }
+  .pred-rel a { font-size: .72rem; color: var(--accent2); text-decoration: none; line-height: 1.4; }
+  .pred-rel a:hover { text-decoration: underline; }
+  .pred-rel .pos::before { content: "▲ "; color: var(--up); }
+  .pred-rel .neg::before { content: "▼ "; color: var(--down); }
+  .pred-rel .neu::before { content: "• "; color: var(--muted); }
   .box-loading, .box-error { padding: 26px 16px; text-align: center; color: var(--muted); font-size: .9rem; }
   .box-error { color: var(--down); }
 
@@ -252,8 +268,12 @@
   <!-- ===== favourites ===== -->
   <div class="box fav-box" id="fav-box" style="display:none; margin-top:22px;">
     <div class="box-head">
-      <h2><span class="dot fav"></span> ⭐ مفضّلتي — تذبذب آخر 24 ساعة</h2>
+      <h2><span class="dot fav"></span> ⭐ مفضّلتي — تذبذب وتوقّع 24 ساعة</h2>
       <span class="when" id="fav-count"></span>
+    </div>
+    <div class="risk-note" style="margin:12px 16px 0">
+      🔮 «مؤشّر التوقّع» أسفل كل عملة <b>تجريبيّ وآليّ بالكامل</b>: يُحسب من نبرة عناوين الأخبار/الشائعات/آراء الخبراء
+      التي تخصّ العملة + الزخم السعري لآخر 24 ساعة. <b>ليس توصية ولا نصيحة مالية، وقد يكون خاطئًا تمامًا</b> — للتعلّم فقط.
     </div>
     <div class="fav-grid" id="fav-grid"></div>
   </div>
@@ -303,6 +323,7 @@ const SAR_RATE = 3.75; // ر.س pegged to USD
 let favs = {};
 try { favs = JSON.parse(localStorage.getItem("cryptoFavs") || "{}") || {}; } catch (e) { favs = {}; }
 function saveFavs() { try { localStorage.setItem("cryptoFavs", JSON.stringify(favs)); } catch (e) {} }
+let newsPool = [];   // news + rumours, used by the 24h prediction heuristic
 
 // ---------- formatting ----------
 function fmtUSD(n) {
@@ -574,6 +595,10 @@ async function loadNews() {
       : '<div class="feed-empty">لا توجد شائعات جديدة بعد. تتحدّث القائمة تلقائيًا كل بضع ساعات.</div>';
     document.getElementById("rumor-count").textContent = rumors.length + " شائعة";
 
+    // feed the prediction engine, then refresh any open favourite cards
+    newsPool = allNews.concat(rumors);
+    refreshFavPredictions();
+
     renderNews();
   } catch (e) {
     const msg = 'لم تُجمَع الأخبار بعد. شغّل workflow «Crypto news» مرة واحدة من تبويب Actions على GitHub.';
@@ -647,6 +672,107 @@ async function updateFavCard(uid) {
     if (priceEl) priceEl.innerHTML = "";
     if (chgEl) chgEl.innerHTML = "";
   }
+  renderPrediction(uid);
+}
+
+// ---------- experimental 24h prediction (NOT advice) ----------
+const BULL = ["surge","soar","soars","rally","rallies","pump","bullish","breakout","break out","gain","gains","jump","jumps","rise","rises","rising","moon","100x","10x","all-time high","ath","record high","adoption","partnership","approval","approved","etf","inflow","inflows","accumulate","upgrade","skyrocket","explode","rebound","recovery","outperform","buy","green","up "];
+const BEAR = ["crash","dump","plunge","plunges","sell-off","selloff","bearish","warning","warns","hack","hacked","exploit","lawsuit","sued","ban","banned","outflow","outflows","liquidation","liquidations","fear","decline","declines","fall","falls","falling","fraud","scam","correction","tumble","slump","sink","sinks","dip","drop","drops","red","down "];
+
+function escapeRegex(s) { return (s || "").replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }
+function countHits(text, words) { let n = 0; for (const w of words) if (text.includes(w)) n++; return n; }
+
+function matchNewsFor(fav) {
+  if (!newsPool.length) return [];
+  const name = (fav.name || "").toLowerCase().trim();
+  const sym = (fav.symbol || "").trim();
+  let re = null;
+  const parts = [];
+  if (name.length >= 3) parts.push(escapeRegex(name));
+  if (sym.length >= 3) parts.push("\\$?\\b" + escapeRegex(sym) + "\\b"); // skip 1-2 char symbols (too noisy)
+  if (!parts.length) return [];
+  try { re = new RegExp(parts.join("|"), "i"); } catch (e) { return []; }
+  const out = [];
+  for (const it of newsPool) {
+    const hay = `${it.title} ${it.summary || ""}`;
+    if (!re.test(hay)) continue;
+    const low = hay.toLowerCase();
+    const s = countHits(low, BULL) - countHits(low, BEAR);
+    out.push({ item: it, s });
+    if (out.length >= 8) break;
+  }
+  return out;
+}
+
+function techSignal(prices) {
+  if (!prices || prices.length < 3) return { score: 0, notes: [] };
+  const n = prices.length, first = prices[0], last = prices[n - 1];
+  const half = Math.floor(n / 2);
+  const avg = a => a.reduce((x, y) => x + y, 0) / a.length;
+  const firstAvg = avg(prices.slice(0, half)), secondAvg = avg(prices.slice(half));
+  const momentum = firstAvg ? ((secondAvg - firstAvg) / firstAvg) * 100 : 0;
+  const lo = Math.min(...prices), hi = Math.max(...prices);
+  const pos = hi > lo ? (last - lo) / (hi - lo) : 0.5;
+  let score = 0; const notes = [];
+  if (momentum > 2) { score += 2; notes.push("زخم سعري صاعد"); }
+  else if (momentum > 0.3) { score += 1; notes.push("ميل صاعد طفيف"); }
+  else if (momentum < -2) { score -= 2; notes.push("زخم سعري هابط"); }
+  else if (momentum < -0.3) { score -= 1; notes.push("ميل هابط طفيف"); }
+  else notes.push("حركة سعرية جانبية");
+  if (pos > 0.8) { score += 1; notes.push("قرب قمة 24س"); }
+  else if (pos < 0.2) { score -= 1; notes.push("قرب قاع 24س"); }
+  return { score, notes };
+}
+
+function computePrediction(fav) {
+  const cache = chartCache[`${fav.source}:${fav.id}`];
+  const prices = cache ? cache.prices : null;
+  const tech = techSignal(prices);
+  const matches = matchNewsFor(fav);
+  const pos = matches.filter(m => m.s > 0).length;
+  const neg = matches.filter(m => m.s < 0).length;
+  let newsScore = pos - neg;
+  if (newsScore > 3) newsScore = 3; if (newsScore < -3) newsScore = -3;
+
+  const total = tech.score + newsScore;
+  let level = "flat", label = "محايد / متذبذب", arrow = "→";
+  if (total >= 3) { level = "up"; label = "ميل صاعد قوي"; arrow = "▲▲"; }
+  else if (total >= 1) { level = "up"; label = "ميل صاعد"; arrow = "▲"; }
+  else if (total <= -3) { level = "down"; label = "ميل هابط قوي"; arrow = "▼▼"; }
+  else if (total <= -1) { level = "down"; label = "ميل هابط"; arrow = "▼"; }
+
+  // confidence from how much evidence we have
+  const evidence = (prices && prices.length >= 3 ? 1 : 0) + matches.length;
+  const conf = evidence >= 4 ? "ثقة متوسطة" : evidence >= 2 ? "ثقة منخفضة" : "أدلة قليلة جدًا";
+
+  const why = [...tech.notes];
+  if (matches.length) why.push(`${matches.length} عنوان مرتبط (${pos} إيجابي · ${neg} سلبي)`);
+  else why.push("لا توجد أخبار حديثة تخصّها — التوقّع من الزخم فقط");
+
+  return { level, label, arrow, conf, why, matches };
+}
+
+function renderPrediction(uid) {
+  const el = document.getElementById("pred-" + cssId(uid));
+  if (!el) return;
+  const f = favs[uid];
+  if (!f) return;
+  const p = computePrediction(f);
+  const rel = p.matches.slice(0, 3).map(m => {
+    const cls = m.s > 0 ? "pos" : m.s < 0 ? "neg" : "neu";
+    return `<a class="${cls}" href="${escapeHtml(m.item.url)}" target="_blank" rel="noopener">${escapeHtml(m.item.title)}</a>`;
+  }).join("");
+  el.innerHTML = `
+    <div>
+      <span class="pred-badge ${p.level}">🔮 توقّع 24س: ${p.arrow} ${p.label}</span>
+      <span class="pred-conf">(${p.conf})</span>
+    </div>
+    <div class="pred-why">${escapeHtml(p.why.join(" · "))}</div>
+    ${rel ? `<div class="pred-rel">${rel}</div>` : ""}`;
+}
+
+function refreshFavPredictions() {
+  Object.keys(favs).forEach(renderPrediction);
 }
 
 function renderFavorites() {
@@ -671,6 +797,7 @@ function renderFavorites() {
         <div class="fc-price" id="price-${cid}"></div>
         <div id="chg-${cid}"></div>
       </div>
+      <div class="fc-pred" id="pred-${cid}"></div>
     </div>`;
   }).join("");
   ids.forEach(updateFavCard);
