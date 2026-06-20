@@ -78,11 +78,12 @@
 
   .coin-list { max-height: 560px; overflow-y: auto; }
   .coin-row {
-    display: grid; grid-template-columns: 28px 1fr auto auto;
-    align-items: center; gap: 10px;
-    padding: 11px 16px; border-bottom: 1px solid var(--border);
+    display: grid; grid-template-columns: 24px 1fr auto auto auto;
+    align-items: center; gap: 9px;
+    padding: 11px 14px; border-bottom: 1px solid var(--border);
     text-decoration: none; transition: background .15s;
   }
+  @media (max-width: 480px) { .coin-row { grid-template-columns: 1fr auto auto; gap: 7px; padding: 10px 12px; } .coin-row .rank, .coin-row .chg { display: none; } }
   .coin-row:hover { background: var(--card2); }
   .coin-row:last-child { border-bottom: none; }
   .rank { color: var(--muted); font-size: .8rem; text-align: center; }
@@ -99,9 +100,33 @@
   .price { text-align: left; direction: ltr; }
   .price .usd { font-weight: 700; font-size: .9rem; }
   .price .sar { color: var(--muted); font-size: .74rem; }
-  .chg { text-align: left; direction: ltr; font-size: .82rem; font-weight: 700; min-width: 64px; }
+  .chg { text-align: left; direction: ltr; font-size: .82rem; font-weight: 700; min-width: 60px; }
   .chg.up { color: var(--up); }
   .chg.down { color: var(--down); }
+  .buy {
+    background: linear-gradient(135deg, #f0b90b, #f7931a); color: #1a1300;
+    font-weight: 800; font-size: .76rem; text-decoration: none;
+    padding: 7px 12px; border-radius: 9px; white-space: nowrap; flex: none;
+    box-shadow: 0 2px 8px rgba(240,185,11,.25);
+  }
+  .buy:hover { filter: brightness(1.08); }
+  .risk {
+    display: inline-block; font-size: .66rem; font-weight: 700;
+    padding: 1px 7px; border-radius: 20px; margin-inline-start: 6px;
+    vertical-align: middle; cursor: help;
+  }
+  .risk.low  { background: rgba(22,199,132,.16); color: #38e0a6; }
+  .risk.mid  { background: rgba(240,185,11,.16); color: #f0c33b; }
+  .risk.high { background: rgba(234,57,67,.16);  color: #ff6470; }
+  .risk-legend {
+    display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;
+    margin-top: 14px; color: var(--muted); font-size: .8rem; line-height: 1.7;
+  }
+  .risk-legend .risk { cursor: default; }
+  .risk-note {
+    max-width: 760px; margin: 8px auto 0; text-align: center;
+    color: var(--muted); font-size: .78rem; line-height: 1.7;
+  }
   .box-loading, .box-error { padding: 26px 16px; text-align: center; color: var(--muted); font-size: .9rem; }
   .box-error { color: var(--down); }
 
@@ -184,6 +209,19 @@
     </div>
   </div>
 
+  <div class="risk-legend">
+    <span>مؤشّر المخاطرة:</span>
+    <span><span class="risk low">مخاطرة أقل</span> عملة كبيرة وسيولتها جيدة</span>
+    <span><span class="risk mid">مخاطرة متوسطة</span> صغيرة/سيولة محدودة</span>
+    <span><span class="risk high">مخاطرة عالية</span> ضئيلة جدًا أو غامضة</span>
+  </div>
+  <div class="risk-note">
+    ⚠️ مؤشّر المخاطرة <b>آليّ</b> ويُحسب من القيمة السوقية وحجم التداول والتصنيف وحدّة التقلّب —
+    وهي الإشارات التي ترافق عادةً العملات الوهمية أو الخطرة. <b>ليس حكمًا قاطعًا</b> بأن العملة احتيال أو سليمة،
+    وليس نصيحة استثمارية. مرّر المؤشر بالماوس لرؤية سبب التقييم. زر «شراء» يفتح صفحة التداول على Binance
+    (قد لا تكون العملة الجديدة جدًا مُدرجة هناك بعد — وهذا بحدّ ذاته إشارة مخاطرة).
+  </div>
+
   <!-- ===== rumours ===== -->
   <div class="section">
     <div class="section-head">
@@ -256,27 +294,69 @@ function escapeHtml(s) {
   return (s || "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 }
 
+// parse "$1,234,567" / "12.3M" / numbers -> Number|null
+function parseMoney(v) {
+  if (typeof v === "number") return isNaN(v) ? null : v;
+  if (!v) return null;
+  const s = String(v).replace(/[$,\s]/g, "");
+  const m = s.match(/^([\d.]+)\s*([kmbt])?$/i);
+  if (!m) { const n = parseFloat(s); return isNaN(n) ? null : n; }
+  const mult = { k: 1e3, m: 1e6, b: 1e9, t: 1e12 }[(m[2] || "").toLowerCase()] || 1;
+  const n = parseFloat(m[1]);
+  return isNaN(n) ? null : n * mult;
+}
+
+// Automated risk heuristic — NOT a scam verdict. Flags the liquidity/size
+// signals that usually accompany risky or fake coins.
+function riskOf({ marketCap, volume, rank, change }) {
+  let score = 0;
+  const why = [];
+  if (marketCap == null || marketCap === 0) { score += 3; why.push("قيمة سوقية غير معروفة"); }
+  else if (marketCap < 1e6) { score += 3; why.push("قيمة سوقية ضئيلة جدًا"); }
+  else if (marketCap < 1e7) { score += 2; why.push("قيمة سوقية صغيرة"); }
+  else if (marketCap < 1e8) { score += 1; }
+
+  if (volume == null || volume === 0) { score += 2; why.push("سيولة شبه معدومة"); }
+  else if (volume < 1e5) { score += 2; why.push("حجم تداول منخفض جدًا"); }
+  else if (volume < 1e6) { score += 1; }
+
+  if (rank == null || rank === 0 || rank === "") { score += 1; why.push("غير مصنّفة"); }
+  else if (Number(rank) > 1500) { score += 1; why.push("تصنيف منخفض"); }
+
+  if (change != null && Math.abs(change) > 60) { score += 1; why.push("تقلّب حادّ"); }
+
+  let level = "low", label = "مخاطرة أقل";
+  if (score >= 4) { level = "high"; label = "مخاطرة عالية"; }
+  else if (score >= 2) { level = "mid"; label = "مخاطرة متوسطة"; }
+  if (!why.length) why.push("قيمة سوقية وسيولة جيدة");
+  return { level, label, title: why.join(" · ") };
+}
+
 // ---------- coin row ----------
-function coinRow({ rank, img, name, symbol, price, change, url }) {
+function coinRow({ rank, img, name, symbol, price, change, url, marketCap, volume }) {
   const icon = img
     ? `<img src="${img}" alt="" loading="lazy" onerror="this.style.display='none'">`
     : `<div class="ph">${escapeHtml((symbol || "?").slice(0, 3).toUpperCase())}</div>`;
+  const risk = riskOf({ marketCap, volume, rank, change });
+  const sym = (symbol || "").toUpperCase();
+  const buyUrl = `https://www.binance.com/en/trade/${encodeURIComponent(sym)}_USDT?type=spot`;
   return `
-    <a class="coin-row" href="${url}" target="_blank" rel="noopener">
+    <div class="coin-row">
       <div class="rank">${rank || ""}</div>
-      <div class="coin-id">
+      <a class="coin-id" href="${url}" target="_blank" rel="noopener" style="text-decoration:none;color:inherit">
         ${icon}
         <div class="coin-name">
           <div class="nm">${escapeHtml(name)}</div>
-          <div class="sym">${escapeHtml(symbol)}</div>
+          <div class="sym">${escapeHtml(symbol)}<span class="risk ${risk.level}" title="${escapeHtml(risk.title)}">${risk.label}</span></div>
         </div>
-      </div>
+      </a>
       <div class="price">
         <div class="usd">${fmtUSD(price)}</div>
         <div class="sar">${fmtSAR(price)}</div>
       </div>
       ${chgHtml(change)}
-    </a>`;
+      <a class="buy" href="${buyUrl}" target="_blank" rel="noopener" title="فتح صفحة التداول على Binance">شراء</a>
+    </div>`;
 }
 function fillBox(id, rows, emptyMsg) {
   const el = document.getElementById(id);
@@ -296,6 +376,8 @@ async function loadPopular() {
       symbol: c.symbol,
       price: c.current_price,
       change: c.price_change_percentage_24h,
+      marketCap: c.market_cap,
+      volume: c.total_volume,
       url: `https://www.coingecko.com/en/coins/${c.id}`,
     })), "تعذّر جلب العملات المشهورة.");
   } catch (e) {
@@ -315,6 +397,8 @@ async function loadTrending() {
     symbol: item.symbol,
     price: item.data ? item.data.price : null,
     change: item.data && item.data.price_change_percentage_24h ? item.data.price_change_percentage_24h.usd : null,
+    marketCap: item.data ? parseMoney(item.data.market_cap) : null,
+    volume: item.data ? parseMoney(item.data.total_volume) : null,
     url: `https://www.coingecko.com/en/coins/${item.id}`,
   }));
 }
@@ -329,7 +413,7 @@ async function loadListed() {
     .sort((a, b) => (a.rank || 99999) - (b.rank || 99999))
     .slice(0, 12);
   const rows = await Promise.all(fresh.map(async c => {
-    let price = null, change = null;
+    let price = null, change = null, marketCap = null, volume = null;
     try {
       const tr = await fetch(`https://api.coinpaprika.com/v1/tickers/${c.id}?quotes=USD`);
       if (tr.ok) {
@@ -337,6 +421,8 @@ async function loadListed() {
         if (t.quotes && t.quotes.USD) {
           price = t.quotes.USD.price;
           change = t.quotes.USD.percent_change_24h;
+          marketCap = t.quotes.USD.market_cap;
+          volume = t.quotes.USD.volume_24h;
         }
       }
     } catch (e) { /* keep nulls */ }
@@ -347,6 +433,8 @@ async function loadListed() {
       symbol: c.symbol,
       price,
       change,
+      marketCap,
+      volume,
       url: `https://coinpaprika.com/coin/${c.id}/`,
     };
   }));
