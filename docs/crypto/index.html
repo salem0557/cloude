@@ -779,9 +779,12 @@ function renderFavorites() {
   const ids = Object.keys(favs);
   const box = document.getElementById("fav-box");
   const grid = document.getElementById("fav-grid");
-  if (!ids.length) { box.style.display = "none"; grid.innerHTML = ""; return; }
-  box.style.display = "";
-  document.getElementById("fav-count").textContent = ids.length + " عملة";
+  box.style.display = "";   // always visible so it never silently "disappears"
+  document.getElementById("fav-count").textContent = ids.length ? ids.length + " عملة" : "";
+  if (!ids.length) {
+    grid.innerHTML = '<div class="feed-empty" style="grid-column:1/-1">لم تُضِف أي عملة بعد 💛<br>اضغط على القلب ♡ بجانب أي عملة في الصندوقين بالأعلى لإضافتها هنا، وستظهر مع رسم تذبذبها ومؤشّر توقّعها. (المفضّلة تُحفظ في هذا المتصفح فقط على هذا الجهاز.)</div>';
+    return;
+  }
   grid.innerHTML = ids.map(uid => {
     const f = favs[uid], cid = cssId(uid);
     return `<div class="fav-card">
