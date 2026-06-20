@@ -1,6 +1,248 @@
 {
-  "updated": null,
-  "news": [],
-  "rumors": [],
-  "sources": []
+  "updated": "2026-06-20T13:29:56.320304+00:00",
+  "news": [
+    {
+      "title": "Apple faces price hikes for iPhone 18 Pro as AI-fueled chip shortage bites",
+      "url": "https://cryptobriefing.com/?p=262356",
+      "source": "Crypto Briefing",
+      "published": "2026-06-20T13:26:17+00:00",
+      "summary": "<p>The AI-driven chip shortage may reshape tech pricing strategies, impacting consumer affordability and competitive dynamics in the smartphone market.</p> <p>The post <a href=\"https://cryptobriefing.com/apple-iphone-18-pro-price-hike-chip-shortage-2/\">Apple faces price hikes for"
+    },
+    {
+      "title": "US House Bill Seeks To Ban Lawmakers From Wagering On Prediction Markets",
+      "url": "https://www.newsbtc.com/?p=902182",
+      "source": "NewsBTC",
+      "published": "2026-06-20T13:07:50+00:00",
+      "summary": "A new US House bill seeks to ban members of Congress and their families from wagering on political and policy outcomes."
+    },
+    {
+      "title": "AI is pushing crypto media into a fight over trusted market data",
+      "url": "https://cryptoslate.com/?p=541860",
+      "source": "CryptoSlate",
+      "published": "2026-06-20T12:43:59+00:00",
+      "summary": "<p>Artificial intelligence is commoditizing news and routine research across the industry, and it's pushing crypto media companies to rebuild themselves as data platforms, analytics providers, and institutional infrastructure. The firms racing to assemble AI-ready databases are p"
+    },
+    {
+      "title": "Students are Ditching Computer Science as AI Job Fears Grow",
+      "url": "https://beincrypto.com/?p=841420",
+      "source": "BeInCrypto",
+      "published": "2026-06-20T12:12:15+00:00",
+      "summary": "<p>Goldman data and a weak entry-level market push students out of AI-exposed college majors toward safer fields.</p> <p>The post <a href=\"https://beincrypto.com/ai-college-majors-computer-science-enrollment-drop/\">Students are Ditching Computer Science as AI Job Fears Grow</a> a"
+    },
+    {
+      "title": "Analyst Warns: Strategy Will Have to Sell Over 50,000 BTC by 2028",
+      "url": "https://cryptopotato.com/?p=1440396",
+      "source": "CryptoPotato",
+      "published": "2026-06-20T12:05:51+00:00",
+      "summary": "Kaleo actually said this could be the company's best option."
+    },
+    {
+      "title": "Satoshi Bitcoin Case Faces Strong Counterargument in Latest Update",
+      "url": "https://u.today/satoshi-bitcoin-case-faces-strong-counterargument-in-latest-update",
+      "source": "U.Today",
+      "published": "2026-06-20T11:40:11+00:00",
+      "summary": "Fresh court filing raises stakes in fight over Satoshi's Bitcoin holdings."
+    },
+    {
+      "title": "Shiba Inu Hits 1.59 Million Onchain Holders After June Adds 3,464 New Wallets",
+      "url": "https://u.today/shiba-inu-hits-159-million-onchain-holders-after-june-adds-3464-new-wallets",
+      "source": "U.Today",
+      "published": "2026-06-20T10:02:07+00:00",
+      "summary": "Shiba Inu quietly adds thousands of holders as market watches price."
+    },
+    {
+      "title": "Ripple Effect: Why Stellar (XLM) Is Flying and XRP Is Stuck Near $1.13",
+      "url": "https://u.today/ripple-effect-why-stellar-xlm-is-flying-and-xrp-is-stuck-near-113",
+      "source": "U.Today",
+      "published": "2026-06-20T04:00:00+00:00",
+      "summary": "Stellar rides a $2.8 billion RWA wave while XRP gets stuck at $1.13, but tightening Bollinger Bands put the next breakout scenario in the spotlight."
+    },
+    {
+      "title": "50 Billion Shiba Inu (SHIB) in 24 Hours: Bulls Are in Control of Netflows",
+      "url": "https://u.today/50-billion-shiba-inu-shib-in-24-hours-bulls-are-in-control-of-netflows",
+      "source": "U.Today",
+      "published": "2026-06-20T03:00:00+00:00",
+      "summary": "Shiba Inu is not losing momentum as bulls push away excessive inflows to exchanges."
+    },
+    {
+      "title": "Cardano Founder Teases Joe Rogan Appearance",
+      "url": "https://u.today/cardano-founder-teases-joe-rogan-appearance",
+      "source": "U.Today",
+      "published": "2026-06-19T20:22:58+00:00",
+      "summary": "Hoskinson has stated that while an appearance on Joe Rogan is \"part of the plan,\" the timing isn't quite right just yet."
+    },
+    {
+      "title": "Charles Schwab Planning to Roll Out S&#038;P 500 Prediction Markets With Cboe: WSJ",
+      "url": "https://decrypt.co/?p=371708",
+      "source": "Decrypt",
+      "published": "2026-06-19T20:02:32+00:00",
+      "summary": "Global financial institution Charles Schwab is the latest firm hoping to steal a piece of the growing prediction market pie."
+    },
+    {
+      "title": "'No More!': FBI Director Vows to Hunt Down Crypto Fraudsters",
+      "url": "https://u.today/no-more-fbi-director-vows-to-hunt-down-crypto-fraudsters",
+      "source": "U.Today",
+      "published": "2026-06-19T18:31:01+00:00",
+      "summary": "The FBI is expanding its asset-recovery and tracking operations following a record-breaking year for cybercrime."
+    },
+    {
+      "title": "'It Was Magic': Evernorth CEO Lifts Curtain on Early Days of Ripple and XRP",
+      "url": "https://u.today/it-was-magic-evernorth-ceo-lifts-curtain-on-early-days-of-ripple-and-xrp",
+      "source": "U.Today",
+      "published": "2026-06-19T17:01:00+00:00",
+      "summary": "Evernorth CEO Ashish Birla links XRP's 2013 \"coffee shop magic\" to the asset's core financial mission ahead of the firm's Nasdaq debut."
+    },
+    {
+      "title": "'Retire It and Move On': Bloomberg Tells MSTR to Drop STRC",
+      "url": "https://u.today/retire-it-and-move-on-bloomberg-tells-mstr-to-drop-strc",
+      "source": "U.Today",
+      "published": "2026-06-19T16:23:18+00:00",
+      "summary": "Strategy’s bold financial experiment has become a primary source of anxiety for the cryptocurrency market."
+    },
+    {
+      "title": "Solana Surpasses $7 Billion in Trading Volume, Beats Coinbase and Kraken",
+      "url": "https://u.today/solana-surpasses-7-billion-in-trading-volume-beats-coinbase-and-kraken",
+      "source": "U.Today",
+      "published": "2026-06-19T15:37:58+00:00",
+      "summary": "Solana records strong daily and weekly spot trading volumes, outperforming major centralized exchanges like Coinbase and Kraken in such metric."
+    },
+    {
+      "title": "Stellar (XLM) Surges 30%, Overtakes Zcash in Crypto Market Rankings",
+      "url": "https://u.today/stellar-xlm-surges-30-overtakes-zcash-in-crypto-market-rankings",
+      "source": "U.Today",
+      "published": "2026-06-19T14:00:30+00:00",
+      "summary": "Stellar (XLM) rose as much as 30% on a weekly basis, briefly overtaking Zcash."
+    },
+    {
+      "title": "Bitcoin's Biggest Threat Is Not a Crash, It's Boredom, CryptoQuant CEO Warns",
+      "url": "https://u.today/bitcoins-biggest-threat-is-not-a-crash-its-boredom-cryptoquant-ceo-warns",
+      "source": "U.Today",
+      "published": "2026-06-19T13:00:15+00:00",
+      "summary": "Ki Young Ju warns that a prolonged sideways grind is paralyzing fresh capital inflows as Bitcoin loses its original narratives."
+    },
+    {
+      "title": "12,760,000 SHIB Torched: Shiba Inu Sees Strongest Burn Activity in Weeks",
+      "url": "https://u.today/12760000-shib-torched-shiba-inu-sees-strongest-burn-activity-in-weeks",
+      "source": "U.Today",
+      "published": "2026-06-19T11:59:30+00:00",
+      "summary": "Shiba Inu burns over 12 million tokens within 24 hours as network activity grows stronger despite persisting market volatility."
+    },
+    {
+      "title": "'DOGE': Dogecoin Creator Reacts to Unexpected Shiba Inu Reward in Popular Game",
+      "url": "https://u.today/doge-dogecoin-creator-reacts-to-unexpected-shiba-inu-reward-in-popular-game",
+      "source": "U.Today",
+      "published": "2026-06-19T10:45:11+00:00",
+      "summary": "Dogecoin founder spots \"Giant\" Shiba Inu reward tied to Japanese tax program."
+    },
+    {
+      "title": "XRP Ledger Payments Spike to 500 Million Threshold, but Yet to Break It",
+      "url": "https://u.today/xrp-ledger-payments-spike-to-500-million-threshold-but-yet-to-break-it",
+      "source": "U.Today",
+      "published": "2026-06-19T10:22:00+00:00",
+      "summary": "XRP is not yet ready for the full market reversal, despite the clear recovery tendency we are witnessing."
+    },
+    {
+      "title": "30 Million XRP Whale Exodus: Why Millionaire Wallets Are Selling Ripple's 'North Star'",
+      "url": "https://u.today/30-million-xrp-whale-exodus-why-millionaire-wallets-are-selling-ripples-north-star",
+      "source": "U.Today",
+      "published": "2026-06-19T09:04:00+00:00",
+      "summary": "XRP whales dump 30 million tokens, sparking a bearish ripple effect on the price."
+    },
+    {
+      "title": "New Crypto-Stealing Malware in the Wild, Microsoft Warns: Details",
+      "url": "https://u.today/new-crypto-stealing-malware-in-the-wild-microsoft-warns-details",
+      "source": "U.Today",
+      "published": "2026-06-19T08:06:00+00:00",
+      "summary": "Microsoft has warned of a sophisticated crypto-stealing malware campaign, dubbed CryptoBandits, that spreads via infected USB drives and hijacks wallet addresses, seed phrases, and private keys."
+    },
+    {
+      "title": "Peter Schiff Blasts MSTR Meltdown",
+      "url": "https://u.today/peter-schiff-blasts-mstr-meltdown",
+      "source": "U.Today",
+      "published": "2026-06-19T08:02:00+00:00",
+      "summary": "Schiff, a staunch Bitcoin critic, claims that the company's heavily leveraged crypto-treasury model is a \"financial house of cards.\""
+    },
+    {
+      "title": "Bitcoin Close to Dropping Out of Top 20",
+      "url": "https://u.today/bitcoin-close-to-dropping-out-of-top-20",
+      "source": "U.Today",
+      "published": "2026-06-19T05:32:08+00:00",
+      "summary": "The leading cryptocurrency is facing the unprecedented risk of falling out of the top 20 entirely."
+    },
+    {
+      "title": "Bitcoin (BTC), Dogecoin (DOGE), XRP and Shiba Inu (SHIB) Price Analysis for June 19: Cryptocurrency Market Needs Momentum",
+      "url": "https://u.today/bitcoin-btc-dogecoin-doge-xrp-and-shiba-inu-shib-price-analysis-for-june-19-cryptocurrency-market",
+      "source": "U.Today",
+      "published": "2026-06-19T00:01:00+00:00",
+      "summary": "Buyers have slowed the decline, yet weakening rebound volume and strong resistance overhead suggest volatility will remain elevated until key support-turned-resistance levels are decisively reclaimed."
+    },
+    {
+      "title": "Ripple CEO: 'This Moment Is Real'",
+      "url": "https://u.today/ripple-ceo-this-moment-is-real",
+      "source": "U.Today",
+      "published": "2026-06-18T19:35:39+00:00",
+      "summary": "Ripple Swell's star-studded speaker lineup features high-profile figures from both Hollywood and Wall Street."
+    },
+    {
+      "title": "Ethereum Foundation Loses Co-Executive Director",
+      "url": "https://u.today/ethereum-foundation-loses-co-executive-director",
+      "source": "U.Today",
+      "published": "2026-06-18T18:37:38+00:00",
+      "summary": "Hsiao-Wei Wang has stepped down as co-executive director and board member of the Ethereum Foundation (EF)."
+    }
+  ],
+  "rumors": [
+    {
+      "title": "Ethereum Gears Up for $2,850 Recovery as Price Hits Break-Even Point",
+      "url": "https://u.today/ethereum-gears-up-for-2850-recovery-as-price-hits-break-even-point",
+      "source": "U.Today",
+      "published": "2026-06-20T13:14:59+00:00",
+      "summary": "Ethereum might be preparing for its next rally to $2,850 despite the bearish market outlook as the asset is seen sitting at a familiar bottom level.",
+      "tags": [
+        "Speculation"
+      ]
+    },
+    {
+      "title": "Analyzing XRP's Bounce Potential, Shiba Inu (SHIB) to Add 10% or Lose 10%? Can Zcash (ZEC) Get Back to the Top? Crypto Market Review",
+      "url": "https://u.today/analyzing-xrps-bounce-potential-shiba-inu-shib-to-add-10-or-lose-10-can-zcash-zec-get-back-to-the",
+      "source": "U.Today",
+      "published": "2026-06-20T00:01:00+00:00",
+      "summary": "The market recovery might not materialize as soon as we'd expect.",
+      "tags": [
+        "Meme"
+      ]
+    },
+    {
+      "title": "Hyperliquid (HYPE) May Overtake Solana Sooner Than We Expect: Analyzing the Reasons",
+      "url": "https://u.today/hyperliquid-hype-may-overtake-solana-sooner-than-we-expect-analyzing-the-reasons",
+      "source": "U.Today",
+      "published": "2026-06-19T12:51:00+00:00",
+      "summary": "Hyperliquid's market position is getting stronger day by day and at some point it might overtake the whole network.",
+      "tags": [
+        "Speculation"
+      ]
+    },
+    {
+      "title": "Why Shiba Inu (SHIB) Will Never Hit $1: Michael Gayed Fires Back at Meme Coin",
+      "url": "https://u.today/why-shiba-inu-shib-will-never-hit-1-michael-gayed-fires-back-at-meme-coin",
+      "source": "U.Today",
+      "published": "2026-06-19T11:28:00+00:00",
+      "summary": "Macro strategist Michael Gayed crushes the $1 Shiba Inu coin dream with a brutal reply, exposing the harsh math facing SHIB investors.",
+      "tags": [
+        "Meme"
+      ]
+    }
+  ],
+  "sources": [
+    "CoinDesk",
+    "Cointelegraph",
+    "Decrypt",
+    "CryptoSlate",
+    "Bitcoinist",
+    "NewsBTC",
+    "CryptoPotato",
+    "U.Today",
+    "Crypto Briefing",
+    "BeInCrypto"
+  ]
 }
