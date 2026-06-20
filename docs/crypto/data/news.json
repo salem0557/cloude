@@ -1,26 +1,47 @@
 {
-  "updated": "2026-06-20T20:06:21.487724+00:00",
+  "updated": "2026-06-20T22:45:59.311436+00:00",
   "news": [
     {
-      "title": "Morpho Blue’s AlphaUSDC Delta V2 vault faces $18M loss as msY token collapses",
-      "url": "https://cryptobriefing.com/?p=262582",
+      "title": "Eric Trump details family’s $1B crypto ventures, including Trump Coin and American Bitcoin",
+      "url": "https://cryptobriefing.com/?p=262646",
       "source": "Crypto Briefing",
-      "published": "2026-06-20T20:01:26+00:00",
-      "summary": "<p>The collapse highlights the risks of concentrated exposure and the importance of thorough due diligence in decentralized finance investments.</p> <p>The post <a href=\"https://cryptobriefing.com/morpho-blue-vault-msy-collapse-loss/\">Morpho Blue&#8217;s AlphaUSDC Delta V2 vault "
+      "published": "2026-06-20T22:41:34+00:00",
+      "summary": "<p>The Trump family's crypto ventures highlight the growing intersection of traditional finance and digital assets, impacting market dynamics and investor strategies.</p> <p>The post <a href=\"https://cryptobriefing.com/eric-trump-billion-dollar-crypto-ventures/\">Eric Trump detail"
     },
     {
-      "title": "CZ Floats Freezing Satoshi’s Bitcoin Over Quantum Risk",
-      "url": "https://beincrypto.com/?p=841448",
-      "source": "BeInCrypto",
-      "published": "2026-06-20T19:00:00+00:00",
-      "summary": "<p>CZ floated freezing Satoshi's Bitcoin after a quantum fork but says it would be a community call, not a personal one.</p> <p>The post <a href=\"https://beincrypto.com/satoshi-bitcoin-quantum-risk-debate/\">CZ Floats Freezing Satoshi’s Bitcoin Over Quantum Risk</a> appeared first"
+      "title": "Bitcoin miner Bitdeer mined 921 BTC, but its smaller stash raises a bigger question",
+      "url": "https://cryptoslate.com/?p=542739",
+      "source": "CryptoSlate",
+      "published": "2026-06-20T22:10:58+00:00",
+      "summary": "<p>The miner's AI cloud growth may reduce sell pressure, but May data shows Bitcoin retention still lagging.</p> <p>The post <a href=\"https://cryptoslate.com/bitcoin-miner-bitdeer-mined-921-btc-but-its-smaller-stash-raises-the-bigger-question/\">Bitcoin miner Bitdeer mined 921 BTC"
     },
     {
-      "title": "600,000 SOL Moved to Exchanges: Is a Drop to $50 Next?",
-      "url": "https://cryptopotato.com/?p=1440539",
+      "title": "28 Billion SHIB Makes Exit: Netflow Flips Bullish Again",
+      "url": "https://u.today/28-billion-shib-makes-exit-netflow-flips-bullish-again",
+      "source": "U.Today",
+      "published": "2026-06-20T22:04:00+00:00",
+      "summary": "Shiba Inu exchange activity turns bullish as millions of SHIB tokens flow out of exchanges amid increasing buy activity from traders."
+    },
+    {
+      "title": "Bitcoin Faces Key $64,100 Resistance As Analyst Watches Fib Reaction Zone",
+      "url": "https://www.newsbtc.com/?p=902206",
+      "source": "NewsBTC",
+      "published": "2026-06-20T22:00:20+00:00",
+      "summary": "An X analyst says Bitcoin is approaching local H4 resistance near $64,100, a level tied to a 1:1 correction and 38.2% Fibonacci measurement."
+    },
+    {
+      "title": "The Revenue Divergence: Why Record-Breaking Ethereum Activity Isn’t Boosting ETH Price",
+      "url": "https://cryptopotato.com/?p=1440354",
       "source": "CryptoPotato",
-      "published": "2026-06-20T18:38:57+00:00",
-      "summary": "SOL is among the top performers today, but is there's a major reversal on the way?"
+      "published": "2026-06-20T21:58:28+00:00",
+      "summary": "The Ethereum network's growth strategy seems to focus first on winning the adoption race and then on generating fees later."
+    },
+    {
+      "title": "Main Street msUSD Stablecoin Loses Dollar Peg and Crashes 90%",
+      "url": "https://beincrypto.com/?p=841470",
+      "source": "BeInCrypto",
+      "published": "2026-06-20T20:12:16+00:00",
+      "summary": "<p>msUSD lost its dollar peg after Accountable ended its Main Street verification deal, erasing most of the token's value.</p> <p>The post <a href=\"https://beincrypto.com/main-street-musd-stablecoin-crash-depeg/\">Main Street msUSD Stablecoin Loses Dollar Peg and Crashes 90%</a> a"
     },
     {
       "title": "OpenRouter's Fusion Promises Claude Fable-Level AI for Cheap—Right as Fable 5 Goes Dark",
@@ -28,13 +49,6 @@
       "source": "Decrypt",
       "published": "2026-06-20T18:01:04+00:00",
       "summary": "OpenRouter's compound-model API stacks budget AI models—and beat GPT-5.5 and Claude Opus 4.8 outright in benchmark testing."
-    },
-    {
-      "title": "Why a resilient jobs market keeps turning into a Bitcoin sell signal",
-      "url": "https://cryptoslate.com/?p=542554",
-      "source": "CryptoSlate",
-      "published": "2026-06-20T18:00:10+00:00",
-      "summary": "<p>Good news for the American worker came at the worst possible moment for Bitcoin. Initial jobless claims fell by 4,000 to 226,000 for the week ending June 13. Layoffs are in the historically low range they've held for most of the post-pandemic era, and the unemployment rate has"
     },
     {
       "title": "Michael Saylor Shares Strategy's Resilience and Growth Since 2022",
@@ -168,26 +182,9 @@
       "source": "U.Today",
       "published": "2026-06-19T08:06:00+00:00",
       "summary": "Microsoft has warned of a sophisticated crypto-stealing malware campaign, dubbed CryptoBandits, that spreads via infected USB drives and hijacks wallet addresses, seed phrases, and private keys."
-    },
-    {
-      "title": "Peter Schiff Blasts MSTR Meltdown",
-      "url": "https://u.today/peter-schiff-blasts-mstr-meltdown",
-      "source": "U.Today",
-      "published": "2026-06-19T08:02:00+00:00",
-      "summary": "Schiff, a staunch Bitcoin critic, claims that the company's heavily leveraged crypto-treasury model is a \"financial house of cards.\""
     }
   ],
   "rumors": [
-    {
-      "title": "Kraken To Launch First CFTC-Regulated Crypto Perpetual Futures In The US",
-      "url": "https://www.newsbtc.com/?p=902179",
-      "source": "NewsBTC",
-      "published": "2026-06-20T17:08:02+00:00",
-      "summary": "Kraken says eligible US clients will soon get access to CFTC-regulated crypto perpetual futures through Bitnomial.",
-      "tags": [
-        "Launch"
-      ]
-    },
     {
       "title": "17% XRP Surge in Network Activity Could Trigger Next Leg Up",
       "url": "https://u.today/17-xrp-surge-in-network-activity-could-trigger-next-leg-up",
