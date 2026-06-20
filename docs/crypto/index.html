@@ -451,6 +451,21 @@ async function fetchJSON(url, retries = 2) {
   throw lastErr || new Error("fetch failed");
 }
 
+// localStorage cache: serve fresh within TTL, and serve last-good data on failure
+function withCache(key, fn, ttlMs) {
+  const k = "cache:" + key, now = Date.now();
+  let cached = null;
+  try { cached = JSON.parse(localStorage.getItem(k) || "null"); } catch (e) {}
+  if (cached && (now - cached.t) < ttlMs) return Promise.resolve(cached.v);
+  return fn().then(v => {
+    try { localStorage.setItem(k, JSON.stringify({ t: now, v })); } catch (e) {}
+    return v;
+  }).catch(err => {
+    if (cached) return cached.v;   // stale-but-shown beats an empty box
+    throw err;
+  });
+}
+
 // curated majors used as a fallback when CoinGecko is unavailable
 const TOP_FALLBACK = [
   { symbol: "BTC", name: "Bitcoin", id: "bitcoin" },
@@ -487,11 +502,11 @@ async function loadPopularBinance() {
   });
 }
 
-// ---------- popular (CoinGecko markets, Binance fallback) ----------
-async function loadPopular() {
+// ---------- popular (CoinGecko markets, Binance fallback, cached) ----------
+async function fetchPopularRows() {
   try {
     const data = await fetchJSON("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=15&page=1&price_change_percentage=24h");
-    fillBox("popular", data.map(c => ({
+    return data.map(c => ({
       rank: c.market_cap_rank,
       img: c.image,
       name: c.name,
@@ -503,18 +518,21 @@ async function loadPopular() {
       url: `https://www.coingecko.com/en/coins/${c.id}`,
       source: "gecko",
       id: c.id,
-    })), "تعذّر جلب العملات المشهورة.");
+    }));
   } catch (e) {
-    try {
-      fillBox("popular", await loadPopularBinance(), "تعذّر جلب العملات المشهورة.");
-    } catch (e2) {
-      document.getElementById("popular").innerHTML = '<div class="box-error">تعذّر تحميل الأسعار (قد يكون المزوّد مشغولًا الآن). حدّث الصفحة بعد قليل.</div>';
-    }
+    return await loadPopularBinance();   // throws if this also fails
+  }
+}
+async function loadPopular() {
+  try {
+    fillBox("popular", await withCache("popular", fetchPopularRows, 60000), "تعذّر جلب العملات المشهورة.");
+  } catch (e) {
+    document.getElementById("popular").innerHTML = '<div class="box-error">تعذّر تحميل الأسعار (قد يكون المزوّد مشغولًا الآن). حدّث الصفحة بعد قليل.</div>';
   }
 }
 
-// ---------- trending (CoinGecko) ----------
-async function loadTrending() {
+// ---------- trending (CoinGecko, cached) ----------
+async function fetchTrendingRows() {
   const data = await fetchJSON("https://api.coingecko.com/api/v3/search/trending");
   return (data.coins || []).map(({ item }) => ({
     rank: item.market_cap_rank || "",
@@ -530,15 +548,16 @@ async function loadTrending() {
     id: item.id,
   }));
 }
+async function loadTrending() { return withCache("trending", fetchTrendingRows, 60000); }
 
-// ---------- recently listed (CoinPaprika is_new) ----------
-async function loadListed() {
+// ---------- recently listed (CoinPaprika is_new, cached) ----------
+async function fetchListedRows() {
   const coins = await fetchJSON("https://api.coinpaprika.com/v1/coins");
   const fresh = coins
     .filter(c => c.is_new && c.is_active && c.type === "coin")
     .sort((a, b) => (a.rank || 99999) - (b.rank || 99999))
     .slice(0, 12);
-  const rows = await Promise.all(fresh.map(async c => {
+  return Promise.all(fresh.map(async c => {
     let price = null, change = null, marketCap = null, volume = null;
     try {
       const t = await fetchJSON(`https://api.coinpaprika.com/v1/tickers/${c.id}?quotes=USD`, 1);
@@ -563,8 +582,8 @@ async function loadListed() {
       id: c.id,
     };
   }));
-  return rows;
 }
+async function loadListed() { return withCache("listed", fetchListedRows, 60000); }
 
 // tab cache + switching
 const newCache = {};
@@ -681,28 +700,33 @@ function sparklineSVG(prices) {
   </svg>`;
 }
 
-async function fetchChart(fav) {
-  const uid = `${fav.source}:${fav.id}`;
-  if (chartCache[uid]) return chartCache[uid];
+async function fetchChartPrices(fav) {
   let prices = null;
   if (fav.source === "gecko") {
     try {
       const d = await fetchJSON(`https://api.coingecko.com/api/v3/coins/${fav.id}/market_chart?vs_currency=usd&days=1`);
       prices = (d.prices || []).map(p => p[1]);
     } catch (e) { /* try fallback */ }
-    if (!prices || prices.length < 2) {
-      try { // Binance hourly closes for the last 24h
-        const k = await fetchJSON(`https://api.binance.com/api/v3/klines?symbol=${(fav.symbol || "").toUpperCase()}USDT&interval=1h&limit=24`, 1);
-        prices = (k || []).map(x => Number(x[4]));
-      } catch (e) { /* leave null */ }
+    if (!prices || prices.length < 2) { // Binance hourly closes for the last 24h
+      const k = await fetchJSON(`https://api.binance.com/api/v3/klines?symbol=${(fav.symbol || "").toUpperCase()}USDT&interval=1h&limit=24`, 1);
+      prices = (k || []).map(x => Number(x[4]));
     }
   } else {
-    try {
-      const start = new Date(Date.now() - 25 * 3600 * 1000).toISOString().slice(0, 10);
-      const d = await fetchJSON(`https://api.coinpaprika.com/v1/tickers/${fav.id}/historical?start=${start}&interval=1h&quotes=USD`, 1);
-      prices = (d || []).map(x => x.price);
-    } catch (e) { /* leave null */ }
+    const start = new Date(Date.now() - 25 * 3600 * 1000).toISOString().slice(0, 10);
+    const d = await fetchJSON(`https://api.coinpaprika.com/v1/tickers/${fav.id}/historical?start=${start}&interval=1h&quotes=USD`, 1);
+    prices = (d || []).map(x => x.price);
   }
+  if (!prices || prices.length < 2) throw new Error("no chart data");
+  return prices;
+}
+
+async function fetchChart(fav) {
+  const uid = `${fav.source}:${fav.id}`;
+  if (chartCache[uid]) return chartCache[uid];
+  let prices = null;
+  try {
+    prices = await withCache("chart:" + uid, () => fetchChartPrices(fav), 5 * 60000);
+  } catch (e) { /* leave null */ }
   chartCache[uid] = { prices: (prices && prices.length >= 2) ? prices : null };
   return chartCache[uid];
 }
