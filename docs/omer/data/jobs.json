@@ -1,6 +1,18 @@
 {
- "updated": "2026-06-20T08:31:16+00:00",
+ "updated": "2026-06-20T12:13:56+00:00",
  "jobs": [
+  {
+   "title": "ENGINEER, MECHANICAL - AC",
+   "company": "DAR ENGINEERING",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/engineer-mechanical-ac-at-dar-engineering-4426031840",
+   "posted": "2026-06-10",
+   "source": "LinkedIn",
+   "keywords": [
+    "Mechanical Engineer"
+   ],
+   "first_seen": "2026-06-20"
+  },
   {
    "title": "Procurement Lead (Director)",
    "company": "Jacobs",
@@ -637,7 +649,8 @@
    "posted": "2026-04-12",
    "source": "LinkedIn",
    "keywords": [
-    "Supply Chain"
+    "Supply Chain",
+    "Logistics"
    ],
    "first_seen": "2026-06-17"
   },
