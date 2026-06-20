@@ -78,12 +78,12 @@
 
   .coin-list { max-height: 560px; overflow-y: auto; }
   .coin-row {
-    display: grid; grid-template-columns: 22px 1fr auto auto auto auto;
+    display: grid; grid-template-columns: 22px 1fr auto auto auto;
     align-items: center; gap: 8px;
     padding: 11px 12px; border-bottom: 1px solid var(--border);
     text-decoration: none; transition: background .15s;
   }
-  @media (max-width: 480px) { .coin-row { grid-template-columns: 1fr auto auto auto; gap: 6px; padding: 10px 10px; } .coin-row .rank, .coin-row .chg { display: none; } }
+  @media (max-width: 480px) { .coin-row { grid-template-columns: 1fr auto auto; gap: 6px; padding: 10px 10px; } .coin-row .rank, .coin-row .chg { display: none; } }
   .coin-row:hover { background: var(--card2); }
   .coin-row:last-child { border-bottom: none; }
   .rank { color: var(--muted); font-size: .8rem; text-align: center; }
@@ -136,6 +136,15 @@
   .heart.on::before { content: "\2665"; }    /* ♥ */
   .heart.on { color: #ff4d7d; }
   .heart:hover { transform: scale(1.25); color: #ff4d7d; }
+  .actions { display: flex; align-items: center; gap: 6px; flex: none; }
+  .own {
+    background: none; border: 1px solid var(--border); border-radius: 8px;
+    cursor: pointer; font-size: .82rem; line-height: 1; padding: 5px 7px;
+    color: var(--muted); flex: none; transition: all .15s;
+  }
+  .own:hover { border-color: var(--up); color: #38e0a6; }
+  .own.on { background: rgba(22,199,132,.18); border-color: var(--up); color: #38e0a6; }
+  .dot.own { background: #38e0a6; box-shadow: 0 0 10px #38e0a6; }
 
   /* ---- favourites box ---- */
   .fav-box .dot.fav { background: #ff4d7d; box-shadow: 0 0 10px #ff4d7d; }
@@ -278,6 +287,26 @@
     <div class="fav-grid" id="fav-grid"></div>
   </div>
 
+  <!-- ===== holdings (bought coins) ===== -->
+  <div class="box fav-box" id="owned-box" style="margin-top:22px;">
+    <div class="box-head">
+      <h2><span class="dot own"></span> 🛒 محفظتي — العملات التي اشتريتها</h2>
+      <span class="when" id="owned-count"></span>
+    </div>
+    <div class="fav-grid" id="owned-grid"></div>
+  </div>
+
+  <!-- news for the bought coins only -->
+  <div class="section" id="owned-news-section" style="margin-top:18px;">
+    <div class="section-head">
+      <h2>📰 أخبار عملاتي</h2>
+      <span class="pill">تخصّ مشترياتك فقط</span>
+    </div>
+    <div class="feed" id="owned-news">
+      <div class="feed-empty">أضِف عملة إلى محفظتك (🛒) لتظهر أخبارها هنا.</div>
+    </div>
+  </div>
+
   <!-- ===== rumours ===== -->
   <div class="section">
     <div class="section-head">
@@ -293,21 +322,6 @@
     </div>
   </div>
 
-  <!-- ===== news ===== -->
-  <div class="section">
-    <div class="section-head">
-      <h2>📰 آخر الأخبار</h2>
-      <span class="pill" id="news-count">—</span>
-    </div>
-    <div class="news-controls">
-      <input id="news-search" placeholder="ابحث في العناوين… (مثال: Bitcoin, ETF, Solana)">
-      <select id="news-source"><option value="">كل المصادر</option></select>
-    </div>
-    <div class="feed" id="news">
-      <div class="feed-empty">جاري التحميل…</div>
-    </div>
-  </div>
-
   <footer>
     الأسعار مباشرة من <a href="https://www.coingecko.com" target="_blank" rel="noopener">CoinGecko</a>
     و <a href="https://coinpaprika.com" target="_blank" rel="noopener">CoinPaprika</a>،
@@ -319,10 +333,13 @@
 <script>
 const SAR_RATE = 3.75; // ر.س pegged to USD
 
-// ---------- favourites state ----------
+// ---------- favourites + holdings state ----------
 let favs = {};
 try { favs = JSON.parse(localStorage.getItem("cryptoFavs") || "{}") || {}; } catch (e) { favs = {}; }
 function saveFavs() { try { localStorage.setItem("cryptoFavs", JSON.stringify(favs)); } catch (e) {} }
+let owned = {};
+try { owned = JSON.parse(localStorage.getItem("cryptoOwned") || "{}") || {}; } catch (e) { owned = {}; }
+function saveOwned() { try { localStorage.setItem("cryptoOwned", JSON.stringify(owned)); } catch (e) {} }
 let newsPool = [];   // news + rumours, used by the 24h prediction heuristic
 
 // ---------- formatting ----------
@@ -395,12 +412,17 @@ function riskOf({ marketCap, volume, rank, change }) {
 }
 
 // ---------- coin row ----------
-function heartBtn({ source, id, name, symbol, url }) {
-  const uid = `${source}:${id}`;
-  return `<button class="heart ${favs[uid] ? "on" : ""}" type="button"
-    data-source="${escapeHtml(source || "")}" data-id="${escapeHtml(String(id || ""))}"
-    data-name="${escapeHtml(name || "")}" data-symbol="${escapeHtml(symbol || "")}"
-    data-url="${escapeHtml(url || "")}" title="إضافة/إزالة من المفضلة"></button>`;
+function dataAttrs({ source, id, name, symbol, url }) {
+  return `data-source="${escapeHtml(source || "")}" data-id="${escapeHtml(String(id || ""))}" ` +
+    `data-name="${escapeHtml(name || "")}" data-symbol="${escapeHtml(symbol || "")}" data-url="${escapeHtml(url || "")}"`;
+}
+function heartBtn(c) {
+  const uid = `${c.source}:${c.id}`;
+  return `<button class="heart ${favs[uid] ? "on" : ""}" type="button" ${dataAttrs(c)} title="إضافة/إزالة من المفضلة"></button>`;
+}
+function ownBtn(c) {
+  const uid = `${c.source}:${c.id}`;
+  return `<button class="own ${owned[uid] ? "on" : ""}" type="button" ${dataAttrs(c)} title="${owned[uid] ? "إزالة من محفظتي" : "اشتريتها؟ أضِفها إلى محفظتي"}">🛒</button>`;
 }
 function coinRow({ rank, img, name, symbol, price, change, url, marketCap, volume, source, id }) {
   const icon = img
@@ -424,8 +446,11 @@ function coinRow({ rank, img, name, symbol, price, change, url, marketCap, volum
         <div class="sar">${fmtSAR(price)}</div>
       </div>
       ${chgHtml(change)}
-      <a class="buy" href="${buyUrl}" target="_blank" rel="noopener" title="فتح صفحة التداول على Binance">شراء</a>
-      ${heartBtn({ source, id, name, symbol, url })}
+      <div class="actions">
+        <a class="buy" href="${buyUrl}" target="_blank" rel="noopener" title="فتح صفحة التداول على Binance">شراء</a>
+        ${heartBtn({ source, id, name, symbol, url })}
+        ${ownBtn({ source, id, name, symbol, url })}
+      </div>
     </div>`;
 }
 function fillBox(id, rows, emptyMsg) {
@@ -622,22 +647,6 @@ function articleHtml(a, isRumor) {
       </div>
     </a>`;
 }
-function renderNews() {
-  const q = document.getElementById("news-search").value.trim().toLowerCase();
-  const src = document.getElementById("news-source").value;
-  const filtered = allNews.filter(a =>
-    (!q || (a.title + " " + (a.summary || "")).toLowerCase().includes(q)) &&
-    (!src || a.source === src)
-  );
-  const el = document.getElementById("news");
-  el.innerHTML = filtered.length
-    ? filtered.map(a => articleHtml(a, false)).join("")
-    : '<div class="feed-empty">لا توجد أخبار مطابقة.</div>';
-  document.getElementById("news-count").textContent = filtered.length + " خبر";
-}
-document.getElementById("news-search").addEventListener("input", renderNews);
-document.getElementById("news-source").addEventListener("change", renderNews);
-
 async function loadNews() {
   try {
     const r = await fetch("data/news.json?_=" + Date.now());
@@ -650,12 +659,6 @@ async function loadNews() {
       ? "آخر تحديث للأخبار: <b>" + new Date(data.updated).toLocaleString("ar", { dateStyle: "medium", timeStyle: "short" }) + "</b>"
       : "";
 
-    // source dropdown
-    const sel = document.getElementById("news-source");
-    [...new Set(allNews.map(a => a.source))].sort().forEach(s => {
-      const o = document.createElement("option"); o.value = s; o.textContent = s; sel.appendChild(o);
-    });
-
     // rumours
     const rel = document.getElementById("rumors");
     rel.innerHTML = rumors.length
@@ -663,14 +666,12 @@ async function loadNews() {
       : '<div class="feed-empty">لا توجد شائعات جديدة بعد. تتحدّث القائمة تلقائيًا كل بضع ساعات.</div>';
     document.getElementById("rumor-count").textContent = rumors.length + " شائعة";
 
-    // feed the prediction engine, then refresh any open favourite cards
+    // feed the prediction engine + the "my coins" news, then refresh cards
     newsPool = allNews.concat(rumors);
-    refreshFavPredictions();
-
-    renderNews();
+    refreshAllPredictions();
+    renderOwnedNews();
   } catch (e) {
     const msg = 'لم تُجمَع الأخبار بعد. شغّل workflow «Crypto news» مرة واحدة من تبويب Actions على GitHub.';
-    document.getElementById("news").innerHTML = `<div class="feed-empty">${msg}</div>`;
     document.getElementById("rumors").innerHTML = `<div class="feed-empty">${msg}</div>`;
     document.getElementById("updated-bar").textContent = "";
   }
@@ -731,10 +732,10 @@ async function fetchChart(fav) {
   return chartCache[uid];
 }
 
-async function updateFavCard(uid) {
-  const f = favs[uid];
+async function updateCard(kind, uid, store) {
+  const f = store[uid];
   if (!f) return;
-  const cid = cssId(uid);
+  const cid = kind + "-" + cssId(uid);
   const sparkEl = document.getElementById("spark-" + cid);
   const priceEl = document.getElementById("price-" + cid);
   const chgEl = document.getElementById("chg-" + cid);
@@ -753,7 +754,7 @@ async function updateFavCard(uid) {
     if (priceEl) priceEl.innerHTML = "";
     if (chgEl) chgEl.innerHTML = "";
   }
-  renderPrediction(uid);
+  renderPredictionEl(cid, f);
 }
 
 // ---------- experimental 24h prediction (NOT advice) ----------
@@ -833,11 +834,9 @@ function computePrediction(fav) {
   return { level, label, arrow, conf, why, matches };
 }
 
-function renderPrediction(uid) {
-  const el = document.getElementById("pred-" + cssId(uid));
-  if (!el) return;
-  const f = favs[uid];
-  if (!f) return;
+function renderPredictionEl(cid, f) {
+  const el = document.getElementById("pred-" + cid);
+  if (!el || !f) return;
   const p = computePrediction(f);
   const rel = p.matches.slice(0, 3).map(m => {
     const cls = m.s > 0 ? "pos" : m.s < 0 ? "neg" : "neu";
@@ -852,29 +851,32 @@ function renderPrediction(uid) {
     ${rel ? `<div class="pred-rel">${rel}</div>` : ""}`;
 }
 
-function refreshFavPredictions() {
-  Object.keys(favs).forEach(renderPrediction);
+function refreshAllPredictions() {
+  Object.keys(favs).forEach(uid => renderPredictionEl("fav-" + cssId(uid), favs[uid]));
+  Object.keys(owned).forEach(uid => renderPredictionEl("own-" + cssId(uid), owned[uid]));
 }
 
-function renderFavorites() {
-  const ids = Object.keys(favs);
-  const box = document.getElementById("fav-box");
-  const grid = document.getElementById("fav-grid");
-  box.style.display = "";   // always visible so it never silently "disappears"
-  document.getElementById("fav-count").textContent = ids.length ? ids.length + " عملة" : "";
+// shared renderer for the favourites box and the holdings box
+function renderCollection(kind, store, boxId, gridId, countId, emptyMsg, btnFn) {
+  const ids = Object.keys(store);
+  const grid = document.getElementById(gridId);
+  const box = document.getElementById(boxId);
+  if (box) box.style.display = "";
+  const countEl = document.getElementById(countId);
+  if (countEl) countEl.textContent = ids.length ? ids.length + " عملة" : "";
   if (!ids.length) {
-    grid.innerHTML = '<div class="feed-empty" style="grid-column:1/-1">لم تُضِف أي عملة بعد 💛<br>اضغط على القلب ♡ بجانب أي عملة في الصندوقين بالأعلى لإضافتها هنا، وستظهر مع رسم تذبذبها ومؤشّر توقّعها. (المفضّلة تُحفظ في هذا المتصفح فقط على هذا الجهاز.)</div>';
+    grid.innerHTML = `<div class="feed-empty" style="grid-column:1/-1">${emptyMsg}</div>`;
     return;
   }
   grid.innerHTML = ids.map(uid => {
-    const f = favs[uid], cid = cssId(uid);
+    const f = store[uid], cid = kind + "-" + cssId(uid);
     return `<div class="fav-card">
       <div class="fc-head">
         <div>
           <div class="fc-name">${escapeHtml(f.name)}</div>
           <div class="fc-sym">${escapeHtml(f.symbol)}</div>
         </div>
-        ${heartBtn(f)}
+        ${btnFn(f)}
       </div>
       <div class="fc-spark" id="spark-${cid}"><div class="fc-loading">جاري تحميل التذبذب…</div></div>
       <div class="fc-stats">
@@ -885,25 +887,68 @@ function renderFavorites() {
     </div>`;
   }).join("");
   // show the news-based prediction right away, then enrich with the chart
-  ids.forEach(uid => { renderPrediction(uid); updateFavCard(uid); });
+  ids.forEach(uid => { renderPredictionEl(kind + "-" + cssId(uid), store[uid]); updateCard(kind, uid, store); });
 }
 
-// toggle favourite when any heart is clicked (event delegation)
-document.addEventListener("click", e => {
-  const h = e.target.closest(".heart");
-  if (!h) return;
-  e.preventDefault();
-  const fav = {
-    source: h.dataset.source, id: h.dataset.id, name: h.dataset.name,
-    symbol: h.dataset.symbol, url: h.dataset.url,
-  };
-  const uid = `${fav.source}:${fav.id}`;
-  if (favs[uid]) delete favs[uid]; else favs[uid] = fav;
-  saveFavs();
-  document.querySelectorAll(".heart").forEach(btn => {
-    if (`${btn.dataset.source}:${btn.dataset.id}` === uid) btn.classList.toggle("on", !!favs[uid]);
+function renderFavorites() {
+  renderCollection("fav", favs, "fav-box", "fav-grid", "fav-count",
+    'لم تُضِف أي عملة بعد 💛<br>اضغط على القلب ♡ بجانب أي عملة في الصندوقين بالأعلى لإضافتها هنا، وستظهر مع رسم تذبذبها ومؤشّر توقّعها. (تُحفظ في هذا المتصفح فقط على هذا الجهاز.)',
+    heartBtn);
+}
+
+function renderOwned() {
+  renderCollection("own", owned, "owned-box", "owned-grid", "owned-count",
+    'لم تسجّل أي عملة اشتريتها بعد 🛒<br>اضغط على 🛒 بجانب أي عملة لإضافتها إلى محفظتك، وستظهر هنا بمؤشرات مباشرة، وتحتها أخبارها فقط. (تُحفظ في هذا المتصفح فقط على هذا الجهاز.)',
+    ownBtn);
+  renderOwnedNews();
+}
+
+// news that mentions only the coins the user marked as bought
+function renderOwnedNews() {
+  const wrap = document.getElementById("owned-news");
+  if (!wrap) return;
+  const ids = Object.keys(owned);
+  if (!ids.length) {
+    wrap.innerHTML = '<div class="feed-empty">أضِف عملة إلى محفظتك (🛒) لتظهر أخبارها هنا.</div>';
+    return;
+  }
+  if (!newsPool.length) {
+    wrap.innerHTML = '<div class="feed-empty">جاري تحميل الأخبار…</div>';
+    return;
+  }
+  const seen = new Set(), items = [];
+  ids.forEach(uid => {
+    matchNewsFor(owned[uid]).forEach(m => {
+      if (seen.has(m.item.url)) return;
+      seen.add(m.item.url);
+      items.push(m.item);
+    });
   });
-  renderFavorites();
+  items.sort((a, b) => (b.published || "").localeCompare(a.published || ""));
+  wrap.innerHTML = items.length
+    ? items.slice(0, 30).map(a => articleHtml(a, false)).join("")
+    : '<div class="feed-empty">لا توجد أخبار حديثة تخصّ عملاتك المشتراة الآن.</div>';
+}
+
+// toggle favourite (♡) or holding (🛒) — event delegation
+document.addEventListener("click", e => {
+  const btn = e.target.closest(".heart, .own");
+  if (!btn) return;
+  e.preventDefault();
+  const isOwn = btn.classList.contains("own");
+  const store = isOwn ? owned : favs;
+  const sel = isOwn ? ".own" : ".heart";
+  const coin = {
+    source: btn.dataset.source, id: btn.dataset.id, name: btn.dataset.name,
+    symbol: btn.dataset.symbol, url: btn.dataset.url,
+  };
+  const uid = `${coin.source}:${coin.id}`;
+  if (store[uid]) delete store[uid]; else store[uid] = coin;
+  if (isOwn) saveOwned(); else saveFavs();
+  document.querySelectorAll(sel).forEach(b => {
+    if (`${b.dataset.source}:${b.dataset.id}` === uid) b.classList.toggle("on", !!store[uid]);
+  });
+  if (isOwn) renderOwned(); else renderFavorites();
 });
 
 // ---------- go ----------
@@ -911,6 +956,7 @@ loadPopular();
 showTab("trending");
 loadNews();
 renderFavorites();
+renderOwned();
 </script>
 </body>
 </html>
