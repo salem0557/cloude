@@ -1,40 +1,40 @@
 {
-  "updated": "2026-06-20T17:06:25.188787+00:00",
+  "updated": "2026-06-20T20:06:21.487724+00:00",
   "news": [
     {
-      "title": "Israeli airstrikes kill family of four in Lebanon as crypto markets shed $1B in liquidations",
-      "url": "https://cryptobriefing.com/?p=262533",
+      "title": "Morpho Blue’s AlphaUSDC Delta V2 vault faces $18M loss as msY token collapses",
+      "url": "https://cryptobriefing.com/?p=262582",
       "source": "Crypto Briefing",
-      "published": "2026-06-20T16:58:28+00:00",
-      "summary": "<p>The airstrikes exacerbate geopolitical tensions, destabilizing markets and highlighting the fragility of recent diplomatic efforts.</p> <p>The post <a href=\"https://cryptobriefing.com/israeli-airstrikes-lebanon-crypto-liquidations/\">Israeli airstrikes kill family of four in Le"
+      "published": "2026-06-20T20:01:26+00:00",
+      "summary": "<p>The collapse highlights the risks of concentrated exposure and the importance of thorough due diligence in decentralized finance investments.</p> <p>The post <a href=\"https://cryptobriefing.com/morpho-blue-vault-msy-collapse-loss/\">Morpho Blue&#8217;s AlphaUSDC Delta V2 vault "
     },
     {
-      "title": "Why Isn’t Robert Kiyosaki Buying the Dip in BTC, ETH, Gold, and Silver?",
-      "url": "https://cryptopotato.com/?p=1440534",
-      "source": "CryptoPotato",
-      "published": "2026-06-20T16:57:27+00:00",
-      "summary": "The popular investor and author believes the environment is more important."
-    },
-    {
-      "title": "Bitcoin shrugged off Japan’s rate hike – The bigger liquidity test came from Washington",
-      "url": "https://cryptoslate.com/?p=542272",
-      "source": "CryptoSlate",
-      "published": "2026-06-20T16:15:34+00:00",
-      "summary": "<p>The Bank of Japan raised its benchmark interest rate to 1% on June 16, the highest level the country has seen since September 1995 and the furthest point yet in a normalization campaign that has slowly dismantled three decades of near-free money. Going into the decision, the t"
-    },
-    {
-      "title": "Michael Saylor Touts $48 Billion Bitcoin Turnaround, But Can MicroStrategy’s STRC Survive 2026?",
-      "url": "https://beincrypto.com/?p=841427",
+      "title": "CZ Floats Freezing Satoshi’s Bitcoin Over Quantum Risk",
+      "url": "https://beincrypto.com/?p=841448",
       "source": "BeInCrypto",
-      "published": "2026-06-20T16:03:03+00:00",
-      "summary": "<p>Saylor says Strategy reserves top debt by $48 billion, but STRC trades below par as traders debate the funding model.</p> <p>The post <a href=\"https://beincrypto.com/saylor-bitcoin-strc-survive-2026/\">Michael Saylor Touts $48 Billion Bitcoin Turnaround, But Can MicroStrategy&#"
+      "published": "2026-06-20T19:00:00+00:00",
+      "summary": "<p>CZ floated freezing Satoshi's Bitcoin after a quantum fork but says it would be a community call, not a personal one.</p> <p>The post <a href=\"https://beincrypto.com/satoshi-bitcoin-quantum-risk-debate/\">CZ Floats Freezing Satoshi’s Bitcoin Over Quantum Risk</a> appeared first"
     },
     {
-      "title": "CFTC And SEC Seek Input On Derivatives Definitions As Crypto Perpetuals Face Legal Test",
-      "url": "https://www.newsbtc.com/?p=902180",
-      "source": "NewsBTC",
-      "published": "2026-06-20T15:50:57+00:00",
-      "summary": "The CFTC and SEC are seeking public comment on derivatives definitions as crypto perpetual futures face a key legal and regulatory test."
+      "title": "600,000 SOL Moved to Exchanges: Is a Drop to $50 Next?",
+      "url": "https://cryptopotato.com/?p=1440539",
+      "source": "CryptoPotato",
+      "published": "2026-06-20T18:38:57+00:00",
+      "summary": "SOL is among the top performers today, but is there's a major reversal on the way?"
+    },
+    {
+      "title": "OpenRouter's Fusion Promises Claude Fable-Level AI for Cheap—Right as Fable 5 Goes Dark",
+      "url": "https://decrypt.co/?p=371711",
+      "source": "Decrypt",
+      "published": "2026-06-20T18:01:04+00:00",
+      "summary": "OpenRouter's compound-model API stacks budget AI models—and beat GPT-5.5 and Claude Opus 4.8 outright in benchmark testing."
+    },
+    {
+      "title": "Why a resilient jobs market keeps turning into a Bitcoin sell signal",
+      "url": "https://cryptoslate.com/?p=542554",
+      "source": "CryptoSlate",
+      "published": "2026-06-20T18:00:10+00:00",
+      "summary": "<p>Good news for the American worker came at the worst possible moment for Bitcoin. Initial jobless claims fell by 4,000 to 226,000 for the week ending June 13. Layoffs are in the historically low range they've held for most of the post-pandemic era, and the unemployment rate has"
     },
     {
       "title": "Michael Saylor Shares Strategy's Resilience and Growth Since 2022",
@@ -49,13 +49,6 @@
       "source": "U.Today",
       "published": "2026-06-20T15:00:50+00:00",
       "summary": "Cardano’s next hard fork clears key governance milestone with timelines emerging."
-    },
-    {
-      "title": "Bitcoin Network Activity Is Rising as BTC Falls Nearly 50% Below Peak Price: CryptoQuant",
-      "url": "https://decrypt.co/?p=371702",
-      "source": "Decrypt",
-      "published": "2026-06-20T14:59:51+00:00",
-      "summary": "Activity on the Bitcoin network is surging, CryptoQuant said, but it's not correlating with price movement for its native asset."
     },
     {
       "title": "Swift Warns of Key ISO 20022 Deadline Amid Compliance Pressure: Is Ripple Ready?",
@@ -185,6 +178,16 @@
     }
   ],
   "rumors": [
+    {
+      "title": "Kraken To Launch First CFTC-Regulated Crypto Perpetual Futures In The US",
+      "url": "https://www.newsbtc.com/?p=902179",
+      "source": "NewsBTC",
+      "published": "2026-06-20T17:08:02+00:00",
+      "summary": "Kraken says eligible US clients will soon get access to CFTC-regulated crypto perpetual futures through Bitnomial.",
+      "tags": [
+        "Launch"
+      ]
+    },
     {
       "title": "17% XRP Surge in Network Activity Could Trigger Next Leg Up",
       "url": "https://u.today/17-xrp-surge-in-network-activity-could-trigger-next-leg-up",
