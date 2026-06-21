@@ -1,0 +1,15 @@
+# Run the bot 24/7 with:  docker compose -f bot/docker-compose.yml up -d --build
+# Logs:                   docker compose -f bot/docker-compose.yml logs -f
+# Stop:                   docker compose -f bot/docker-compose.yml down
+services:
+  cryptobot:
+    build: .
+    container_name: cryptobot
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      # Persist state, trade log and trained models across restarts.
+      - ./state.json:/app/bot/state.json
+      - ./trades.csv:/app/bot/trades.csv
+      - ./models:/app/bot/models

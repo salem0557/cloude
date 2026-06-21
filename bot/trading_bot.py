@@ -1,38 +1,53 @@
 #!/usr/bin/env python3
-"""A small, safe educational crypto trading bot for Binance Spot.
+"""Self-optimizing multi-coin crypto trading bot for Binance Spot.
 
-Strategy: SMA crossover (a "fast" moving average crossing a "slow" one).
-  * Fast SMA crosses ABOVE slow  -> BUY  (open a long position)
-  * Fast SMA crosses BELOW slow  -> SELL (close the position)
-  * Optional stop-loss closes the position if price drops too far.
+What it does
+------------
+* Trades a basket of top coins (BTC, ETH, BNB, SOL, …) on the spot market.
+* Every ``OPTIMIZE_HOURS`` (default 2) it RE-LEARNS:
+    1. grid-searches strategy parameters on recent candles (back-testing) and
+       keeps the best per coin  — optimizer.py
+    2. retrains a small ML classifier per coin that confirms entries
+       — ml_model.py
+  then ranks coins by back-test score and trades only the strongest ``TOP_N``.
+* Risk controls: per-trade size, max open positions, stop-loss, take-profit,
+  and a daily-loss kill-switch.
+* Writes a public status snapshot for the web dashboard (no keys exposed).
 
-Three modes (set with BOT_MODE), from safest to riskiest:
-  * dryrun  (default) – never touches the exchange; simulates fills and
-    just prints what it WOULD do. Use this to learn with zero risk.
-  * testnet – trades on Binance's Spot Testnet with FAKE money.
-  * live    – trades with REAL money. You must opt in explicitly.
+Modes (BOT_MODE), safest first:
+  dryrun  (default) – simulates everything on real prices. Zero risk.
+  testnet           – real orders, fake money (Binance Spot Testnet).
+  live              – real orders, REAL money. You must opt in explicitly.
 
-This is an educational tool, NOT financial advice. Trading bots can and do
-lose money. Start in dryrun, then testnet, and only ever risk money you can
-afford to lose.
+This is an educational tool, NOT financial advice. Bots lose money too. Start in
+dryrun, graduate to testnet, and only ever risk what you can afford to lose.
 """
+
+from __future__ import annotations
 
 import csv
 import json
 import os
 import sys
 import time
-from datetime import datetime, timezone
+from datetime import datetime, timezone, date
 from pathlib import Path
+
+from exchange import Exchange
+from optimizer import optimize_symbol
+from strategy import latest_signal, merge_params
+import ml_model
+import dashboard
 
 HERE = Path(__file__).resolve().parent
 STATE_FILE = HERE / "state.json"
 TRADES_CSV = HERE / "trades.csv"
 
+DEFAULT_UNIVERSE = "BTCUSDT,ETHUSDT,BNBUSDT,SOLUSDT,XRPUSDT,ADAUSDT"
+
 
 # ----------------------------- configuration -----------------------------
 def load_env():
-    """Load KEY=VALUE pairs from bot/.env (if present) into os.environ."""
     env_path = HERE / ".env"
     if env_path.exists():
         for line in env_path.read_text(encoding="utf-8").splitlines():
@@ -40,24 +55,24 @@ def load_env():
             if not line or line.startswith("#") or "=" not in line:
                 continue
             k, v = line.split("=", 1)
-            os.environ.setdefault(k.strip(), v.strip())
+            # strip inline comments and whitespace
+            os.environ.setdefault(k.strip(), v.split("#", 1)[0].strip())
 
 
 def cfg(name, default=None):
     return os.environ.get(name, default)
 
 
-# ------------------------------- helpers ---------------------------------
 def now():
     return datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
 
 
+def iso():
+    return datetime.now(timezone.utc).isoformat()
+
+
 def log(msg):
     print(f"[{now()}] {msg}", flush=True)
-
-
-def sma(values, n):
-    return sum(values[-n:]) / n
 
 
 def load_state():
@@ -66,155 +81,223 @@ def load_state():
             return json.loads(STATE_FILE.read_text())
         except json.JSONDecodeError:
             pass
-    return {"position": None, "entry_price": 0.0, "base_qty": 0.0}
+    return {
+        "positions": {},        # symbol -> {entry_price, qty, opened}
+        "params": {},           # symbol -> tuned params
+        "scores": {},           # symbol -> backtest metrics
+        "ml_acc": {},           # symbol -> ml accuracy
+        "active": [],
+        "last_optimize": None,
+        "realized_pnl": 0.0,
+        "equity": 0.0,
+        "trades": [],           # recent trades for dashboard
+        "day": str(date.today()),
+        "day_start_realized": 0.0,
+        "halted": False,
+    }
 
 
 def save_state(state):
-    STATE_FILE.write_text(json.dumps(state, indent=2))
+    STATE_FILE.write_text(json.dumps(state, ensure_ascii=False, indent=2))
 
 
-def record_trade(side, price, qty, mode):
+def record_trade(state, side, symbol, price, qty, mode, reason=""):
     new = not TRADES_CSV.exists()
     with TRADES_CSV.open("a", newline="") as f:
         w = csv.writer(f)
         if new:
-            w.writerow(["time", "mode", "side", "price", "qty", "quote_value"])
-        w.writerow([now(), mode, side, f"{price:.8f}", f"{qty:.8f}", f"{price * qty:.4f}"])
-
-
-def round_step(qty, step):
-    """Round a quantity DOWN to the exchange's lot-size step."""
-    import math
-    if step <= 0:
-        return qty
-    n = math.floor(qty / step)
-    decimals = max(0, -int(round(math.log10(step)))) if step < 1 else 0
-    return round(n * step, decimals)
+            w.writerow(["time", "mode", "symbol", "side", "price", "qty",
+                        "quote_value", "reason"])
+        w.writerow([now(), mode, symbol, side, f"{price:.8f}", f"{qty:.8f}",
+                    f"{price * qty:.4f}", reason])
+    state["trades"].append({
+        "time": iso(), "symbol": symbol, "side": side,
+        "price": round(price, 6), "qty": qty,
+        "quote": round(price * qty, 2), "reason": reason,
+    })
+    state["trades"] = state["trades"][-50:]
 
 
 # ------------------------------- the bot ---------------------------------
 class Bot:
     def __init__(self):
         self.mode = (cfg("BOT_MODE", "dryrun") or "dryrun").lower()
-        self.symbol = cfg("SYMBOL", "BTCUSDT").upper()
+        self.universe = [s.strip().upper()
+                         for s in cfg("SYMBOLS", DEFAULT_UNIVERSE).split(",")
+                         if s.strip()]
         self.interval = cfg("INTERVAL", "1h")
-        self.fast = int(cfg("FAST", "7"))
-        self.slow = int(cfg("SLOW", "25"))
         self.quote_per_trade = float(cfg("QUOTE_PER_TRADE", "15"))
         self.poll_seconds = int(cfg("POLL_SECONDS", "60"))
-        self.stop_loss_pct = float(cfg("STOP_LOSS_PCT", "0") or 0)
+        self.optimize_hours = float(cfg("OPTIMIZE_HOURS", "2"))
+        self.top_n = int(cfg("TOP_N", "3"))
+        self.history = int(cfg("HISTORY", "500"))
+        self.max_open = int(cfg("MAX_OPEN_POSITIONS", "3"))
+        self.daily_loss_limit = float(cfg("DAILY_LOSS_LIMIT", "0") or 0)
+        self.start_equity = float(cfg("PAPER_EQUITY", "1000"))
+
         self.state = load_state()
-        self.client = None
-        self.step_size = 0.0
+        self.ex = Exchange(self.mode, cfg("BINANCE_API_KEY"),
+                           cfg("BINANCE_API_SECRET"))
+        self._last_opt_ts = 0.0
+        if not self.state.get("equity"):
+            self.state["equity"] = self.start_equity
 
-        if self.fast >= self.slow:
-            sys.exit("FAST must be smaller than SLOW.")
+        if self.mode == "live":
+            confirm = (cfg("CONFIRM_LIVE", "") or "").upper()
+            if confirm != "I_UNDERSTAND_THE_RISK":
+                raise SystemExit(
+                    "LIVE mode refused. To trade REAL money set "
+                    "CONFIRM_LIVE=I_UNDERSTAND_THE_RISK in your .env.")
 
-        if self.mode in ("testnet", "live"):
-            self._connect()
+    # ---- the learning / self-update step (runs every OPTIMIZE_HOURS) ----
+    def self_update(self):
+        log("🧠 Self-update: back-testing + retraining ML on latest data…")
+        scored = []
+        for symbol in self.universe:
+            try:
+                closes = self.ex.closes(symbol, self.interval, self.history)
+            except Exception as e:
+                log(f"   {symbol}: data error {e}")
+                continue
+            if len(closes) < 80:
+                continue
+            params, metrics = optimize_symbol(closes)
+            acc = ml_model.train(symbol, closes)
+            self.state["params"][symbol] = params
+            self.state["scores"][symbol] = metrics
+            self.state["ml_acc"][symbol] = acc
+            scored.append((symbol, metrics["score"]))
+            log(f"   {symbol}: score={metrics['score']} "
+                f"ret={metrics['return_pct']}% win={metrics['win_rate']}% "
+                f"fast={params['fast']} slow={params['slow']} "
+                f"ml_acc={acc}")
 
-    def _connect(self):
-        try:
-            from binance.client import Client
-        except ImportError:
-            sys.exit("Install dependencies first:  pip install -r bot/requirements.txt")
-        key, secret = cfg("BINANCE_API_KEY"), cfg("BINANCE_API_SECRET")
-        if not key or not secret:
-            sys.exit("Set BINANCE_API_KEY and BINANCE_API_SECRET (see config.example.env).")
-        self.client = Client(key, secret, testnet=(self.mode == "testnet"))
-        # cache the lot-size step so SELL quantities are valid
-        info = self.client.get_symbol_info(self.symbol)
-        for f in info.get("filters", []):
-            if f["filterType"] == "LOT_SIZE":
-                self.step_size = float(f["stepSize"])
-        log(f"Connected to Binance ({self.mode}). {self.symbol} lot step = {self.step_size}")
-
-    # --- market data ---
-    def closes(self):
-        limit = self.slow + 2
-        if self.mode == "dryrun":
-            # dryrun still needs real prices: use the public REST endpoint
-            import urllib.request
-            url = (f"https://api.binance.com/api/v3/klines?symbol={self.symbol}"
-                   f"&interval={self.interval}&limit={limit}")
-            with urllib.request.urlopen(url, timeout=20) as r:
-                data = json.load(r)
-        else:
-            data = self.client.get_klines(symbol=self.symbol, interval=self.interval, limit=limit)
-        return [float(k[4]) for k in data]
-
-    # --- orders ---
-    def buy(self, price):
-        qty = self.quote_per_trade / price
-        if self.mode == "dryrun":
-            log(f"DRYRUN 🟢 would BUY ~{qty:.6f} {self.symbol} for {self.quote_per_trade} quote @ ~{price:.4f}")
-        else:
-            order = self.client.order_market_buy(symbol=self.symbol, quoteOrderQty=self.quote_per_trade)
-            qty = float(order.get("executedQty", qty))
-            spent = float(order.get("cummulativeQuoteQty", self.quote_per_trade))
-            price = spent / qty if qty else price
-            log(f"{self.mode.upper()} 🟢 BOUGHT {qty:.6f} @ {price:.4f}")
-        self.state.update(position="long", entry_price=price, base_qty=qty)
+        scored.sort(key=lambda x: x[1], reverse=True)
+        # only trade coins whose recent strategy was actually profitable
+        ranked = [s for s, sc in scored if sc > 0][: self.top_n]
+        # always keep symbols we currently hold so we can manage/exit them
+        for held in self.state["positions"]:
+            if held not in ranked:
+                ranked.append(held)
+        self.state["active"] = ranked
+        self.state["last_optimize"] = iso()
         save_state(self.state)
-        record_trade("BUY", price, qty, self.mode)
+        log(f"✅ Self-update done. Trading: {ranked or '(none profitable)'}")
 
-    def sell(self, price, reason):
-        qty = self.state["base_qty"]
-        if self.mode == "dryrun":
-            log(f"DRYRUN 🔴 would SELL {qty:.6f} {self.symbol} @ ~{price:.4f} ({reason})")
-        else:
-            qty = round_step(qty, self.step_size)
-            order = self.client.order_market_sell(symbol=self.symbol, quantity=qty)
-            got = float(order.get("cummulativeQuoteQty", price * qty))
-            price = got / qty if qty else price
-            log(f"{self.mode.upper()} 🔴 SOLD {qty:.6f} @ {price:.4f} ({reason})")
-        entry = self.state["entry_price"]
-        pnl = (price - entry) * qty
-        log(f"   trade P/L ≈ {pnl:+.4f} quote ({(price/entry-1)*100:+.2f}%)")
-        self.state.update(position=None, entry_price=0.0, base_qty=0.0)
-        save_state(self.state)
-        record_trade("SELL", price, qty, self.mode)
-
-    # --- one decision cycle ---
-    def step(self):
-        closes = self.closes()
-        if len(closes) < self.slow + 1:
-            log("Not enough candles yet.")
+    # ------------------------------ trading ------------------------------
+    def open_position(self, symbol, price):
+        if len(self.state["positions"]) >= self.max_open:
             return
+        fill, qty = self.ex.buy(symbol, self.quote_per_trade, price)
+        self.state["positions"][symbol] = {
+            "entry_price": fill, "qty": qty, "opened": iso()}
+        if self.mode == "dryrun":
+            self.state["equity"] -= fill * qty
+        record_trade(self.state, "BUY", symbol, fill, qty, self.mode, "signal")
+        log(f"🟢 BUY {symbol} {qty:.6f} @ {fill:.4f}")
+
+    def close_position(self, symbol, price, reason):
+        pos = self.state["positions"].get(symbol)
+        if not pos:
+            return
+        fill, qty = self.ex.sell(symbol, pos["qty"], price)
+        pnl = (fill - pos["entry_price"]) * qty
+        self.state["realized_pnl"] += pnl
+        if self.mode == "dryrun":
+            self.state["equity"] += fill * qty
+        record_trade(self.state, "SELL", symbol, fill, qty, self.mode, reason)
+        pct = (fill / pos["entry_price"] - 1) * 100 if pos["entry_price"] else 0
+        log(f"🔴 SELL {symbol} {qty:.6f} @ {fill:.4f} ({reason}) "
+            f"P/L {pnl:+.2f} ({pct:+.2f}%)")
+        del self.state["positions"][symbol]
+
+    def manage_symbol(self, symbol, prices):
+        params = merge_params(self.state["params"].get(symbol))
+        closes = self.ex.closes(symbol, self.interval, self.history)
         price = closes[-1]
-        fast_now, slow_now = sma(closes, self.fast), sma(closes, self.slow)
-        fast_prev, slow_prev = sma(closes[:-1], self.fast), sma(closes[:-1], self.slow)
-        cross_up = fast_prev <= slow_prev and fast_now > slow_now
-        cross_down = fast_prev >= slow_prev and fast_now < slow_now
+        prices[symbol] = price
+        signal = latest_signal(closes, params)
+        ml_prob = ml_model.predict_up(symbol, closes)
 
-        pos = self.state["position"]
-        trend = "↑" if fast_now > slow_now else "↓"
-        log(f"{self.symbol} {price:.4f} | fast={fast_now:.2f} slow={slow_now:.2f} {trend} | pos={pos or 'flat'}")
-
-        if pos is None:
-            if cross_up:
-                log("📈 Golden cross — opening a position.")
-                self.buy(price)
+        pos = self.state["positions"].get(symbol)
+        if pos:
+            entry = pos["entry_price"]
+            change = (price / entry - 1) * 100 if entry else 0
+            if params["stop_loss_pct"] and change <= -params["stop_loss_pct"]:
+                self.close_position(symbol, price, f"stop-loss {change:.1f}%")
+            elif params["take_profit_pct"] and change >= params["take_profit_pct"]:
+                self.close_position(symbol, price, f"take-profit {change:.1f}%")
+            elif signal == "sell":
+                self.close_position(symbol, price, "death cross")
         else:
-            entry = self.state["entry_price"]
-            if self.stop_loss_pct and price <= entry * (1 - self.stop_loss_pct / 100):
-                self.sell(price, f"stop-loss {self.stop_loss_pct}%")
-            elif cross_down:
-                log("📉 Death cross — closing the position.")
-                self.sell(price, "death cross")
+            ml_ok = (ml_prob is None) or (ml_prob >= params["ml_buy_threshold"])
+            if signal == "buy" and ml_ok:
+                self.open_position(symbol, price)
+            elif signal == "buy" and not ml_ok:
+                log(f"⏸️  {symbol} buy signal skipped (ML {ml_prob} < "
+                    f"{params['ml_buy_threshold']})")
+
+    # --------------------------- risk / kill ---------------------------
+    def check_daily_limit(self):
+        today = str(date.today())
+        if self.state.get("day") != today:
+            self.state["day"] = today
+            self.state["day_start_realized"] = self.state["realized_pnl"]
+            self.state["halted"] = False
+        if self.daily_loss_limit <= 0:
+            return
+        day_pnl = self.state["realized_pnl"] - self.state["day_start_realized"]
+        if day_pnl <= -abs(self.daily_loss_limit) and not self.state["halted"]:
+            self.state["halted"] = True
+            log(f"🛑 Daily loss limit hit ({day_pnl:+.2f}). "
+                f"Closing positions, pausing new entries until tomorrow.")
+
+    # ------------------------------ cycle ------------------------------
+    def step(self):
+        self.check_daily_limit()
+        need_opt = (time.time() - self._last_opt_ts) >= self.optimize_hours * 3600
+        if need_opt or not self.state.get("active"):
+            self.self_update()
+            self._last_opt_ts = time.time()
+
+        prices = {}
+        for symbol in list(self.state["active"]):
+            try:
+                if self.state.get("halted"):
+                    # only allow exits while halted
+                    if symbol in self.state["positions"]:
+                        closes = self.ex.closes(symbol, self.interval, self.history)
+                        prices[symbol] = closes[-1]
+                        self.close_position(symbol, closes[-1], "daily halt")
+                    continue
+                self.manage_symbol(symbol, prices)
+            except Exception as e:
+                log(f"   {symbol}: error {e}")
+
+        save_state(self.state)
+        try:
+            dashboard.write_snapshot(
+                self.mode, self.universe, self.state["active"],
+                self.state["params"], self.state["positions"],
+                self.state["scores"], self.state["ml_acc"],
+                self.state["trades"], self.state["equity"],
+                self.state["realized_pnl"], self.state["last_optimize"], prices)
+        except Exception as e:
+            log(f"dashboard write error: {e}")
 
     def run(self):
-        log(f"Bot started — mode={self.mode}, symbol={self.symbol}, interval={self.interval}, "
-            f"SMA {self.fast}/{self.slow}, {self.quote_per_trade} quote/trade, "
-            f"stop-loss={self.stop_loss_pct or 'off'}")
+        log(f"Bot started — mode={self.mode}, universe={self.universe}, "
+            f"interval={self.interval}, TOP_N={self.top_n}, "
+            f"{self.quote_per_trade} quote/trade, "
+            f"self-update every {self.optimize_hours}h")
         if self.mode == "live":
             log("⚠️  LIVE MODE — trading REAL money. Ctrl+C to stop.")
         once = "--once" in sys.argv
         while True:
             try:
                 self.step()
-            except Exception as e:  # keep the loop alive on transient errors
-                log(f"error: {e}")
+            except Exception as e:
+                log(f"cycle error: {e}")
             if once:
                 break
             time.sleep(self.poll_seconds)
