@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-21T12:22:48+00:00",
+ "updated": "2026-06-21T16:56:48+00:00",
  "jobs": [
   {
    "title": "Manager - IT Delivery Management",
@@ -61,6 +61,42 @@
    "source": "LinkedIn",
    "keywords": [
     "Digital Transformation"
+   ],
+   "first_seen": "2026-06-21"
+  },
+  {
+   "title": "IT Service Associate",
+   "company": "Boston Consulting Group (BCG)",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/it-service-associate-at-boston-consulting-group-bcg-4402317246",
+   "posted": "2026-06-21",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Infrastructure"
+   ],
+   "first_seen": "2026-06-21"
+  },
+  {
+   "title": "Master Data Officer",
+   "company": "Riyadh Air | طيران الرياض",
+   "location": "Riyadh Region",
+   "url": "https://sa.linkedin.com/jobs/view/master-data-officer-at-riyadh-air-%D8%B7%D9%8A%D8%B1%D8%A7%D9%86-%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6-4430342002",
+   "posted": "2026-06-21",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Sharing"
+   ],
+   "first_seen": "2026-06-21"
+  },
+  {
+   "title": "Data Management & Data Privacy Professional",
+   "company": "ECOVIS Saudi Arabia (ECOVIS AL SABTI)",
+   "location": "Riyadh Region",
+   "url": "https://sa.linkedin.com/jobs/view/data-management-data-privacy-professional-at-ecovis-saudi-arabia-ecovis-al-sabti-4428533605",
+   "posted": "2026-06-20",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Sharing"
    ],
    "first_seen": "2026-06-21"
   },
@@ -1530,7 +1566,8 @@
    "posted": "2026-06-09",
    "source": "LinkedIn",
    "keywords": [
-    "Program Manager"
+    "Program Manager",
+    "IT Management"
    ],
    "first_seen": "2026-06-11"
   },

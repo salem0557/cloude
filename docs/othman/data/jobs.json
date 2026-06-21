@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-21T12:23:11+00:00",
+ "updated": "2026-06-21T16:57:14+00:00",
  "jobs": [
   {
    "title": "Manager - IT Delivery Management",
@@ -58,6 +58,19 @@
    "source": "LinkedIn",
    "keywords": [
     "IT Fresh Graduate"
+   ],
+   "first_seen": "2026-06-21"
+  },
+  {
+   "title": "Technical Service Delivery Specialist Cloud",
+   "company": "Alnafitha IT",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/technical-service-delivery-specialist-cloud-at-alnafitha-it-4430341343",
+   "posted": "2026-06-20",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Specialist",
+    "System Administrator"
    ],
    "first_seen": "2026-06-21"
   },
@@ -1036,7 +1049,8 @@
    "source": "LinkedIn",
    "keywords": [
     "Help Desk",
-    "IT Support"
+    "IT Support",
+    "Technical Support"
    ],
    "first_seen": "2026-06-11"
   },
