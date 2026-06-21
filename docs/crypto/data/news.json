@@ -1,12 +1,19 @@
 {
-  "updated": "2026-06-20T22:45:59.311436+00:00",
+  "updated": "2026-06-21T05:28:18.658893+00:00",
   "news": [
     {
-      "title": "Eric Trump details family’s $1B crypto ventures, including Trump Coin and American Bitcoin",
-      "url": "https://cryptobriefing.com/?p=262646",
+      "title": "Curacao’s historic World Cup draw spotlights the island’s quiet rise as a crypto hub",
+      "url": "https://cryptobriefing.com/?p=262730",
       "source": "Crypto Briefing",
-      "published": "2026-06-20T22:41:34+00:00",
-      "summary": "<p>The Trump family's crypto ventures highlight the growing intersection of traditional finance and digital assets, impacting market dynamics and investor strategies.</p> <p>The post <a href=\"https://cryptobriefing.com/eric-trump-billion-dollar-crypto-ventures/\">Eric Trump detail"
+      "published": "2026-06-21T05:08:42+00:00",
+      "summary": "<p>Curacao's rise as a crypto hub highlights the potential for small nations to gain economic influence by swiftly adopting blockchain regulations.</p> <p>The post <a href=\"https://cryptobriefing.com/curacao-world-cup-crypto-hub/\">Curacao&#8217;s historic World Cup draw spotlight"
+    },
+    {
+      "title": "CZ Says AI Agents Could Drive Crypto’s Next Adoption Wave",
+      "url": "https://cryptopotato.com/?p=1440460",
+      "source": "CryptoPotato",
+      "published": "2026-06-21T03:33:25+00:00",
+      "summary": "CZ believes AI-powered trading and payments could arrive within months rather than years, with crypto as the default rail."
     },
     {
       "title": "Bitcoin miner Bitdeer mined 921 BTC, but its smaller stash raises a bigger question",
@@ -28,13 +35,6 @@
       "source": "NewsBTC",
       "published": "2026-06-20T22:00:20+00:00",
       "summary": "An X analyst says Bitcoin is approaching local H4 resistance near $64,100, a level tied to a 1:1 correction and 38.2% Fibonacci measurement."
-    },
-    {
-      "title": "The Revenue Divergence: Why Record-Breaking Ethereum Activity Isn’t Boosting ETH Price",
-      "url": "https://cryptopotato.com/?p=1440354",
-      "source": "CryptoPotato",
-      "published": "2026-06-20T21:58:28+00:00",
-      "summary": "The Ethereum network's growth strategy seems to focus first on winning the adoption race and then on generating fees later."
     },
     {
       "title": "Main Street msUSD Stablecoin Loses Dollar Peg and Crashes 90%",
@@ -175,16 +175,19 @@
       "source": "U.Today",
       "published": "2026-06-19T09:04:00+00:00",
       "summary": "XRP whales dump 30 million tokens, sparking a bearish ripple effect on the price."
-    },
-    {
-      "title": "New Crypto-Stealing Malware in the Wild, Microsoft Warns: Details",
-      "url": "https://u.today/new-crypto-stealing-malware-in-the-wild-microsoft-warns-details",
-      "source": "U.Today",
-      "published": "2026-06-19T08:06:00+00:00",
-      "summary": "Microsoft has warned of a sophisticated crypto-stealing malware campaign, dubbed CryptoBandits, that spreads via infected USB drives and hijacks wallet addresses, seed phrases, and private keys."
     }
   ],
   "rumors": [
+    {
+      "title": "XRP Confirms Death Cross, Is $1 Next Level?",
+      "url": "https://u.today/xrp-confirms-death-cross-is-1-next-level",
+      "source": "U.Today",
+      "published": "2026-06-21T00:01:00+00:00",
+      "summary": "XRP flashes signal on short term charts, but there might still be more to watch out for.",
+      "tags": [
+        "Speculation"
+      ]
+    },
     {
       "title": "17% XRP Surge in Network Activity Could Trigger Next Leg Up",
       "url": "https://u.today/17-xrp-surge-in-network-activity-could-trigger-next-leg-up",
