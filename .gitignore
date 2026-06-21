@@ -1,3 +1,6 @@
 __pycache__/
 *.pyc
 bot/deals.db
+bot/.env
+bot/state.json
+bot/trades.csv
