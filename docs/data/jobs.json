@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-21T16:56:48+00:00",
+ "updated": "2026-06-21T21:46:22+00:00",
  "jobs": [
   {
    "title": "Manager - IT Delivery Management",
@@ -85,6 +85,19 @@
    "source": "LinkedIn",
    "keywords": [
     "Data Sharing"
+   ],
+   "first_seen": "2026-06-21"
+  },
+  {
+   "title": "IT Specialist",
+   "company": "eSense",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/it-specialist-at-esense-4430369116",
+   "posted": "2026-06-21",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Management",
+    "IT Infrastructure"
    ],
    "first_seen": "2026-06-21"
   },
