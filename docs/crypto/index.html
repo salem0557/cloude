@@ -157,6 +157,17 @@
   .rumor-dot.pos { background: var(--up); box-shadow: 0 0 6px var(--up); }
   .rumor-dot.neg { background: var(--down); box-shadow: 0 0 6px var(--down); }
   .rumor-dot:not(.pos):not(.neg) { display: none; }
+  .bots-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; padding: 8px 16px 4px; }
+  .bot-card { display: flex; flex-direction: column; gap: 7px; background: var(--card2); border: 1px solid var(--border); border-radius: 14px; padding: 13px 14px; text-decoration: none; color: inherit; transition: transform .12s, border-color .12s; }
+  .bot-card:hover { transform: translateY(-2px); border-color: var(--accent); }
+  .bot-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .bot-name { font-weight: 700; font-size: .95rem; }
+  .bot-tag { font-size: .66rem; font-weight: 700; padding: 2px 8px; border-radius: 20px; flex: none; }
+  .bot-tag.official { background: rgba(22,199,132,.16); color: #38e0a6; }
+  .bot-tag.ext { background: rgba(91,141,239,.16); color: var(--accent2); }
+  .bot-tag.warn { background: rgba(234,57,67,.16); color: #ff6470; }
+  .bot-desc { color: var(--muted); font-size: .82rem; line-height: 1.6; flex: 1; }
+  .bot-visit { align-self: flex-start; background: linear-gradient(135deg, #f0b90b, #f7931a); color: #1a1300; font-weight: 800; font-size: .78rem; padding: 6px 12px; border-radius: 9px; }
   .owned-total { padding: 10px 16px; border-bottom: 1px solid var(--border); font-size: .85rem; color: var(--muted); background: var(--card2); }
   .owned-total b { color: var(--text); }
   .owned-total .pl-up { color: var(--up); font-weight: 800; }
@@ -373,6 +384,66 @@
     </div>
     <div class="owned-total" id="owned-total"></div>
     <div class="fav-grid" id="owned-grid"></div>
+  </div>
+
+  <!-- ===== trading bots ===== -->
+  <div class="box fav-box" id="bots-box" style="margin-top:22px;">
+    <div class="box-head">
+      <h2><span class="dot" style="background:#f0b90b;box-shadow:0 0 10px #f0b90b"></span> 🤖 أفضل بوتات التداول على Binance</h2>
+    </div>
+    <div class="risk-note" style="margin:12px 16px 0">
+      ⚠️ <b>تنبيه مهم:</b> البوتات <b>لا تضمن الربح</b> وقد تتسبب بخسائر. الأكثر أمانًا هي <b>بوتات Binance الرسمية المدمجة</b> (لا تحتاج وسيطًا ولا مفاتيح خارجية).
+      أما المنصّات الخارجية فتتطلب ربط مفتاح API — اربطه <b>بصلاحية «تداول» فقط وعطّل «السحب» دائمًا</b>، وفعّل قيود عنوان IP، واحذر المواقع المزيّفة.
+      هذه قائمة <b>للاطلاع</b>، ولا تُعدّ ترشيحًا ولا نصيحة مالية.
+    </div>
+
+    <div style="padding:14px 16px 4px"><b style="color:var(--up)">✅ بوتات Binance الرسمية (الأكثر أمانًا)</b></div>
+    <div class="bots-grid">
+      <a class="bot-card" href="https://www.binance.com/en/trading-bots" target="_blank" rel="noopener">
+        <div class="bot-head"><span class="bot-name">مركز بوتات Binance</span><span class="bot-tag official">رسمي</span></div>
+        <div class="bot-desc">جميع البوتات المدمجة في حساب Binance مباشرةً، بلا وسيط.</div>
+        <span class="bot-visit">فتح ↗</span>
+      </a>
+      <a class="bot-card" href="https://www.binance.com/en/trading-bots/grid" target="_blank" rel="noopener">
+        <div class="bot-head"><span class="bot-name">Spot Grid — الشبكة الفورية</span><span class="bot-tag official">رسمي</span></div>
+        <div class="bot-desc">يشتري ويبيع آليًا ضمن نطاق سعري — مناسب للأسواق المتذبذبة جانبيًا.</div>
+        <span class="bot-visit">فتح ↗</span>
+      </a>
+      <a class="bot-card" href="https://www.binance.com/en/trading-bots/dca" target="_blank" rel="noopener">
+        <div class="bot-head"><span class="bot-name">Spot DCA — التكلفة المتوسطة</span><span class="bot-tag official">رسمي</span></div>
+        <div class="bot-desc">شراء دوري بمبلغ ثابت لتخفيف أثر التقلّب على متوسط سعرك.</div>
+        <span class="bot-visit">فتح ↗</span>
+      </a>
+      <a class="bot-card" href="https://www.binance.com/en/trading-bots/futures-grid" target="_blank" rel="noopener">
+        <div class="bot-head"><span class="bot-name">Futures Grid — شبكة العقود</span><span class="bot-tag warn">رافعة</span></div>
+        <div class="bot-desc">شبكة على العقود الآجلة — أرباح أكبر ومخاطر أعلى بسبب الرافعة المالية.</div>
+        <span class="bot-visit">فتح ↗</span>
+      </a>
+    </div>
+
+    <div style="padding:14px 16px 4px"><b style="color:var(--accent2)">🔌 منصّات خارجية معروفة (تتطلب ربط API)</b></div>
+    <div class="bots-grid">
+      <a class="bot-card" href="https://www.pionex.com" target="_blank" rel="noopener">
+        <div class="bot-head"><span class="bot-name">Pionex</span><span class="bot-tag ext">خارجي</span></div>
+        <div class="bot-desc">منصّة فيها 16+ بوتًا مجانيًا مدمجًا (Grid وDCA…)، من الأكثر شيوعًا وموثوقية نسبيًا.</div>
+        <span class="bot-visit">زيارة ↗</span>
+      </a>
+      <a class="bot-card" href="https://3commas.io" target="_blank" rel="noopener">
+        <div class="bot-head"><span class="bot-name">3Commas</span><span class="bot-tag ext">خارجي</span></div>
+        <div class="bot-desc">منصّة بوتات معروفة تتصل بـ Binance عبر API، بوتات شبكة وDCA واستراتيجيات.</div>
+        <span class="bot-visit">زيارة ↗</span>
+      </a>
+      <a class="bot-card" href="https://www.cryptohopper.com" target="_blank" rel="noopener">
+        <div class="bot-head"><span class="bot-name">Cryptohopper</span><span class="bot-tag ext">خارجي</span></div>
+        <div class="bot-desc">بوتات وقوالب استراتيجيات جاهزة، وسوق إشارات تداول.</div>
+        <span class="bot-visit">زيارة ↗</span>
+      </a>
+      <a class="bot-card" href="https://bitsgap.com" target="_blank" rel="noopener">
+        <div class="bot-head"><span class="bot-name">Bitsgap</span><span class="bot-tag ext">خارجي</span></div>
+        <div class="bot-desc">بوتات شبكة وDCA عبر عدّة منصّات من واجهة واحدة.</div>
+        <span class="bot-visit">زيارة ↗</span>
+      </a>
+    </div>
   </div>
 
   <footer>
