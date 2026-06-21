@@ -3,7 +3,7 @@ name: Crypto news
 on:
   schedule:
     # Off-the-hour minute to avoid GitHub's busy on-the-hour crons.
-    - cron: "37 */3 * * *" # every 3 hours
+    - cron: "37 * * * *" # every hour
   workflow_dispatch:
 
 permissions:
