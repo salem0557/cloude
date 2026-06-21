@@ -1,33 +1,75 @@
 {
-  "updated": "2026-06-21T10:20:15.553118+00:00",
+  "updated": "2026-06-21T15:30:03.289343+00:00",
   "news": [
     {
-      "title": "United Kingdom prepares to test hypersonic space plane for faster flights",
-      "url": "https://cryptobriefing.com/?p=262890",
-      "source": "Crypto Briefing",
-      "published": "2026-06-21T10:18:27+00:00",
-      "summary": "<p>The UK's hypersonic space plane project could revolutionize global logistics, military operations, and space access with rapid, reusable flights.</p> <p>The post <a href=\"https://cryptobriefing.com/uk-hypersonic-space-plane-invictus/\">United Kingdom prepares to test hypersonic"
-    },
-    {
-      "title": "Bitcoin’s Biggest Risk Is Boredom, Not Another Price Crash: CryptoQuant CEO",
-      "url": "https://cryptopotato.com/?p=1440468",
-      "source": "CryptoPotato",
-      "published": "2026-06-21T09:35:54+00:00",
-      "summary": "The popular CEO also weighed in on the hot topic of Strategy and its controversial STRC."
-    },
-    {
-      "title": "Polymarket Accused of Using Fake Winning Bets to Fuel Viral Growth",
-      "url": "https://beincrypto.com/?p=841500",
-      "source": "BeInCrypto",
-      "published": "2026-06-21T09:33:22+00:00",
-      "summary": "<p>A WSJ investigation says Polymarket staged fake bets on copycat sites to lure US users, clashing with its on-chain pitch.</p> <p>The post <a href=\"https://beincrypto.com/polymarket-fake-bets-wsj-investigation/\">Polymarket Accused of Using Fake Winning Bets to Fuel Viral Growth"
-    },
-    {
-      "title": "Binance Founder CZ Sparks Debate on Freezing Satoshi’s Bitcoins Over Quantum Risk",
-      "url": "https://www.newsbtc.com/?p=902309",
+      "title": "CME Group Sues CFTC Over Competitor Crypto Perpetual Futures Approval",
+      "url": "https://www.newsbtc.com/?p=902304",
       "source": "NewsBTC",
-      "published": "2026-06-21T09:25:23+00:00",
-      "summary": "Binance founder CZ sparked a debate by suggesting a hard fork to freeze Satoshi's 1.1 million BTC over quantum computer risks, raising questions about Bitcoin's immutability."
+      "published": "2026-06-21T15:25:43+00:00",
+      "summary": "CME Group has sued the CFTC in federal court, challenging the approval of competitor crypto perpetual futures contracts. The lawsuit disputes the CFTC's authority."
+    },
+    {
+      "title": "$2.48B BTC transfers challenge ‘lost’ Bitcoin wallets in Satoshi lawsuit",
+      "url": "https://cryptoslate.com/?p=543082",
+      "source": "CryptoSlate",
+      "published": "2026-06-21T15:25:01+00:00",
+      "summary": "<p>A quiet legal maneuver to seize title to more than $200 billion in dormant Bitcoin, including Satoshi Nakamoto's, has encountered a fundamental flaw. A lost Bitcoin wallet lawsuit in New York now faces direct on-chain evidence that supposedly abandoned addresses are actively t"
+    },
+    {
+      "title": "Manchester United rejects offers for Benjamin Šeško this summer",
+      "url": "https://cryptobriefing.com/?p=263178",
+      "source": "Crypto Briefing",
+      "published": "2026-06-21T15:12:17+00:00",
+      "summary": "<p>Manchester United's firm stance on eko underscores their commitment to long-term squad stability and strategic player development.</p> <p>The post <a href=\"https://cryptobriefing.com/manchester-united-rejects-sesko-offers/\">Manchester United rejects offers for Benjamin Šeško t"
+    },
+    {
+      "title": "Japanese Pension Fund Plans Crypto Allocation to Hedge Dollar Risk",
+      "url": "https://beincrypto.com/?p=841538",
+      "source": "BeInCrypto",
+      "published": "2026-06-21T14:54:37+00:00",
+      "summary": "<p>A Japanese pension fund will allocate 1% to crypto from 2026, treating Bitcoin as a hedge against a weakening US dollar.</p> <p>The post <a href=\"https://beincrypto.com/japanese-pension-fund-crypto-dollar-hedge/\">Japanese Pension Fund Plans Crypto Allocation to Hedge Dollar Ri"
+    },
+    {
+      "title": "Is Bitcoin (And Peace) In Trouble as Trump Warns Iran of Fresh Strikes?",
+      "url": "https://cryptopotato.com/?p=1440578",
+      "source": "CryptoPotato",
+      "published": "2026-06-21T14:03:42+00:00",
+      "summary": "Trump's comments came as the high-level meeting between the US and Iran was supposed to start in Switzerland."
+    },
+    {
+      "title": "AI 'Amplification Spiral' May Be Causing Delusions Among Users, Study Suggests",
+      "url": "https://decrypt.co/?p=371648",
+      "source": "Decrypt",
+      "published": "2026-06-21T13:01:03+00:00",
+      "summary": "New research outlines how chatbot behaviors, including personalization, mirroring, and excessive agreement, reinforce delusions."
+    },
+    {
+      "title": "No Posts, No Signs: Shytoshi Kusama Stays Low-Key on X While SHIB Community Looks for Clues",
+      "url": "https://u.today/no-posts-no-signs-shytoshi-kusama-stays-low-key-on-x-while-shib-community-looks-for-clues",
+      "source": "U.Today",
+      "published": "2026-06-21T13:00:35+00:00",
+      "summary": "Shiba Inu community awaits next move amid general market quiet."
+    },
+    {
+      "title": "Lubin Hails Vitalik Buterin as Ethereum's Most Important Steward Amid Sci-Fi Novel Commotion",
+      "url": "https://u.today/lubin-hails-vitalik-buterin-as-ethereums-most-important-steward-amid-sci-fi-novel-commotion",
+      "source": "U.Today",
+      "published": "2026-06-21T11:22:45+00:00",
+      "summary": "Consensys CEO Joseph Lubin has stepped forward to fiercely defend Vitalik Buterin’s unexpected pivot to writing a science-fiction novel."
+    },
+    {
+      "title": "Ripple to Recruit GenAI Staff as XRPL Activates AI Agent Payments",
+      "url": "https://u.today/ripple-to-recruit-genai-staff-as-xrpl-activates-ai-agent-payments",
+      "source": "U.Today",
+      "published": "2026-06-21T10:57:09+00:00",
+      "summary": "Ripple has activated AI Agent payments on XRP Ledger and it is seeking to expand its workforce to effectively allow machines to make transactions with XRP and RLUSD."
+    },
+    {
+      "title": "XRP Quietly Prepares for Next Era With Five New Building Blocks Added",
+      "url": "https://u.today/xrp-quietly-prepares-for-next-era-with-five-new-building-blocks-added",
+      "source": "U.Today",
+      "published": "2026-06-21T10:30:51+00:00",
+      "summary": "XRP Ledger Infrastructure Push Is Accelerating; XRPL Foundation director of community outlines five key developments."
     },
     {
       "title": "Bitcoin Holders Agree on 99%, so Why Focus on the 1%? Saylor Asks",
@@ -35,13 +77,6 @@
       "source": "U.Today",
       "published": "2026-06-21T09:15:26+00:00",
       "summary": "Strategy Chairman Michael Saylor believes global capital has barely entered Bitcoin yet."
-    },
-    {
-      "title": "Morgan Stanley’s proposed 0.14% ETH and SOL fees could turn the next crypto ETF race into a price fight",
-      "url": "https://cryptoslate.com/?p=542928",
-      "source": "CryptoSlate",
-      "published": "2026-06-21T09:10:09+00:00",
-      "summary": "<p>Morgan Stanley filed amended registration statements for proposed Ethereum and Solana ETF trusts on June 18, setting a 0.14% annual delegated sponsor fee on both products. Bloomberg senior ETF analyst Eric Balchunas described the proposed fee as the lowest among ETH and SOL pr"
     },
     {
       "title": "'Crypto Mom' Hester Peirce Announces Exit From SEC",
@@ -63,13 +98,6 @@
       "source": "U.Today",
       "published": "2026-06-20T22:04:00+00:00",
       "summary": "Shiba Inu exchange activity turns bullish as millions of SHIB tokens flow out of exchanges amid increasing buy activity from traders."
-    },
-    {
-      "title": "OpenRouter's Fusion Promises Claude Fable-Level AI for Cheap—Right as Fable 5 Goes Dark",
-      "url": "https://decrypt.co/?p=371711",
-      "source": "Decrypt",
-      "published": "2026-06-20T18:01:04+00:00",
-      "summary": "OpenRouter's compound-model API stacks budget AI models—and beat GPT-5.5 and Claude Opus 4.8 outright in benchmark testing."
     },
     {
       "title": "Michael Saylor Shares Strategy's Resilience and Growth Since 2022",
@@ -147,37 +175,19 @@
       "source": "U.Today",
       "published": "2026-06-19T16:23:18+00:00",
       "summary": "Strategy’s bold financial experiment has become a primary source of anxiety for the cryptocurrency market."
-    },
-    {
-      "title": "Solana Surpasses $7 Billion in Trading Volume, Beats Coinbase and Kraken",
-      "url": "https://u.today/solana-surpasses-7-billion-in-trading-volume-beats-coinbase-and-kraken",
-      "source": "U.Today",
-      "published": "2026-06-19T15:37:58+00:00",
-      "summary": "Solana records strong daily and weekly spot trading volumes, outperforming major centralized exchanges like Coinbase and Kraken in such metric."
-    },
-    {
-      "title": "Stellar (XLM) Surges 30%, Overtakes Zcash in Crypto Market Rankings",
-      "url": "https://u.today/stellar-xlm-surges-30-overtakes-zcash-in-crypto-market-rankings",
-      "source": "U.Today",
-      "published": "2026-06-19T14:00:30+00:00",
-      "summary": "Stellar (XLM) rose as much as 30% on a weekly basis, briefly overtaking Zcash."
-    },
-    {
-      "title": "Bitcoin's Biggest Threat Is Not a Crash, It's Boredom, CryptoQuant CEO Warns",
-      "url": "https://u.today/bitcoins-biggest-threat-is-not-a-crash-its-boredom-cryptoquant-ceo-warns",
-      "source": "U.Today",
-      "published": "2026-06-19T13:00:15+00:00",
-      "summary": "Ki Young Ju warns that a prolonged sideways grind is paralyzing fresh capital inflows as Bitcoin loses its original narratives."
-    },
-    {
-      "title": "12,760,000 SHIB Torched: Shiba Inu Sees Strongest Burn Activity in Weeks",
-      "url": "https://u.today/12760000-shib-torched-shiba-inu-sees-strongest-burn-activity-in-weeks",
-      "source": "U.Today",
-      "published": "2026-06-19T11:59:30+00:00",
-      "summary": "Shiba Inu burns over 12 million tokens within 24 hours as network activity grows stronger despite persisting market volatility."
     }
   ],
   "rumors": [
+    {
+      "title": "Shiba Inu (SHIB) Exchanges Offload 24.5 Billion SHIB in 24 Hours: What to Expect From the Price?",
+      "url": "https://u.today/shiba-inu-shib-exchanges-offload-245-billion-shib-in-24-hours-what-to-expect-from-the-price",
+      "source": "U.Today",
+      "published": "2026-06-21T10:33:00+00:00",
+      "summary": "Pressure on Shiba Inu's price might drop substantially as investors pull off from centralized exchanges.",
+      "tags": [
+        "Meme"
+      ]
+    },
     {
       "title": "Hyperliquid (HYPE) Prints Up to 1700% Liquidity Loss, More Pressure to Come",
       "url": "https://u.today/hyperliquid-hype-prints-up-to-1700-liquidity-loss-more-pressure-to-come",
@@ -226,16 +236,6 @@
       "summary": "The market recovery might not materialize as soon as we'd expect.",
       "tags": [
         "Meme"
-      ]
-    },
-    {
-      "title": "Hyperliquid (HYPE) May Overtake Solana Sooner Than We Expect: Analyzing the Reasons",
-      "url": "https://u.today/hyperliquid-hype-may-overtake-solana-sooner-than-we-expect-analyzing-the-reasons",
-      "source": "U.Today",
-      "published": "2026-06-19T12:51:00+00:00",
-      "summary": "Hyperliquid's market position is getting stronger day by day and at some point it might overtake the whole network.",
-      "tags": [
-        "Speculation"
       ]
     }
   ],
