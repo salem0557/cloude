@@ -328,6 +328,20 @@
     (قد لا تكون العملة الجديدة جدًا مُدرجة هناك بعد — وهذا بحدّ ذاته إشارة مخاطرة).
   </div>
 
+  <!-- ===== top losers / rebound watch ===== -->
+  <div class="box fav-box" id="losers-box" style="margin-top:22px;">
+    <div class="box-head">
+      <h2><span class="dot" style="background:#ea3943;box-shadow:0 0 10px #ea3943"></span> 📉 أكثر العملات هبوطًا — احتمال ارتداد؟</h2>
+      <span class="when" id="losers-count"></span>
+    </div>
+    <div class="risk-note" style="margin:12px 16px 0">
+      أكثر العملات هبوطًا خلال 24 ساعة (من بين العملات الكبيرة)، ونُبرز ما تدور حوله
+      <b>عناوين/شائعات ارتداد محتمل</b> (recovery · rebound · oversold · buy the dip). ⚠️ الهبوط الكبير
+      <b>ليس دليلًا على الارتداد</b> وقد يستمر النزول — للاطلاع فقط، وليس نصيحة مالية.
+    </div>
+    <div class="fav-grid" id="losers"><div class="box-loading">جاري التحميل…</div></div>
+  </div>
+
   <!-- ===== favourites ===== -->
   <div class="box fav-box" id="fav-box" style="display:none; margin-top:22px;">
     <div class="box-head">
@@ -732,6 +746,7 @@ async function loadNews() {
     newsPool = allNews.concat(rumors);
     refreshAllPredictions();
     renderOwnedNews();
+    renderLosersBox();   // rebound badges depend on the news
   } catch (e) {
     const msg = 'لم تُجمَع الأخبار بعد. شغّل workflow «Crypto news» مرة واحدة من تبويب Actions على GitHub.';
     document.getElementById("rumors").innerHTML = `<div class="feed-empty">${msg}</div>`;
@@ -1080,6 +1095,107 @@ document.addEventListener("click", e => {
   if (isOwn) renderOwned(); else renderFavorites();
 });
 
+// ---------- top losers + rebound rumours ----------
+const REBOUND = ["rebound", "rebounds", "bounce", "recovery", "recover", "recovers", "oversold",
+  "buy the dip", "bottom", "bottomed", "reversal", "reverse", "undervalued", "accumulate",
+  "relief rally", "comeback", "could rally", "set to recover", "due for", "support holds", "dip"];
+let losersData = null;
+
+async function fetchLosersGecko() {
+  const data = await fetchJSON("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&price_change_percentage=24h");
+  return data
+    .filter(c => c.price_change_percentage_24h != null && c.price_change_percentage_24h < 0)
+    .map(c => ({
+      rank: c.market_cap_rank, img: c.image, name: c.name, symbol: c.symbol,
+      price: c.current_price, change: c.price_change_percentage_24h,
+      marketCap: c.market_cap, volume: c.total_volume,
+      url: `https://www.coingecko.com/en/coins/${c.id}`, source: "gecko", id: c.id,
+    }))
+    .sort((a, b) => a.change - b.change)
+    .slice(0, 25);
+}
+async function fetchLosersBinance() {
+  const data = await fetchJSON("https://api.binance.com/api/v3/ticker/24hr");
+  return (data || [])
+    .filter(d => d.symbol.endsWith("USDT") && Number(d.quoteVolume) > 5e6 && Number(d.priceChangePercent) < 0)
+    .map(d => {
+      const sym = d.symbol.slice(0, -4);
+      return {
+        rank: "", img: null, name: sym, symbol: sym,
+        price: Number(d.lastPrice), change: Number(d.priceChangePercent),
+        marketCap: null, volume: Number(d.quoteVolume),
+        url: `https://www.coingecko.com/en/search?query=${encodeURIComponent(sym)}`,
+        source: "gecko", id: sym.toLowerCase(),
+      };
+    })
+    .sort((a, b) => a.change - b.change)
+    .slice(0, 25);
+}
+async function fetchLosers() {
+  try { return await fetchLosersGecko(); } catch (e) { return await fetchLosersBinance(); }
+}
+
+function reboundInfo(coin) {
+  const matches = matchNewsFor(coin);
+  const items = matches.map(m => {
+    const hay = `${m.item.title} ${m.item.summary || ""}`.toLowerCase();
+    const reb = REBOUND.some(w => hay.includes(w));
+    return { item: m.item, reb, s: m.s };
+  });
+  items.sort((a, b) => (b.reb - a.reb) || (b.s - a.s));
+  const hasRebound = items.some(i => i.reb || i.s > 0);
+  return { items, hasRebound };
+}
+
+function loserCard(c, r) {
+  const sym = (c.symbol || "").toUpperCase();
+  const buyUrl = `https://www.binance.com/en/trade/${encodeURIComponent(sym)}_USDT?type=spot`;
+  const badge = r.hasRebound
+    ? '<span class="pred-badge up">🔁 يُشاع ارتداد محتمل</span>'
+    : '<span class="pred-badge flat">لا شائعات ارتداد واضحة</span>';
+  const rel = r.items.filter(i => i.reb || i.s > 0).slice(0, 3).map(i =>
+    `<a class="pos" href="${escapeHtml(i.item.url)}" target="_blank" rel="noopener">${escapeHtml(i.item.title)}</a>`).join("");
+  return `<div class="fav-card">
+    <div class="fc-head">
+      <div>
+        <div class="fc-name">${escapeHtml(c.name)}</div>
+        <div class="fc-sym">${escapeHtml(c.symbol)}</div>
+      </div>
+      <div class="actions">
+        <a class="buy" href="${buyUrl}" target="_blank" rel="noopener" title="فتح التداول على Binance">شراء</a>
+        ${heartBtn(c)}${ownBtn(c)}
+      </div>
+    </div>
+    <div class="fc-stats">
+      <div class="fc-price"><div class="usd">${fmtUSD(c.price)}</div><div class="sar">${fmtSAR(c.price)}</div></div>
+      ${chgHtml(c.change)}
+    </div>
+    <div class="fc-pred">
+      ${badge}
+      ${rel ? `<div class="pred-rel">${rel}</div>` : '<div class="pred-why">لا توجد عناوين حديثة تخصّها في مصادرنا.</div>'}
+    </div>
+  </div>`;
+}
+
+function renderLosersBox() {
+  const grid = document.getElementById("losers");
+  if (!grid) return;
+  if (!losersData) return;
+  if (!losersData.length) { grid.innerHTML = '<div class="box-error">لا توجد عملات هابطة الآن.</div>'; return; }
+  const enriched = losersData.map(c => ({ c, r: reboundInfo(c) }));
+  // coins with rebound chatter first, then biggest drops
+  enriched.sort((a, b) => (b.r.hasRebound - a.r.hasRebound) || (a.c.change - b.c.change));
+  const top = enriched.slice(0, 10);
+  document.getElementById("losers-count").textContent = top.length + " عملة";
+  grid.innerHTML = top.map(({ c, r }) => loserCard(c, r)).join("");
+}
+
+async function loadLosers() {
+  try { losersData = await withCache("losers", fetchLosers, 60000); }
+  catch (e) { document.getElementById("losers").innerHTML = '<div class="box-error">تعذّر جلب القائمة الآن. حدّث بعد قليل.</div>'; return; }
+  renderLosersBox();
+}
+
 // ---------- PWA + price alerts ----------
 if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
 
@@ -1223,6 +1339,7 @@ document.getElementById("sync-import").addEventListener("click", importPrompt);
 importFromHash();   // restore data if opened via a sync link
 loadPopular();
 showTab("trending");
+loadLosers();
 loadNews();
 renderFavorites();
 renderOwned();
