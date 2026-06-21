@@ -1,6 +1,8 @@
 {
   "updated": null,
   "mode": "dryrun",
+  "learning": {},
+  "regime": {},
   "universe": ["BTCUSDT", "ETHUSDT", "BNBUSDT", "SOLUSDT", "XRPUSDT", "ADAUSDT"],
   "active_symbols": [],
   "last_optimize": null,

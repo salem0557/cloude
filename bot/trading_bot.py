@@ -37,6 +37,7 @@ from exchange import Exchange
 from optimizer import optimize_symbol
 from strategy import latest_signal, merge_params
 import ml_model
+import best_practices
 import dashboard
 
 HERE = Path(__file__).resolve().parent
@@ -127,8 +128,15 @@ class Bot:
                          if s.strip()]
         self.interval = cfg("INTERVAL", "1h")
         self.quote_per_trade = float(cfg("QUOTE_PER_TRADE", "15"))
-        self.poll_seconds = int(cfg("POLL_SECONDS", "60"))
+        self.poll_seconds = int(cfg("POLL_SECONDS", "30"))
+        # Real-time learning: re-tune parameters EVERY cycle. Set to false to
+        # fall back to the slower OPTIMIZE_HOURS schedule.
+        self.realtime = (cfg("REALTIME_LEARNING", "true") or "").lower() \
+            in ("1", "true", "yes", "on")
         self.optimize_hours = float(cfg("OPTIMIZE_HOURS", "2"))
+        # ML training is heavier than the grid-search, so it has its own
+        # (still frequent) cadence. 0 = retrain every cycle too.
+        self.ml_retrain_min = float(cfg("ML_RETRAIN_MINUTES", "10"))
         self.top_n = int(cfg("TOP_N", "3"))
         self.history = int(cfg("HISTORY", "500"))
         self.max_open = int(cfg("MAX_OPEN_POSITIONS", "3"))
@@ -139,6 +147,9 @@ class Bot:
         self.ex = Exchange(self.mode, cfg("BINANCE_API_KEY"),
                            cfg("BINANCE_API_SECRET"))
         self._last_opt_ts = 0.0
+        self._last_ml_ts = 0.0
+        self.regime = {"allow_buys": True, "risk_multiplier": 1.0,
+                       "reason": "—"}
         if not self.state.get("equity"):
             self.state["equity"] = self.start_equity
 
@@ -149,9 +160,10 @@ class Bot:
                     "LIVE mode refused. To trade REAL money set "
                     "CONFIRM_LIVE=I_UNDERSTAND_THE_RISK in your .env.")
 
-    # ---- the learning / self-update step (runs every OPTIMIZE_HOURS) ----
-    def self_update(self):
-        log("🧠 Self-update: back-testing + retraining ML on latest data…")
+    # ---- the learning / self-update step ----
+    def self_update(self, retrain_ml):
+        tag = "back-testing + retraining ML" if retrain_ml else "back-testing"
+        log(f"🧠 Self-update ({tag}) on latest data…")
         scored = []
         for symbol in self.universe:
             try:
@@ -162,10 +174,11 @@ class Bot:
             if len(closes) < 80:
                 continue
             params, metrics = optimize_symbol(closes)
-            acc = ml_model.train(symbol, closes)
             self.state["params"][symbol] = params
             self.state["scores"][symbol] = metrics
-            self.state["ml_acc"][symbol] = acc
+            if retrain_ml:
+                self.state["ml_acc"][symbol] = ml_model.train(symbol, closes)
+            acc = self.state["ml_acc"].get(symbol)
             scored.append((symbol, metrics["score"]))
             log(f"   {symbol}: score={metrics['score']} "
                 f"ret={metrics['return_pct']}% win={metrics['win_rate']}% "
@@ -188,7 +201,8 @@ class Bot:
     def open_position(self, symbol, price):
         if len(self.state["positions"]) >= self.max_open:
             return
-        fill, qty = self.ex.buy(symbol, self.quote_per_trade, price)
+        quote = self.quote_per_trade * self.regime.get("risk_multiplier", 1.0)
+        fill, qty = self.ex.buy(symbol, quote, price)
         self.state["positions"][symbol] = {
             "entry_price": fill, "qty": qty, "opened": iso()}
         if self.mode == "dryrun":
@@ -231,8 +245,12 @@ class Bot:
                 self.close_position(symbol, price, "death cross")
         else:
             ml_ok = (ml_prob is None) or (ml_prob >= params["ml_buy_threshold"])
-            if signal == "buy" and ml_ok:
+            regime_ok = self.regime.get("allow_buys", True)
+            if signal == "buy" and ml_ok and regime_ok:
                 self.open_position(symbol, price)
+            elif signal == "buy" and not regime_ok:
+                log(f"⏸️  {symbol} buy skipped — best-practices: "
+                    f"{self.regime.get('reason')}")
             elif signal == "buy" and not ml_ok:
                 log(f"⏸️  {symbol} buy signal skipped (ML {ml_prob} < "
                     f"{params['ml_buy_threshold']})")
@@ -255,10 +273,26 @@ class Bot:
     # ------------------------------ cycle ------------------------------
     def step(self):
         self.check_daily_limit()
-        need_opt = (time.time() - self._last_opt_ts) >= self.optimize_hours * 3600
-        if need_opt or not self.state.get("active"):
-            self.self_update()
-            self._last_opt_ts = time.time()
+
+        # Refresh the live "best-practices" market regime every cycle.
+        try:
+            self.regime = best_practices.get_regime()
+            self.state["regime"] = self.regime
+        except Exception as e:
+            log(f"regime error: {e}")
+
+        # Real-time learning: re-tune parameters every cycle (or on the
+        # OPTIMIZE_HOURS schedule when realtime is off). Retrain the heavier
+        # ML model on its own ML_RETRAIN_MINUTES cadence.
+        now_ts = time.time()
+        need_opt = self.realtime or not self.state.get("active") or \
+            (now_ts - self._last_opt_ts) >= self.optimize_hours * 3600
+        retrain_ml = (now_ts - self._last_ml_ts) >= self.ml_retrain_min * 60
+        if need_opt:
+            self.self_update(retrain_ml)
+            self._last_opt_ts = now_ts
+            if retrain_ml:
+                self._last_ml_ts = now_ts
 
         prices = {}
         for symbol in list(self.state["active"]):
@@ -281,15 +315,21 @@ class Bot:
                 self.state["params"], self.state["positions"],
                 self.state["scores"], self.state["ml_acc"],
                 self.state["trades"], self.state["equity"],
-                self.state["realized_pnl"], self.state["last_optimize"], prices)
+                self.state["realized_pnl"], self.state["last_optimize"], prices,
+                regime=self.regime,
+                learning={"realtime": self.realtime,
+                          "poll_seconds": self.poll_seconds,
+                          "ml_retrain_min": self.ml_retrain_min})
         except Exception as e:
             log(f"dashboard write error: {e}")
 
     def run(self):
+        learn = "real-time (every cycle)" if self.realtime \
+            else f"every {self.optimize_hours}h"
         log(f"Bot started — mode={self.mode}, universe={self.universe}, "
             f"interval={self.interval}, TOP_N={self.top_n}, "
-            f"{self.quote_per_trade} quote/trade, "
-            f"self-update every {self.optimize_hours}h")
+            f"{self.quote_per_trade} quote/trade, learning={learn}, "
+            f"poll={self.poll_seconds}s, ML retrain every {self.ml_retrain_min}m")
         if self.mode == "live":
             log("⚠️  LIVE MODE — trading REAL money. Ctrl+C to stop.")
         once = "--once" in sys.argv

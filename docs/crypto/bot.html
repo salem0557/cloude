@@ -57,8 +57,17 @@
     <div class="stat"><div class="label">الرصيد (تقديري)</div><div class="value" id="equity">—</div></div>
     <div class="stat"><div class="label">الربح/الخسارة المحقّقة</div><div class="value" id="pnl">—</div></div>
     <div class="stat"><div class="label">صفقات مفتوحة</div><div class="value" id="openCount">—</div></div>
+    <div class="stat"><div class="label">التعلّم</div><div class="value" id="learnMode" style="font-size:.95rem">—</div></div>
+  </div>
+
+  <h2>أفضل الممارسات — حالة السوق اللحظية</h2>
+  <div class="grid">
+    <div class="stat"><div class="label">الخوف والطمع</div><div class="value" id="fng">—</div></div>
+    <div class="stat"><div class="label">مزاج الأخبار</div><div class="value" id="sentiment">—</div></div>
+    <div class="stat"><div class="label">الشراء الآن</div><div class="value" id="allowBuys">—</div></div>
     <div class="stat"><div class="label">آخر تحديث ذاتي</div><div class="value" id="lastOpt" style="font-size:.95rem">—</div></div>
   </div>
+  <div class="note" id="regimeReason" style="margin-top:10px">—</div>
 
   <h2>الصفقات المفتوحة</h2>
   <div class="scroll"><table id="posTable">
@@ -118,6 +127,20 @@ function render(d){
   const pnl=$('pnl'); pnl.textContent=sign(d.realized_pnl_quote); pnl.className='value '+cls(d.realized_pnl_quote);
   $('openCount').textContent=(d.positions||[]).length;
   $('lastOpt').textContent=ago(d.last_optimize);
+
+  const L=d.learning||{};
+  $('learnMode').textContent = L.realtime ? ('لحظي ('+(L.poll_seconds||'?')+'ث)') : 'مجدوّل';
+
+  const R=d.regime||{};
+  $('fng').textContent = R.fear_greed==null ? '—' : (R.fear_greed+(R.fear_greed_label?(' · '+R.fear_greed_label):''));
+  const s=R.news_sentiment;
+  const se=$('sentiment');
+  se.textContent = s==null?'—':(s>0?'إيجابي +'+s:s<0?'سلبي '+s:'محايد');
+  se.className='value '+(s>0?'up':s<0?'down':'');
+  const ab=$('allowBuys');
+  ab.textContent = R.allow_buys===false?'متوقّف ⛔':'مسموح ✅';
+  ab.className='value '+(R.allow_buys===false?'down':'up');
+  $('regimeReason').textContent = R.reason || '—';
 
   const pb=$('posTable').querySelector('tbody'); pb.innerHTML='';
   (d.positions||[]).forEach(p=>{
