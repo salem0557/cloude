@@ -276,6 +276,17 @@
     <div class="alerts-status" id="alerts-status"></div>
   </div>
 
+  <!-- ===== backup / sync ===== -->
+  <div class="alerts-bar" id="sync-bar">
+    <span class="a-title">💾 نسخة احتياطية ومزامنة</span>
+    <button id="sync-copy" type="button">انسخ رابط نُسختي</button>
+    <button id="sync-import" class="off" type="button">استيراد نسخة</button>
+    <div class="alerts-status">
+      مفضّلتك ومحفظتك تُحفظ في <b>هذا المتصفح على هذا الجهاز فقط</b>. لنقلها إلى متصفح أو جهاز آخر:
+      اضغط «انسخ رابط نُسختي» هنا، ثم افتح الرابط على الجهاز الآخر (أو الصقه عبر «استيراد نسخة»).
+    </div>
+  </div>
+
   <!-- ===== price boxes ===== -->
   <div class="boxes">
     <!-- popular -->
@@ -1171,7 +1182,45 @@ document.getElementById("alerts-pct").addEventListener("input", e => {
 setAlertsUI();
 if (alertsOn) startAlerts();
 
+// ---------- backup / sync (favourites + holdings between browsers/devices) ----------
+function toB64(str) { return btoa(String.fromCharCode.apply(null, new TextEncoder().encode(str))); }
+function fromB64(b) { return new TextDecoder().decode(Uint8Array.from(atob(b), c => c.charCodeAt(0))); }
+function syncCode() { return toB64(JSON.stringify({ v: 1, favs, owned, alertPct })); }
+function syncLink() { return location.origin + location.pathname + "#sync=" + encodeURIComponent(syncCode()); }
+
+function applySync(obj) {
+  if (!obj || obj.v !== 1) throw new Error("bad payload");
+  if (obj.favs) favs = Object.assign(favs, obj.favs);
+  if (obj.owned) owned = Object.assign(owned, obj.owned);
+  if (obj.alertPct) { alertPct = obj.alertPct; try { localStorage.setItem("alertPct", String(alertPct)); } catch (e) {} }
+  saveFavs(); saveOwned();
+  renderFavorites(); renderOwned();
+}
+function importFromHash() {
+  const m = (location.hash || "").match(/sync=([^&]+)/);
+  if (!m) return;
+  try { applySync(JSON.parse(fromB64(decodeURIComponent(m[1])))); } catch (e) {}
+  history.replaceState(null, "", location.pathname + location.search);
+}
+async function copySync() {
+  const link = syncLink();
+  try { await navigator.clipboard.writeText(link); toast("✅ نُسخ رابط المزامنة. افتحه على أي متصفح/جهاز لاستعادة بياناتك."); }
+  catch (e) { window.prompt("انسخ هذا الرابط:", link); }
+}
+function importPrompt() {
+  const inp = window.prompt("الصق رابط المزامنة أو الرمز هنا:");
+  if (!inp) return;
+  let code = inp.trim();
+  const m = code.match(/sync=([^&]+)/);
+  if (m) code = decodeURIComponent(m[1]);
+  try { applySync(JSON.parse(fromB64(code))); toast("✅ تم استيراد مفضّلتك ومحفظتك."); }
+  catch (e) { toast("تعذّر قراءة الرمز — تأكد من نسخه كاملًا.", "down"); }
+}
+document.getElementById("sync-copy").addEventListener("click", copySync);
+document.getElementById("sync-import").addEventListener("click", importPrompt);
+
 // ---------- go ----------
+importFromHash();   // restore data if opened via a sync link
 loadPopular();
 showTab("trending");
 loadNews();
