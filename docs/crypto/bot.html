@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>لوحة بوت التداول</title>
+<meta name="theme-color" content="#0b0f1a">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" href="icon-192.png">
+<style>
+  :root{
+    --bg:#0b0f1a; --card:#151c2c; --card2:#1b2436; --text:#e8edf6;
+    --muted:#93a0bd; --accent:#f7931a; --accent2:#5b8def;
+    --up:#16c784; --down:#ea3943; --border:#243049;
+  }
+  *{box-sizing:border-box;margin:0}
+  body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Tahoma,Arial,sans-serif;line-height:1.6;padding:16px;max-width:1000px;margin:0 auto}
+  a{color:var(--accent2);text-decoration:none}
+  header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+  h1{font-size:1.4rem}
+  h2{font-size:1.05rem;margin:22px 0 10px;color:var(--accent)}
+  .pill{font-size:.78rem;padding:3px 10px;border-radius:999px;border:1px solid var(--border);background:var(--card2);color:var(--muted)}
+  .pill.live{color:#fff;background:var(--down);border-color:var(--down)}
+  .pill.testnet{color:#fff;background:var(--accent2);border-color:var(--accent2)}
+  .pill.dryrun{color:#fff;background:var(--up);border-color:var(--up)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+  .stat{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px}
+  .stat .label{font-size:.8rem;color:var(--muted)}
+  .stat .value{font-size:1.35rem;font-weight:700;margin-top:4px}
+  table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+  th,td{padding:10px 12px;text-align:right;border-bottom:1px solid var(--border);font-size:.9rem;white-space:nowrap}
+  th{background:var(--card2);color:var(--muted);font-weight:600}
+  tr:last-child td{border-bottom:none}
+  .up{color:var(--up)} .down{color:var(--down)}
+  .tag{font-size:.72rem;padding:2px 8px;border-radius:8px;background:var(--card2);border:1px solid var(--border);color:var(--muted)}
+  .tag.on{color:#fff;background:var(--up);border-color:var(--up)}
+  .muted{color:var(--muted)}
+  .scroll{overflow-x:auto}
+  .note{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px;color:var(--muted);font-size:.88rem}
+  .warn{border-color:var(--accent);color:#f0d9b5}
+  footer{margin-top:26px;color:var(--muted);font-size:.8rem;text-align:center}
+</style>
+</head>
+<body>
+<header>
+  <h1>🤖 لوحة بوت التداول</h1>
+  <div>
+    <a href="index.html">← أخبار الكريبتو</a>
+    <span id="mode" class="pill">…</span>
+  </div>
+</header>
+
+<div id="status" class="note">جارٍ التحميل…</div>
+
+<div id="content" style="display:none">
+  <div class="grid">
+    <div class="stat"><div class="label">الرصيد (تقديري)</div><div class="value" id="equity">—</div></div>
+    <div class="stat"><div class="label">الربح/الخسارة المحقّقة</div><div class="value" id="pnl">—</div></div>
+    <div class="stat"><div class="label">صفقات مفتوحة</div><div class="value" id="openCount">—</div></div>
+    <div class="stat"><div class="label">آخر تحديث ذاتي</div><div class="value" id="lastOpt" style="font-size:.95rem">—</div></div>
+  </div>
+
+  <h2>الصفقات المفتوحة</h2>
+  <div class="scroll"><table id="posTable">
+    <thead><tr><th>العملة</th><th>سعر الدخول</th><th>السعر الآن</th><th>الربح %</th><th>الكمية</th></tr></thead>
+    <tbody></tbody>
+  </table></div>
+
+  <h2>الاستراتيجية المتعلّمة لكل عملة</h2>
+  <div class="scroll"><table id="stratTable">
+    <thead><tr><th>العملة</th><th>الحالة</th><th>متوسّط سريع/بطيء</th><th>وقف/جني %</th><th>عائد الباك-تيست</th><th>نسبة الربح</th><th>دقّة ML</th></tr></thead>
+    <tbody></tbody>
+  </table></div>
+
+  <h2>آخر الصفقات</h2>
+  <div class="scroll"><table id="tradesTable">
+    <thead><tr><th>الوقت</th><th>العملة</th><th>النوع</th><th>السعر</th><th>القيمة</th><th>السبب</th></tr></thead>
+    <tbody></tbody>
+  </table></div>
+</div>
+
+<footer>
+  بيانات تعليمية فقط — ليست نصيحة مالية. يقرأ هذا من <code>data/bot.json</code>
+  الذي يكتبه البوت أثناء عمله.
+</footer>
+
+<script>
+const $ = id => document.getElementById(id);
+const fmt = (n,d=2) => (n==null||isNaN(n))?'—':Number(n).toLocaleString('en-US',{maximumFractionDigits:d});
+function ago(iso){
+  if(!iso) return '—';
+  const s=(Date.now()-new Date(iso))/1000;
+  if(s<60) return 'الآن'; if(s<3600) return Math.floor(s/60)+' د';
+  if(s<86400) return Math.floor(s/3600)+' س'; return Math.floor(s/86400)+' ي';
+}
+function cls(v){return v>0?'up':v<0?'down':'';}
+function sign(v,d=2){return (v>0?'+':'')+fmt(v,d);}
+
+async function load(){
+  try{
+    const r = await fetch('data/bot.json?t='+Date.now());
+    if(!r.ok) throw new Error('no file');
+    const d = await r.json();
+    render(d);
+  }catch(e){
+    $('status').innerHTML='لم يبدأ البوت بعد (لا يوجد <code>data/bot.json</code>). شغّل البوت لإنشاء البيانات.';
+    $('status').className='note warn';
+  }
+}
+
+function render(d){
+  $('status').style.display='none';
+  $('content').style.display='block';
+  const m=$('mode'); m.textContent=({dryrun:'محاكاة',testnet:'تجريبي',live:'حقيقي'}[d.mode]||d.mode);
+  m.className='pill '+d.mode;
+
+  $('equity').textContent=fmt(d.equity_quote)+' ';
+  const pnl=$('pnl'); pnl.textContent=sign(d.realized_pnl_quote); pnl.className='value '+cls(d.realized_pnl_quote);
+  $('openCount').textContent=(d.positions||[]).length;
+  $('lastOpt').textContent=ago(d.last_optimize);
+
+  const pb=$('posTable').querySelector('tbody'); pb.innerHTML='';
+  (d.positions||[]).forEach(p=>{
+    pb.insertAdjacentHTML('beforeend',
+      `<tr><td>${p.symbol}</td><td>${fmt(p.entry_price,4)}</td><td>${fmt(p.price,4)}</td>
+       <td class="${cls(p.pnl_pct)}">${sign(p.pnl_pct)}%</td><td>${fmt(p.qty,6)}</td></tr>`);
+  });
+  if(!(d.positions||[]).length) pb.innerHTML='<tr><td colspan="5" class="muted">لا صفقات مفتوحة</td></tr>';
+
+  const sb=$('stratTable').querySelector('tbody'); sb.innerHTML='';
+  (d.strategy||[]).forEach(s=>{
+    const p=s.params||{}, b=s.backtest||{};
+    sb.insertAdjacentHTML('beforeend',
+      `<tr><td>${s.symbol}</td>
+       <td><span class="tag ${s.active?'on':''}">${s.active?'يتداول':'مراقبة'}</span></td>
+       <td>${p.fast??'—'}/${p.slow??'—'}</td>
+       <td>${p.stop_loss_pct??'—'}/${p.take_profit_pct??'—'}</td>
+       <td class="${cls(b.return_pct)}">${b.return_pct==null?'—':sign(b.return_pct)+'%'}</td>
+       <td>${b.win_rate==null?'—':fmt(b.win_rate,0)+'%'}</td>
+       <td>${s.ml_accuracy==null?'—':fmt(s.ml_accuracy*100,0)+'%'}</td></tr>`);
+  });
+
+  const tb=$('tradesTable').querySelector('tbody'); tb.innerHTML='';
+  (d.recent_trades||[]).slice().reverse().forEach(t=>{
+    const buy=t.side==='BUY';
+    tb.insertAdjacentHTML('beforeend',
+      `<tr><td class="muted">${ago(t.time)}</td><td>${t.symbol}</td>
+       <td class="${buy?'up':'down'}">${buy?'شراء':'بيع'}</td>
+       <td>${fmt(t.price,4)}</td><td>${fmt(t.quote)}</td>
+       <td class="muted">${t.reason||''}</td></tr>`);
+  });
+  if(!(d.recent_trades||[]).length) tb.innerHTML='<tr><td colspan="6" class="muted">لا صفقات بعد</td></tr>';
+}
+
+load();
+setInterval(load, 30000);
+</script>
+</body>
+</html>

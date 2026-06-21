@@ -1,0 +1,12 @@
+{
+  "updated": null,
+  "mode": "dryrun",
+  "universe": ["BTCUSDT", "ETHUSDT", "BNBUSDT", "SOLUSDT", "XRPUSDT", "ADAUSDT"],
+  "active_symbols": [],
+  "last_optimize": null,
+  "equity_quote": 0,
+  "realized_pnl_quote": 0,
+  "positions": [],
+  "strategy": [],
+  "recent_trades": []
+}

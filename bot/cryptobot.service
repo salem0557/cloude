@@ -1,0 +1,26 @@
+# systemd unit for running the bot 24/7 on a Linux server (no Docker).
+#
+#   1) Put the repo at /opt/cloude  (or edit the paths below)
+#   2) python3 -m venv /opt/cloude/bot/venv
+#      /opt/cloude/bot/venv/bin/pip install -r /opt/cloude/bot/requirements.txt
+#   3) Create /opt/cloude/bot/.env from config.example.env
+#   4) sudo cp bot/cryptobot.service /etc/systemd/system/
+#      sudo systemctl daemon-reload && sudo systemctl enable --now cryptobot
+#   5) Logs:  journalctl -u cryptobot -f
+[Unit]
+Description=Self-optimizing crypto trading bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/cloude/bot
+ExecStart=/opt/cloude/bot/venv/bin/python /opt/cloude/bot/trading_bot.py
+Restart=always
+RestartSec=10
+# Harden a little
+NoNewPrivileges=true
+ProtectSystem=full
+
+[Install]
+WantedBy=multi-user.target
