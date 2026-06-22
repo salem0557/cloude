@@ -1,0 +1,43 @@
+# DigitalOcean App Platform spec — fully cloud, no personal device.
+# Create the app from this repo in the DO dashboard; it auto-deploys on every
+# push to main. Set the secret values (Binance keys, GitHub token) in the
+# dashboard under the component's Environment Variables (encrypted).
+name: cryptobot
+services:
+  - name: bot
+    github:
+      repo: salem0557/cloude
+      branch: main
+      deploy_on_push: true
+    run_command: python bot/trading_bot.py
+    environment_slug: python
+    instance_size_slug: basic-xxs
+    instance_count: 1
+    http_port: 8080
+    health_check:
+      http_path: /health
+    envs:
+      - key: BOT_MODE
+        value: dryrun            # change to "live" in the dashboard when ready
+      - key: CONFIRM_LIVE
+        value: ""                # set to I_UNDERSTAND_THE_RISK for live
+      - key: QUOTE_PER_TRADE
+        value: "15"
+      - key: DAILY_LOSS_LIMIT
+        value: "20"
+      - key: PUBLISH_DASHBOARD
+        value: "true"            # durable state backup + website data via GitHub
+      - key: GH_REPO
+        value: salem0557/cloude
+      - key: PUBLISH_BRANCH
+        value: bot-live
+      # --- set these as ENCRYPTED secrets in the dashboard (leave blank here) ---
+      - key: BINANCE_API_KEY
+        value: ""
+        type: SECRET
+      - key: BINANCE_API_SECRET
+        value: ""
+        type: SECRET
+      - key: GITHUB_TOKEN
+        value: ""
+        type: SECRET

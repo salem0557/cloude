@@ -1,20 +1,21 @@
-"""Optional: publish the dashboard snapshot to GitHub so you can watch the bot
-from anywhere (e.g. your phone) via the website.
+"""Optional GitHub publishing + durable state backup.
 
-To avoid triggering a GitHub Pages rebuild on every update (Pages has a low
-build-rate limit), the snapshot is committed to a SEPARATE branch
-(PUBLISH_BRANCH, default "bot-live") — NOT the Pages source branch. The
-dashboard page reads it from that branch's raw URL when opened on the website.
+Two jobs, both via the GitHub API against a SEPARATE branch (PUBLISH_BRANCH,
+default "bot-live") so they never trigger a Pages rebuild:
 
-Setup (in bot/.env):
+  1. publish the dashboard snapshot (docs/crypto/data/bot.json) so the website
+     can show live status, and
+  2. back up the bot's state.json and restore it on boot — this lets the bot run
+     on a stateless cloud host (e.g. DigitalOcean App Platform) WITHOUT a disk
+     and still remember open positions across redeploys/restarts.
+
+Setup (env vars / bot/.env):
   PUBLISH_DASHBOARD=true
   GITHUB_TOKEN=github_pat_...      # fine-grained PAT: Contents = Read & Write
   GH_REPO=salem0557/cloude
   PUBLISH_BRANCH=bot-live
-  PUBLISH_SECONDS=60
 
-Nothing here runs unless PUBLISH_DASHBOARD is true and a token is set, so the
-bot works perfectly fine with publishing turned off.
+Everything is opt-in: with no token the bot just runs locally as before.
 """
 
 from __future__ import annotations
@@ -26,7 +27,8 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 LOCAL = HERE.parent / "docs" / "crypto" / "data" / "bot.json"
-REPO_PATH = "docs/crypto/data/bot.json"
+DASHBOARD_PATH = "docs/crypto/data/bot.json"
+STATE_PATH = "state-backup/state.json"
 API = "https://api.github.com"
 
 
@@ -42,32 +44,73 @@ def _api(method, url, token, body=None):
         return json.load(r)
 
 
-def _get_sha(repo, branch, token):
-    url = f"{API}/repos/{repo}/contents/{REPO_PATH}?ref={branch}"
+def _get_sha(repo, branch, token, path):
+    url = f"{API}/repos/{repo}/contents/{path}?ref={branch}"
     try:
         return _api("GET", url, token).get("sha")
     except Exception:
         return None  # file (or branch) doesn't exist yet
 
 
-def publish(repo, branch, token):
-    """Commit the current local bot.json to ``branch``. Returns True on success."""
+def put_file(repo, branch, token, path, content_bytes, message):
+    """Create/update a file on ``branch``. Returns True on success."""
     if not (repo and branch and token):
         return False
+    body = {
+        "message": message,
+        "content": base64.b64encode(content_bytes).decode(),
+        "branch": branch,
+    }
+    sha = _get_sha(repo, branch, token, path)
+    if sha:
+        body["sha"] = sha
+    try:
+        _api("PUT", f"{API}/repos/{repo}/contents/{path}", token, body)
+        return True
+    except Exception:
+        return False
+
+
+def get_file(repo, branch, token, path):
+    """Fetch a file's bytes from ``branch`` (or None if missing)."""
+    if not (repo and branch and token):
+        return None
+    url = f"{API}/repos/{repo}/contents/{path}?ref={branch}"
+    try:
+        meta = _api("GET", url, token)
+        return base64.b64decode(meta["content"])
+    except Exception:
+        return None
+
+
+# --- convenience wrappers used by the bot ---
+def publish(repo, branch, token):
+    """Push the current dashboard snapshot."""
     try:
         content = LOCAL.read_bytes()
     except Exception:
         return False
-    sha = _get_sha(repo, branch, token)
-    body = {
-        "message": "Update bot dashboard snapshot",
-        "content": base64.b64encode(content).decode(),
-        "branch": branch,
-    }
-    if sha:
-        body["sha"] = sha
+    return put_file(repo, branch, token, DASHBOARD_PATH, content,
+                    "Update bot dashboard snapshot")
+
+
+def backup_state(repo, branch, token, state_file):
+    """Push the bot's state.json so it survives a stateless redeploy."""
     try:
-        _api("PUT", f"{API}/repos/{repo}/contents/{REPO_PATH}", token, body)
+        content = Path(state_file).read_bytes()
+    except Exception:
+        return False
+    return put_file(repo, branch, token, STATE_PATH, content,
+                    "Backup bot state")
+
+
+def restore_state(repo, branch, token, state_file):
+    """Restore state.json from GitHub on boot if it isn't present locally."""
+    data = get_file(repo, branch, token, STATE_PATH)
+    if not data:
+        return False
+    try:
+        Path(state_file).write_bytes(data)
         return True
     except Exception:
         return False

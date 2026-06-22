@@ -150,6 +150,21 @@ class Bot:
         self.daily_loss_limit = float(cfg("DAILY_LOSS_LIMIT", "0") or 0)
         self.start_equity = float(cfg("PAPER_EQUITY", "1000"))
 
+        # Publishing / durable state backup config (read early so we can
+        # restore state from GitHub before loading it on a stateless host).
+        self.publish_on = (cfg("PUBLISH_DASHBOARD", "") or "").lower() \
+            in ("1", "true", "yes", "on")
+        self.gh_repo = cfg("GH_REPO", "salem0557/cloude")
+        self.gh_token = cfg("GITHUB_TOKEN")
+        self.pub_branch = cfg("PUBLISH_BRANCH", "bot-live")
+        self.pub_seconds = int(cfg("PUBLISH_SECONDS", "60"))
+
+        # On a stateless cloud host, restore state.json from GitHub if absent.
+        if not STATE_FILE.exists() and self.publish_on and self.gh_token:
+            if publish.restore_state(self.gh_repo, self.pub_branch,
+                                     self.gh_token, STATE_FILE):
+                log("♻️  restored state from GitHub backup")
+
         self.state = load_state()
         self.ex = Exchange(self.mode, cfg("BINANCE_API_KEY"),
                            cfg("BINANCE_API_SECRET"))
@@ -159,13 +174,6 @@ class Bot:
         self.regime = {"allow_buys": True, "risk_multiplier": 1.0,
                        "reason": "—"}
 
-        # Optional: publish the dashboard to GitHub (separate branch).
-        self.publish_on = (cfg("PUBLISH_DASHBOARD", "") or "").lower() \
-            in ("1", "true", "yes", "on")
-        self.gh_repo = cfg("GH_REPO", "salem0557/cloude")
-        self.gh_token = cfg("GITHUB_TOKEN")
-        self.pub_branch = cfg("PUBLISH_BRANCH", "bot-live")
-        self.pub_seconds = int(cfg("PUBLISH_SECONDS", "60"))
         if not self.state.get("equity"):
             self.state["equity"] = self.start_equity
 
@@ -339,10 +347,13 @@ class Bot:
         except Exception as e:
             log(f"dashboard write error: {e}")
 
-        # optionally push the snapshot to GitHub so the website shows live data
+        # optionally push the snapshot + state backup to GitHub (so the website
+        # shows live data and a stateless host keeps its positions)
         if self.publish_on and self.gh_token and \
                 (time.time() - self._last_pub_ts) >= self.pub_seconds:
             ok = publish.publish(self.gh_repo, self.pub_branch, self.gh_token)
+            publish.backup_state(self.gh_repo, self.pub_branch, self.gh_token,
+                                 STATE_FILE)
             self._last_pub_ts = time.time()
             if not ok:
                 log("⚠️  dashboard publish failed (check GITHUB_TOKEN / GH_REPO)")
