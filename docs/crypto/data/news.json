@@ -1,12 +1,33 @@
 {
-  "updated": "2026-06-21T22:46:22.063229+00:00",
+  "updated": "2026-06-22T02:05:48.276397+00:00",
   "news": [
     {
-      "title": "$165 Billion Stock Selloff Looms as Goldman Flags Rising Leverage",
-      "url": "https://beincrypto.com/?p=841603",
+      "title": "FIFA World Cup meets crypto as Kraken sponsorship brings digital assets to the global stage",
+      "url": "https://cryptobriefing.com/?p=263512",
+      "source": "Crypto Briefing",
+      "published": "2026-06-22T01:58:14+00:00",
+      "summary": "<p>Kraken's FIFA sponsorship could catalyze mainstream crypto adoption, leveraging sports' global reach to attract younger, tech-savvy users.</p> <p>The post <a href=\"https://cryptobriefing.com/fifa-world-cup-crypto-kraken-sponsorship/\">FIFA World Cup meets crypto as Kraken spons"
+    },
+    {
+      "title": "Trump Declares Starmer Will Resign, Blames  North Sea Oil Ban",
+      "url": "https://beincrypto.com/?p=841609",
       "source": "BeInCrypto",
-      "published": "2026-06-21T22:35:39+00:00",
-      "summary": "<p>JPMorgan flags a $165 billion stock selloff into month-end as Goldman data shows hedge fund leverage near multi-year highs.</p> <p>The post <a href=\"https://beincrypto.com/165-billion-stock-selloff-goldman-leverage/\">$165 Billion Stock Selloff Looms as Goldman Flags Rising Lev"
+      "published": "2026-06-22T01:21:09+00:00",
+      "summary": "<p>Trump declared Keir Starmer will resign as UK PM, citing his North Sea oil ban as the UK faces a 13% energy price hike.</p> <p>The post <a href=\"https://beincrypto.com/trump-starmer-resign-north-sea-oil/\">Trump Declares Starmer Will Resign, Blames North Sea Oil Ban</a> appeare"
+    },
+    {
+      "title": "Bitcoin treasury companies in Europe struggle with shareholder cost issues",
+      "url": "https://cryptoslate.com/?p=542832",
+      "source": "CryptoSlate",
+      "published": "2026-06-22T00:55:08+00:00",
+      "summary": "<p>Shareholders are being asked to back more Bitcoin exposure while weighing dilution, credit capacity, and preference-share claims.</p> <p>The post <a href=\"https://cryptoslate.com/bitcoin-treasury-companies-europe-shareholder-cost/\">Bitcoin treasury companies in Europe struggle"
+    },
+    {
+      "title": "Bitcoin Bears Eye Lower Levels As TradingView Analysts Flag Failed Recovery",
+      "url": "https://www.newsbtc.com/?p=902320",
+      "source": "NewsBTC",
+      "published": "2026-06-21T23:00:48+00:00",
+      "summary": "TradingView analysts warn Bitcoin's rebound may still be a resistance retest as BTC struggles beneath key technical levels."
     },
     {
       "title": "Algorand Reveals Plans to Become Quantum Resistant by 2027",
@@ -14,20 +35,6 @@
       "source": "CryptoPotato",
       "published": "2026-06-21T22:25:28+00:00",
       "summary": "Algorand hopes to ensure protection against both classical and quantum-era threats by exploring post-quantum multisignatures as a generic policy layer."
-    },
-    {
-      "title": "Crypto perps’ US future to be defined by what regulators decide to call them",
-      "url": "https://cryptoslate.com/?p=542741",
-      "source": "CryptoSlate",
-      "published": "2026-06-21T22:05:13+00:00",
-      "summary": "<p>The agencies' request turns product definitions into a public contest over perps, event contracts, and alternative compliance.</p> <p>The post <a href=\"https://cryptoslate.com/crypto-perpetual-futures-regulation/\">Crypto perps’ US future to be defined by what regulators decide"
-    },
-    {
-      "title": "Bitcoin Reclaims $63,500 As Traders Watch For Squeeze Toward $67,000",
-      "url": "https://www.newsbtc.com/?p=902321",
-      "source": "NewsBTC",
-      "published": "2026-06-21T21:08:45+00:00",
-      "summary": "Bitcoin bulls are watching the $63,500 support zone as traders map a potential squeeze toward the $67,000 area."
     },
     {
       "title": "Ethereum (ETH) About to Do Something Unprecedented",
@@ -171,16 +178,6 @@
     }
   ],
   "rumors": [
-    {
-      "title": "Russell 2000 unprofitable stocks surge 60%, outpacing profitable firms in speculative rally",
-      "url": "https://cryptobriefing.com/?p=263402",
-      "source": "Crypto Briefing",
-      "published": "2026-06-21T22:29:14+00:00",
-      "summary": "<p>The speculative surge in unprofitable stocks highlights market risk appetite, potentially signaling a shift in investor focus from quality to growth.</p> <p>The post <a href=\"https://cryptobriefing.com/russell-2000-unprofitable-stocks-surge/\">Russell 2000 unprofitable stocks s",
-      "tags": [
-        "Speculation"
-      ]
-    },
     {
       "title": "Shiba Inu (SHIB) Exchanges Offload 24.5 Billion SHIB in 24 Hours: What to Expect From the Price?",
       "url": "https://u.today/shiba-inu-shib-exchanges-offload-245-billion-shib-in-24-hours-what-to-expect-from-the-price",
