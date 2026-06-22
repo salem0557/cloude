@@ -1,33 +1,82 @@
 {
-  "updated": "2026-06-22T15:07:44.685184+00:00",
+  "updated": "2026-06-22T18:58:19.952650+00:00",
   "news": [
     {
-      "title": "Alex Freeman emerges as Team USA’s star at the home World Cup",
-      "url": "https://cryptobriefing.com/?p=264177",
-      "source": "Crypto Briefing",
-      "published": "2026-06-22T15:07:28+00:00",
-      "summary": "<p>Freeman's rise highlights the growing potential of American soccer development, signaling a promising future for homegrown talent on the world stage.</p> <p>The post <a href=\"https://cryptobriefing.com/alex-freeman-team-usa-world-cup-star/\">Alex Freeman emerges as Team USA&#82"
-    },
-    {
-      "title": "Pi Network (PI) Climbs 6% in 2 Weeks: Time to Rally or Dead Cat Bounce?",
-      "url": "https://cryptopotato.com/?p=1440645",
-      "source": "CryptoPotato",
-      "published": "2026-06-22T15:03:15+00:00",
-      "summary": "Attention has shifted to Pi2Day, which could act as a catalyst for a major price increase."
-    },
-    {
-      "title": "Strategy Pads Cash Reserves to $1.4B After STRC's Stumble",
-      "url": "https://decrypt.co/?p=371763",
+      "title": "Crypto Industry Urges Congress to Pass Tax Bill—But Will It Happen This Year?",
+      "url": "https://decrypt.co/?p=371804",
       "source": "Decrypt",
-      "published": "2026-06-22T14:55:32+00:00",
-      "summary": "Michael Saylor’s firm topped up its USD cash reserve to $1.4 billion as it made its smallest Bitcoin buy since selling 32 BTC three weeks ago"
+      "published": "2026-06-22T18:53:56+00:00",
+      "summary": "A bill that would make crypto mining and staking more attractive is a top priority for industry leaders—and a growing concern for House Democrats."
     },
     {
-      "title": "JD Vance Reveals 7 Iran Negotiation Bombshells, Bitcoin Reclaims $65,000 But Oil Falls",
-      "url": "https://beincrypto.com/?p=841871",
+      "title": "Austria trails Argentina 1-0 in tense World Cup match with 9 minutes left",
+      "url": "https://cryptobriefing.com/?p=264429",
+      "source": "Crypto Briefing",
+      "published": "2026-06-22T18:48:40+00:00",
+      "summary": "<p>Austria's potential comeback could disrupt expectations, impacting both teams' World Cup prospects and altering market predictions significantly.</p> <p>The post <a href=\"https://cryptobriefing.com/austria-trails-argentina-1-0-in-tense-world-cup-match-with-9-minutes-left/\">Aus"
+    },
+    {
+      "title": "'Find My Secret Document': Ethereum Co-Founder Buterin Puts AI to Test",
+      "url": "https://u.today/find-my-secret-document-ethereum-co-founder-buterin-puts-ai-to-test",
+      "source": "U.Today",
+      "published": "2026-06-22T18:41:04+00:00",
+      "summary": "Ethereum co-founder Vitalik Buterin is putting the limits of artificial intelligence and online privacy to the test."
+    },
+    {
+      "title": "Franklin Templeton Files Bitcoin DRIP ETFs That Would Route Stock Dividends Into BTC",
+      "url": "https://www.newsbtc.com/?p=902356",
+      "source": "NewsBTC",
+      "published": "2026-06-22T18:31:08+00:00",
+      "summary": "Franklin Templeton has filed for Bitcoin DRIP ETFs that would route stock-dividend income into Bitcoin exposure, but the products are not yet live."
+    },
+    {
+      "title": "Iran Oil License Sends Crude Lower: Will Inflation Follow?",
+      "url": "https://beincrypto.com/?p=841941",
       "source": "BeInCrypto",
-      "published": "2026-06-22T14:52:45+00:00",
-      "summary": "<p>Bitcoin reclaimed $65,000 after Vance said Iran agreed to nuclear inspections, as Iranian outlets disputed the account.</p> <p>The post <a href=\"https://beincrypto.com/bitcoin-reclaims-65k-iran-inspections/\">JD Vance Reveals 7 Iran Negotiation Bombshells, Bitcoin Reclaims $65,"
+      "published": "2026-06-22T18:06:19+00:00",
+      "summary": "<p>The US Treasury issued an oil license to Iran, allowing the production, sale, and delivery of Iranian crude for 60 days. Crude fell as traders priced in fresh barrels and a fading war premium. Iranian crude can reach mainstream buyers again for the first time since Washington "
+    },
+    {
+      "title": "Andy Burnham emerges as UK Prime Minister favorite, sparking crypto industry hopes for policy reset",
+      "url": "https://cryptoslate.com/?p=543449",
+      "source": "CryptoSlate",
+      "published": "2026-06-22T17:35:48+00:00",
+      "summary": "<p>Keir Starmer’s decision to step down as UK prime minister has opened a race for Downing Street just as Britain enters the final stages of building one of its most consequential financial regulatory frameworks in years. On June 22, Starmer said that he would remain in office un"
+    },
+    {
+      "title": "Is a 60% Bitcoin Crash Still on the Table? Analyst Points to Wall Street",
+      "url": "https://cryptopotato.com/?p=1440602",
+      "source": "CryptoPotato",
+      "published": "2026-06-22T17:12:37+00:00",
+      "summary": "Here's the scenario in which BTC could plunge to $24,000."
+    },
+    {
+      "title": "Dogecoin Holders Alerted: Millions of Coins Trapped Amid Imminent Shutdown of DOGE L2",
+      "url": "https://u.today/dogecoin-holders-alerted-millions-of-coins-trapped-amid-imminent-shutdown-of-doge-l2",
+      "source": "U.Today",
+      "published": "2026-06-22T16:01:11+00:00",
+      "summary": "Major warning issued for Dogecoin Community as L2 shutdown could leave assets inaccessible."
+    },
+    {
+      "title": "Strategy Defies Bears With Latest 520-Bitcoin Purchase",
+      "url": "https://u.today/strategy-defies-bears-with-latest-520-bitcoin-purchase",
+      "source": "U.Today",
+      "published": "2026-06-22T15:36:05+00:00",
+      "summary": "Executive Chairman Michael Saylor recently took to X to announce another strategic Bitcoin acquisition."
+    },
+    {
+      "title": "Stellar (XLM) on Verge of First Major 2026 Golden Cross: What to Watch?",
+      "url": "https://u.today/stellar-xlm-on-verge-of-first-major-2026-golden-cross-what-to-watch",
+      "source": "U.Today",
+      "published": "2026-06-22T15:30:28+00:00",
+      "summary": "The golden cross will mark the first of its kind in 2026 if confirmed."
+    },
+    {
+      "title": "XRP Community Targeted in New Scam Exploiting Fake Verification Messages on XRP Ledger",
+      "url": "https://u.today/xrp-community-targeted-in-new-scam-exploiting-fake-verification-messages-on-xrp-ledger",
+      "source": "U.Today",
+      "published": "2026-06-22T15:13:10+00:00",
+      "summary": "XRP Ledger sees another scam attack that targeted an XRP holder under the guise of a genuine reward offer, causing thousands of XRP to be stolen."
     },
     {
       "title": "Big Week for Cardano? Major Scaling Upgrade Eyes Testnet Release",
@@ -147,57 +196,9 @@
       "source": "U.Today",
       "published": "2026-06-21T10:30:51+00:00",
       "summary": "XRP Ledger Infrastructure Push Is Accelerating; XRPL Foundation director of community outlines five key developments."
-    },
-    {
-      "title": "Bitcoin Holders Agree on 99%, so Why Focus on the 1%? Saylor Asks",
-      "url": "https://u.today/bitcoin-holders-agree-on-99-so-why-focus-on-the-1-saylor-asks",
-      "source": "U.Today",
-      "published": "2026-06-21T09:15:26+00:00",
-      "summary": "Strategy Chairman Michael Saylor believes global capital has barely entered Bitcoin yet."
-    },
-    {
-      "title": "'Crypto Mom' Hester Peirce Announces Exit From SEC",
-      "url": "https://u.today/crypto-mom-hester-peirce-announces-exit-from-sec",
-      "source": "U.Today",
-      "published": "2026-06-21T08:24:10+00:00",
-      "summary": "Speaking on the \"Rollup\" podcast, Peirce announced she will be \"moving to the beach\" and joining the Regent University School of Law as an associate professor after nearly three decades in Washington, D.C."
-    },
-    {
-      "title": "Scaramucci: 5 Reasons Why I'm Still Long BTC",
-      "url": "https://u.today/scaramucci-5-reasons-why-im-still-long-btc",
-      "source": "U.Today",
-      "published": "2026-06-21T06:53:26+00:00",
-      "summary": "SkyBridge Capital founder Anthony Scaramucci remains a steadfast Bitcoin bull despite the flagship cryptocurrency's brutal recent correction."
-    },
-    {
-      "title": "28 Billion SHIB Makes Exit: Netflow Flips Bullish Again",
-      "url": "https://u.today/28-billion-shib-makes-exit-netflow-flips-bullish-again",
-      "source": "U.Today",
-      "published": "2026-06-20T22:04:00+00:00",
-      "summary": "Shiba Inu exchange activity turns bullish as millions of SHIB tokens flow out of exchanges amid increasing buy activity from traders."
     }
   ],
   "rumors": [
-    {
-      "title": "Tokenized stocks as DeFi collateral arrive before the borrowing risk is settled",
-      "url": "https://cryptoslate.com/?p=543058",
-      "source": "CryptoSlate",
-      "published": "2026-06-22T13:45:17+00:00",
-      "summary": "<p>bStocks tied to Tesla, Nvidia, and SpaceX exposure are now in Venus' Core Pool, but launch caps keep the borrowing story unfinished.</p> <p>The post <a href=\"https://cryptoslate.com/tokenized-stocks-defi-collateral-venus/\">Tokenized stocks as DeFi collateral arrive before the ",
-      "tags": [
-        "Launch"
-      ]
-    },
-    {
-      "title": "Bitget Launches Stock+ For Buying Real US Stocks With Crypto",
-      "url": "https://www.newsbtc.com/?p=902337",
-      "source": "NewsBTC",
-      "published": "2026-06-22T12:33:37+00:00",
-      "summary": "Bitget has launched Stock+, a crypto-funded product for eligible users to buy real US stocks and ETFs through its Stocks 2.0 ecosystem.",
-      "tags": [
-        "Launch"
-      ]
-    },
     {
       "title": "Solana Partners With Major Korean Bank for Global Settlement Services",
       "url": "https://u.today/solana-partners-with-major-korean-bank-for-global-settlement-services",
@@ -224,16 +225,6 @@
       "source": "U.Today",
       "published": "2026-06-21T09:38:00+00:00",
       "summary": "Hyperliquid loses market traction way too rapidly, but it might be a nothingburger too.",
-      "tags": [
-        "Speculation"
-      ]
-    },
-    {
-      "title": "XRP Confirms Death Cross, Is $1 Next Level?",
-      "url": "https://u.today/xrp-confirms-death-cross-is-1-next-level",
-      "source": "U.Today",
-      "published": "2026-06-21T00:01:00+00:00",
-      "summary": "XRP flashes signal on short term charts, but there might still be more to watch out for.",
       "tags": [
         "Speculation"
       ]
