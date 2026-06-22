@@ -174,6 +174,11 @@ class Bot:
         self.force_tp = float(cfg("TAKE_PROFIT_PCT", "0") or 0)
         # Max bid/ask spread % allowed to enter (escape-clean filter). 0 = off.
         self.max_spread = float(cfg("MAX_SPREAD_PCT", "0.5") or 0)
+        # News gate: veto buys on strong negative news. Off = trade through it
+        # (recommended for aggressive scalping / when news.json may be stale).
+        self.news_gate = (cfg("NEWS_GATE", "true") or "").lower() \
+            in ("1", "true", "yes", "on")
+        self._last_skip_log = {}
         self.start_equity = float(cfg("PAPER_EQUITY", "1000"))
 
         # Publishing / durable state backup config (read early so we can
@@ -408,15 +413,24 @@ class Bot:
                 self.close_position(symbol, price, reason)
         else:
             ml_ok = (ml_prob is None) or (ml_prob >= self.ml_threshold)
-            regime_ok = self.regime.get("allow_buys", True)
+            # The news gate can veto buys on strong negative news; let users
+            # turn it off (NEWS_GATE=false) — handy since a deployed news.json
+            # can be stale and would otherwise block all trading.
+            regime_ok = (not self.news_gate) or self.regime.get("allow_buys", True)
             if signal == "buy" and ml_ok and regime_ok:
                 self.open_position(symbol, price)
             elif signal == "buy" and not regime_ok:
-                log(f"⏸️  {symbol} buy skipped — best-practices: "
-                    f"{self.regime.get('reason')}")
+                self._skip_log(symbol, "best-practices: "
+                               f"{self.regime.get('reason')}")
             elif signal == "buy" and not ml_ok:
-                log(f"⏸️  {symbol} buy signal skipped (ML {ml_prob} < "
-                    f"{self.ml_threshold})")
+                self._skip_log(symbol, f"ML {ml_prob} < {self.ml_threshold}")
+
+    def _skip_log(self, symbol, msg):
+        """Log a skipped-entry reason at most once per 60s per symbol."""
+        now = time.time()
+        if now - self._last_skip_log.get(symbol, 0) >= 60:
+            log(f"⏸️  {symbol} buy skipped — {msg}")
+            self._last_skip_log[symbol] = now
 
     # --------------------------- risk / kill ---------------------------
     def check_daily_limit(self):
