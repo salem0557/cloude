@@ -12,6 +12,8 @@ import itertools
 from backtest import run_backtest
 from strategy import DEFAULT_PARAMS
 
+from strategy import use_scalp
+
 # Search grid. Kept modest so a full cycle finishes quickly for many symbols.
 GRID = {
     "fast": [5, 7, 9, 12],
@@ -21,10 +23,20 @@ GRID = {
     "take_profit_pct": [8.0, 12.0, 20.0],
 }
 
+# Scalp grid: faster averages, tighter stops/targets, dip-buy levels.
+SCALP_GRID = {
+    "fast": [3, 5, 8],
+    "slow": [13, 21, 34],
+    "rsi_dip": [35, 40, 45],
+    "stop_loss_pct": [1.0, 1.5, 2.5],
+    "take_profit_pct": [1.5, 2.5, 4.0],
+}
+
 
 def _candidates():
-    keys = list(GRID.keys())
-    for combo in itertools.product(*(GRID[k] for k in keys)):
+    grid = SCALP_GRID if use_scalp() else GRID
+    keys = list(grid.keys())
+    for combo in itertools.product(*(grid[k] for k in keys)):
         params = dict(zip(keys, combo))
         if params["fast"] >= params["slow"]:
             continue
