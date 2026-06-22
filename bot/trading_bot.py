@@ -40,6 +40,7 @@ from strategy import latest_signal, merge_params, DEFAULT_PARAMS
 from backtest import run_backtest
 import ml_model
 import best_practices
+import smart_money
 import publish
 import monitor
 import dashboard
@@ -183,6 +184,11 @@ class Bot:
         # (recommended for aggressive scalping / when news.json may be stale).
         self.news_gate = (cfg("NEWS_GATE", "true") or "").lower() \
             in ("1", "true", "yes", "on")
+        # Smart-money gate: only confirm a buy when Binance's top traders aren't
+        # heavily net short on the coin (a free directional signal). Off = ignore.
+        self.smart_gate = (cfg("SMART_MONEY_GATE", "true") or "").lower() \
+            in ("1", "true", "yes", "on")
+        self.smart_min = float(cfg("SMART_MONEY_MIN", "0.8") or 0.8)
         self._last_skip_log = {}
         self.start_equity = float(cfg("PAPER_EQUITY", "1000"))
 
@@ -435,7 +441,17 @@ class Bot:
             # can be stale and would otherwise block all trading.
             regime_ok = (not self.news_gate) or self.regime.get("allow_buys", True)
             if signal == "buy" and ml_ok and regime_ok:
-                self.open_position(symbol, price)
+                # Smart-money confirmation: fetched only now (a buy is otherwise
+                # approved) and cached, so it never touches the fast exit loop.
+                bias = smart_money.long_short_bias(symbol)
+                if bias is not None:
+                    log(f"📊 {symbol} smart-money L/S ratio {bias:.2f} "
+                        f"(min {self.smart_min})")
+                if self.smart_gate and bias is not None and bias < self.smart_min:
+                    self._skip_log(symbol, f"smart-money net short "
+                                   f"(L/S {bias:.2f} < {self.smart_min})")
+                else:
+                    self.open_position(symbol, price)
             elif signal == "buy" and not regime_ok:
                 self._skip_log(symbol, "best-practices: "
                                f"{self.regime.get('reason')}")
