@@ -171,6 +171,8 @@ class Bot:
         self._last_opt_ts = 0.0
         self._last_ml_ts = 0.0
         self._last_pub_ts = 0.0
+        self._last_bal_ts = 0.0
+        self.account = None      # real Binance balance (live/testnet)
         self.regime = {"allow_buys": True, "risk_multiplier": 1.0,
                        "reason": "—"}
 
@@ -298,6 +300,15 @@ class Bot:
     def step(self):
         self.check_daily_limit()
 
+        # Refresh the real Binance balance periodically (live/testnet) and use
+        # it as the displayed equity so the dashboard shows true wallet value.
+        if (time.time() - self._last_bal_ts) >= 60:
+            summ = self.ex.account_summary()
+            if summ:
+                self.account = summ
+                self.state["equity"] = summ["total_usdt"]
+            self._last_bal_ts = time.time()
+
         # Refresh the live "best-practices" market regime every cycle.
         try:
             self.regime = best_practices.get_regime()
@@ -340,7 +351,7 @@ class Bot:
                 self.state["scores"], self.state["ml_acc"],
                 self.state["trades"], self.state["equity"],
                 self.state["realized_pnl"], self.state["last_optimize"], prices,
-                regime=self.regime,
+                regime=self.regime, account=self.account,
                 learning={"realtime": self.realtime,
                           "poll_seconds": self.poll_seconds,
                           "ml_retrain_min": self.ml_retrain_min})
