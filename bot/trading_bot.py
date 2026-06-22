@@ -53,6 +53,11 @@ TRADES_CSV = DATA_DIR / "trades.csv"
 
 DEFAULT_UNIVERSE = "BTCUSDT,ETHUSDT,BNBUSDT,SOLUSDT,XRPUSDT,ADAUSDT"
 
+# How strongly a proven ML edge nudges the active-coin ranking. The back-test
+# score stays the foundation; this only re-orders coins of comparable score so
+# the active slots favour ones where the ML buy-filter actually has an edge.
+EDGE_WEIGHT = 20.0
+
 
 # ----------------------------- configuration -----------------------------
 def load_env():
@@ -309,7 +314,19 @@ class Bot:
                 f"ret={metrics['return_pct']}% win={metrics['win_rate']}% "
                 f"fast={params['fast']} slow={params['slow']}")
 
-        scored.sort(key=lambda x: x[1], reverse=True)
+        # Rank by back-test score, but PREFER coins whose ML model has a proven
+        # out-of-sample edge (>= MIN_EDGE) and demote those without one, so the
+        # active slots land on coins where the ML buy-filter actually works —
+        # higher-quality (fewer, cleaner) entries. Coins still must have a
+        # positive back-test score to go active; the edge only re-orders them.
+        def _edge(sym):
+            acc = new_ml.get(sym)
+            if acc is None:
+                acc = self.state["ml_acc"].get(sym)
+            if acc is None:                      # ML unavailable -> stay neutral
+                return 0.0
+            return (acc - ml_model.MIN_EDGE) * EDGE_WEIGHT
+        scored.sort(key=lambda x: x[1] + _edge(x[0]), reverse=True)
         ranked = [s for s, sc in scored if sc > 0][: self.top_n]
 
         # ---- atomic apply (short critical section) ----
