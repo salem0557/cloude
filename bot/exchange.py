@@ -206,6 +206,12 @@ class Exchange:
         """
         if self.mode == "dryrun":
             return price_hint, quote_amount / price_hint
+        # Cap the spend to the USDT we actually have (avoids -2010 on the buy).
+        free = self.free_balance("USDT")
+        if free > 0 and quote_amount > free:
+            quote_amount = free * 0.997      # leave a hair for fees/rounding
+        if quote_amount < 1:
+            raise RuntimeError(f"insufficient USDT to buy {symbol} (free={free})")
         order = self.client.order_market_buy(
             symbol=symbol, quoteOrderQty=round(quote_amount, 2))
         qty = float(order.get("executedQty", quote_amount / price_hint))
