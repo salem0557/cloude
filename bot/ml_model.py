@@ -5,9 +5,14 @@ latest candles. The model predicts the probability that price will be higher
 ``HORIZON`` bars from now. A buy is only allowed when both the technical signal
 fires AND the model is sufficiently bullish, which filters out many bad entries.
 
+Honest training: the data is split time-ordered into train/validation, and the
+reported accuracy is measured on the held-out validation set (data the model
+never saw) — not on the training data. A model with no real edge
+(validation accuracy below ``MIN_EDGE``) is treated as neutral so it can't
+wrongly approve or veto trades.
+
 scikit-learn is optional: if it (or numpy) isn't installed, ``predict_up`` just
-returns ``None`` and the bot trades on the technical signal alone. So the bot
-still works everywhere, and gets smarter when the ML deps are present.
+returns ``None`` and the bot trades on the technical signal alone.
 """
 
 from __future__ import annotations
@@ -21,6 +26,8 @@ HERE = Path(__file__).resolve().parent
 MODELS_DIR = Path(os.environ.get("DATA_DIR", str(HERE))) / "models"
 HORIZON = 4          # predict direction 4 bars ahead
 UP_THRESHOLD = 0.0   # "up" means return > 0 over the horizon
+MIN_SAMPLES = 120    # need at least this many feature rows to train
+MIN_EDGE = 0.52      # validation accuracy must beat this to be used
 
 try:  # optional heavy deps
     import numpy as np
@@ -29,7 +36,18 @@ try:  # optional heavy deps
 except Exception:  # pragma: no cover - depends on environment
     HAVE_SKLEARN = False
 
-_CACHE = {}  # symbol -> fitted model (kept in memory for the process)
+_CACHE = {}  # symbol -> (fitted model, validation_accuracy)
+
+
+def _volatility(closes, i, n=10):
+    if i < n:
+        return 0.0
+    rets = [closes[j] / closes[j - 1] - 1.0 for j in range(i - n + 1, i + 1)
+            if closes[j - 1]]
+    if len(rets) < 2:
+        return 0.0
+    mean = sum(rets) / len(rets)
+    return (sum((r - mean) ** 2 for r in rets) / len(rets)) ** 0.5
 
 
 def _features_at(closes, fast, slow, rsi_s, ema12, ema26, i):
@@ -45,10 +63,12 @@ def _features_at(closes, fast, slow, rsi_s, ema12, ema26, i):
         fast[i] / slow[i] - 1.0,                 # trend
         (price / closes[i - 1] - 1.0),           # 1-bar return
         (price / closes[i - 5] - 1.0),           # 5-bar return
+        (price / closes[i - 10] - 1.0),          # 10-bar return
         (price / closes[i - 20] - 1.0),          # 20-bar return
         rsi_s[i] / 100.0,                        # momentum
         ema12[i] / ema26[i] - 1.0,               # macd-ish
         price / fast[i] - 1.0,                   # stretch from mean
+        _volatility(closes, i),                  # recent volatility
     ]
 
 
@@ -70,46 +90,64 @@ def _build_xy(closes):
 
 
 def train(symbol, closes):
-    """Train and cache a model for ``symbol``. Returns accuracy or None."""
+    """Train and cache a model. Returns out-of-sample accuracy or None."""
     if not HAVE_SKLEARN:
         return None
     X, y = _build_xy(closes)
-    if len(X) < 80 or len(set(y)) < 2:
+    if len(X) < MIN_SAMPLES or len(set(y)) < 2:
         return None
     try:
+        # time-ordered split — train on the older 75%, validate on the newer 25%
+        split = int(len(X) * 0.75)
+        Xtr, ytr = np.array(X[:split]), np.array(y[:split])
+        Xva, yva = np.array(X[split:]), np.array(y[split:])
+        if len(Xva) < 20 or len(set(ytr)) < 2:
+            return None
         model = GradientBoostingClassifier(
-            n_estimators=80, max_depth=3, learning_rate=0.05, random_state=0
-        )
-        model.fit(np.array(X), np.array(y))
-        _CACHE[symbol] = model
+            n_estimators=80, max_depth=3, learning_rate=0.05, random_state=0)
+        model.fit(Xtr, ytr)
+        acc = round(float(model.score(Xva, yva)), 3)   # honest, out-of-sample
+        _CACHE[symbol] = (model, acc)
         MODELS_DIR.mkdir(exist_ok=True)
-        # Persist via joblib if available; otherwise keep in-memory only.
         try:
             import joblib
-            joblib.dump(model, MODELS_DIR / f"{symbol}.pkl")
+            joblib.dump((model, acc), MODELS_DIR / f"{symbol}.pkl")
         except Exception:
             pass
-        acc = float(model.score(np.array(X), np.array(y)))
-        return round(acc, 3)
+        return acc
     except Exception:
         return None
 
 
+def _load(symbol):
+    cached = _CACHE.get(symbol)
+    if cached is not None:
+        return cached
+    try:
+        import joblib
+        path = MODELS_DIR / f"{symbol}.pkl"
+        if path.exists():
+            obj = joblib.load(path)
+            model, acc = obj if isinstance(obj, tuple) else (obj, 0.0)
+            _CACHE[symbol] = (model, acc)
+            return model, acc
+    except Exception:
+        pass
+    return None
+
+
 def predict_up(symbol, closes):
-    """Probability (0-1) that price rises over the horizon, or None."""
+    """Probability (0-1) that price rises over the horizon, or None.
+
+    Returns None (neutral) unless the model has a real validation edge, so an
+    over-fit or useless model never blocks or approves a trade."""
     if not HAVE_SKLEARN:
         return None
-    model = _CACHE.get(symbol)
-    if model is None:
-        try:
-            import joblib
-            path = MODELS_DIR / f"{symbol}.pkl"
-            if path.exists():
-                model = joblib.load(path)
-                _CACHE[symbol] = model
-        except Exception:
-            model = None
-    if model is None:
+    loaded = _load(symbol)
+    if loaded is None:
+        return None
+    model, acc = loaded
+    if acc < MIN_EDGE:                 # no proven edge → stay out of the way
         return None
     fast = sma_series(closes, 7)
     slow = sma_series(closes, 25)
@@ -120,7 +158,6 @@ def predict_up(symbol, closes):
     if feats is None:
         return None
     try:
-        prob = float(model.predict_proba(np.array([feats]))[0][1])
-        return round(prob, 3)
+        return round(float(model.predict_proba(np.array([feats]))[0][1]), 3)
     except Exception:
         return None
