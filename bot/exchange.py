@@ -86,6 +86,35 @@ class Exchange:
                         "API Management.")
             raise SystemExit(f"Could not connect to Binance: {msg}{hint}")
 
+    # --- account (live/testnet only) ---
+    def account_summary(self):
+        """Real balance from Binance: free USDT and total portfolio value in
+        USDT. Returns None in dryrun or on any error."""
+        if self.mode == "dryrun" or not self.client:
+            return None
+        try:
+            acct = self.client.get_account()
+            tickers = self.client.get_all_tickers()
+            price = {t["symbol"]: float(t["price"]) for t in tickers}
+            free_usdt = 0.0
+            total = 0.0
+            for b in acct.get("balances", []):
+                amt = float(b["free"]) + float(b["locked"])
+                if amt <= 0:
+                    continue
+                asset = b["asset"]
+                if asset == "USDT":
+                    free_usdt = float(b["free"])
+                    total += amt
+                else:
+                    p = price.get(asset + "USDT")
+                    if p:
+                        total += amt * p
+            return {"free_usdt": round(free_usdt, 2),
+                    "total_usdt": round(total, 2)}
+        except Exception:
+            return None
+
     # --- market data (works in every mode) ---
     def klines(self, symbol, interval, limit):
         if self.mode == "dryrun":

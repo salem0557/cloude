@@ -54,7 +54,7 @@
 
 <div id="content" style="display:none">
   <div class="grid">
-    <div class="stat"><div class="label">الرصيد (تقديري)</div><div class="value" id="equity">—</div></div>
+    <div class="stat"><div class="label">قيمة المحفظة (USDT)</div><div class="value" id="equity">—</div></div>
     <div class="stat"><div class="label">الربح/الخسارة المحقّقة</div><div class="value" id="pnl">—</div></div>
     <div class="stat"><div class="label">صفقات مفتوحة</div><div class="value" id="openCount">—</div></div>
     <div class="stat"><div class="label">التعلّم</div><div class="value" id="learnMode" style="font-size:.95rem">—</div></div>
@@ -137,7 +137,8 @@ function render(d){
   const m=$('mode'); m.textContent=({dryrun:'محاكاة',testnet:'تجريبي',live:'حقيقي'}[d.mode]||d.mode);
   m.className='pill '+d.mode;
 
-  $('equity').textContent=fmt(d.equity_quote)+' ';
+  const acc=d.account||{};
+  $('equity').textContent=fmt(acc.total_usdt!=null?acc.total_usdt:d.equity_quote)+' ';
   const pnl=$('pnl'); pnl.textContent=sign(d.realized_pnl_quote); pnl.className='value '+cls(d.realized_pnl_quote);
   $('openCount').textContent=(d.positions||[]).length;
   $('lastOpt').textContent=ago(d.last_optimize);

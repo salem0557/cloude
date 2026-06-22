@@ -48,8 +48,9 @@ pre{background:#0a0e17;border:1px solid var(--bd);border-radius:12px;padding:12p
 <h1>🤖 بوت التداول <span id="mode" class="pill">…</span></h1>
 <div id="warn" style="color:var(--ac);margin:8px 0"></div>
 <div class="grid">
-<div class="st"><div class="l">الرصيد</div><div class="v" id="eq">—</div></div>
-<div class="st"><div class="l">الربح/الخسارة</div><div class="v" id="pnl">—</div></div>
+<div class="st"><div class="l">قيمة المحفظة (USDT)</div><div class="v" id="eq">—</div></div>
+<div class="st"><div class="l">USDT متاح</div><div class="v" id="freeusdt">—</div></div>
+<div class="st"><div class="l">الربح/الخسارة المحقّقة</div><div class="v" id="pnl">—</div></div>
 <div class="st"><div class="l">صفقات مفتوحة</div><div class="v" id="op">—</div></div>
 <div class="st"><div class="l">الخوف/الطمع</div><div class="v" id="fng">—</div></div>
 </div>
@@ -65,7 +66,10 @@ async function tick(){
  try{const d=await(await fetch('/bot.json?t='+Date.now())).json();
   const m=$('mode');m.textContent=({dryrun:'محاكاة',testnet:'تجريبي',live:'حقيقي'}[d.mode]||d.mode||'—');m.className='pill '+(d.mode||'');
   $('warn').textContent=d.mode==='live'?'⚠️ يتداول بأموال حقيقية':'';
-  $('eq').textContent=f(d.equity_quote);const p=$('pnl');p.textContent=sg(d.realized_pnl_quote);p.className='v '+cl(d.realized_pnl_quote);
+  const ac=d.account||{};
+  $('eq').textContent=f(ac.total_usdt!=null?ac.total_usdt:d.equity_quote);
+  $('freeusdt').textContent=ac.free_usdt!=null?f(ac.free_usdt):'—';
+  const p=$('pnl');p.textContent=sg(d.realized_pnl_quote);p.className='v '+cl(d.realized_pnl_quote);
   $('op').textContent=(d.positions||[]).length;const R=d.regime||{};
   $('fng').textContent=R.fear_greed==null?'—':R.fear_greed+(R.fear_greed_label?(' '+R.fear_greed_label):'');
   let b=$('pos').querySelector('tbody');b.innerHTML=(d.positions||[]).map(x=>`<tr><td>${x.symbol}</td><td>${f(x.entry_price,4)}</td><td>${f(x.price,4)}</td><td class=${cl(x.pnl_pct)}>${sg(x.pnl_pct)}%</td></tr>`).join('')||'<tr><td colspan=4 class=mut>لا صفقات</td></tr>';
