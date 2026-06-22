@@ -5,3 +5,4 @@ bot/.env
 bot/state.json
 bot/trades.csv
 bot/models/
+bot/data/

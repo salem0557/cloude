@@ -1,0 +1,9 @@
+[Unit]
+Description=Auto-deploy crypto bot from GitHub (pull + rebuild if changed)
+After=network-online.target docker.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/cloude
+ExecStart=/bin/bash /opt/cloude/deploy/autodeploy.sh
