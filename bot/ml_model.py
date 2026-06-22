@@ -12,12 +12,13 @@ still works everywhere, and gets smarter when the ML deps are present.
 
 from __future__ import annotations
 
+import os
 from pathlib import Path
 
 from indicators import sma_series, rsi_series, ema_series
 
 HERE = Path(__file__).resolve().parent
-MODELS_DIR = HERE / "models"
+MODELS_DIR = Path(os.environ.get("DATA_DIR", str(HERE))) / "models"
 HORIZON = 4          # predict direction 4 bars ahead
 UP_THRESHOLD = 0.0   # "up" means return > 0 over the horizon
 

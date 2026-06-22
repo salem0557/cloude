@@ -1,0 +1,2 @@
+# Root requirements for cloud hosts (Railway/Render). Installs the bot's deps.
+-r bot/requirements.txt
