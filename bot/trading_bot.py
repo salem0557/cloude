@@ -163,6 +163,11 @@ class Bot:
         # Trailing stop: ride the rise, sell when price pulls back this % from
         # its peak. 0 = off (use the fixed take-profit instead).
         self.trailing_pct = float(cfg("TRAILING_STOP_PCT", "0") or 0)
+        # Min ML "up" probability to allow a buy (lower = more trades, riskier).
+        self.ml_threshold = float(cfg("ML_BUY_THRESHOLD", "0.55") or 0.55)
+        # Fixed stop-loss / take-profit % (0 = let the optimizer tune them).
+        self.force_sl = float(cfg("STOP_LOSS_PCT", "0") or 0)
+        self.force_tp = float(cfg("TAKE_PROFIT_PCT", "0") or 0)
         self.start_equity = float(cfg("PAPER_EQUITY", "1000"))
 
         # Publishing / durable state backup config (read early so we can
@@ -340,6 +345,11 @@ class Bot:
 
     def manage_symbol(self, symbol, prices):
         params = merge_params(self.state["params"].get(symbol))
+        # Fixed stop-loss / take-profit overrides (force values, ignore optimizer)
+        if self.force_sl:
+            params["stop_loss_pct"] = self.force_sl
+        if self.force_tp:
+            params["take_profit_pct"] = self.force_tp
         closes = self.ex.closes(symbol, self.interval, self.history)
         price = closes[-1]
         prices[symbol] = price
@@ -366,7 +376,7 @@ class Bot:
             if reason:
                 self.close_position(symbol, price, reason)
         else:
-            ml_ok = (ml_prob is None) or (ml_prob >= params["ml_buy_threshold"])
+            ml_ok = (ml_prob is None) or (ml_prob >= self.ml_threshold)
             regime_ok = self.regime.get("allow_buys", True)
             if signal == "buy" and ml_ok and regime_ok:
                 self.open_position(symbol, price)
@@ -375,7 +385,7 @@ class Bot:
                     f"{self.regime.get('reason')}")
             elif signal == "buy" and not ml_ok:
                 log(f"⏸️  {symbol} buy signal skipped (ML {ml_prob} < "
-                    f"{params['ml_buy_threshold']})")
+                    f"{self.ml_threshold})")
 
     # --------------------------- risk / kill ---------------------------
     def check_daily_limit(self):
