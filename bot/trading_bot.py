@@ -39,11 +39,15 @@ from strategy import latest_signal, merge_params
 import ml_model
 import best_practices
 import publish
+import monitor
 import dashboard
 
 HERE = Path(__file__).resolve().parent
-STATE_FILE = HERE / "state.json"
-TRADES_CSV = HERE / "trades.csv"
+# DATA_DIR lets a cloud host keep state on a persistent volume across redeploys.
+DATA_DIR = Path(os.environ.get("DATA_DIR", str(HERE)))
+DATA_DIR.mkdir(parents=True, exist_ok=True)
+STATE_FILE = DATA_DIR / "state.json"
+TRADES_CSV = DATA_DIR / "trades.csv"
 
 DEFAULT_UNIVERSE = "BTCUSDT,ETHUSDT,BNBUSDT,SOLUSDT,XRPUSDT,ADAUSDT"
 
@@ -74,7 +78,9 @@ def iso():
 
 
 def log(msg):
-    print(f"[{now()}] {msg}", flush=True)
+    line = f"[{now()}] {msg}"
+    print(line, flush=True)
+    monitor.add_log(line)
 
 
 def load_state():
@@ -342,6 +348,15 @@ class Bot:
                 log("⚠️  dashboard publish failed (check GITHUB_TOKEN / GH_REPO)")
 
     def run(self):
+        # Start the web monitor if a PORT is provided (cloud hosts set $PORT).
+        port = cfg("PORT")
+        if port:
+            try:
+                monitor.start(port)
+                log(f"📊 Web monitor on port {port}")
+            except Exception as e:
+                log(f"monitor start error: {e}")
+
         learn = "real-time (every cycle)" if self.realtime \
             else f"every {self.optimize_hours}h"
         log(f"Bot started — mode={self.mode}, universe={self.universe}, "

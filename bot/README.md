@@ -88,6 +88,29 @@ docker compose -f bot/docker-compose.yml logs -f
 
 **systemd (بدون Docker):** اتبع التعليمات في رأس `bot/cryptobot.service`.
 
+### الاستضافة على السحابة (Railway) ☁️
+يصير البوت مستضافًا 24/7 ويُحدَّث تلقائيًا عند كل دفعة إلى GitHub، مع رابط ويب
+تتابعه من جوالك (لوحة + سجلّ مباشر).
+
+1. سجّل الدخول في <https://railway.app> بحساب GitHub.
+2. **New Project → Deploy from GitHub repo →** اختر `cloude`.
+3. Railway يكتشف الإعداد تلقائيًا (`Procfile` + `requirements.txt`) ويبني.
+4. **Variables** (Settings → Variables) أضِف مفاتيحك (لا تُكتب في الكود أبدًا):
+   ```
+   BOT_MODE=live
+   CONFIRM_LIVE=I_UNDERSTAND_THE_RISK
+   BINANCE_API_KEY=...
+   BINANCE_API_SECRET=...
+   QUOTE_PER_TRADE=15
+   DAILY_LOSS_LIMIT=20
+   DATA_DIR=/data
+   ```
+5. **Volume:** أضِف Volume بمسار `/data` ليحفظ حالة الصفقات بين النشرات.
+6. **Networking → Generate Domain** للحصول على رابط المراقبة، تفتحه من أي مكان.
+
+> كل تحديث أدفعه إلى فرع النشر (`main`) يعيد Railway بناء البوت ونشره تلقائيًا.
+> الرابط يعرض اللوحة والسجلّ المباشر — حالة عامة فقط، بلا أي مفاتيح.
+
 ---
 
 ## لوحة العرض
