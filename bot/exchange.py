@@ -25,19 +25,59 @@ PUBLIC_HOSTS = [
 ]
 
 
-def _public_klines(symbol, interval, limit):
-    path = (f"/api/v3/klines?symbol={symbol}"
-            f"&interval={interval}&limit={limit}")
+def _public_get(path):
+    """GET a public Binance endpoint, trying each host in turn."""
     last_err = None
     for host in PUBLIC_HOSTS:
         try:
             req = urllib.request.Request(
                 host + path, headers={"User-Agent": "Mozilla/5.0 cryptobot/1.0"})
-            with urllib.request.urlopen(req, timeout=20) as r:
+            with urllib.request.urlopen(req, timeout=25) as r:
                 return json.load(r)
         except Exception as e:  # try the next host
             last_err = e
     raise last_err
+
+
+def _public_klines(symbol, interval, limit):
+    return _public_get(f"/api/v3/klines?symbol={symbol}"
+                       f"&interval={interval}&limit={limit}")
+
+
+# Leveraged-token / wrapped suffixes to keep out of the auto universe.
+_BAD_SUFFIX = ("UPUSDT", "DOWNUSDT", "BULLUSDT", "BEARUSDT")
+_STABLES = {"USDCUSDT", "FDUSDUSDT", "TUSDUSDT", "BUSDUSDT", "DAIUSDT",
+            "USDPUSDT", "EURUSDT", "AEURUSDT", "USD1USDT"}
+
+
+def usdt_universe(min_quote_volume=5_000_000.0, max_n=250):
+    """Discover tradable USDT spot pairs, filtered by 24h volume.
+
+    Returns symbols sorted by 24h quote volume (most liquid first). Excludes
+    leveraged tokens and stablecoin pairs. min_quote_volume=0 + a large max_n
+    gives essentially the whole board.
+    """
+    info = _public_get("/api/v3/exchangeInfo")
+    tradable = set()
+    for s in info.get("symbols", []):
+        sym = s.get("symbol", "")
+        if (s.get("status") == "TRADING" and s.get("quoteAsset") == "USDT"
+                and s.get("isSpotTradingAllowed")
+                and not sym.endswith(_BAD_SUFFIX) and sym not in _STABLES):
+            tradable.add(sym)
+    # rank by liquidity using one bulk 24h ticker call
+    rows = _public_get("/api/v3/ticker/24hr")
+    vols = []
+    for t in rows:
+        sym = t.get("symbol", "")
+        if sym in tradable:
+            try:
+                vols.append((sym, float(t.get("quoteVolume", 0))))
+            except (TypeError, ValueError):
+                pass
+    vols.sort(key=lambda x: x[1], reverse=True)
+    out = [sym for sym, v in vols if v >= min_quote_volume]
+    return out[:max_n] if max_n else out
 
 
 class Exchange:
