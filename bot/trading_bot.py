@@ -172,6 +172,8 @@ class Bot:
         # Fixed stop-loss / take-profit % (0 = let the optimizer tune them).
         self.force_sl = float(cfg("STOP_LOSS_PCT", "0") or 0)
         self.force_tp = float(cfg("TAKE_PROFIT_PCT", "0") or 0)
+        # Max bid/ask spread % allowed to enter (escape-clean filter). 0 = off.
+        self.max_spread = float(cfg("MAX_SPREAD_PCT", "0.5") or 0)
         self.start_equity = float(cfg("PAPER_EQUITY", "1000"))
 
         # Publishing / durable state backup config (read early so we can
@@ -332,6 +334,13 @@ class Bot:
     def open_position(self, symbol, price):
         if len(self.state["positions"]) >= self.max_open:
             return
+        # Escape check: don't enter a coin whose spread is too wide to exit clean.
+        if self.max_spread > 0:
+            sp = self.ex.spread_pct(symbol)
+            if sp is not None and sp > self.max_spread:
+                log(f"⏸️  {symbol} entry skipped — spread {sp:.2f}% > "
+                    f"{self.max_spread}% (can't escape clean)")
+                return
         quote = self.quote_per_trade * self.regime.get("risk_multiplier", 1.0)
         fill, qty = self.ex.buy(symbol, quote, price)   # network (lock-free)
         with self._lock:

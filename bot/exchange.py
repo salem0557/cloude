@@ -178,6 +178,20 @@ class Exchange:
         t = self.client.get_symbol_ticker(symbol=symbol)
         return float(t["price"])
 
+    def spread_pct(self, symbol):
+        """Best bid/ask spread as a % of price (liquidity / escape gauge).
+
+        A wide spread means you'd buy high and sell low — hard to exit cleanly.
+        Returns None if it can't be fetched (caller then allows the trade)."""
+        try:
+            d = _public_get(f"/api/v3/ticker/bookTicker?symbol={symbol}")
+            bid, ask = float(d["bidPrice"]), float(d["askPrice"])
+            if bid > 0:
+                return (ask - bid) / bid * 100
+        except Exception:
+            return None
+        return None
+
     # --- lot size handling ---
     def lot_step(self, symbol):
         if symbol in self._steps:
