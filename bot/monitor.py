@@ -76,7 +76,6 @@ async function tick(){
   b=$('str').querySelector('tbody');b.innerHTML=(d.strategy||[]).map(s=>{let pp=s.params||{},bt=s.backtest||{};return `<tr><td>${s.symbol}</td><td class=${s.active?'up':'mut'}>${s.active?'يتداول':'مراقبة'}</td><td>${pp.fast??'—'}/${pp.slow??'—'}</td><td class=${cl(bt.return_pct)}>${bt.return_pct==null?'—':sg(bt.return_pct)+'%'}</td><td>${s.ml_accuracy==null?'—':(s.ml_accuracy*100|0)+'%'}</td></tr>`}).join('');
   b=$('trd').querySelector('tbody');b.innerHTML=(d.recent_trades||[]).slice().reverse().map(t=>`<tr><td class=mut>${ago(t.time)}</td><td>${t.symbol}</td><td class=${t.side==='BUY'?'up':'dn'}>${t.side==='BUY'?'شراء':'بيع'}</td><td>${f(t.price,4)}</td><td class=mut>${t.reason||''}</td></tr>`).join('')||'<tr><td colspan=5 class=mut>لا صفقات بعد</td></tr>';
  }catch(e){}
- }catch(e){}
  try{$('logs').textContent=await(await fetch('/logs?t='+Date.now())).text()}catch(e){}
 }
 tick();setInterval(tick,5000);
