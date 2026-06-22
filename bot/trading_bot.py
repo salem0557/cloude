@@ -321,7 +321,13 @@ class Bot:
         pos = self.state["positions"].get(symbol)
         if not pos:
             return
-        fill, qty = self.ex.sell(symbol, pos["qty"], price)
+        try:
+            fill, qty = self.ex.sell(symbol, pos["qty"], price)
+        except RuntimeError as e:
+            # nothing left to sell (already gone / dust) — stop tracking it
+            log(f"⚠️  {symbol}: {e} — dropping position from tracking")
+            del self.state["positions"][symbol]
+            return
         pnl = (fill - pos["entry_price"]) * qty
         self.state["realized_pnl"] += pnl
         if self.mode == "dryrun":
