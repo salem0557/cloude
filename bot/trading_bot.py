@@ -36,11 +36,13 @@ from pathlib import Path
 from exchange import Exchange
 from optimizer import optimize_symbol
 from strategy import latest_signal, merge_params
+from indicators import sma, rsi, pct_return
 import ml_model
 import best_practices
 import publish
 import monitor
 import dashboard
+from brain import Brain
 
 HERE = Path(__file__).resolve().parent
 # DATA_DIR lets a cloud host keep state on a persistent volume across redeploys.
@@ -176,6 +178,21 @@ class Bot:
         self.regime = {"allow_buys": True, "risk_multiplier": 1.0,
                        "reason": "—"}
 
+        # AI "brain" (Claude) — reasons over context, confirms/vetoes trades.
+        self.brain_on = (cfg("ENABLE_BRAIN", "") or "").lower() \
+            in ("1", "true", "yes", "on")
+        self.brain = Brain(DATA_DIR, log) if self.brain_on else None
+        self.brain_min_conf = float(cfg("BRAIN_MIN_CONFIDENCE", "0.6"))
+        self.brain_review_min = float(cfg("BRAIN_REVIEW_MINUTES", "30"))
+        self._last_brain_ts = 0.0
+        self._last_playbook_ts = 0.0
+        self.state.setdefault("brain", {})        # symbol -> last decision
+        if self.brain and self.brain.available:
+            log("🧠 AI brain ENABLED (Sonnet routine / Opus big decisions)")
+        elif self.brain_on:
+            log("🧠 AI brain requested but unavailable — add ANTHROPIC_API_KEY "
+                "and `pip install anthropic`")
+
         if not self.state.get("equity"):
             self.state["equity"] = self.start_equity
 
@@ -273,13 +290,74 @@ class Bot:
             ml_ok = (ml_prob is None) or (ml_prob >= params["ml_buy_threshold"])
             regime_ok = self.regime.get("allow_buys", True)
             if signal == "buy" and ml_ok and regime_ok:
-                self.open_position(symbol, price)
+                # Let the AI brain confirm/veto the entry (big decision → Opus).
+                if self.brain and self.brain.available:
+                    snap = self.snapshot(symbol, closes, signal, ml_prob)
+                    d = self.brain.decide(snap, big=True)
+                    self.record_brain(symbol, d)
+                    if d and d["action"] == "buy" \
+                            and d["confidence"] >= self.brain_min_conf:
+                        self.open_position(symbol, price)
+                        log(f"🧠 {symbol} entry confirmed "
+                            f"(conf {d['confidence']}): {d['reason'][:80]}")
+                    else:
+                        why = d["reason"][:80] if d else "no decision"
+                        log(f"🧠 {symbol} entry vetoed by brain: {why}")
+                else:
+                    self.open_position(symbol, price)
             elif signal == "buy" and not regime_ok:
                 log(f"⏸️  {symbol} buy skipped — best-practices: "
                     f"{self.regime.get('reason')}")
             elif signal == "buy" and not ml_ok:
                 log(f"⏸️  {symbol} buy signal skipped (ML {ml_prob} < "
                     f"{params['ml_buy_threshold']})")
+
+    # --------------------------- AI brain helpers ---------------------------
+    def snapshot(self, symbol, closes, signal, ml_prob):
+        """Compact market context handed to the brain for one symbol."""
+        pos = self.state["positions"].get(symbol)
+        params = merge_params(self.state["params"].get(symbol))
+        price = closes[-1]
+        return {
+            "symbol": symbol,
+            "price": round(price, 6),
+            "sma_fast": round(sma(closes, int(params["fast"])) or 0, 4),
+            "sma_slow": round(sma(closes, int(params["slow"])) or 0, 4),
+            "rsi": round(rsi(closes, int(params["rsi_period"])) or 50, 1),
+            "return_5_bars_pct": round(pct_return(closes, 5) or 0, 2),
+            "return_20_bars_pct": round(pct_return(closes, 20) or 0, 2),
+            "technical_signal": signal,
+            "ml_up_probability": ml_prob,
+            "position": "long" if pos else "flat",
+            "pnl_pct": round((price / pos["entry_price"] - 1) * 100, 2)
+            if pos and pos["entry_price"] else 0,
+            "news_sentiment": self.regime.get("news_sentiment"),
+            "fear_greed": self.regime.get("fear_greed"),
+            "interval": self.interval,
+        }
+
+    def record_brain(self, symbol, decision):
+        if decision:
+            decision = {**decision, "time": iso()}
+        self.state["brain"][symbol] = decision
+
+    def brain_review(self):
+        """Periodic AI review of open positions (routine → Sonnet)."""
+        for symbol in list(self.state["positions"]):
+            try:
+                closes = self.ex.closes(symbol, self.interval, self.history)
+                params = merge_params(self.state["params"].get(symbol))
+                signal = latest_signal(closes, params)
+                snap = self.snapshot(symbol, closes, signal,
+                                     ml_model.predict_up(symbol, closes))
+                d = self.brain.decide(snap, big=False)
+                self.record_brain(symbol, d)
+                if d and d["action"] == "sell" \
+                        and d["confidence"] >= self.brain_min_conf:
+                    self.close_position(symbol, closes[-1],
+                                        f"brain: {d['reason'][:40]}")
+            except Exception as e:
+                log(f"🧠 review {symbol}: error {e}")
 
     # --------------------------- risk / kill ---------------------------
     def check_daily_limit(self):
@@ -348,6 +426,16 @@ class Bot:
             except Exception as e:
                 log(f"   {symbol}: error {e}")
 
+        # Periodic AI brain review of open positions + daily playbook refresh.
+        if self.brain and self.brain.available and not self.state.get("halted"):
+            if (now_ts - self._last_brain_ts) >= self.brain_review_min * 60 \
+                    and self.state["positions"]:
+                self.brain_review()
+                self._last_brain_ts = now_ts
+            if (now_ts - self._last_playbook_ts) >= 24 * 3600:
+                self.brain.update_playbook()
+                self._last_playbook_ts = now_ts
+
         save_state(self.state)
         try:
             dashboard.write_snapshot(
@@ -357,9 +445,11 @@ class Bot:
                 self.state["trades"], self.state["equity"],
                 self.state["realized_pnl"], self.state["last_optimize"], prices,
                 regime=self.regime, account=self.account,
+                brain=self.state.get("brain"),
                 learning={"realtime": self.realtime,
                           "poll_seconds": self.poll_seconds,
-                          "ml_retrain_min": self.ml_retrain_min})
+                          "ml_retrain_min": self.ml_retrain_min,
+                          "brain": bool(self.brain and self.brain.available)})
         except Exception as e:
             log(f"dashboard write error: {e}")
 
@@ -374,11 +464,26 @@ class Bot:
             if not ok:
                 log("⚠️  dashboard publish failed (check GITHUB_TOKEN / GH_REPO)")
 
+    def chat_context(self):
+        """Live context handed to the brain for the chat box."""
+        return {
+            "mode": self.mode,
+            "equity_usdt": self.state.get("equity"),
+            "realized_pnl": self.state.get("realized_pnl"),
+            "active_symbols": self.state.get("active"),
+            "open_positions": list(self.state.get("positions", {}).keys()),
+            "regime": self.regime,
+            "recent_decisions": self.state.get("brain"),
+            "recent_trades": self.state.get("trades", [])[-5:],
+        }
+
     def run(self):
         # Start the web monitor if a PORT is provided (cloud hosts set $PORT).
         port = cfg("PORT")
         if port:
             try:
+                if self.brain:
+                    monitor.set_brain(self.brain, self.chat_context)
                 monitor.start(port)
                 log(f"📊 Web monitor on port {port}")
             except Exception as e:
