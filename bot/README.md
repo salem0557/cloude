@@ -97,8 +97,29 @@ docker compose -f bot/docker-compose.yml logs -f
 الصفقات المفتوحة، الإعدادات المتعلّمة لكل عملة، نتائج الباك-تيست، ودقّة ML،
 وآخر الصفقات. تُحدَّث الصفحة كل 30 ثانية.
 
-> لإظهار البيانات على الموقع المنشور (GitHub Pages) لا على الخادم فقط، اجعل
-> خادمك يرفع `bot.json` للمستودع دوريًا (commit/push)، أو افتح اللوحة محليًا.
+### عرضها محليًا
+لا تفتح `bot.html` بالنقر المزدوج (المتصفّح يمنع قراءة الملفّات عبر `file://`).
+شغّل خادمًا محليًا صغيرًا:
+```bash
+cd docs/crypto
+python -m http.server 8000      # ثم افتح http://localhost:8000/bot.html
+```
+
+### متابعتها من أي مكان (عبر الموقع)
+لمتابعة البوت من جوالك مثلًا: فعّل الرفع التلقائي في `bot/.env`:
+```
+PUBLISH_DASHBOARD=true
+GITHUB_TOKEN=github_pat_...     # Fine-grained PAT بصلاحية Contents: Read & Write
+GH_REPO=salem0557/cloude
+PUBLISH_BRANCH=bot-live
+PUBLISH_SECONDS=60
+```
+يرفع البوت لقطة الحالة كل دقيقة إلى فرع `bot-live` (منفصل عن فرع النشر حتى لا
+يُعيد بناء الموقع)، وتقرأها صفحة `crypto/bot.html` على الموقع تلقائيًا. لا يُرفع
+أي مفتاح API — فقط حالة عامة.
+
+> إنشاء التوكن: GitHub → Settings → Developer settings → Fine-grained tokens →
+> اختر هذا المستودع → Permissions → Repository → **Contents: Read and write**.
 
 ---
 
