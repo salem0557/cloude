@@ -1,4 +1,37 @@
-# النشر على DigitalOcean (مع رصيد GitHub Student Pack) ☁️
+# النشر السحابي بالكامل — بدون جهازك الشخصي 🌩️
+
+## الخيار الموصى به: DigitalOcean **App Platform** (كله من المتصفّح)
+لا SSH، لا سيرفر تديره، لا ملفّات على جهازك — تربط GitHub وتحط المفاتيح في
+المتصفّح، ويعمل البوت 24/7 ويعيد النشر تلقائيًا عند كل تحديث.
+
+1. فعّل رصيد الطلاب: <https://education.github.com/pack> → DigitalOcean → 200$.
+2. <https://cloud.digitalocean.com/apps> → **Create App → GitHub** → اختر
+   `salem0557/cloude`، الفرع `main`، وفعّل **Autodeploy**.
+3. يكتشف الإعداد من `.do/app.yaml` تلقائيًا (خدمة ويب تشغّل البوت على `/health`).
+4. **Environment Variables** (في المتصفّح) — اضبط القيم وميّز السرّية كـ
+   *Encrypted*:
+   ```
+   BOT_MODE=live
+   CONFIRM_LIVE=I_UNDERSTAND_THE_RISK
+   BINANCE_API_KEY=...           (Encrypted)
+   BINANCE_API_SECRET=...        (Encrypted)
+   PUBLISH_DASHBOARD=true
+   GITHUB_TOKEN=github_pat_...   (Encrypted)   ← لحفظ الحالة على GitHub
+   GH_REPO=salem0557/cloude
+   PUBLISH_BRANCH=bot-live
+   ```
+5. **Create Resources**. بعد البناء تحصل على رابط `https://<اسم>.ondigitalocean.app`
+   يفتح لوحة المراقبة من أي جهاز.
+
+> 💾 App Platform بلا قرص دائم، لذلك فعّلنا حفظ الحالة على GitHub
+> (`PUBLISH_DASHBOARD=true` + `GITHUB_TOKEN`): يحفظ `state.json` على فرع
+> `bot-live` ويستعيده عند كل إقلاع، فتبقى صفقاتك محفوظة. **مهم للوضع الحقيقي.**
+
+> 🔄 كل تحديث أدفعه إلى `main` يعيد App Platform النشر تلقائيًا — بدون أي تدخّل.
+
+---
+
+# بديل: DigitalOcean Droplet (تحكّم كامل + قرص دائم) ☁️
 
 البوت يشتغل 24/7 على خادم DigitalOcean، **ويُحدّث نفسه تلقائيًا** كل ما يُدفع
 تحديث إلى فرع `main` (سحب + إعادة بناء خلال ~3 دقائق). تتابعه من جوالك عبر رابط
