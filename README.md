@@ -54,6 +54,25 @@ written to [`docs/crypto/data/news.json`](docs/crypto/data/news.json), refreshed
 every 3 hours by the **Crypto news** workflow. Run it once manually (Actions →
 *Crypto news* → *Run workflow*) to populate the news on first use.
 
+## Self-optimizing crypto trading bot
+
+A multi-coin Binance Spot trading bot lives in [`bot/`](bot/). It **re-tunes
+itself every 2 hours**: it back-tests strategy parameters on recent candles and
+retrains a small ML confirmation model per coin (`optimizer.py` + `ml_model.py`),
+then trades only the strongest coins from a basket (BTC, ETH, BNB, SOL…). It runs
+in three modes — `dryrun` (safe simulation, default), `testnet` (fake money), and
+`live` (real money, behind an explicit confirmation latch).
+
+Its status (positions, learned settings, back-test results, recent trades) is
+published to [`docs/crypto/data/bot.json`](docs/crypto/data/bot.json) and shown
+on the dashboard at `https://salem0557.github.io/cloude/crypto/bot.html` (linked
+from the crypto page). For 24/7 operation use the included `Dockerfile` /
+`docker-compose.yml` / `cryptobot.service`. Full instructions and safety notes
+are in [`bot/README.md`](bot/README.md).
+
+> ⚠️ Educational tool, not financial advice. Trading bots can lose money. Start
+> in `dryrun`, then `testnet`, and only ever risk what you can afford to lose.
+
 ## One-time setup
 
 1. **Merge this branch to `main`** (the daily schedule only runs from the
