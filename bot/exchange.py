@@ -69,7 +69,22 @@ class Exchange:
                 "BINANCE_API_KEY/SECRET contain non-English characters. Paste "
                 "the REAL keys from Binance (English letters & digits only) — "
                 "not the placeholder text.")
-        self.client = Client(key, secret, testnet=(self.mode == "testnet"))
+        try:
+            self.client = Client(key, secret, testnet=(self.mode == "testnet"))
+        except Exception as e:
+            msg = str(e)
+            hint = ""
+            low = msg.lower()
+            if "restricted" in low or "451" in low or "location" in low \
+                    or "eligibility" in low:
+                hint = ("\n→ Your server's region is geo-blocked by Binance "
+                        "(e.g. Binance.com blocks US servers). Change your host's "
+                        "deploy region to EU/Asia and redeploy.")
+            elif "-2015" in low or "permission" in low or "api-key" in low:
+                hint = ("\n→ The API key is wrong, lacks Spot-trading permission, "
+                        "or is IP-restricted to a different IP. Fix it in Binance "
+                        "API Management.")
+            raise SystemExit(f"Could not connect to Binance: {msg}{hint}")
 
     # --- market data (works in every mode) ---
     def klines(self, symbol, interval, limit):
