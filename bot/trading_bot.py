@@ -307,6 +307,11 @@ class Bot:
             if summ:
                 self.account = summ
                 self.state["equity"] = summ["total_usdt"]
+                log(f"💰 balance: {summ['total_usdt']} USDT total, "
+                    f"{summ['free_usdt']} USDT free")
+            elif self.mode in ("live", "testnet"):
+                log("⚠️  couldn't read balance — enable 'Reading' permission on "
+                    "the API key, and make sure funds are in the Spot wallet")
             self._last_bal_ts = time.time()
 
         # Refresh the live "best-practices" market regime every cycle.
