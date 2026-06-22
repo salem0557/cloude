@@ -105,16 +105,30 @@ function ago(iso){
 function cls(v){return v>0?'up':v<0?'down':'';}
 function sign(v,d=2){return (v>0?'+':'')+fmt(v,d);}
 
+// On localhost we read the file the bot writes locally. On the published
+// website we read the snapshot the bot pushes to the "bot-live" branch.
+const host = location.hostname;
+const isLocal = host==='localhost' || host==='127.0.0.1' || host==='';
+const LIVE_BRANCH = 'bot-live';
+const REPO = 'salem0557/cloude';
+const SOURCES = isLocal
+  ? ['data/bot.json']
+  : [`https://raw.githubusercontent.com/${REPO}/${LIVE_BRANCH}/docs/crypto/data/bot.json`,
+     'data/bot.json'];
+
 async function load(){
-  try{
-    const r = await fetch('data/bot.json?t='+Date.now());
-    if(!r.ok) throw new Error('no file');
-    const d = await r.json();
-    render(d);
-  }catch(e){
-    $('status').innerHTML='لم يبدأ البوت بعد (لا يوجد <code>data/bot.json</code>). شغّل البوت لإنشاء البيانات.';
-    $('status').className='note warn';
+  for(const src of SOURCES){
+    try{
+      const r = await fetch(src + (src.includes('?')?'&':'?') + 't=' + Date.now());
+      if(!r.ok) continue;
+      const d = await r.json();
+      if(d && d.updated){ render(d); return; }
+    }catch(e){ /* try next source */ }
   }
+  $('status').innerHTML = isLocal
+    ? 'لم يبدأ البوت بعد (لا يوجد <code>data/bot.json</code>). شغّل البوت لإنشاء البيانات.'
+    : 'لا توجد بيانات منشورة بعد. فعّل <code>PUBLISH_DASHBOARD</code> في البوت لرفع الحالة.';
+  $('status').className='note warn';
 }
 
 function render(d){

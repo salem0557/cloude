@@ -38,6 +38,7 @@ from optimizer import optimize_symbol
 from strategy import latest_signal, merge_params
 import ml_model
 import best_practices
+import publish
 import dashboard
 
 HERE = Path(__file__).resolve().parent
@@ -148,8 +149,17 @@ class Bot:
                            cfg("BINANCE_API_SECRET"))
         self._last_opt_ts = 0.0
         self._last_ml_ts = 0.0
+        self._last_pub_ts = 0.0
         self.regime = {"allow_buys": True, "risk_multiplier": 1.0,
                        "reason": "—"}
+
+        # Optional: publish the dashboard to GitHub (separate branch).
+        self.publish_on = (cfg("PUBLISH_DASHBOARD", "") or "").lower() \
+            in ("1", "true", "yes", "on")
+        self.gh_repo = cfg("GH_REPO", "salem0557/cloude")
+        self.gh_token = cfg("GITHUB_TOKEN")
+        self.pub_branch = cfg("PUBLISH_BRANCH", "bot-live")
+        self.pub_seconds = int(cfg("PUBLISH_SECONDS", "60"))
         if not self.state.get("equity"):
             self.state["equity"] = self.start_equity
 
@@ -322,6 +332,14 @@ class Bot:
                           "ml_retrain_min": self.ml_retrain_min})
         except Exception as e:
             log(f"dashboard write error: {e}")
+
+        # optionally push the snapshot to GitHub so the website shows live data
+        if self.publish_on and self.gh_token and \
+                (time.time() - self._last_pub_ts) >= self.pub_seconds:
+            ok = publish.publish(self.gh_repo, self.pub_branch, self.gh_token)
+            self._last_pub_ts = time.time()
+            if not ok:
+                log("⚠️  dashboard publish failed (check GITHUB_TOKEN / GH_REPO)")
 
     def run(self):
         learn = "real-time (every cycle)" if self.realtime \
