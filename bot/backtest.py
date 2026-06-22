@@ -8,7 +8,7 @@ optimizer doesn't fall in love with hyperactive, fee-bleeding settings.
 
 from __future__ import annotations
 
-from strategy import crossover_signals, merge_params
+from strategy import signals as strategy_signals, merge_params
 
 FEE_PCT = 0.1  # round-trip-ish fee/slippage assumption per side (%)
 
@@ -19,7 +19,7 @@ def run_backtest(closes, params, fee_pct=FEE_PCT):
     Metrics: return_pct, trades, win_rate, max_drawdown_pct, score.
     """
     p = merge_params(params)
-    signals = crossover_signals(closes, params)
+    signals = strategy_signals(closes, params)
 
     cash = 1.0          # start with 1 unit of quote currency
     qty = 0.0           # base held

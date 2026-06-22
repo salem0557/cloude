@@ -10,6 +10,8 @@ depends on the live entry price.
 
 from __future__ import annotations
 
+import os
+
 from indicators import sma_series, rsi_series
 
 # Default parameters. The optimizer overrides these per-symbol every cycle.
@@ -22,7 +24,15 @@ DEFAULT_PARAMS = {
     "stop_loss_pct": 5.0,
     "take_profit_pct": 12.0,
     "ml_buy_threshold": 0.55,  # min ML "up" probability to allow a buy
+    # scalp-mode tunables
+    "rsi_dip": 40,        # buy a dip in an uptrend when RSI rebounds from here
+    "rsi_overbought": 72, # exit when short-term momentum is exhausted
 }
+
+
+def use_scalp():
+    """True when STRATEGY=scalp (active short-term trading)."""
+    return (os.environ.get("STRATEGY", "crossover") or "").lower() == "scalp"
 
 
 def merge_params(params):
@@ -56,7 +66,41 @@ def crossover_signals(closes, params):
     return out
 
 
+def scalp_signals(closes, params):
+    """Active "scalper" signals — far more frequent than the crossover.
+
+    Buy = healthy uptrend (fast SMA above slow) AND RSI rebounding up off a dip
+    (buy-the-dip on the turn). Sell = trend rolls over OR RSI hits overbought.
+    Paired with tight stop-loss / take-profit, this catches quick moves instead
+    of waiting days for a full crossover.
+    """
+    p = merge_params(params)
+    fast = sma_series(closes, int(p["fast"]))
+    slow = sma_series(closes, int(p["slow"]))
+    r = rsi_series(closes, int(p["rsi_period"]))
+    dip, ob = p["rsi_dip"], p["rsi_overbought"]
+    out = ["hold"] * len(closes)
+    for i in range(2, len(closes)):
+        if None in (fast[i], slow[i], r[i], r[i - 1]):
+            continue
+        uptrend = fast[i] > slow[i]
+        momentum_up = r[i] > r[i - 1]          # RSI ticking up = buyers active
+        # Active entry: ride healthy upward momentum while not overbought.
+        # Tight stop-loss / take-profit (from the scalp grid) churn quick moves.
+        if uptrend and momentum_up and dip <= r[i] < ob:
+            out[i] = "buy"
+        elif (not uptrend) or r[i] >= ob:
+            out[i] = "sell"
+    return out
+
+
+def signals(closes, params):
+    """Dispatch to the active strategy (scalp or crossover)."""
+    return scalp_signals(closes, params) if use_scalp() \
+        else crossover_signals(closes, params)
+
+
 def latest_signal(closes, params):
     """The signal for the most recent (closed) bar."""
-    sigs = crossover_signals(closes, params)
+    sigs = signals(closes, params)
     return sigs[-1] if sigs else "hold"
