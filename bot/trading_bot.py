@@ -381,15 +381,18 @@ class Bot:
         # Refresh the real Binance balance periodically (live/testnet) and use
         # it as the displayed equity so the dashboard shows true wallet value.
         if (time.time() - self._last_bal_ts) >= 60:
-            summ = self.ex.account_summary()
+            try:
+                summ = self.ex.account_summary()
+            except Exception as e:
+                summ = None
+                if self.mode in ("live", "testnet"):
+                    log(f"⚠️  balance read error: {e} — usually a missing "
+                        "'Reading' permission or an IP restriction on the API key")
             if summ:
                 self.account = summ
                 self.state["equity"] = summ["total_usdt"]
                 log(f"💰 balance: {summ['total_usdt']} USDT total, "
                     f"{summ['free_usdt']} USDT free")
-            elif self.mode in ("live", "testnet"):
-                log("⚠️  couldn't read balance — enable 'Reading' permission on "
-                    "the API key, and make sure funds are in the Spot wallet")
             self._last_bal_ts = time.time()
 
         # Refresh the live "best-practices" market regime every cycle.
