@@ -31,8 +31,6 @@ services:
         value: salem0557/cloude
       - key: PUBLISH_BRANCH
         value: bot-live
-      - key: ENABLE_BRAIN
-        value: "false"           # set "true" + ANTHROPIC_API_KEY to enable the AI brain
       # --- set these as ENCRYPTED secrets in the dashboard (leave blank here) ---
       - key: BINANCE_API_KEY
         value: ""
@@ -41,8 +39,5 @@ services:
         value: ""
         type: SECRET
       - key: GITHUB_TOKEN
-        value: ""
-        type: SECRET
-      - key: ANTHROPIC_API_KEY
         value: ""
         type: SECRET
