@@ -156,6 +156,9 @@ class Bot:
         # ML training is heavier than the grid-search, so it has its own
         # (still frequent) cadence. 0 = retrain every cycle too.
         self.ml_retrain_min = float(cfg("ML_RETRAIN_MINUTES", "10"))
+        # Heavy scan/optimize runs every LEARN_SECONDS (not every poll), so
+        # position-exit checks stay fast and react to price within POLL_SECONDS.
+        self.learn_seconds = float(cfg("LEARN_SECONDS", "60"))
         self.top_n = int(cfg("TOP_N", "3"))
         self.history = int(cfg("HISTORY", "500"))
         self.max_open = int(cfg("MAX_OPEN_POSITIONS", "3"))
@@ -192,6 +195,7 @@ class Bot:
         self._last_ml_ts = 0.0
         self._last_pub_ts = 0.0
         self._last_bal_ts = 0.0
+        self._last_regime_ts = 0.0
         self.account = None      # real Binance balance (live/testnet)
         self.regime = {"allow_buys": True, "risk_multiplier": 1.0,
                        "reason": "—"}
@@ -423,19 +427,24 @@ class Bot:
                     f"{summ['free_usdt']} USDT free")
             self._last_bal_ts = time.time()
 
-        # Refresh the live "best-practices" market regime every cycle.
-        try:
-            self.regime = best_practices.get_regime()
-            self.state["regime"] = self.regime
-        except Exception as e:
-            log(f"regime error: {e}")
+        # Refresh the market regime occasionally (news + Fear&Greed change
+        # slowly; doing it every fast cycle would add network latency).
+        if (time.time() - self._last_regime_ts) >= 120:
+            try:
+                self.regime = best_practices.get_regime()
+                self.state["regime"] = self.regime
+            except Exception as e:
+                log(f"regime error: {e}")
+            self._last_regime_ts = time.time()
 
-        # Real-time learning: re-tune parameters every cycle (or on the
-        # OPTIMIZE_HOURS schedule when realtime is off). Retrain the heavier
-        # ML model on its own ML_RETRAIN_MINUTES cadence.
+        # Heavy scan/learn runs on its own cadence (LEARN_SECONDS) — NOT every
+        # poll — so position management below stays fast and reacts to price in
+        # seconds. ML retrain has its own (slower) cadence.
         now_ts = time.time()
-        need_opt = self.realtime or not self.state.get("active") or \
-            (now_ts - self._last_opt_ts) >= self.optimize_hours * 3600
+        learn_interval = self.learn_seconds if self.realtime \
+            else self.optimize_hours * 3600
+        need_opt = not self.state.get("active") or \
+            (now_ts - self._last_opt_ts) >= learn_interval
         retrain_ml = (now_ts - self._last_ml_ts) >= self.ml_retrain_min * 60
         if need_opt:
             self.self_update(retrain_ml)
