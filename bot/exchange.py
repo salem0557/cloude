@@ -54,9 +54,21 @@ class Exchange:
         except ImportError:
             raise SystemExit(
                 "Install deps first:  pip install -r bot/requirements.txt")
+        key = (key or "").strip()
+        secret = (secret or "").strip()
         if not key or not secret:
             raise SystemExit(
                 "Set BINANCE_API_KEY and BINANCE_API_SECRET (see config.example.env).")
+        # Keys must be plain ASCII. A common mistake is pasting the placeholder
+        # text (e.g. the Arabic "مفتاحك") instead of the real key.
+        try:
+            key.encode("ascii")
+            secret.encode("ascii")
+        except UnicodeEncodeError:
+            raise SystemExit(
+                "BINANCE_API_KEY/SECRET contain non-English characters. Paste "
+                "the REAL keys from Binance (English letters & digits only) — "
+                "not the placeholder text.")
         self.client = Client(key, secret, testnet=(self.mode == "testnet"))
 
     # --- market data (works in every mode) ---
