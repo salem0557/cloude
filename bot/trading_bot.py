@@ -160,6 +160,9 @@ class Bot:
         self.history = int(cfg("HISTORY", "500"))
         self.max_open = int(cfg("MAX_OPEN_POSITIONS", "3"))
         self.daily_loss_limit = float(cfg("DAILY_LOSS_LIMIT", "0") or 0)
+        # Trailing stop: ride the rise, sell when price pulls back this % from
+        # its peak. 0 = off (use the fixed take-profit instead).
+        self.trailing_pct = float(cfg("TRAILING_STOP_PCT", "0") or 0)
         self.start_equity = float(cfg("PAPER_EQUITY", "1000"))
 
         # Publishing / durable state backup config (read early so we can
@@ -308,7 +311,7 @@ class Bot:
         quote = self.quote_per_trade * self.regime.get("risk_multiplier", 1.0)
         fill, qty = self.ex.buy(symbol, quote, price)
         self.state["positions"][symbol] = {
-            "entry_price": fill, "qty": qty, "opened": iso()}
+            "entry_price": fill, "qty": qty, "opened": iso(), "peak": fill}
         if self.mode == "dryrun":
             self.state["equity"] -= fill * qty
         record_trade(self.state, "BUY", symbol, fill, qty, self.mode, "signal")
@@ -340,13 +343,22 @@ class Bot:
         pos = self.state["positions"].get(symbol)
         if pos:
             entry = pos["entry_price"]
+            pos["peak"] = max(pos.get("peak", entry), price)   # track high
             change = (price / entry - 1) * 100 if entry else 0
+            reason = None
             if params["stop_loss_pct"] and change <= -params["stop_loss_pct"]:
-                self.close_position(symbol, price, f"stop-loss {change:.1f}%")
-            elif params["take_profit_pct"] and change >= params["take_profit_pct"]:
-                self.close_position(symbol, price, f"take-profit {change:.1f}%")
+                reason = f"stop-loss {change:.1f}%"
+            elif self.trailing_pct and pos["peak"] > entry and \
+                    price <= pos["peak"] * (1 - self.trailing_pct / 100):
+                drop = (price / pos["peak"] - 1) * 100
+                reason = f"trailing stop ({drop:.1f}% from peak, P/L {change:+.1f}%)"
+            elif not self.trailing_pct and params["take_profit_pct"] \
+                    and change >= params["take_profit_pct"]:
+                reason = f"take-profit {change:.1f}%"
             elif signal == "sell":
-                self.close_position(symbol, price, "death cross")
+                reason = "trend exit"
+            if reason:
+                self.close_position(symbol, price, reason)
         else:
             ml_ok = (ml_prob is None) or (ml_prob >= params["ml_buy_threshold"])
             regime_ok = self.regime.get("allow_buys", True)
