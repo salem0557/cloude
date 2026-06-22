@@ -29,6 +29,7 @@ import csv
 import json
 import os
 import sys
+import threading
 import time
 from datetime import datetime, timezone, date
 from pathlib import Path
@@ -196,6 +197,7 @@ class Bot:
         self._last_pub_ts = 0.0
         self._last_bal_ts = 0.0
         self._last_regime_ts = 0.0
+        self._lock = threading.Lock()   # guards shared state across threads
         self.account = None      # real Binance balance (live/testnet)
         self.regime = {"allow_buys": True, "risk_multiplier": 1.0,
                        "reason": "—"}
@@ -233,10 +235,11 @@ class Bot:
                 self.universe = list(self.fixed_universe)
 
     def _scan_pass(self):
-        """Quick-score the next batch of the universe (rotating) and keep a
-        rolling map of each coin's recent back-test score with default params."""
+        """Quick-score the next batch of the universe (rotating). Network/CPU is
+        done lock-free; returns (updates, drops) to apply under the lock."""
+        updates, drops = {}, []
         if not self.universe:
-            return
+            return updates, drops
         n = len(self.universe)
         batch = [self.universe[(self._scan_cursor + i) % n]
                  for i in range(min(self.scan_batch, n))]
@@ -246,34 +249,40 @@ class Bot:
                 closes = self.ex.closes(symbol, self.interval,
                                         min(self.history, 200))
                 if len(closes) >= 60:
-                    self.state["scan_scores"][symbol] = \
-                        run_backtest(closes, DEFAULT_PARAMS)["score"]
+                    updates[symbol] = run_backtest(closes, DEFAULT_PARAMS)["score"]
             except Exception:
-                self.state["scan_scores"].pop(symbol, None)
+                drops.append(symbol)
+        return updates, drops
 
-    def _shortlist(self):
+    def _shortlist(self, scan_scores):
         """Best-scoring scanned coins (plus anything we currently hold)."""
-        scanned = sorted(self.state["scan_scores"].items(),
-                         key=lambda x: x[1], reverse=True)
+        scanned = sorted(scan_scores.items(), key=lambda x: x[1], reverse=True)
         short = [s for s, sc in scanned][: self.shortlist_n]
-        for held in self.state["positions"]:
+        for held in list(self.state["positions"]):   # snapshot (other thread)
             if held not in short:
                 short.append(held)
         return short
 
     def self_update(self, retrain_ml):
+        """Heavy scan/optimize/ML. Runs in the background thread — all network
+        and CPU work is done lock-free; only the short final apply takes the
+        lock so the fast trading loop is never blocked."""
         tag = "back-testing + retraining ML" if retrain_ml else "back-testing"
+        scan_updates, scan_drops = {}, []
         if self.auto_universe:
             if (time.time() - self._last_universe_ts) >= 24 * 3600:
                 self.refresh_universe()
-            self._scan_pass()
-            candidates = self._shortlist()
+            scan_updates, scan_drops = self._scan_pass()
+            merged = {k: v for k, v in self.state["scan_scores"].items()
+                      if k not in scan_drops}
+            merged.update(scan_updates)
+            candidates = self._shortlist(merged)
         else:
             candidates = list(self.universe)
-        self.candidates = candidates
         log(f"🧠 Self-update ({tag}) — {len(candidates)} candidates"
             + (f" from {len(self.universe)} scanned" if self.auto_universe else ""))
 
+        new_params, new_scores, new_ml = {}, {}, {}
         scored = []
         for symbol in candidates:
             try:
@@ -284,33 +293,39 @@ class Bot:
             if len(closes) < 80:
                 continue
             params, metrics = optimize_symbol(closes)
-            self.state["params"][symbol] = params
-            self.state["scores"][symbol] = metrics
+            new_params[symbol] = params
+            new_scores[symbol] = metrics
             if retrain_ml:
-                self.state["ml_acc"][symbol] = ml_model.train(symbol, closes)
-            acc = self.state["ml_acc"].get(symbol)
+                new_ml[symbol] = ml_model.train(symbol, closes)
             scored.append((symbol, metrics["score"]))
             log(f"   {symbol}: score={metrics['score']} "
                 f"ret={metrics['return_pct']}% win={metrics['win_rate']}% "
-                f"fast={params['fast']} slow={params['slow']} "
-                f"ml_acc={acc}")
+                f"fast={params['fast']} slow={params['slow']}")
 
         scored.sort(key=lambda x: x[1], reverse=True)
-        # only trade coins whose recent strategy was actually profitable
         ranked = [s for s, sc in scored if sc > 0][: self.top_n]
-        # always keep symbols we currently hold so we can manage/exit them
-        for held in self.state["positions"]:
-            if held not in ranked:
-                ranked.append(held)
-        self.state["active"] = ranked
-        self.state["last_optimize"] = iso()
-        # keep per-symbol maps from growing without bound over the rotation
-        keep = set(candidates) | set(self.state["positions"])
-        for d in (self.state["params"], self.state["scores"],
-                  self.state["ml_acc"]):
-            for k in [k for k in d if k not in keep]:
-                d.pop(k, None)
-        save_state(self.state)
+
+        # ---- atomic apply (short critical section) ----
+        with self._lock:
+            for s in scan_drops:
+                self.state["scan_scores"].pop(s, None)
+            self.state["scan_scores"].update(scan_updates)
+            self.state["params"].update(new_params)
+            self.state["scores"].update(new_scores)
+            if retrain_ml:
+                self.state["ml_acc"].update(new_ml)
+            for held in self.state["positions"]:           # keep held coins
+                if held not in ranked:
+                    ranked.append(held)
+            self.state["active"] = ranked
+            self.state["last_optimize"] = iso()
+            self.candidates = candidates
+            keep = set(candidates) | set(self.state["positions"])
+            for d in (self.state["params"], self.state["scores"],
+                      self.state["ml_acc"]):
+                for k in [k for k in d if k not in keep]:
+                    d.pop(k, None)
+            save_state(self.state)
         log(f"✅ Self-update done. Trading: {ranked or '(none profitable)'}")
 
     # ------------------------------ trading ------------------------------
@@ -318,12 +333,13 @@ class Bot:
         if len(self.state["positions"]) >= self.max_open:
             return
         quote = self.quote_per_trade * self.regime.get("risk_multiplier", 1.0)
-        fill, qty = self.ex.buy(symbol, quote, price)
-        self.state["positions"][symbol] = {
-            "entry_price": fill, "qty": qty, "opened": iso(), "peak": fill}
-        if self.mode == "dryrun":
-            self.state["equity"] -= fill * qty
-        record_trade(self.state, "BUY", symbol, fill, qty, self.mode, "signal")
+        fill, qty = self.ex.buy(symbol, quote, price)   # network (lock-free)
+        with self._lock:
+            self.state["positions"][symbol] = {
+                "entry_price": fill, "qty": qty, "opened": iso(), "peak": fill}
+            if self.mode == "dryrun":
+                self.state["equity"] -= fill * qty
+            record_trade(self.state, "BUY", symbol, fill, qty, self.mode, "signal")
         log(f"🟢 BUY {symbol} {qty:.6f} @ {fill:.4f}")
 
     def close_position(self, symbol, price, reason):
@@ -331,21 +347,23 @@ class Bot:
         if not pos:
             return
         try:
-            fill, qty = self.ex.sell(symbol, pos["qty"], price)
+            fill, qty = self.ex.sell(symbol, pos["qty"], price)   # network
         except RuntimeError as e:
             # nothing left to sell (already gone / dust) — stop tracking it
             log(f"⚠️  {symbol}: {e} — dropping position from tracking")
-            del self.state["positions"][symbol]
+            with self._lock:
+                self.state["positions"].pop(symbol, None)
             return
-        pnl = (fill - pos["entry_price"]) * qty
-        self.state["realized_pnl"] += pnl
-        if self.mode == "dryrun":
-            self.state["equity"] += fill * qty
-        record_trade(self.state, "SELL", symbol, fill, qty, self.mode, reason)
+        with self._lock:
+            pnl = (fill - pos["entry_price"]) * qty
+            self.state["realized_pnl"] += pnl
+            if self.mode == "dryrun":
+                self.state["equity"] += fill * qty
+            record_trade(self.state, "SELL", symbol, fill, qty, self.mode, reason)
+            self.state["positions"].pop(symbol, None)
         pct = (fill / pos["entry_price"] - 1) * 100 if pos["entry_price"] else 0
         log(f"🔴 SELL {symbol} {qty:.6f} @ {fill:.4f} ({reason}) "
             f"P/L {pnl:+.2f} ({pct:+.2f}%)")
-        del self.state["positions"][symbol]
 
     def manage_symbol(self, symbol, prices):
         params = merge_params(self.state["params"].get(symbol))
@@ -394,69 +412,31 @@ class Bot:
     # --------------------------- risk / kill ---------------------------
     def check_daily_limit(self):
         today = str(date.today())
-        if self.state.get("day") != today:
-            self.state["day"] = today
-            self.state["day_start_realized"] = self.state["realized_pnl"]
-            self.state["halted"] = False
-        if self.daily_loss_limit <= 0:
-            return
-        day_pnl = self.state["realized_pnl"] - self.state["day_start_realized"]
-        if day_pnl <= -abs(self.daily_loss_limit) and not self.state["halted"]:
-            self.state["halted"] = True
-            log(f"🛑 Daily loss limit hit ({day_pnl:+.2f}). "
-                f"Closing positions, pausing new entries until tomorrow.")
+        hit = False
+        with self._lock:
+            if self.state.get("day") != today:
+                self.state["day"] = today
+                self.state["day_start_realized"] = self.state["realized_pnl"]
+                self.state["halted"] = False
+            if self.daily_loss_limit > 0:
+                day_pnl = (self.state["realized_pnl"]
+                           - self.state["day_start_realized"])
+                if day_pnl <= -abs(self.daily_loss_limit) \
+                        and not self.state["halted"]:
+                    self.state["halted"] = True
+                    hit = True
+        if hit:
+            log("🛑 Daily loss limit hit. Pausing new entries until tomorrow.")
 
-    # ------------------------------ cycle ------------------------------
-    def step(self):
-        self.check_daily_limit()
-
-        # Refresh the real Binance balance periodically (live/testnet) and use
-        # it as the displayed equity so the dashboard shows true wallet value.
-        if (time.time() - self._last_bal_ts) >= 60:
-            try:
-                summ = self.ex.account_summary()
-            except Exception as e:
-                summ = None
-                if self.mode in ("live", "testnet"):
-                    log(f"⚠️  balance read error: {e} — usually a missing "
-                        "'Reading' permission or an IP restriction on the API key")
-            if summ:
-                self.account = summ
-                self.state["equity"] = summ["total_usdt"]
-                log(f"💰 balance: {summ['total_usdt']} USDT total, "
-                    f"{summ['free_usdt']} USDT free")
-            self._last_bal_ts = time.time()
-
-        # Refresh the market regime occasionally (news + Fear&Greed change
-        # slowly; doing it every fast cycle would add network latency).
-        if (time.time() - self._last_regime_ts) >= 120:
-            try:
-                self.regime = best_practices.get_regime()
-                self.state["regime"] = self.regime
-            except Exception as e:
-                log(f"regime error: {e}")
-            self._last_regime_ts = time.time()
-
-        # Heavy scan/learn runs on its own cadence (LEARN_SECONDS) — NOT every
-        # poll — so position management below stays fast and reacts to price in
-        # seconds. ML retrain has its own (slower) cadence.
-        now_ts = time.time()
-        learn_interval = self.learn_seconds if self.realtime \
-            else self.optimize_hours * 3600
-        need_opt = not self.state.get("active") or \
-            (now_ts - self._last_opt_ts) >= learn_interval
-        retrain_ml = (now_ts - self._last_ml_ts) >= self.ml_retrain_min * 60
-        if need_opt:
-            self.self_update(retrain_ml)
-            self._last_opt_ts = now_ts
-            if retrain_ml:
-                self._last_ml_ts = now_ts
-
+    # ------------------------- fast trading loop -------------------------
+    def manage_cycle(self):
+        """Fast loop body — runs every POLL_SECONDS in the main thread. Only
+        manages open/active positions (exits + entries) and writes the
+        dashboard. The heavy scan/optimize runs in a background thread."""
         prices = {}
-        for symbol in list(self.state["active"]):
+        for symbol in list(self.state.get("active", [])):
             try:
                 if self.state.get("halted"):
-                    # only allow exits while halted
                     if symbol in self.state["positions"]:
                         closes = self.ex.closes(symbol, self.interval, self.history)
                         prices[symbol] = closes[-1]
@@ -466,34 +446,90 @@ class Bot:
             except Exception as e:
                 log(f"   {symbol}: error {e}")
 
-        save_state(self.state)
-        try:
-            dashboard.write_snapshot(
-                self.mode, self.candidates, self.state["active"],
-                self.state["params"], self.state["positions"],
-                self.state["scores"], self.state["ml_acc"],
-                self.state["trades"], self.state["equity"],
-                self.state["realized_pnl"], self.state["last_optimize"], prices,
-                regime=self.regime, account=self.account,
-                learning={"realtime": self.realtime,
-                          "poll_seconds": self.poll_seconds,
-                          "ml_retrain_min": self.ml_retrain_min})
-        except Exception as e:
-            log(f"dashboard write error: {e}")
+        with self._lock:
+            save_state(self.state)
+            try:
+                dashboard.write_snapshot(
+                    self.mode, self.candidates, self.state["active"],
+                    self.state["params"], self.state["positions"],
+                    self.state["scores"], self.state["ml_acc"],
+                    self.state["trades"], self.state["equity"],
+                    self.state["realized_pnl"], self.state["last_optimize"],
+                    prices, regime=self.regime, account=self.account,
+                    learning={"realtime": self.realtime,
+                              "poll_seconds": self.poll_seconds,
+                              "learn_seconds": self.learn_seconds})
+            except Exception as e:
+                log(f"dashboard write error: {e}")
 
-        # optionally push the snapshot + state backup to GitHub (so the website
-        # shows live data and a stateless host keeps its positions)
-        if self.publish_on and self.gh_token and \
-                (time.time() - self._last_pub_ts) >= self.pub_seconds:
-            ok = publish.publish(self.gh_repo, self.pub_branch, self.gh_token)
-            publish.backup_state(self.gh_repo, self.pub_branch, self.gh_token,
-                                 STATE_FILE)
-            self._last_pub_ts = time.time()
-            if not ok:
-                log("⚠️  dashboard publish failed (check GITHUB_TOKEN / GH_REPO)")
+    # ----------------------- background worker -----------------------
+    def background_loop(self):
+        """Runs the slow/heavy work off the trading path: balance, market
+        regime, the scan/optimize/ML, and publishing — each on its own cadence.
+        Never blocks the fast exit loop (only short, locked applies touch state)."""
+        while True:
+            try:
+                self.check_daily_limit()
+                self._refresh_balance()
+                self._refresh_regime()
+                now_ts = time.time()
+                learn_interval = self.learn_seconds if self.realtime \
+                    else self.optimize_hours * 3600
+                if not self.state.get("active") or \
+                        (now_ts - self._last_opt_ts) >= learn_interval:
+                    retrain = (now_ts - self._last_ml_ts) >= self.ml_retrain_min * 60
+                    self.self_update(retrain)
+                    self._last_opt_ts = now_ts
+                    if retrain:
+                        self._last_ml_ts = now_ts
+                self._publish()
+            except Exception as e:
+                log(f"background error: {e}")
+            time.sleep(3)
+
+    def _refresh_balance(self):
+        if (time.time() - self._last_bal_ts) < 60:
+            return
+        try:
+            summ = self.ex.account_summary()
+        except Exception as e:
+            summ = None
+            if self.mode in ("live", "testnet"):
+                log(f"⚠️  balance read error: {e} — usually a missing 'Reading' "
+                    "permission or an IP restriction on the API key")
+        if summ:
+            with self._lock:
+                self.account = summ
+                self.state["equity"] = summ["total_usdt"]
+            log(f"💰 balance: {summ['total_usdt']} USDT total, "
+                f"{summ['free_usdt']} USDT free")
+        self._last_bal_ts = time.time()
+
+    def _refresh_regime(self):
+        if (time.time() - self._last_regime_ts) < 120:
+            return
+        try:
+            regime = best_practices.get_regime()
+            with self._lock:
+                self.regime = regime
+                self.state["regime"] = regime
+        except Exception as e:
+            log(f"regime error: {e}")
+        self._last_regime_ts = time.time()
+
+    def _publish(self):
+        if not (self.publish_on and self.gh_token):
+            return
+        if (time.time() - self._last_pub_ts) < self.pub_seconds:
+            return
+        ok = publish.publish(self.gh_repo, self.pub_branch, self.gh_token)
+        publish.backup_state(self.gh_repo, self.pub_branch, self.gh_token,
+                             STATE_FILE)
+        self._last_pub_ts = time.time()
+        if not ok:
+            log("⚠️  dashboard publish failed (check GITHUB_TOKEN / GH_REPO)")
 
     def run(self):
-        # Start the web monitor if a PORT is provided (cloud hosts set $PORT).
         port = cfg("PORT")
         if port:
             try:
@@ -502,24 +538,34 @@ class Bot:
             except Exception as e:
                 log(f"monitor start error: {e}")
 
-        learn = "real-time (every cycle)" if self.realtime \
-            else f"every {self.optimize_hours}h"
         uni = (f"{len(self.universe)} pairs (auto)" if self.auto_universe
                else str(self.universe))
         log(f"Bot started — mode={self.mode}, universe={uni}, "
             f"interval={self.interval}, TOP_N={self.top_n}, "
-            f"{self.quote_per_trade} quote/trade, learning={learn}, "
-            f"poll={self.poll_seconds}s, ML retrain every {self.ml_retrain_min}m")
+            f"{self.quote_per_trade} quote/trade, poll={self.poll_seconds}s, "
+            f"learn every {self.learn_seconds}s (background)")
         if self.mode == "live":
             log("⚠️  LIVE MODE — trading REAL money. Ctrl+C to stop.")
-        once = "--once" in sys.argv
+
+        # one synchronous learn so there's something to trade immediately
+        try:
+            self.self_update((time.time() - self._last_ml_ts)
+                             >= self.ml_retrain_min * 60)
+            self._last_opt_ts = self._last_ml_ts = time.time()
+        except Exception as e:
+            log(f"initial learn error: {e}")
+
+        if "--once" in sys.argv:
+            self.manage_cycle()
+            return
+
+        # heavy work in the background; fast exit loop in the foreground
+        threading.Thread(target=self.background_loop, daemon=True).start()
         while True:
             try:
-                self.step()
+                self.manage_cycle()
             except Exception as e:
                 log(f"cycle error: {e}")
-            if once:
-                break
             time.sleep(self.poll_seconds)
 
 
