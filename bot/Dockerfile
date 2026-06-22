@@ -12,4 +12,5 @@ WORKDIR /app/bot
 
 # Unbuffered logs so `docker logs` shows activity in real time.
 ENV PYTHONUNBUFFERED=1
+EXPOSE 8000
 CMD ["python", "trading_bot.py"]

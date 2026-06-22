@@ -1,0 +1,10 @@
+[Unit]
+Description=Periodically auto-deploy the crypto bot from GitHub
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=3min
+AccuracySec=30s
+
+[Install]
+WantedBy=timers.target
