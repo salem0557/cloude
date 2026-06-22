@@ -33,9 +33,10 @@ import time
 from datetime import datetime, timezone, date
 from pathlib import Path
 
-from exchange import Exchange
+from exchange import Exchange, usdt_universe
 from optimizer import optimize_symbol
-from strategy import latest_signal, merge_params
+from strategy import latest_signal, merge_params, DEFAULT_PARAMS
+from backtest import run_backtest
 import ml_model
 import best_practices
 import publish
@@ -130,9 +131,20 @@ def record_trade(state, side, symbol, price, qty, mode, reason=""):
 class Bot:
     def __init__(self):
         self.mode = (cfg("BOT_MODE", "dryrun") or "dryrun").lower()
-        self.universe = [s.strip().upper()
-                         for s in cfg("SYMBOLS", DEFAULT_UNIVERSE).split(",")
-                         if s.strip()]
+        self.fixed_universe = [s.strip().upper()
+                               for s in cfg("SYMBOLS", DEFAULT_UNIVERSE).split(",")
+                               if s.strip()]
+        # AUTO_UNIVERSE: scan ALL tradable USDT pairs (by liquidity) instead of
+        # a fixed basket, then deep-optimize only a rolling shortlist.
+        self.auto_universe = (cfg("AUTO_UNIVERSE", "") or "").lower() \
+            in ("1", "true", "yes", "on")
+        self.min_quote_volume = float(cfg("MIN_QUOTE_VOLUME", "5000000"))
+        self.max_universe = int(cfg("MAX_UNIVERSE", "250"))
+        self.scan_batch = int(cfg("SCAN_BATCH", "30"))
+        self.shortlist_n = int(cfg("SHORTLIST", "12"))
+        self._scan_cursor = 0
+        self._last_universe_ts = 0.0
+        self.universe = list(self.fixed_universe)
         self.interval = cfg("INTERVAL", "1h")
         self.quote_per_trade = float(cfg("QUOTE_PER_TRADE", "15"))
         self.poll_seconds = int(cfg("POLL_SECONDS", "30"))
@@ -175,6 +187,9 @@ class Bot:
         self.account = None      # real Binance balance (live/testnet)
         self.regime = {"allow_buys": True, "risk_multiplier": 1.0,
                        "reason": "—"}
+        self.state.setdefault("scan_scores", {})
+        self.candidates = list(self.fixed_universe)
+        self.refresh_universe()
 
         if not self.state.get("equity"):
             self.state["equity"] = self.start_equity
@@ -187,11 +202,68 @@ class Bot:
                     "CONFIRM_LIVE=I_UNDERSTAND_THE_RISK in your .env.")
 
     # ---- the learning / self-update step ----
+    # ----------------------- universe / scanning -----------------------
+    def refresh_universe(self):
+        """Build the trading universe (auto = all liquid USDT pairs)."""
+        if not self.auto_universe:
+            self.universe = list(self.fixed_universe)
+            return
+        try:
+            uni = usdt_universe(self.min_quote_volume, self.max_universe)
+            if uni:
+                self.universe = uni
+                self._last_universe_ts = time.time()
+                log(f"🌐 Auto-universe: scanning {len(uni)} USDT pairs "
+                    f"(top by 24h volume)")
+        except Exception as e:
+            log(f"universe build error: {e}")
+            if not self.universe:
+                self.universe = list(self.fixed_universe)
+
+    def _scan_pass(self):
+        """Quick-score the next batch of the universe (rotating) and keep a
+        rolling map of each coin's recent back-test score with default params."""
+        if not self.universe:
+            return
+        n = len(self.universe)
+        batch = [self.universe[(self._scan_cursor + i) % n]
+                 for i in range(min(self.scan_batch, n))]
+        self._scan_cursor = (self._scan_cursor + len(batch)) % n
+        for symbol in batch:
+            try:
+                closes = self.ex.closes(symbol, self.interval,
+                                        min(self.history, 200))
+                if len(closes) >= 60:
+                    self.state["scan_scores"][symbol] = \
+                        run_backtest(closes, DEFAULT_PARAMS)["score"]
+            except Exception:
+                self.state["scan_scores"].pop(symbol, None)
+
+    def _shortlist(self):
+        """Best-scoring scanned coins (plus anything we currently hold)."""
+        scanned = sorted(self.state["scan_scores"].items(),
+                         key=lambda x: x[1], reverse=True)
+        short = [s for s, sc in scanned][: self.shortlist_n]
+        for held in self.state["positions"]:
+            if held not in short:
+                short.append(held)
+        return short
+
     def self_update(self, retrain_ml):
         tag = "back-testing + retraining ML" if retrain_ml else "back-testing"
-        log(f"🧠 Self-update ({tag}) on latest data…")
+        if self.auto_universe:
+            if (time.time() - self._last_universe_ts) >= 24 * 3600:
+                self.refresh_universe()
+            self._scan_pass()
+            candidates = self._shortlist()
+        else:
+            candidates = list(self.universe)
+        self.candidates = candidates
+        log(f"🧠 Self-update ({tag}) — {len(candidates)} candidates"
+            + (f" from {len(self.universe)} scanned" if self.auto_universe else ""))
+
         scored = []
-        for symbol in self.universe:
+        for symbol in candidates:
             try:
                 closes = self.ex.closes(symbol, self.interval, self.history)
             except Exception as e:
@@ -220,6 +292,12 @@ class Bot:
                 ranked.append(held)
         self.state["active"] = ranked
         self.state["last_optimize"] = iso()
+        # keep per-symbol maps from growing without bound over the rotation
+        keep = set(candidates) | set(self.state["positions"])
+        for d in (self.state["params"], self.state["scores"],
+                  self.state["ml_acc"]):
+            for k in [k for k in d if k not in keep]:
+                d.pop(k, None)
         save_state(self.state)
         log(f"✅ Self-update done. Trading: {ranked or '(none profitable)'}")
 
@@ -354,7 +432,7 @@ class Bot:
         save_state(self.state)
         try:
             dashboard.write_snapshot(
-                self.mode, self.universe, self.state["active"],
+                self.mode, self.candidates, self.state["active"],
                 self.state["params"], self.state["positions"],
                 self.state["scores"], self.state["ml_acc"],
                 self.state["trades"], self.state["equity"],
@@ -389,7 +467,9 @@ class Bot:
 
         learn = "real-time (every cycle)" if self.realtime \
             else f"every {self.optimize_hours}h"
-        log(f"Bot started — mode={self.mode}, universe={self.universe}, "
+        uni = (f"{len(self.universe)} pairs (auto)" if self.auto_universe
+               else str(self.universe))
+        log(f"Bot started — mode={self.mode}, universe={uni}, "
             f"interval={self.interval}, TOP_N={self.top_n}, "
             f"{self.quote_per_trade} quote/trade, learning={learn}, "
             f"poll={self.poll_seconds}s, ML retrain every {self.ml_retrain_min}m")
