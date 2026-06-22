@@ -1,14 +1,50 @@
 {
-  "updated": null,
+  "updated": "2026-06-22T19:39:47.826744+00:00",
   "mode": "dryrun",
-  "learning": {},
-  "regime": {},
-  "universe": ["BTCUSDT", "ETHUSDT", "BNBUSDT", "SOLUSDT", "XRPUSDT", "ADAUSDT"],
-  "active_symbols": [],
-  "last_optimize": null,
-  "equity_quote": 0,
-  "realized_pnl_quote": 0,
+  "learning": {
+    "realtime": true,
+    "poll_seconds": 30,
+    "ml_retrain_min": 10.0
+  },
+  "regime": {
+    "updated": "2026-06-22T19:39:47.825199+00:00",
+    "news_sentiment": -2,
+    "news_count": 25,
+    "fear_greed": null,
+    "fear_greed_label": null,
+    "allow_buys": true,
+    "risk_multiplier": 1.0,
+    "reason": "وضع طبيعي"
+  },
+  "account": {},
+  "universe": [
+    "BTCUSDT"
+  ],
+  "active_symbols": [
+    "BTCUSDT"
+  ],
+  "last_optimize": "2026-06-22T19:39:47.825583+00:00",
+  "equity_quote": 1104.0,
+  "realized_pnl_quote": 4.0,
   "positions": [],
-  "strategy": [],
-  "recent_trades": []
+  "strategy": [
+    {
+      "symbol": "BTCUSDT",
+      "params": {},
+      "backtest": {},
+      "ml_accuracy": null,
+      "active": true
+    }
+  ],
+  "recent_trades": [
+    {
+      "time": "2026-06-22T19:39:47.826573+00:00",
+      "symbol": "BTCUSDT",
+      "side": "SELL",
+      "price": 104.0,
+      "qty": 1.0,
+      "quote": 104.0,
+      "reason": "take-profit 4.0%"
+    }
+  ]
 }
