@@ -57,8 +57,17 @@
     <div class="stat"><div class="label">الرصيد (تقديري)</div><div class="value" id="equity">—</div></div>
     <div class="stat"><div class="label">الربح/الخسارة المحقّقة</div><div class="value" id="pnl">—</div></div>
     <div class="stat"><div class="label">صفقات مفتوحة</div><div class="value" id="openCount">—</div></div>
+    <div class="stat"><div class="label">التعلّم</div><div class="value" id="learnMode" style="font-size:.95rem">—</div></div>
+  </div>
+
+  <h2>أفضل الممارسات — حالة السوق اللحظية</h2>
+  <div class="grid">
+    <div class="stat"><div class="label">الخوف والطمع</div><div class="value" id="fng">—</div></div>
+    <div class="stat"><div class="label">مزاج الأخبار</div><div class="value" id="sentiment">—</div></div>
+    <div class="stat"><div class="label">الشراء الآن</div><div class="value" id="allowBuys">—</div></div>
     <div class="stat"><div class="label">آخر تحديث ذاتي</div><div class="value" id="lastOpt" style="font-size:.95rem">—</div></div>
   </div>
+  <div class="note" id="regimeReason" style="margin-top:10px">—</div>
 
   <h2>الصفقات المفتوحة</h2>
   <div class="scroll"><table id="posTable">
@@ -96,16 +105,30 @@ function ago(iso){
 function cls(v){return v>0?'up':v<0?'down':'';}
 function sign(v,d=2){return (v>0?'+':'')+fmt(v,d);}
 
+// On localhost we read the file the bot writes locally. On the published
+// website we read the snapshot the bot pushes to the "bot-live" branch.
+const host = location.hostname;
+const isLocal = host==='localhost' || host==='127.0.0.1' || host==='';
+const LIVE_BRANCH = 'bot-live';
+const REPO = 'salem0557/cloude';
+const SOURCES = isLocal
+  ? ['data/bot.json']
+  : [`https://raw.githubusercontent.com/${REPO}/${LIVE_BRANCH}/docs/crypto/data/bot.json`,
+     'data/bot.json'];
+
 async function load(){
-  try{
-    const r = await fetch('data/bot.json?t='+Date.now());
-    if(!r.ok) throw new Error('no file');
-    const d = await r.json();
-    render(d);
-  }catch(e){
-    $('status').innerHTML='لم يبدأ البوت بعد (لا يوجد <code>data/bot.json</code>). شغّل البوت لإنشاء البيانات.';
-    $('status').className='note warn';
+  for(const src of SOURCES){
+    try{
+      const r = await fetch(src + (src.includes('?')?'&':'?') + 't=' + Date.now());
+      if(!r.ok) continue;
+      const d = await r.json();
+      if(d && d.updated){ render(d); return; }
+    }catch(e){ /* try next source */ }
   }
+  $('status').innerHTML = isLocal
+    ? 'لم يبدأ البوت بعد (لا يوجد <code>data/bot.json</code>). شغّل البوت لإنشاء البيانات.'
+    : 'لا توجد بيانات منشورة بعد. فعّل <code>PUBLISH_DASHBOARD</code> في البوت لرفع الحالة.';
+  $('status').className='note warn';
 }
 
 function render(d){
@@ -118,6 +141,20 @@ function render(d){
   const pnl=$('pnl'); pnl.textContent=sign(d.realized_pnl_quote); pnl.className='value '+cls(d.realized_pnl_quote);
   $('openCount').textContent=(d.positions||[]).length;
   $('lastOpt').textContent=ago(d.last_optimize);
+
+  const L=d.learning||{};
+  $('learnMode').textContent = L.realtime ? ('لحظي ('+(L.poll_seconds||'?')+'ث)') : 'مجدوّل';
+
+  const R=d.regime||{};
+  $('fng').textContent = R.fear_greed==null ? '—' : (R.fear_greed+(R.fear_greed_label?(' · '+R.fear_greed_label):''));
+  const s=R.news_sentiment;
+  const se=$('sentiment');
+  se.textContent = s==null?'—':(s>0?'إيجابي +'+s:s<0?'سلبي '+s:'محايد');
+  se.className='value '+(s>0?'up':s<0?'down':'');
+  const ab=$('allowBuys');
+  ab.textContent = R.allow_buys===false?'متوقّف ⛔':'مسموح ✅';
+  ab.className='value '+(R.allow_buys===false?'down':'up');
+  $('regimeReason').textContent = R.reason || '—';
 
   const pb=$('posTable').querySelector('tbody'); pb.innerHTML='';
   (d.positions||[]).forEach(p=>{
