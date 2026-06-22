@@ -213,11 +213,32 @@ class Exchange:
         price = spent / qty if qty else price_hint
         return price, qty
 
+    def free_balance(self, asset):
+        """Free (sellable) balance of a base asset; 0.0 in dryrun/on error."""
+        if self.mode == "dryrun" or not self.client:
+            return 0.0
+        try:
+            bal = self.client.get_asset_balance(asset=asset)
+            return float(bal["free"]) if bal else 0.0
+        except Exception:
+            return 0.0
+
     def sell(self, symbol, qty, price_hint):
-        """Market sell ``qty`` base. Returns (fill_price, qty_sold)."""
+        """Market sell ``qty`` base. Returns (fill_price, qty_sold).
+
+        Caps the quantity to the asset we actually own — Binance takes a small
+        trading fee out of the bought amount, so selling the full recorded qty
+        would fail with -2010 (insufficient balance).
+        """
         if self.mode == "dryrun":
             return price_hint, qty
+        base = symbol[:-4] if symbol.endswith("USDT") else symbol
+        free = self.free_balance(base)
+        if free > 0:
+            qty = min(qty, free)
         qty = self._round_qty(qty, self.lot_step(symbol))
+        if qty <= 0:
+            raise RuntimeError(f"nothing to sell for {symbol} (free={free})")
         order = self.client.order_market_sell(symbol=symbol, quantity=qty)
         got = float(order.get("cummulativeQuoteQty", price_hint * qty))
         price = got / qty if qty else price_hint
