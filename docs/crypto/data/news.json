@@ -1,26 +1,40 @@
 {
-  "updated": "2026-06-23T04:44:16.116140+00:00",
+  "updated": "2026-06-23T08:45:30.178775+00:00",
   "news": [
     {
-      "title": "Taiwanese investors borrow heavily to ride the TSMC-fueled AI stock rally",
-      "url": "https://cryptobriefing.com/?p=264774",
+      "title": "JPMorgan upgrades IBM to Overweight, raises price target to $291",
+      "url": "https://cryptobriefing.com/?p=264939",
       "source": "Crypto Briefing",
-      "published": "2026-06-23T04:43:25+00:00",
-      "summary": "<p>Taiwan's heavy margin borrowing amid the AI stock rally risks market instability, potentially leading to a sharp correction if TSMC falters.</p> <p>The post <a href=\"https://cryptobriefing.com/taiwan-margin-debt-tsmc-ai-rally-2/\">Taiwanese investors borrow heavily to ride the "
+      "published": "2026-06-23T08:44:00+00:00",
+      "summary": "<p>IBM's strategic focus on AI and digital assets could drive significant growth, positioning it as a key player in future tech landscapes.</p> <p>The post <a href=\"https://cryptobriefing.com/jpmorgan-upgrades-ibm-overweight-price-target/\">JPMorgan upgrades IBM to Overweight, rai"
     },
     {
-      "title": "Meta To Pour $900 Million Into CRED as Its CEO Joins Meta",
-      "url": "https://beincrypto.com/?p=842050",
+      "title": "Ripple Secures Preliminary Luxembourg CASP Approval As EU Crypto Push Accelerates",
+      "url": "https://www.newsbtc.com/?p=902413",
+      "source": "NewsBTC",
+      "published": "2026-06-23T08:31:36+00:00",
+      "summary": "Ripple says it has secured preliminary Crypto Asset Service Provider approval in Luxembourg, giving the company another regulatory foothold as Europe’s MiC"
+    },
+    {
+      "title": "OpenAI Pitches Chatbot Ads at Cannes as $1 Trillion IPO Looms",
+      "url": "https://beincrypto.com/?p=842097",
       "source": "BeInCrypto",
-      "published": "2026-06-23T04:19:55+00:00",
-      "summary": "<p>Meta will lead a $900 million (&#8377;8,550 crore) Series H round in Indian fintech CRED, valuing the company at $4.5 billion (&#8377;43,239 crore) post-money.&#160; The deal combines primary and secondary share purchases. In addition, founder Kunal Shah will step down as CEO "
+      "published": "2026-06-23T08:31:01+00:00",
+      "summary": "<p>OpenAI debuted its ChatGPT ad pitch at Cannes Lions, but top executives and users are pushing back hard.</p> <p>The post <a href=\"https://beincrypto.com/openai-chatgpt-ads-cannes-advertiser-pushback/\">OpenAI Pitches Chatbot Ads at Cannes as $1 Trillion IPO Looms</a> appeared f"
     },
     {
-      "title": "Crypto Institutional Flows Turn Negative as $8B Exits in 30 Days",
-      "url": "https://cryptopotato.com/?p=1440644",
-      "source": "CryptoPotato",
-      "published": "2026-06-23T03:45:14+00:00",
-      "summary": "According to analysts, Bitcoin's drop from $82K to $62K could prove more meaningful than the previous pullback from $102K to $82K."
+      "title": "Ripple Scores Massive MiCA License Win in Europe",
+      "url": "https://u.today/ripple-scores-massive-mica-license-win-in-europe",
+      "source": "U.Today",
+      "published": "2026-06-23T07:50:16+00:00",
+      "summary": "Blockchain payments firm Ripple has secured preliminary approval for a Crypto Asset Service Provider (CASP) license from Luxembourg's financial regulator."
+    },
+    {
+      "title": "Bitwise XRP ETF Crosses $200M in Year-to-Date Inflows",
+      "url": "https://u.today/bitwise-xrp-etf-crosses-200m-in-year-to-date-inflows",
+      "source": "U.Today",
+      "published": "2026-06-23T06:30:29+00:00",
+      "summary": "Institutional demand for the Ripple-linked cryptocurrency XRP is surging against broader bearish trends."
     },
     {
       "title": "$8.5M DeFi vault pulled overnight: The wake-up call for traders chasing high yields",
@@ -35,13 +49,6 @@
       "source": "U.Today",
       "published": "2026-06-23T00:01:00+00:00",
       "summary": "Most investors on the cryptocurrency market haven't yet given up as they try to push assets to their local resistance zones."
-    },
-    {
-      "title": "Strive Adds 759 Bitcoin As Corporate BTC Treasury Race Continues",
-      "url": "https://www.newsbtc.com/?p=902367",
-      "source": "NewsBTC",
-      "published": "2026-06-22T23:45:57+00:00",
-      "summary": "Strive reportedly bought 759 BTC at about $65,850, lifting its Bitcoin holdings to 19,864 BTC."
     },
     {
       "title": "Comparing Bitcoin Giant Strategy to Terra Luna Is a STRC, Benchmark Says",
@@ -189,16 +196,19 @@
       "source": "U.Today",
       "published": "2026-06-21T11:22:45+00:00",
       "summary": "Consensys CEO Joseph Lubin has stepped forward to fiercely defend Vitalik Buterin’s unexpected pivot to writing a science-fiction novel."
-    },
-    {
-      "title": "Ripple to Recruit GenAI Staff as XRPL Activates AI Agent Payments",
-      "url": "https://u.today/ripple-to-recruit-genai-staff-as-xrpl-activates-ai-agent-payments",
-      "source": "U.Today",
-      "published": "2026-06-21T10:57:09+00:00",
-      "summary": "Ripple has activated AI Agent payments on XRP Ledger and it is seeking to expand its workforce to effectively allow machines to make transactions with XRP and RLUSD."
     }
   ],
   "rumors": [
+    {
+      "title": "Why Is the Ripple (XRP) Price Down This Week? (June 23)",
+      "url": "https://cryptopotato.com/?p=1440727",
+      "source": "CryptoPotato",
+      "published": "2026-06-23T08:02:37+00:00",
+      "summary": "XRP is down 10% on the weekly chart, with the $1 support on sight. Will buyers return there? Ripple (XRP) Price Predictions: Analysis Key support levels: $1 Key resistance levels: $1.3, $1.6, $2 Sellers Eye $1 After the bearish retest of the $1.3 resistance, sellers returned in f",
+      "tags": [
+        "Prediction"
+      ]
+    },
     {
       "title": "$1.8 Trillion Asset Manager Launches Crypto Division",
       "url": "https://u.today/18-trillion-asset-manager-launches-crypto-division",
@@ -217,16 +227,6 @@
       "summary": "Solana is set to integrate with a South Korean digital bank to explore cross-border stablecoin payments and global remittances via its network.",
       "tags": [
         "Prediction"
-      ]
-    },
-    {
-      "title": "Shiba Inu (SHIB) Exchanges Offload 24.5 Billion SHIB in 24 Hours: What to Expect From the Price?",
-      "url": "https://u.today/shiba-inu-shib-exchanges-offload-245-billion-shib-in-24-hours-what-to-expect-from-the-price",
-      "source": "U.Today",
-      "published": "2026-06-21T10:33:00+00:00",
-      "summary": "Pressure on Shiba Inu's price might drop substantially as investors pull off from centralized exchanges.",
-      "tags": [
-        "Meme"
       ]
     }
   ],
