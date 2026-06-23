@@ -99,6 +99,35 @@ def _parse(text):
     return None, None
 
 
+def probe():
+    """One-shot startup check: is a working LLM sentiment provider configured?
+
+    Returns (ok: bool, detail: str). Makes a tiny live call so an invalid key or
+    wrong model name is caught immediately instead of silently falling back to
+    keyword scoring forever.
+    """
+    provider = _provider()
+    if not provider:
+        return False, "no key set (using keyword fallback)"
+    model = (os.environ.get("GEMINI_MODEL", "gemini-flash-latest")
+             if provider == "gemini"
+             else os.environ.get("GROQ_MODEL", "llama-3.3-70b-versatile"))
+    try:
+        text = (_call_gemini("Reply with the single number 1.")
+                if provider == "gemini"
+                else _call_groq("Reply with the single number 1."))
+        if text and re.search(r"\d", text):
+            return True, f"{provider}:{model}"
+        return False, f"{provider}:{model} returned no usable text"
+    except Exception as e:
+        msg = str(e)
+        if "404" in msg:
+            msg += "  → wrong model name? set GEMINI_MODEL / GROQ_MODEL"
+        elif "400" in msg or "401" in msg or "403" in msg:
+            msg += "  → check the API key"
+        return False, f"{provider}:{model} — {msg[:120]}"
+
+
 def sentiment(headlines, ttl=_TTL):
     """(score in [-1,1], reason) from an LLM, or (None, None) if unavailable."""
     provider = _provider()
