@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-23T13:19:35+00:00",
+ "updated": "2026-06-23T17:24:13+00:00",
  "jobs": [
   {
    "title": "General Manager (Logistics & Supply Chain)",
@@ -9,7 +9,8 @@
    "posted": "2026-06-23",
    "source": "LinkedIn",
    "keywords": [
-    "Operations Manager"
+    "Operations Manager",
+    "Supply Chain"
    ],
    "first_seen": "2026-06-23"
   },
@@ -46,7 +47,8 @@
    "posted": "2026-06-23",
    "source": "LinkedIn",
    "keywords": [
-    "Mechanical Engineer"
+    "Mechanical Engineer",
+    "Maintenance Engineer"
    ],
    "first_seen": "2026-06-23"
   },
@@ -55,6 +57,55 @@
    "company": "Aljazea Contracting&Trading",
    "location": "Riyadh Region",
    "url": "https://sa.linkedin.com/jobs/view/mechanical-engineer-at-aljazea-contracting-trading-4425786396",
+   "posted": "2026-06-23",
+   "source": "LinkedIn",
+   "keywords": [
+    "Mechanical Engineer"
+   ],
+   "first_seen": "2026-06-23"
+  },
+  {
+   "title": "مدير مشتريات الصيدلية",
+   "company": "Al Farabi Medical Group",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/%D9%85%D8%AF%D9%8A%D8%B1-%D9%85%D8%B4%D8%AA%D8%B1%D9%8A%D8%A7%D8%AA-%D8%A7%D9%84%D8%B5%D9%8A%D8%AF%D9%84%D9%8A%D8%A9-at-al-farabi-medical-group-4432276541",
+   "posted": "2026-06-23",
+   "source": "LinkedIn",
+   "keywords": [
+    "Supply Chain"
+   ],
+   "first_seen": "2026-06-23"
+  },
+  {
+   "title": "Operative Tool Stores",
+   "company": "Riyadh Air | طيران الرياض",
+   "location": "Riyadh Region",
+   "url": "https://sa.linkedin.com/jobs/view/operative-tool-stores-at-riyadh-air-%D8%B7%D9%8A%D8%B1%D8%A7%D9%86-%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6-4423232354",
+   "posted": "2026-06-23",
+   "source": "LinkedIn",
+   "keywords": [
+    "Supply Chain",
+    "Logistics"
+   ],
+   "first_seen": "2026-06-23"
+  },
+  {
+   "title": "Mechanical Engineer (Crusher)",
+   "company": "SJ Group",
+   "location": "Riyadh Region",
+   "url": "https://sa.linkedin.com/jobs/view/mechanical-engineer-crusher-at-sj-group-4432294465",
+   "posted": "2026-06-23",
+   "source": "LinkedIn",
+   "keywords": [
+    "Mechanical Engineer"
+   ],
+   "first_seen": "2026-06-23"
+  },
+  {
+   "title": "HVAC Mechanical Engineers",
+   "company": "‏Zamil Services",
+   "location": "Riyadh Region",
+   "url": "https://sa.linkedin.com/jobs/view/hvac-mechanical-engineers-at-%E2%80%8Fzamil-services-4432277799",
    "posted": "2026-06-23",
    "source": "LinkedIn",
    "keywords": [
