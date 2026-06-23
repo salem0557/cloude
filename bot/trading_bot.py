@@ -210,6 +210,11 @@ class Bot:
             in ("1", "true", "yes", "on")
         self.trend_symbol = (cfg("MARKET_TREND_SYMBOL", "BTCUSDT") or "BTCUSDT").upper()
         self.trend_ma = int(cfg("MARKET_TREND_MA", "200"))
+        # Judge the broad trend on its OWN (higher) timeframe, decoupled from the
+        # fast trading INTERVAL. On a 5m trading interval, MA200 of 5m candles is
+        # only ~16h of price — far too noisy, flipping bull/bear on every wiggle
+        # and needlessly pausing buys. 30m gives MA200 ≈ 4 days = a real trend.
+        self.trend_interval = (cfg("MARKET_TREND_INTERVAL", "30m") or "30m")
         self.market_bull = True
         self.market_trend_reason = "—"
         self._last_trend_ts = 0.0
@@ -217,6 +222,11 @@ class Bot:
         # volatility exceeds this % (degenerate microcaps where the optimizer
         # over-fits worst and stops are whipsawed). 0 = off.
         self.max_volatility = float(cfg("MAX_VOLATILITY_PCT", "6") or 0)
+        # Maturity filter: keep brand-new listings out of the auto universe. Their
+        # tiny history can't be back-tested honestly (it scores 0 = inactive
+        # anyway) and they're the most manipulation-prone. 0 = off. Only affects
+        # AUTO_UNIVERSE scanning; your fixed SYMBOLS basket is never filtered.
+        self.min_listing_days = int(cfg("MIN_LISTING_DAYS", "30") or 0)
         # Derivatives gate (free Binance futures data): veto a buy when funding
         # is euphoric/crowded-long. Off = DERIVATIVES_GATE=false.
         self.deriv_gate = (cfg("DERIVATIVES_GATE", "true") or "").lower() \
@@ -300,6 +310,12 @@ class Bot:
         self._scan_cursor = (self._scan_cursor + len(batch)) % n
         for symbol in batch:
             try:
+                # Maturity gate: drop brand-new listings (too little history to
+                # back-test honestly, most manipulation-prone). Cached per coin.
+                if self.min_listing_days > 0 and \
+                        self.ex.listing_days(symbol) < self.min_listing_days:
+                    drops.append(symbol)
+                    continue
                 closes = self.ex.closes(symbol, self.interval,
                                         min(self.history, 200))
                 if len(closes) >= 60:
@@ -698,7 +714,7 @@ class Bot:
         self._last_trend_ts = time.time()
         try:
             need = self.trend_ma + 5
-            closes = self.ex.closes(self.trend_symbol, self.interval,
+            closes = self.ex.closes(self.trend_symbol, self.trend_interval,
                                     max(self.history, need))
             if len(closes) < self.trend_ma:
                 self.market_bull = True        # not enough data → don't block
@@ -709,11 +725,11 @@ class Bot:
                 bull = price >= ma
                 if bull != self.market_bull:
                     log(f"🧭 market trend → {'BULL (longs on)' if bull else 'BEAR (longs paused)'}: "
-                        f"{self.trend_symbol} {price:.0f} vs MA{self.trend_ma} {ma:.0f}")
+                        f"{self.trend_symbol} {price:.0f} vs MA{self.trend_ma}@{self.trend_interval} {ma:.0f}")
                 self.market_bull = bull
                 self.market_trend_reason = (
                     f"{self.trend_symbol} {price:.0f} "
-                    f"{'≥' if bull else '<'} MA{self.trend_ma} {ma:.0f}")
+                    f"{'≥' if bull else '<'} MA{self.trend_ma}@{self.trend_interval} {ma:.0f}")
         except Exception as e:
             log(f"market-trend error: {e}")
             self.market_bull = True
