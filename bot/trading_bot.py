@@ -189,6 +189,11 @@ class Bot:
         self.smart_gate = (cfg("SMART_MONEY_GATE", "true") or "").lower() \
             in ("1", "true", "yes", "on")
         self.smart_min = float(cfg("SMART_MONEY_MIN", "0.8") or 0.8)
+        # Pause switch: when on, the bot opens NO new positions but still
+        # manages and exits open ones safely (stop-loss / trailing / take-profit
+        # all keep working). Set PAUSE_TRADING=true in Railway to halt buying.
+        self.pause_trading = (cfg("PAUSE_TRADING", "false") or "").lower() \
+            in ("1", "true", "yes", "on")
         self._last_skip_log = {}
         self.start_equity = float(cfg("PAPER_EQUITY", "1000"))
 
@@ -443,6 +448,11 @@ class Bot:
                 reason = "trend exit"
             if reason:
                 self.close_position(symbol, price, reason)
+        elif self.pause_trading:
+            # Trading paused: open no new positions (open ones are still managed
+            # and exited by the block above).
+            if signal == "buy":
+                self._skip_log(symbol, "trading paused (PAUSE_TRADING=true)")
         else:
             ml_ok = (ml_prob is None) or (ml_prob >= self.ml_threshold)
             # The news gate can veto buys on strong negative news; let users
