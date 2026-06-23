@@ -1,26 +1,47 @@
 {
-  "updated": "2026-06-23T15:37:42.574703+00:00",
+  "updated": "2026-06-23T18:26:39.747327+00:00",
   "news": [
     {
-      "title": "Vitalik details Ethereum reset as Foundation cuts budget 40%",
-      "url": "https://cryptobriefing.com/?p=265490",
+      "title": "Trump threatens to cancel meetings if Iran denies IAEA inspections",
+      "url": "https://cryptobriefing.com/?p=265749",
       "source": "Crypto Briefing",
-      "published": "2026-06-23T15:34:42+00:00",
-      "summary": "<p>Vitalik Buterin outlined the sacrifices behind the Ethereum Foundations 40% budget cut and his long term lean and done vision for the protocol.</p> <p>The post <a href=\"https://cryptobriefing.com/vitalik-details-ethereum-reset-as-foundation-cuts-budget-40/\">Vitalik details Eth"
+      "published": "2026-06-23T18:24:46+00:00",
+      "summary": "<p>Trump's ultimatum could escalate tensions, impacting global diplomacy and markets, especially if diplomatic channels are suspended.</p> <p>The post <a href=\"https://cryptobriefing.com/trump-iran-iaea-inspections-threat/\">Trump threatens to cancel meetings if Iran denies IAEA i"
     },
     {
-      "title": "Ethereum Foundation Executive Says MEV Is Becoming Crypto’s Next Cypherpunk Fight",
-      "url": "https://www.newsbtc.com/?p=902418",
+      "title": "Digital Euro Clears Key Parliament Hurdle As Europe Pushes CBDC Plan Forward",
+      "url": "https://www.newsbtc.com/?p=902456",
       "source": "NewsBTC",
-      "published": "2026-06-23T15:30:54+00:00",
-      "summary": "Ethereum’s internal debate over maximal extractable value has moved back into the spotlight after Ethereum Foundation executive Bastian Aue framed toxic ME"
+      "published": "2026-06-23T18:00:53+00:00",
+      "summary": "The European Central Bank’s digital euro project secured key parliamentary backing on Tuesday. The vote moves Europe in the opposite direction from US lawm"
     },
     {
-      "title": "Ethereum Foundation Cuts 20% of Workforce in 'Leaner' Reorganization",
-      "url": "https://decrypt.co/?p=371864",
-      "source": "Decrypt",
-      "published": "2026-06-23T15:19:46+00:00",
-      "summary": "The non-profit is cutting 54 jobs as it reorganizes into focused \"clusters,\" following a succession of leadership departures."
+      "title": "Bank of America Raises Micron Target to $1,500 Ahead of Results: Are Traders Buying It?",
+      "url": "https://beincrypto.com/?p=842307",
+      "source": "BeInCrypto",
+      "published": "2026-06-23T18:00:00+00:00",
+      "summary": "<p>Bank of America raised its Micron stock price target to $1,500 from $950, spotlighting the memory maker that sits beside Nvidia at the heart of the AI build-out. Micron has run almost 300% in 2026 to record highs, so a beat is already expected. The edge now sits in positioning"
+    },
+    {
+      "title": "Bitcoin price faces midweek squeeze that will decide whether $60,000 holds",
+      "url": "https://cryptoslate.com/?p=543231",
+      "source": "CryptoSlate",
+      "published": "2026-06-23T17:10:22+00:00",
+      "summary": "<p>Bitcoin price faces back-to-back tests this week, with May PCE coming out on Thursday at 8:30 a.m. EDT and more than $10 billion in Bitcoin options settling on Deribit at 08:00 UTC Friday in the quarterly expiry that closes the second quarter. Bitcoin is trading near $62,500 a"
+    },
+    {
+      "title": "Ethereum Foundation Cuts 20% of Workforce",
+      "url": "https://u.today/ethereum-foundation-cuts-20-of-workforce",
+      "source": "U.Today",
+      "published": "2026-06-23T15:50:38+00:00",
+      "summary": "The Ethereum Foundation has cut roughly 20% of its workforce and plans to reduce its budget by about 40% as it shifts toward a leaner, endowment-based model."
+    },
+    {
+      "title": "XRP Whale Fights $30 Million Liquidation, Banking on Historical July Rally",
+      "url": "https://u.today/xrp-whale-fights-30-million-liquidation-banking-on-historical-july-rally",
+      "source": "U.Today",
+      "published": "2026-06-23T15:31:00+00:00",
+      "summary": "An XRP whale faces a $30 million wipeout with zero free margin left to defend their positions as weekly losses on Hyperliquid top $3.4 million already."
     },
     {
       "title": "Tron Flips Ethereum and Solana With 3.93M Daily Active Addresses",
@@ -28,13 +49,6 @@
       "source": "U.Today",
       "published": "2026-06-23T15:17:30+00:00",
       "summary": "Tron becomes one of the most active blockchains as user participation increases, recording nearly 4 million active addresses in just one day."
-    },
-    {
-      "title": "US Dollar Index Hits 13-Month High Above 100, Summer Warning for Crypto and Stocks",
-      "url": "https://beincrypto.com/?p=842206",
-      "source": "BeInCrypto",
-      "published": "2026-06-23T15:00:00+00:00",
-      "summary": "<p>The US Dollar Index broke above 100 to a 13-month high, a warning sign for crypto and stocks this summer.</p> <p>The post <a href=\"https://beincrypto.com/us-dollar-index-hits-13-month-high-above-100-summer-warning-for-crypto-and-stocks/\">US Dollar Index Hits 13-Month High Abov"
     },
     {
       "title": "Solana Under Pressure? Whale Places $38 Million Short Against SOL",
@@ -168,41 +182,27 @@
       "source": "U.Today",
       "published": "2026-06-22T12:30:00+00:00",
       "summary": "Signing Hyperliquid off isn't the best idea as HYPE proven to be one of more resilient assets on the modern cryptocurrency market."
-    },
-    {
-      "title": "XRP Ledger Activity Almost at Zero: Why Did Payments Dive to 0?",
-      "url": "https://u.today/xrp-ledger-activity-almost-at-zero-why-did-payments-dive-to-0",
-      "source": "U.Today",
-      "published": "2026-06-22T10:25:00+00:00",
-      "summary": "XRPL payment activity and active user counts abruptly dropped to near zero in a single day."
-    },
-    {
-      "title": "Just $13 SHIB Burned in 24 Hours: What's Behind Shiba Inu Burn Rate Drop of 74%",
-      "url": "https://u.today/just-13-shib-burned-in-24-hours-whats-behind-shiba-inu-burn-rate-drop-of-74",
-      "source": "U.Today",
-      "published": "2026-06-22T09:50:20+00:00",
-      "summary": "Shiba Inu sees surprisingly low SHIB figure burned in the past day, with reasons explained."
     }
   ],
   "rumors": [
     {
-      "title": "Trump’s quantum computing push puts $449 billion in “exposed Bitcoin” back in the limelight",
-      "url": "https://cryptoslate.com/?p=543528",
-      "source": "CryptoSlate",
-      "published": "2026-06-23T15:20:45+00:00",
-      "summary": "<p>On June 22, President Donald Trump signed two executive orders that put the federal government’s most sensitive civilian computer systems on a 2031 post-quantum security timetable while launching a national effort to accelerate the development of advanced quantum computers. On",
+      "title": "Donald Trump Launches US Quantum Push With Two Executive Orders",
+      "url": "https://cryptopotato.com/?p=1440745",
+      "source": "CryptoPotato",
+      "published": "2026-06-23T18:15:24+00:00",
+      "summary": "The White House warned that adversaries could steal encrypted data today and decrypt it later using future large-scale quantum computers.",
       "tags": [
         "Launch"
       ]
     },
     {
-      "title": "XRP’s Price Could Explode to $8, But This One Zone Is Holding It Back",
-      "url": "https://cryptopotato.com/?p=1440703",
-      "source": "CryptoPotato",
-      "published": "2026-06-23T14:45:16+00:00",
-      "summary": "New data suggests that XRP's current position below the Central Line resembles previous accumulation phases before major price expansions.",
+      "title": "A New OpenClaw Competitor: ToqanClaw Promises Privacy in AI Agent Race",
+      "url": "https://decrypt.co/?p=371869",
+      "source": "Decrypt",
+      "published": "2026-06-23T17:06:52+00:00",
+      "summary": "Prosus launched ToqanClaw, a no-code AI platform positioned as an European alternative to AI agents like OpenClaw.",
       "tags": [
-        "Speculation"
+        "Launch"
       ]
     },
     {
