@@ -26,9 +26,11 @@ import json
 import os
 import re
 import time
+import urllib.error
 import urllib.request
 
 _TTL = 1800
+_RETRY_CODES = {429, 500, 502, 503, 504}   # transient — worth a quick retry
 _CACHE = {"t": 0.0, "key": None, "result": (None, None)}
 
 _PROMPT = (
@@ -50,11 +52,33 @@ def _provider():
     return None
 
 
-def _post(url, payload, headers, timeout=25):
+def _post(url, payload, headers, timeout=25, retries=3):
+    """POST JSON with a short retry on transient server errors (503/429/...).
+
+    Provider endpoints occasionally return 503 when momentarily overloaded; a
+    couple of backed-off retries turn those blips into a success instead of an
+    unnecessary fallback to keyword scoring."""
     data = json.dumps(payload).encode("utf-8")
-    req = urllib.request.Request(url, data=data, headers=headers, method="POST")
-    with urllib.request.urlopen(req, timeout=timeout) as r:
-        return json.load(r)
+    last = None
+    for attempt in range(retries):
+        try:
+            req = urllib.request.Request(url, data=data, headers=headers,
+                                         method="POST")
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                return json.load(r)
+        except urllib.error.HTTPError as e:
+            last = e
+            if e.code in _RETRY_CODES and attempt < retries - 1:
+                time.sleep(1.5 * (attempt + 1))
+                continue
+            raise
+        except Exception as e:
+            last = e
+            if attempt < retries - 1:
+                time.sleep(1.5 * (attempt + 1))
+                continue
+            raise
+    raise last
 
 
 def _call_gemini(prompt):
