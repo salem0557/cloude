@@ -35,6 +35,7 @@ from datetime import datetime, timezone, date
 from pathlib import Path
 
 from exchange import Exchange, usdt_universe
+from indicators import sma_series
 from optimizer import optimize_symbol
 from strategy import latest_signal, merge_params, DEFAULT_PARAMS
 from backtest import run_backtest
@@ -194,6 +195,21 @@ class Bot:
         # all keep working). Set PAUSE_TRADING=true in Railway to halt buying.
         self.pause_trading = (cfg("PAUSE_TRADING", "false") or "").lower() \
             in ("1", "true", "yes", "on")
+        # Market-trend filter: don't open longs while the broad market is in a
+        # downtrend (price of MARKET_TREND_SYMBOL below its long moving average).
+        # A long-only bot bleeds buying dips that keep falling; this keeps it flat
+        # in bear phases. Off = MARKET_TREND_FILTER=false.
+        self.trend_filter = (cfg("MARKET_TREND_FILTER", "true") or "").lower() \
+            in ("1", "true", "yes", "on")
+        self.trend_symbol = (cfg("MARKET_TREND_SYMBOL", "BTCUSDT") or "BTCUSDT").upper()
+        self.trend_ma = int(cfg("MARKET_TREND_MA", "200"))
+        self.market_bull = True
+        self.market_trend_reason = "—"
+        self._last_trend_ts = 0.0
+        # Coin-quality filter: skip auto-discovered coins whose recent per-bar
+        # volatility exceeds this % (degenerate microcaps where the optimizer
+        # over-fits worst and stops are whipsawed). 0 = off.
+        self.max_volatility = float(cfg("MAX_VOLATILITY_PCT", "6") or 0)
         self._last_skip_log = {}
         self.start_equity = float(cfg("PAPER_EQUITY", "1000"))
 
@@ -272,10 +288,28 @@ class Bot:
                 closes = self.ex.closes(symbol, self.interval,
                                         min(self.history, 200))
                 if len(closes) >= 60:
+                    # Quality gate: drop hyper-volatile microcaps (whipsaw stops
+                    # + worst over-fitting) before they can become candidates.
+                    if self.max_volatility > 0 and \
+                            self._recent_vol_pct(closes) > self.max_volatility:
+                        drops.append(symbol)
+                        continue
                     updates[symbol] = run_backtest(closes, DEFAULT_PARAMS)["score"]
             except Exception:
                 drops.append(symbol)
         return updates, drops
+
+    @staticmethod
+    def _recent_vol_pct(closes, n=30):
+        """Std-dev of the last ``n`` per-bar returns, as a percentage."""
+        window = closes[-(n + 1):]
+        rets = [window[j] / window[j - 1] - 1.0
+                for j in range(1, len(window)) if window[j - 1]]
+        if len(rets) < 2:
+            return 0.0
+        mean = sum(rets) / len(rets)
+        var = sum((r - mean) ** 2 for r in rets) / len(rets)
+        return var ** 0.5 * 100
 
     def _shortlist(self, scan_scores):
         """Best-scoring scanned coins (plus anything we currently hold)."""
@@ -459,7 +493,8 @@ class Bot:
             # turn it off (NEWS_GATE=false) — handy since a deployed news.json
             # can be stale and would otherwise block all trading.
             regime_ok = (not self.news_gate) or self.regime.get("allow_buys", True)
-            if signal == "buy" and ml_ok and regime_ok:
+            trend_ok = (not self.trend_filter) or self.market_bull
+            if signal == "buy" and ml_ok and regime_ok and trend_ok:
                 # Smart-money confirmation: fetched only now (a buy is otherwise
                 # approved) and cached, so it never touches the fast exit loop.
                 bias = smart_money.long_short_bias(symbol)
@@ -471,6 +506,8 @@ class Bot:
                                    f"(L/S {bias:.2f} < {self.smart_min})")
                 else:
                     self.open_position(symbol, price)
+            elif signal == "buy" and not trend_ok:
+                self._skip_log(symbol, f"market downtrend ({self.market_trend_reason})")
             elif signal == "buy" and not regime_ok:
                 self._skip_log(symbol, "best-practices: "
                                f"{self.regime.get('reason')}")
@@ -547,6 +584,7 @@ class Bot:
                 self.check_daily_limit()
                 self._refresh_balance()
                 self._refresh_regime()
+                self._refresh_market_trend()
                 now_ts = time.time()
                 learn_interval = self.learn_seconds if self.realtime \
                     else self.optimize_hours * 3600
@@ -579,6 +617,36 @@ class Bot:
             log(f"💰 balance: {summ['total_usdt']} USDT total, "
                 f"{summ['free_usdt']} USDT free")
         self._last_bal_ts = time.time()
+
+    def _refresh_market_trend(self):
+        """Update the broad-market bull/bear flag (BTC vs its long MA)."""
+        if not self.trend_filter:
+            self.market_bull = True
+            return
+        if (time.time() - self._last_trend_ts) < 120:
+            return
+        self._last_trend_ts = time.time()
+        try:
+            need = self.trend_ma + 5
+            closes = self.ex.closes(self.trend_symbol, self.interval,
+                                    max(self.history, need))
+            if len(closes) < self.trend_ma:
+                self.market_bull = True        # not enough data → don't block
+                return
+            ma = sma_series(closes, self.trend_ma)[-1]
+            price = closes[-1]
+            if ma:
+                bull = price >= ma
+                if bull != self.market_bull:
+                    log(f"🧭 market trend → {'BULL (longs on)' if bull else 'BEAR (longs paused)'}: "
+                        f"{self.trend_symbol} {price:.0f} vs MA{self.trend_ma} {ma:.0f}")
+                self.market_bull = bull
+                self.market_trend_reason = (
+                    f"{self.trend_symbol} {price:.0f} "
+                    f"{'≥' if bull else '<'} MA{self.trend_ma} {ma:.0f}")
+        except Exception as e:
+            log(f"market-trend error: {e}")
+            self.market_bull = True
 
     def _refresh_regime(self):
         if (time.time() - self._last_regime_ts) < 120:

@@ -11,6 +11,10 @@ from __future__ import annotations
 from strategy import signals as strategy_signals, merge_params
 
 FEE_PCT = 0.1  # round-trip-ish fee/slippage assumption per side (%)
+# Below this many trades a window's result is thin/noisy, so its score is
+# gently penalised (a nudge, not a hammer — low-frequency trend trades are
+# legitimate). The walk-forward train/test split is the real over-fit defence.
+MIN_TRADES = 3
 
 
 def run_backtest(closes, params, fee_pct=FEE_PCT):
@@ -61,8 +65,13 @@ def run_backtest(closes, params, fee_pct=FEE_PCT):
     return_pct = (final_equity - 1.0) * 100
     win_rate = (wins / trades * 100) if trades else 0.0
 
-    # Score rewards return, penalises drawdown, and ignores no-trade settings.
-    score = return_pct - 0.5 * max_dd
+    # Score rewards return, penalises drawdown, REWARDS a high win rate, and
+    # punishes thin samples so a single lucky trade can't win the grid-search.
+    # (A 1-trade +20% fluke used to out-score a robust 30-trade strategy — that
+    # over-fitting was a primary cause of live losses.)
+    score = return_pct - 0.5 * max_dd + (win_rate - 50.0) * 0.10
+    if 0 < trades < MIN_TRADES:
+        score -= (MIN_TRADES - trades) * 1.5
     if trades == 0:
         score = -999.0
 
