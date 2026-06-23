@@ -145,9 +145,9 @@ class Bot:
                                if s.strip()]
         # AUTO_UNIVERSE: scan ALL tradable USDT pairs (by liquidity) instead of
         # a fixed basket, then deep-optimize only a rolling shortlist.
-        self.auto_universe = (cfg("AUTO_UNIVERSE", "") or "").lower() \
+        self.auto_universe = (cfg("AUTO_UNIVERSE", "true") or "").lower() \
             in ("1", "true", "yes", "on")
-        self.min_quote_volume = float(cfg("MIN_QUOTE_VOLUME", "5000000"))
+        self.min_quote_volume = float(cfg("MIN_QUOTE_VOLUME", "20000000"))
         self.max_universe = int(cfg("MAX_UNIVERSE", "250"))
         self.scan_batch = int(cfg("SCAN_BATCH", "30"))
         self.shortlist_n = int(cfg("SHORTLIST", "12"))
@@ -168,9 +168,9 @@ class Bot:
         # Heavy scan/optimize runs every LEARN_SECONDS (not every poll), so
         # position-exit checks stay fast and react to price within POLL_SECONDS.
         self.learn_seconds = float(cfg("LEARN_SECONDS", "60"))
-        self.top_n = int(cfg("TOP_N", "3"))
+        self.top_n = int(cfg("TOP_N", "5"))
         self.history = int(cfg("HISTORY", "500"))
-        self.max_open = int(cfg("MAX_OPEN_POSITIONS", "3"))
+        self.max_open = int(cfg("MAX_OPEN_POSITIONS", "5"))
         self.daily_loss_limit = float(cfg("DAILY_LOSS_LIMIT", "0") or 0)
         # Trailing stop: ride the rise, sell when price pulls back this % from
         # its peak. 0 = off (use the fixed take-profit instead).
