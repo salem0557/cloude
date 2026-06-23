@@ -37,7 +37,7 @@ from pathlib import Path
 from exchange import Exchange, usdt_universe
 from indicators import sma_series
 from optimizer import optimize_symbol
-from strategy import latest_signal, merge_params, DEFAULT_PARAMS, use_scalp
+from strategy import latest_signal, merge_params, DEFAULT_PARAMS, use_scalp, strategy_mode
 from backtest import run_backtest
 import ml_model
 import best_practices
@@ -414,9 +414,9 @@ class Bot:
                 # volume + high/low now feed the model alongside price.
                 new_ml[symbol] = ml_model.train(symbol, closes, highs, lows, vols)
             scored.append((symbol, metrics["score"]))
-            log(f"   {symbol}: score={metrics['score']} "
-                f"ret={metrics['return_pct']}% win={metrics['win_rate']}% "
-                f"fast={params['fast']} slow={params['slow']}")
+            log(f"   {symbol}: {params.get('strategy', '-')} "
+                f"score={metrics['score']} ret={metrics['return_pct']}% "
+                f"win={metrics['win_rate']}% trades={metrics['trades']}")
 
         # Rank by back-test score, but PREFER coins whose ML model has a proven
         # out-of-sample edge (>= MIN_EDGE) and demote those without one, so the
@@ -807,8 +807,10 @@ class Bot:
 
         uni = (f"{len(self.universe)} pairs (auto)" if self.auto_universe
                else str(self.universe))
-        strat = "scalp" if use_scalp() else "crossover"
-        log(f"Bot started — mode={self.mode}, strategy={strat}, universe={uni}, "
+        strat = strategy_mode()
+        nstrat = 10 if strat in ("auto", "all") else 1
+        log(f"Bot started — mode={self.mode}, strategy={strat} ({nstrat} competing), "
+            f"universe={uni}, "
             f"interval={self.interval}, TOP_N={self.top_n}, "
             f"{self.quote_per_trade} quote/trade, poll={self.poll_seconds}s, "
             f"learn every {self.learn_seconds}s (background)")
