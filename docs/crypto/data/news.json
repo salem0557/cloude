@@ -1,33 +1,54 @@
 {
-  "updated": "2026-06-23T20:37:10.589447+00:00",
+  "updated": "2026-06-23T22:50:09.585125+00:00",
   "news": [
     {
-      "title": "Crypto fees drop 45% on average in 2026 as DEX fees crater over 50%",
-      "url": "https://cryptobriefing.com/?p=265956",
+      "title": "Croatia faces Panama in World Cup clash as crypto prediction markets heat up",
+      "url": "https://cryptobriefing.com/?p=266185",
       "source": "Crypto Briefing",
-      "published": "2026-06-23T20:30:44+00:00",
-      "summary": "<p>Lower crypto fees in 2026 may boost mainstream adoption but challenge fee-dependent DeFi projects, impacting their valuations and growth.</p> <p>The post <a href=\"https://cryptobriefing.com/crypto-fees-drop-2026-dex-decline/\">Crypto fees drop 45% on average in 2026 as DEX fees"
+      "published": "2026-06-23T22:47:06+00:00",
+      "summary": "<p>The integration of crypto in sports, highlighted by the World Cup, signals a shift towards digital finance, raising regulatory concerns globally.</p> <p>The post <a href=\"https://cryptobriefing.com/croatia-panama-world-cup-crypto-prediction-markets/\">Croatia faces Panama in Wo"
     },
     {
-      "title": "Sui News: Cumberland, Fluid, and SwissBorg Join Institutional Coalition on Hashi Ahead of July Global Testnet",
-      "url": "https://cryptopotato.com/?p=1440829",
-      "source": "CryptoPotato",
-      "published": "2026-06-23T20:24:03+00:00",
-      "summary": "[PRESS RELEASE &#8211; Grand Cayman, Cayman Islands, June 23rd, 2026] Sui aims to transition more of Bitcoin’s $1.2T market cap into verifiable, productive onchain products. Hashi, Sui’s native bitcoin finance primitive, gains more institutional support ahead of the scheduled lau"
-    },
-    {
-      "title": "Mark Zuckerberg Wants a Prediction Market Too: NYT",
-      "url": "https://decrypt.co/?p=371911",
+      "title": "Meet Qwable: The Free Local Model That Thinks Like Claude Fable",
+      "url": "https://decrypt.co/?p=371914",
       "source": "Decrypt",
-      "published": "2026-06-23T20:13:35+00:00",
-      "summary": "The initiative follows bets on stablecoins and the metaverse."
+      "published": "2026-06-23T22:01:12+00:00",
+      "summary": "Someone fine-tuned Fable 5's reasoning style into a local Qwen model. Then someone else removed its conscience."
     },
     {
-      "title": "Claude Outage Hits Public Users While Government Tier Stays Online",
-      "url": "https://beincrypto.com/?p=842446",
+      "title": "Spot Bitcoin And Ether ETFs Bleed $134M As Institutions De-Risk",
+      "url": "https://www.newsbtc.com/?p=902454",
+      "source": "NewsBTC",
+      "published": "2026-06-23T22:00:44+00:00",
+      "summary": "US spot Bitcoin and Ether ETFs saw combined outflows of about $134 million for the June 22 session. The flow data points to institutional de-risking as cry"
+    },
+    {
+      "title": "Ripple Completes XRP Lending Protocol Re-Audit",
+      "url": "https://u.today/ripple-completes-xrp-lending-protocol-re-audit",
+      "source": "U.Today",
+      "published": "2026-06-23T21:16:05+00:00",
+      "summary": "Ripple has successfully completed a comprehensive codebase re-audit of its highly anticipated lending protocol audit."
+    },
+    {
+      "title": "Crypto users told to pull funds after Ethereum L2 bridge failure exposes rollup exit risk",
+      "url": "https://cryptoslate.com/?p=543277",
+      "source": "CryptoSlate",
+      "published": "2026-06-23T21:10:29+00:00",
+      "summary": "<p>The incident turned bridge security from an abstract trust model into an immediate withdrawal test for users.</p> <p>The post <a href=\"https://cryptoslate.com/crypto-users-told-to-pull-funds-after-bridge-failure-exposes-rollup-exit-risk/\">Crypto users told to pull funds after "
+    },
+    {
+      "title": "South Korea’s Plan to Tax Unrealized Gains Sparks Market Chaos and Black Tuesday",
+      "url": "https://beincrypto.com/?p=842404",
       "source": "BeInCrypto",
-      "published": "2026-06-23T20:00:00+00:00",
-      "summary": "<p>A Claude outage hit public users on June 23 while the government tier stayed online, reviving AI reliability concerns.</p> <p>The post <a href=\"https://beincrypto.com/claude-outage-government-tier-stays-online/\">Claude Outage Hits Public Users While Government Tier Stays Onlin"
+      "published": "2026-06-23T21:00:00+00:00",
+      "summary": "<p>South Korea proposed taxing unrealized gains on stocks and real estate at a National Assembly forum on Tuesday. The push triggered what local traders are already calling Black Tuesday across the entire Korean stock market. The proposal would tax investors on paper profits they"
+    },
+    {
+      "title": "Jaredfromsubway Hacker Ignores 50% Bounty, Routes Funds to Tornado Cash",
+      "url": "https://cryptopotato.com/?p=1440743",
+      "source": "CryptoPotato",
+      "published": "2026-06-23T20:37:46+00:00",
+      "summary": "The attacker moved 2,000 ETH through Tornado Cash and sold 1,422 ETH for $2.4M in DAI, with just 5 ETH left in their wallet."
     },
     {
       "title": "EU Forces Unlicensed Crypto Firms to Shut Down",
@@ -35,13 +56,6 @@
       "source": "U.Today",
       "published": "2026-06-23T19:36:40+00:00",
       "summary": "The ESMA has ordered all unauthorized crypto providers to shut down their EU operations by July 1."
-    },
-    {
-      "title": "Solana is subsidizing high-volume traders before on-chain markets prove the activity can stick",
-      "url": "https://cryptoslate.com/?p=542993",
-      "source": "CryptoSlate",
-      "published": "2026-06-23T19:05:26+00:00",
-      "summary": "<p>Frontier Traders packages rebates, venue aggregation, and priority infrastructure into a chain-level bid for professional desks.</p> <p>The post <a href=\"https://cryptoslate.com/solana-is-subsidizing-pro-trading-flow-before-on-chain-markets-prove-it-will-stay-there/\">Solana is"
     },
     {
       "title": "Ethereum Foundation Cuts 20% of Workforce",
@@ -182,26 +196,9 @@
       "source": "U.Today",
       "published": "2026-06-22T13:15:53+00:00",
       "summary": "Cardano gears up for Its most significant scaling test yet."
-    },
-    {
-      "title": "Ripple CTO Emeritus Poses Key Question on Staking: 'Be Your Own Bank or Theirs?'",
-      "url": "https://u.today/ripple-cto-emeritus-poses-key-question-on-staking-be-your-own-bank-or-theirs",
-      "source": "U.Today",
-      "published": "2026-06-22T12:30:42+00:00",
-      "summary": "Ripple CTO Emeritus draws Bank parallel to address XRP Staking question."
     }
   ],
   "rumors": [
-    {
-      "title": "Former Ethereum Foundation Researchers Launch Ethlabs With BitMine And SharpLink Backing",
-      "url": "https://www.newsbtc.com/?p=902432",
-      "source": "NewsBTC",
-      "published": "2026-06-23T19:09:14+00:00",
-      "summary": "Ethereum’s research ecosystem has added a new institutional-facing node after Ethlabs launched as an independent nonprofit backed by BitMine, SharpLink, an",
-      "tags": [
-        "Launch"
-      ]
-    },
     {
       "title": "Shiba Inu in Spotlight as Major Japanese Exchange Launches Dedicated Content",
       "url": "https://u.today/shiba-inu-in-spotlight-as-major-japanese-exchange-launches-dedicated-content",
