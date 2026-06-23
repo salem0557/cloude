@@ -1,47 +1,68 @@
 {
-  "updated": "2026-06-23T12:23:18.888508+00:00",
+  "updated": "2026-06-23T15:37:42.574703+00:00",
   "news": [
     {
-      "title": "MGX secures nearly $50B to accelerate AI investments, with crypto in its crosshairs",
-      "url": "https://cryptobriefing.com/?p=265255",
+      "title": "Vitalik details Ethereum reset as Foundation cuts budget 40%",
+      "url": "https://cryptobriefing.com/?p=265490",
       "source": "Crypto Briefing",
-      "published": "2026-06-23T12:14:37+00:00",
-      "summary": "<p>MGX's rapid capital accumulation signals a shift in global investment trends, emphasizing AI and blockchain's growing strategic importance.</p> <p>The post <a href=\"https://cryptobriefing.com/mgx-50-billion-ai-crypto-investments/\">MGX secures nearly $50B to accelerate AI inves"
+      "published": "2026-06-23T15:34:42+00:00",
+      "summary": "<p>Vitalik Buterin outlined the sacrifices behind the Ethereum Foundations 40% budget cut and his long term lean and done vision for the protocol.</p> <p>The post <a href=\"https://cryptobriefing.com/vitalik-details-ethereum-reset-as-foundation-cuts-budget-40/\">Vitalik details Eth"
     },
     {
-      "title": "Nakamoto Shuts Its Last Healthcare Clinics to Go All-In on Bitcoin",
-      "url": "https://beincrypto.com/?p=842263",
-      "source": "BeInCrypto",
-      "published": "2026-06-23T12:11:02+00:00",
-      "summary": "<p>Nakamoto Inc. shut its legacy clinics on June 19, pivoting fully to Bitcoin media, asset management, and advisory.</p> <p>The post <a href=\"https://beincrypto.com/nakamoto-closes-clinics-bitcoin-focus/\">Nakamoto Shuts Its Last Healthcare Clinics to Go All-In on Bitcoin</a> app"
-    },
-    {
-      "title": "BitMine, SharpLink, and Joe Lubin Back New Ethereum Nonprofit ETHLabs",
-      "url": "https://cryptopotato.com/?p=1440705",
-      "source": "CryptoPotato",
-      "published": "2026-06-23T11:46:15+00:00",
-      "summary": "The initiative follows a wave of high-profile departures from the Ethereum Foundation in the last few months."
-    },
-    {
-      "title": "Tom Lee’s BitMine Says ETH Holdings Have Reached 5.67 Million Tokens",
-      "url": "https://www.newsbtc.com/?p=902414",
+      "title": "Ethereum Foundation Executive Says MEV Is Becoming Crypto’s Next Cypherpunk Fight",
+      "url": "https://www.newsbtc.com/?p=902418",
       "source": "NewsBTC",
-      "published": "2026-06-23T11:28:45+00:00",
-      "summary": "BitMine Immersion Technologies says its Ethereum holdings have reached 5.67 million ETH, keeping Tom Lee’s corporate treasury vehicle at the centre of the"
+      "published": "2026-06-23T15:30:54+00:00",
+      "summary": "Ethereum’s internal debate over maximal extractable value has moved back into the spotlight after Ethereum Foundation executive Bastian Aue framed toxic ME"
     },
     {
-      "title": "The oil scare is fading, but Bitcoin is still trapped by the gas-price hangover",
-      "url": "https://cryptoslate.com/?p=542919",
-      "source": "CryptoSlate",
-      "published": "2026-06-23T11:10:13+00:00",
-      "summary": "<p>Bitcoin is trading near $64,000, roughly mid-channel in the $57,000-$77,000 range that has defined the market since the Strait of Hormuz shock. Can-Luca Köymen, investment strategist at Sygnum, called the current setup a catalyst-light regime in a note: &#8220;Absent a decisiv"
-    },
-    {
-      "title": "US Senate Passes Housing Bill With Four-Year Fed CBDC Ban",
-      "url": "https://decrypt.co/?p=371848",
+      "title": "Ethereum Foundation Cuts 20% of Workforce in 'Leaner' Reorganization",
+      "url": "https://decrypt.co/?p=371864",
       "source": "Decrypt",
-      "published": "2026-06-23T10:23:30+00:00",
-      "summary": "A bipartisan housing bill the Senate passed 85-5 Monday would block a Fed digital dollar through 2030, and now heads to the House."
+      "published": "2026-06-23T15:19:46+00:00",
+      "summary": "The non-profit is cutting 54 jobs as it reorganizes into focused \"clusters,\" following a succession of leadership departures."
+    },
+    {
+      "title": "Tron Flips Ethereum and Solana With 3.93M Daily Active Addresses",
+      "url": "https://u.today/tron-flips-ethereum-and-solana-with-393m-daily-active-addresses",
+      "source": "U.Today",
+      "published": "2026-06-23T15:17:30+00:00",
+      "summary": "Tron becomes one of the most active blockchains as user participation increases, recording nearly 4 million active addresses in just one day."
+    },
+    {
+      "title": "US Dollar Index Hits 13-Month High Above 100, Summer Warning for Crypto and Stocks",
+      "url": "https://beincrypto.com/?p=842206",
+      "source": "BeInCrypto",
+      "published": "2026-06-23T15:00:00+00:00",
+      "summary": "<p>The US Dollar Index broke above 100 to a 13-month high, a warning sign for crypto and stocks this summer.</p> <p>The post <a href=\"https://beincrypto.com/us-dollar-index-hits-13-month-high-above-100-summer-warning-for-crypto-and-stocks/\">US Dollar Index Hits 13-Month High Abov"
+    },
+    {
+      "title": "Solana Under Pressure? Whale Places $38 Million Short Against SOL",
+      "url": "https://u.today/solana-under-pressure-whale-places-38-million-short-against-sol",
+      "source": "U.Today",
+      "published": "2026-06-23T14:30:00+00:00",
+      "summary": "$38 million short position puts Solana in the spotlight."
+    },
+    {
+      "title": "Why Bollinger Bands Are Now Targeting Sub-$1 Area for XRP",
+      "url": "https://u.today/why-bollinger-bands-are-now-targeting-sub-1-area-for-xrp",
+      "source": "U.Today",
+      "published": "2026-06-23T13:42:00+00:00",
+      "summary": "XRP faces a 16.98% June plunge as a monthly Bollinger Bands breakdown triggers a sub-$1 scenario."
+    },
+    {
+      "title": "Bitcoin Drops but Hyperliquid Hits Long Records: Is Squeeze Coming?",
+      "url": "https://u.today/bitcoin-drops-but-hyperliquid-hits-long-records-is-squeeze-coming",
+      "source": "U.Today",
+      "published": "2026-06-23T12:50:30+00:00",
+      "summary": "Bitcoin slides to $62,000, but Hyperliquid data reveals whales are aggressively loading up on longs."
+    },
+    {
+      "title": "Bitcoin OG Selling Drops to Lowest Level Since Late 2024",
+      "url": "https://u.today/bitcoin-og-selling-drops-to-lowest-level-since-late-2024",
+      "source": "U.Today",
+      "published": "2026-06-23T12:36:02+00:00",
+      "summary": "Bitcoin sees selling activity among large holders drop to lowest level since 2024, providing a bullish outlook for the asset despite weak price movements."
     },
     {
       "title": "Shiba Inu (SHIB) Witnesses 80 Trillion Threshold Comeback: How Things Are to Change",
@@ -161,51 +182,50 @@
       "source": "U.Today",
       "published": "2026-06-22T09:50:20+00:00",
       "summary": "Shiba Inu sees surprisingly low SHIB figure burned in the past day, with reasons explained."
-    },
-    {
-      "title": "Schiff: Real Estate Doesn't Need Bitcoin",
-      "url": "https://u.today/schiff-real-estate-doesnt-need-bitcoin",
-      "source": "U.Today",
-      "published": "2026-06-22T08:51:21+00:00",
-      "summary": "Financial commentator and gold advocate Peter Schiff has publicly slammed real estate mogul Grant Cardone's new $87.5 million initiative to integrate Bitcoin into property investments."
-    },
-    {
-      "title": "5 Crypto Exploits in Last 7 Days: Analyzing Biggest Attacks on DeFi Projects",
-      "url": "https://u.today/5-crypto-exploits-in-last-7-days-analyzing-biggest-attacks-on-defi-projects",
-      "source": "U.Today",
-      "published": "2026-06-22T08:40:00+00:00",
-      "summary": "DeFi industry takes one punch after another, which promotes further caution among investors."
-    },
-    {
-      "title": "Bitcoin (BTC), Shiba Inu (SHIB), Ethereum (ETH) and XRP Price Analysis For June 22: Reclaiming Bullish Narrative",
-      "url": "https://u.today/bitcoin-btc-shiba-inu-shib-ethereum-eth-and-xrp-price-analysis-for-june-22-reclaiming-bullish",
-      "source": "U.Today",
-      "published": "2026-06-22T07:18:00+00:00",
-      "summary": "The market is in the brief recovery window, which is yet to be used for a greater retrace on major assets."
-    },
-    {
-      "title": "Analyst Urges Ripple to Unlock XRP Escrows Faster",
-      "url": "https://u.today/analyst-urges-ripple-to-unlock-xrp-escrows-faster",
-      "source": "U.Today",
-      "published": "2026-06-22T06:29:12+00:00",
-      "summary": "Prominent cryptocurrency commentator Bill Morgan is urging San Francisco-based Ripple to accelerate the release of its escrowed XRP tokens."
-    },
-    {
-      "title": "Ethereum (ETH) About to Do Something Unprecedented",
-      "url": "https://u.today/ethereum-eth-about-to-do-something-unprecedented",
-      "source": "U.Today",
-      "published": "2026-06-21T19:21:33+00:00",
-      "summary": "Ethereum is facing the very real possibility of recording three consecutive losing quarters for the first time ever."
-    },
-    {
-      "title": "Cardano Founder Breaks Down AI, Future of Marketing in Key Discussion",
-      "url": "https://u.today/cardano-founder-breaks-down-ai-future-of-marketing-in-key-discussion",
-      "source": "U.Today",
-      "published": "2026-06-21T16:15:00+00:00",
-      "summary": "Cardano founder Charles Hoskinson hints at a potentially big future ahead, and AI seems to be part of it."
     }
   ],
   "rumors": [
+    {
+      "title": "Trump’s quantum computing push puts $449 billion in “exposed Bitcoin” back in the limelight",
+      "url": "https://cryptoslate.com/?p=543528",
+      "source": "CryptoSlate",
+      "published": "2026-06-23T15:20:45+00:00",
+      "summary": "<p>On June 22, President Donald Trump signed two executive orders that put the federal government’s most sensitive civilian computer systems on a 2031 post-quantum security timetable while launching a national effort to accelerate the development of advanced quantum computers. On",
+      "tags": [
+        "Launch"
+      ]
+    },
+    {
+      "title": "XRP’s Price Could Explode to $8, But This One Zone Is Holding It Back",
+      "url": "https://cryptopotato.com/?p=1440703",
+      "source": "CryptoPotato",
+      "published": "2026-06-23T14:45:16+00:00",
+      "summary": "New data suggests that XRP's current position below the Central Line resembles previous accumulation phases before major price expansions.",
+      "tags": [
+        "Speculation"
+      ]
+    },
+    {
+      "title": "Shiba Inu in Spotlight as Major Japanese Exchange Launches Dedicated Content",
+      "url": "https://u.today/shiba-inu-in-spotlight-as-major-japanese-exchange-launches-dedicated-content",
+      "source": "U.Today",
+      "published": "2026-06-23T13:00:11+00:00",
+      "summary": "Japanese crypto exchange welcomes SHIB with a playful twist.",
+      "tags": [
+        "Launch",
+        "Meme"
+      ]
+    },
+    {
+      "title": "Privacy to Solana (SOL)? How Can It Make the Network Better?",
+      "url": "https://u.today/privacy-to-solana-sol-how-can-it-make-the-network-better",
+      "source": "U.Today",
+      "published": "2026-06-23T12:29:00+00:00",
+      "summary": "Solana's state on the market is somewhat sad, but implementation of privacy futures might turn things around.",
+      "tags": [
+        "Speculation"
+      ]
+    },
     {
       "title": "$1.8 Trillion Asset Manager Launches Crypto Division",
       "url": "https://u.today/18-trillion-asset-manager-launches-crypto-division",
@@ -214,16 +234,6 @@
       "summary": "Traditional finance titan Franklin Templeton is no longer just toying with digital assets.",
       "tags": [
         "Launch"
-      ]
-    },
-    {
-      "title": "Solana Partners With Major Korean Bank for Global Settlement Services",
-      "url": "https://u.today/solana-partners-with-major-korean-bank-for-global-settlement-services",
-      "source": "U.Today",
-      "published": "2026-06-22T09:25:34+00:00",
-      "summary": "Solana is set to integrate with a South Korean digital bank to explore cross-border stablecoin payments and global remittances via its network.",
-      "tags": [
-        "Prediction"
       ]
     }
   ],
