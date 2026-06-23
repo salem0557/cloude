@@ -172,6 +172,17 @@ class Exchange:
         closes = [float(k[4]) for k in rows]
         return highs, lows, closes
 
+    def ohlcv(self, symbol, interval, limit):
+        """highs, lows, closes, volumes — volume (k[5]) was previously thrown
+        away; it's a strong, free confirmation feature (real moves come with
+        volume; quiet 'breakouts' are usually traps)."""
+        rows = self.klines(symbol, interval, limit)
+        highs = [float(k[2]) for k in rows]
+        lows = [float(k[3]) for k in rows]
+        closes = [float(k[4]) for k in rows]
+        volumes = [float(k[5]) for k in rows]
+        return highs, lows, closes, volumes
+
     def last_price(self, symbol):
         if self.mode == "dryrun":
             return self.closes(symbol, "1m", 1)[-1]

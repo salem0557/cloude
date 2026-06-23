@@ -22,6 +22,11 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 NEWS_FILE = HERE.parent / "docs" / "crypto" / "data" / "news.json"
 FNG_URL = "https://api.alternative.me/fng/?limit=1"
+# CoinGecko free global endpoint — BTC dominance gauges alt risk appetite:
+# rising/high dominance = money rotating OUT of alts into BTC (headwind for
+# alt longs), so the bot trades alts smaller when dominance is elevated.
+CG_GLOBAL_URL = "https://api.coingecko.com/api/v3/global"
+HIGH_DOMINANCE = 58.0
 
 NEGATIVE = ["hack", "exploit", "breach", "scam", "fraud", "lawsuit", "sue",
             "sued", "ban", "bans", "banned", "crackdown", "crash", "plunge",
@@ -62,10 +67,23 @@ def _fear_greed():
         return None, None
 
 
+def _btc_dominance():
+    """BTC market-cap dominance % from CoinGecko (free), or None."""
+    try:
+        req = urllib.request.Request(
+            CG_GLOBAL_URL, headers={"User-Agent": "cryptobot/1.0"})
+        with urllib.request.urlopen(req, timeout=15) as r:
+            d = json.load(r)
+        return float(d["data"]["market_cap_percentage"]["btc"])
+    except Exception:
+        return None
+
+
 def get_regime():
     """Return the current market regime and how it should affect trading."""
     sentiment, n_news = _news_sentiment()
     fng, fng_label = _fear_greed()
+    dominance = _btc_dominance()
 
     allow_buys = True
     risk_multiplier = 1.0
@@ -84,12 +102,17 @@ def get_regime():
         elif fng <= 20:
             reasons.append(f"خوف شديد ({fng}) — فرص شراء")
 
+    if dominance is not None and dominance >= HIGH_DOMINANCE:
+        risk_multiplier = min(risk_multiplier, 0.7)
+        reasons.append(f"هيمنة BTC مرتفعة ({dominance:.1f}%) — ضغط على العملات البديلة")
+
     return {
         "updated": datetime.now(timezone.utc).isoformat(),
         "news_sentiment": sentiment,
         "news_count": n_news,
         "fear_greed": fng,
         "fear_greed_label": fng_label,
+        "btc_dominance": dominance,
         "allow_buys": allow_buys,
         "risk_multiplier": risk_multiplier,
         "reason": " | ".join(reasons) or "وضع طبيعي",

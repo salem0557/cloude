@@ -42,6 +42,7 @@ from backtest import run_backtest
 import ml_model
 import best_practices
 import smart_money
+import derivatives
 import publish
 import monitor
 import dashboard
@@ -210,6 +211,14 @@ class Bot:
         # volatility exceeds this % (degenerate microcaps where the optimizer
         # over-fits worst and stops are whipsawed). 0 = off.
         self.max_volatility = float(cfg("MAX_VOLATILITY_PCT", "6") or 0)
+        # Derivatives gate (free Binance futures data): veto a buy when funding
+        # is euphoric/crowded-long. Off = DERIVATIVES_GATE=false.
+        self.deriv_gate = (cfg("DERIVATIVES_GATE", "true") or "").lower() \
+            in ("1", "true", "yes", "on")
+        # ATR volatility stop: stop distance = max(tuned %, ATR×mult). 0 = off
+        # (use only the optimizer's fixed %). ~1.5–2.5 adapts stops to each coin.
+        self.atr_stop_mult = float(cfg("ATR_STOP_MULT", "0") or 0)
+        self.atr_period = int(cfg("ATR_PERIOD", "14"))
         self._last_skip_log = {}
         self.start_equity = float(cfg("PAPER_EQUITY", "1000"))
 
@@ -300,6 +309,22 @@ class Bot:
         return updates, drops
 
     @staticmethod
+    def _atr_pct(highs, lows, closes, period=14):
+        """Average True Range over ``period`` bars, as a % of price. Captures a
+        coin's typical breathing room so stops can adapt to its volatility."""
+        n = len(closes)
+        if n < period + 1 or len(highs) < n or len(lows) < n:
+            return 0.0
+        trs = []
+        for i in range(n - period, n):
+            tr = max(highs[i] - lows[i],
+                     abs(highs[i] - closes[i - 1]),
+                     abs(lows[i] - closes[i - 1]))
+            trs.append(tr)
+        atr = sum(trs) / len(trs) if trs else 0.0
+        return (atr / closes[-1] * 100) if closes[-1] else 0.0
+
+    @staticmethod
     def _recent_vol_pct(closes, n=30):
         """Std-dev of the last ``n`` per-bar returns, as a percentage."""
         window = closes[-(n + 1):]
@@ -343,7 +368,8 @@ class Bot:
         scored = []
         for symbol in candidates:
             try:
-                closes = self.ex.closes(symbol, self.interval, self.history)
+                highs, lows, closes, vols = self.ex.ohlcv(
+                    symbol, self.interval, self.history)
             except Exception as e:
                 log(f"   {symbol}: data error {e}")
                 continue
@@ -353,7 +379,8 @@ class Bot:
             new_params[symbol] = params
             new_scores[symbol] = metrics
             if retrain_ml:
-                new_ml[symbol] = ml_model.train(symbol, closes)
+                # volume + high/low now feed the model alongside price.
+                new_ml[symbol] = ml_model.train(symbol, closes, highs, lows, vols)
             scored.append((symbol, metrics["score"]))
             log(f"   {symbol}: score={metrics['score']} "
                 f"ret={metrics['return_pct']}% win={metrics['win_rate']}% "
@@ -457,19 +484,29 @@ class Bot:
             params["stop_loss_pct"] = self.force_sl
         if self.force_tp:
             params["take_profit_pct"] = self.force_tp
-        closes = self.ex.closes(symbol, self.interval, self.history)
+        # One klines call gives OHLC + VOLUME; volume/high/low feed the ML model
+        # (new learning signals) and the ATR volatility stop.
+        highs, lows, closes, vols = self.ex.ohlcv(symbol, self.interval, self.history)
         price = closes[-1]
         prices[symbol] = price
         signal = latest_signal(closes, params)
-        ml_prob = ml_model.predict_up(symbol, closes)
+        ml_prob = ml_model.predict_up(symbol, closes, highs, lows, vols)
 
         pos = self.state["positions"].get(symbol)
         if pos:
             entry = pos["entry_price"]
             pos["peak"] = max(pos.get("peak", entry), price)   # track high
             change = (price / entry - 1) * 100 if entry else 0
+            # ATR stop: widen the stop on volatile coins so normal noise doesn't
+            # whipsaw us out (a fixed 1% stop is suicide on a coin that breathes
+            # 3%/bar). Effective stop = max(tuned %, ATR×mult). Opt-in via env.
+            stop_pct = params["stop_loss_pct"]
+            if self.atr_stop_mult > 0:
+                atr_pct = self._atr_pct(highs, lows, closes, self.atr_period)
+                if atr_pct > 0:
+                    stop_pct = max(stop_pct or 0, atr_pct * self.atr_stop_mult)
             reason = None
-            if params["stop_loss_pct"] and change <= -params["stop_loss_pct"]:
+            if stop_pct and change <= -stop_pct:
                 reason = f"stop-loss {change:.1f}%"
             elif self.trailing_pct and pos["peak"] > entry and \
                     price <= pos["peak"] * (1 - self.trailing_pct / 100):
@@ -501,9 +538,15 @@ class Bot:
                 if bias is not None:
                     log(f"📊 {symbol} smart-money L/S ratio {bias:.2f} "
                         f"(min {self.smart_min})")
+                snap = derivatives.snapshot(symbol)
+                if snap["reason"] != "—":
+                    log(f"📈 {symbol} derivatives {snap['reason']} "
+                        f"(score {snap['score']:+.2f})")
                 if self.smart_gate and bias is not None and bias < self.smart_min:
                     self._skip_log(symbol, f"smart-money net short "
                                    f"(L/S {bias:.2f} < {self.smart_min})")
+                elif self.deriv_gate and not snap["confirm_long"]:
+                    self._skip_log(symbol, f"derivatives veto — {snap['reason']}")
                 else:
                     self.open_position(symbol, price)
             elif signal == "buy" and not trend_ok:
