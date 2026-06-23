@@ -32,6 +32,13 @@ import urllib.request
 _TTL = 1800
 _RETRY_CODES = {429, 500, 502, 503, 504}   # transient — worth a quick retry
 _CACHE = {"t": 0.0, "key": None, "result": (None, None)}
+_GEMINI_HOST = "https://generativelanguage.googleapis.com"
+_RESOLVED = {"gemini_model": None}          # auto-discovered, cached per process
+
+# Preference order when auto-picking a Gemini model for the key (cheap + capable
+# flash models first). Substring match against whatever the key actually lists.
+_GEMINI_PREFS = ["gemini-2.5-flash", "gemini-2.0-flash", "gemini-1.5-flash",
+                 "flash-latest", "flash"]
 
 _PROMPT = (
     "You are a crypto market sentiment analyst. Read these recent headlines and "
@@ -81,11 +88,51 @@ def _post(url, payload, headers, timeout=25, retries=3):
     raise last
 
 
+def _gemini_list_models(key):
+    """Model names this key can actually call generateContent on."""
+    url = f"{_GEMINI_HOST}/v1beta/models?key={key}"
+    req = urllib.request.Request(url, headers={"User-Agent": "cryptobot/1.0"})
+    with urllib.request.urlopen(req, timeout=20) as r:
+        d = json.load(r)
+    out = []
+    for m in d.get("models", []):
+        if "generateContent" in (m.get("supportedGenerationMethods") or []):
+            out.append((m.get("name", "") or "").split("/")[-1])
+    return [m for m in out if m]
+
+
+def _pick_gemini_model(models):
+    """Choose the best available flash model, avoiding preview/exp builds."""
+    if not models:
+        return None
+    stable = [m for m in models
+              if "preview" not in m.lower() and "exp" not in m.lower()] or models
+    for pref in _GEMINI_PREFS:
+        for m in stable:
+            if pref in m.lower():
+                return m
+    return stable[0]
+
+
+def _resolve_gemini_model(key):
+    """Explicit GEMINI_MODEL wins; otherwise auto-discover and cache one."""
+    env = os.environ.get("GEMINI_MODEL")
+    if env:
+        return env
+    if _RESOLVED["gemini_model"]:
+        return _RESOLVED["gemini_model"]
+    try:
+        chosen = _pick_gemini_model(_gemini_list_models(key))
+    except Exception:
+        chosen = None
+    _RESOLVED["gemini_model"] = chosen or "gemini-flash-latest"
+    return _RESOLVED["gemini_model"]
+
+
 def _call_gemini(prompt):
     key = os.environ.get("GEMINI_API_KEY")
-    model = os.environ.get("GEMINI_MODEL", "gemini-flash-latest")
-    url = (f"https://generativelanguage.googleapis.com/v1beta/models/"
-           f"{model}:generateContent?key={key}")
+    model = _resolve_gemini_model(key)
+    url = f"{_GEMINI_HOST}/v1beta/models/{model}:generateContent?key={key}"
     out = _post(url, {"contents": [{"parts": [{"text": prompt}]}]},
                 {"Content-Type": "application/json"})
     return out["candidates"][0]["content"]["parts"][0]["text"]
@@ -133,9 +180,10 @@ def probe():
     provider = _provider()
     if not provider:
         return False, "no key set (using keyword fallback)"
-    model = (os.environ.get("GEMINI_MODEL", "gemini-flash-latest")
-             if provider == "gemini"
-             else os.environ.get("GROQ_MODEL", "llama-3.3-70b-versatile"))
+    if provider == "gemini":
+        model = _resolve_gemini_model(os.environ.get("GEMINI_API_KEY"))
+    else:
+        model = os.environ.get("GROQ_MODEL", "llama-3.3-70b-versatile")
     try:
         text = (_call_gemini("Reply with the single number 1.")
                 if provider == "gemini"
@@ -144,12 +192,21 @@ def probe():
             return True, f"{provider}:{model}"
         return False, f"{provider}:{model} returned no usable text"
     except Exception as e:
-        msg = str(e)
-        if "404" in msg:
-            msg += "  → wrong model name? set GEMINI_MODEL / GROQ_MODEL"
-        elif "400" in msg or "401" in msg or "403" in msg:
+        msg = str(e)[:120]
+        if provider == "gemini":
+            # Surface what the key CAN use so a wrong/region-locked model is obvious.
+            try:
+                avail = _gemini_list_models(os.environ.get("GEMINI_API_KEY"))
+                if avail:
+                    msg += " | available: " + ", ".join(avail[:6])
+                    msg += "  → set GEMINI_MODEL to one of these"
+            except Exception as le:
+                msg += f" | model-list also failed ({str(le)[:60]}) — likely a real outage"
+        elif "404" in msg:
+            msg += "  → wrong model? set GROQ_MODEL"
+        elif any(c in msg for c in ("400", "401", "403")):
             msg += "  → check the API key"
-        return False, f"{provider}:{model} — {msg[:120]}"
+        return False, f"{provider}:{model} — {msg}"
 
 
 def sentiment(headlines, ttl=_TTL):
