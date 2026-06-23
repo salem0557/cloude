@@ -37,7 +37,7 @@ from pathlib import Path
 from exchange import Exchange, usdt_universe
 from indicators import sma_series
 from optimizer import optimize_symbol
-from strategy import latest_signal, merge_params, DEFAULT_PARAMS
+from strategy import latest_signal, merge_params, DEFAULT_PARAMS, use_scalp
 from backtest import run_backtest
 import ml_model
 import best_practices
@@ -114,6 +114,7 @@ def load_state():
         "day": str(date.today()),
         "day_start_realized": 0.0,
         "halted": False,
+        "sell_count": 0,
     }
 
 
@@ -136,6 +137,8 @@ def record_trade(state, side, symbol, price, qty, mode, reason=""):
         "quote": round(price * qty, 2), "reason": reason,
     })
     state["trades"] = state["trades"][-50:]
+    if side == "SELL":   # closed-trade counter (for the scalp auto-revert check)
+        state["sell_count"] = state.get("sell_count", 0) + 1
 
 
 # ------------------------------- the bot ---------------------------------
@@ -254,6 +257,13 @@ class Bot:
                 log("♻️  restored state from GitHub backup")
 
         self.state = load_state()
+        # Scalp auto-revert safety: if scalp mode is a net loser over this many
+        # closed trades, fall back to the calmer crossover and remember it. 0 =
+        # never auto-revert. A persisted revert is re-applied here so a redeploy
+        # doesn't silently switch back to a losing scalp.
+        self.auto_revert_after = int(cfg("STRATEGY_AUTO_REVERT_TRADES", "12") or 0)
+        if self.state.get("strategy_reverted"):
+            os.environ["STRATEGY"] = "crossover"
         self.ex = Exchange(self.mode, cfg("BINANCE_API_KEY"),
                            cfg("BINANCE_API_SECRET"))
         self._last_opt_ts = 0.0
@@ -668,6 +678,7 @@ class Bot:
         while True:
             try:
                 self.check_daily_limit()
+                self._check_strategy_health()
                 self._refresh_balance()
                 self._refresh_regime()
                 self._refresh_market_trend()
@@ -685,6 +696,33 @@ class Bot:
             except Exception as e:
                 log(f"background error: {e}")
             time.sleep(3)
+
+    def _check_strategy_health(self):
+        """Auto-revert: if scalp mode has been net-negative over a fair sample of
+        CLOSED trades, switch to the calmer crossover and persist that choice.
+
+        It establishes a P/L + trade-count baseline the first time it sees scalp
+        running, then judges only trades made since — so it can't be tripped by
+        history from before the switch."""
+        if not self.auto_revert_after or self.state.get("strategy_reverted"):
+            return
+        if not use_scalp():
+            return
+        if "scalp_base_sells" not in self.state:
+            with self._lock:
+                self.state["scalp_base_sells"] = self.state.get("sell_count", 0)
+                self.state["scalp_base_pnl"] = self.state.get("realized_pnl", 0.0)
+                save_state(self.state)
+            return
+        sells = self.state.get("sell_count", 0) - self.state["scalp_base_sells"]
+        pnl = self.state.get("realized_pnl", 0.0) - self.state["scalp_base_pnl"]
+        if sells >= self.auto_revert_after and pnl < 0:
+            os.environ["STRATEGY"] = "crossover"
+            with self._lock:
+                self.state["strategy_reverted"] = True
+                save_state(self.state)
+            log(f"🔄 scalp net P/L {pnl:+.2f} over {sells} trades (losing) → "
+                f"auto-reverted to crossover. STRATEGY_AUTO_REVERT_TRADES=0 disables this.")
 
     def _refresh_balance(self):
         if (time.time() - self._last_bal_ts) < 60:
@@ -769,7 +807,8 @@ class Bot:
 
         uni = (f"{len(self.universe)} pairs (auto)" if self.auto_universe
                else str(self.universe))
-        log(f"Bot started — mode={self.mode}, universe={uni}, "
+        strat = "scalp" if use_scalp() else "crossover"
+        log(f"Bot started — mode={self.mode}, strategy={strat}, universe={uni}, "
             f"interval={self.interval}, TOP_N={self.top_n}, "
             f"{self.quote_per_trade} quote/trade, poll={self.poll_seconds}s, "
             f"learn every {self.learn_seconds}s (background)")

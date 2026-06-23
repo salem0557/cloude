@@ -31,8 +31,11 @@ DEFAULT_PARAMS = {
 
 
 def use_scalp():
-    """True when STRATEGY=scalp (active short-term trading)."""
-    return (os.environ.get("STRATEGY", "crossover") or "").lower() == "scalp"
+    """True when STRATEGY=scalp (active short-term trading). Default is scalp:
+    on short intervals the slow crossover rarely finds an edge and sits idle, so
+    the active scalper is the better fit. The bot auto-reverts to crossover if
+    scalp proves a net loser (see Bot._check_strategy_health)."""
+    return (os.environ.get("STRATEGY", "scalp") or "").lower() == "scalp"
 
 
 def merge_params(params):
