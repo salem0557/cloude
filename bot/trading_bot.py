@@ -44,6 +44,7 @@ import best_practices
 import smart_money
 import derivatives
 import social
+import news_ai
 import publish
 import monitor
 import dashboard
@@ -758,6 +759,13 @@ class Bot:
             f"learn every {self.learn_seconds}s (background)")
         if self.mode == "live":
             log("⚠️  LIVE MODE — trading REAL money. Ctrl+C to stop.")
+
+        # One-shot check so you instantly know if the AI news sentiment is live.
+        try:
+            ok, detail = news_ai.probe()
+            log(f"🧠 AI news sentiment: {'✅ active' if ok else '⚪ inactive'} — {detail}")
+        except Exception as e:
+            log(f"🧠 AI news sentiment probe error: {e}")
 
         # one synchronous learn so there's something to trade immediately
         try:
