@@ -1,6 +1,30 @@
 {
- "updated": "2026-06-22T22:19:51+00:00",
+ "updated": "2026-06-23T04:35:23+00:00",
  "jobs": [
+  {
+   "title": "Lean Improvement",
+   "company": "JD.COM",
+   "location": "Riyadh Region",
+   "url": "https://sa.linkedin.com/jobs/view/lean-improvement-at-jd-com-4431640850",
+   "posted": "2026-06-22",
+   "source": "LinkedIn",
+   "keywords": [
+    "Supply Chain"
+   ],
+   "first_seen": "2026-06-23"
+  },
+  {
+   "title": "Storekeeper",
+   "company": "Nestlé",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/storekeeper-at-nestl%C3%A9-4417774311",
+   "posted": "2026-06-01",
+   "source": "LinkedIn",
+   "keywords": [
+    "Logistics"
+   ],
+   "first_seen": "2026-06-23"
+  },
   {
    "title": "Fleet TeamLeader",
    "company": "GFS Express",
@@ -23,7 +47,8 @@
    "source": "LinkedIn",
    "keywords": [
     "Supply Chain",
-    "Procurement"
+    "Procurement",
+    "Logistics"
    ],
    "first_seen": "2026-06-22"
   },
@@ -48,7 +73,9 @@
    "source": "LinkedIn",
    "keywords": [
     "Mechanical Engineer",
-    "Maintenance Engineer"
+    "Maintenance Engineer",
+    "Logistics",
+    "Facilities Management"
    ],
    "first_seen": "2026-06-22"
   },
