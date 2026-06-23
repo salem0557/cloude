@@ -357,6 +357,15 @@ class Bot:
                     d.pop(k, None)
             save_state(self.state)
         log(f"✅ Self-update done. Trading: {ranked or '(none profitable)'}")
+        # Observe the smart-money lean on every active coin (not just at buy
+        # moments) so the SMART_MONEY_MIN threshold can be tuned from real data.
+        # Lock-free + cached, so it adds no load to the fast trading loop.
+        biases = []
+        for sym in ranked:
+            b = smart_money.long_short_bias(sym)
+            biases.append(f"{sym} {b:.2f}" if b is not None else f"{sym} n/a")
+        if biases:
+            log("📊 smart-money L/S (active): " + ", ".join(biases))
 
     # ------------------------------ trading ------------------------------
     def open_position(self, symbol, price):
