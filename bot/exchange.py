@@ -259,18 +259,42 @@ class Exchange:
 
         Caps the quantity to the asset we actually own — Binance takes a small
         trading fee out of the bought amount, so selling the full recorded qty
-        would fail with -2010 (insufficient balance).
+        would fail with -2010 (insufficient balance). If Binance still rejects
+        the order for balance/min-size reasons it raises RuntimeError so the
+        caller drops the position from tracking instead of looping forever.
         """
         if self.mode == "dryrun":
             return price_hint, qty
         base = symbol[:-4] if symbol.endswith("USDT") else symbol
+        step = self.lot_step(symbol)
         free = self.free_balance(base)
         if free > 0:
             qty = min(qty, free)
-        qty = self._round_qty(qty, self.lot_step(symbol))
+        qty = self._round_qty(qty, step)
         if qty <= 0:
             raise RuntimeError(f"nothing to sell for {symbol} (free={free})")
-        order = self.client.order_market_sell(symbol=symbol, quantity=qty)
+        try:
+            order = self.client.order_market_sell(symbol=symbol, quantity=qty)
+        except Exception as e:
+            msg = str(e)
+            low = msg.lower()
+            # -2010 / insufficient: fee + rounding left a hair less than recorded.
+            # Re-read the real free balance, shave to a clean lot, and retry once.
+            if "-2010" in msg or "insufficient" in low:
+                free = self.free_balance(base)
+                qty = self._round_qty(free * 0.999, step)
+                if qty <= 0:
+                    raise RuntimeError(
+                        f"insufficient balance to sell {symbol} (free={free})")
+                order = self.client.order_market_sell(symbol=symbol, quantity=qty)
+            # -1013 / NOTIONAL: position value is below Binance's minimum sell
+            # size (dust). It can't be market-sold; tell the caller to drop it.
+            elif "-1013" in msg or "notional" in low or "min" in low:
+                raise RuntimeError(
+                    f"{symbol} is below Binance's minimum sell size (dust) — "
+                    f"can't market-sell {qty}")
+            else:
+                raise
         got = float(order.get("cummulativeQuoteQty", price_hint * qty))
         price = got / qty if qty else price_hint
         return price, qty
