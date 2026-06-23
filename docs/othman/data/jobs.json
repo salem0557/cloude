@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-23T17:23:43+00:00",
+ "updated": "2026-06-23T21:53:52+00:00",
  "jobs": [
   {
    "title": "Information Technology Manager",
@@ -10,6 +10,31 @@
    "source": "LinkedIn",
    "keywords": [
     "IT Support"
+   ],
+   "first_seen": "2026-06-23"
+  },
+  {
+   "title": "IT Specialist",
+   "company": "Fakeeh Care Group",
+   "location": "Al Yasmin District, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/it-specialist-at-fakeeh-care-group-4432418493",
+   "posted": "2026-06-23",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Support",
+    "IT Fresh Graduate"
+   ],
+   "first_seen": "2026-06-23"
+  },
+  {
+   "title": "Analyst, Information Security",
+   "company": "Tabby | تابي",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/analyst-information-security-at-tabby-%D8%AA%D8%A7%D8%A8%D9%8A-4431210837",
+   "posted": "2026-06-23",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Fresh Graduate"
    ],
    "first_seen": "2026-06-23"
   },
@@ -1223,7 +1248,8 @@
    "posted": "2026-06-01",
    "source": "LinkedIn",
    "keywords": [
-    "Technical Support"
+    "Technical Support",
+    "IT Support"
    ],
    "first_seen": "2026-06-11"
   },

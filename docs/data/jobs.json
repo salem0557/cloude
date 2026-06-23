@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-23T17:23:20+00:00",
+ "updated": "2026-06-23T21:53:26+00:00",
  "jobs": [
   {
    "title": "Information Technology Manager",
@@ -36,6 +36,55 @@
    "source": "LinkedIn",
    "keywords": [
     "Digital Transformation"
+   ],
+   "first_seen": "2026-06-23"
+  },
+  {
+   "title": "IT Infrastructure & Operations Manager",
+   "company": "TestCrew | Quality Engineering & Software Testing",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/it-infrastructure-operations-manager-at-testcrew-quality-engineering-software-testing-4432411743",
+   "posted": "2026-06-23",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Management"
+   ],
+   "first_seen": "2026-06-23"
+  },
+  {
+   "title": "IT Specialist",
+   "company": "Fakeeh Care Group",
+   "location": "Al Yasmin District, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/it-specialist-at-fakeeh-care-group-4432418493",
+   "posted": "2026-06-23",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Manager",
+    "IT Infrastructure"
+   ],
+   "first_seen": "2026-06-23"
+  },
+  {
+   "title": "Senior Manager - Planning - 20013123 (RS8)",
+   "company": "Qiddiya | القدية",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/senior-manager-planning-20013123-rs8-at-qiddiya-%D8%A7%D9%84%D9%82%D8%AF%D9%8A%D8%A9-4430893054",
+   "posted": "2026-06-23",
+   "source": "LinkedIn",
+   "keywords": [
+    "Program Manager"
+   ],
+   "first_seen": "2026-06-23"
+  },
+  {
+   "title": "Artificial Intelligence Engineer",
+   "company": "TestCrew | Quality Engineering & Software Testing",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/artificial-intelligence-engineer-at-testcrew-quality-engineering-software-testing-4432418744",
+   "posted": "2026-06-23",
+   "source": "LinkedIn",
+   "keywords": [
+    "Data Sharing"
    ],
    "first_seen": "2026-06-23"
   },
