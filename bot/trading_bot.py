@@ -43,6 +43,7 @@ import ml_model
 import best_practices
 import smart_money
 import derivatives
+import social
 import publish
 import monitor
 import dashboard
@@ -191,6 +192,10 @@ class Bot:
         self.smart_gate = (cfg("SMART_MONEY_GATE", "true") or "").lower() \
             in ("1", "true", "yes", "on")
         self.smart_min = float(cfg("SMART_MONEY_MIN", "0.8") or 0.8)
+        # Social-momentum signal (free CoinGecko trending): logs when a coin
+        # we're buying is also trending socially. Confirming only, never a veto.
+        self.social_signal = (cfg("SOCIAL_SIGNAL", "true") or "").lower() \
+            in ("1", "true", "yes", "on")
         # Pause switch: when on, the bot opens NO new positions but still
         # manages and exits open ones safely (stop-loss / trailing / take-profit
         # all keep working). Set PAUSE_TRADING=true in Railway to halt buying.
@@ -542,6 +547,11 @@ class Bot:
                 if snap["reason"] != "—":
                     log(f"📈 {symbol} derivatives {snap['reason']} "
                         f"(score {snap['score']:+.2f})")
+                # Social momentum (free CoinGecko trending): a confirming tailwind,
+                # logged only — never blocks a buy (we want more candidates, not
+                # fewer). Surfaces when a coin we're about to buy is also trending.
+                if self.social_signal and social.is_trending(symbol):
+                    log(f"🔥 {symbol} رائج اجتماعياً الآن (CoinGecko trending) — زخم مؤكِّد")
                 if self.smart_gate and bias is not None and bias < self.smart_min:
                     self._skip_log(symbol, f"smart-money net short "
                                    f"(L/S {bias:.2f} < {self.smart_min})")
