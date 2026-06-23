@@ -1,40 +1,47 @@
 {
-  "updated": "2026-06-22T23:53:08.296441+00:00",
+  "updated": "2026-06-23T04:44:16.116140+00:00",
   "news": [
+    {
+      "title": "Taiwanese investors borrow heavily to ride the TSMC-fueled AI stock rally",
+      "url": "https://cryptobriefing.com/?p=264774",
+      "source": "Crypto Briefing",
+      "published": "2026-06-23T04:43:25+00:00",
+      "summary": "<p>Taiwan's heavy margin borrowing amid the AI stock rally risks market instability, potentially leading to a sharp correction if TSMC falters.</p> <p>The post <a href=\"https://cryptobriefing.com/taiwan-margin-debt-tsmc-ai-rally-2/\">Taiwanese investors borrow heavily to ride the "
+    },
+    {
+      "title": "Meta To Pour $900 Million Into CRED as Its CEO Joins Meta",
+      "url": "https://beincrypto.com/?p=842050",
+      "source": "BeInCrypto",
+      "published": "2026-06-23T04:19:55+00:00",
+      "summary": "<p>Meta will lead a $900 million (&#8377;8,550 crore) Series H round in Indian fintech CRED, valuing the company at $4.5 billion (&#8377;43,239 crore) post-money.&#160; The deal combines primary and secondary share purchases. In addition, founder Kunal Shah will step down as CEO "
+    },
+    {
+      "title": "Crypto Institutional Flows Turn Negative as $8B Exits in 30 Days",
+      "url": "https://cryptopotato.com/?p=1440644",
+      "source": "CryptoPotato",
+      "published": "2026-06-23T03:45:14+00:00",
+      "summary": "According to analysts, Bitcoin's drop from $82K to $62K could prove more meaningful than the previous pullback from $102K to $82K."
+    },
+    {
+      "title": "$8.5M DeFi vault pulled overnight: The wake-up call for traders chasing high yields",
+      "url": "https://cryptoslate.com/?p=543279",
+      "source": "CryptoSlate",
+      "published": "2026-06-23T03:15:03+00:00",
+      "summary": "<p>The vault claimed no MainStreet exposure, but verification panic still forced users to test how fast yield positions could become cash.</p> <p>The post <a href=\"https://cryptoslate.com/8-5m-defi-vault-pulled-overnight-the-wake-up-call-for-traders-chasing-high-yields/\">$8.5M De"
+    },
+    {
+      "title": "XRP Tests Recovery Ground, Dogecoin (DOGE) Zero Removal Rally, Shiba Inu (SHIB) Risks Are Up: Crypto Market Review",
+      "url": "https://u.today/xrp-tests-recovery-ground-dogecoin-doge-zero-removal-rally-shiba-inu-shib-risks-are-up-crypto",
+      "source": "U.Today",
+      "published": "2026-06-23T00:01:00+00:00",
+      "summary": "Most investors on the cryptocurrency market haven't yet given up as they try to push assets to their local resistance zones."
+    },
     {
       "title": "Strive Adds 759 Bitcoin As Corporate BTC Treasury Race Continues",
       "url": "https://www.newsbtc.com/?p=902367",
       "source": "NewsBTC",
       "published": "2026-06-22T23:45:57+00:00",
       "summary": "Strive reportedly bought 759 BTC at about $65,850, lifting its Bitcoin holdings to 19,864 BTC."
-    },
-    {
-      "title": "Centralized Wall Street gatekeepers to control investors’ route into tokenized stocks through old pipes",
-      "url": "https://cryptoslate.com/?p=543324",
-      "source": "CryptoSlate",
-      "published": "2026-06-22T23:25:01+00:00",
-      "summary": "<p>The filing points to tokenized equity access inside exchange and DTC controls, with shareholder rights and settlement kept on familiar rails.</p> <p>The post <a href=\"https://cryptoslate.com/centralized-wall-street-gatekeepers-to-control-investors-route-into-tokenized-stocks-t"
-    },
-    {
-      "title": "Trump Signs Quantum Executive Orders: What Do They Mean for Crypto Security?",
-      "url": "https://beincrypto.com/?p=842011",
-      "source": "BeInCrypto",
-      "published": "2026-06-22T23:25:00+00:00",
-      "summary": "<p>Trump's quantum executive orders push US agencies to post-quantum cryptography by 2031. What they mean for crypto security.</p> <p>The post <a href=\"https://beincrypto.com/trump-quantum-orders-crypto-security/\">Trump Signs Quantum Executive Orders: What Do They Mean for Crypto"
-    },
-    {
-      "title": "Google DeepMind signs AI research deal with film studio A24",
-      "url": "https://cryptobriefing.com/?p=264518",
-      "source": "Crypto Briefing",
-      "published": "2026-06-22T22:55:14+00:00",
-      "summary": "<p>This collaboration could redefine AI's role in creative industries, emphasizing augmentation over replacement, and influencing future AI tool development.</p> <p>The post <a href=\"https://cryptobriefing.com/google-deepmind-a24-ai-filmmaking-deal/\">Google DeepMind signs AI rese"
-    },
-    {
-      "title": "New Proposal Redirects 10% of Staking Rewards to Fund Ethereum Ecosystem",
-      "url": "https://cryptopotato.com/?p=1440597",
-      "source": "CryptoPotato",
-      "published": "2026-06-22T22:01:07+00:00",
-      "summary": "At current staking levels, the proposal could channel as much as 76,000 ETH ($131.6 million) into ecosystem development."
     },
     {
       "title": "Comparing Bitcoin Giant Strategy to Terra Luna Is a STRC, Benchmark Says",
@@ -189,13 +196,6 @@
       "source": "U.Today",
       "published": "2026-06-21T10:57:09+00:00",
       "summary": "Ripple has activated AI Agent payments on XRP Ledger and it is seeking to expand its workforce to effectively allow machines to make transactions with XRP and RLUSD."
-    },
-    {
-      "title": "XRP Quietly Prepares for Next Era With Five New Building Blocks Added",
-      "url": "https://u.today/xrp-quietly-prepares-for-next-era-with-five-new-building-blocks-added",
-      "source": "U.Today",
-      "published": "2026-06-21T10:30:51+00:00",
-      "summary": "XRP Ledger Infrastructure Push Is Accelerating; XRPL Foundation director of community outlines five key developments."
     }
   ],
   "rumors": [
