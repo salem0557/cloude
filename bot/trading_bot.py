@@ -584,10 +584,26 @@ class Bot:
             log("🛑 Daily loss limit hit. Pausing new entries until tomorrow.")
 
     # ------------------------- fast trading loop -------------------------
+    def _handle_manual_sells(self):
+        """Execute any 'بيع' button requests from the web monitor: market-sell
+        the position now, regardless of strategy signal. Safe if the symbol has
+        no open position (ignored)."""
+        for symbol in monitor.drain_sell_requests():
+            if symbol not in self.state["positions"]:
+                log(f"↩️  manual sell ignored — no open position for {symbol}")
+                continue
+            try:
+                price = self.ex.last_price(symbol)
+                log(f"🖐️  manual sell requested for {symbol} @ {price:.6f}")
+                self.close_position(symbol, price, "بيع يدوي (manual)")
+            except Exception as e:
+                log(f"⚠️  manual sell failed for {symbol}: {e}")
+
     def manage_cycle(self):
         """Fast loop body — runs every POLL_SECONDS in the main thread. Only
         manages open/active positions (exits + entries) and writes the
         dashboard. The heavy scan/optimize runs in a background thread."""
+        self._handle_manual_sells()
         prices = {}
         for symbol in list(self.state.get("active", [])):
             try:
