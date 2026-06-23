@@ -15,9 +15,14 @@ the regime is simply "neutral" and the bot trades normally.
 from __future__ import annotations
 
 import json
+import os
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
+
+import news_feed
+import news_ai
+import onchain
 
 HERE = Path(__file__).resolve().parent
 NEWS_FILE = HERE.parent / "docs" / "crypto" / "data" / "news.json"
@@ -39,19 +44,55 @@ POSITIVE = ["etf approval", "approve", "approved", "surge", "rally", "soar",
             "institutional", "breakout", "halving"]
 
 
-def _news_sentiment():
-    """Net sentiment score from recent headlines (negative<0<positive)."""
+def _collect_headlines():
+    """Merge the static news.json with the live CryptoCompare feed (free).
+
+    Live headlines are added only when NEWS_FEED_LIVE is on (default) so news is
+    never stale on a long-running deploy. Returns a list of {title, summary}.
+    """
+    items = []
     try:
         data = json.loads(NEWS_FILE.read_text(encoding="utf-8"))
+        for it in data.get("news", [])[:30]:
+            items.append({"title": it.get("title", ""),
+                          "summary": it.get("summary", "")})
     except Exception:
-        return None, 0
-    items = data.get("news", [])[:30]
+        pass
+    live_on = (os.environ.get("NEWS_FEED_LIVE", "true") or "").lower() \
+        in ("1", "true", "yes", "on")
+    if live_on:
+        for h in news_feed.headlines(os.environ.get("CRYPTOCOMPARE_KEY")):
+            items.append({"title": h.get("title", ""),
+                          "summary": h.get("body", "")})
+    return items
+
+
+def _keyword_sentiment(items):
+    """Net keyword sentiment over headlines (negative<0<positive)."""
+    if not items:
+        return None
     score = 0
     for it in items:
         text = f"{it.get('title','')} {it.get('summary','')}".lower()
         score += sum(1 for w in POSITIVE if w in text)
         score -= sum(1 for w in NEGATIVE if w in text)
-    return score, len(items)
+    return score
+
+
+def _news_sentiment():
+    """Net sentiment score + count. Uses a free LLM (Gemini/Groq) to READ the
+    headlines when a key is set; otherwise falls back to keyword counting. The
+    LLM score (-1..1) is rescaled to the same integer band the rest of the
+    regime logic expects so thresholds keep working either way.
+    """
+    items = _collect_headlines()
+    if not items:
+        return None, 0, "—"
+    llm_score, llm_reason = news_ai.sentiment(items)
+    if llm_score is not None:
+        # map [-1,1] -> roughly [-8,8] to match the keyword thresholds (±4)
+        return round(llm_score * 8), len(items), f"AI: {llm_reason}"
+    return _keyword_sentiment(items), len(items), "keyword"
 
 
 def _fear_greed():
@@ -81,9 +122,10 @@ def _btc_dominance():
 
 def get_regime():
     """Return the current market regime and how it should affect trading."""
-    sentiment, n_news = _news_sentiment()
+    sentiment, n_news, news_src = _news_sentiment()
     fng, fng_label = _fear_greed()
     dominance = _btc_dominance()
+    chain = onchain.market_signal()
 
     allow_buys = True
     risk_multiplier = 1.0
@@ -91,9 +133,9 @@ def get_regime():
 
     if sentiment is not None and sentiment <= -4:
         allow_buys = False
-        reasons.append(f"أخبار سلبية قوية (مؤشّر {sentiment})")
+        reasons.append(f"أخبار سلبية قوية ({news_src} {sentiment})")
     elif sentiment is not None and sentiment >= 4:
-        reasons.append(f"أخبار إيجابية (مؤشّر {sentiment})")
+        reasons.append(f"أخبار إيجابية ({news_src} {sentiment})")
 
     if fng is not None:
         if fng >= 85:
@@ -106,13 +148,23 @@ def get_regime():
         risk_multiplier = min(risk_multiplier, 0.7)
         reasons.append(f"هيمنة BTC مرتفعة ({dominance:.1f}%) — ضغط على العملات البديلة")
 
+    # On-chain capital flow (free DeFiLlama TVL trend): a sharp multi-day drain
+    # is a risk-off tell → trade smaller; steady inflow just adds context.
+    if chain.get("score", 0) <= -0.25:
+        risk_multiplier = min(risk_multiplier, 0.7)
+        reasons.append(chain["reason"])
+    elif chain.get("reason", "—") != "—":
+        reasons.append(chain["reason"])
+
     return {
         "updated": datetime.now(timezone.utc).isoformat(),
         "news_sentiment": sentiment,
         "news_count": n_news,
+        "news_source": news_src,
         "fear_greed": fng,
         "fear_greed_label": fng_label,
         "btc_dominance": dominance,
+        "tvl_change_7d": chain.get("tvl_change_7d"),
         "allow_buys": allow_buys,
         "risk_multiplier": risk_multiplier,
         "reason": " | ".join(reasons) or "وضع طبيعي",
