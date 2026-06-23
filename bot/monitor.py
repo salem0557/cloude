@@ -97,8 +97,8 @@ async function sellPos(sym){
  const t=localStorage.getItem('montok')||'';
  try{const r=await fetch('/sell?symbol='+encodeURIComponent(sym)+'&token='+encodeURIComponent(t),{method:'POST'});
   const j=await r.json().catch(()=>({}));
-  if(r.ok&&j.ok)alert('✅ أُرسل أمر بيع '+sym+' — ينفّذ خلال ثوانٍ (تابع "آخر الصفقات")');
-  else alert('❌ فشل: '+(j.error||('رمز الحماية غير صحيح؟ ('+r.status+')')));
+  if(r.ok&&j.ok)alert('📨 أُرسل الطلب للبوت — لم يُنفَّذ بعد!\\n\\nالبيع يحدث في الخلفية على Binance. تابع «السجلّ المباشر» بالأسفل:\\n• 🔴 SELL '+sym+' = تمّ البيع ✅\\n• manual sell failed = رفضه Binance\\n• dust = الصفقة أصغر من 5$ (بِعها يدوياً من تطبيق Binance)');
+  else alert('❌ فشل إرسال الطلب: '+(j.error||('رمز الحماية غير صحيح؟ ('+r.status+')')));
  }catch(e){alert('❌ تعذّر الاتصال بالبوت')}
  setTimeout(tick,1500);
 }
