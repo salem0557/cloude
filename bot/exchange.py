@@ -85,6 +85,7 @@ class Exchange:
         self.mode = mode
         self.client = None
         self._steps = {}
+        self._age_cache = {}
         if mode in ("testnet", "live"):
             self._connect(api_key, api_secret)
 
@@ -152,6 +153,21 @@ class Exchange:
                     total += amt * p
         return {"free_usdt": round(free_usdt, 2),
                 "total_usdt": round(total, 2)}
+
+    def listing_days(self, symbol):
+        """Roughly how many days the pair has traded (cached). Used to keep
+        brand-new listings — whose tiny history can't be honestly back-tested —
+        out of the auto universe. Returns a large number on any error so a fetch
+        glitch never wrongly excludes a coin."""
+        if symbol in self._age_cache:
+            return self._age_cache[symbol]
+        try:
+            rows = self.klines(symbol, "1d", 1000)
+            days = len(rows)
+        except Exception:
+            days = 9999
+        self._age_cache[symbol] = days
+        return days
 
     # --- market data (works in every mode) ---
     def klines(self, symbol, interval, limit):
