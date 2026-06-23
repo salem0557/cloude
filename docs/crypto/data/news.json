@@ -1,19 +1,47 @@
 {
-  "updated": "2026-06-22T18:58:19.952650+00:00",
+  "updated": "2026-06-22T23:53:08.296441+00:00",
   "news": [
     {
-      "title": "Crypto Industry Urges Congress to Pass Tax Bill—But Will It Happen This Year?",
-      "url": "https://decrypt.co/?p=371804",
-      "source": "Decrypt",
-      "published": "2026-06-22T18:53:56+00:00",
-      "summary": "A bill that would make crypto mining and staking more attractive is a top priority for industry leaders—and a growing concern for House Democrats."
+      "title": "Strive Adds 759 Bitcoin As Corporate BTC Treasury Race Continues",
+      "url": "https://www.newsbtc.com/?p=902367",
+      "source": "NewsBTC",
+      "published": "2026-06-22T23:45:57+00:00",
+      "summary": "Strive reportedly bought 759 BTC at about $65,850, lifting its Bitcoin holdings to 19,864 BTC."
     },
     {
-      "title": "Austria trails Argentina 1-0 in tense World Cup match with 9 minutes left",
-      "url": "https://cryptobriefing.com/?p=264429",
+      "title": "Centralized Wall Street gatekeepers to control investors’ route into tokenized stocks through old pipes",
+      "url": "https://cryptoslate.com/?p=543324",
+      "source": "CryptoSlate",
+      "published": "2026-06-22T23:25:01+00:00",
+      "summary": "<p>The filing points to tokenized equity access inside exchange and DTC controls, with shareholder rights and settlement kept on familiar rails.</p> <p>The post <a href=\"https://cryptoslate.com/centralized-wall-street-gatekeepers-to-control-investors-route-into-tokenized-stocks-t"
+    },
+    {
+      "title": "Trump Signs Quantum Executive Orders: What Do They Mean for Crypto Security?",
+      "url": "https://beincrypto.com/?p=842011",
+      "source": "BeInCrypto",
+      "published": "2026-06-22T23:25:00+00:00",
+      "summary": "<p>Trump's quantum executive orders push US agencies to post-quantum cryptography by 2031. What they mean for crypto security.</p> <p>The post <a href=\"https://beincrypto.com/trump-quantum-orders-crypto-security/\">Trump Signs Quantum Executive Orders: What Do They Mean for Crypto"
+    },
+    {
+      "title": "Google DeepMind signs AI research deal with film studio A24",
+      "url": "https://cryptobriefing.com/?p=264518",
       "source": "Crypto Briefing",
-      "published": "2026-06-22T18:48:40+00:00",
-      "summary": "<p>Austria's potential comeback could disrupt expectations, impacting both teams' World Cup prospects and altering market predictions significantly.</p> <p>The post <a href=\"https://cryptobriefing.com/austria-trails-argentina-1-0-in-tense-world-cup-match-with-9-minutes-left/\">Aus"
+      "published": "2026-06-22T22:55:14+00:00",
+      "summary": "<p>This collaboration could redefine AI's role in creative industries, emphasizing augmentation over replacement, and influencing future AI tool development.</p> <p>The post <a href=\"https://cryptobriefing.com/google-deepmind-a24-ai-filmmaking-deal/\">Google DeepMind signs AI rese"
+    },
+    {
+      "title": "New Proposal Redirects 10% of Staking Rewards to Fund Ethereum Ecosystem",
+      "url": "https://cryptopotato.com/?p=1440597",
+      "source": "CryptoPotato",
+      "published": "2026-06-22T22:01:07+00:00",
+      "summary": "At current staking levels, the proposal could channel as much as 76,000 ETH ($131.6 million) into ecosystem development."
+    },
+    {
+      "title": "Comparing Bitcoin Giant Strategy to Terra Luna Is a STRC, Benchmark Says",
+      "url": "https://decrypt.co/?p=371814",
+      "source": "Decrypt",
+      "published": "2026-06-22T20:45:46+00:00",
+      "summary": "The analysts underscored that Strategy's Stretch (STRC) can't technically lose its “peg.”"
     },
     {
       "title": "'Find My Secret Document': Ethereum Co-Founder Buterin Puts AI to Test",
@@ -21,34 +49,6 @@
       "source": "U.Today",
       "published": "2026-06-22T18:41:04+00:00",
       "summary": "Ethereum co-founder Vitalik Buterin is putting the limits of artificial intelligence and online privacy to the test."
-    },
-    {
-      "title": "Franklin Templeton Files Bitcoin DRIP ETFs That Would Route Stock Dividends Into BTC",
-      "url": "https://www.newsbtc.com/?p=902356",
-      "source": "NewsBTC",
-      "published": "2026-06-22T18:31:08+00:00",
-      "summary": "Franklin Templeton has filed for Bitcoin DRIP ETFs that would route stock-dividend income into Bitcoin exposure, but the products are not yet live."
-    },
-    {
-      "title": "Iran Oil License Sends Crude Lower: Will Inflation Follow?",
-      "url": "https://beincrypto.com/?p=841941",
-      "source": "BeInCrypto",
-      "published": "2026-06-22T18:06:19+00:00",
-      "summary": "<p>The US Treasury issued an oil license to Iran, allowing the production, sale, and delivery of Iranian crude for 60 days. Crude fell as traders priced in fresh barrels and a fading war premium. Iranian crude can reach mainstream buyers again for the first time since Washington "
-    },
-    {
-      "title": "Andy Burnham emerges as UK Prime Minister favorite, sparking crypto industry hopes for policy reset",
-      "url": "https://cryptoslate.com/?p=543449",
-      "source": "CryptoSlate",
-      "published": "2026-06-22T17:35:48+00:00",
-      "summary": "<p>Keir Starmer’s decision to step down as UK prime minister has opened a race for Downing Street just as Britain enters the final stages of building one of its most consequential financial regulatory frameworks in years. On June 22, Starmer said that he would remain in office un"
-    },
-    {
-      "title": "Is a 60% Bitcoin Crash Still on the Table? Analyst Points to Wall Street",
-      "url": "https://cryptopotato.com/?p=1440602",
-      "source": "CryptoPotato",
-      "published": "2026-06-22T17:12:37+00:00",
-      "summary": "Here's the scenario in which BTC could plunge to $24,000."
     },
     {
       "title": "Dogecoin Holders Alerted: Millions of Coins Trapped Amid Imminent Shutdown of DOGE L2",
@@ -200,6 +200,16 @@
   ],
   "rumors": [
     {
+      "title": "$1.8 Trillion Asset Manager Launches Crypto Division",
+      "url": "https://u.today/18-trillion-asset-manager-launches-crypto-division",
+      "source": "U.Today",
+      "published": "2026-06-22T19:44:06+00:00",
+      "summary": "Traditional finance titan Franklin Templeton is no longer just toying with digital assets.",
+      "tags": [
+        "Launch"
+      ]
+    },
+    {
       "title": "Solana Partners With Major Korean Bank for Global Settlement Services",
       "url": "https://u.today/solana-partners-with-major-korean-bank-for-global-settlement-services",
       "source": "U.Today",
@@ -217,16 +227,6 @@
       "summary": "Pressure on Shiba Inu's price might drop substantially as investors pull off from centralized exchanges.",
       "tags": [
         "Meme"
-      ]
-    },
-    {
-      "title": "Hyperliquid (HYPE) Prints Up to 1700% Liquidity Loss, More Pressure to Come",
-      "url": "https://u.today/hyperliquid-hype-prints-up-to-1700-liquidity-loss-more-pressure-to-come",
-      "source": "U.Today",
-      "published": "2026-06-21T09:38:00+00:00",
-      "summary": "Hyperliquid loses market traction way too rapidly, but it might be a nothingburger too.",
-      "tags": [
-        "Speculation"
       ]
     }
   ],
