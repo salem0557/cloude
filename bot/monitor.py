@@ -99,7 +99,7 @@ pre{background:#0a0e17;border:1px solid var(--bd);border-radius:12px;padding:12p
 <div class="st"><div class="l">صفقات مفتوحة</div><div class="v" id="op">—</div></div>
 <div class="st"><div class="l">الخوف/الطمع</div><div class="v" id="fng">—</div></div>
 </div>
-<h2 id="recoh">🟢 توصيات الشراء</h2>
+<h2 id="recoh">🟢 توصيات الشراء <span id="recolive" class="mut" style="font-size:.72rem;font-weight:400"></span></h2>
 <div class="mut" style="font-size:.75rem;margin-bottom:6px">مستشار فقط — نفّذ يدوياً على Binance. الأسهم الخضراء = قوة فرصة الربح (🟢=مراقبة، 🟢🟢🟢=الأقوى). ليست نصيحة مالية مضمونة.</div>
 <div class="scroll"><table id="reco"><thead><tr><th>الفرصة</th><th>العملة</th><th>السعر</th><th>الهدف</th><th>الوقف</th><th title="المدة المتوقّعة لبلوغ الهدف حسب نوع الاستراتيجية">المدة المتوقّعة</th><th title="تغيّر سعر العملة آخر 7 أيام">أداء 7 أيام</th><th>الإجراء</th></tr></thead><tbody></tbody></table></div>
 <h2 id="posh">الصفقات المفتوحة</h2><div class="scroll"><table id="pos"><thead><tr><th>العملة</th><th>دخول</th><th>الآن</th><th>ربح%</th><th>إجراء</th></tr></thead><tbody></tbody></table></div>
@@ -144,6 +144,7 @@ async function tick(){
   $('op').textContent=(d.positions||[]).length;const R=d.regime||{};
   $('fng').textContent=R.fear_greed==null?'—':R.fear_greed+(R.fear_greed_label?(' '+R.fear_greed_label):'');
   const rc=(d.recommendations||[]);
+  try{$('recolive').textContent='● مباشر — '+new Date().toLocaleTimeString('en-GB')}catch(e){}
   const rb=$('reco').querySelector('tbody');
   rb.innerHTML=rc.map(r=>{const a='🟢'.repeat(r.arrows||1);
     const act=r.signal==='buy'?'up':'mut';
@@ -158,7 +159,7 @@ async function tick(){
  try{$('logs').textContent=await(await fetch('/logs?t='+Date.now())).text()}catch(e){}
 }
 try{$('tok').value=localStorage.getItem('montok')||''}catch(e){}
-tick();setInterval(tick,5000);
+tick();setInterval(tick,2500);
 </script></body></html>"""
 
 

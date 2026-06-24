@@ -961,12 +961,25 @@ class Bot:
         dashboard."""
         self._handle_manual_buys()
         self._handle_manual_sells()
+        # Live price refresh every cycle (one bulk call) so the dashboard shows
+        # near-real-time prices for timing buys/sells — decoupled from the heavy
+        # recommendation rebuild that only runs every ADVISOR_REFRESH_MIN.
+        allpx = self.ex.all_prices()
+        if allpx:
+            for r in (self.state.get("recommendations") or []):
+                p = allpx.get(r["symbol"])
+                if p:
+                    r["price"] = round(p, 6)
         prices = {}
         for sym in list(self.state.get("positions", {})):
-            try:
-                prices[sym] = self.ex.last_price(sym)
-            except Exception:
-                pass
+            p = allpx.get(sym)
+            if not p:
+                try:
+                    p = self.ex.last_price(sym)
+                except Exception:
+                    p = None
+            if p:
+                prices[sym] = p
         if (time.time() - self._last_reco_ts) >= self.advisor_refresh_min * 60 \
                 or not self.state.get("recommendations"):
             self._last_reco_ts = time.time()

@@ -205,6 +205,22 @@ class Exchange:
         t = self.client.get_symbol_ticker(symbol=symbol)
         return float(t["price"])
 
+    def all_prices(self):
+        """Every symbol -> last price in ONE public call (works in any mode, no
+        auth). Lets the advisor refresh live prices for many coins cheaply each
+        cycle instead of a request per coin. Returns {} on failure."""
+        try:
+            rows = _public_get("/api/v3/ticker/price")
+            out = {}
+            for r in rows:
+                try:
+                    out[r["symbol"]] = float(r["price"])
+                except (TypeError, ValueError, KeyError):
+                    pass
+            return out
+        except Exception:
+            return {}
+
     def spread_pct(self, symbol):
         """Best bid/ask spread as a % of price (liquidity / escape gauge).
 
