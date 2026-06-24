@@ -110,7 +110,10 @@ pre{background:#0a0e17;border:1px solid var(--bd);border-radius:12px;padding:12p
 const $=i=>document.getElementById(i),f=(n,d=2)=>n==null||isNaN(n)?'—':(+n).toLocaleString('en',{maximumFractionDigits:d});
 const sg=(v,d=2)=>(v>0?'+':'')+f(v,d),cl=v=>v>0?'up':v<0?'dn':'';
 let prevRec={},prevPos={};
-function dirCls(sym,px,store){const e=store[sym];if(e==null)return '';if(px>e.px)return 'up';if(px<e.px)return 'dn';return e.dir||''}
+// returns [colorState, arrow]: color persists with the trend (stable), the arrow
+// reflects ONLY the latest tick — shown when the price actually moved up/down,
+// hidden when unchanged — so you can tell a continued move from a reversal.
+function pdir(sym,px,store){const e=store[sym];const t=(e==null)?'':(px>e.px?'up':px<e.px?'dn':'');const s=t||(e&&e.s||'');store[sym]={px:px,s:s};return [s,t==='up'?' ▲':t==='dn'?' ▼':'']}
 function ago(t){if(!t)return'—';let s=(Date.now()-new Date(t))/1e3;return s<60?'الآن':s<3600?(s/60|0)+'د':s<86400?(s/3600|0)+'س':(s/86400|0)+'ي'}
 function saveTok(){localStorage.setItem('montok',$('tok').value.trim());alert('تم حفظ الرمز في هذا المتصفّح')}
 async function sellPos(sym){
@@ -150,13 +153,12 @@ async function tick(){
   const rb=$('reco').querySelector('tbody');
   rb.innerHTML=rc.map(r=>{const a='🟢'.repeat(r.arrows||1);
     const act=r.signal==='buy'?'up':'mut';
-    const pd=dirCls(r.symbol,r.price,prevRec),ar=pd==='up'?' ▲':pd==='dn'?' ▼':'';
-    prevRec[r.symbol]={px:r.price,dir:pd};
-    return `<tr><td title="opp ${r.opp}">${a}</td><td><b>${r.symbol}</b></td><td class="${pd}" style="font-weight:700">${f(r.price,5)}${ar}</td><td class=up>+${f(r.target_pct,1)}%</td><td class=dn>-${f(r.stop_pct,1)}%</td><td class=mut>${r.duration||''}</td><td class=${cl(r.perf_7d)} title="${(r.reason||'').replace(/"/g,'')}">${r.perf_7d==null?'—':sg(r.perf_7d,1)+'%'}</td><td><span class="${act}" style="font-size:.74rem">${r.action||''}</span><br><button class="sell" style="background:var(--up);margin-top:3px" onclick="buyPos('${r.symbol}')">شراء</button></td></tr>`}).join('')||'<tr><td colspan=8 class=mut>تُحسب التوصيات…</td></tr>';
+    const pr=pdir(r.symbol,r.price,prevRec);
+    return `<tr><td title="opp ${r.opp}">${a}</td><td><b>${r.symbol}</b></td><td class="${pr[0]}" style="font-weight:700">${f(r.price,5)}${pr[1]}</td><td class=up>+${f(r.target_pct,1)}%</td><td class=dn>-${f(r.stop_pct,1)}%</td><td class=mut>${r.duration||''}</td><td class=${cl(r.perf_7d)} title="${(r.reason||'').replace(/"/g,'')}">${r.perf_7d==null?'—':sg(r.perf_7d,1)+'%'}</td><td><span class="${act}" style="font-size:.74rem">${r.action||''}</span><br><button class="sell" style="background:var(--up);margin-top:3px" onclick="buyPos('${r.symbol}')">شراء</button></td></tr>`}).join('')||'<tr><td colspan=8 class=mut>تُحسب التوصيات…</td></tr>';
   // advisor mode: hide only the learned-strategy table (positions+trades stay so
   // you can sell what you manually bought)
   if(d.advisor){['strh','str'].forEach(id=>{const e=$(id);if(e)e.style.display='none'});}
-  let b=$('pos').querySelector('tbody');b.innerHTML=(d.positions||[]).map(x=>{const pd=dirCls(x.symbol,x.price,prevPos),ar=pd==='up'?' ▲':pd==='dn'?' ▼':'';prevPos[x.symbol]={px:x.price,dir:pd};return `<tr><td>${x.symbol}</td><td>${f(x.entry_price,4)}</td><td class="${pd}" style="font-weight:700">${f(x.price,4)}${ar}</td><td class=${cl(x.pnl_pct)}>${sg(x.pnl_pct)}%</td><td><button class="sell" onclick="sellPos('${x.symbol}')">بيع</button></td></tr>`}).join('')||'<tr><td colspan=5 class=mut>لا صفقات</td></tr>';
+  let b=$('pos').querySelector('tbody');b.innerHTML=(d.positions||[]).map(x=>{const pr=pdir(x.symbol,x.price,prevPos);return `<tr><td>${x.symbol}</td><td>${f(x.entry_price,4)}</td><td class="${pr[0]}" style="font-weight:700">${f(x.price,4)}${pr[1]}</td><td class=${cl(x.pnl_pct)}>${sg(x.pnl_pct)}%</td><td><button class="sell" onclick="sellPos('${x.symbol}')">بيع</button></td></tr>`}).join('')||'<tr><td colspan=5 class=mut>لا صفقات</td></tr>';
   b=$('str').querySelector('tbody');b.innerHTML=(d.strategy||[]).map(s=>{let pp=s.params||{},bt=s.backtest||{};return `<tr><td>${s.symbol}</td><td class=${s.active?'up':'mut'}>${s.active?'يتداول':'مراقبة'}</td><td>${pp.fast??'—'}/${pp.slow??'—'}</td><td class=${cl(bt.return_pct)}>${bt.return_pct==null?'—':sg(bt.return_pct)+'%'}</td><td>${s.ml_accuracy==null?'—':(s.ml_accuracy*100|0)+'%'}</td></tr>`}).join('');
   b=$('trd').querySelector('tbody');b.innerHTML=(d.recent_trades||[]).slice().reverse().map(t=>`<tr><td class=mut>${ago(t.time)}</td><td>${t.symbol}</td><td class=${t.side==='BUY'?'up':'dn'}>${t.side==='BUY'?'شراء':'بيع'}</td><td>${f(t.price,4)}</td><td class=mut>${t.reason||''}</td></tr>`).join('')||'<tr><td colspan=5 class=mut>لا صفقات بعد</td></tr>';
  }catch(e){}
