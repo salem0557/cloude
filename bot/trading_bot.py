@@ -834,6 +834,7 @@ class Bot:
         pool = self.state.get("reco_pool", [])[: max(self.reco_count * 2, 24)]
         recos = []
         b7 = self._bars_per_7d()
+        wstats = self.ex.window_stats([s for s, _ in pool], "1h")  # 1h low/high
         for sym, base in pool:
             if len(recos) >= self.reco_count:
                 break
@@ -883,6 +884,10 @@ class Bot:
                     "strategy": strat,
                     "reason": " + ".join(bits),
                     "perf_7d": round(perf_7d, 1) if perf_7d is not None else None,
+                    "low_1h": (round(wstats[sym][0], 6)
+                               if sym in wstats else None),
+                    "high_1h": (round(wstats[sym][1], 6)
+                                if sym in wstats else None),
                     "duration": ("1–3 أيام" if strat in self._TREND_STRATS
                                  else "ساعات–يوم"),
                     "action": ("اشترِ الآن" if sig == "buy"
@@ -969,7 +974,13 @@ class Bot:
             for r in (self.state.get("recommendations") or []):
                 p = allpx.get(r["symbol"])
                 if p:
-                    r["price"] = round(p, 6)
+                    p = round(p, 6)
+                    r["price"] = p
+                    # keep the 1h range valid live between 15-min rebuilds
+                    if r.get("low_1h") is not None:
+                        r["low_1h"] = min(r["low_1h"], p)
+                    if r.get("high_1h") is not None:
+                        r["high_1h"] = max(r["high_1h"], p)
         prices = {}
         for sym in list(self.state.get("positions", {})):
             p = allpx.get(sym)

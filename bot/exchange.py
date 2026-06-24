@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import json
 import math
+import urllib.parse
 import urllib.request
 
 # Public market-data hosts, tried in order. data-api.binance.vision is the
@@ -215,6 +216,28 @@ class Exchange:
             for r in rows:
                 try:
                     out[r["symbol"]] = float(r["price"])
+                except (TypeError, ValueError, KeyError):
+                    pass
+            return out
+        except Exception:
+            return {}
+
+    def window_stats(self, symbols, window="1h"):
+        """Rolling-window low/high per symbol over ``window`` (e.g. last 1h) via
+        the public rolling-window ticker — ONE call for many symbols. Returns
+        {symbol: (low, high)}; {} on failure."""
+        syms = list(symbols)[:100]
+        if not syms:
+            return {}
+        try:
+            arr = json.dumps(syms, separators=(",", ":"))
+            path = (f"/api/v3/ticker?symbols={urllib.parse.quote(arr)}"
+                    f"&windowSize={window}")
+            rows = _public_get(path)
+            out = {}
+            for r in rows:
+                try:
+                    out[r["symbol"]] = (float(r["lowPrice"]), float(r["highPrice"]))
                 except (TypeError, ValueError, KeyError):
                     pass
             return out
