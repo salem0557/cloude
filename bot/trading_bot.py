@@ -172,7 +172,10 @@ class Bot:
         self.ml_retrain_min = float(cfg("ML_RETRAIN_MINUTES", "10"))
         # Heavy scan/optimize runs every LEARN_SECONDS (not every poll), so
         # position-exit checks stay fast and react to price within POLL_SECONDS.
-        self.learn_seconds = float(cfg("LEARN_SECONDS", "60"))
+        # Default 1800s (30m): re-tuning every few seconds just chases noise (a 5m
+        # candle only closes every 300s) and makes the chosen strategy/params
+        # thrash. Exits still react within POLL_SECONDS; only LEARNING is slowed.
+        self.learn_seconds = float(cfg("LEARN_SECONDS", "1800"))
         self.top_n = int(cfg("TOP_N", "5"))
         self.history = int(cfg("HISTORY", "500"))
         self.max_open = int(cfg("MAX_OPEN_POSITIONS", "5"))
@@ -466,7 +469,7 @@ class Bot:
             log("📊 smart-money L/S (active): " + ", ".join(biases))
 
     # ------------------------------ trading ------------------------------
-    def open_position(self, symbol, price):
+    def open_position(self, symbol, price, params=None):
         if len(self.state["positions"]) >= self.max_open:
             return
         # Escape check: don't enter a coin whose spread is too wide to exit clean.
@@ -480,11 +483,13 @@ class Bot:
         fill, qty = self.ex.buy(symbol, quote, price)   # network (lock-free)
         with self._lock:
             self.state["positions"][symbol] = {
-                "entry_price": fill, "qty": qty, "opened": iso(), "peak": fill}
+                "entry_price": fill, "qty": qty, "opened": iso(), "peak": fill,
+                "params": dict(params) if params else None}   # freeze for exits
             if self.mode == "dryrun":
                 self.state["equity"] -= fill * qty
             record_trade(self.state, "BUY", symbol, fill, qty, self.mode, "signal")
-        log(f"🟢 BUY {symbol} {qty:.6f} @ {fill:.4f}")
+        strat = (params or {}).get("strategy", "-")
+        log(f"🟢 BUY {symbol} {qty:.6f} @ {fill:.4f} [{strat}]")
 
     def close_position(self, symbol, price, reason):
         pos = self.state["positions"].get(symbol)
@@ -510,7 +515,14 @@ class Bot:
             f"P/L {pnl:+.2f} ({pct:+.2f}%)")
 
     def manage_symbol(self, symbol, prices):
-        params = merge_params(self.state["params"].get(symbol))
+        pos = self.state["positions"].get(symbol)
+        # Freeze the strategy + params chosen at ENTRY for the life of the trade,
+        # so exits use the SAME logic the entry was based on. Re-optimization can
+        # otherwise switch a held coin's strategy/params mid-trade (inconsistent
+        # entry vs exit) — a real bug this avoids.
+        raw = pos["params"] if (pos and pos.get("params")) \
+            else self.state["params"].get(symbol)
+        params = merge_params(raw)
         # Fixed stop-loss / take-profit overrides (force values, ignore optimizer)
         if self.force_sl:
             params["stop_loss_pct"] = self.force_sl
@@ -524,7 +536,6 @@ class Bot:
         signal = latest_signal(closes, params)
         ml_prob = ml_model.predict_up(symbol, closes, highs, lows, vols)
 
-        pos = self.state["positions"].get(symbol)
         if pos:
             entry = pos["entry_price"]
             pos["peak"] = max(pos.get("peak", entry), price)   # track high
@@ -585,7 +596,7 @@ class Bot:
                 elif self.deriv_gate and not snap["confirm_long"]:
                     self._skip_log(symbol, f"derivatives veto — {snap['reason']}")
                 else:
-                    self.open_position(symbol, price)
+                    self.open_position(symbol, price, params)
             elif signal == "buy" and not trend_ok:
                 self._skip_log(symbol, f"market downtrend ({self.market_trend_reason})")
             elif signal == "buy" and not regime_ok:

@@ -27,7 +27,7 @@ MODELS_DIR = Path(os.environ.get("DATA_DIR", str(HERE))) / "models"
 HORIZON = 4          # predict direction 4 bars ahead
 UP_THRESHOLD = 0.0   # "up" means return > 0 over the horizon
 MIN_SAMPLES = 120    # need at least this many feature rows to train
-MIN_EDGE = 0.52      # validation accuracy must beat this to be used
+MIN_EDGE = 0.55      # validation accuracy must clearly beat coin-flip to be used
 
 try:  # optional heavy deps
     import numpy as np
@@ -134,11 +134,15 @@ def train(symbol, closes, highs=None, lows=None, vols=None):
     if len(X) < MIN_SAMPLES or len(set(y)) < 2:
         return None
     try:
-        # time-ordered split — train on the older 75%, validate on the newer 25%
+        # time-ordered split — train on the older 75%, validate on the newer 25%.
+        # PURGE the HORIZON rows straddling the split: their labels look forward
+        # into the validation window, so keeping them leaks the future and
+        # inflates the accuracy. Dropping them makes the edge honest.
         split = int(len(X) * 0.75)
-        Xtr, ytr = np.array(X[:split]), np.array(y[:split])
+        Xtr, ytr = np.array(X[:max(0, split - HORIZON)]), \
+            np.array(y[:max(0, split - HORIZON)])
         Xva, yva = np.array(X[split:]), np.array(y[split:])
-        if len(Xva) < 20 or len(set(ytr)) < 2:
+        if len(Xva) < 20 or len(Xtr) < 60 or len(set(ytr)) < 2:
             return None
         model = GradientBoostingClassifier(
             n_estimators=80, max_depth=3, learning_rate=0.05, random_state=0)
