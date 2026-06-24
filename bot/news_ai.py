@@ -33,7 +33,7 @@ _TTL = 1800
 _RETRY_CODES = {429, 500, 502, 503, 504}   # transient — worth a quick retry
 _CACHE = {"t": 0.0, "key": None, "result": (None, None)}
 _GEMINI_HOST = "https://generativelanguage.googleapis.com"
-_RESOLVED = {"gemini_model": None}          # auto-discovered, cached per process
+_RESOLVED = {"gemini_model": None, "groq_model": None}  # auto-discovered, cached
 
 # Preference order when auto-picking a Gemini model. Free tier matters most here,
 # so prefer the LIGHT, high-quota, non-"thinking" models first (gemini-2.5-flash
@@ -70,8 +70,8 @@ def _call(provider, prompt):
 
 def _model_name(provider):
     if provider == "gemini":
-        return _resolve_gemini_model(os.environ.get("GEMINI_API_KEY"))
-    return os.environ.get("GROQ_MODEL", "llama-3.3-70b-versatile")
+        return _resolve_gemini_model((os.environ.get("GEMINI_API_KEY") or "").strip())
+    return _resolve_groq_model((os.environ.get("GROQ_API_KEY") or "").strip())
 
 
 def ask(prompt):
@@ -159,7 +159,7 @@ def _resolve_gemini_model(key):
 
 
 def _call_gemini(prompt):
-    key = os.environ.get("GEMINI_API_KEY")
+    key = (os.environ.get("GEMINI_API_KEY") or "").strip()
     model = _resolve_gemini_model(key)
     url = f"{_GEMINI_HOST}/v1beta/models/{model}:generateContent?key={key}"
     out = _post(url, {"contents": [{"parts": [{"text": prompt}]}]},
@@ -167,9 +167,51 @@ def _call_gemini(prompt):
     return out["candidates"][0]["content"]["parts"][0]["text"]
 
 
+# Groq model auto-discovery (free model ids change; a stale default 403/404s).
+_GROQ_PREFS = ["llama-3.3-70b-versatile", "llama-3.1-70b", "70b-versatile",
+               "70b", "versatile", "llama-3.1-8b-instant", "8b-instant",
+               "instant", "llama"]
+
+
+def _groq_list_models(key):
+    url = "https://api.groq.com/openai/v1/models"
+    req = urllib.request.Request(
+        url, headers={"Authorization": f"Bearer {key}",
+                      "User-Agent": "cryptobot/1.0"})
+    with urllib.request.urlopen(req, timeout=20) as r:
+        d = json.load(r)
+    return [m.get("id") for m in d.get("data", []) if m.get("id")]
+
+
+def _pick_groq_model(models):
+    if not models:
+        return None
+    chat = [m for m in models if not any(b in m.lower() for b in
+            ("whisper", "tts", "guard", "embed", "vision"))] or models
+    for pref in _GROQ_PREFS:
+        for m in chat:
+            if pref in m.lower():
+                return m
+    return chat[0]
+
+
+def _resolve_groq_model(key):
+    env = os.environ.get("GROQ_MODEL")
+    if env:
+        return env
+    if _RESOLVED["groq_model"]:
+        return _RESOLVED["groq_model"]
+    try:
+        chosen = _pick_groq_model(_groq_list_models(key))
+    except Exception:
+        chosen = None
+    _RESOLVED["groq_model"] = chosen or "llama-3.3-70b-versatile"
+    return _RESOLVED["groq_model"]
+
+
 def _call_groq(prompt):
-    key = os.environ.get("GROQ_API_KEY")
-    model = os.environ.get("GROQ_MODEL", "llama-3.3-70b-versatile")
+    key = (os.environ.get("GROQ_API_KEY") or "").strip()
+    model = _resolve_groq_model(key)
     url = "https://api.groq.com/openai/v1/chat/completions"
     out = _post(url, {"model": model, "temperature": 0,
                       "messages": [{"role": "user", "content": prompt}]},
@@ -219,7 +261,18 @@ def probe():
             if "429" in msg:
                 notes.append(f"{provider}:{model} quota/rate 429")
             elif any(c in msg for c in ("400", "401", "403")):
-                notes.append(f"{provider}:{model} key/access? {msg}")
+                # distinguish a bad key from a bad model: if the key can list
+                # models, the key is fine and the model was the problem.
+                hint = "check the API key"
+                if provider == "groq":
+                    try:
+                        avail = _groq_list_models(
+                            (os.environ.get("GROQ_API_KEY") or "").strip())
+                        if avail:
+                            hint = "key OK — models: " + ", ".join(avail[:4])
+                    except Exception:
+                        hint = "key rejected (regenerate & re-paste, no spaces)"
+                notes.append(f"{provider}:{model} {msg} → {hint}")
             else:
                 notes.append(f"{provider}:{model} {msg}")
     detail = " | ".join(notes) + "  (keyword fallback + auto-retry)"
