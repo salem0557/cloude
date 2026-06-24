@@ -113,6 +113,9 @@ def load_state():
         "trades": [],           # recent trades for dashboard
         "day": str(date.today()),
         "day_start_realized": 0.0,
+        "day_start_equity": 0.0,
+        "day_peak_equity": 0.0,
+        "day_locked": False,
         "halted": False,
         "sell_count": 0,
     }
@@ -180,6 +183,19 @@ class Bot:
         self.history = int(cfg("HISTORY", "500"))
         self.max_open = int(cfg("MAX_OPEN_POSITIONS", "5"))
         self.daily_loss_limit = float(cfg("DAILY_LOSS_LIMIT", "0") or 0)
+        # ---- daily-investing controls ("close the day green") ----
+        # The bot manages a DAY as a unit: once the day's net P/L reaches the
+        # target it banks it (sells all + stops buying till tomorrow); a profit-
+        # giveback ratchet locks a green day before it round-trips to red; a
+        # daily stop caps a bad day. (No bot can GUARANTEE a green day — this
+        # maximises the odds and locks gains once they exist.) % of day-start
+        # equity. 0 = off.
+        self.day_target_pct = float(cfg("DAILY_TARGET_PCT", "1.5") or 0)
+        self.day_stop_pct = float(cfg("DAILY_STOP_PCT", "2.0") or 0)
+        self.day_giveback_pct = float(cfg("DAILY_GIVEBACK_PCT", "40") or 0)
+        # Optional hard end-of-day flatten at this UTC hour (e.g. 23). "" = off.
+        self.day_flatten_hour = (cfg("DAY_FLATTEN_HOUR", "") or "").strip()
+        self._last_day_log = 0.0
         # Trailing stop: ride the rise, sell when price pulls back this % from
         # its peak. 0 = off (use the fixed take-profit instead).
         self.trailing_pct = float(cfg("TRAILING_STOP_PCT", "0") or 0)
@@ -562,11 +578,14 @@ class Bot:
                 reason = "trend exit"
             if reason:
                 self.close_position(symbol, price, reason)
-        elif self.pause_trading:
-            # Trading paused: open no new positions (open ones are still managed
-            # and exited by the block above).
+        elif self.pause_trading or self.state.get("day_locked"):
+            # No new positions while paused or while the day is locked green
+            # (open ones are still managed and exited by the block above).
             if signal == "buy":
-                self._skip_log(symbol, "trading paused (PAUSE_TRADING=true)")
+                why = ("اليوم مُقفل على ربح حتى الغد"
+                       if self.state.get("day_locked")
+                       else "trading paused (PAUSE_TRADING=true)")
+                self._skip_log(symbol, why)
         else:
             ml_ok = (ml_prob is None) or (ml_prob >= self.ml_threshold)
             # The news gate can veto buys on strong negative news; let users
@@ -620,7 +639,12 @@ class Bot:
             if self.state.get("day") != today:
                 self.state["day"] = today
                 self.state["day_start_realized"] = self.state["realized_pnl"]
+                eq = self.state.get("equity", 0.0) or 0.0
+                self.state["day_start_equity"] = eq
+                self.state["day_peak_equity"] = eq
+                self.state["day_locked"] = False
                 self.state["halted"] = False
+                log(f"🌅 يوم جديد — تصفير العدّاد. رأس المال البدائي {eq:.2f} USDT")
             if self.daily_loss_limit > 0:
                 day_pnl = (self.state["realized_pnl"]
                            - self.state["day_start_realized"])
@@ -630,6 +654,73 @@ class Bot:
                     hit = True
         if hit:
             log("🛑 Daily loss limit hit. Pausing new entries until tomorrow.")
+
+    def _manage_day(self):
+        """Daily-investing core: lock the day green once the target (or a profit
+        giveback) is reached, and cap a losing day. Runs in the fast loop so it
+        reacts within POLL_SECONDS. Uses total equity (realised + open positions)
+        so it sees the WHOLE day's P/L, not just closed trades."""
+        eq = self.state.get("equity", 0.0) or 0.0
+        if eq <= 0:
+            return
+        start = self.state.get("day_start_equity") or 0.0
+        if start <= 0:                       # first valid equity of the day
+            with self._lock:
+                self.state["day_start_equity"] = eq
+                self.state["day_peak_equity"] = eq
+            return
+        if eq > (self.state.get("day_peak_equity") or 0):
+            self.state["day_peak_equity"] = eq
+        pnl_pct = (eq / start - 1.0) * 100
+        peak_pct = ((self.state.get("day_peak_equity") or eq) / start - 1.0) * 100
+
+        if time.time() - self._last_day_log >= 600:
+            self._last_day_log = time.time()
+            log(f"📅 daily P/L {pnl_pct:+.2f}% (peak +{peak_pct:.2f}%) | "
+                f"target +{self.day_target_pct}% / stop -{self.day_stop_pct}%"
+                + ("  — 🔒 LOCKED" if self.state.get("day_locked") else ""))
+
+        if self.state.get("day_locked"):
+            return
+
+        # losing day → halt new buys (existing halt path also flattens via stops)
+        if self.day_stop_pct and pnl_pct <= -self.day_stop_pct \
+                and not self.state.get("halted"):
+            with self._lock:
+                self.state["halted"] = True
+                save_state(self.state)
+            log(f"🛑 daily stop {pnl_pct:+.2f}% ≤ -{self.day_stop_pct}% — "
+                f"إيقاف الشراء حتى الغد.")
+            return
+
+        reason = None
+        if self.day_target_pct and pnl_pct >= self.day_target_pct:
+            reason = f"بلغ هدف اليوم +{pnl_pct:.2f}%"
+        elif self.day_giveback_pct and pnl_pct > 0 \
+                and peak_pct >= max(0.4, self.day_target_pct * 0.5) \
+                and pnl_pct <= peak_pct * (1 - self.day_giveback_pct / 100):
+            reason = f"حماية ربح: +{pnl_pct:.2f}% بعد قمة +{peak_pct:.2f}%"
+        elif self.day_flatten_hour != "":
+            try:
+                if datetime.now(timezone.utc).hour == int(self.day_flatten_hour):
+                    reason = "إقفال نهاية اليوم"
+            except ValueError:
+                pass
+        if reason:
+            self._lock_day(reason)
+
+    def _lock_day(self, reason):
+        """Bank the day: sell every open position and stop buying until tomorrow."""
+        log(f"🎯 إقفال اليوم على ربح — {reason}. أبيع المفتوح وأوقف الشراء حتى الغد.")
+        for sym in list(self.state.get("positions", {})):
+            try:
+                price = self.ex.last_price(sym)
+                self.close_position(sym, price, "daily profit lock")
+            except Exception as e:
+                log(f"   lock-close {sym} failed: {e}")
+        with self._lock:
+            self.state["day_locked"] = True
+            save_state(self.state)
 
     # ------------------------- fast trading loop -------------------------
     def _handle_manual_sells(self):
@@ -652,6 +743,7 @@ class Bot:
         manages open/active positions (exits + entries) and writes the
         dashboard. The heavy scan/optimize runs in a background thread."""
         self._handle_manual_sells()
+        self._manage_day()
         prices = {}
         for symbol in list(self.state.get("active", [])):
             try:
