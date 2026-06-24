@@ -13,12 +13,18 @@ import itertools
 from backtest import run_backtest
 from strategy import DEFAULT_PARAMS, STRATEGIES, strategy_mode
 
-# Walk-forward validation: tune on an older "train" window, SELECT by performance
-# on a newer, unseen "test" window, so only settings/strategies that GENERALISE
-# get traded (the old same-window tuning over-fit noise and bled money).
+# Walk-forward validation: tune on an older "train" window, then REQUIRE the
+# settings to also work on a newer, unseen "test" window — and rank by the WORSE
+# of the two scores so we pick what's ROBUST, not what best fit the test noise.
+#
+# Why the change: maximising the test score across ~90 candidates on one test
+# slice turns "out-of-sample" back INTO in-sample (you select whatever fit that
+# slice's noise) — a primary cause of "great backtest, loses live". Selecting by
+# min(train, test) and demanding a real trade count on BOTH sides fixes that.
 TRAIN_FRAC = 0.70
-MIN_TRAIN_TRADES = 1
-MIN_SPLIT_BARS = 160
+MIN_TRAIN_TRADES = 4     # enough in-sample activity to mean something
+MIN_TEST_TRADES = 3      # must also actually trade out-of-sample
+MIN_SPLIT_BARS = 200
 
 _BLANK = {"score": 0.0, "return_pct": 0.0, "trades": 0,
           "win_rate": 0.0, "max_drawdown_pct": 0.0}
@@ -66,7 +72,7 @@ def optimize_symbol(closes):
 
     best_params = dict(DEFAULT_PARAMS)
     best_metrics = dict(_BLANK)
-    best_oos = -1e9
+    best_robust = 0.0       # only positive-robust candidates qualify
 
     for cand in _candidates():
         params = dict(DEFAULT_PARAMS)
@@ -75,8 +81,13 @@ def optimize_symbol(closes):
         if m_train["trades"] < MIN_TRAIN_TRADES or m_train["score"] <= 0:
             continue
         m_test = run_backtest(test, params)
-        if m_test["score"] > best_oos:
-            best_oos = m_test["score"]
+        if m_test["trades"] < MIN_TEST_TRADES or m_test["score"] <= 0:
+            continue
+        # Rank by the WORSE of train/test: rewards consistency across both
+        # windows, not a lucky fit to either one.
+        robust = min(m_train["score"], m_test["score"])
+        if robust > best_robust:
+            best_robust = robust
             best_metrics = m_test
             best_params = params
 
