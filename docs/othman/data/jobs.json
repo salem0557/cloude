@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-24T04:42:59+00:00",
+ "updated": "2026-06-24T08:36:29+00:00",
  "jobs": [
   {
    "title": "Help Desk Technician",
@@ -19,6 +19,18 @@
    "location": "Riyadh, Riyadh, Saudi Arabia",
    "url": "https://sa.linkedin.com/jobs/view/project-coordinator-it-at-primegate-for-communications-and-it-4431462303",
    "posted": "2026-06-24",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Support"
+   ],
+   "first_seen": "2026-06-24"
+  },
+  {
+   "title": "Helpdesk Operator (Saudi National)",
+   "company": "AtkinsRéalis",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/helpdesk-operator-saudi-national-at-atkinsr%C3%A9alis-4418943470",
+   "posted": "2026-06-01",
    "source": "LinkedIn",
    "keywords": [
     "IT Support"
@@ -46,7 +58,8 @@
    "source": "LinkedIn",
    "keywords": [
     "IT Support",
-    "IT Fresh Graduate"
+    "IT Fresh Graduate",
+    "IT Specialist"
    ],
    "first_seen": "2026-06-23"
   },
@@ -716,7 +729,8 @@
    "posted": "2026-06-15",
    "source": "LinkedIn",
    "keywords": [
-    "IT Fresh Graduate"
+    "IT Fresh Graduate",
+    "IT Support"
    ],
    "first_seen": "2026-06-15"
   },
