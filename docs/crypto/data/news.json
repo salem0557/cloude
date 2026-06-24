@@ -1,33 +1,68 @@
 {
-  "updated": "2026-06-23T18:26:39.747327+00:00",
+  "updated": "2026-06-24T05:47:11.139319+00:00",
   "news": [
     {
-      "title": "Trump threatens to cancel meetings if Iran denies IAEA inspections",
-      "url": "https://cryptobriefing.com/?p=265749",
+      "title": "Japan Finance Minister meets Alphabet to discuss AI technology for megabanks",
+      "url": "https://cryptobriefing.com/?p=266538",
       "source": "Crypto Briefing",
-      "published": "2026-06-23T18:24:46+00:00",
-      "summary": "<p>Trump's ultimatum could escalate tensions, impacting global diplomacy and markets, especially if diplomatic channels are suspended.</p> <p>The post <a href=\"https://cryptobriefing.com/trump-iran-iaea-inspections-threat/\">Trump threatens to cancel meetings if Iran denies IAEA i"
+      "published": "2026-06-24T05:46:34+00:00",
+      "summary": "<p>Japan's AI integration in megabanks could enhance financial services and cybersecurity, potentially reshaping the banking sector's future.</p> <p>The post <a href=\"https://cryptobriefing.com/japan-finance-minister-alphabet-ai-megabanks/\">Japan Finance Minister meets Alphabet t"
     },
     {
-      "title": "Digital Euro Clears Key Parliament Hurdle As Europe Pushes CBDC Plan Forward",
-      "url": "https://www.newsbtc.com/?p=902456",
-      "source": "NewsBTC",
-      "published": "2026-06-23T18:00:53+00:00",
-      "summary": "The European Central Bank’s digital euro project secured key parliamentary backing on Tuesday. The vote moves Europe in the opposite direction from US lawm"
-    },
-    {
-      "title": "Bank of America Raises Micron Target to $1,500 Ahead of Results: Are Traders Buying It?",
-      "url": "https://beincrypto.com/?p=842307",
-      "source": "BeInCrypto",
-      "published": "2026-06-23T18:00:00+00:00",
-      "summary": "<p>Bank of America raised its Micron stock price target to $1,500 from $950, spotlighting the memory maker that sits beside Nvidia at the heart of the AI build-out. Micron has run almost 300% in 2026 to record highs, so a beat is already expected. The edge now sits in positioning"
-    },
-    {
-      "title": "Bitcoin price faces midweek squeeze that will decide whether $60,000 holds",
-      "url": "https://cryptoslate.com/?p=543231",
+      "title": "Latest bear market victim shows how quickly DeFi users are left behind when crypto projects move on",
+      "url": "https://cryptoslate.com/?p=543549",
       "source": "CryptoSlate",
-      "published": "2026-06-23T17:10:22+00:00",
-      "summary": "<p>Bitcoin price faces back-to-back tests this week, with May PCE coming out on Thursday at 8:30 a.m. EDT and more than $10 billion in Bitcoin options settling on Deribit at 08:00 UTC Friday in the quarterly expiry that closes the second quarter. Bitcoin is trading near $62,500 a"
+      "published": "2026-06-24T05:45:46+00:00",
+      "summary": "<p>Swell warned users to bridge out by June 23, turning a planned L2 shutdown into a test of user exit procedures.</p> <p>The post <a href=\"https://cryptoslate.com/swellchain-shutdown-users-left-behind-when-crypto-projects-move-on/\">Latest bear market victim shows how quickly DeF"
+    },
+    {
+      "title": "KOSPI’s Recovery Fades as Early Gains Evaporate from SK Hynix",
+      "url": "https://beincrypto.com/?p=842518",
+      "source": "BeInCrypto",
+      "published": "2026-06-24T05:16:48+00:00",
+      "summary": "<p>KOSPI's early 4% rebound faded as SK Hynix reversed sharply, pulling the index back toward 8,300 ahead of Micron's earnings.</p> <p>The post <a href=\"https://beincrypto.com/kospi-recovery-fades-sk-hynix-losses/\">KOSPI&#8217;s Recovery Fades as Early Gains Evaporate from SK Hyn"
+    },
+    {
+      "title": "Shiba Inu (SHIB), XRP, Bitcoin (BTC) and Hyperliquid (HYPE) Price Analysis For June 24: Volatility Spike in the Wrong Direction",
+      "url": "https://u.today/shiba-inu-shib-xrp-bitcoin-btc-and-hyperliquid-hype-price-analysis-for-june-24-volatility-spike-in",
+      "source": "U.Today",
+      "published": "2026-06-24T00:01:00+00:00",
+      "summary": "Cryptocurrency market is truly on the edge where volatility is increasing, but not providing enough recovery ground."
+    },
+    {
+      "title": "Bitcoin Holds Key Price Floor Despite Weak Bullish Signals: Bitfinex Alpha",
+      "url": "https://cryptopotato.com/?p=1440737",
+      "source": "CryptoPotato",
+      "published": "2026-06-23T23:45:57+00:00",
+      "summary": "On-chain data shows that neither bulls nor bears are firmly in control and that the market appears to be in limbo, rather than a sustained bearish phase."
+    },
+    {
+      "title": "KOSPI Shock Sends Fresh Warning Across Bitcoin And Risk Assets",
+      "url": "https://www.newsbtc.com/?p=902453",
+      "source": "NewsBTC",
+      "published": "2026-06-23T23:00:47+00:00",
+      "summary": "South Korea’s KOSPI suffered a near-10% drop after regulators warned over leveraged ETF risk tied to major chip stocks. The move matters for crypto because"
+    },
+    {
+      "title": "Meet Qwable: The Free Local Model That Thinks Like Claude Fable",
+      "url": "https://decrypt.co/?p=371914",
+      "source": "Decrypt",
+      "published": "2026-06-23T22:01:12+00:00",
+      "summary": "Someone fine-tuned Fable 5's reasoning style into a local Qwen model. Then someone else removed its conscience."
+    },
+    {
+      "title": "Ripple Completes XRP Lending Protocol Re-Audit",
+      "url": "https://u.today/ripple-completes-xrp-lending-protocol-re-audit",
+      "source": "U.Today",
+      "published": "2026-06-23T21:16:05+00:00",
+      "summary": "Ripple has successfully completed a comprehensive codebase re-audit of its highly anticipated lending protocol audit."
+    },
+    {
+      "title": "EU Forces Unlicensed Crypto Firms to Shut Down",
+      "url": "https://u.today/eu-forces-unlicensed-crypto-firms-to-shut-down",
+      "source": "U.Today",
+      "published": "2026-06-23T19:36:40+00:00",
+      "summary": "The ESMA has ordered all unauthorized crypto providers to shut down their EU operations by July 1."
     },
     {
       "title": "Ethereum Foundation Cuts 20% of Workforce",
@@ -161,50 +196,9 @@
       "source": "U.Today",
       "published": "2026-06-22T15:13:10+00:00",
       "summary": "XRP Ledger sees another scam attack that targeted an XRP holder under the guise of a genuine reward offer, causing thousands of XRP to be stolen."
-    },
-    {
-      "title": "Big Week for Cardano? Major Scaling Upgrade Eyes Testnet Release",
-      "url": "https://u.today/big-week-for-cardano-major-scaling-upgrade-eyes-testnet-release",
-      "source": "U.Today",
-      "published": "2026-06-22T13:15:53+00:00",
-      "summary": "Cardano gears up for Its most significant scaling test yet."
-    },
-    {
-      "title": "Ripple CTO Emeritus Poses Key Question on Staking: 'Be Your Own Bank or Theirs?'",
-      "url": "https://u.today/ripple-cto-emeritus-poses-key-question-on-staking-be-your-own-bank-or-theirs",
-      "source": "U.Today",
-      "published": "2026-06-22T12:30:42+00:00",
-      "summary": "Ripple CTO Emeritus draws Bank parallel to address XRP Staking question."
-    },
-    {
-      "title": "Is Hyperliquid (HYPE) Back? 785% Surge in Futures Liquidity Recorded",
-      "url": "https://u.today/is-hyperliquid-hype-back-785-surge-in-futures-liquidity-recorded",
-      "source": "U.Today",
-      "published": "2026-06-22T12:30:00+00:00",
-      "summary": "Signing Hyperliquid off isn't the best idea as HYPE proven to be one of more resilient assets on the modern cryptocurrency market."
     }
   ],
   "rumors": [
-    {
-      "title": "Donald Trump Launches US Quantum Push With Two Executive Orders",
-      "url": "https://cryptopotato.com/?p=1440745",
-      "source": "CryptoPotato",
-      "published": "2026-06-23T18:15:24+00:00",
-      "summary": "The White House warned that adversaries could steal encrypted data today and decrypt it later using future large-scale quantum computers.",
-      "tags": [
-        "Launch"
-      ]
-    },
-    {
-      "title": "A New OpenClaw Competitor: ToqanClaw Promises Privacy in AI Agent Race",
-      "url": "https://decrypt.co/?p=371869",
-      "source": "Decrypt",
-      "published": "2026-06-23T17:06:52+00:00",
-      "summary": "Prosus launched ToqanClaw, a no-code AI platform positioned as an European alternative to AI agents like OpenClaw.",
-      "tags": [
-        "Launch"
-      ]
-    },
     {
       "title": "Shiba Inu in Spotlight as Major Japanese Exchange Launches Dedicated Content",
       "url": "https://u.today/shiba-inu-in-spotlight-as-major-japanese-exchange-launches-dedicated-content",
