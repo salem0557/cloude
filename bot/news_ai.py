@@ -35,10 +35,13 @@ _CACHE = {"t": 0.0, "key": None, "result": (None, None)}
 _GEMINI_HOST = "https://generativelanguage.googleapis.com"
 _RESOLVED = {"gemini_model": None}          # auto-discovered, cached per process
 
-# Preference order when auto-picking a Gemini model for the key (cheap + capable
-# flash models first). Substring match against whatever the key actually lists.
-_GEMINI_PREFS = ["gemini-2.5-flash", "gemini-2.0-flash", "gemini-1.5-flash",
-                 "flash-latest", "flash"]
+# Preference order when auto-picking a Gemini model. Free tier matters most here,
+# so prefer the LIGHT, high-quota, non-"thinking" models first (gemini-2.5-flash
+# has a much tighter free RPD and burns thinking tokens → frequent 429s). A
+# lite/flash model is plenty for one-number sentiment classification.
+_GEMINI_PREFS = ["gemini-2.0-flash-lite", "gemini-2.5-flash-lite",
+                 "gemini-2.0-flash", "flash-lite", "gemini-1.5-flash",
+                 "gemini-2.5-flash", "flash-latest", "flash"]
 
 _PROMPT = (
     "You are a crypto market sentiment analyst. Read these recent headlines and "
@@ -193,6 +196,12 @@ def probe():
         return False, f"{provider}:{model} returned no usable text"
     except Exception as e:
         msg = str(e)[:120]
+        if "429" in msg:
+            # rate / daily-quota limit — transient. The bot keeps using keyword
+            # sentiment and retries automatically; no action usually needed.
+            return False, (f"{provider}:{model} — quota/rate limit (429). Using "
+                           f"keyword fallback; will retry automatically. If it "
+                           f"persists set GEMINI_MODEL=gemini-2.0-flash-lite")
         if provider == "gemini":
             # Surface what the key CAN use so a wrong/region-locked model is obvious.
             try:
