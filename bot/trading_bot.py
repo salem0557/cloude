@@ -114,7 +114,7 @@ def load_state():
         "day": str(date.today()),
         "day_start_realized": 0.0,
         "day_start_equity": 0.0,
-        "day_peak_equity": 0.0,
+        "day_peak_pnl_pct": 0.0,
         "day_locked": False,
         "halted": False,
         "sell_count": 0,
@@ -196,6 +196,7 @@ class Bot:
         # Optional hard end-of-day flatten at this UTC hour (e.g. 23). "" = off.
         self.day_flatten_hour = (cfg("DAY_FLATTEN_HOUR", "") or "").strip()
         self._last_day_log = 0.0
+        self._last_prices = {}
         # Trailing stop: ride the rise, sell when price pulls back this % from
         # its peak. 0 = off (use the fixed take-profit instead).
         self.trailing_pct = float(cfg("TRAILING_STOP_PCT", "0") or 0)
@@ -641,7 +642,7 @@ class Bot:
                 self.state["day_start_realized"] = self.state["realized_pnl"]
                 eq = self.state.get("equity", 0.0) or 0.0
                 self.state["day_start_equity"] = eq
-                self.state["day_peak_equity"] = eq
+                self.state["day_peak_pnl_pct"] = 0.0
                 self.state["day_locked"] = False
                 self.state["halted"] = False
                 log(f"🌅 يوم جديد — تصفير العدّاد. رأس المال البدائي {eq:.2f} USDT")
@@ -658,21 +659,47 @@ class Bot:
     def _manage_day(self):
         """Daily-investing core: lock the day green once the target (or a profit
         giveback) is reached, and cap a losing day. Runs in the fast loop so it
-        reacts within POLL_SECONDS. Uses total equity (realised + open positions)
-        so it sees the WHOLE day's P/L, not just closed trades."""
+        reacts within POLL_SECONDS.
+
+        Day P/L is measured from TRADING ONLY — realised P/L since the day began
+        plus the unrealised P/L of open positions — NOT raw account equity. This
+        is critical: equity also moves when you DEPOSIT or WITHDRAW, which must
+        never be mistaken for a trading profit/loss (a deposit once showed as
+        '+41%' and falsely locked the day)."""
         eq = self.state.get("equity", 0.0) or 0.0
-        if eq <= 0:
-            return
         start = self.state.get("day_start_equity") or 0.0
         if start <= 0:                       # first valid equity of the day
-            with self._lock:
-                self.state["day_start_equity"] = eq
-                self.state["day_peak_equity"] = eq
+            if eq > 0:
+                with self._lock:
+                    self.state["day_start_equity"] = eq
+                    self.state["day_peak_pnl_pct"] = 0.0
             return
-        if eq > (self.state.get("day_peak_equity") or 0):
-            self.state["day_peak_equity"] = eq
-        pnl_pct = (eq / start - 1.0) * 100
-        peak_pct = ((self.state.get("day_peak_equity") or eq) / start - 1.0) * 100
+        realized = (self.state.get("realized_pnl", 0.0)
+                    - self.state.get("day_start_realized", 0.0))
+        unreal = 0.0
+        for sym, pos in self.state.get("positions", {}).items():
+            px = self._last_prices.get(sym)
+            if px and pos.get("entry_price"):
+                unreal += (px - pos["entry_price"]) * pos.get("qty", 0.0)
+        trading_pnl = realized + unreal
+
+        # Deposit/withdrawal guard: if equity moved by far more than trading can
+        # explain, it's a cash transfer — rebase the day's capital base so it's
+        # never counted as profit/loss, and undo any lock it falsely caused.
+        if abs(eq - (start + trading_pnl)) > max(1.0, 0.02 * eq):
+            start = max(eq - trading_pnl, 0.01)
+            with self._lock:
+                self.state["day_start_equity"] = start
+                if self.state.get("day_locked") \
+                        and (trading_pnl / start * 100) < self.day_target_pct:
+                    self.state["day_locked"] = False
+                    log("🔓 ألغيت إقفال يوم غير حقيقي (إيداع/سحب غيّر الرصيد لا "
+                        "التداول) — استئناف التداول.")
+                save_state(self.state)
+
+        pnl_pct = trading_pnl / start * 100
+        peak_pct = max(self.state.get("day_peak_pnl_pct", 0.0), pnl_pct)
+        self.state["day_peak_pnl_pct"] = peak_pct
 
         if time.time() - self._last_day_log >= 600:
             self._last_day_log = time.time()
@@ -756,6 +783,8 @@ class Bot:
                 self.manage_symbol(symbol, prices)
             except Exception as e:
                 log(f"   {symbol}: error {e}")
+        if prices:
+            self._last_prices = prices    # mark-to-market source for _manage_day
 
         with self._lock:
             save_state(self.state)
