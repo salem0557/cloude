@@ -46,6 +46,7 @@ import derivatives
 import social
 import news_ai
 import coach
+import notify
 import publish
 import monitor
 import dashboard
@@ -215,6 +216,16 @@ class Bot:
             in ("1", "true", "yes", "on")
         self.coach_hours = float(cfg("COACH_HOURS", "12") or 12)
         self._last_coach_ts = 0.0
+        # ---- ADVISOR MODE: recommend, don't trade ----
+        # When on, the bot places NO orders. It runs the full learning/analysis
+        # engine and publishes the best buy OPPORTUNITIES (with a 1-3 green-arrow
+        # conviction, entry/target/stop plan) to the dashboard + Telegram.
+        self.advisor_mode = (cfg("ADVISOR_MODE", "true") or "").lower() \
+            in ("1", "true", "yes", "on")
+        self.reco_count = int(cfg("ADVISOR_COUNT", "15") or 15)
+        self.advisor_refresh_min = float(cfg("ADVISOR_REFRESH_MIN", "15") or 15)
+        self._last_reco_ts = 0.0
+        self._last_reco_sig = None
         # Trailing stop: ride the rise, sell when price pulls back this % from
         # its peak. 0 = off (use the fixed take-profit instead).
         self.trailing_pct = float(cfg("TRAILING_STOP_PCT", "0") or 0)
@@ -497,6 +508,10 @@ class Bot:
                 if held not in ranked:
                     ranked.append(held)
             self.state["active"] = ranked
+            # broader ranked pool (positive-score) for the advisor's shortlist
+            self.state["reco_pool"] = [
+                [s, round(adjusted[s], 2)]
+                for s in order if adjusted[s] > 0][:40]
             self.state["last_optimize"] = iso()
             self.candidates = candidates
             keep = set(candidates) | set(self.state["positions"])
@@ -799,10 +814,146 @@ class Bot:
             except Exception as e:
                 log(f"⚠️  manual sell failed for {symbol}: {e}")
 
+    # --------------------------- advisor ---------------------------
+    _TREND_STRATS = {"crossover", "ema_ribbon", "donchian", "macd"}
+
+    def _build_recommendations(self):
+        """Rank the best buy OPPORTUNITIES from the learned pool and attach a full
+        plan (entry / target / stop / reason / duration) + a 1-3 green-arrow
+        conviction. Places no orders — this is advice only."""
+        pool = self.state.get("reco_pool", [])[: max(self.reco_count * 2, 24)]
+        recos = []
+        for sym, base in pool:
+            if len(recos) >= self.reco_count:
+                break
+            try:
+                params = merge_params(self.state["params"].get(sym))
+                highs, lows, closes, vols = self.ex.ohlcv(
+                    sym, self.interval, self.history)
+                price = closes[-1]
+                sig = latest_signal(closes, params)
+                ml = ml_model.predict_up(sym, closes, highs, lows, vols)
+                bias = smart_money.long_short_bias(sym)
+                snap = derivatives.snapshot(sym)
+                trending = social.is_trending(sym) if self.social_signal else False
+                strat = params.get("strategy", "-")
+
+                opp = float(base)
+                if sig == "buy":
+                    opp += 5
+                if bias and bias >= 1.2:
+                    opp += 3
+                if snap.get("confirm_long"):
+                    opp += 2
+                if trending:
+                    opp += 2
+                if self.market_bull:
+                    opp += 2
+                # arrows are assigned by RELATIVE rank after the full list is built
+
+                bits = [strat]
+                if bias is not None:
+                    bits.append(f"مال ذكي {bias:.2f}")
+                if ml is not None:
+                    bits.append(f"ML {int(ml*100)}%")
+                if trending:
+                    bits.append("رائج")
+                if snap.get("reason") and snap["reason"] != "—":
+                    bits.append(snap["reason"])
+                recos.append({
+                    "symbol": sym,
+                    "arrows": 1,
+                    "opp": round(opp, 1),
+                    "price": round(price, 6),
+                    "target_pct": round(params.get("take_profit_pct") or 0, 1),
+                    "stop_pct": round(params.get("stop_loss_pct") or 0, 1),
+                    "strategy": strat,
+                    "reason": " + ".join(bits),
+                    "duration": ("1–3 أيام" if strat in self._TREND_STRATS
+                                 else "ساعات–يوم"),
+                    "action": ("اشترِ الآن" if sig == "buy"
+                               else "راقب — انتظر إشارة"),
+                    "signal": sig,
+                    "smart_money": round(bias, 2) if bias is not None else None,
+                    "ml": round(ml, 2) if ml is not None else None,
+                })
+            except Exception:
+                continue
+        # Green-arrow conviction by RELATIVE rank, so the tiering is always
+        # meaningful: strongest ~20% → 🟢🟢🟢, next ~40% → 🟢🟢, rest → 🟢.
+        recos.sort(key=lambda r: r["opp"], reverse=True)
+        n = len(recos)
+        for i, r in enumerate(recos):
+            frac = i / max(n - 1, 1)
+            if frac <= 0.2 and r["opp"] >= 12:
+                r["arrows"] = 3
+            elif frac <= 0.6:
+                r["arrows"] = 2
+            else:
+                r["arrows"] = 1
+        with self._lock:
+            self.state["recommendations"] = recos
+            self.state["reco_updated"] = iso()
+            save_state(self.state)
+        log(f"📋 advisor: {len(recos)} فرص — "
+            + ", ".join(f"{'▲'*r['arrows']}{r['symbol']}" for r in recos[:5]))
+        self._maybe_notify(recos)
+
+    def _maybe_notify(self, recos):
+        """Send the recommendations to Telegram, but only when the set/conviction
+        changed since the last alert (so the phone isn't spammed every refresh)."""
+        if not recos or not notify.configured():
+            return
+        sig = tuple((r["symbol"], r["arrows"]) for r in recos)
+        if sig == self._last_reco_sig:
+            return
+        self._last_reco_sig = sig
+        when = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+        lines = [f"🟢 <b>توصيات الكريبتو</b> — {len(recos)} فرصة  ({when})",
+                 "<i>مستشار فقط — نفّذ يدوياً. ليست نصيحة مالية مضمونة.</i>", ""]
+        for r in recos:
+            arr = "🟢" * r["arrows"]
+            lines.append(
+                f"{arr} <b>{r['symbol']}</b>  ~{r['price']}\n"
+                f"🎯 +{r['target_pct']}% | 🛑 -{r['stop_pct']}% | ⏱ {r['duration']}\n"
+                f"<i>{r['reason']}</i> — {r['action']}")
+        if notify.send("\n".join(lines)):
+            log("📨 advisor: أُرسلت التوصيات إلى Telegram")
+
+    def _advisor_cycle(self):
+        """Fast-loop body in advisor mode: refresh recommendations on cadence and
+        keep the dashboard current. Never places an order."""
+        if (time.time() - self._last_reco_ts) >= self.advisor_refresh_min * 60 \
+                or not self.state.get("recommendations"):
+            self._last_reco_ts = time.time()
+            try:
+                self._build_recommendations()
+            except Exception as e:
+                log(f"advisor error: {e}")
+        with self._lock:
+            save_state(self.state)
+            try:
+                dashboard.write_snapshot(
+                    self.mode, self.candidates, self.state["active"],
+                    self.state["params"], self.state["positions"],
+                    self.state["scores"], self.state["ml_acc"],
+                    self.state["trades"], self.state["equity"],
+                    self.state["realized_pnl"], self.state["last_optimize"],
+                    {}, regime=self.regime, account=self.account,
+                    recommendations=self.state.get("recommendations"),
+                    advisor=True,
+                    learning={"realtime": self.realtime,
+                              "advisor_refresh_min": self.advisor_refresh_min})
+            except Exception as e:
+                log(f"dashboard write error: {e}")
+
     def manage_cycle(self):
         """Fast loop body — runs every POLL_SECONDS in the main thread. Only
         manages open/active positions (exits + entries) and writes the
         dashboard. The heavy scan/optimize runs in a background thread."""
+        if self.advisor_mode:
+            self._advisor_cycle()
+            return
         self._handle_manual_sells()
         self._manage_day()
         prices = {}
@@ -1059,7 +1210,11 @@ class Bot:
             f"interval={self.interval}, TOP_N={self.top_n}, "
             f"{self.quote_per_trade} quote/trade, poll={self.poll_seconds}s, "
             f"learn every {self.learn_seconds}s (background)")
-        if self.mode == "live":
+        if self.advisor_mode:
+            log(f"📋 ADVISOR MODE — توصيات فقط، بلا أوامر. {self.reco_count} فرص، "
+                f"تحديث كل {self.advisor_refresh_min:.0f}د. "
+                f"Telegram: {'مُفعّل' if notify.configured() else 'غير مضبوط'}")
+        elif self.mode == "live":
             log("⚠️  LIVE MODE — trading REAL money. Ctrl+C to stop.")
 
         # One-shot check so you instantly know if the AI news sentiment is live.
