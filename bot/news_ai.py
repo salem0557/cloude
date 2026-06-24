@@ -119,10 +119,8 @@ def _post(url, payload, headers, timeout=25, retries=3):
 
 def _gemini_list_models(key):
     """Model names this key can actually call generateContent on."""
-    url = f"{_GEMINI_HOST}/v1beta/models?key={key}"
-    req = urllib.request.Request(url, headers={"User-Agent": "cryptobot/1.0"})
-    with urllib.request.urlopen(req, timeout=20) as r:
-        d = json.load(r)
+    d = _get_json(f"{_GEMINI_HOST}/v1beta/models?key={key}",
+                  {"User-Agent": "cryptobot/1.0"})
     out = []
     for m in d.get("models", []):
         if "generateContent" in (m.get("supportedGenerationMethods") or []):
@@ -147,15 +145,17 @@ def _resolve_gemini_model(key):
     """Explicit GEMINI_MODEL wins; otherwise auto-discover and cache one."""
     env = os.environ.get("GEMINI_MODEL")
     if env:
-        return env
+        return env.strip()
     if _RESOLVED["gemini_model"]:
         return _RESOLVED["gemini_model"]
     try:
         chosen = _pick_gemini_model(_gemini_list_models(key))
     except Exception:
         chosen = None
-    _RESOLVED["gemini_model"] = chosen or "gemini-flash-latest"
-    return _RESOLVED["gemini_model"]
+    if chosen:
+        _RESOLVED["gemini_model"] = chosen   # cache ONLY a real discovery
+        return chosen
+    return "gemini-flash-latest"             # temporary; not cached → retried
 
 
 def _call_gemini(prompt):
@@ -173,13 +173,24 @@ _GROQ_PREFS = ["llama-3.3-70b-versatile", "llama-3.1-70b", "70b-versatile",
                "instant", "llama"]
 
 
+def _get_json(url, headers, retries=3):
+    """GET JSON with a couple of retries (model-list calls occasionally blip)."""
+    last = None
+    for attempt in range(retries):
+        try:
+            req = urllib.request.Request(url, headers=headers)
+            with urllib.request.urlopen(req, timeout=20) as r:
+                return json.load(r)
+        except Exception as e:
+            last = e
+            if attempt < retries - 1:
+                time.sleep(1.0 * (attempt + 1))
+    raise last
+
+
 def _groq_list_models(key):
-    url = "https://api.groq.com/openai/v1/models"
-    req = urllib.request.Request(
-        url, headers={"Authorization": f"Bearer {key}",
-                      "User-Agent": "cryptobot/1.0"})
-    with urllib.request.urlopen(req, timeout=20) as r:
-        d = json.load(r)
+    d = _get_json("https://api.groq.com/openai/v1/models",
+                  {"Authorization": f"Bearer {key}", "User-Agent": "cryptobot/1.0"})
     return [m.get("id") for m in d.get("data", []) if m.get("id")]
 
 
@@ -198,15 +209,17 @@ def _pick_groq_model(models):
 def _resolve_groq_model(key):
     env = os.environ.get("GROQ_MODEL")
     if env:
-        return env
+        return env.strip()
     if _RESOLVED["groq_model"]:
         return _RESOLVED["groq_model"]
     try:
         chosen = _pick_groq_model(_groq_list_models(key))
     except Exception:
         chosen = None
-    _RESOLVED["groq_model"] = chosen or "llama-3.3-70b-versatile"
-    return _RESOLVED["groq_model"]
+    if chosen:
+        _RESOLVED["groq_model"] = chosen     # cache ONLY a real discovery
+        return chosen
+    return "llama-3.3-70b-versatile"         # temporary; not cached → retried
 
 
 def _call_groq(prompt):
