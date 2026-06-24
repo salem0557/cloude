@@ -51,15 +51,27 @@ _PROMPT = (
     "Headlines:\n")
 
 
-def _provider():
-    p = (os.environ.get("LLM_PROVIDER", "") or "").lower()
-    if p in ("gemini", "groq"):
-        return p
-    if os.environ.get("GEMINI_API_KEY"):
-        return "gemini"
-    if os.environ.get("GROQ_API_KEY"):
-        return "groq"
-    return None
+def _available_providers():
+    """Providers to try, in order, limited to those whose key is set. With both
+    keys present they're tried in turn so a 429/outage on one falls through to
+    the other automatically. LLM_PROVIDER forces one to be tried first."""
+    pref = (os.environ.get("LLM_PROVIDER", "") or "").lower()
+    order = [pref] if pref in ("gemini", "groq") else []
+    for p in ("gemini", "groq"):
+        if p not in order:
+            order.append(p)
+    keys = {"gemini": "GEMINI_API_KEY", "groq": "GROQ_API_KEY"}
+    return [p for p in order if os.environ.get(keys[p])]
+
+
+def _call(provider, prompt):
+    return _call_gemini(prompt) if provider == "gemini" else _call_groq(prompt)
+
+
+def _model_name(provider):
+    if provider == "gemini":
+        return _resolve_gemini_model(os.environ.get("GEMINI_API_KEY"))
+    return os.environ.get("GROQ_MODEL", "llama-3.3-70b-versatile")
 
 
 def _post(url, payload, headers, timeout=25, retries=3):
@@ -174,67 +186,55 @@ def _parse(text):
 
 
 def probe():
-    """One-shot startup check: is a working LLM sentiment provider configured?
-
-    Returns (ok: bool, detail: str). Makes a tiny live call so an invalid key or
-    wrong model name is caught immediately instead of silently falling back to
-    keyword scoring forever.
-    """
-    provider = _provider()
-    if not provider:
+    """One-shot startup check across ALL available providers (falls through on a
+    429/outage). Returns (ok, detail). Makes a tiny live call so an invalid key,
+    wrong model, or exhausted quota is surfaced immediately."""
+    provs = _available_providers()
+    if not provs:
         return False, "no key set (using keyword fallback)"
-    if provider == "gemini":
-        model = _resolve_gemini_model(os.environ.get("GEMINI_API_KEY"))
-    else:
-        model = os.environ.get("GROQ_MODEL", "llama-3.3-70b-versatile")
-    try:
-        text = (_call_gemini("Reply with the single number 1.")
-                if provider == "gemini"
-                else _call_groq("Reply with the single number 1."))
-        if text and re.search(r"\d", text):
-            return True, f"{provider}:{model}"
-        return False, f"{provider}:{model} returned no usable text"
-    except Exception as e:
-        msg = str(e)[:120]
-        if "429" in msg:
-            # rate / daily-quota limit — transient. The bot keeps using keyword
-            # sentiment and retries automatically; no action usually needed.
-            return False, (f"{provider}:{model} — quota/rate limit (429). Using "
-                           f"keyword fallback; will retry automatically. If it "
-                           f"persists set GEMINI_MODEL=gemini-2.0-flash-lite")
-        if provider == "gemini":
-            # Surface what the key CAN use so a wrong/region-locked model is obvious.
-            try:
-                avail = _gemini_list_models(os.environ.get("GEMINI_API_KEY"))
-                if avail:
-                    msg += " | available: " + ", ".join(avail[:6])
-                    msg += "  → set GEMINI_MODEL to one of these"
-            except Exception as le:
-                msg += f" | model-list also failed ({str(le)[:60]}) — likely a real outage"
-        elif "404" in msg:
-            msg += "  → wrong model? set GROQ_MODEL"
-        elif any(c in msg for c in ("400", "401", "403")):
-            msg += "  → check the API key"
-        return False, f"{provider}:{model} — {msg}"
+    notes = []
+    for provider in provs:
+        model = _model_name(provider)
+        try:
+            text = _call(provider, "Reply with the single number 1.")
+            if text and re.search(r"\d", text):
+                return True, f"{provider}:{model}"
+            notes.append(f"{provider}:{model} no usable text")
+        except Exception as e:
+            msg = str(e)[:90]
+            if "429" in msg:
+                notes.append(f"{provider}:{model} quota/rate 429")
+            elif any(c in msg for c in ("400", "401", "403")):
+                notes.append(f"{provider}:{model} key/access? {msg}")
+            else:
+                notes.append(f"{provider}:{model} {msg}")
+    detail = " | ".join(notes) + "  (keyword fallback + auto-retry)"
+    if notes and all("429" in n for n in notes) and "groq" not in provs:
+        detail += " — add a free GROQ_API_KEY for much higher quota"
+    return False, detail
 
 
 def sentiment(headlines, ttl=_TTL):
-    """(score in [-1,1], reason) from an LLM, or (None, None) if unavailable."""
-    provider = _provider()
-    if not provider or not headlines:
+    """(score in [-1,1], reason) from an LLM, or (None, None) if unavailable.
+
+    Tries each available provider in turn, so a 429/outage on one (e.g. Gemini's
+    free quota) automatically falls through to the other (e.g. Groq)."""
+    provs = _available_providers()
+    if not provs or not headlines:
         return None, None
     titles = [h.get("title", "") if isinstance(h, dict) else str(h)
               for h in headlines][:25]
-    cache_key = (provider, hash(tuple(titles)))
+    cache_key = (tuple(provs), hash(tuple(titles)))
     now = time.time()
     if _CACHE["key"] == cache_key and (now - _CACHE["t"]) < ttl:
         return _CACHE["result"]
     prompt = _PROMPT + "\n".join(f"- {t}" for t in titles if t)
-    try:
-        text = _call_gemini(prompt) if provider == "gemini" else _call_groq(prompt)
-        result = _parse(text)
-    except Exception:
-        result = (None, None)
-    if result[0] is not None:
-        _CACHE.update(t=now, key=cache_key, result=result)
-    return result
+    for provider in provs:
+        try:
+            result = _parse(_call(provider, prompt))
+            if result[0] is not None:
+                _CACHE.update(t=now, key=cache_key, result=result)
+                return result
+        except Exception:
+            continue
+    return None, None
