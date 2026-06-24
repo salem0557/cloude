@@ -101,7 +101,7 @@ pre{background:#0a0e17;border:1px solid var(--bd);border-radius:12px;padding:12p
 </div>
 <h2 id="recoh">🟢 توصيات الشراء</h2>
 <div class="mut" style="font-size:.75rem;margin-bottom:6px">مستشار فقط — نفّذ يدوياً على Binance. الأسهم الخضراء = قوة فرصة الربح (🟢=مراقبة، 🟢🟢🟢=الأقوى). ليست نصيحة مالية مضمونة.</div>
-<div class="scroll"><table id="reco"><thead><tr><th>الفرصة</th><th>العملة</th><th>السعر</th><th>الهدف</th><th>الوقف</th><th>المدة</th><th>السبب</th><th>الإجراء</th></tr></thead><tbody></tbody></table></div>
+<div class="scroll"><table id="reco"><thead><tr><th>الفرصة</th><th>العملة</th><th>السعر</th><th>الهدف</th><th>الوقف</th><th title="المدة المتوقّعة لبلوغ الهدف حسب نوع الاستراتيجية">المدة المتوقّعة</th><th title="تغيّر سعر العملة آخر 7 أيام">أداء 7 أيام</th><th>الإجراء</th></tr></thead><tbody></tbody></table></div>
 <h2 id="posh">الصفقات المفتوحة</h2><div class="scroll"><table id="pos"><thead><tr><th>العملة</th><th>دخول</th><th>الآن</th><th>ربح%</th><th>إجراء</th></tr></thead><tbody></tbody></table></div>
 <h2 id="strh">الاستراتيجية المتعلّمة</h2><div class="scroll"><table id="str"><thead><tr><th>العملة</th><th>حالة</th><th>سريع/بطيء</th><th>عائد الباك-تيست</th><th>ML</th></tr></thead><tbody></tbody></table></div>
 <h2 id="trdh">آخر الصفقات</h2><div class="scroll"><table id="trd"><thead><tr><th>وقت</th><th>عملة</th><th>نوع</th><th>سعر</th><th>سبب</th></tr></thead><tbody></tbody></table></div>
@@ -147,7 +147,7 @@ async function tick(){
   const rb=$('reco').querySelector('tbody');
   rb.innerHTML=rc.map(r=>{const a='🟢'.repeat(r.arrows||1);
     const act=r.signal==='buy'?'up':'mut';
-    return `<tr><td title="opp ${r.opp}">${a}</td><td><b>${r.symbol}</b></td><td>${f(r.price,5)}</td><td class=up>+${f(r.target_pct,1)}%</td><td class=dn>-${f(r.stop_pct,1)}%</td><td class=mut>${r.duration||''}</td><td class=mut style="white-space:normal;max-width:240px">${r.reason||''}</td><td><span class="${act}" style="font-size:.74rem">${r.action||''}</span><br><button class="sell" style="background:var(--up);margin-top:3px" onclick="buyPos('${r.symbol}')">شراء</button></td></tr>`}).join('')||'<tr><td colspan=8 class=mut>تُحسب التوصيات…</td></tr>';
+    return `<tr><td title="opp ${r.opp}">${a}</td><td><b>${r.symbol}</b></td><td>${f(r.price,5)}</td><td class=up>+${f(r.target_pct,1)}%</td><td class=dn>-${f(r.stop_pct,1)}%</td><td class=mut>${r.duration||''}</td><td class=${cl(r.perf_7d)} title="${(r.reason||'').replace(/"/g,'')}">${r.perf_7d==null?'—':sg(r.perf_7d,1)+'%'}</td><td><span class="${act}" style="font-size:.74rem">${r.action||''}</span><br><button class="sell" style="background:var(--up);margin-top:3px" onclick="buyPos('${r.symbol}')">شراء</button></td></tr>`}).join('')||'<tr><td colspan=8 class=mut>تُحسب التوصيات…</td></tr>';
   // advisor mode: hide only the learned-strategy table (positions+trades stay so
   // you can sell what you manually bought)
   if(d.advisor){['strh','str'].forEach(id=>{const e=$(id);if(e)e.style.display='none'});}
