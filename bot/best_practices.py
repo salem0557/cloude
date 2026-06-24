@@ -23,6 +23,7 @@ from pathlib import Path
 import news_feed
 import news_ai
 import onchain
+import forward
 
 HERE = Path(__file__).resolve().parent
 NEWS_FILE = HERE.parent / "docs" / "crypto" / "data" / "news.json"
@@ -126,6 +127,7 @@ def get_regime():
     fng, fng_label = _fear_greed()
     dominance = _btc_dominance()
     chain = onchain.market_signal()
+    fwd = forward.expected_vol()
 
     allow_buys = True
     risk_multiplier = 1.0
@@ -156,6 +158,14 @@ def get_regime():
     elif chain.get("reason", "—") != "—":
         reasons.append(chain["reason"])
 
+    # Forward-looking expected volatility (Deribit DVOL): the options market
+    # pricing in turbulence ahead → trade smaller BEFORE the storm, not after.
+    if fwd.get("score", 0) <= -0.25:
+        risk_multiplier = min(risk_multiplier, 0.7)
+        reasons.append(fwd["reason"])
+    elif fwd.get("reason", "—") != "—":
+        reasons.append(fwd["reason"])
+
     return {
         "updated": datetime.now(timezone.utc).isoformat(),
         "news_sentiment": sentiment,
@@ -165,6 +175,7 @@ def get_regime():
         "fear_greed_label": fng_label,
         "btc_dominance": dominance,
         "tvl_change_7d": chain.get("tvl_change_7d"),
+        "dvol": fwd.get("dvol"),
         "allow_buys": allow_buys,
         "risk_multiplier": risk_multiplier,
         "reason": " | ".join(reasons) or "وضع طبيعي",
