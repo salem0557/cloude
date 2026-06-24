@@ -74,6 +74,20 @@ def _model_name(provider):
     return os.environ.get("GROQ_MODEL", "llama-3.3-70b-versatile")
 
 
+def ask(prompt):
+    """Generic one-shot LLM call across available providers (Gemini→Groq).
+    Returns the raw text reply, or None if no provider/all fail. Used by the
+    AI coach to critique the bot's own trade journal."""
+    for provider in _available_providers():
+        try:
+            text = _call(provider, prompt)
+            if text:
+                return text
+        except Exception:
+            continue
+    return None
+
+
 def _post(url, payload, headers, timeout=25, retries=3):
     """POST JSON with a short retry on transient server errors (503/429/...).
 

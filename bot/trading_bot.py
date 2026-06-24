@@ -45,6 +45,7 @@ import smart_money
 import derivatives
 import social
 import news_ai
+import coach
 import publish
 import monitor
 import dashboard
@@ -118,6 +119,9 @@ def load_state():
         "day_locked": False,
         "halted": False,
         "sell_count": 0,
+        # mentor: live track record learned from the bot's OWN closed trades
+        "live_perf": {"pair": {}, "coin": {}, "strat": {}},
+        "coach_avoid": {},      # coins the AI coach told us to sit out (per day)
     }
 
 
@@ -197,6 +201,20 @@ class Bot:
         self.day_flatten_hour = (cfg("DAY_FLATTEN_HOUR", "") or "").strip()
         self._last_day_log = 0.0
         self._last_prices = {}
+        # ---- "mentors": learn from the bot's OWN mistakes ----
+        # Live ledger: demote (coin, strategy) pairs that LOSE on real trades,
+        # even if they back-test well — the live record is the truth that the
+        # back-test can't see. Records decay daily so a coin can earn its way back.
+        self.mentor_on = (cfg("MENTOR", "true") or "").lower() \
+            in ("1", "true", "yes", "on")
+        self.mentor_min = int(cfg("MENTOR_MIN_TRADES", "3") or 3)
+        self.mentor_weight = float(cfg("MENTOR_WEIGHT", "3.0") or 3.0)
+        # AI coach: once every COACH_HOURS, an LLM reviews the trade journal and
+        # live record, logs a critique, and feeds an avoid-list back as a penalty.
+        self.coach_on = (cfg("COACH", "true") or "").lower() \
+            in ("1", "true", "yes", "on")
+        self.coach_hours = float(cfg("COACH_HOURS", "12") or 12)
+        self._last_coach_ts = 0.0
         # Trailing stop: ride the rise, sell when price pulls back this % from
         # its peak. 0 = off (use the fixed take-profit instead).
         self.trailing_pct = float(cfg("TRAILING_STOP_PCT", "0") or 0)
@@ -454,8 +472,17 @@ class Bot:
             if acc is None:                      # ML unavailable -> stay neutral
                 return 0.0
             return (acc - ml_model.MIN_EDGE) * EDGE_WEIGHT
-        scored.sort(key=lambda x: x[1] + _edge(x[0]), reverse=True)
-        ranked = [s for s, sc in scored if sc > 0][: self.top_n]
+        # Final score = back-test score + ML edge − MENTOR penalty (live losers).
+        adjusted = {}
+        for sym, base in scored:
+            s = base + _edge(sym)
+            strat = new_params.get(sym, {}).get("strategy")
+            adj, note = self._mentor_adjust(sym, strat, s)
+            if note:
+                log(f"📒 mentor: {note}")
+            adjusted[sym] = adj
+        order = sorted(adjusted, key=lambda s: adjusted[s], reverse=True)
+        ranked = [s for s in order if adjusted[s] > 0][: self.top_n]
 
         # ---- atomic apply (short critical section) ----
         with self._lock:
@@ -530,6 +557,7 @@ class Bot:
             if self.mode == "dryrun":
                 self.state["equity"] += fill * qty
             record_trade(self.state, "SELL", symbol, fill, qty, self.mode, reason)
+            self._record_outcome(symbol, pos, pnl)
             self.state["positions"].pop(symbol, None)
         pct = (fill / pos["entry_price"] - 1) * 100 if pos["entry_price"] else 0
         log(f"🔴 SELL {symbol} {qty:.6f} @ {fill:.4f} ({reason}) "
@@ -649,6 +677,8 @@ class Bot:
                 self.state["day_peak_pnl_pct"] = 0.0
                 self.state["day_locked"] = False
                 self.state["halted"] = False
+                self.state["coach_avoid"] = {}     # fresh each day
+                self._decay_live_perf()            # fade old results
                 log(f"🌅 يوم جديد — تصفير العدّاد. رأس المال البدائي {eq:.2f} USDT")
             if self.daily_loss_limit > 0:
                 day_pnl = (self.state["realized_pnl"]
@@ -815,6 +845,7 @@ class Bot:
             try:
                 self.check_daily_limit()
                 self._check_strategy_health()
+                self._run_coach()
                 self._refresh_balance()
                 self._refresh_regime()
                 self._refresh_market_trend()
@@ -859,6 +890,78 @@ class Bot:
                 save_state(self.state)
             log(f"🔄 scalp net P/L {pnl:+.2f} over {sells} trades (losing) → "
                 f"auto-reverted to crossover. STRATEGY_AUTO_REVERT_TRADES=0 disables this.")
+
+    # --------------------------- mentors ---------------------------
+    def _record_outcome(self, symbol, pos, pnl):
+        """Log a closed trade into the live ledger (per coin / strategy / pair)."""
+        strat = (pos.get("params") or {}).get("strategy") or "?"
+        lp = self.state.setdefault("live_perf", {"pair": {}, "coin": {}, "strat": {}})
+        for scope, key in (("pair", f"{symbol}|{strat}"),
+                           ("coin", symbol), ("strat", strat)):
+            e = lp.setdefault(scope, {}).setdefault(key, {"n": 0, "w": 0, "pnl": 0.0})
+            e["n"] += 1
+            e["w"] += 1 if pnl > 0 else 0
+            e["pnl"] += pnl
+
+    def _decay_live_perf(self, factor=0.7):
+        """Fade old results so the mentor judges RECENT behaviour and a coin can
+        recover after a bad patch. Called once per day."""
+        lp = self.state.get("live_perf", {})
+        for scope in ("pair", "coin", "strat"):
+            for key in list(lp.get(scope, {})):
+                e = lp[scope][key]
+                e["n"] *= factor
+                e["w"] *= factor
+                e["pnl"] *= factor
+                if e["n"] < 0.5:                 # forget the negligible
+                    del lp[scope][key]
+
+    def _mentor_adjust(self, symbol, strat, base):
+        """Apply the live ledger + coach avoid-list as a score adjustment.
+        Returns (adjusted_score, note_or_None)."""
+        if not self.mentor_on:
+            return base, None
+        lp = self.state.get("live_perf", {})
+        adj, note = base, None
+        pair = (lp.get("pair") or {}).get(f"{symbol}|{strat}")
+        if pair and pair["n"] >= self.mentor_min and pair["pnl"] < 0:
+            # push a live-losing (coin, strategy) below the activation line
+            adj -= (base if base > 0 else 0) + abs(pair["pnl"]) * self.mentor_weight + 5
+            note = (f"{symbol}|{strat} live {pair['w']:.0f}/{pair['n']:.0f} "
+                    f"P/L {pair['pnl']:+.2f} → demoted")
+        coin = (lp.get("coin") or {}).get(symbol)
+        if coin and coin["n"] >= self.mentor_min * 2 and coin["pnl"] < 0:
+            adj -= 5
+        if symbol in (self.state.get("coach_avoid") or {}):
+            adj -= 1000
+            note = (note or f"{symbol}") + " (coach: avoid)"
+        return adj, note
+
+    def _run_coach(self):
+        """Periodic AI critique of the bot's own journal + record."""
+        if not self.coach_on:
+            return
+        if (time.time() - self._last_coach_ts) < self.coach_hours * 3600:
+            return
+        self._last_coach_ts = time.time()
+        try:
+            verdict = coach.critique(self.state.get("trades", []),
+                                     self.state.get("live_perf", {}))
+        except Exception as e:
+            log(f"coach error: {e}")
+            return
+        if not verdict:
+            return
+        log(f"🧑‍🏫 coach: {verdict['summary']}")
+        if verdict.get("mistakes"):
+            log(f"🧑‍🏫 أبرز خطأ: {verdict['mistakes']}")
+        avoid = verdict.get("avoid_coins") or []
+        if avoid:
+            today = str(date.today())
+            with self._lock:
+                self.state["coach_avoid"] = {s: today for s in avoid}
+                save_state(self.state)
+            log(f"🧑‍🏫 coach: تجنّب اليوم {', '.join(avoid)}")
 
     def _refresh_balance(self):
         if (time.time() - self._last_bal_ts) < 60:
