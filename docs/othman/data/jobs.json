@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-24T08:36:29+00:00",
+ "updated": "2026-06-24T12:31:52+00:00",
  "jobs": [
   {
    "title": "Help Desk Technician",
@@ -9,7 +9,8 @@
    "posted": "2026-06-24",
    "source": "LinkedIn",
    "keywords": [
-    "IT Support"
+    "IT Support",
+    "Technical Support"
    ],
    "first_seen": "2026-06-24"
   },
@@ -22,6 +23,18 @@
    "source": "LinkedIn",
    "keywords": [
     "IT Support"
+   ],
+   "first_seen": "2026-06-24"
+  },
+  {
+   "title": "Network Manager",
+   "company": "BYD",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/network-manager-at-byd-4432556246",
+   "posted": "2026-06-24",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Specialist"
    ],
    "first_seen": "2026-06-24"
   },
@@ -59,7 +72,8 @@
    "keywords": [
     "IT Support",
     "IT Fresh Graduate",
-    "IT Specialist"
+    "IT Specialist",
+    "System Administrator"
    ],
    "first_seen": "2026-06-23"
   },
@@ -910,7 +924,8 @@
    "source": "LinkedIn",
    "keywords": [
     "Help Desk",
-    "Technical Support"
+    "Technical Support",
+    "IT Support"
    ],
    "first_seen": "2026-06-12"
   },
