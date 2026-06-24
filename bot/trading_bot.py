@@ -817,12 +817,23 @@ class Bot:
     # --------------------------- advisor ---------------------------
     _TREND_STRATS = {"crossover", "ema_ribbon", "donchian", "macd"}
 
+    def _bars_per_7d(self):
+        """Number of candles that span 7 days at the current INTERVAL."""
+        iv = (self.interval or "1h").strip().lower()
+        unit = {"m": 1, "h": 60, "d": 1440}.get(iv[-1:], 60)
+        try:
+            n = int(iv[:-1])
+        except ValueError:
+            n = 1
+        return max(1, int(7 * 1440 / max(1, n * unit)))
+
     def _build_recommendations(self):
         """Rank the best buy OPPORTUNITIES from the learned pool and attach a full
         plan (entry / target / stop / reason / duration) + a 1-3 green-arrow
         conviction. Places no orders — this is advice only."""
         pool = self.state.get("reco_pool", [])[: max(self.reco_count * 2, 24)]
         recos = []
+        b7 = self._bars_per_7d()
         for sym, base in pool:
             if len(recos) >= self.reco_count:
                 break
@@ -831,6 +842,8 @@ class Bot:
                 highs, lows, closes, vols = self.ex.ohlcv(
                     sym, self.interval, self.history)
                 price = closes[-1]
+                perf_7d = ((price / closes[-1 - b7] - 1) * 100
+                           if len(closes) > b7 and closes[-1 - b7] else None)
                 sig = latest_signal(closes, params)
                 ml = ml_model.predict_up(sym, closes, highs, lows, vols)
                 bias = smart_money.long_short_bias(sym)
@@ -869,6 +882,7 @@ class Bot:
                     "stop_pct": round(params.get("stop_loss_pct") or 0, 1),
                     "strategy": strat,
                     "reason": " + ".join(bits),
+                    "perf_7d": round(perf_7d, 1) if perf_7d is not None else None,
                     "duration": ("1–3 أيام" if strat in self._TREND_STRATS
                                  else "ساعات–يوم"),
                     "action": ("اشترِ الآن" if sig == "buy"
