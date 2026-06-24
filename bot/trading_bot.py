@@ -238,6 +238,10 @@ class Bot:
         # only ~16h of price — far too noisy, flipping bull/bear on every wiggle
         # and needlessly pausing buys. 30m gives MA200 ≈ 4 days = a real trend.
         self.trend_interval = (cfg("MARKET_TREND_INTERVAL", "30m") or "30m")
+        # Tolerance band (%): allow longs while BTC is within this % BELOW its MA
+        # (sideways / early-recovery), only pausing on a clearer downtrend. 0 =
+        # strict (must be at/above the MA).
+        self.trend_tolerance = float(cfg("MARKET_TREND_TOLERANCE_PCT", "0.5") or 0)
         self.market_bull = True
         self.market_trend_reason = "—"
         self._last_trend_ts = 0.0
@@ -892,14 +896,20 @@ class Bot:
             ma = sma_series(closes, self.trend_ma)[-1]
             price = closes[-1]
             if ma:
-                bull = price >= ma
+                # Tolerance band: treat "within trend_tolerance% BELOW the MA" as
+                # still tradeable (sideways / early recovery), only pausing on a
+                # clear downtrend. 0 = strict (must be at/above the MA).
+                threshold = ma * (1 - self.trend_tolerance / 100)
+                bull = price >= threshold
                 if bull != self.market_bull:
                     log(f"🧭 market trend → {'BULL (longs on)' if bull else 'BEAR (longs paused)'}: "
-                        f"{self.trend_symbol} {price:.0f} vs MA{self.trend_ma}@{self.trend_interval} {ma:.0f}")
+                        f"{self.trend_symbol} {price:.0f} vs MA{self.trend_ma}@{self.trend_interval} "
+                        f"{ma:.0f} (tol -{self.trend_tolerance}% → {threshold:.0f})")
                 self.market_bull = bull
                 self.market_trend_reason = (
                     f"{self.trend_symbol} {price:.0f} "
-                    f"{'≥' if bull else '<'} MA{self.trend_ma}@{self.trend_interval} {ma:.0f}")
+                    f"{'≥' if bull else '<'} {threshold:.0f} "
+                    f"(MA{self.trend_ma}@{self.trend_interval} {ma:.0f} -{self.trend_tolerance}%)")
         except Exception as e:
             log(f"market-trend error: {e}")
             self.market_bull = True
