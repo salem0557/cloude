@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-24T12:31:52+00:00",
+ "updated": "2026-06-24T17:23:13+00:00",
  "jobs": [
   {
    "title": "Help Desk Technician",
@@ -35,6 +35,30 @@
    "source": "LinkedIn",
    "keywords": [
     "IT Specialist"
+   ],
+   "first_seen": "2026-06-24"
+  },
+  {
+   "title": "Flight Data Analysis Officer",
+   "company": "Riyadh Air | طيران الرياض",
+   "location": "Riyadh Region",
+   "url": "https://sa.linkedin.com/jobs/view/flight-data-analysis-officer-at-riyadh-air-%D8%B7%D9%8A%D8%B1%D8%A7%D9%86-%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6-4382282827",
+   "posted": "2026-06-24",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Support"
+   ],
+   "first_seen": "2026-06-24"
+  },
+  {
+   "title": "Installation & Upgrade Specialist",
+   "company": "GE HealthCare",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/installation-upgrade-specialist-at-ge-healthcare-4432578772",
+   "posted": "2026-06-24",
+   "source": "LinkedIn",
+   "keywords": [
+    "System Administrator"
    ],
    "first_seen": "2026-06-24"
   },

@@ -1,19 +1,54 @@
 {
-  "updated": "2026-06-24T15:22:00.226393+00:00",
+  "updated": "2026-06-24T17:29:37.640423+00:00",
   "news": [
     {
-      "title": "Nvidia trades cheaper than semiconductor sector, says Tony Zhang",
-      "url": "https://cryptobriefing.com/?p=267176",
+      "title": "Shopify’s head of engineering calls token leaderboards a mistake",
+      "url": "https://cryptobriefing.com/?p=267410",
       "source": "Crypto Briefing",
-      "published": "2026-06-24T15:16:03+00:00",
-      "summary": "<p>Nvidia's current valuation could offer strategic investment opportunities, especially if AI-driven semiconductor growth meets future projections.</p> <p>The post <a href=\"https://cryptobriefing.com/nvidia-cheaper-than-semiconductor-sector-tony-zhang/\">Nvidia trades cheaper tha"
+      "published": "2026-06-24T17:28:30+00:00",
+      "summary": "<p>Shopify's shift from volume to utility metrics highlights the need for outcome-focused AI adoption strategies to prevent resource misuse.</p> <p>The post <a href=\"https://cryptobriefing.com/shopify-token-leaderboard-mistake-ai/\">Shopify&#8217;s head of engineering calls token "
     },
     {
-      "title": "Arthur Hayes says AI rescue liquidity could send Bitcoin price to $1,000,000",
-      "url": "https://cryptoslate.com/?p=543817",
+      "title": "Bitcoin Price Crashes Below $60K as Strategy’s MSTR Plunges 10%",
+      "url": "https://cryptopotato.com/?p=1440913",
+      "source": "CryptoPotato",
+      "published": "2026-06-24T17:20:45+00:00",
+      "summary": "MSTR is below $100 for the first time in two years."
+    },
+    {
+      "title": "Fake Crypto Influencer Gets 15 Months for $1.4M Telegram Staking Fraud",
+      "url": "https://decrypt.co/?p=371989",
+      "source": "Decrypt",
+      "published": "2026-06-24T17:18:31+00:00",
+      "summary": "Noman Saleem impersonated crypto influencers on Telegram, luring victims into a fake staking scheme before vanishing with their funds."
+    },
+    {
+      "title": "America’s Bitcoin buying turns negative as BTC drifts closer to the $57,300 liquidation trap",
+      "url": "https://cryptoslate.com/?p=543942",
       "source": "CryptoSlate",
-      "published": "2026-06-24T15:10:12+00:00",
-      "summary": "<p>Arthur Hayes outlined a path to $1 million Bitcoin price built around AI absorbing liquidity, the buildout collapsing under debt, authorities printing, and capital rotating into crypto. Hayes made the argument on Bankless, saying that AI became the dominant capital sink, and h"
+      "published": "2026-06-24T17:02:57+00:00",
+      "summary": "<p>Bitcoin’s sustained price correction is deepening as demand from US investors weakens, leaving the world’s largest cryptocurrency increasingly exposed to leveraged positions clustered below $60,000. According to CryptoSlate's data, the top crypto traded at $59,800 at press tim"
+    },
+    {
+      "title": "Binance Cancels License Bid in Greece as Critical European Deadline Looms",
+      "url": "https://u.today/binance-cancels-license-bid-in-greece-as-critical-european-deadline-looms",
+      "source": "U.Today",
+      "published": "2026-06-24T16:59:45+00:00",
+      "summary": "Months of secret talks fail as Binance walks away from Greece's regulator a week before the MiCA deadline."
+    },
+    {
+      "title": "White House Denies Trump Crypto Link to UAE AI Deal After Senate Democrats Demand Hearings",
+      "url": "https://beincrypto.com/?p=842879",
+      "source": "BeInCrypto",
+      "published": "2026-06-24T16:45:18+00:00",
+      "summary": "<p>The White House has denied that the Trump administration&#8217;s AI agreement with the United Arab Emirates had any connection to World Liberty Financial.&#160; This comes after Senate Democrats called for hearings into the Trump family-backed crypto firm&#8217;s reported ties"
+    },
+    {
+      "title": "Meta Prediction Market App Push Puts Polymarket Model In Big Tech Spotlight",
+      "url": "https://www.newsbtc.com/?p=902468",
+      "source": "NewsBTC",
+      "published": "2026-06-24T15:30:50+00:00",
+      "summary": "Meta Prediction Market App Push Puts Polymarket Model In Big Tech Spotlight TL;DR Meta is reportedly building a standalone prediction market app inte"
     },
     {
       "title": "Shiba Inu (SHIB) Reserves Recover to 80 Trillion After Sudden 600% Inflow Spike",
@@ -21,27 +56,6 @@
       "source": "U.Today",
       "published": "2026-06-24T14:56:00+00:00",
       "summary": "A massive 600% inflow spike pushes SHIB exchange reserves back to 80 trillion tokens."
-    },
-    {
-      "title": "Bitcoin’s 500-Day Halving Rule Flashes Next Buy Signal in November 2026",
-      "url": "https://beincrypto.com/?p=842687",
-      "source": "BeInCrypto",
-      "published": "2026-06-24T14:36:32+00:00",
-      "summary": "<p>Bitcoin's 500-day halving rule signals a buy window near November 2026 and a sell zone in 2029. See the dates and risks.</p> <p>The post <a href=\"https://beincrypto.com/bitcoins-500-day-halving-rule-flashes-next-buy-signal-in-november-2026/\">Bitcoin&#8217;s 500-Day Halving Rul"
-    },
-    {
-      "title": "From Wallets to Agents: CoinFello’s Bet on the Future of DeFi (Interview)",
-      "url": "https://cryptopotato.com/?p=1440909",
-      "source": "CryptoPotato",
-      "published": "2026-06-24T14:33:03+00:00",
-      "summary": "The future is not giving the AI your keys. It's controlled delegation, where the agent can help execute within boundaries that the user defines."
-    },
-    {
-      "title": "Strategy Shares Crash Below $100 as Bitcoin Sinks Towards $60K",
-      "url": "https://decrypt.co/?p=371965",
-      "source": "Decrypt",
-      "published": "2026-06-24T14:31:29+00:00",
-      "summary": "Bitcoin fell to a two-week low price Wednesday as Strategy shares dove below the $100 mark for the first time since March 2024."
     },
     {
       "title": "Over $610 Million in Bitcoin and Ethereum Dumped by BlackRock",
@@ -168,26 +182,9 @@
       "source": "U.Today",
       "published": "2026-06-23T10:17:00+00:00",
       "summary": "Shiba Inu's sinister threshold is coming closer to reality as it may cause a substantial surge of selling pressure on the market."
-    },
-    {
-      "title": "Ripple UK CEO Reacts to Big Regulatory Milestone: 'Next Wave of Institutional Adoption Here'",
-      "url": "https://u.today/ripple-uk-ceo-reacts-to-big-regulatory-milestone-next-wave-of-institutional-adoption-here",
-      "source": "U.Today",
-      "published": "2026-06-23T10:00:36+00:00",
-      "summary": "The latest milestone positions Ripple to expand into broader cryptoasset activities in the European Economic Area."
     }
   ],
   "rumors": [
-    {
-      "title": "Cboe Brings Prediction-Style Trading To Wall Street With Yes-Or-No S&P 500 Contracts",
-      "url": "https://www.newsbtc.com/?p=902470",
-      "source": "NewsBTC",
-      "published": "2026-06-24T14:30:14+00:00",
-      "summary": "Cboe Brings Prediction-Style Trading To Wall Street With Yes-Or-No S&#38;P 500 Contracts TL;DR Cboe has launched prediction-style contracts tied to the M",
-      "tags": [
-        "Launch"
-      ]
-    },
     {
       "title": "Ripple's USD Stablecoin Gets Historic Listing in Japan; Fred Krueger Votes for Freezing Satoshi's Bitcoin; Shiba Inu (SHIB) Price Setup Predicts July Rally - Morning Crypto Report",
       "url": "https://u.today/ripples-usd-stablecoin-gets-historic-listing-in-japan-fred-krueger-votes-for-freezing-satoshis",
