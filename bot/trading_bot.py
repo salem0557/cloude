@@ -920,9 +920,39 @@ class Bot:
         if notify.send("\n".join(lines)):
             log("📨 advisor: أُرسلت التوصيات إلى Telegram")
 
+    def _handle_manual_buys(self):
+        """Execute 'شراء' button requests from the dashboard: market-buy the coin
+        for the user-entered USDT amount. Manual only — the advisor never buys on
+        its own. The bought position is tracked for P/L + a sell button."""
+        for symbol, amount in monitor.drain_buy_requests():
+            try:
+                price = self.ex.last_price(symbol)
+                fill, qty = self.ex.buy(symbol, amount, price)
+                params = dict(self.state["params"].get(symbol) or {})
+                with self._lock:
+                    self.state["positions"][symbol] = {
+                        "entry_price": fill, "qty": qty, "opened": iso(),
+                        "peak": fill, "params": params}
+                    record_trade(self.state, "BUY", symbol, fill, qty,
+                                 self.mode, f"شراء يدوي {amount} USDT")
+                    save_state(self.state)
+                log(f"🟢 BUY {symbol} {qty:.6f} @ {fill:.4f} (يدوي {amount} USDT)")
+            except Exception as e:
+                log(f"⚠️  manual buy failed for {symbol}: {e}")
+
     def _advisor_cycle(self):
-        """Fast-loop body in advisor mode: refresh recommendations on cadence and
-        keep the dashboard current. Never places an order."""
+        """Fast-loop body in advisor mode: it places NO orders on its own. It
+        executes only the manual buy/sell button requests, refreshes open-position
+        prices for P/L, recomputes recommendations on cadence, and writes the
+        dashboard."""
+        self._handle_manual_buys()
+        self._handle_manual_sells()
+        prices = {}
+        for sym in list(self.state.get("positions", {})):
+            try:
+                prices[sym] = self.ex.last_price(sym)
+            except Exception:
+                pass
         if (time.time() - self._last_reco_ts) >= self.advisor_refresh_min * 60 \
                 or not self.state.get("recommendations"):
             self._last_reco_ts = time.time()
@@ -939,7 +969,7 @@ class Bot:
                     self.state["scores"], self.state["ml_acc"],
                     self.state["trades"], self.state["equity"],
                     self.state["realized_pnl"], self.state["last_optimize"],
-                    {}, regime=self.regime, account=self.account,
+                    prices, regime=self.regime, account=self.account,
                     recommendations=self.state.get("recommendations"),
                     advisor=True,
                     learning={"realtime": self.realtime,

@@ -31,6 +31,7 @@ LOGS = deque(maxlen=400)
 # symbol in here; the trading loop drains it each cycle and market-sells it.
 # Optional MONITOR_TOKEN guards the action so a stranger with the URL can't sell.
 _SELL_REQUESTS = set()
+_BUY_REQUESTS = {}          # symbol -> quote amount (USDT) for manual buys
 _SELL_LOCK = threading.Lock()
 MONITOR_TOKEN = (os.environ.get("MONITOR_TOKEN", "") or "").strip()
 
@@ -50,6 +51,20 @@ def drain_sell_requests():
     with _SELL_LOCK:
         out = list(_SELL_REQUESTS)
         _SELL_REQUESTS.clear()
+    return out
+
+
+def request_buy(symbol, amount):
+    """Queue a manual market-buy (symbol + quote amount) for the trading loop."""
+    with _SELL_LOCK:
+        _BUY_REQUESTS[symbol.upper()] = float(amount)
+
+
+def drain_buy_requests():
+    """Return and clear pending manual buys as a list of (symbol, amount)."""
+    with _SELL_LOCK:
+        out = list(_BUY_REQUESTS.items())
+        _BUY_REQUESTS.clear()
     return out
 
 
@@ -75,7 +90,8 @@ pre{background:#0a0e17;border:1px solid var(--bd);border-radius:12px;padding:12p
 <div style="margin:8px 0;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
 <input id="tok" class="tok" placeholder="رمز الحماية (اختياري)">
 <button class="sell" style="background:#5b8def" onclick="saveTok()">حفظ الرمز</button>
-<span class="mut" style="font-size:.75rem">يُحفظ في متصفّحك فقط لتأكيد أوامر البيع اليدوي</span></div>
+<input id="amt" class="tok" type="number" value="7.5" min="1" step="0.5" style="width:130px" placeholder="مبلغ الشراء USDT">
+<span class="mut" style="font-size:.75rem">المبلغ يُستخدم لزر «شراء» في التوصيات. أوامر حقيقية على حسابك.</span></div>
 <div class="grid">
 <div class="st"><div class="l">قيمة المحفظة (USDT)</div><div class="v" id="eq">—</div></div>
 <div class="st"><div class="l">USDT متاح</div><div class="v" id="freeusdt">—</div></div>
@@ -105,6 +121,18 @@ async function sellPos(sym){
  }catch(e){alert('❌ تعذّر الاتصال بالبوت')}
  setTimeout(tick,1500);
 }
+async function buyPos(sym){
+ const amt=parseFloat($('amt').value);
+ if(!amt||amt<1){alert('أدخل مبلغاً صحيحاً (≥ 1 USDT) في خانة المبلغ بالأعلى');return;}
+ if(!confirm('شراء '+sym+' بمبلغ '+amt+' USDT بأمر سوق فوري على حسابك؟'))return;
+ const t=localStorage.getItem('montok')||'';
+ try{const r=await fetch('/buy?symbol='+encodeURIComponent(sym)+'&amount='+amt+'&token='+encodeURIComponent(t),{method:'POST'});
+  const j=await r.json().catch(()=>({}));
+  if(r.ok&&j.ok)alert('📨 أُرسل أمر شراء '+sym+' بمبلغ '+amt+' USDT — يُنفَّذ خلال ثوانٍ.\\nتابع «الصفقات المفتوحة» والسجلّ:\\n• 🟢 BUY '+sym+' = تمّ ✅\\n• manual buy failed = رفضه Binance');
+  else alert('❌ فشل: '+(j.error||('رمز الحماية غير صحيح؟ ('+r.status+')')));
+ }catch(e){alert('❌ تعذّر الاتصال بالبوت')}
+ setTimeout(tick,1500);
+}
 async function tick(){
  try{const d=await(await fetch('/bot.json?t='+Date.now())).json();
   const m=$('mode');m.textContent=({dryrun:'محاكاة',testnet:'تجريبي',live:'حقيقي'}[d.mode]||d.mode||'—');m.className='pill '+(d.mode||'');
@@ -119,9 +147,10 @@ async function tick(){
   const rb=$('reco').querySelector('tbody');
   rb.innerHTML=rc.map(r=>{const a='🟢'.repeat(r.arrows||1);
     const act=r.signal==='buy'?'up':'mut';
-    return `<tr><td title="opp ${r.opp}">${a}</td><td><b>${r.symbol}</b></td><td>${f(r.price,5)}</td><td class=up>+${f(r.target_pct,1)}%</td><td class=dn>-${f(r.stop_pct,1)}%</td><td class=mut>${r.duration||''}</td><td class=mut style="white-space:normal;max-width:260px">${r.reason||''}</td><td class=${act}>${r.action||''}</td></tr>`}).join('')||'<tr><td colspan=8 class=mut>تُحسب التوصيات…</td></tr>';
-  // advisor mode: hide the trading-only panels
-  if(d.advisor){['posh','pos','strh','str','trdh','trd'].forEach(id=>{const e=$(id);if(e)e.style.display='none'});}
+    return `<tr><td title="opp ${r.opp}">${a}</td><td><b>${r.symbol}</b></td><td>${f(r.price,5)}</td><td class=up>+${f(r.target_pct,1)}%</td><td class=dn>-${f(r.stop_pct,1)}%</td><td class=mut>${r.duration||''}</td><td class=mut style="white-space:normal;max-width:240px">${r.reason||''}</td><td><span class="${act}" style="font-size:.74rem">${r.action||''}</span><br><button class="sell" style="background:var(--up);margin-top:3px" onclick="buyPos('${r.symbol}')">شراء</button></td></tr>`}).join('')||'<tr><td colspan=8 class=mut>تُحسب التوصيات…</td></tr>';
+  // advisor mode: hide only the learned-strategy table (positions+trades stay so
+  // you can sell what you manually bought)
+  if(d.advisor){['strh','str'].forEach(id=>{const e=$(id);if(e)e.style.display='none'});}
   let b=$('pos').querySelector('tbody');b.innerHTML=(d.positions||[]).map(x=>`<tr><td>${x.symbol}</td><td>${f(x.entry_price,4)}</td><td>${f(x.price,4)}</td><td class=${cl(x.pnl_pct)}>${sg(x.pnl_pct)}%</td><td><button class="sell" onclick="sellPos('${x.symbol}')">بيع</button></td></tr>`).join('')||'<tr><td colspan=5 class=mut>لا صفقات</td></tr>';
   b=$('str').querySelector('tbody');b.innerHTML=(d.strategy||[]).map(s=>{let pp=s.params||{},bt=s.backtest||{};return `<tr><td>${s.symbol}</td><td class=${s.active?'up':'mut'}>${s.active?'يتداول':'مراقبة'}</td><td>${pp.fast??'—'}/${pp.slow??'—'}</td><td class=${cl(bt.return_pct)}>${bt.return_pct==null?'—':sg(bt.return_pct)+'%'}</td><td>${s.ml_accuracy==null?'—':(s.ml_accuracy*100|0)+'%'}</td></tr>`}).join('');
   b=$('trd').querySelector('tbody');b.innerHTML=(d.recent_trades||[]).slice().reverse().map(t=>`<tr><td class=mut>${ago(t.time)}</td><td>${t.symbol}</td><td class=${t.side==='BUY'?'up':'dn'}>${t.side==='BUY'?'شراء':'بيع'}</td><td>${f(t.price,4)}</td><td class=mut>${t.reason||''}</td></tr>`).join('')||'<tr><td colspan=5 class=mut>لا صفقات بعد</td></tr>';
@@ -177,6 +206,26 @@ class _Handler(BaseHTTPRequestHandler):
             request_sell(symbol)
             self._send(200, json.dumps({"ok": True, "symbol": symbol}),
                        "application/json; charset=utf-8")
+        elif path == "/buy":
+            params = urllib.parse.parse_qs(q)
+            symbol = (params.get("symbol", [""])[0] or "").upper()
+            token = params.get("token", [""])[0]
+            try:
+                amount = float(params.get("amount", ["0"])[0])
+            except (TypeError, ValueError):
+                amount = 0.0
+            if MONITOR_TOKEN and token != MONITOR_TOKEN:
+                self._send(403, json.dumps({"ok": False, "error": "رمز غير صحيح"}),
+                           "application/json; charset=utf-8")
+                return
+            if not symbol or amount < 1:
+                self._send(400, json.dumps({"ok": False,
+                           "error": "symbol/amount غير صالح (≥1)"}),
+                           "application/json; charset=utf-8")
+                return
+            request_buy(symbol, amount)
+            self._send(200, json.dumps({"ok": True, "symbol": symbol,
+                       "amount": amount}), "application/json; charset=utf-8")
         else:
             self._send(404, json.dumps({"ok": False, "error": "not found"}),
                        "application/json")
