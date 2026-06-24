@@ -1,33 +1,47 @@
 {
-  "updated": "2026-06-24T17:29:37.640423+00:00",
+  "updated": "2026-06-24T19:16:03.344618+00:00",
   "news": [
     {
-      "title": "Shopify’s head of engineering calls token leaderboards a mistake",
-      "url": "https://cryptobriefing.com/?p=267410",
-      "source": "Crypto Briefing",
-      "published": "2026-06-24T17:28:30+00:00",
-      "summary": "<p>Shopify's shift from volume to utility metrics highlights the need for outcome-focused AI adoption strategies to prevent resource misuse.</p> <p>The post <a href=\"https://cryptobriefing.com/shopify-token-leaderboard-mistake-ai/\">Shopify&#8217;s head of engineering calls token "
-    },
-    {
-      "title": "Bitcoin Price Crashes Below $60K as Strategy’s MSTR Plunges 10%",
-      "url": "https://cryptopotato.com/?p=1440913",
-      "source": "CryptoPotato",
-      "published": "2026-06-24T17:20:45+00:00",
-      "summary": "MSTR is below $100 for the first time in two years."
-    },
-    {
-      "title": "Fake Crypto Influencer Gets 15 Months for $1.4M Telegram Staking Fraud",
-      "url": "https://decrypt.co/?p=371989",
-      "source": "Decrypt",
-      "published": "2026-06-24T17:18:31+00:00",
-      "summary": "Noman Saleem impersonated crypto influencers on Telegram, luring victims into a fake staking scheme before vanishing with their funds."
-    },
-    {
-      "title": "America’s Bitcoin buying turns negative as BTC drifts closer to the $57,300 liquidation trap",
-      "url": "https://cryptoslate.com/?p=543942",
+      "title": "Saylor’s STRC Bitcoin machine is turning shareholders into its cash backstop – causing a dilution trade-off",
+      "url": "https://cryptoslate.com/?p=543828",
       "source": "CryptoSlate",
-      "published": "2026-06-24T17:02:57+00:00",
-      "summary": "<p>Bitcoin’s sustained price correction is deepening as demand from US investors weakens, leaving the world’s largest cryptocurrency increasingly exposed to leveraged positions clustered below $60,000. According to CryptoSlate's data, the top crypto traded at $59,800 at press tim"
+      "published": "2026-06-24T19:15:20+00:00",
+      "summary": "<p>Strategy (formerly known as MicroStrategy) is discovering that strengthening one part of its increasingly complex balance sheet can expose weaknesses elsewhere. The Bitcoin treasury company spent $1.5 billion in May repurchasing convertible notes, reducing its debt but also dr"
+    },
+    {
+      "title": "Kalshi seeks $40B valuation just one month after $22B funding round",
+      "url": "https://cryptobriefing.com/?p=267588",
+      "source": "Crypto Briefing",
+      "published": "2026-06-24T19:13:55+00:00",
+      "summary": "<p>Kalshi's rapid valuation surge highlights the growing tension between innovative financial platforms and traditional regulatory frameworks.</p> <p>The post <a href=\"https://cryptobriefing.com/kalshi-seeks-40b-valuation-just-one-month-after-22b-funding-round/\">Kalshi seeks $40B"
+    },
+    {
+      "title": "Researcher Throws Cold Water on Microsoft Quantum Claims",
+      "url": "https://decrypt.co/?p=371998",
+      "source": "Decrypt",
+      "published": "2026-06-24T19:07:12+00:00",
+      "summary": "A physicist's formal critique argues Microsoft has not demonstrated the topological qubit behind its Majorana 2 quantum chip."
+    },
+    {
+      "title": "Standard Chartered Aave Call Puts Institutional DeFi Back On The Table",
+      "url": "https://www.newsbtc.com/?p=902510",
+      "source": "NewsBTC",
+      "published": "2026-06-24T18:30:16+00:00",
+      "summary": "Standard Chartered Aave Call Puts Institutional DeFi Back On The Table TL;DR Standard Chartered coverage has reportedly put Aave back in the institu"
+    },
+    {
+      "title": "Mining Profits Dry Up Across Bitcoin, DOGE, LTC, and BCH",
+      "url": "https://cryptopotato.com/?p=1440779",
+      "source": "CryptoPotato",
+      "published": "2026-06-24T18:15:16+00:00",
+      "summary": "Dogecoin and Litecoin miners face mounting pressure as mining profitability remains low across major proof-of-work assets."
+    },
+    {
+      "title": "Canadian Billionaire Mocks Saylor and Scaramucci With Mark Twain Quote",
+      "url": "https://u.today/canadian-billionaire-mocks-saylor-and-scaramucci-with-mark-twain-quote",
+      "source": "U.Today",
+      "published": "2026-06-24T17:39:35+00:00",
+      "summary": "Canadian billionaire Frank Giustra has once again taken aim at the Bitcoin maximalist movement, directing his latest critique at SkyBridge Capital founder Anthony Scaramucci and MicroStrategy's Michael Saylor."
     },
     {
       "title": "Binance Cancels License Bid in Greece as Critical European Deadline Looms",
@@ -35,20 +49,6 @@
       "source": "U.Today",
       "published": "2026-06-24T16:59:45+00:00",
       "summary": "Months of secret talks fail as Binance walks away from Greece's regulator a week before the MiCA deadline."
-    },
-    {
-      "title": "White House Denies Trump Crypto Link to UAE AI Deal After Senate Democrats Demand Hearings",
-      "url": "https://beincrypto.com/?p=842879",
-      "source": "BeInCrypto",
-      "published": "2026-06-24T16:45:18+00:00",
-      "summary": "<p>The White House has denied that the Trump administration&#8217;s AI agreement with the United Arab Emirates had any connection to World Liberty Financial.&#160; This comes after Senate Democrats called for hearings into the Trump family-backed crypto firm&#8217;s reported ties"
-    },
-    {
-      "title": "Meta Prediction Market App Push Puts Polymarket Model In Big Tech Spotlight",
-      "url": "https://www.newsbtc.com/?p=902468",
-      "source": "NewsBTC",
-      "published": "2026-06-24T15:30:50+00:00",
-      "summary": "Meta Prediction Market App Push Puts Polymarket Model In Big Tech Spotlight TL;DR Meta is reportedly building a standalone prediction market app inte"
     },
     {
       "title": "Shiba Inu (SHIB) Reserves Recover to 80 Trillion After Sudden 600% Inflow Spike",
@@ -175,16 +175,19 @@
       "source": "U.Today",
       "published": "2026-06-23T12:36:02+00:00",
       "summary": "Bitcoin sees selling activity among large holders drop to lowest level since 2024, providing a bullish outlook for the asset despite weak price movements."
-    },
-    {
-      "title": "Shiba Inu (SHIB) Witnesses 80 Trillion Threshold Comeback: How Things Are to Change",
-      "url": "https://u.today/shiba-inu-shib-80-trillion-threshold-is-coming-back-how-things-are-going-to-change",
-      "source": "U.Today",
-      "published": "2026-06-23T10:17:00+00:00",
-      "summary": "Shiba Inu's sinister threshold is coming closer to reality as it may cause a substantial surge of selling pressure on the market."
     }
   ],
   "rumors": [
+    {
+      "title": "The Death of the Petrodollar: Nouriel Roubini Outlines Shift to AI-Backed ‘Technodollars’",
+      "url": "https://beincrypto.com/?p=842926",
+      "source": "BeInCrypto",
+      "published": "2026-06-24T18:47:53+00:00",
+      "summary": "<p>Economist Nouriel Roubini has declared the &#8220;death of the petrodollar&#8221; and backed a new tokenized reserve asset called &#8216;Technodollar&#8217; tied to US productive assets, marking his first formal move into digital assets after years as one of crypto&#8217;s mos",
+      "tags": [
+        "Launch"
+      ]
+    },
     {
       "title": "Ripple's USD Stablecoin Gets Historic Listing in Japan; Fred Krueger Votes for Freezing Satoshi's Bitcoin; Shiba Inu (SHIB) Price Setup Predicts July Rally - Morning Crypto Report",
       "url": "https://u.today/ripples-usd-stablecoin-gets-historic-listing-in-japan-fred-krueger-votes-for-freezing-satoshis",
