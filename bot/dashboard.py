@@ -19,10 +19,12 @@ OUT = HERE.parent / "docs" / "crypto" / "data" / "bot.json"
 def write_snapshot(mode, symbols, active, params, positions, scores,
                    ml_acc, recent_trades, equity, realized_pnl,
                    last_optimize, prices, regime=None, learning=None,
-                   account=None):
+                   account=None, recommendations=None, advisor=False):
     snapshot = {
         "updated": datetime.now(timezone.utc).isoformat(),
         "mode": mode,
+        "advisor": advisor,
+        "recommendations": recommendations or [],
         "learning": learning or {},
         "regime": regime or {},
         "account": account or {},

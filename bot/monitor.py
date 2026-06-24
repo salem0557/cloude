@@ -83,9 +83,12 @@ pre{background:#0a0e17;border:1px solid var(--bd);border-radius:12px;padding:12p
 <div class="st"><div class="l">صفقات مفتوحة</div><div class="v" id="op">—</div></div>
 <div class="st"><div class="l">الخوف/الطمع</div><div class="v" id="fng">—</div></div>
 </div>
-<h2>الصفقات المفتوحة</h2><div class="scroll"><table id="pos"><thead><tr><th>العملة</th><th>دخول</th><th>الآن</th><th>ربح%</th><th>إجراء</th></tr></thead><tbody></tbody></table></div>
-<h2>الاستراتيجية المتعلّمة</h2><div class="scroll"><table id="str"><thead><tr><th>العملة</th><th>حالة</th><th>سريع/بطيء</th><th>عائد الباك-تيست</th><th>ML</th></tr></thead><tbody></tbody></table></div>
-<h2>آخر الصفقات</h2><div class="scroll"><table id="trd"><thead><tr><th>وقت</th><th>عملة</th><th>نوع</th><th>سعر</th><th>سبب</th></tr></thead><tbody></tbody></table></div>
+<h2 id="recoh">🟢 توصيات الشراء</h2>
+<div class="mut" style="font-size:.75rem;margin-bottom:6px">مستشار فقط — نفّذ يدوياً على Binance. الأسهم الخضراء = قوة فرصة الربح (🟢=مراقبة، 🟢🟢🟢=الأقوى). ليست نصيحة مالية مضمونة.</div>
+<div class="scroll"><table id="reco"><thead><tr><th>الفرصة</th><th>العملة</th><th>السعر</th><th>الهدف</th><th>الوقف</th><th>المدة</th><th>السبب</th><th>الإجراء</th></tr></thead><tbody></tbody></table></div>
+<h2 id="posh">الصفقات المفتوحة</h2><div class="scroll"><table id="pos"><thead><tr><th>العملة</th><th>دخول</th><th>الآن</th><th>ربح%</th><th>إجراء</th></tr></thead><tbody></tbody></table></div>
+<h2 id="strh">الاستراتيجية المتعلّمة</h2><div class="scroll"><table id="str"><thead><tr><th>العملة</th><th>حالة</th><th>سريع/بطيء</th><th>عائد الباك-تيست</th><th>ML</th></tr></thead><tbody></tbody></table></div>
+<h2 id="trdh">آخر الصفقات</h2><div class="scroll"><table id="trd"><thead><tr><th>وقت</th><th>عملة</th><th>نوع</th><th>سعر</th><th>سبب</th></tr></thead><tbody></tbody></table></div>
 <h2>السجلّ المباشر</h2><pre id="logs">…</pre>
 <script>
 const $=i=>document.getElementById(i),f=(n,d=2)=>n==null||isNaN(n)?'—':(+n).toLocaleString('en',{maximumFractionDigits:d});
@@ -112,6 +115,13 @@ async function tick(){
   const p=$('pnl');p.textContent=sg(d.realized_pnl_quote);p.className='v '+cl(d.realized_pnl_quote);
   $('op').textContent=(d.positions||[]).length;const R=d.regime||{};
   $('fng').textContent=R.fear_greed==null?'—':R.fear_greed+(R.fear_greed_label?(' '+R.fear_greed_label):'');
+  const rc=(d.recommendations||[]);
+  const rb=$('reco').querySelector('tbody');
+  rb.innerHTML=rc.map(r=>{const a='🟢'.repeat(r.arrows||1);
+    const act=r.signal==='buy'?'up':'mut';
+    return `<tr><td title="opp ${r.opp}">${a}</td><td><b>${r.symbol}</b></td><td>${f(r.price,5)}</td><td class=up>+${f(r.target_pct,1)}%</td><td class=dn>-${f(r.stop_pct,1)}%</td><td class=mut>${r.duration||''}</td><td class=mut style="white-space:normal;max-width:260px">${r.reason||''}</td><td class=${act}>${r.action||''}</td></tr>`}).join('')||'<tr><td colspan=8 class=mut>تُحسب التوصيات…</td></tr>';
+  // advisor mode: hide the trading-only panels
+  if(d.advisor){['posh','pos','strh','str','trdh','trd'].forEach(id=>{const e=$(id);if(e)e.style.display='none'});}
   let b=$('pos').querySelector('tbody');b.innerHTML=(d.positions||[]).map(x=>`<tr><td>${x.symbol}</td><td>${f(x.entry_price,4)}</td><td>${f(x.price,4)}</td><td class=${cl(x.pnl_pct)}>${sg(x.pnl_pct)}%</td><td><button class="sell" onclick="sellPos('${x.symbol}')">بيع</button></td></tr>`).join('')||'<tr><td colspan=5 class=mut>لا صفقات</td></tr>';
   b=$('str').querySelector('tbody');b.innerHTML=(d.strategy||[]).map(s=>{let pp=s.params||{},bt=s.backtest||{};return `<tr><td>${s.symbol}</td><td class=${s.active?'up':'mut'}>${s.active?'يتداول':'مراقبة'}</td><td>${pp.fast??'—'}/${pp.slow??'—'}</td><td class=${cl(bt.return_pct)}>${bt.return_pct==null?'—':sg(bt.return_pct)+'%'}</td><td>${s.ml_accuracy==null?'—':(s.ml_accuracy*100|0)+'%'}</td></tr>`}).join('');
   b=$('trd').querySelector('tbody');b.innerHTML=(d.recent_trades||[]).slice().reverse().map(t=>`<tr><td class=mut>${ago(t.time)}</td><td>${t.symbol}</td><td class=${t.side==='BUY'?'up':'dn'}>${t.side==='BUY'?'شراء':'بيع'}</td><td>${f(t.price,4)}</td><td class=mut>${t.reason||''}</td></tr>`).join('')||'<tr><td colspan=5 class=mut>لا صفقات بعد</td></tr>';
