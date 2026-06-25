@@ -46,6 +46,7 @@ import derivatives
 import social
 import news_ai
 import coach
+import radar
 import notify
 import publish
 import monitor
@@ -224,6 +225,11 @@ class Bot:
             in ("1", "true", "yes", "on")
         self.reco_count = int(cfg("ADVISOR_COUNT", "15") or 15)
         self.advisor_refresh_min = float(cfg("ADVISOR_REFRESH_MIN", "15") or 15)
+        # Coin-selection radar: relative strength vs BTC + volume surge + order-book
+        # imbalance + market regime (trend vs chop) to sharpen which coins and
+        # strategies the advisor favours. Free, no key.
+        self.radar_on = (cfg("RADAR", "true") or "").lower() \
+            in ("1", "true", "yes", "on")
         self._last_reco_ts = 0.0
         self._last_reco_sig = None
         # Trailing stop: ride the rise, sell when price pulls back this % from
@@ -835,6 +841,15 @@ class Bot:
         recos = []
         b7 = self._bars_per_7d()
         wstats = self.ex.window_stats([s for s, _ in pool], "1h")  # 1h low/high
+        # Radar context: BTC reference series + market regime (trend vs chop).
+        btc_closes, mkt_trending = None, True
+        if self.radar_on:
+            try:
+                btc_closes = self.ex.closes(self.trend_symbol, self.interval,
+                                            self.history)
+                mkt_trending = radar.efficiency_ratio(btc_closes, 24) >= 0.40
+            except Exception:
+                btc_closes = None
         for sym, base in pool:
             if len(recos) >= self.reco_count:
                 break
@@ -863,6 +878,25 @@ class Bot:
                     opp += 2
                 if self.market_bull:
                     opp += 2
+                # Radar: relative strength vs BTC + volume surge + order-book
+                # pressure + regime-matched strategy — sharpen coin/strategy pick.
+                rs = vsurge = obi = None
+                if self.radar_on:
+                    rs = radar.relative_strength(closes, btc_closes)
+                    vsurge = radar.volume_surge(vols)
+                    obi = radar.orderbook_imbalance(sym)
+                    if rs is not None:
+                        opp += max(-3.0, min(5.0, rs * 0.4))
+                    if vsurge and vsurge >= 0.5:
+                        opp += 2
+                    if obi is not None and obi >= 1.2:
+                        opp += 2
+                    elif obi is not None and obi <= 0.8:
+                        opp -= 2
+                    if mkt_trending and strat in self._TREND_STRATS:
+                        opp += 2
+                    elif (not mkt_trending) and strat not in self._TREND_STRATS:
+                        opp += 2
                 # arrows are assigned by RELATIVE rank after the full list is built
 
                 bits = [strat]
@@ -870,6 +904,16 @@ class Bot:
                     bits.append(f"مال ذكي {bias:.2f}")
                 if ml is not None:
                     bits.append(f"ML {int(ml*100)}%")
+                if rs is not None and rs > 1.5:
+                    bits.append(f"أقوى من BTC +{rs:.1f}%")
+                elif rs is not None and rs < -1.5:
+                    bits.append(f"أضعف من BTC {rs:.1f}%")
+                if vsurge and vsurge >= 0.5:
+                    bits.append(f"حجم +{int(vsurge*100)}%")
+                if obi is not None and obi >= 1.2:
+                    bits.append(f"ضغط شراء {obi:.2f}")
+                elif obi is not None and obi <= 0.8:
+                    bits.append(f"ضغط بيع {obi:.2f}")
                 if trending:
                     bits.append("رائج")
                 if snap.get("reason") and snap["reason"] != "—":
