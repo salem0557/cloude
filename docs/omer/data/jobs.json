@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-24T17:23:48+00:00",
+ "updated": "2026-06-25T04:38:46+00:00",
  "jobs": [
   {
    "title": "Warehouse Supervisor",
@@ -133,6 +133,18 @@
    "source": "LinkedIn",
    "keywords": [
     "Procurement"
+   ],
+   "first_seen": "2026-06-24"
+  },
+  {
+   "title": "Depots Engineer",
+   "company": "AtkinsRéalis",
+   "location": "Riyadh Region",
+   "url": "https://sa.linkedin.com/jobs/view/depots-engineer-at-atkinsr%C3%A9alis-4417091477",
+   "posted": "2026-05-20",
+   "source": "LinkedIn",
+   "keywords": [
+    "Maintenance Engineer"
    ],
    "first_seen": "2026-06-24"
   },

@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-24T17:22:46+00:00",
+ "updated": "2026-06-25T04:37:47+00:00",
  "jobs": [
   {
    "title": "Account Manager (IT Solutions & Networking)",
@@ -38,6 +38,30 @@
    "first_seen": "2026-06-24"
   },
   {
+   "title": "Technical Project Manager - BytePlus (GenAI & SaaS)",
+   "company": "ByteDance",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/technical-project-manager-byteplus-genai-saas-at-bytedance-4431897089",
+   "posted": "2026-06-24",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Project Manager"
+   ],
+   "first_seen": "2026-06-24"
+  },
+  {
+   "title": "Network Engineer",
+   "company": "RIME Platform",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/network-engineer-at-rime-platform-4431863439",
+   "posted": "2026-06-24",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Infrastructure"
+   ],
+   "first_seen": "2026-06-24"
+  },
+  {
    "title": "CTO - eCommerce",
    "company": "Involved Solutions",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -69,7 +93,8 @@
    "posted": "2026-06-23",
    "source": "LinkedIn",
    "keywords": [
-    "IT Project Manager"
+    "IT Project Manager",
+    "Program Manager"
    ],
    "first_seen": "2026-06-24"
   },
@@ -93,7 +118,8 @@
    "posted": "2026-06-23",
    "source": "LinkedIn",
    "keywords": [
-    "IT Project Manager"
+    "IT Project Manager",
+    "Program Manager"
    ],
    "first_seen": "2026-06-24"
   },
@@ -102,6 +128,31 @@
    "company": "Abacus Technology Corporation",
    "location": "Riyadh, Riyadh, Saudi Arabia",
    "url": "https://sa.linkedin.com/jobs/view/program-manager-at-abacus-technology-corporation-4432401820",
+   "posted": "2026-06-23",
+   "source": "LinkedIn",
+   "keywords": [
+    "Program Manager"
+   ],
+   "first_seen": "2026-06-24"
+  },
+  {
+   "title": "Senior Manager - Residential & Hotel Projects",
+   "company": "Jasara Program Management Company",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/senior-manager-residential-hotel-projects-at-jasara-program-management-company-4432254114",
+   "posted": "2026-06-23",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Project Manager",
+    "Program Manager"
+   ],
+   "first_seen": "2026-06-24"
+  },
+  {
+   "title": "Senior Startup Program Executive (6 Month Contract)",
+   "company": "Tahaluf",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/senior-startup-program-executive-6-month-contract-at-tahaluf-4432213086",
    "posted": "2026-06-23",
    "source": "LinkedIn",
    "keywords": [
@@ -2782,7 +2833,8 @@
    "posted": "2026-05-21",
    "source": "LinkedIn",
    "keywords": [
-    "IT Management"
+    "IT Management",
+    "IT Infrastructure"
    ],
    "first_seen": "2026-06-10"
   },
