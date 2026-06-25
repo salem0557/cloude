@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-25T12:34:30+00:00",
+ "updated": "2026-06-25T17:26:06+00:00",
  "jobs": [
   {
    "title": "Senior Manager - IT BRM",
@@ -46,7 +46,8 @@
    "posted": "2026-06-25",
    "source": "LinkedIn",
    "keywords": [
-    "IT Infrastructure"
+    "IT Infrastructure",
+    "IT Management"
    ],
    "first_seen": "2026-06-25"
   },
@@ -79,6 +80,42 @@
    "company": "BKN301",
    "location": "Riyadh, Riyadh, Saudi Arabia",
    "url": "https://sa.linkedin.com/jobs/view/senior-program-manager-%E2%80%93-fintech-solutions-at-bkn301-4433063887",
+   "posted": "2026-06-25",
+   "source": "LinkedIn",
+   "keywords": [
+    "Program Manager"
+   ],
+   "first_seen": "2026-06-25"
+  },
+  {
+   "title": "Information Technology Governance Lead Expert",
+   "company": "Zakat, Tax and Customs Authority",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/information-technology-governance-lead-expert-at-zakat-tax-and-customs-authority-4430228050",
+   "posted": "2026-06-25",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Management"
+   ],
+   "first_seen": "2026-06-25"
+  },
+  {
+   "title": "Middle East IT Service Senior Manager",
+   "company": "Boston Consulting Group (BCG)",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/middle-east-it-service-senior-manager-at-boston-consulting-group-bcg-4432607994",
+   "posted": "2026-06-25",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Manager"
+   ],
+   "first_seen": "2026-06-25"
+  },
+  {
+   "title": "Program Manager (PMO)",
+   "company": "PayTech Group",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/program-manager-pmo-at-paytech-group-4432643655",
    "posted": "2026-06-25",
    "source": "LinkedIn",
    "keywords": [
