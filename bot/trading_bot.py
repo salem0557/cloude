@@ -921,6 +921,9 @@ class Bot:
                 recos.append({
                     "symbol": sym,
                     "arrows": 1,
+                    # 👤 = Binance's top traders are clearly net-long this coin
+                    # (closest free proxy for "smart money has bought it")
+                    "smart_buy": bool(bias is not None and bias >= 1.5),
                     "opp": round(opp, 1),
                     "price": round(price, 6),
                     "target_pct": round(params.get("take_profit_pct") or 0, 1),
@@ -1035,6 +1038,13 @@ class Bot:
                     p = None
             if p:
                 prices[sym] = p
+        # live unrealized P/L of open positions (moves with price, unlike the
+        # realized P/L which only changes when a position is actually sold)
+        unrealized = 0.0
+        for sym, pos in self.state.get("positions", {}).items():
+            px = prices.get(sym)
+            if px and pos.get("entry_price"):
+                unrealized += (px - pos["entry_price"]) * pos.get("qty", 0.0)
         if (time.time() - self._last_reco_ts) >= self.advisor_refresh_min * 60 \
                 or not self.state.get("recommendations"):
             self._last_reco_ts = time.time()
@@ -1053,7 +1063,7 @@ class Bot:
                     self.state["realized_pnl"], self.state["last_optimize"],
                     prices, regime=self.regime, account=self.account,
                     recommendations=self.state.get("recommendations"),
-                    advisor=True,
+                    advisor=True, unrealized_pnl=unrealized,
                     learning={"realtime": self.realtime,
                               "advisor_refresh_min": self.advisor_refresh_min})
             except Exception as e:

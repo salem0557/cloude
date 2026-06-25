@@ -95,7 +95,8 @@ pre{background:#0a0e17;border:1px solid var(--bd);border-radius:12px;padding:12p
 <div class="grid">
 <div class="st"><div class="l">قيمة المحفظة (USDT)</div><div class="v" id="eq">—</div></div>
 <div class="st"><div class="l">USDT متاح</div><div class="v" id="freeusdt">—</div></div>
-<div class="st"><div class="l">الربح/الخسارة المحقّقة</div><div class="v" id="pnl">—</div></div>
+<div class="st"><div class="l">ربح محقّق (بعد البيع)</div><div class="v" id="pnl">—</div></div>
+<div class="st"><div class="l">ربح غير محقّق (مفتوح)</div><div class="v" id="upnl">—</div></div>
 <div class="st"><div class="l">صفقات مفتوحة</div><div class="v" id="op">—</div></div>
 <div class="st"><div class="l">الخوف/الطمع</div><div class="v" id="fng">—</div></div>
 </div>
@@ -146,6 +147,7 @@ async function tick(){
   $('eq').textContent=f(ac.total_usdt!=null?ac.total_usdt:d.equity_quote);
   $('freeusdt').textContent=ac.free_usdt!=null?f(ac.free_usdt):'—';
   const p=$('pnl');p.textContent=sg(d.realized_pnl_quote);p.className='v '+cl(d.realized_pnl_quote);
+  const up=$('upnl');if(up){up.textContent=sg(d.unrealized_pnl_quote);up.className='v '+cl(d.unrealized_pnl_quote)}
   $('op').textContent=(d.positions||[]).length;const R=d.regime||{};
   $('fng').textContent=R.fear_greed==null?'—':R.fear_greed+(R.fear_greed_label?(' '+R.fear_greed_label):'');
   const rc=(d.recommendations||[]);
@@ -155,7 +157,8 @@ async function tick(){
     const act=r.signal==='buy'?'up':'mut';
     const pr=pdir(r.symbol,r.price,prevRec);
     const lh=(r.low_1h==null||r.high_1h==null)?'—':`<span class=dn>${f(r.low_1h,5)}</span> – <span class=up>${f(r.high_1h,5)}</span>`;
-    return `<tr><td title="opp ${r.opp}">${a}</td><td><b>${r.symbol}</b></td><td class="${pr[0]}" style="font-weight:700">${f(r.price,5)}${pr[1]}</td><td style="font-size:.8rem">${lh}</td><td class=up>+${f(r.target_pct,1)}%</td><td class=dn>-${f(r.stop_pct,1)}%</td><td class=mut>${r.duration||''}</td><td class=${cl(r.perf_7d)} title="${(r.reason||'').replace(/"/g,'')}">${r.perf_7d==null?'—':sg(r.perf_7d,1)+'%'}</td><td><span class="${act}" style="font-size:.74rem">${r.action||''}</span><br><button class="sell" style="background:var(--up);margin-top:3px" onclick="buyPos('${r.symbol}')">شراء</button></td></tr>`}).join('')||'<tr><td colspan=9 class=mut>تُحسب التوصيات…</td></tr>';
+    const sm=r.smart_buy?'<span title="كبار المتداولين على Binance صافي شراء على هذه العملة">👤</span> ':'';
+    return `<tr><td title="opp ${r.opp}">${a}</td><td>${sm}<b>${r.symbol}</b></td><td class="${pr[0]}" style="font-weight:700">${f(r.price,5)}${pr[1]}</td><td style="font-size:.8rem">${lh}</td><td class=up>+${f(r.target_pct,1)}%</td><td class=dn>-${f(r.stop_pct,1)}%</td><td class=mut>${r.duration||''}</td><td class=${cl(r.perf_7d)} title="${(r.reason||'').replace(/"/g,'')}">${r.perf_7d==null?'—':sg(r.perf_7d,1)+'%'}</td><td><span class="${act}" style="font-size:.74rem">${r.action||''}</span><br><button class="sell" style="background:var(--up);margin-top:3px" onclick="buyPos('${r.symbol}')">شراء</button></td></tr>`}).join('')||'<tr><td colspan=9 class=mut>تُحسب التوصيات…</td></tr>';
   // advisor mode: hide only the learned-strategy table (positions+trades stay so
   // you can sell what you manually bought)
   if(d.advisor){['strh','str'].forEach(id=>{const e=$(id);if(e)e.style.display='none'});}
