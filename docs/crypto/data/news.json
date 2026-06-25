@@ -1,26 +1,75 @@
 {
-  "updated": "2026-06-25T09:56:04.340097+00:00",
+  "updated": "2026-06-25T12:38:54.435736+00:00",
   "news": [
     {
-      "title": "House Democrats Hit SEC With 13 Questions on AI Agents Trading for Retail",
-      "url": "https://beincrypto.com/?p=843088",
-      "source": "BeInCrypto",
-      "published": "2026-06-25T09:31:49+00:00",
-      "summary": "<p>House Financial Services Committee Democrats have asked the US Securities and Exchange Commission to explain how it oversees artificial intelligence (AI) agents that trade stocks for retail investors and may soon handle other assets. Representatives Bill Foster and Brad Sherma"
+      "title": "Apple removes VKontakte apps from App Store as Kremlin demands explanation",
+      "url": "https://cryptobriefing.com/?p=268674",
+      "source": "Crypto Briefing",
+      "published": "2026-06-25T12:37:20+00:00",
+      "summary": "<p>Apple's app removals highlight increasing geopolitical tensions impacting tech markets, potentially influencing global digital policy frameworks.</p> <p>The post <a href=\"https://cryptobriefing.com/apple-removes-vkontakte-app-store-kremlin/\">Apple removes VKontakte apps from A"
     },
     {
-      "title": "On-chain data says Bitcoin price at $60k is cheap, but buyers are still nervous",
-      "url": "https://cryptoslate.com/?p=544025",
+      "title": "Bitplanet’s Antalpha mining deal tests whether Bitcoin treasuries can grow without constant buying",
+      "url": "https://cryptoslate.com/?p=544038",
       "source": "CryptoSlate",
-      "published": "2026-06-25T09:30:28+00:00",
-      "summary": "<p>Last night, Bitcoin price was trading at $59,537, down through the $60,000 level that had been the market's line in the sand and nearly $18,000 below its late-May peak of $77,623. Glassnode's on-chain data frames the move as a demand failure, with spot markets leading the sell"
+      "published": "2026-06-25T12:25:34+00:00",
+      "summary": "<p>The MOU points to mined-BTC revenue, but the real test is power cost, uptime, and coin retention.</p> <p>The post <a href=\"https://cryptoslate.com/bitplanets-antalpha-mining-deal-tests-whether-bitcoin-treasuries-can-grow-without-constant-buying/\">Bitplanet&#8217;s Antalpha min"
     },
     {
-      "title": "Pi Network’s PI Barely Avoids New ATL, BTC Rebounds From Another Dip to $59K: Market Watch",
-      "url": "https://cryptopotato.com/?p=1440962",
+      "title": "Prediction: Bitcoin Could Bottom Between $42K and $44K This Year",
+      "url": "https://cryptopotato.com/?p=1440952",
       "source": "CryptoPotato",
-      "published": "2026-06-25T09:15:03+00:00",
-      "summary": "MemeCore has crashed hard over the past 24 hours, dumping by well over 70%."
+      "published": "2026-06-25T12:25:06+00:00",
+      "summary": "Strategy's valuation metrics are being used as an early warning signal for BTC, with the current mNAV near levels seen in 2022."
+    },
+    {
+      "title": "Morning Minute: Strategy’s MSTR and STRC Crash to 52-Week Lows",
+      "url": "https://decrypt.co/?p=372068",
+      "source": "Decrypt",
+      "published": "2026-06-25T12:01:38+00:00",
+      "summary": "A massive Micron earnings beat has lifted global markets, pushing crypto higher after yesterday's nasty sell off took BTC sub-$60k."
+    },
+    {
+      "title": "House Democrats Press SEC For Answers On AI Investment Advisers",
+      "url": "https://www.newsbtc.com/?p=902622",
+      "source": "NewsBTC",
+      "published": "2026-06-25T12:00:59+00:00",
+      "summary": "House Democrats are pressing the SEC on AI-powered investment advisers, highlighting regulatory anxiety around automated financial advice and algorithmic c"
+    },
+    {
+      "title": "Dogecoin X Issues 'Downward Dog' Remark Amid $1 Billion Market Selloff",
+      "url": "https://u.today/dogecoin-x-issues-downward-dog-remark-amid-1-billion-market-selloff",
+      "source": "U.Today",
+      "published": "2026-06-25T11:30:21+00:00",
+      "summary": "$1 billion worth of positions were liquidated across the crypto market in recent selloff."
+    },
+    {
+      "title": "Scam Alert: Gnosis X Account Compromised, Do Not Press Any Links",
+      "url": "https://u.today/scam-alert-gnosis-x-account-compromised-do-not-press-any-links",
+      "source": "U.Today",
+      "published": "2026-06-25T11:18:00+00:00",
+      "summary": "Gnosis X account is compromised, so users should avoid any unnecessary interactions with it."
+    },
+    {
+      "title": "Ethereum Price Crash Triggers a 36% DEX Volume Surge",
+      "url": "https://beincrypto.com/?p=843102",
+      "source": "BeInCrypto",
+      "published": "2026-06-25T11:17:54+00:00",
+      "summary": "<p>Ethereum has dropped to its lowest level in weeks, and most traders asking why is Ethereum down today will blame the obvious culprit, a market-wide sell-off. The more revealing part is who used the drop to buy. The selling is real, and the Ethereum price has fallen harder than"
+    },
+    {
+      "title": "Dogecoin (DOGE) Adds 116% in 24 Hours Volume: What Do Investors Expect?",
+      "url": "https://u.today/dogecoin-doge-adds-116-in-24-hours-volume-what-do-investors-expect",
+      "source": "U.Today",
+      "published": "2026-06-25T10:40:00+00:00",
+      "summary": "Dogecoin's volumes are surging, but the market recovery isn't guaranteed."
+    },
+    {
+      "title": "XRP Takes Over Ethereum: Ripple USD Flippening Officially Happens at $801 Million Supply",
+      "url": "https://u.today/xrp-takes-over-ethereum-ripple-usd-flippening-officially-happens-at-801-million-supply",
+      "source": "U.Today",
+      "published": "2026-06-25T10:28:30+00:00",
+      "summary": "Ethereum officially loses its lead to XRP Ledger in the $1.6 billion Ripple USD race."
     },
     {
       "title": "Did Shiba Inu (SHIB) Form Bounce Candle? Analyzing Reversal Possibilities",
@@ -35,13 +84,6 @@
       "source": "U.Today",
       "published": "2026-06-25T06:23:36+00:00",
       "summary": "Shyu claims that Bitcoin's brutal 50% crash from its October peak of $120,000 to the low $60,000s caught him completely off guard due to being heavily overleveraged."
-    },
-    {
-      "title": "SBI And Startale Put Yen Stablecoins Back In The Institutional Spotlight",
-      "url": "https://www.newsbtc.com/?p=902512",
-      "source": "NewsBTC",
-      "published": "2026-06-24T21:00:20+00:00",
-      "summary": "SBI And Startale Put Yen Stablecoins Back In The Institutional Spotlight TL;DR SBI Holdings and Startale Group have introduced JPYSC, a trust bank-b"
     },
     {
       "title": "Bitcoin Collapses Below $60K, but Samson Mow Says Everything Is Fine",
@@ -133,52 +175,17 @@
       "source": "U.Today",
       "published": "2026-06-24T00:01:00+00:00",
       "summary": "Cryptocurrency market is truly on the edge where volatility is increasing, but not providing enough recovery ground."
-    },
-    {
-      "title": "Ripple Completes XRP Lending Protocol Re-Audit",
-      "url": "https://u.today/ripple-completes-xrp-lending-protocol-re-audit",
-      "source": "U.Today",
-      "published": "2026-06-23T21:16:05+00:00",
-      "summary": "Ripple has successfully completed a comprehensive codebase re-audit of its highly anticipated lending protocol audit."
-    },
-    {
-      "title": "EU Forces Unlicensed Crypto Firms to Shut Down",
-      "url": "https://u.today/eu-forces-unlicensed-crypto-firms-to-shut-down",
-      "source": "U.Today",
-      "published": "2026-06-23T19:36:40+00:00",
-      "summary": "The ESMA has ordered all unauthorized crypto providers to shut down their EU operations by July 1."
-    },
-    {
-      "title": "Ethereum Foundation Cuts 20% of Workforce",
-      "url": "https://u.today/ethereum-foundation-cuts-20-of-workforce",
-      "source": "U.Today",
-      "published": "2026-06-23T15:50:38+00:00",
-      "summary": "The Ethereum Foundation has cut roughly 20% of its workforce and plans to reduce its budget by about 40% as it shifts toward a leaner, endowment-based model."
-    },
-    {
-      "title": "XRP Whale Fights $30 Million Liquidation, Banking on Historical July Rally",
-      "url": "https://u.today/xrp-whale-fights-30-million-liquidation-banking-on-historical-july-rally",
-      "source": "U.Today",
-      "published": "2026-06-23T15:31:00+00:00",
-      "summary": "An XRP whale faces a $30 million wipeout with zero free margin left to defend their positions as weekly losses on Hyperliquid top $3.4 million already."
-    },
-    {
-      "title": "Tron Flips Ethereum and Solana With 3.93M Daily Active Addresses",
-      "url": "https://u.today/tron-flips-ethereum-and-solana-with-393m-daily-active-addresses",
-      "source": "U.Today",
-      "published": "2026-06-23T15:17:30+00:00",
-      "summary": "Tron becomes one of the most active blockchains as user participation increases, recording nearly 4 million active addresses in just one day."
     }
   ],
   "rumors": [
     {
-      "title": "JPMorgan warns retail investors are pulling back on leveraged bets in tech, and crypto could feel it too",
-      "url": "https://cryptobriefing.com/?p=268453",
-      "source": "Crypto Briefing",
-      "published": "2026-06-25T09:48:28+00:00",
-      "summary": "<p>Retail investors' caution in leveraged tech bets may signal reduced speculative capital in crypto, impacting liquidity and volatility.</p> <p>The post <a href=\"https://cryptobriefing.com/jpmorgan-retail-caution-tech-leverage-crypto/\">JPMorgan warns retail investors are pulling",
+      "title": "Ripple Partner SBI Group Hits 1 Trillion Yen in Assets After Major Acquisition",
+      "url": "https://u.today/ripple-partner-sbi-group-hits-1-trillion-yen-in-assets-after-major-acquisition",
+      "source": "U.Today",
+      "published": "2026-06-25T11:30:04+00:00",
+      "summary": "SBI Group is set to extend its presence in the crypto ecosystem as it announces plans to acquire major crypto exchange Bitbank in a 46.7 billion yen deal.",
       "tags": [
-        "Speculation"
+        "Prediction"
       ]
     },
     {
@@ -200,16 +207,6 @@
       "summary": "The market's recovery is might turn into yet another correction, which is the last thing market would need here.",
       "tags": [
         "Speculation"
-      ]
-    },
-    {
-      "title": "Aave Token Could Climb 50x by End of 2030, Standard Chartered Says—Here's Why",
-      "url": "https://decrypt.co/?p=372056",
-      "source": "Decrypt",
-      "published": "2026-06-24T22:27:05+00:00",
-      "summary": "Bitcoin to $500K, Ethereum to $40K, and Aave to $3,500 by the end of 2030? Standard Chartered just laid out some bullish price targets.",
-      "tags": [
-        "Big move"
       ]
     },
     {
