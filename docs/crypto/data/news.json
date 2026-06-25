@@ -1,26 +1,40 @@
 {
-  "updated": "2026-06-25T05:49:54.111845+00:00",
+  "updated": "2026-06-25T09:56:04.340097+00:00",
   "news": [
     {
-      "title": "Europeans cut spending amid inflation fears, hurting economy",
-      "url": "https://cryptobriefing.com/?p=268292",
-      "source": "Crypto Briefing",
-      "published": "2026-06-25T05:28:26+00:00",
-      "summary": "<p>Consumer spending cuts in Europe, driven by inflation fears, risk stalling economic growth and complicating central bank policy responses.</p> <p>The post <a href=\"https://cryptobriefing.com/europeans-cut-spending-inflation-fears-economy/\">Europeans cut spending amid inflation"
-    },
-    {
-      "title": "Prediction Market Kalshi Reportedly Eyes $40 Billion Valuation in New Funding Round",
-      "url": "https://beincrypto.com/?p=843018",
+      "title": "House Democrats Hit SEC With 13 Questions on AI Agents Trading for Retail",
+      "url": "https://beincrypto.com/?p=843088",
       "source": "BeInCrypto",
-      "published": "2026-06-25T05:22:16+00:00",
-      "summary": "<p>Prediction market Kalshi is in talks to raise capital at a valuation of about $40 billion. According to the Financial Times, citing people familiar with the discussions, the round could close in the third quarter.&#160; Prediction Markets Draw Wall Street Capital The financing"
+      "published": "2026-06-25T09:31:49+00:00",
+      "summary": "<p>House Financial Services Committee Democrats have asked the US Securities and Exchange Commission to explain how it oversees artificial intelligence (AI) agents that trade stocks for retail investors and may soon handle other assets. Representatives Bill Foster and Brad Sherma"
     },
     {
-      "title": "Why viral public whale liquidations are becoming a real trading signal on Hyperliquid",
-      "url": "https://cryptoslate.com/?p=543881",
+      "title": "On-chain data says Bitcoin price at $60k is cheap, but buyers are still nervous",
+      "url": "https://cryptoslate.com/?p=544025",
       "source": "CryptoSlate",
-      "published": "2026-06-24T22:00:27+00:00",
-      "summary": "<p>Public leverage, address trails, and liquidation maps are turning a watched ETH long into something traders can monitor in real time.</p> <p>The post <a href=\"https://cryptoslate.com/why-viral-public-whale-liquidations-are-becoming-a-real-trading-signal-on-hyperliquid/\">Why vi"
+      "published": "2026-06-25T09:30:28+00:00",
+      "summary": "<p>Last night, Bitcoin price was trading at $59,537, down through the $60,000 level that had been the market's line in the sand and nearly $18,000 below its late-May peak of $77,623. Glassnode's on-chain data frames the move as a demand failure, with spot markets leading the sell"
+    },
+    {
+      "title": "Pi Network’s PI Barely Avoids New ATL, BTC Rebounds From Another Dip to $59K: Market Watch",
+      "url": "https://cryptopotato.com/?p=1440962",
+      "source": "CryptoPotato",
+      "published": "2026-06-25T09:15:03+00:00",
+      "summary": "MemeCore has crashed hard over the past 24 hours, dumping by well over 70%."
+    },
+    {
+      "title": "Did Shiba Inu (SHIB) Form Bounce Candle? Analyzing Reversal Possibilities",
+      "url": "https://u.today/did-shiba-inu-shib-form-bounce-candle-analyzing-reversal-possibilities",
+      "source": "U.Today",
+      "published": "2026-06-25T08:52:00+00:00",
+      "summary": "Shiba Inu bounces back, but not clear if it will fuel the growth."
+    },
+    {
+      "title": "Bitcoin Is 'Over,' Google's Ex-Tech Lead Says",
+      "url": "https://u.today/bitcoin-is-over-googles-ex-tech-lead-says",
+      "source": "U.Today",
+      "published": "2026-06-25T06:23:36+00:00",
+      "summary": "Shyu claims that Bitcoin's brutal 50% crash from its October peak of $120,000 to the low $60,000s caught him completely off guard due to being heavily overleveraged."
     },
     {
       "title": "SBI And Startale Put Yen Stablecoins Back In The Institutional Spotlight",
@@ -154,23 +168,30 @@
       "source": "U.Today",
       "published": "2026-06-23T15:17:30+00:00",
       "summary": "Tron becomes one of the most active blockchains as user participation increases, recording nearly 4 million active addresses in just one day."
-    },
-    {
-      "title": "Solana Under Pressure? Whale Places $38 Million Short Against SOL",
-      "url": "https://u.today/solana-under-pressure-whale-places-38-million-short-against-sol",
-      "source": "U.Today",
-      "published": "2026-06-23T14:30:00+00:00",
-      "summary": "$38 million short position puts Solana in the spotlight."
-    },
-    {
-      "title": "Why Bollinger Bands Are Now Targeting Sub-$1 Area for XRP",
-      "url": "https://u.today/why-bollinger-bands-are-now-targeting-sub-1-area-for-xrp",
-      "source": "U.Today",
-      "published": "2026-06-23T13:42:00+00:00",
-      "summary": "XRP faces a 16.98% June plunge as a monthly Bollinger Bands breakdown triggers a sub-$1 scenario."
     }
   ],
   "rumors": [
+    {
+      "title": "JPMorgan warns retail investors are pulling back on leveraged bets in tech, and crypto could feel it too",
+      "url": "https://cryptobriefing.com/?p=268453",
+      "source": "Crypto Briefing",
+      "published": "2026-06-25T09:48:28+00:00",
+      "summary": "<p>Retail investors' caution in leveraged tech bets may signal reduced speculative capital in crypto, impacting liquidity and volatility.</p> <p>The post <a href=\"https://cryptobriefing.com/jpmorgan-retail-caution-tech-leverage-crypto/\">JPMorgan warns retail investors are pulling",
+      "tags": [
+        "Speculation"
+      ]
+    },
+    {
+      "title": "Japan's E-Commerce Giant Rakuten to Give Away Physical Shiba Inu (SHIB) Coins to 44 Million Users",
+      "url": "https://u.today/japans-e-commerce-giant-rakuten-to-give-away-physical-shiba-inu-shib-coins-to-44-million-users",
+      "source": "U.Today",
+      "published": "2026-06-25T09:27:00+00:00",
+      "summary": "Rakuten Wallet is launching physical Shiba Inu (SHIB) souvenir coins for its 44 million users to boost offline retail engagement.",
+      "tags": [
+        "Launch",
+        "Meme"
+      ]
+    },
     {
       "title": "XRP Recovery Hopes Are Alive, Is Bitcoin (BTC) Next Breakout Around the Corner? Ethereum (ETH) Stabilizes Near $1,700: Crypto Market Review",
       "url": "https://u.today/xrp-recovery-hopes-are-alive-is-bitcoin-btc-next-breakout-around-the-corner-ethereum-eth-stabilizes",
@@ -179,17 +200,6 @@
       "summary": "The market's recovery is might turn into yet another correction, which is the last thing market would need here.",
       "tags": [
         "Speculation"
-      ]
-    },
-    {
-      "title": "Nearly 70% of Pump.fun Tokens Die on Launch Day: CoinGecko",
-      "url": "https://cryptopotato.com/?p=1440878",
-      "source": "CryptoPotato",
-      "published": "2026-06-24T23:45:03+00:00",
-      "summary": "Pump.fun's low entry barriers have created millions of tokens, but most projects fail almost immediately after launch.",
-      "tags": [
-        "Launch",
-        "Big move"
       ]
     },
     {
@@ -232,17 +242,6 @@
       "summary": "Zcash is the most shorted asset on the market following the fallout of the network integrity breach.",
       "tags": [
         "Speculation"
-      ]
-    },
-    {
-      "title": "Shiba Inu in Spotlight as Major Japanese Exchange Launches Dedicated Content",
-      "url": "https://u.today/shiba-inu-in-spotlight-as-major-japanese-exchange-launches-dedicated-content",
-      "source": "U.Today",
-      "published": "2026-06-23T13:00:11+00:00",
-      "summary": "Japanese crypto exchange welcomes SHIB with a playful twist.",
-      "tags": [
-        "Launch",
-        "Meme"
       ]
     }
   ],
