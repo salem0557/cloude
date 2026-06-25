@@ -1,12 +1,19 @@
 {
-  "updated": "2026-06-25T22:09:13.058205+00:00",
+  "updated": "2026-06-25T23:55:46.033383+00:00",
   "news": [
     {
-      "title": "Ivory Coast reaches FIFA World Cup knockout rounds for first time as crypto sponsors make their own debut",
-      "url": "https://cryptobriefing.com/?p=269643",
+      "title": "Tokyo inflation rises 2%, keeping Bank of Japan on track for rate hike",
+      "url": "https://cryptobriefing.com/?p=269762",
       "source": "Crypto Briefing",
-      "published": "2026-06-25T22:07:23+00:00",
-      "summary": "<p>Ivory Coast's World Cup success and crypto's debut highlight evolving global sports dynamics, impacting fan engagement and investment trends.</p> <p>The post <a href=\"https://cryptobriefing.com/ivory-coast-world-cup-knockout-crypto-sponsors/\">Ivory Coast reaches FIFA World Cup"
+      "published": "2026-06-25T23:53:23+00:00",
+      "summary": "<p>Rising inflation and potential rate hikes in Japan could impact global markets, influencing investment strategies and economic stability.</p> <p>The post <a href=\"https://cryptobriefing.com/tokyo-inflation-boj-rate-hike-crypto/\">Tokyo inflation rises 2%, keeping Bank of Japan "
+    },
+    {
+      "title": "Russia creates crypto sanctions loophole, but cash-out routes remain ringfenced",
+      "url": "https://cryptoslate.com/?p=544101",
+      "source": "CryptoSlate",
+      "published": "2026-06-25T22:30:44+00:00",
+      "summary": "<p>The ELR gives selected firms a legal route, but wallets, exchanges, counterparties, and issuers still face pressure.</p> <p>The post <a href=\"https://cryptoslate.com/russias-crypto-trade-corridor-puts-bitcoin-and-stablecoins-in-sanctions-crosshairs/\">Russia creates crypto sanc"
     },
     {
       "title": "Bitcoin ETP Flows Turn Negative For First Time Since 2023, K33 Reports",
@@ -21,13 +28,6 @@
       "source": "CryptoPotato",
       "published": "2026-06-25T21:56:56+00:00",
       "summary": "DEXE hit record whale activity and active addresses as its market cap surged 600% in four months despite market weakness."
-    },
-    {
-      "title": "Stablecoins are quickly becoming the Kevin Warsh’s Fed’s next policy problem",
-      "url": "https://cryptoslate.com/?p=544099",
-      "source": "CryptoSlate",
-      "published": "2026-06-25T21:35:15+00:00",
-      "summary": "<p>Waller's conference framing turns dollar tokens from a crypto-market tool into a question for Treasury demand, bank funding, and global liquidity.</p> <p>The post <a href=\"https://cryptoslate.com/stablecoins-are-quickly-becoming-the-kevin-warshs-feds-next-policy-problem/\">Stab"
     },
     {
       "title": "Anthropic Urges Congress to Crack Down on AI Distillation By Chinese Rivals",
@@ -193,11 +193,11 @@
   ],
   "rumors": [
     {
-      "title": "GTA 6 Pre-Orders Send Take-Two Stock Down as Price and Launch Details Disappoint",
-      "url": "https://beincrypto.com/?p=843117",
+      "title": "Broadcom Built OpenAI’s First Chip in Record Time, but the Money Went Elsewhere",
+      "url": "https://beincrypto.com/?p=843273",
       "source": "BeInCrypto",
-      "published": "2026-06-25T21:24:04+00:00",
-      "summary": "<p>Take-Two stock fell 2.8% as GTA 6 pre-orders launched at $79.99, no online mode confirmed at launch. Analysts still target $368.</p> <p>The post <a href=\"https://beincrypto.com/gta-6-preorders-take-two-stock-drop/\">GTA 6 Pre-Orders Send Take-Two Stock Down as Price and Launch ",
+      "published": "2026-06-25T23:30:00+00:00",
+      "summary": "<p>Broadcom (AVGO) and OpenAI have unveiled Jalape&#241;o, OpenAI&#8217;s first custom AI chip, and the launch gives the Broadcom-OpenAI partnership a central seat in the AI infrastructure race. Yet positioning data tells a more cautious story, because money flow and relative str",
       "tags": [
         "Launch"
       ]
