@@ -157,7 +157,8 @@ async function tick(){
     const act=r.signal==='buy'?'up':'mut';
     const pr=pdir(r.symbol,r.price,prevRec);
     const lh=(r.low_1h==null||r.high_1h==null)?'—':`<span class=dn>${f(r.low_1h,5)}</span> – <span class=up>${f(r.high_1h,5)}</span>`;
-    const sm=r.smart_buy?'<span title="كبار المتداولين على Binance صافي شراء على هذه العملة">👤</span> ':'';
+    const sl=r.smart_lvl||0,smt=['','كبار المتداولين صافي شراء (≥1.5)','شراء قوي من كبار المتداولين (≥2.0)','شراء قوي جداً من كبار المتداولين (≥3.0)'][sl];
+    const sm=sl?('<span title="'+smt+'">'+'👤'.repeat(sl)+'</span> '):'';
     return `<tr><td title="opp ${r.opp}">${a}</td><td>${sm}<b>${r.symbol}</b></td><td class="${pr[0]}" style="font-weight:700">${f(r.price,5)}${pr[1]}</td><td style="font-size:.8rem">${lh}</td><td class=up>+${f(r.target_pct,1)}%</td><td class=dn>-${f(r.stop_pct,1)}%</td><td class=mut>${r.duration||''}</td><td class=${cl(r.perf_7d)} title="${(r.reason||'').replace(/"/g,'')}">${r.perf_7d==null?'—':sg(r.perf_7d,1)+'%'}</td><td><span class="${act}" style="font-size:.74rem">${r.action||''}</span><br><button class="sell" style="background:var(--up);margin-top:3px" onclick="buyPos('${r.symbol}')">شراء</button></td></tr>`}).join('')||'<tr><td colspan=9 class=mut>تُحسب التوصيات…</td></tr>';
   // advisor mode: hide only the learned-strategy table (positions+trades stay so
   // you can sell what you manually bought)

@@ -918,12 +918,17 @@ class Bot:
                     bits.append("رائج")
                 if snap.get("reason") and snap["reason"] != "—":
                     bits.append(snap["reason"])
+                # 👤 tiers = how strongly Binance's top traders are net-long this
+                # coin (closest free proxy for "smart money has bought it"):
+                # 1 = ≥1.5, 2 = ≥2.0, 3 = ≥3.0.
+                smart_lvl = 0
+                if bias is not None:
+                    smart_lvl = (3 if bias >= 3.0 else 2 if bias >= 2.0
+                                 else 1 if bias >= 1.5 else 0)
                 recos.append({
                     "symbol": sym,
                     "arrows": 1,
-                    # 👤 = Binance's top traders are clearly net-long this coin
-                    # (closest free proxy for "smart money has bought it")
-                    "smart_buy": bool(bias is not None and bias >= 1.5),
+                    "smart_lvl": smart_lvl,
                     "opp": round(opp, 1),
                     "price": round(price, 6),
                     "target_pct": round(params.get("take_profit_pct") or 0, 1),
