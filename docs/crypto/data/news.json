@@ -1,19 +1,89 @@
 {
-  "updated": "2026-06-26T11:59:59.650010+00:00",
+  "updated": "2026-06-26T15:14:44.291618+00:00",
   "news": [
     {
-      "title": "Manchester United targets teenage World Cup star Gilberto Mora",
-      "url": "https://cryptobriefing.com/?p=270361",
+      "title": "Manchester United, Chelsea join Arsenal in race for Maxi Araujo",
+      "url": "https://cryptobriefing.com/?p=270625",
       "source": "Crypto Briefing",
-      "published": "2026-06-26T11:55:12+00:00",
-      "summary": "<p>Manchester United's pursuit of young talent like Mora highlights a strategic shift towards long-term investments in emerging football stars.</p> <p>The post <a href=\"https://cryptobriefing.com/manchester-united-gilberto-mora-transfer/\">Manchester United targets teenage World C"
+      "published": "2026-06-26T15:06:31+00:00",
+      "summary": "<p>The intense competition for Arajo highlights the escalating financial stakes and strategic maneuvers in top-tier football transfers.</p> <p>The post <a href=\"https://cryptobriefing.com/manchester-united-chelsea-arsenal-maxi-araujo/\">Manchester United, Chelsea join Arsenal in r"
     },
     {
-      "title": "CoinShares Survey: 52% Of UK Advisers Face Major Crypto Visibility Gap",
-      "url": "https://www.newsbtc.com/?p=902658",
+      "title": "Crypto lending turns to Wall Street credit rules to win back institutional trust after 2022 collapse",
+      "url": "https://cryptoslate.com/?p=544327",
+      "source": "CryptoSlate",
+      "published": "2026-06-26T15:00:16+00:00",
+      "summary": "<p>Celsius froze withdrawals in June 2022 before filing for Chapter 11 in July 2022, and Genesis froze redemptions after FTX's collapse and filed for bankruptcy in January 2023, owing approximately $3.4 billion to its 50 largest creditors. BlockFi, Celsius, Genesis, and Voyager t"
+    },
+    {
+      "title": "Bitcoin 25-Delta Put-Call Skew Widens Amid Market Consolidation",
+      "url": "https://www.newsbtc.com/?p=902654",
       "source": "NewsBTC",
-      "published": "2026-06-26T11:52:02+00:00",
-      "summary": "CoinShares says 52% of UK advisers report a major gap in visibility over client crypto exposure, highlighting a risk-management issue for wealth firms."
+      "published": "2026-06-26T15:00:14+00:00",
+      "summary": "Bitcoin options skew points to defensive trader positioning as put demand rises and the market consolidates around fragile support levels."
+    },
+    {
+      "title": "Hyperliquid Responds After Appearing on Singapore’s Investor Alert List",
+      "url": "https://cryptopotato.com/?p=1441166",
+      "source": "CryptoPotato",
+      "published": "2026-06-26T14:40:09+00:00",
+      "summary": "Hyperliquid said that it is not, and has never claimed to be, licensed or authorized by MAS."
+    },
+    {
+      "title": "Here’s what happened in crypto today",
+      "url": "https://cointelegraph.com/news/what-happened-in-crypto-today",
+      "source": "Cointelegraph",
+      "published": "2026-06-26T14:06:06+00:00",
+      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/article-covers-110589-what-happened-in-crypto-today.jpg\" alt=\"Here’s what happened in crypto today\" class=\"type:primaryImage\"></p><p>Need to know what happened i"
+    },
+    {
+      "title": "Framework Ventures raises $400M to invest beyond crypto: Report",
+      "url": "https://cointelegraph.com/news/framework-ventures-raise-400-million-push-beyond-crypto-ai",
+      "source": "Cointelegraph",
+      "published": "2026-06-26T13:58:28+00:00",
+      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-how-stablecoin-yields-could-trigger-deposit-outflows-from-us-banks-according-to-aba2.jpg\" alt=\"Framework Ventures raises $400M to invest beyond crypto: Report"
+    },
+    {
+      "title": "Bitcoin Tests $59K as ETFs Shed $692M, Options Expiry Looms",
+      "url": "https://decrypt.co/?p=372180",
+      "source": "Decrypt",
+      "published": "2026-06-26T13:43:02+00:00",
+      "summary": "Bitcoin fell to around $59,400 as $691 million fled spot ETFs, the most since May, ahead of Friday's $10.6 billion options expiry."
+    },
+    {
+      "title": "Hyperliquid added to Singapore's Investor Alert List",
+      "url": "https://cointelegraph.com/news/hyperliquid-singapore-mas-investor-alert-list",
+      "source": "Cointelegraph",
+      "published": "2026-06-26T13:11:29+00:00",
+      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-singapore-law-kicks-in.jpg\" alt=\"Hyperliquid added to Singapore's Investor Alert List\" class=\"type:primaryImage\"></p><p>Singapore’s financial regulator added "
+    },
+    {
+      "title": "Fresh XRP $0.51 Roadmap Reveals 1.06 Billion Coins Core Support Target; $2.5 Million in Shiba Inu (SHIB) From 2024 Suddenly Appears On-Chain; Hyperliquid Clears Air on Alert List Dispute - Morning Crypto Report",
+      "url": "https://u.today/fresh-xrp-051-roadmap-reveals-106-billion-coins-core-support-target-25-million-in-shiba-inu-shib",
+      "source": "U.Today",
+      "published": "2026-06-26T13:04:30+00:00",
+      "summary": "XRP on-chain data targets $0.51, a dormant whale moves $2.5 million in SHIB, Singapore flags Hyperliquid, and Bitcoin hits $58,000 amid $900 million in liquidations."
+    },
+    {
+      "title": "Australian regulator extends no-action period for crypto licensing",
+      "url": "https://cointelegraph.com/news/australia-asic-extends-crypto-licensing-relief-september",
+      "source": "Cointelegraph",
+      "published": "2026-06-26T12:14:31+00:00",
+      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-why-atb-coins-legal-encounter-sets-precedent-in-australia-for-future-securities-violations.jpg\" alt=\"Australian regulator extends no-action period for crypto "
+    },
+    {
+      "title": "XRP Ledger Records 40% Surge: What's Behind It?",
+      "url": "https://u.today/xrp-ledger-skyrockets-to-1-billion-in-24-hours-what-does-it-mean-for-the-market",
+      "source": "U.Today",
+      "published": "2026-06-26T12:00:00+00:00",
+      "summary": "The market is finally recovering, but the general outcome of this mini-cycle is yet to be determined."
+    },
+    {
+      "title": "$696 Million in 24 Hours: Bitcoin ETFs Record Highest Inflow Since May",
+      "url": "https://u.today/696-million-in-24-hours-bitcoin-etfs-record-highest-inflow-since-may",
+      "source": "U.Today",
+      "published": "2026-06-26T11:49:52+00:00",
+      "summary": "Bitcoin records highest daily outflow seen in the last month after its price dropped to a level not seen since 2026 began."
     },
     {
       "title": "AscendEX withdrawal complaints mount as ZachXBT questions reserves",
@@ -21,27 +91,6 @@
       "source": "Cointelegraph",
       "published": "2026-06-26T11:47:02+00:00",
       "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-cryptocurrency-data-aggregators-and-fake-exchange-volumes.jpg\" alt=\"AscendEX withdrawal complaints mount as ZachXBT questions reserves\" class=\"type:primaryIma"
-    },
-    {
-      "title": "SharpLink Resumes ETH Buying After 8-Month Hiatus but OG Whales Capitulate",
-      "url": "https://cryptopotato.com/?p=1441142",
-      "source": "CryptoPotato",
-      "published": "2026-06-26T11:34:46+00:00",
-      "summary": "In addition, Tom Lee's Bitmine continues to stake ETH tokens."
-    },
-    {
-      "title": "World Cup 2026 Fan Tokens Surge as Group Stage Ends",
-      "url": "https://beincrypto.com/?p=843172",
-      "source": "BeInCrypto",
-      "published": "2026-06-26T11:24:01+00:00",
-      "summary": "<p>World Cup 2026 fan tokens keep falling through the group stage, with Chiliz, Argentina, and Portugal tokens all sharply lower.</p> <p>The post <a href=\"https://beincrypto.com/world-cup-fan-tokens-rally-end-of-group-stage/\">World Cup 2026 Fan Tokens Surge as Group Stage Ends</a"
-    },
-    {
-      "title": "Strategy’s Bitcoin bet sinks $12 billion underwater as STRC traders brace for more pain",
-      "url": "https://cryptoslate.com/?p=544119",
-      "source": "CryptoSlate",
-      "published": "2026-06-26T11:00:12+00:00",
-      "summary": "<p>Strategy’s Bitcoin holdings have fallen roughly $12 billion below their purchase cost, placing the company’s capital-raising model under its sharpest pressure since it accelerated its Bitcoin treasury strategy. The company held 847,363 Bitcoin as of June 21, acquired for an ag"
     },
     {
       "title": "Michael Saylor Reveals Why Strategy Is Not Changing Course on Bitcoin",
@@ -58,18 +107,11 @@
       "summary": "Shiba Inu see substantial plunge in open interest, to the lowest level in years."
     },
     {
-      "title": "BitGo Joins Crypto's AI Layoff Wave, Slashing Staff by 15%",
-      "url": "https://decrypt.co/?p=372164",
-      "source": "Decrypt",
-      "published": "2026-06-26T10:15:33+00:00",
-      "summary": "The newly public crypto custodian is slashing nearly 15% of its workforce as it pivots to focus on stablecoins and AI infrastructure."
-    },
-    {
       "title": "Bitcoin ETFs post June's biggest daily outflows as BTC falls below $60K",
       "url": "https://cointelegraph.com/news/bitcoin-etfs-biggest-outflows-june-btc-below-60k",
       "source": "Cointelegraph",
       "published": "2026-06-26T09:36:34+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/dollardambawaterfallmoneyfiat3.jpg\" alt=\"Bitcoin ETFs post June's biggest daily outflows as BTC falls below $60K\" class=\"type:primaryImage\"></p><p>US Bitcoin ETF"
+      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/dollardambawaterfallmoneyfiat11111.jpg\" alt=\"Bitcoin ETFs post June's biggest daily outflows as BTC falls below $60K\" class=\"type:primaryImage\"></p><p>US Bitcoin"
     },
     {
       "title": "160,480 ETH Staked: Is Bitmine Controlling All of Ethereum's Liquidity?",
@@ -91,13 +133,6 @@
       "source": "U.Today",
       "published": "2026-06-26T06:39:05+00:00",
       "summary": "Despite seeing its stock careen by 87% over the past 12 months, Tokyo-listed Metaplanet has aggressively expanded its digital asset treasury, adding 27,832 Bitcoin to bring its total holdings to 40,177 BTC."
-    },
-    {
-      "title": "Here’s what happened in crypto today",
-      "url": "https://cointelegraph.com/news/what-happened-in-crypto-today",
-      "source": "Cointelegraph",
-      "published": "2026-06-26T06:04:04+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/article-covers-110589-what-happened-in-crypto-today.jpg\" alt=\"Here’s what happened in crypto today\" class=\"type:primaryImage\"></p><p>Need to know what happened i"
     },
     {
       "title": "Tether stablecoin flips Ether by market cap as ETH routs to $1.5K",
@@ -282,32 +317,11 @@
       "summary": "Experts prove how Satoshi Nakamoto's 22,000-wallet strategy in 2010 mathematically neutralizes the Bitcoin quantum threat."
     },
     {
-      "title": "SBI to acquire Bitbank in $289M deal creating Japan's biggest crypto exchange",
-      "url": "https://cointelegraph.com/news/sbi-acquire-bitbank-289-million-deal",
-      "source": "Cointelegraph",
-      "published": "2026-06-25T13:08:11+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-japan-sponsored-illustration-for-z502.jpg\" alt=\"SBI to acquire Bitbank in $289M deal creating Japan's biggest crypto exchange\" class=\"type:primaryImage\"></p><"
-    },
-    {
       "title": "Shiba Inu Sees Biggest Holder Growth Day in June Amid Market Drop",
       "url": "https://u.today/shiba-inu-sees-biggest-holder-growth-day-in-june-amid-market-drop",
       "source": "U.Today",
       "published": "2026-06-25T13:00:35+00:00",
       "summary": "The latest increase pushes Shiba Inu closer to a much watched milestone in its holder count."
-    },
-    {
-      "title": "About 60% of World Cup bettors on Polymarket are first-time crypto users",
-      "url": "https://cointelegraph.com/news/polymarket-first-crypto-touchpoint-world-cup-bettors",
-      "source": "Cointelegraph",
-      "published": "2026-06-25T13:00:00+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-crypto-at-the-fifa-world-cup-1.jpg\" alt=\"About 60% of World Cup bettors on Polymarket are first-time crypto users\" class=\"type:primaryImage\"></p><p>Polymarket"
-    },
-    {
-      "title": "Spark migrates $150M in stablecoin to Uniswap to advance shared liquidity",
-      "url": "https://cointelegraph.com/news/spark-deploys-150m-stablecoin-liquidity-uniswap-v4",
-      "source": "Cointelegraph",
-      "published": "2026-06-25T13:00:00+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-the-chance-for-defi-to-fulfill-the-technologys-promise3.jpg\" alt=\"Spark migrates $150M in stablecoin to Uniswap to advance shared liquidity \" class=\"type:prim"
     },
     {
       "title": "XRP Ledger Crosses 500 Million Threshold: What Are the Chances for Price to Break $2?",
@@ -336,30 +350,40 @@
       "source": "U.Today",
       "published": "2026-06-25T10:40:00+00:00",
       "summary": "Dogecoin's volumes are surging, but the market recovery isn't guaranteed."
-    },
-    {
-      "title": "XRP Takes Over Ethereum: Ripple USD Flippening Officially Happens at $801 Million Supply",
-      "url": "https://u.today/xrp-takes-over-ethereum-ripple-usd-flippening-officially-happens-at-801-million-supply",
-      "source": "U.Today",
-      "published": "2026-06-25T10:28:30+00:00",
-      "summary": "Ethereum officially loses its lead to XRP Ledger in the $1.6 billion Ripple USD race."
-    },
-    {
-      "title": "Did Shiba Inu (SHIB) Form Bounce Candle? Analyzing Reversal Possibilities",
-      "url": "https://u.today/did-shiba-inu-shib-form-bounce-candle-analyzing-reversal-possibilities",
-      "source": "U.Today",
-      "published": "2026-06-25T08:52:00+00:00",
-      "summary": "Shiba Inu bounces back, but not clear if it will fuel the growth."
-    },
-    {
-      "title": "Bitcoin Is 'Over,' Google's Ex-Tech Lead Says",
-      "url": "https://u.today/bitcoin-is-over-googles-ex-tech-lead-says",
-      "source": "U.Today",
-      "published": "2026-06-25T06:23:36+00:00",
-      "summary": "Shyu claims that Bitcoin's brutal 50% crash from its October peak of $120,000 to the low $60,000s caught him completely off guard due to being heavily overleveraged."
     }
   ],
   "rumors": [
+    {
+      "title": "Zalando Shares Fall 7% After BaFin Launches Accounting Probe",
+      "url": "https://beincrypto.com/?p=843518",
+      "source": "BeInCrypto",
+      "published": "2026-06-26T13:55:36+00:00",
+      "summary": "<p>BaFin launched an accounting probe into Zalando's 2025 financials, triggering a 20% stock crash on June 26.</p> <p>The post <a href=\"https://beincrypto.com/zalando-bafin-accounting-probe-shares-fall/\">Zalando Shares Fall 7% After BaFin Launches Accounting Probe</a> appeared fi",
+      "tags": [
+        "Launch"
+      ]
+    },
+    {
+      "title": "Binance Unveils Next Delisting Wave as Four Crypto Tokens Lose Support",
+      "url": "https://u.today/binance-unveils-next-delisting-wave-as-four-crypto-tokens-lose-support",
+      "source": "U.Today",
+      "published": "2026-06-26T13:30:08+00:00",
+      "summary": "Four cryptocurrencies set to be delisted on the Binance exchange in the coming days.",
+      "tags": [
+        "Listing",
+        "Prediction"
+      ]
+    },
+    {
+      "title": "Ripple: Lending on XRPL to Evolve 'Dynamically'",
+      "url": "https://u.today/ripple-lending-on-xrpl-to-evolve-dynamically",
+      "source": "U.Today",
+      "published": "2026-06-26T11:53:48+00:00",
+      "summary": "The XRP Ledger (XRPL) is poised to welcome a new generation of native lending and yield products as its decentralized finance (DeFi) ecosystem undergoes rapid expansion.",
+      "tags": [
+        "Prediction"
+      ]
+    },
     {
       "title": "Did Ryan Fugger Create XRP? Ripple CTO Emeritus David Schwartz Ends Speculation",
       "url": "https://u.today/did-ryan-fugger-create-xrp-ripple-cto-emeritus-david-schwartz-ends-speculation",
@@ -388,27 +412,6 @@
       "summary": "SBI Group is set to extend its presence in the crypto ecosystem as it announces plans to acquire major crypto exchange Bitbank in a 46.7 billion yen deal.",
       "tags": [
         "Prediction"
-      ]
-    },
-    {
-      "title": "Japan's E-Commerce Giant Rakuten to Give Away Physical Shiba Inu (SHIB) Coins: Will All 44 Million Users Get One?",
-      "url": "https://u.today/japans-e-commerce-giant-rakuten-to-give-away-physical-shiba-inu-shib-coins-to-44-million-users",
-      "source": "U.Today",
-      "published": "2026-06-25T09:27:00+00:00",
-      "summary": "Rakuten Wallet is launching physical Shiba Inu (SHIB) souvenir coins for its users to boost offline retail engagement.",
-      "tags": [
-        "Launch",
-        "Meme"
-      ]
-    },
-    {
-      "title": "XRP Recovery Hopes Are Alive, Is Bitcoin (BTC) Next Breakout Around the Corner? Ethereum (ETH) Stabilizes Near $1,700: Crypto Market Review",
-      "url": "https://u.today/xrp-recovery-hopes-are-alive-is-bitcoin-btc-next-breakout-around-the-corner-ethereum-eth-stabilizes",
-      "source": "U.Today",
-      "published": "2026-06-25T00:01:00+00:00",
-      "summary": "The market's recovery is might turn into yet another correction, which is the last thing market would need here.",
-      "tags": [
-        "Speculation"
       ]
     }
   ],
