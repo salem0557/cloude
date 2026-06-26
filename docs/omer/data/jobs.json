@@ -1,6 +1,19 @@
 {
- "updated": "2026-06-26T08:37:56+00:00",
+ "updated": "2026-06-26T12:29:42+00:00",
  "jobs": [
+  {
+   "title": "Warehouse Operator",
+   "company": "Thales",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/warehouse-operator-at-thales-4405454575",
+   "posted": "2026-06-26",
+   "source": "LinkedIn",
+   "keywords": [
+    "Supply Chain",
+    "Logistics"
+   ],
+   "first_seen": "2026-06-26"
+  },
   {
    "title": "ENGINEER, MECHANICAL DESIGN",
    "company": "alfanar",
@@ -21,7 +34,8 @@
    "posted": "2026-06-25",
    "source": "LinkedIn",
    "keywords": [
-    "Facilities Management"
+    "Facilities Management",
+    "Operations Manager"
    ],
    "first_seen": "2026-06-25"
   },

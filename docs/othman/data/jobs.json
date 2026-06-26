@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-26T08:37:25+00:00",
+ "updated": "2026-06-26T12:29:11+00:00",
  "jobs": [
   {
    "title": "AI Solutions Specialist",
@@ -34,6 +34,78 @@
    "source": "LinkedIn",
    "keywords": [
     "IT Specialist"
+   ],
+   "first_seen": "2026-06-26"
+  },
+  {
+   "title": "ServiceNow Integration & Infrastructure Specialist (MID Server, GCP, SSO)",
+   "company": "Müller's Solutions",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/servicenow-integration-infrastructure-specialist-mid-server-gcp-sso-at-m%C3%BCller-s-solutions-4429834769",
+   "posted": "2026-06-24",
+   "source": "LinkedIn",
+   "keywords": [
+    "System Administrator"
+   ],
+   "first_seen": "2026-06-26"
+  },
+  {
+   "title": "Inspector - Telecom & IT",
+   "company": "AtkinsRéalis",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/inspector-telecom-it-at-atkinsr%C3%A9alis-4428644563",
+   "posted": "2026-06-19",
+   "source": "LinkedIn",
+   "keywords": [
+    "System Administrator"
+   ],
+   "first_seen": "2026-06-26"
+  },
+  {
+   "title": "AI Performance Engineer (Competitive & Network Analysis) - Riyadh, KSA",
+   "company": "Qualcomm",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/ai-performance-engineer-competitive-network-analysis-riyadh-ksa-at-qualcomm-4409928576",
+   "posted": "2026-06-19",
+   "source": "LinkedIn",
+   "keywords": [
+    "System Administrator"
+   ],
+   "first_seen": "2026-06-26"
+  },
+  {
+   "title": "Coordinator - Power System Study Engineer",
+   "company": "Larsen & Toubro",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/coordinator-power-system-study-engineer-at-larsen-toubro-4363726293",
+   "posted": "2026-06-17",
+   "source": "LinkedIn",
+   "keywords": [
+    "System Administrator"
+   ],
+   "first_seen": "2026-06-26"
+  },
+  {
+   "title": "Senior Specialist – Hospitality Digital Systems & Data (Saudi National)",
+   "company": "Parsons Corporation",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/senior-specialist-%E2%80%93-hospitality-digital-systems-data-saudi-national-at-parsons-corporation-4425180310",
+   "posted": "2026-06-08",
+   "source": "LinkedIn",
+   "keywords": [
+    "System Administrator"
+   ],
+   "first_seen": "2026-06-26"
+  },
+  {
+   "title": "Microsoft Dynamics Admin",
+   "company": "Müller's Solutions",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/microsoft-dynamics-admin-at-m%C3%BCller-s-solutions-4388340779",
+   "posted": "2026-02-23",
+   "source": "LinkedIn",
+   "keywords": [
+    "System Administrator"
    ],
    "first_seen": "2026-06-26"
   },
