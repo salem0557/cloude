@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-26T12:29:11+00:00",
+ "updated": "2026-06-26T17:12:17+00:00",
  "jobs": [
   {
    "title": "AI Solutions Specialist",
@@ -10,6 +10,20 @@
    "source": "LinkedIn",
    "keywords": [
     "IT Specialist"
+   ],
+   "first_seen": "2026-06-26"
+  },
+  {
+   "title": "Technical Support Engineer",
+   "company": "Shuruq Saudi",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/technical-support-engineer-at-shuruq-saudi-4430616134",
+   "posted": "2026-06-26",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Support",
+    "Help Desk",
+    "Technical Support"
    ],
    "first_seen": "2026-06-26"
   },
