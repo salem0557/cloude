@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-26T17:12:46+00:00",
+ "updated": "2026-06-26T21:44:59+00:00",
  "jobs": [
   {
    "title": "Warehouse Operator",
@@ -11,6 +11,30 @@
    "keywords": [
     "Supply Chain",
     "Logistics"
+   ],
+   "first_seen": "2026-06-26"
+  },
+  {
+   "title": "Logistics Manager",
+   "company": "CTRD Arabia",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/logistics-manager-at-ctrd-arabia-4433848721",
+   "posted": "2026-06-26",
+   "source": "LinkedIn",
+   "keywords": [
+    "Logistics"
+   ],
+   "first_seen": "2026-06-26"
+  },
+  {
+   "title": "Mechanical Site Engineer",
+   "company": "Burjline Builders",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/mechanical-site-engineer-at-burjline-builders-4433291005",
+   "posted": "2026-06-26",
+   "source": "LinkedIn",
+   "keywords": [
+    "Mechanical Engineer"
    ],
    "first_seen": "2026-06-26"
   },
