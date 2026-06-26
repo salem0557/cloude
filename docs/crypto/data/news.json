@@ -1,33 +1,89 @@
 {
-  "updated": "2026-06-26T15:14:44.291618+00:00",
+  "updated": "2026-06-26T17:19:54.257064+00:00",
   "news": [
     {
-      "title": "Manchester United, Chelsea join Arsenal in race for Maxi Araujo",
-      "url": "https://cryptobriefing.com/?p=270625",
+      "title": "SpaceX plans Starmind, an AI network powered by satellites in orbit",
+      "url": "https://cryptobriefing.com/?p=270786",
       "source": "Crypto Briefing",
-      "published": "2026-06-26T15:06:31+00:00",
-      "summary": "<p>The intense competition for Arajo highlights the escalating financial stakes and strategic maneuvers in top-tier football transfers.</p> <p>The post <a href=\"https://cryptobriefing.com/manchester-united-chelsea-arsenal-maxi-araujo/\">Manchester United, Chelsea join Arsenal in r"
+      "published": "2026-06-26T17:18:35+00:00",
+      "summary": "<p>Starmind could revolutionize AI processing, but faces significant regulatory, logistical, and technological challenges in its ambitious execution.</p> <p>The post <a href=\"https://cryptobriefing.com/spacex-starmind-ai-satellite-network/\">SpaceX plans Starmind, an AI network po"
     },
     {
-      "title": "Crypto lending turns to Wall Street credit rules to win back institutional trust after 2022 collapse",
-      "url": "https://cryptoslate.com/?p=544327",
+      "title": "Ethereum whale who shorted October 2025 crash opens $19.7M ETH short position",
+      "url": "https://cointelegraph.com/markets/ethereum-whale-who-shorted-october-2025-crash-returns-with-a-197m-short-eth-bet",
+      "source": "Cointelegraph",
+      "published": "2026-06-26T17:02:33+00:00",
+      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/article-covers-184294-whales-and-sp-500-are-about-to-crush-ethereum-by-up-to-90-against-bitcoin-expert.jpg\" alt=\"Ethereum whale who shorted October 2025 crash op"
+    },
+    {
+      "title": "Crypto firms race to lock in CLARITY Act rules before the Senate window closes",
+      "url": "https://cryptoslate.com/?p=544399",
       "source": "CryptoSlate",
-      "published": "2026-06-26T15:00:16+00:00",
-      "summary": "<p>Celsius froze withdrawals in June 2022 before filing for Chapter 11 in July 2022, and Genesis froze redemptions after FTX's collapse and filed for bankruptcy in January 2023, owing approximately $3.4 billion to its 50 largest creditors. BlockFi, Celsius, Genesis, and Voyager t"
+      "published": "2026-06-26T17:00:46+00:00",
+      "summary": "<p>Some of the largest US crypto companies and advocacy groups are escalating a coordinated lobbying campaign to secure a Senate vote on landmark digital-asset legislation before lawmakers leave Washington for their August recess. The industry’s push for the Digital Asset Market "
     },
     {
-      "title": "Bitcoin 25-Delta Put-Call Skew Widens Amid Market Consolidation",
-      "url": "https://www.newsbtc.com/?p=902654",
+      "title": "XRP Lending Amendment Wins One More Ecosystem Vote: Are On-Chain Bond Markets Next?",
+      "url": "https://u.today/xrp-lending-amendment-wins-one-more-ecosystem-vote-are-on-chain-bond-markets-next",
+      "source": "U.Today",
+      "published": "2026-06-26T16:53:30+00:00",
+      "summary": "XRP native lending protocol nears activation as xpmarket backs the XLS-65 and XLS-66 upgrades."
+    },
+    {
+      "title": "Trump Administration Asks OpenAI to Limit GPT-5.6 Rollout: Reports",
+      "url": "https://decrypt.co/?p=372195",
+      "source": "Decrypt",
+      "published": "2026-06-26T16:38:33+00:00",
+      "summary": "The reported request to OpenAI follows the Trump administration's move to limit access to Anthropic's Fable 5 and Mythos 5 AI models."
+    },
+    {
+      "title": "3 Assets Smart Money Is Buying as the Crypto Winter Drags On",
+      "url": "https://beincrypto.com/?p=843608",
+      "source": "BeInCrypto",
+      "published": "2026-06-26T16:36:52+00:00",
+      "summary": "<p>With the crypto winter meter stuck at 32, capital is leaking out of digital assets and hunting elsewhere. BeInCrypto&#8217;s tracking shows it landing in commodities and stocks, where the assets smart money is buying point to early positioning rather than chasing. Across two m"
+    },
+    {
+      "title": "Crypto Biz: The cost of stacking sats",
+      "url": "https://cointelegraph.com/news/cryptoquant-strategy-bitcoin-cboe-perpetual-futures-chainlink-stablecoin-fx",
+      "source": "Cointelegraph",
+      "published": "2026-06-26T16:23:34+00:00",
+      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/saylor-in-elevator.png\" alt=\"Crypto Biz: The cost of stacking sats\" class=\"type:primaryImage\"></p><p>CryptoQuant urged Strategy to pause Bitcoin buying as divide"
+    },
+    {
+      "title": "US senators push to end CFTC ‘assault’ on state oversight of prediction markets",
+      "url": "https://cointelegraph.com/news/us-senators-cftc-assault-state-prediction-markets",
+      "source": "Cointelegraph",
+      "published": "2026-06-26T16:10:37+00:00",
+      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-us-cftc-announces-contest-stablecoin.jpg\" alt=\"US senators push to end CFTC ‘assault’ on state oversight of prediction markets\" class=\"type:primaryImage\"></p>"
+    },
+    {
+      "title": "Bitcoin Slips Below $59,000 Following May PCE Inflation Report",
+      "url": "https://www.newsbtc.com/?p=902653",
       "source": "NewsBTC",
-      "published": "2026-06-26T15:00:14+00:00",
-      "summary": "Bitcoin options skew points to defensive trader positioning as put demand rises and the market consolidates around fragile support levels."
+      "published": "2026-06-26T16:00:18+00:00",
+      "summary": "Bitcoin slipped below $59,000 after May PCE inflation came in at 4.1% year-over-year, with market data pointing to liquidations and ETF-flow pressure."
     },
     {
-      "title": "Hyperliquid Responds After Appearing on Singapore’s Investor Alert List",
-      "url": "https://cryptopotato.com/?p=1441166",
-      "source": "CryptoPotato",
-      "published": "2026-06-26T14:40:09+00:00",
-      "summary": "Hyperliquid said that it is not, and has never claimed to be, licensed or authorized by MAS."
+      "title": "Bitcoin makes first sub-$60K close since Q3 2024 as tech stocks enter ‘deep bear market’",
+      "url": "https://cointelegraph.com/markets/bitcoin-sees-first-close-below-60k-since-q3-2024-with-tech-stocks-in-deep-bear-market-zone",
+      "source": "Cointelegraph",
+      "published": "2026-06-26T15:55:56+00:00",
+      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/analysic-analytics-coat-of-arms-red-bear-bitcoin.jpg\" alt=\"Bitcoin makes first sub-$60K close since Q3 2024 as tech stocks enter ‘deep bear market’\" class=\"type:"
+    },
+    {
+      "title": "Elon Musk Teases X Money: Is Dogecoin Officially Left Behind?",
+      "url": "https://u.today/elon-musk-teases-x-money-is-dogecoin-officially-left-behind",
+      "source": "U.Today",
+      "published": "2026-06-26T15:09:00+00:00",
+      "summary": "Elon Musk officially teases X Money with Visa cards, but Dogecoin is missing."
+    },
+    {
+      "title": "XRP Flashes Warning of Adding Zero as New Support Forms",
+      "url": "https://u.today/xrp-flashes-warning-of-adding-zero-as-new-support-forms",
+      "source": "U.Today",
+      "published": "2026-06-26T15:05:14+00:00",
+      "summary": "XRP risks further decline as crucial support forms around $1.06 at a time when the broader crypto market faces extreme volatility."
     },
     {
       "title": "Here’s what happened in crypto today",
@@ -42,13 +98,6 @@
       "source": "Cointelegraph",
       "published": "2026-06-26T13:58:28+00:00",
       "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-how-stablecoin-yields-could-trigger-deposit-outflows-from-us-banks-according-to-aba2.jpg\" alt=\"Framework Ventures raises $400M to invest beyond crypto: Report"
-    },
-    {
-      "title": "Bitcoin Tests $59K as ETFs Shed $692M, Options Expiry Looms",
-      "url": "https://decrypt.co/?p=372180",
-      "source": "Decrypt",
-      "published": "2026-06-26T13:43:02+00:00",
-      "summary": "Bitcoin fell to around $59,400 as $691 million fled spot ETFs, the most since May, ahead of Friday's $10.6 billion options expiry."
     },
     {
       "title": "Hyperliquid added to Singapore's Investor Alert List",
@@ -261,39 +310,11 @@
       "summary": "As Bitcoin drops to $59,307, analyst Bob Loukas warns that Bitcoin is not dead, but social media hype is."
     },
     {
-      "title": "South Korean authorities fine Bithumb $136K over sharing user information overseas",
-      "url": "https://cointelegraph.com/news/south-korea-investigation-bithumb-user-information",
-      "source": "Cointelegraph",
-      "published": "2026-06-25T16:13:43+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-koreas-crypto-market-is-strengthening-but-upbit-investigation-may-have-decelerated-it1.jpg\" alt=\"South Korean authorities fine Bithumb $136K over sharing user"
-    },
-    {
-      "title": "Bitcoin drops to $58K on high US PCE inflation as trader sees 'manipulation'",
-      "url": "https://cointelegraph.com/markets/bitcoin-drops-to-58-on-pce-highs",
-      "source": "Cointelegraph",
-      "published": "2026-06-25T15:34:45+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/article-covers-180325-is-bitcoin-price-going-crash-again.jpg\" alt=\"Bitcoin drops to $58K on high US PCE inflation as trader sees 'manipulation'\" class=\"type:prim"
-    },
-    {
       "title": "Why $1 Won't Save XRP: Bollinger Bands Target $0.91 After $1.48 Billion Liquidations",
       "url": "https://u.today/why-1-wont-save-xrp-bollinger-bands-target-091-after-148-billion-liquidations",
       "source": "U.Today",
       "published": "2026-06-25T15:13:59+00:00",
       "summary": "While retail traders track XRP's $1 milestone during a $1.48 billion liquidation storm, monthly Bollinger Bands point to a deeper, technically justified bottom at $0.91."
-    },
-    {
-      "title": "Why Wall Street values some crypto firms for AI power, not just crypto",
-      "url": "https://cointelegraph.com/learn/galaxy-digital-ai-infrastructure-valuation",
-      "source": "Cointelegraph",
-      "published": "2026-06-25T15:00:00+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/article-covers-213298-galaxy-digital-stock-tokenized-solana.jpg\" alt=\"Why Wall Street values some crypto firms for AI power, not just crypto\" class=\"type:primary"
-    },
-    {
-      "title": "Story Protocol rebrands to DATA Foundation in AI pivot",
-      "url": "https://cointelegraph.com/news/story-protocol-pivots-to-ai-with-rebrand-to-data-foundation",
-      "source": "Cointelegraph",
-      "published": "2026-06-25T15:00:00+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-the-abcd-of-ai-automation-big-data-computer-vision-deep-learning1.jpg\" alt=\"Story Protocol rebrands to DATA Foundation in AI pivot\" class=\"type:primaryImage\">"
     },
     {
       "title": "Ripple Partner SBI Buys One of Japan's Biggest Exchanges",
@@ -336,31 +357,17 @@
       "source": "U.Today",
       "published": "2026-06-25T11:30:21+00:00",
       "summary": "$1 billion worth of positions were liquidated across the crypto market in recent selloff."
-    },
-    {
-      "title": "Scam Alert: Gnosis X Account Compromised, Do Not Press Any Links",
-      "url": "https://u.today/scam-alert-gnosis-x-account-compromised-do-not-press-any-links",
-      "source": "U.Today",
-      "published": "2026-06-25T11:18:00+00:00",
-      "summary": "Gnosis X account is compromised, so users should avoid any unnecessary interactions with it."
-    },
-    {
-      "title": "Dogecoin (DOGE) Adds 116% in 24 Hours Volume: What Do Investors Expect?",
-      "url": "https://u.today/dogecoin-doge-adds-116-in-24-hours-volume-what-do-investors-expect",
-      "source": "U.Today",
-      "published": "2026-06-25T10:40:00+00:00",
-      "summary": "Dogecoin's volumes are surging, but the market recovery isn't guaranteed."
     }
   ],
   "rumors": [
     {
-      "title": "Zalando Shares Fall 7% After BaFin Launches Accounting Probe",
-      "url": "https://beincrypto.com/?p=843518",
-      "source": "BeInCrypto",
-      "published": "2026-06-26T13:55:36+00:00",
-      "summary": "<p>BaFin launched an accounting probe into Zalando's 2025 financials, triggering a 20% stock crash on June 26.</p> <p>The post <a href=\"https://beincrypto.com/zalando-bafin-accounting-probe-shares-fall/\">Zalando Shares Fall 7% After BaFin Launches Accounting Probe</a> appeared fi",
+      "title": "Binance Triggers a Brutal Collapse for 4 Altcoins: Here’s How",
+      "url": "https://cryptopotato.com/?p=1441169",
+      "source": "CryptoPotato",
+      "published": "2026-06-26T16:22:26+00:00",
+      "summary": "The actual delisting is set for July 10.",
       "tags": [
-        "Launch"
+        "Listing"
       ]
     },
     {
@@ -402,16 +409,6 @@
       "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/dollar-fiat-money-bitcoin.jpg\" alt=\"Kraken, Maple launch onchain warehouse facility for crypto-backed institutional loans\" class=\"type:primaryImage\"></p><p>Krake",
       "tags": [
         "Launch"
-      ]
-    },
-    {
-      "title": "Ripple Partner SBI Group Hits 1 Trillion Yen in Assets After Major Acquisition",
-      "url": "https://u.today/ripple-partner-sbi-group-hits-1-trillion-yen-in-assets-after-major-acquisition",
-      "source": "U.Today",
-      "published": "2026-06-25T11:30:04+00:00",
-      "summary": "SBI Group is set to extend its presence in the crypto ecosystem as it announces plans to acquire major crypto exchange Bitbank in a 46.7 billion yen deal.",
-      "tags": [
-        "Prediction"
       ]
     }
   ],
