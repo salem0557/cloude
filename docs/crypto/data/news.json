@@ -1,26 +1,47 @@
 {
-  "updated": "2026-06-26T21:08:28.659065+00:00",
+  "updated": "2026-06-26T22:48:13.561666+00:00",
   "news": [
     {
-      "title": "SpaceX’s $25B bond offering signals investor caution amid AI enthusiasm slowdown",
-      "url": "https://cryptobriefing.com/?p=271123",
+      "title": "OpenAI considers delaying IPO to 2027 amid AI market scrutiny: NYT",
+      "url": "https://cryptobriefing.com/?p=271242",
       "source": "Crypto Briefing",
-      "published": "2026-06-26T21:07:13+00:00",
-      "summary": "<p>SpaceX's bond spread hints at a cautious shift in AI investment, potentially heralding a more disciplined capital allocation landscape.</p> <p>The post <a href=\"https://cryptobriefing.com/spacex-bonds-investor-caution-ai-slowdown/\">SpaceX&#8217;s $25B bond offering signals inv"
+      "published": "2026-06-26T22:47:37+00:00",
+      "summary": "<p>OpenAI's IPO delay reflects broader market skepticism about AI firms' valuations, potentially reshaping investor strategies and expectations.</p> <p>The post <a href=\"https://cryptobriefing.com/openai-considers-delaying-ipo-to-2027-amid-ai-market-scrutiny-nyt/\">OpenAI consider"
     },
     {
-      "title": "Tether Briefly Overtakes Ethereum As Stablecoin Market Cap Tops ETH During Sell-Off",
-      "url": "https://www.newsbtc.com/?p=902668",
+      "title": "Bitcoin Slides Toward $58,000 As ETF Outflows And Options Expiry Add Pressure",
+      "url": "https://www.newsbtc.com/?p=902667",
       "source": "NewsBTC",
-      "published": "2026-06-26T21:00:56+00:00",
-      "summary": "Tether briefly moved above Ethereum by market capitalization during a sharp ETH drawdown, marking a symbolic risk-off moment for crypto traders."
+      "published": "2026-06-26T22:30:58+00:00",
+      "summary": "Bitcoin and the wider crypto market faced a heavy risk-off session as ETF redemptions, leverage liquidations and a large Deribit options expiry converged."
     },
     {
-      "title": "Metaplanet bets Bitcoin treasury firms can survive by packaging Bitcoin income",
-      "url": "https://cryptoslate.com/?p=544362",
+      "title": "ZachXBT Warns AscendEX Users of Potential Liquidity Issues and Delayed Withdrawals",
+      "url": "https://cryptopotato.com/?p=1441068",
+      "source": "CryptoPotato",
+      "published": "2026-06-26T22:04:47+00:00",
+      "summary": "On-chain analysis reportedly found limited holdings of major assets, raising concerns about the exchange's liquidity."
+    },
+    {
+      "title": "US crypto perps are live but Bitcoin may be the only market many traders can actually use",
+      "url": "https://cryptoslate.com/?p=544364",
       "source": "CryptoSlate",
-      "published": "2026-06-26T21:00:35+00:00",
-      "summary": "<p>Regulated securities rails could give BTC treasury firms a new engine, if product demand and mNAV math hold up.</p> <p>The post <a href=\"https://cryptoslate.com/metaplanet-bets-bitcoin-treasury-firms-can-survive-by-packaging-bitcoin-income/\">Metaplanet bets Bitcoin treasury fi"
+      "published": "2026-06-26T22:00:40+00:00",
+      "summary": "<p>Kalshi’s broader board is now visible, but depth, spreads, funding, and venue habit will decide whether alt markets matter.</p> <p>The post <a href=\"https://cryptoslate.com/us-crypto-perps-are-live-but-bitcoin-may-be-the-only-market-many-traders-can-actually-use/\">US crypto pe"
+    },
+    {
+      "title": "Investor Who Predicted 2008 Bubble Says Sell US Stocks Before 70% Drop",
+      "url": "https://beincrypto.com/?p=843761",
+      "source": "BeInCrypto",
+      "published": "2026-06-26T21:47:38+00:00",
+      "summary": "<p>Jeremy Grantham warns an AI bubble has made US stocks the most expensive ever, and says a 70% drop is possible.</p> <p>The post <a href=\"https://beincrypto.com/grantham-ai-bubble-stock-market-warning/\">Investor Who Predicted 2008 Bubble Says Sell US Stocks Before 70% Drop</a> "
+    },
+    {
+      "title": "OpenAI's 'Sol, Terra, Luna' Models Excite Crypto Community",
+      "url": "https://u.today/openais-sol-terra-luna-models-excite-crypto-community",
+      "source": "U.Today",
+      "published": "2026-06-26T21:27:58+00:00",
+      "summary": "The company unveiled three new capability tiers named Sol, Terra, and Luna."
     },
     {
       "title": "Wall Street's Next Tokenization Test: BlackRock-Backed Securitize's Market Debut",
@@ -30,25 +51,11 @@
       "summary": "Securitize expects to begin trading next week under the ticker symbol “SECZ,” following the completion of a merger with a blank-check firm."
     },
     {
-      "title": "LINK Whales Move Millions to Binance Before Key Banking News",
-      "url": "https://cryptopotato.com/?p=1441084",
-      "source": "CryptoPotato",
-      "published": "2026-06-26T20:20:49+00:00",
-      "summary": "Large LINK holders moved millions of tokens to Binance before Project Pangea."
-    },
-    {
       "title": "British Billionaire: Bitcoin Will Die With a 'Whimper'",
       "url": "https://u.today/british-billionaire-bitcoin-will-die-with-a-whimper",
       "source": "U.Today",
       "published": "2026-06-26T19:31:26+00:00",
       "summary": "Legendary British billionaire investor and GMO co-founder Jeremy Grantham has leveled a scathing critique against the leading cryptocurrency."
-    },
-    {
-      "title": "Spain regulator rules out extension for non-MiCA compliant crypto companies",
-      "url": "https://cointelegraph.com/news/spain-no-extension-mica-compliance-crypto-companies",
-      "source": "Cointelegraph",
-      "published": "2026-06-26T19:20:33+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/cryptocurrency-coin-pressure-machine-regulation-government-law-mica-1.jpg\" alt=\"Spain regulator rules out extension for non-MiCA compliant crypto companies\" clas"
     },
     {
       "title": "'Just a Matter of Time': Bloomberg Predicts Tether Will Flip Bitcoin",
@@ -58,46 +65,11 @@
       "summary": "Bloomberg Intelligence senior macro strategist Mike McGlone is convinced that it is \"just a matter of time\" before Tether (USDT) flips Bitcoin to become the world’s largest cryptocurrency."
     },
     {
-      "title": "SEC, CFTC seek input on unified portfolio margin rules across securities and derivatives",
-      "url": "https://cointelegraph.com/news/sec-cftc-portfolio-margin-rules",
-      "source": "Cointelegraph",
-      "published": "2026-06-26T17:43:33+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-big-executives-that-joined-crypto-cftc-sec.jpg\" alt=\"SEC, CFTC seek input on unified portfolio margin rules across securities and derivatives\" class=\"type:pri"
-    },
-    {
-      "title": "Ethereum whale who shorted October 2025 crash opens $19.7M ETH short position",
-      "url": "https://cointelegraph.com/markets/ethereum-whale-who-shorted-october-2025-crash-returns-with-a-197m-short-eth-bet",
-      "source": "Cointelegraph",
-      "published": "2026-06-26T17:02:33+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/article-covers-184294-whales-and-sp-500-are-about-to-crush-ethereum-by-up-to-90-against-bitcoin-expert.jpg\" alt=\"Ethereum whale who shorted October 2025 crash op"
-    },
-    {
       "title": "XRP Lending Amendment Wins One More Ecosystem Vote: Are On-Chain Bond Markets Next?",
       "url": "https://u.today/xrp-lending-amendment-wins-one-more-ecosystem-vote-are-on-chain-bond-markets-next",
       "source": "U.Today",
       "published": "2026-06-26T16:53:30+00:00",
       "summary": "XRP native lending protocol nears activation as xpmarket backs the XLS-65 and XLS-66 upgrades."
-    },
-    {
-      "title": "Crypto Biz: The cost of stacking sats",
-      "url": "https://cointelegraph.com/news/cryptoquant-strategy-bitcoin-cboe-perpetual-futures-chainlink-stablecoin-fx",
-      "source": "Cointelegraph",
-      "published": "2026-06-26T16:23:34+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/saylor-in-elevator.png\" alt=\"Crypto Biz: The cost of stacking sats\" class=\"type:primaryImage\"></p><p>CryptoQuant urged Strategy to pause Bitcoin buying as divide"
-    },
-    {
-      "title": "US senators push to end CFTC ‘assault’ on state oversight of prediction markets",
-      "url": "https://cointelegraph.com/news/us-senators-cftc-assault-state-prediction-markets",
-      "source": "Cointelegraph",
-      "published": "2026-06-26T16:10:37+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-us-cftc-announces-contest-stablecoin.jpg\" alt=\"US senators push to end CFTC ‘assault’ on state oversight of prediction markets\" class=\"type:primaryImage\"></p>"
-    },
-    {
-      "title": "Bitcoin makes first sub-$60K close since Q3 2024 as tech stocks enter ‘deep bear market’",
-      "url": "https://cointelegraph.com/markets/bitcoin-sees-first-close-below-60k-since-q3-2024-with-tech-stocks-in-deep-bear-market-zone",
-      "source": "Cointelegraph",
-      "published": "2026-06-26T15:55:56+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/analysic-analytics-coat-of-arms-red-bear-bitcoin.jpg\" alt=\"Bitcoin makes first sub-$60K close since Q3 2024 as tech stocks enter ‘deep bear market’\" class=\"type:"
     },
     {
       "title": "Elon Musk Teases X Money: Is Dogecoin Officially Left Behind?",
@@ -114,39 +86,11 @@
       "summary": "XRP risks further decline as crucial support forms around $1.06 at a time when the broader crypto market faces extreme volatility."
     },
     {
-      "title": "Here’s what happened in crypto today",
-      "url": "https://cointelegraph.com/news/what-happened-in-crypto-today",
-      "source": "Cointelegraph",
-      "published": "2026-06-26T14:06:06+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/article-covers-110589-what-happened-in-crypto-today.jpg\" alt=\"Here’s what happened in crypto today\" class=\"type:primaryImage\"></p><p>Need to know what happened i"
-    },
-    {
-      "title": "Framework Ventures raises $400M to invest beyond crypto: Report",
-      "url": "https://cointelegraph.com/news/framework-ventures-raise-400-million-push-beyond-crypto-ai",
-      "source": "Cointelegraph",
-      "published": "2026-06-26T13:58:28+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-how-stablecoin-yields-could-trigger-deposit-outflows-from-us-banks-according-to-aba2.jpg\" alt=\"Framework Ventures raises $400M to invest beyond crypto: Report"
-    },
-    {
-      "title": "Hyperliquid added to Singapore's Investor Alert List",
-      "url": "https://cointelegraph.com/news/hyperliquid-singapore-mas-investor-alert-list",
-      "source": "Cointelegraph",
-      "published": "2026-06-26T13:11:29+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-singapore-law-kicks-in.jpg\" alt=\"Hyperliquid added to Singapore's Investor Alert List\" class=\"type:primaryImage\"></p><p>Singapore’s financial regulator added "
-    },
-    {
       "title": "Fresh XRP $0.51 Roadmap Reveals 1.06 Billion Coins Core Support Target; $2.5 Million in Shiba Inu (SHIB) From 2024 Suddenly Appears On-Chain; Hyperliquid Clears Air on Alert List Dispute - Morning Crypto Report",
       "url": "https://u.today/fresh-xrp-051-roadmap-reveals-106-billion-coins-core-support-target-25-million-in-shiba-inu-shib",
       "source": "U.Today",
       "published": "2026-06-26T13:04:30+00:00",
       "summary": "XRP on-chain data targets $0.51, a dormant whale moves $2.5 million in SHIB, Singapore flags Hyperliquid, and Bitcoin hits $58,000 amid $900 million in liquidations."
-    },
-    {
-      "title": "Australian regulator extends no-action period for crypto licensing",
-      "url": "https://cointelegraph.com/news/australia-asic-extends-crypto-licensing-relief-september",
-      "source": "Cointelegraph",
-      "published": "2026-06-26T12:14:31+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-why-atb-coins-legal-encounter-sets-precedent-in-australia-for-future-securities-violations.jpg\" alt=\"Australian regulator extends no-action period for crypto "
     },
     {
       "title": "XRP Ledger Records 40% Surge: What's Behind It?",
@@ -163,13 +107,6 @@
       "summary": "Bitcoin records highest daily outflow seen in the last month after its price dropped to a level not seen since 2026 began."
     },
     {
-      "title": "AscendEX withdrawal complaints mount as ZachXBT questions reserves",
-      "url": "https://cointelegraph.com/news/ascendex-exchange-reportedly-faces-liquidity-issues-claims-zachxbt",
-      "source": "Cointelegraph",
-      "published": "2026-06-26T11:47:02+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-cryptocurrency-data-aggregators-and-fake-exchange-volumes.jpg\" alt=\"AscendEX withdrawal complaints mount as ZachXBT questions reserves\" class=\"type:primaryIma"
-    },
-    {
       "title": "Michael Saylor Reveals Why Strategy Is Not Changing Course on Bitcoin",
       "url": "https://u.today/michael-saylor-reveals-why-strategy-is-not-changing-course-on-bitcoin",
       "source": "U.Today",
@@ -184,25 +121,11 @@
       "summary": "Shiba Inu see substantial plunge in open interest, to the lowest level in years."
     },
     {
-      "title": "Bitcoin ETFs post June's biggest daily outflows as BTC falls below $60K",
-      "url": "https://cointelegraph.com/news/bitcoin-etfs-biggest-outflows-june-btc-below-60k",
-      "source": "Cointelegraph",
-      "published": "2026-06-26T09:36:34+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/dollardambawaterfallmoneyfiat11111.jpg\" alt=\"Bitcoin ETFs post June's biggest daily outflows as BTC falls below $60K\" class=\"type:primaryImage\"></p><p>US Bitcoin"
-    },
-    {
       "title": "160,480 ETH Staked: Is Bitmine Controlling All of Ethereum's Liquidity?",
       "url": "https://u.today/160480-eth-staked-is-bitmine-controlling-all-of-ethereums-liquidity",
       "source": "U.Today",
       "published": "2026-06-26T08:59:00+00:00",
       "summary": "Bitmine is close to essentially controlling the major part of Ethereum's liquidity on the market."
-    },
-    {
-      "title": "Polymarket hit by $2.9M theft, users to be refunded",
-      "url": "https://cointelegraph.com/news/polymarket-vendor-compromise-drains-29m-users",
-      "source": "Cointelegraph",
-      "published": "2026-06-26T08:20:37+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-impersonation-scams-in-crypto-5.jpg\" alt=\"Polymarket hit by $2.9M theft, users to be refunded\" class=\"type:primaryImage\"></p><p>Polymarket said it contained t"
     },
     {
       "title": "Metaplanet Bleeds 87%, But Triples Bitcoin Stack in 'Gift' Valuation",
@@ -212,60 +135,11 @@
       "summary": "Despite seeing its stock careen by 87% over the past 12 months, Tokyo-listed Metaplanet has aggressively expanded its digital asset treasury, adding 27,832 Bitcoin to bring its total holdings to 40,177 BTC."
     },
     {
-      "title": "Tether stablecoin flips Ether by market cap as ETH routs to $1.5K",
-      "url": "https://cointelegraph.com/news/tether-stablecoin-flips-ether-by-market-cap-as-eth-routs-to-15k",
-      "source": "Cointelegraph",
-      "published": "2026-06-26T06:02:01+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-crypto-prices-arent-surging-anytime-soon-ethereum-2.jpg\" alt=\"Tether stablecoin flips Ether by market cap as ETH routs to $1.5K \" class=\"type:primaryImage\"></"
-    },
-    {
-      "title": "Coinbase's Base resumes block production after 2-hour outage",
-      "url": "https://cointelegraph.com/news/coinbases-blockchain-base-back-online-after-2-hour-outage",
-      "source": "Cointelegraph",
-      "published": "2026-06-26T05:10:44+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/red-down-falling-car1.png\" alt=\"Coinbase's Base resumes block production after 2-hour outage\" class=\"type:primaryImage\"></p><p>Coinbase's blockchain Base says a "
-    },
-    {
-      "title": "Sharplink buys ETH after 8-month pause as token hits 2026 low",
-      "url": "https://cointelegraph.com/news/sharplink-buys-eth-after-8-month-pause-as-token-hits-2026-low",
-      "source": "Cointelegraph",
-      "published": "2026-06-26T03:56:08+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/g20-discuss-crypto-in-japan-desk-table-meeting-hand-paper-people-eth.jpg\" alt=\"Sharplink buys ETH after 8-month pause as token hits 2026 low\" class=\"type:primary"
-    },
-    {
-      "title": "StablecoinX bets on Ethena ecosystem with Nasdaq debut",
-      "url": "https://cointelegraph.com/news/stablecoinx-merges-with-tlgy-and-begins-trading-on-nasdaq-friday",
-      "source": "Cointelegraph",
-      "published": "2026-06-26T03:48:03+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-b-ethena.jpg\" alt=\"StablecoinX bets on Ethena ecosystem with Nasdaq debut\" class=\"type:primaryImage\"></p><p>USDe circulating supply has shrunk by 70% since th"
-    },
-    {
-      "title": "BitGo cuts 15% of staff to sharpen focus on AI, stablecoins",
-      "url": "https://cointelegraph.com/news/crypto-infrastructure-firm-bitgo-lays-off-15-of-staff",
-      "source": "Cointelegraph",
-      "published": "2026-06-26T00:41:02+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/layoffs-fired-human-resource-hr-leaving-quit-box.jpg\" alt=\"BitGo cuts 15% of staff to sharpen focus on AI, stablecoins\" class=\"type:primaryImage\"></p><p>BitGo co"
-    },
-    {
       "title": "XRP, Shiba Inu (SHIB), Bitcoin (BTC) and Dogecoin (DOGE) Price Analysis for June 25: Fresh Wave of Bullish Recovery",
       "url": "https://u.today/xrp-shiba-inu-shib-bitcoin-btc-and-dogecoin-doge-price-analysis-for-june-25-fresh-wave-of-bullish",
       "source": "U.Today",
       "published": "2026-06-26T00:01:00+00:00",
       "summary": "The market records a substantial volume spike, but it's yet to transform into volatility."
-    },
-    {
-      "title": "Does Botanix’s failure prove Bitcoiners don’t care about DeFi?",
-      "url": "https://cointelegraph.com/features/does-botanixs-failure-prove-bitcoiners-dont-care-about-defi",
-      "source": "Cointelegraph",
-      "published": "2026-06-25T23:09:10+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-quantum-computers-could-bring-lost-bitcoin-back-to-life-heres-how-1.jpg\" alt=\"Does Botanix’s failure prove Bitcoiners don’t care about DeFi?\" class=\"type:prim"
-    },
-    {
-      "title": "Bitcoin bounces off new 2026 price lows: Will US stock weakness push BTC lower?",
-      "url": "https://cointelegraph.com/markets/bitcoin-bounces-off-new-2026-price-lows-will-us-stock-weakness-push-btc-lower",
-      "source": "Cointelegraph",
-      "published": "2026-06-25T21:02:50+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/behind-bitcoins-1k-bounce.jpg\" alt=\"Bitcoin bounces off new 2026 price lows: Will US stock weakness push BTC lower?\" class=\"type:primaryImage\"></p><p>Bitcoin’s t"
     },
     {
       "title": "FBI Sets Deadline for OneCoin Fraud Claims",
@@ -275,46 +149,11 @@
       "summary": "The Federal Bureau of Investigation (FBI) and the Department of Justice (DOJ) are urging victims of the infamous $4 billion OneCoin international cryptocurrency pyramid scheme to submit their financial recovery claims."
     },
     {
-      "title": "Bitcoin options traders hedge downside as uncertainty lingers, Anchorage says",
-      "url": "https://cointelegraph.com/news/bitcoin-options-traders-hedge-downside-as-uncertainty-lingers-anchorage-says",
-      "source": "Cointelegraph",
-      "published": "2026-06-25T20:10:41+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-sp-bitcoin-funding-stays-negative.png\" alt=\"Bitcoin options traders hedge downside as uncertainty lingers, Anchorage says\" class=\"type:primaryImage\"></p><p>An"
-    },
-    {
-      "title": "Bitcoin may fall lower but BTC power-law frames crash to $58K as ‘normal’",
-      "url": "https://cointelegraph.com/markets/key-bitcoin-price-levels-after-btc-power-law-says-58k-is-normal",
-      "source": "Cointelegraph",
-      "published": "2026-06-25T19:51:35+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/article-covers-238240-battle-between-bitcoin-bulls-and-bears-continues-in-2026-here-s-the-levels-to-wa.jpg\" alt=\"Bitcoin may fall lower but BTC power-law frames "
-    },
-    {
-      "title": "Half of UK wealth advisers say clients' crypto is ‘invisible’ to them: CoinShares survey",
-      "url": "https://cointelegraph.com/news/uk-wealth-advisors-clients-crypto-invisible-survey",
-      "source": "Cointelegraph",
-      "published": "2026-06-25T19:18:03+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-how-the-uk-plans-to-regulate-crypto-like-traditional-finance.jpg\" alt=\"Half of UK wealth advisers say clients' crypto is ‘invisible’ to them: CoinShares surve"
-    },
-    {
       "title": "Ripple's 'Clarity Truck' Hits D.C. Streets",
       "url": "https://u.today/ripples-clarity-truck-hits-dc-streets",
       "source": "U.Today",
       "published": "2026-06-25T18:36:35+00:00",
       "summary": "San Francisco-based Ripple has taken its fight for regulatory certainty directly to the doorsteps of American lawmakers."
-    },
-    {
-      "title": "Bitcoin drop to $58K brings out bears: Is BTC’s next stop below $50K?",
-      "url": "https://cointelegraph.com/markets/bitcoin-under-60k-activates-multiple-setups-with-54k-btc-price-target",
-      "source": "Cointelegraph",
-      "published": "2026-06-25T18:05:06+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/bear-bang-reg-falling-bitcoin-1.jpg\" alt=\"Bitcoin drop to $58K brings out bears: Is BTC’s next stop below $50K?\" class=\"type:primaryImage\"></p><p>Bitcoin’s crash"
-    },
-    {
-      "title": "XRP risks drop below $1, but onchain data highlights silver lining",
-      "url": "https://cointelegraph.com/markets/xrp-may-lose-1-but-onchain-data-signals-improving-outlook-heres-why",
-      "source": "Cointelegraph",
-      "published": "2026-06-25T17:11:33+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/xrp-cover-june-2.jpg\" alt=\"XRP risks drop below $1, but onchain data highlights silver lining\" class=\"type:primaryImage\"></p><p>XRP’s chance of a daily close bel"
     },
     {
       "title": "Ex-IMF Economist on Bitcoin (BTC) Crash: 'No Grifter Left Behind'",
@@ -357,26 +196,9 @@
       "source": "U.Today",
       "published": "2026-06-25T13:36:30+00:00",
       "summary": "Experts prove how Satoshi Nakamoto's 22,000-wallet strategy in 2010 mathematically neutralizes the Bitcoin quantum threat."
-    },
-    {
-      "title": "Shiba Inu Sees Biggest Holder Growth Day in June Amid Market Drop",
-      "url": "https://u.today/shiba-inu-sees-biggest-holder-growth-day-in-june-amid-market-drop",
-      "source": "U.Today",
-      "published": "2026-06-25T13:00:35+00:00",
-      "summary": "The latest increase pushes Shiba Inu closer to a much watched milestone in its holder count."
     }
   ],
   "rumors": [
-    {
-      "title": "Base Delays Important Upgrade After Back-to-Back Network Outages",
-      "url": "https://beincrypto.com/?p=843754",
-      "source": "BeInCrypto",
-      "published": "2026-06-26T20:18:37+00:00",
-      "summary": "<p>Base delayed its B20 token launch after back-to-back chain stalls hit the Coinbase Layer 2 network on June 25 and 26.</p> <p>The post <a href=\"https://beincrypto.com/base-b20-launch-chain-stall/\">Base Delays Important Upgrade After Back-to-Back Network Outages</a> appeared fir",
-      "tags": [
-        "Launch"
-      ]
-    },
     {
       "title": "Binance Unveils Next Delisting Wave as Four Crypto Tokens Lose Support",
       "url": "https://u.today/binance-unveils-next-delisting-wave-as-four-crypto-tokens-lose-support",
