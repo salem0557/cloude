@@ -1,19 +1,40 @@
 {
-  "updated": "2026-06-26T04:53:45.362341+00:00",
+  "updated": "2026-06-26T08:40:02.412542+00:00",
   "news": [
     {
-      "title": "Ecuador stuns Germany 2-1 to qualify for World Cup knockout stage",
-      "url": "https://cryptobriefing.com/?p=270014",
+      "title": "Juventus plans talks with PSG for Randal Kolo Muani transfer",
+      "url": "https://cryptobriefing.com/?p=270155",
       "source": "Crypto Briefing",
-      "published": "2026-06-26T04:51:38+00:00",
-      "summary": "<p>Ecuador's victory highlights the growing influence of prediction markets and fan tokens, signaling a shift in sports engagement and investment.</p> <p>The post <a href=\"https://cryptobriefing.com/ecuador-stuns-germany-world-cup-crypto-markets/\">Ecuador stuns Germany 2-1 to qua"
+      "published": "2026-06-26T08:37:54+00:00",
+      "summary": "<p>Juventus' pursuit of Kolo Muani highlights strategic club priorities and financial negotiations, impacting future transfer market dynamics.</p> <p>The post <a href=\"https://cryptobriefing.com/juventus-psg-kolo-muani-transfer/\">Juventus plans talks with PSG for Randal Kolo Muan"
     },
     {
-      "title": "Citi Raises Sandisk Price Target to $2,500 as SNDK Rallies 4,800% in 12 Months",
-      "url": "https://beincrypto.com/?p=843355",
+      "title": "MSTR’s Bitcoin Per Share Gets ‘Annihilated’ in Extreme Bear Case: Analyst",
+      "url": "https://cryptopotato.com/?p=1441071",
+      "source": "CryptoPotato",
+      "published": "2026-06-26T08:33:20+00:00",
+      "summary": "A worst-case model sends MSTR stock to $1 and CEBE sharply lower, but the company still avoids a death spiral."
+    },
+    {
+      "title": "MiCA Deadline Forces Binance to Wind Down EU Crypto Services",
+      "url": "https://beincrypto.com/?p=843494",
       "source": "BeInCrypto",
-      "published": "2026-06-26T04:11:06+00:00",
-      "summary": "<p>Citi has raised its Sandisk price target to $2,500 from $2,025, sending SNDK shares up roughly 22% in the last 24 hours. The chipmaker has rallied approximately 4,800% over the past 12 months on AI-driven NAND demand. The upgrade adds fresh institutional firepower behind one o"
+      "published": "2026-06-26T08:28:21+00:00",
+      "summary": "<p>Binance will shut off its services for European Union customers from next week, after withdrawing its bid for a licence under the bloc&#8217;s crypto rules. The exchange emailed users in Poland, Italy, Spain, and France this week. What Binance Told EU Customers According to Eu"
+    },
+    {
+      "title": "UK bond fund ownership records move onto Ethereum and Solana accessible 24/7",
+      "url": "https://cryptoslate.com/?p=543830",
+      "source": "CryptoSlate",
+      "published": "2026-06-26T08:02:10+00:00",
+      "summary": "<p>BAGEY turns tokenization into a legal-record test, but transfer, collateral, and custody mechanics still have to prove the model.</p> <p>The post <a href=\"https://cryptoslate.com/uk-bond-fund-ownership-records-move-onto-ethereum-and-solana/\">UK bond fund ownership records move"
+    },
+    {
+      "title": "Metaplanet Bleeds 87%, But Triples Bitcoin Stack in 'Gift' Valuation",
+      "url": "https://u.today/metaplanet-bleeds-87-but-triples-bitcoin-stack-in-gift-valuation",
+      "source": "U.Today",
+      "published": "2026-06-26T06:39:05+00:00",
+      "summary": "Despite seeing its stock careen by 87% over the past 12 months, Tokyo-listed Metaplanet has aggressively expanded its digital asset treasury, adding 27,832 Bitcoin to bring its total holdings to 40,177 BTC."
     },
     {
       "title": "XRP, Shiba Inu (SHIB), Bitcoin (BTC) and Dogecoin (DOGE) Price Analysis for June 25: Fresh Wave of Bullish Recovery",
@@ -23,25 +44,11 @@
       "summary": "The market records a substantial volume spike, but it's yet to transform into volatility."
     },
     {
-      "title": "Russia creates crypto sanctions loophole, but cash-out routes remain ringfenced",
-      "url": "https://cryptoslate.com/?p=544101",
-      "source": "CryptoSlate",
-      "published": "2026-06-25T22:30:44+00:00",
-      "summary": "<p>The ELR gives selected firms a legal route, but wallets, exchanges, counterparties, and issuers still face pressure.</p> <p>The post <a href=\"https://cryptoslate.com/russias-crypto-trade-corridor-puts-bitcoin-and-stablecoins-in-sanctions-crosshairs/\">Russia creates crypto sanc"
-    },
-    {
       "title": "Bitcoin ETP Flows Turn Negative For First Time Since 2023, K33 Reports",
       "url": "https://www.newsbtc.com/?p=902637",
       "source": "NewsBTC",
       "published": "2026-06-25T22:00:13+00:00",
       "summary": "K33 Research says Bitcoin ETP holdings have suffered a record drawdown while rolling one-year flows turned negative for the first time since 2023."
-    },
-    {
-      "title": "DEXE Defies Market Slump With Record Whale Transactions and User Growth",
-      "url": "https://cryptopotato.com/?p=1440934",
-      "source": "CryptoPotato",
-      "published": "2026-06-25T21:56:56+00:00",
-      "summary": "DEXE hit record whale activity and active addresses as its market cap surged 600% in four months despite market weakness."
     },
     {
       "title": "Anthropic Urges Congress to Crack Down on AI Distillation By Chinese Rivals",
@@ -189,13 +196,6 @@
       "source": "U.Today",
       "published": "2026-06-24T16:59:45+00:00",
       "summary": "Months of secret talks fail as Binance walks away from Greece's regulator a week before the MiCA deadline."
-    },
-    {
-      "title": "Shiba Inu (SHIB) Reserves Recover to 80 Trillion After Sudden 600% Inflow Spike",
-      "url": "https://u.today/shiba-inu-shib-reserves-recover-to-80-trillion-after-sudden-600-inflow-spike",
-      "source": "U.Today",
-      "published": "2026-06-24T14:56:00+00:00",
-      "summary": "A massive 600% inflow spike pushes SHIB exchange reserves back to 80 trillion tokens."
     }
   ],
   "rumors": [
