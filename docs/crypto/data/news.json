@@ -1,12 +1,19 @@
 {
-  "updated": "2026-06-26T22:48:13.561666+00:00",
+  "updated": "2026-06-27T01:31:34.077708+00:00",
   "news": [
     {
-      "title": "OpenAI considers delaying IPO to 2027 amid AI market scrutiny: NYT",
-      "url": "https://cryptobriefing.com/?p=271242",
+      "title": "Panama faces England in World Cup group stage clash as crypto sponsorships reshape the tournament",
+      "url": "https://cryptobriefing.com/?p=271372",
       "source": "Crypto Briefing",
-      "published": "2026-06-26T22:47:37+00:00",
-      "summary": "<p>OpenAI's IPO delay reflects broader market skepticism about AI firms' valuations, potentially reshaping investor strategies and expectations.</p> <p>The post <a href=\"https://cryptobriefing.com/openai-considers-delaying-ipo-to-2027-amid-ai-market-scrutiny-nyt/\">OpenAI consider"
+      "published": "2026-06-27T01:18:48+00:00",
+      "summary": "<p>Crypto's integration into the World Cup highlights its growing influence in sports, potentially reshaping fan engagement and sponsorship dynamics.</p> <p>The post <a href=\"https://cryptobriefing.com/panama-england-world-cup-crypto-sponsorships/\">Panama faces England in World C"
+    },
+    {
+      "title": "Claude Mythos 5 Cleared for 100 US Institutions: Will Fable 5 Follow?",
+      "url": "https://beincrypto.com/?p=843768",
+      "source": "BeInCrypto",
+      "published": "2026-06-26T23:50:28+00:00",
+      "summary": "<p>The US lifted its export block on Claude Mythos 5, clearing access for 100 institutions while Fable 5 stays offline.</p> <p>The post <a href=\"https://beincrypto.com/anthropic-mythos-5-export-block-lifted/\">Claude Mythos 5 Cleared for 100 US Institutions: Will Fable 5 Follow?</"
     },
     {
       "title": "Bitcoin Slides Toward $58,000 As ETF Outflows And Options Expiry Add Pressure",
@@ -28,13 +35,6 @@
       "source": "CryptoSlate",
       "published": "2026-06-26T22:00:40+00:00",
       "summary": "<p>Kalshi’s broader board is now visible, but depth, spreads, funding, and venue habit will decide whether alt markets matter.</p> <p>The post <a href=\"https://cryptoslate.com/us-crypto-perps-are-live-but-bitcoin-may-be-the-only-market-many-traders-can-actually-use/\">US crypto pe"
-    },
-    {
-      "title": "Investor Who Predicted 2008 Bubble Says Sell US Stocks Before 70% Drop",
-      "url": "https://beincrypto.com/?p=843761",
-      "source": "BeInCrypto",
-      "published": "2026-06-26T21:47:38+00:00",
-      "summary": "<p>Jeremy Grantham warns an AI bubble has made US stocks the most expensive ever, and says a 70% drop is possible.</p> <p>The post <a href=\"https://beincrypto.com/grantham-ai-bubble-stock-market-warning/\">Investor Who Predicted 2008 Bubble Says Sell US Stocks Before 70% Drop</a> "
     },
     {
       "title": "OpenAI's 'Sol, Terra, Luna' Models Excite Crypto Community",
@@ -189,16 +189,19 @@
       "source": "U.Today",
       "published": "2026-06-25T14:05:59+00:00",
       "summary": "BlackRock makes another Bitcoin and Ethereum deposit, sparking concerns about its continued sell attempts as the price of both crypto assets plunges lower."
-    },
-    {
-      "title": "22,000 Bitcoin Wallet Trap: How Satoshi Outsmarted Quantum Computers in 2010",
-      "url": "https://u.today/22000-bitcoin-wallet-trap-how-satoshi-outsmarted-quantum-computers-in-2010",
-      "source": "U.Today",
-      "published": "2026-06-25T13:36:30+00:00",
-      "summary": "Experts prove how Satoshi Nakamoto's 22,000-wallet strategy in 2010 mathematically neutralizes the Bitcoin quantum threat."
     }
   ],
   "rumors": [
+    {
+      "title": "Will Bitcoin (BTC) Return to $60,000? XRP's Risks of Losing $1, Shiba Inu's (SHIB) Bearish Pressure Is Weakening: Crypto Market Review",
+      "url": "https://u.today/will-bitcoin-btc-return-to-60000-xrps-risks-of-losing-1-shiba-inus-shib-bearish-pressure-is",
+      "source": "U.Today",
+      "published": "2026-06-27T00:01:00+00:00",
+      "summary": "Some levels are already toxic for assets like XRP and Shiba Inu, the worst part is that it might become worse.",
+      "tags": [
+        "Meme"
+      ]
+    },
     {
       "title": "Binance Unveils Next Delisting Wave as Four Crypto Tokens Lose Support",
       "url": "https://u.today/binance-unveils-next-delisting-wave-as-four-crypto-tokens-lose-support",
