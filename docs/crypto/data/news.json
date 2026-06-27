@@ -1,19 +1,75 @@
 {
-  "updated": "2026-06-27T12:00:30.923763+00:00",
+  "updated": "2026-06-27T14:15:38.171791+00:00",
   "news": [
     {
-      "title": "Liquid benches Ultimate, explores other AWPing options",
-      "url": "https://cryptobriefing.com/?p=271649",
+      "title": "Apple and Microsoft hike prices on iPads, Macs, and Xbox consoles as AI chip crisis bites",
+      "url": "https://cryptobriefing.com/?p=271760",
       "source": "Crypto Briefing",
-      "published": "2026-06-27T11:50:10+00:00",
-      "summary": "<p>Liquid's roster changes highlight the volatility in esports, emphasizing the need for adaptability and strategic reassessment in competitive CS2.</p> <p>The post <a href=\"https://cryptobriefing.com/liquid-benches-ultimate-awp-options/\">Liquid benches Ultimate, explores other A"
+      "published": "2026-06-27T14:13:55+00:00",
+      "summary": "<p>The AI-driven chip shortage signals a structural shift in tech economics, impacting consumer prices and investor sentiment significantly.</p> <p>The post <a href=\"https://cryptobriefing.com/apple-microsoft-price-hikes-ai-chip-crisis/\">Apple and Microsoft hike prices on iPads, "
     },
     {
-      "title": "Bitcoin Apparent Demand Flatlines in Negative Territory for 208 Days as Sell Pressure Mounts",
-      "url": "https://www.newsbtc.com/?p=902680",
+      "title": "On-Chain Data Shows Newly Created Wallet Accumulates More Than $28 Million in Ethereum",
+      "url": "https://www.newsbtc.com/?p=902725",
       "source": "NewsBTC",
-      "published": "2026-06-27T11:30:00+00:00",
-      "summary": "Bitcoin Apparent Demand Flatlines in Negative Territory for 208 Days as Sell Pressure Mounts: a fresh look at Bitcoin apparent demand, market context, key"
+      "published": "2026-06-27T14:00:00+00:00",
+      "summary": "On-Chain Data Shows Newly Created Wallet Accumulates More Than $28 Million in Ethereum: key Ethereum market levels, on-chain context, risk notes, and what"
+    },
+    {
+      "title": "Cardano's Next Network Upgrade One Step Closer to Reality: What to Watch",
+      "url": "https://u.today/cardanos-next-network-upgrade-one-step-closer-to-reality-what-to-watch",
+      "source": "U.Today",
+      "published": "2026-06-27T13:55:06+00:00",
+      "summary": "Cardano inches closer to its next intra era hard fork."
+    },
+    {
+      "title": "Bitcoin’s broken production cost floor is splitting miners into survivors and sellers",
+      "url": "https://cryptoslate.com/?p=544239",
+      "source": "CryptoSlate",
+      "published": "2026-06-27T13:25:58+00:00",
+      "summary": "<p>Bitcoin is trading just above $60,000 right now, and the network's estimated all-in cost to produce a single coin is near $84,300, so the gap between the two is roughly a quarter, leaving mining underwater on a full-cost basis across much of the network. For years, the assumpt"
+    },
+    {
+      "title": "Bitcoin ETFs Set Another Anti-Record as $1.8B Left the Funds Weekly",
+      "url": "https://cryptopotato.com/?p=1441257",
+      "source": "CryptoPotato",
+      "published": "2026-06-27T13:15:38+00:00",
+      "summary": "The same streak follows the Ethereum ETFs as mass withdrawals continue to dominate."
+    },
+    {
+      "title": "XRP Logs Highest ETF Inflow in Six Weeks as Demand Surges Against Bitcoin",
+      "url": "https://u.today/xrp-logs-highest-etf-inflow-in-six-weeks-as-demand-surges-against-bitcoin",
+      "source": "U.Today",
+      "published": "2026-06-27T13:15:02+00:00",
+      "summary": "XRP has achieved June's highest weekly ETF inflow after nearly $23 million in new capital flowed into the funds all week, signaling renewed institutional interest in the asset."
+    },
+    {
+      "title": "Coinbase CEO Halved AI Costs, Calls Bitcoin Downturn a Cool Breeze",
+      "url": "https://beincrypto.com/?p=843790",
+      "source": "BeInCrypto",
+      "published": "2026-06-27T13:00:00+00:00",
+      "summary": "<p>Armstrong cut Coinbase AI spending in half as token usage surges and called Bitcoin's bear market a cool breeze.</p> <p>The post <a href=\"https://beincrypto.com/coinbase-ceo-ai-costs-bitcoin-market/\">Coinbase CEO Halved AI Costs, Calls Bitcoin Downturn a Cool Breeze</a> appear"
+    },
+    {
+      "title": "SecondFi targets two-week recovery after Cardano wallet exploit",
+      "url": "https://cointelegraph.com/news/secondfi-two-week-recovery-cardano-wallet-exploit",
+      "source": "Cointelegraph",
+      "published": "2026-06-27T12:00:56+00:00",
+      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-spotlight-for-crypto-recovery.jpg\" alt=\" SecondFi targets two-week recovery after Cardano wallet exploit\" class=\"type:primaryImage\"></p><p>SecondFi says it ha"
+    },
+    {
+      "title": "Dogecoin Has No Developers? DOGE Team Highlights Key Misconception",
+      "url": "https://u.today/dogecoin-has-no-developers-doge-team-highlights-key-misconception",
+      "source": "U.Today",
+      "published": "2026-06-27T12:00:32+00:00",
+      "summary": "Official Dogecoin X account seeks to debunk a common misconception about the dog-themed cryptocurrency."
+    },
+    {
+      "title": "Here’s what happened in crypto today",
+      "url": "https://cointelegraph.com/news/what-happened-in-crypto-today",
+      "source": "Cointelegraph",
+      "published": "2026-06-27T11:30:05+00:00",
+      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/article-covers-110589-what-happened-in-crypto-today.jpg\" alt=\"Here’s what happened in crypto today\" class=\"type:primaryImage\"></p><p>Need to know what happened i"
     },
     {
       "title": "'I'm Bullish on Bitcoin': Ripple CEO Brad Garlinghouse Discusses BTC's Future",
@@ -23,32 +79,11 @@
       "summary": "Ripple CEO Brad Garlinghouse highlights Bitcoin's positioning as digital gold, reiterating his bullishness on the crypto asset."
     },
     {
-      "title": "Bitcoin’s weekend test is whether the $58,000 drop was exhaustion or acceptance",
-      "url": "https://cryptoslate.com/?p=544590",
-      "source": "CryptoSlate",
-      "published": "2026-06-27T10:55:53+00:00",
-      "summary": "<p>Bitcoin enters the weekend near $60,000 after sticky inflation, heavy ETF outflows, and a failed defense of the $59,000-$62,000 zone. The May PCE print gave the market a reason to sell, but the real damage came from positioning. Core PCE came in at 3.4% year over year, above t"
-    },
-    {
-      "title": "Ripple (XRP) Boosts Global Blockchain Adoption With Over $70M in Donations",
-      "url": "https://cryptopotato.com/?p=1441237",
-      "source": "CryptoPotato",
-      "published": "2026-06-27T10:54:38+00:00",
-      "summary": "The company highlighted its most significant achievements for 2025."
-    },
-    {
       "title": "6,100 New Wallets in Two Days: Chainlink Logs Biggest Growth Days This Year",
       "url": "https://u.today/6100-new-wallets-in-two-days-chainlink-logs-biggest-growth-days-this-year",
       "source": "U.Today",
       "published": "2026-06-27T08:43:21+00:00",
       "summary": "Chainlink sees rapid network growth in the last two days despite the weak market momentum, registering a total of 6,182 new wallets within the period."
-    },
-    {
-      "title": "Ripple CEO Criticizes Saylor’s Bitcoin Strategy While Remaining Bullish on BTC",
-      "url": "https://beincrypto.com/?p=843782",
-      "source": "BeInCrypto",
-      "published": "2026-06-27T08:27:46+00:00",
-      "summary": "<p>Ripple CEO Garlinghouse called Saylor's Bitcoin model a 'damning indictment,' with STRC trading 26% below par.</p> <p>The post <a href=\"https://beincrypto.com/ripple-ceo-microstrategy-bitcoin-criticism/\">Ripple CEO Criticizes Saylor’s Bitcoin Strategy While Remaining Bullish o"
     },
     {
       "title": "EU lawmakers urge assessing DeFi, staking, NFT regulation",
@@ -63,13 +98,6 @@
       "source": "Cointelegraph",
       "published": "2026-06-27T05:35:27+00:00",
       "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-types-of-consensus-mechanisms-in-blockchain-1.jpg\" alt=\"Securitize expects to raise $400M ahead of public debut\" class=\"type:primaryImage\"></p><p>Securitize s"
-    },
-    {
-      "title": "Here’s what happened in crypto today",
-      "url": "https://cointelegraph.com/news/what-happened-in-crypto-today",
-      "source": "Cointelegraph",
-      "published": "2026-06-27T05:30:00+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/article-covers-110589-what-happened-in-crypto-today.jpg\" alt=\"Here’s what happened in crypto today\" class=\"type:primaryImage\"></p><p>Need to know what happened i"
     },
     {
       "title": "July May Be the Lifeline XRP Holders Waited For, Price History Suggests",
@@ -324,39 +352,11 @@
       "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/layoffs-fired-human-resource-hr-leaving-quit-box.jpg\" alt=\"BitGo cuts 15% of staff to sharpen focus on AI, stablecoins\" class=\"type:primaryImage\"></p><p>BitGo co"
     },
     {
-      "title": "XRP, Shiba Inu (SHIB), Bitcoin (BTC) and Dogecoin (DOGE) Price Analysis for June 25: Fresh Wave of Bullish Recovery",
-      "url": "https://u.today/xrp-shiba-inu-shib-bitcoin-btc-and-dogecoin-doge-price-analysis-for-june-25-fresh-wave-of-bullish",
-      "source": "U.Today",
-      "published": "2026-06-26T00:01:00+00:00",
-      "summary": "The market records a substantial volume spike, but it's yet to transform into volatility."
-    },
-    {
       "title": "Does Botanix’s failure prove Bitcoiners don’t care about DeFi?",
       "url": "https://cointelegraph.com/features/does-botanixs-failure-prove-bitcoiners-dont-care-about-defi",
       "source": "Cointelegraph",
       "published": "2026-06-25T23:09:10+00:00",
       "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-quantum-computers-could-bring-lost-bitcoin-back-to-life-heres-how-1.jpg\" alt=\"Does Botanix’s failure prove Bitcoiners don’t care about DeFi?\" class=\"type:prim"
-    },
-    {
-      "title": "Bitcoin bounces off new 2026 price lows: Will US stock weakness push BTC lower?",
-      "url": "https://cointelegraph.com/markets/bitcoin-bounces-off-new-2026-price-lows-will-us-stock-weakness-push-btc-lower",
-      "source": "Cointelegraph",
-      "published": "2026-06-25T21:02:50+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/behind-bitcoins-1k-bounce.jpg\" alt=\"Bitcoin bounces off new 2026 price lows: Will US stock weakness push BTC lower?\" class=\"type:primaryImage\"></p><p>Bitcoin’s t"
-    },
-    {
-      "title": "FBI Sets Deadline for OneCoin Fraud Claims",
-      "url": "https://u.today/fbi-sets-deadline-for-onecoin-fraud-claims",
-      "source": "U.Today",
-      "published": "2026-06-25T20:21:10+00:00",
-      "summary": "The Federal Bureau of Investigation (FBI) and the Department of Justice (DOJ) are urging victims of the infamous $4 billion OneCoin international cryptocurrency pyramid scheme to submit their financial recovery claims."
-    },
-    {
-      "title": "Ripple's 'Clarity Truck' Hits D.C. Streets",
-      "url": "https://u.today/ripples-clarity-truck-hits-dc-streets",
-      "source": "U.Today",
-      "published": "2026-06-25T18:36:35+00:00",
-      "summary": "San Francisco-based Ripple has taken its fight for regulatory certainty directly to the doorsteps of American lawmakers."
     }
   ],
   "rumors": [
