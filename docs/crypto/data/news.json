@@ -1,26 +1,47 @@
 {
-  "updated": "2026-06-27T19:54:51.313202+00:00",
+  "updated": "2026-06-27T21:40:58.945808+00:00",
   "news": [
     {
-      "title": "Goldman Sachs initiates Intel coverage with Neutral rating and $150 price target",
-      "url": "https://cryptobriefing.com/?p=271984",
+      "title": "England ranks 2nd in their group as 2026 FIFA World Cup group stage heats up",
+      "url": "https://cryptobriefing.com/?p=272041",
       "source": "Crypto Briefing",
-      "published": "2026-06-27T19:52:07+00:00",
-      "summary": "<p>Goldman's neutral stance on Intel suggests cautious optimism, highlighting potential growth but advising investors to consider diversified semiconductor opportunities.</p> <p>The post <a href=\"https://cryptobriefing.com/goldman-sachs-intel-coverage-neutral-rating/\">Goldman Sac"
+      "published": "2026-06-27T21:39:10+00:00",
+      "summary": "<p>England's second-place standing could lead to tougher knockout stage opponents, impacting their chances for a deep World Cup run.</p> <p>The post <a href=\"https://cryptobriefing.com/england-world-cup-group-stage-2026/\">England ranks 2nd in their group as 2026 FIFA World Cup gr"
     },
     {
-      "title": "Sui DeFi Receives Boost as SUI Group Lends Additional 4M SUI to Bluefin",
-      "url": "https://www.newsbtc.com/?p=902691",
+      "title": "FBI Urges OneCoin Victims to File for DOJ Compensation Before June 30",
+      "url": "https://beincrypto.com/?p=843835",
+      "source": "BeInCrypto",
+      "published": "2026-06-27T21:30:00+00:00",
+      "summary": "<p>FBI urges OneCoin fraud victims to file compensation claims before June 30, 2026. Apply free at onecoinremission.com.</p> <p>The post <a href=\"https://beincrypto.com/fbi-onecoin-victims-compensation-deadline/\">FBI Urges OneCoin Victims to File for DOJ Compensation Before June "
+    },
+    {
+      "title": "Top Ethereum MEV Bot JaredfromSubway.eth Drained of Up to $15M in Counter-MEV Honeypot Exploit",
+      "url": "https://www.newsbtc.com/?p=902681",
       "source": "NewsBTC",
-      "published": "2026-06-27T19:45:00+00:00",
-      "summary": "Sui DeFi Receives Boost as SUI Group Lends Additional 4M SUI to Bluefin: a fresh look at SUI Bluefin liquidity loan, market context, key risks, and what tr"
+      "published": "2026-06-27T21:15:00+00:00",
+      "summary": "Top Ethereum MEV Bot JaredfromSubway.eth Drained of Up to $15M in Counter-MEV Honeypot Exploit: a fresh look at JaredfromSubway MEV exploit, market context"
     },
     {
-      "title": "A $223M DAO vote could turn governance into a cash-out button",
-      "url": "https://cryptoslate.com/?p=544568",
+      "title": "Fed stress tests reveal whether banks can survive a 10% unemployment shock",
+      "url": "https://cryptoslate.com/?p=544182",
       "source": "CryptoSlate",
-      "published": "2026-06-27T19:40:42+00:00",
-      "summary": "<p>GnosisDAO's GIP-151 passed with 215% of the required quorum, 49 votes representing a voting weight roughly 2.15 times the 75,000 GNO minimum threshold. The proposal authorized a one-time pro rata treasury redemption, allowing GNO holders to surrender tokens in exchange for a p"
+      "published": "2026-06-27T20:55:34+00:00",
+      "summary": "<p>All 32 of America's largest banks made it through the Federal Reserve's annual stress test on June 24. This year's scenario was unusually brutal: the Fed asked them to imagine unemployment climbing to 10%, commercial real estate prices falling 39%, home prices dropping 30%, an"
+    },
+    {
+      "title": "Fidelity rebuts claims Bitcoin becomes less secure after halvings",
+      "url": "https://cointelegraph.com/news/fidelity-bitcoin-long-term-security-halvings-report",
+      "source": "Cointelegraph",
+      "published": "2026-06-27T20:53:02+00:00",
+      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-btc-halving-is-in-80-days-is-it-priced-in.jpg\" alt=\"Fidelity rebuts claims Bitcoin becomes less secure after halvings\" class=\"type:primaryImage\"></p><p>The as"
+    },
+    {
+      "title": "XRP Finally Shows 2 Bullish Signals After Crashing to $1: What’s Next for Ripple?",
+      "url": "https://cryptopotato.com/?p=1441277",
+      "source": "CryptoPotato",
+      "published": "2026-06-27T20:17:55+00:00",
+      "summary": "XRP is about to close June as the worst trading month in well over a year but there are first signs of hope ahead."
     },
     {
       "title": "Here’s what happened in crypto today",
@@ -35,20 +56,6 @@
       "source": "Cointelegraph",
       "published": "2026-06-27T19:27:44+00:00",
       "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/article-covers-247810-bitcoin-bulls-blitz-dollar69k-as-retail-traders-pressure-short-positioning.jpg\" alt=\"Bitcoin faces fresh capitulation risk as 50K BTC moved"
-    },
-    {
-      "title": "BitGo Slashes Workforce as CEO Bets on AI, Stablecoin and Settlement Growth",
-      "url": "https://cryptopotato.com/?p=1441145",
-      "source": "CryptoPotato",
-      "published": "2026-06-27T18:49:57+00:00",
-      "summary": "BitGo said the workforce reduction is a one-time action and that no additional layoffs are currently expected."
-    },
-    {
-      "title": "Bitcoin and Stablecoins Become Lifelines After Venezuela Earthquakes",
-      "url": "https://beincrypto.com/?p=843853",
-      "source": "BeInCrypto",
-      "published": "2026-06-27T18:47:51+00:00",
-      "summary": "<p>The crypto ecosystem rushed to help Venezuela after the devastating earthquakes of June 24. Humanitarian organizations, exchanges, and community campaigns activated channels to enable cryptocurrency donations. The speed of the crypto industry is key to accelerating the arrival"
     },
     {
       "title": "The Stablecoin Founder Map Doesn't Match the Stablecoin Volume Map",
@@ -350,13 +357,6 @@
       "source": "Cointelegraph",
       "published": "2026-06-26T05:10:44+00:00",
       "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/red-down-falling-car1.png\" alt=\"Coinbase's Base resumes block production after 2-hour outage\" class=\"type:primaryImage\"></p><p>Coinbase's blockchain Base says a "
-    },
-    {
-      "title": "Sharplink buys ETH after 8-month pause as token hits 2026 low",
-      "url": "https://cointelegraph.com/news/sharplink-buys-eth-after-8-month-pause-as-token-hits-2026-low",
-      "source": "Cointelegraph",
-      "published": "2026-06-26T03:56:08+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/g20-discuss-crypto-in-japan-desk-table-meeting-hand-paper-people-eth.jpg\" alt=\"Sharplink buys ETH after 8-month pause as token hits 2026 low\" class=\"type:primary"
     }
   ],
   "rumors": [
