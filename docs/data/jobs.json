@@ -1,6 +1,42 @@
 {
- "updated": "2026-06-29T05:03:44+00:00",
+ "updated": "2026-06-29T10:01:35+00:00",
  "jobs": [
+  {
+   "title": "IT Project Manager",
+   "company": "Müller's Solutions",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/it-project-manager-at-m%C3%BCller-s-solutions-4434430536",
+   "posted": "2026-06-29",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Project Manager"
+   ],
+   "first_seen": "2026-06-29"
+  },
+  {
+   "title": "Senior Team Manager",
+   "company": "Almarai - المراعي",
+   "location": "Ha'il, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/senior-team-manager-at-almarai-%D8%A7%D9%84%D9%85%D8%B1%D8%A7%D8%B9%D9%8A-4434441960",
+   "posted": "2026-06-29",
+   "source": "LinkedIn",
+   "keywords": [
+    "Program Manager"
+   ],
+   "first_seen": "2026-06-29"
+  },
+  {
+   "title": "Team Manager – (Poultry Processing plant)",
+   "company": "Almarai - المراعي",
+   "location": "Hail Region",
+   "url": "https://sa.linkedin.com/jobs/view/team-manager-%E2%80%93-poultry-processing-plant-at-almarai-%D8%A7%D9%84%D9%85%D8%B1%D8%A7%D8%B9%D9%8A-4434451214",
+   "posted": "2026-06-29",
+   "source": "LinkedIn",
+   "keywords": [
+    "Program Manager"
+   ],
+   "first_seen": "2026-06-29"
+  },
   {
    "title": "Client Program Senior Specialist - BCGU",
    "company": "Boston Consulting Group (BCG)",
@@ -14,6 +50,30 @@
    "first_seen": "2026-06-29"
   },
   {
+   "title": "Program, Manager",
+   "company": "Master Works",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/program-manager-at-master-works-4429920884",
+   "posted": "2026-06-07",
+   "source": "LinkedIn",
+   "keywords": [
+    "Program Manager"
+   ],
+   "first_seen": "2026-06-29"
+  },
+  {
+   "title": "Information Technology Solutions Specialist",
+   "company": "Red Steel Technologies",
+   "location": "Riyadh Region",
+   "url": "https://sa.linkedin.com/jobs/view/information-technology-solutions-specialist-at-red-steel-technologies-4416156784",
+   "posted": "2026-05-20",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Infrastructure"
+   ],
+   "first_seen": "2026-06-29"
+  },
+  {
    "title": "IT Section Head",
    "company": "MS PHARMA",
    "location": "Riyadh, Riyadh, Saudi Arabia",
@@ -23,7 +83,8 @@
    "keywords": [
     "IT Management",
     "IT Infrastructure",
-    "IT Manager"
+    "IT Manager",
+    "Data Sharing"
    ],
    "first_seen": "2026-06-28"
   },
