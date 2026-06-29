@@ -1,33 +1,110 @@
 {
-  "updated": "2026-06-29T07:14:18.150278+00:00",
+  "updated": "2026-06-29T12:17:28.332218+00:00",
   "news": [
     {
-      "title": "Spanish inflation unexpectedly remains above ECB target, adding pressure to crypto risk appetite",
-      "url": "https://cryptobriefing.com/?p=273179",
+      "title": "JPMorgan addresses Broadcom TPU v9 program schedule amid delay fears",
+      "url": "https://cryptobriefing.com/?p=273533",
       "source": "Crypto Briefing",
-      "published": "2026-06-29T07:12:31+00:00",
-      "summary": "<p>Persistent inflation in Spain pressures ECB to hike rates, potentially impacting euro strength and crypto markets amid geopolitical tensions.</p> <p>The post <a href=\"https://cryptobriefing.com/spain-inflation-ecb-target-crypto-impact/\">Spanish inflation unexpectedly remains a"
+      "published": "2026-06-29T12:15:40+00:00",
+      "summary": "<p>JPMorgan's reassurance on Broadcom's TPU v9 timeline strengthens investor confidence, highlighting the importance of reliable tech partnerships.</p> <p>The post <a href=\"https://cryptobriefing.com/jpmorgan-broadcom-tpu-v9-schedule/\">JPMorgan addresses Broadcom TPU v9 program s"
     },
     {
-      "title": "Three Things Crypto Investors Should Watch This Week",
-      "url": "https://cryptopotato.com/?p=1441319",
+      "title": "Morning Minute: Bitcoin Headed for Rare Back-to-Back Quarterly Loss",
+      "url": "https://decrypt.co/?p=372283",
+      "source": "Decrypt",
+      "published": "2026-06-29T11:50:53+00:00",
+      "summary": "Another $1.79B in ETF outflows last week certainly isn't helping—but if history repeats, there is reason for hope."
+    },
+    {
+      "title": "Bitcoin (BTC) Price Warning: Why Another Drop Could Be Coming This Week",
+      "url": "https://cryptopotato.com/?p=1441352",
       "source": "CryptoPotato",
-      "published": "2026-06-29T05:46:26+00:00",
-      "summary": "A short but busy week lies ahead on the US economic calendar, while markets need to digest the re-escalation of military action in the Middle East."
+      "published": "2026-06-29T11:34:33+00:00",
+      "summary": "Can July deliver a long-awaited rebound of is a drop toward $50K the next stop?"
     },
     {
-      "title": "El Salvador’s Bitcoin reserve faces an accounting reckoning under new IMF pressure",
-      "url": "https://cryptoslate.com/?p=544683",
+      "title": "Tether CEO Confirms New Partnership to Offer Tokenized Gold-Backed Loans",
+      "url": "https://u.today/tether-ceo-confirms-new-partnership-to-offer-tokenized-gold-backed-loans",
+      "source": "U.Today",
+      "published": "2026-06-29T11:27:49+00:00",
+      "summary": "Tether enters new partnership to offer tokenized gold as collateral for crypto loans, further expanding its ecosystem and stablecoin use cases."
+    },
+    {
+      "title": "<![CDATA[Prediction-market operational consolidation could spur M&A wave: Bernstein ]]>",
+      "url": "https://cointelegraph.com/news/prediction-market-consolidation-ma-wave-bernstein",
+      "source": "Cointelegraph",
+      "published": "2026-06-29T11:21:37+00:00",
+      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/man-and-blockchain-puzzle2.jpg\" alt=\"Prediction-market operational consolidation could spur M&amp;A wave: Bernstein \" class=\"type:primaryImage\"></p><p>Bernstein "
+    },
+    {
+      "title": "CLARITY Act chances of passage this year falls to 50% after Trump’s new demands",
+      "url": "https://cryptoslate.com/?p=544816",
       "source": "CryptoSlate",
-      "published": "2026-06-29T05:45:59+00:00",
-      "summary": "<p>Its 7,696 BTC reserve now has to remain legible through a drawdown, wallet scrutiny, and program conditions.</p> <p>The post <a href=\"https://cryptoslate.com/el-salvadors-bitcoin-reserve-faces-an-accounting-reckoning-under-new-imf-pressure/\">El Salvador’s Bitcoin reserve faces"
+      "published": "2026-06-29T11:15:52+00:00",
+      "summary": "<p>The CLARITY Act, the crypto industry’s most important bill in Congress, is running out of time. The bill, which would establish federal rules for the crypto industry, is increasingly at risk of slipping deeper into the 2026 election year amid renewed partisan fights and a new "
     },
     {
-      "title": "Why Is The Crypto Market Up Today?",
-      "url": "https://beincrypto.com/?p=511648",
-      "source": "BeInCrypto",
-      "published": "2026-06-29T05:45:07+00:00",
-      "summary": "<p>The crypto market is edging higher today as renewed US-Iran de-escalation pulls buyers back after a red weekend. The total crypto market cap sits near $2.05 trillion, up about 0.7%, after dipping to $1.99 trillion on June 25. Bitcoin trades around $59,900, up roughly 0.7%, yet"
+      "title": "Vitalik Buterin says obfuscation could unlock private onchain crypto voting",
+      "url": "https://cointelegraph.com/news/vitalik-buterin-private-onchain-voting-obfuscation",
+      "source": "Cointelegraph",
+      "published": "2026-06-29T10:53:39+00:00",
+      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/vitalik-portrait-privacy.jpg\" alt=\"Vitalik Buterin says obfuscation could unlock private onchain crypto voting\" class=\"type:primaryImage\"></p><p>Vitalik Buterin "
+    },
+    {
+      "title": "Germany leads MiCA crypto authorization race as Europe’s deadline looms",
+      "url": "https://cointelegraph.com/news/mica-licenses-cluster-germany-total-reach-244",
+      "source": "Cointelegraph",
+      "published": "2026-06-29T10:48:20+00:00",
+      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/coin-table-sensor-sci-fi-germany.jpg\" alt=\"Germany leads MiCA crypto authorization race as Europe’s deadline looms\" class=\"type:primaryImage\"></p><p>MiCA crypto "
+    },
+    {
+      "title": "$0 Ripple USD (RLUSD) Burned in Hours: Has This Come to Stay?",
+      "url": "https://u.today/0-ripple-usd-rlusd-burned-in-hours-has-this-come-to-stay",
+      "source": "U.Today",
+      "published": "2026-06-29T10:15:00+00:00",
+      "summary": "Rare RLUSD onchain development attracts attention in the market."
+    },
+    {
+      "title": "BTC price RSI prints key 2026 signal: Five things to know in Bitcoin this week",
+      "url": "https://cointelegraph.com/markets/btc-price-rsi-prints-key-2026-signal-five-things-to-know-in-bitcoin-this-week",
+      "source": "Cointelegraph",
+      "published": "2026-06-29T09:55:20+00:00",
+      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/bitcoin-lazer-eyes-and-bull-run1.jpg\" alt=\"BTC price RSI prints key 2026 signal: Five things to know in Bitcoin this week\" class=\"type:primaryImage\"></p><p>Bitco"
+    },
+    {
+      "title": "Missed DTCC Breakout? Why Stellar (XLM) June Reversal Could Be Hidden Blessing",
+      "url": "https://u.today/missed-dtcc-breakout-why-stellar-xlm-june-reversal-could-be-hidden-blessing",
+      "source": "U.Today",
+      "published": "2026-06-29T09:54:00+00:00",
+      "summary": "Stellar (XLM) slips to $0.17167, breaching its unique 200-week MA just days before the landmark DTCC trial."
+    },
+    {
+      "title": "Kiwoom eyes Bithumb stake as Korean brokerages push into crypto: Report",
+      "url": "https://cointelegraph.com/news/kiwoom-stake-bithumb-exchange",
+      "source": "Cointelegraph",
+      "published": "2026-06-29T09:40:31+00:00",
+      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-crypto-negotiation.jpg\" alt=\"Kiwoom eyes Bithumb stake as Korean brokerages push into crypto: Report\" class=\"type:primaryImage\"></p><p>Kiwoom Securities is re"
+    },
+    {
+      "title": "Galaxy cuts CLARITY Act odds to 50% as Senate floor time narrows",
+      "url": "https://cointelegraph.com/news/galaxy-cuts-2026-clarity-act-odds-50",
+      "source": "Cointelegraph",
+      "published": "2026-06-29T08:16:47+00:00",
+      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-trumps-strategic-reserve-and-clarity-act.jpg\" alt=\"Galaxy cuts CLARITY Act odds to 50% as Senate floor time narrows\" class=\"type:primaryImage\"></p><p>Galaxy c"
+    },
+    {
+      "title": "XRPL Security Upgrade? Ripple CTO Emeritus Pitches Anti Front-Running Plan",
+      "url": "https://u.today/xrpl-security-upgrade-ripple-cto-emeritus-pitches-anti-front-running-plan",
+      "source": "U.Today",
+      "published": "2026-06-29T07:50:03+00:00",
+      "summary": "Ripple CTO Emeritus targets front-running with new XRP Ledger transaction plan."
+    },
+    {
+      "title": "XRP ETFs Stay in the Green Despite Massive Outflows Logged by BTC and ETH ETFs",
+      "url": "https://u.today/xrp-etfs-stay-in-the-green-despite-massive-outflows-logged-by-btc-and-eth-etfs",
+      "source": "U.Today",
+      "published": "2026-06-29T07:16:42+00:00",
+      "summary": "Despite a disastrous week of capital flight across the broader cryptocurrency market, XRP exchange-traded funds (ETFs) managed to defy the trend."
     },
     {
       "title": "This Is Bitcoin's Worst Halving Cycle Ever",
@@ -69,7 +146,7 @@
       "url": "https://cointelegraph.com/markets/bitcoin-rsi-bullish-divergence-sees-analysis-call-2022-bottom-repeat",
       "source": "Cointelegraph",
       "published": "2026-06-29T02:32:03+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/bear-bang-reg-falling-bitcoin.jpg\" alt=\"Bullish Bitcoin RSI divergence has analysts calling for 2022-style bear market bottom\" class=\"type:primaryImage\"></p><p>B"
+      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-crypto-layoffs-mount-as-exchanges-continue-to-be-ravaged-by-the-prevailing-bear-market-bitcoin.jpg\" alt=\"Bullish Bitcoin RSI divergence has analysts calling f"
     },
     {
       "title": "XRP, Shiba Inu (SHIB), Bitcoin (BTC) and Solana (SOL) Price Analysis for June 29: Bottom Is Established",
@@ -140,13 +217,6 @@
       "source": "U.Today",
       "published": "2026-06-28T13:10:00+00:00",
       "summary": "As Shiba Inu coin drops to local lows, a massive 443 billion SHIB outflow reveals that major players are quietly accumulating the dip."
-    },
-    {
-      "title": "The Future Cyberpunk Imagined Is Here: How Much Did It Get Right?",
-      "url": "https://decrypt.co/?p=372248",
-      "source": "Decrypt",
-      "published": "2026-06-28T13:01:04+00:00",
-      "summary": "From AI to brain implants, cyberpunk got more right than many people realize. Its biggest prediction, however, wasn't the technology."
     },
     {
       "title": "Binance posts over $400M in weekly net outflows as MiCA deadline nears",
@@ -289,39 +359,11 @@
       "summary": "Cardano inches closer to its next intra era hard fork."
     },
     {
-      "title": "XRP Logs Highest ETF Inflow in Six Weeks as Demand Surges Against Bitcoin",
-      "url": "https://u.today/xrp-logs-highest-etf-inflow-in-six-weeks-as-demand-surges-against-bitcoin",
-      "source": "U.Today",
-      "published": "2026-06-27T13:15:02+00:00",
-      "summary": "XRP has achieved June's highest weekly ETF inflow after nearly $23 million in new capital flowed into the funds all week, signaling renewed institutional interest in the asset."
-    },
-    {
-      "title": "SecondFi targets two-week recovery after Cardano wallet exploit",
+      "title": "SecondFi targets 2-week recovery after Cardano wallet exploit",
       "url": "https://cointelegraph.com/news/secondfi-two-week-recovery-cardano-wallet-exploit",
       "source": "Cointelegraph",
       "published": "2026-06-27T12:00:56+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-spotlight-for-crypto-recovery.jpg\" alt=\" SecondFi targets two-week recovery after Cardano wallet exploit\" class=\"type:primaryImage\"></p><p>SecondFi says it ha"
-    },
-    {
-      "title": "Dogecoin Has No Developers? DOGE Team Highlights Key Misconception",
-      "url": "https://u.today/dogecoin-has-no-developers-doge-team-highlights-key-misconception",
-      "source": "U.Today",
-      "published": "2026-06-27T12:00:32+00:00",
-      "summary": "Official Dogecoin X account seeks to debunk a common misconception about the dog-themed cryptocurrency."
-    },
-    {
-      "title": "'I'm Bullish on Bitcoin': Ripple CEO Brad Garlinghouse Discusses BTC's Future",
-      "url": "https://u.today/im-bullish-on-bitcoin-ripple-ceo-brad-garlinghouse-discusses-btcs-future",
-      "source": "U.Today",
-      "published": "2026-06-27T11:00:24+00:00",
-      "summary": "Ripple CEO Brad Garlinghouse highlights Bitcoin's positioning as digital gold, reiterating his bullishness on the crypto asset."
-    },
-    {
-      "title": "6,100 New Wallets in Two Days: Chainlink Logs Biggest Growth Days This Year",
-      "url": "https://u.today/6100-new-wallets-in-two-days-chainlink-logs-biggest-growth-days-this-year",
-      "source": "U.Today",
-      "published": "2026-06-27T08:43:21+00:00",
-      "summary": "Chainlink sees rapid network growth in the last two days despite the weak market momentum, registering a total of 6,182 new wallets within the period."
+      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-spotlight-for-crypto-recovery.jpg\" alt=\" SecondFi targets 2-week recovery after Cardano wallet exploit\" class=\"type:primaryImage\"></p><p>SecondFi says it has "
     },
     {
       "title": "EU lawmakers urge assessing DeFi, staking, NFT regulation",
@@ -329,51 +371,19 @@
       "source": "Cointelegraph",
       "published": "2026-06-27T08:21:04+00:00",
       "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-european-union-moves-to-regulate-crypto-asset-market2.jpg\" alt=\"EU lawmakers urge assessing DeFi, staking, NFT regulation\" class=\"type:primaryImage\"></p><p>Th"
-    },
-    {
-      "title": "Securitize says it expects to raise $400M ahead of public debut",
-      "url": "https://cointelegraph.com/news/securitize-expects-to-raise-400m-ahead-of-public-debut",
-      "source": "Cointelegraph",
-      "published": "2026-06-27T05:35:27+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-types-of-consensus-mechanisms-in-blockchain-1.jpg\" alt=\"Securitize says it expects to raise $400M ahead of public debut\" class=\"type:primaryImage\"></p><p>Secu"
-    },
-    {
-      "title": "SOL reclaims $72, but onchain data flags weakening momentum",
-      "url": "https://cointelegraph.com/markets/sol-reclaims-72-but-onchain-data-flags-weakening-momentum",
-      "source": "Cointelegraph",
-      "published": "2026-06-27T02:47:59+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/article-covers-202708-legacy-altcoins-surge-is-a-new-altcoin-season-starting-to-emerge.jpg\" alt=\"SOL reclaims $72, but onchain data flags weakening momentum\" cla"
-    },
-    {
-      "title": "US senators urge CFTC probe Polymarket over ‘deceptive marketing’",
-      "url": "https://cointelegraph.com/news/us-senators-urge-cftc-probe-polymarket-over-report-deceptive-marketing",
-      "source": "Cointelegraph",
-      "published": "2026-06-27T02:16:06+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/analys-analytics-bisiness-man-woman-up-city-takeoff-cftc.jpg\" alt=\"US senators urge CFTC probe Polymarket over ‘deceptive marketing’\" class=\"type:primaryImage\"><"
-    },
-    {
-      "title": "Old Ether wallets move 37,806 ETH as whale conviction faces key test at $1.5K",
-      "url": "https://cointelegraph.com/markets/old-ether-wallets-move-37806-eth-as-whale-conviction-faces-key-test",
-      "source": "Cointelegraph",
-      "published": "2026-06-26T22:18:07+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/article-covers-189124-ethereum-bulls-show-interest-as-traders-confidence-in-eth-s-1-8-k-level-improves.jpg\" alt=\"Old Ether wallets move 37,806 ETH as whale convi"
-    },
-    {
-      "title": "Spain regulator rules out extension for non-MiCA compliant crypto companies",
-      "url": "https://cointelegraph.com/news/spain-no-extension-mica-compliance-crypto-companies",
-      "source": "Cointelegraph",
-      "published": "2026-06-26T19:20:33+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/cryptocurrency-coin-pressure-machine-regulation-government-law-mica-1.jpg\" alt=\"Spain regulator rules out extension for non-MiCA compliant crypto companies\" clas"
-    },
-    {
-      "title": "SEC, CFTC seek input on unified portfolio margin rules across securities and derivatives",
-      "url": "https://cointelegraph.com/news/sec-cftc-portfolio-margin-rules",
-      "source": "Cointelegraph",
-      "published": "2026-06-26T17:43:33+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-big-executives-that-joined-crypto-cftc-sec.jpg\" alt=\"SEC, CFTC seek input on unified portfolio margin rules across securities and derivatives\" class=\"type:pri"
     }
   ],
   "rumors": [
+    {
+      "title": "South Korea’s New Rules Put Crypto Treasury Firms at Risk of Major Delisting",
+      "url": "https://beincrypto.com/?p=844109",
+      "source": "BeInCrypto",
+      "published": "2026-06-29T10:54:37+00:00",
+      "summary": "<p>South Korea&#8217;s DAT (Digital Asset Treasuries) crypto firms face fresh delisting risk under revised KOSDAQ regulations taking effect on July 1. Several companies that profited from Bitcoin holdings now sit directly in the crosshairs of the new retention rules. The reform r",
+      "tags": [
+        "Listing"
+      ]
+    },
     {
       "title": "Ripple President Monica Long to Share Vision for XRP at Major Event",
       "url": "https://u.today/ripple-president-monica-long-to-share-vision-for-xrp-at-major-event",
@@ -390,16 +400,6 @@
       "source": "Cointelegraph",
       "published": "2026-06-27T17:59:31+00:00",
       "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/the-decentralized-ai-of-the-future.jpg\" alt=\"DCG-backed Yuma launches fund offering institutional exposure to Bittensor\" class=\"type:primaryImage\"></p><p>The new",
-      "tags": [
-        "Launch"
-      ]
-    },
-    {
-      "title": "Bitcoin Records Worst ETF Week Ever",
-      "url": "https://u.today/bitcoin-records-worst-etf-week-ever",
-      "source": "U.Today",
-      "published": "2026-06-27T10:00:28+00:00",
-      "summary": "Bitcoin ETFs are yet to recover from their consistent weekly outflows and they have just seen the biggest outflow since they launched in January 2024.",
       "tags": [
         "Launch"
       ]
