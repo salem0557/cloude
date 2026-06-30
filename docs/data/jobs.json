@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-30T17:19:05+00:00",
+ "updated": "2026-06-30T21:50:28+00:00",
  "jobs": [
   {
    "title": "Project Manager",
@@ -18,6 +18,30 @@
    "company": "HanmiGlobal MENA",
    "location": "Riyadh, Riyadh, Saudi Arabia",
    "url": "https://sa.linkedin.com/jobs/view/program-director-at-hanmiglobal-mena-4431942071",
+   "posted": "2026-06-30",
+   "source": "LinkedIn",
+   "keywords": [
+    "Program Manager"
+   ],
+   "first_seen": "2026-06-30"
+  },
+  {
+   "title": "Strategy Principal Director",
+   "company": "Accenture Middle East",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/strategy-principal-director-at-accenture-middle-east-4434326841",
+   "posted": "2026-06-30",
+   "source": "LinkedIn",
+   "keywords": [
+    "Digital Transformation"
+   ],
+   "first_seen": "2026-06-30"
+  },
+  {
+   "title": "Innovation Program Manager (Full-time, Part-time, or Consultation)",
+   "company": "Setup.sa",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/innovation-program-manager-full-time-part-time-or-consultation-at-setup-sa-4431964635",
    "posted": "2026-06-30",
    "source": "LinkedIn",
    "keywords": [
@@ -58,6 +82,18 @@
    "source": "LinkedIn",
    "keywords": [
     "Digital Transformation"
+   ],
+   "first_seen": "2026-06-30"
+  },
+  {
+   "title": "Senior Linux Administrator",
+   "company": "DXC Technology",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/senior-linux-administrator-at-dxc-technology-4396321134",
+   "posted": "2026-06-12",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Infrastructure"
    ],
    "first_seen": "2026-06-30"
   },
@@ -119,6 +155,54 @@
    "source": "LinkedIn",
    "keywords": [
     "Data Sharing"
+   ],
+   "first_seen": "2026-06-30"
+  },
+  {
+   "title": "Cloud Engineer",
+   "company": "PrimeGate for Communications and IT",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/cloud-engineer-at-primegate-for-communications-and-it-4395922755",
+   "posted": "2026-04-08",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Infrastructure"
+   ],
+   "first_seen": "2026-06-30"
+  },
+  {
+   "title": "System & Network Security Engineer",
+   "company": "Dkhoon Emirates",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/system-network-security-engineer-at-dkhoon-emirates-4394467924",
+   "posted": "2026-04-06",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Infrastructure"
+   ],
+   "first_seen": "2026-06-30"
+  },
+  {
+   "title": "Intermediate Cloud Engineer",
+   "company": "Sitech",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/intermediate-cloud-engineer-at-sitech-4351643724",
+   "posted": "2026-01-07",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Infrastructure"
+   ],
+   "first_seen": "2026-06-30"
+  },
+  {
+   "title": "Smart Cities & Digital Innovation Lead (Saudi National)",
+   "company": "Parsons Corporation",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/smart-cities-digital-innovation-lead-saudi-national-at-parsons-corporation-4243577979",
+   "posted": "2025-06-03",
+   "source": "LinkedIn",
+   "keywords": [
+    "Digital Transformation"
    ],
    "first_seen": "2026-06-30"
   },
@@ -2891,7 +2975,8 @@
    "posted": "2026-05-07",
    "source": "LinkedIn",
    "keywords": [
-    "Data Management"
+    "Data Management",
+    "Data Sharing"
    ],
    "first_seen": "2026-06-11"
   },

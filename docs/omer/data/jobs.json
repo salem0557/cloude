@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-30T17:19:56+00:00",
+ "updated": "2026-06-30T21:51:25+00:00",
  "jobs": [
   {
    "title": "Operation Coordinator-Logistics",
@@ -35,7 +35,8 @@
    "posted": "2026-06-30",
    "source": "LinkedIn",
    "keywords": [
-    "Logistics"
+    "Logistics",
+    "Supply Chain"
    ],
    "first_seen": "2026-06-30"
   },
@@ -48,6 +49,42 @@
    "source": "LinkedIn",
    "keywords": [
     "Operations Manager"
+   ],
+   "first_seen": "2026-06-30"
+  },
+  {
+   "title": "Manager, Network Operations",
+   "company": "Lucid Motors Middle East",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/manager-network-operations-at-lucid-motors-middle-east-4434355626",
+   "posted": "2026-06-30",
+   "source": "LinkedIn",
+   "keywords": [
+    "Operations Manager"
+   ],
+   "first_seen": "2026-06-30"
+  },
+  {
+   "title": "Team Manager",
+   "company": "Almarai - المراعي",
+   "location": "Ha'il, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/team-manager-at-almarai-%D8%A7%D9%84%D9%85%D8%B1%D8%A7%D8%B9%D9%8A-4434973493",
+   "posted": "2026-06-30",
+   "source": "LinkedIn",
+   "keywords": [
+    "Operations Manager"
+   ],
+   "first_seen": "2026-06-30"
+  },
+  {
+   "title": "مهندس ميكانيكي وادارة تصنيع متكاملة",
+   "company": "أعمال المسبح التجارية",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/%D9%85%D9%87%D9%86%D8%AF%D8%B3-%D9%85%D9%8A%D9%83%D8%A7%D9%86%D9%8A%D9%83%D9%8A-%D9%88%D8%A7%D8%AF%D8%A7%D8%B1%D8%A9-%D8%AA%D8%B5%D9%86%D9%8A%D8%B9-%D9%85%D8%AA%D9%83%D8%A7%D9%85%D9%84%D8%A9-at-%D8%A3%D8%B9%D9%85%D8%A7%D9%84-%D8%A7%D9%84%D9%85%D8%B3%D8%A8%D8%AD-%D8%A7%D9%84%D8%AA%D8%AC%D8%A7%D8%B1%D9%8A%D8%A9-4431952541",
+   "posted": "2026-06-30",
+   "source": "LinkedIn",
+   "keywords": [
+    "Mechanical Engineer"
    ],
    "first_seen": "2026-06-30"
   },
@@ -2779,7 +2816,8 @@
    "posted": "2026-06-08",
    "source": "LinkedIn",
    "keywords": [
-    "Mechanical Engineer"
+    "Mechanical Engineer",
+    "Maintenance Engineer"
    ],
    "first_seen": "2026-06-11"
   },
