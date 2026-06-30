@@ -1,6 +1,42 @@
 {
- "updated": "2026-06-30T04:38:47+00:00",
+ "updated": "2026-06-30T08:40:02+00:00",
  "jobs": [
+  {
+   "title": "ENGINEER, TECHNICAL SUPPORT",
+   "company": "alfanar",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/engineer-technical-support-at-alfanar-4434197813",
+   "posted": "2026-06-30",
+   "source": "LinkedIn",
+   "keywords": [
+    "Technical Support"
+   ],
+   "first_seen": "2026-06-30"
+  },
+  {
+   "title": "أخصائي تقنية معلومات - Odoo ERP",
+   "company": "Naqarat",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/%D8%A3%D8%AE%D8%B5%D8%A7%D8%A6%D9%8A-%D8%AA%D9%82%D9%86%D9%8A%D8%A9-%D9%85%D8%B9%D9%84%D9%88%D9%85%D8%A7%D8%AA-odoo-erp-at-naqarat-4431500628",
+   "posted": "2026-06-29",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Specialist"
+   ],
+   "first_seen": "2026-06-30"
+  },
+  {
+   "title": "Senior Software Project Manager",
+   "company": "KnowledgeNet",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/senior-software-project-manager-at-knowledgenet-4431843161",
+   "posted": "2026-06-24",
+   "source": "LinkedIn",
+   "keywords": [
+    "Help Desk"
+   ],
+   "first_seen": "2026-06-30"
+  },
   {
    "title": "Technology Support Service Engineer",
    "company": "Linklaters",
@@ -23,7 +59,8 @@
    "keywords": [
     "IT Support",
     "Help Desk",
-    "Technical Support"
+    "Technical Support",
+    "IT Specialist"
    ],
    "first_seen": "2026-06-29"
   },
