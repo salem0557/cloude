@@ -1,26 +1,47 @@
 {
-  "updated": "2026-06-30T21:17:40.585191+00:00",
+  "updated": "2026-06-30T22:53:50.977407+00:00",
   "news": [
     {
-      "title": "Binance, Changpeng Zhao Sued for $200M by British Investors: Reuters",
-      "url": "https://decrypt.co/?p=372452",
+      "title": "Trump Discloses Over $1.2 Billion in Crypto Earnings, $50M in Bitcoin Holdings",
+      "url": "https://decrypt.co/?p=372484",
       "source": "Decrypt",
-      "published": "2026-06-30T21:16:18+00:00",
-      "summary": "Crypto exchange Binance and its founder were sued for nearly $200 million in a new lawsuit filed in the United Kingdom."
+      "published": "2026-06-30T22:16:52+00:00",
+      "summary": "The president’s annual financial disclosure report was released on Tuesday."
     },
     {
-      "title": "ENS co-founder Nick Johnson blocks Security Council renewal with 80% vote",
-      "url": "https://cryptobriefing.com/?p=276162",
-      "source": "Crypto Briefing",
-      "published": "2026-06-30T21:16:00+00:00",
-      "summary": "<p>The event highlights the risks of concentrated voting power in DAOs, emphasizing the need for balanced governance to protect assets.</p> <p>The post <a href=\"https://cryptobriefing.com/ens-nick-johnson-blocks-security-council-renewal/\">ENS co-founder Nick Johnson blocks Securi"
+      "title": "Bitcoin just $5K away from ‘best investment opportunity’ of bear market",
+      "url": "https://cointelegraph.com/markets/bitcoin-is-just-a-5k-drop-away-from-its-best-investment-opportunity-analysis",
+      "source": "Cointelegraph",
+      "published": "2026-06-30T21:49:08+00:00",
+      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/article-covers-226789-bitcoin-scrapes-new-lows-as-tech-stocks-drop-data-forecasts-btc-dip-below-dollar.jpg\" alt=\"Bitcoin just $5K away from ‘best investment oppo"
     },
     {
-      "title": "Trump Reveals $600 Million Crypto Windfall in New Filing",
-      "url": "https://beincrypto.com/?p=844706",
+      "title": "Massachusetts AG files amended lawsuit against Kalshi over sports betting after court ruling",
+      "url": "https://cointelegraph.com/news/massachusetts-lawsuit-kalshi-sports-betting",
+      "source": "Cointelegraph",
+      "published": "2026-06-30T21:44:48+00:00",
+      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/court-law-judge-flags-ma-us.png\" alt=\"Massachusetts AG files amended lawsuit against Kalshi over sports betting after court ruling\" class=\"type:primaryImage\"></p"
+    },
+    {
+      "title": "UK Investors Sue Binance for $200 Million in Losses They Chased With Leverage",
+      "url": "https://beincrypto.com/?p=844694",
       "source": "BeInCrypto",
-      "published": "2026-06-30T20:59:33+00:00",
-      "summary": "<p>President Donald Trump has disclosed hundreds of millions of dollars in cryptocurrency-related income, offering the clearest picture yet of how central digital assets have become to his business interests. The filing, released just one day after a landmark U.S. Supreme Court r"
+      "published": "2026-06-30T21:22:51+00:00",
+      "summary": "<p>A $200 million UK lawsuit against Binance and CZ reignites the debate over who pays for crypto trading losses.</p> <p>The post <a href=\"https://beincrypto.com/binance-uk-lawsuit-crypto-derivatives/\">UK Investors Sue Binance for $200 Million in Losses They Chased With Leverage<"
+    },
+    {
+      "title": "Bitmine Ether buys eclipsed by $345M ETH ETF $345M outflows: Is sub $1.5K next?",
+      "url": "https://cointelegraph.com/markets/bitmine-ether-buys-eclipsed-by-345m-eth-etf-345m-outflows-is-sub-15k-next",
+      "source": "Cointelegraph",
+      "published": "2026-06-30T21:16:47+00:00",
+      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/article-covers-251386-ethereum-price-drops-1-8k-data-eth-bears-not-done-yet.jpg\" alt=\"Bitmine Ether buys eclipsed by $345M ETH ETF $345M outflows: Is sub $1.5K n"
+    },
+    {
+      "title": "Critics Say BIP-110 Could Break Self-Custody and Risk User Funds",
+      "url": "https://cryptopotato.com/?p=1441434",
+      "source": "CryptoPotato",
+      "published": "2026-06-30T21:15:13+00:00",
+      "summary": "Existing Bitcoin software supporting BIP-110 may reportedly create addresses that become invalid after the proposed upgrade."
     },
     {
       "title": "SEC seeks public comment on regulating next generation of ETFs",
@@ -77,13 +98,6 @@
       "source": "Cointelegraph",
       "published": "2026-06-30T17:44:31+00:00",
       "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-the-power-in-energy-and-how-new-technologies-can-shift-bitcoin-1.jpg\" alt=\"AI’s power crunch turns Bitcoin miners’ grid access into an asset\" class=\"type:prim"
-    },
-    {
-      "title": "SpaceX Dominates as Tokenized Pre-IPO Trading Volume Surges 1,060%: CoinGecko",
-      "url": "https://cryptopotato.com/?p=1441496",
-      "source": "CryptoPotato",
-      "published": "2026-06-30T17:25:38+00:00",
-      "summary": "SpaceX, OpenAI, and Anthropic accounted for more than 95% of all tokenized pre-IPO perpetual trading volume in May."
     },
     {
       "title": "Crypto companies have spent $189M so far on 2026 US election cycle: Report",
@@ -268,27 +282,6 @@
       "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-how-to-buy-ethereum-with-bitmine-1.jpg\" alt=\"Bitmine lifts Ether holdings to 5.7M as it joins Russell 1000\" class=\"type:primaryImage\"></p><p>Bitmine purchased"
     },
     {
-      "title": "Sovereign funds see Bitcoin discount as entry point: MidChains CEO",
-      "url": "https://cointelegraph.com/news/sovereign-funds-see-bitcoin-discount-as-entry-point-midchains-ceo-says",
-      "source": "Cointelegraph",
-      "published": "2026-06-30T03:53:34+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-how-are-governments-implementing-the-guidelines-bitcoin.jpg\" alt=\"Sovereign funds see Bitcoin discount as entry point: MidChains CEO\" class=\"type:primaryImage"
-    },
-    {
-      "title": "SEC wins $5.4M judgment in NanoBit crypto fraud case",
-      "url": "https://cointelegraph.com/news/sec-wins-54m-judgment-in-nanobit-crypto-fraud-case",
-      "source": "Cointelegraph",
-      "published": "2026-06-30T03:06:34+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/bank-building-hall-entrance-door-sec-1.jpg\" alt=\"SEC wins $5.4M judgment in NanoBit crypto fraud case\" class=\"type:primaryImage\"></p><p>The SEC alleged that Nano"
-    },
-    {
-      "title": "Singapore's Hyperliquid warning, Indonesia's FinFluencer license: Asia Express",
-      "url": "https://cointelegraph.com/features/singapores-hyperliquid-warning-indonesias-finfluencer-licence-asia-express",
-      "source": "Cointelegraph",
-      "published": "2026-06-30T01:23:22+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/asia-express-5.jpg\" alt=\"Singapore's Hyperliquid warning, Indonesia's FinFluencer license: Asia Express \" class=\"type:primaryImage\"></p><p>Hyperliquid follows By"
-    },
-    {
       "title": "Why Shiba Inu (SHIB) Buying Volume Is at 0, Dogecoin (DOGE) Bottom Established, Bitcoin (BTC) Struggles With $60,000: Crypto Market Review",
       "url": "https://u.today/why-shiba-inu-shib-buying-volume-is-at-0-dogecoin-doge-bottom-established-bitcoin-btc-struggles",
       "source": "U.Today",
@@ -346,6 +339,16 @@
     }
   ],
   "rumors": [
+    {
+      "title": "Trump reports over $1.4B in crypto earnings as Bitcoin nears yearly low",
+      "url": "https://cryptobriefing.com/?p=276363",
+      "source": "Crypto Briefing",
+      "published": "2026-06-30T22:53:30+00:00",
+      "summary": "<p>Donald Trump disclosed at least $1.4 billion in 2025 income tied to World Liberty Financial, memecoin royalties and a stablecoin business.</p> <p>The post <a href=\"https://cryptobriefing.com/trump-reports-over-1-4b-in-crypto-earnings-as-bitcoin-nears-yearly-low/\">Trump reports",
+      "tags": [
+        "Meme"
+      ]
+    },
     {
       "title": "MetaMask launches stablecoin yield account with card spending",
       "url": "https://cointelegraph.com/news/metamask-money-account-musd-stablecoin-yield",
