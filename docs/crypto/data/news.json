@@ -1,26 +1,75 @@
 {
-  "updated": "2026-06-30T17:26:48.189836+00:00",
+  "updated": "2026-06-30T19:23:26.960402+00:00",
   "news": [
     {
-      "title": "Ripple unveils XRPL lending protocol targeting institutional on-chain credit",
-      "url": "https://cryptobriefing.com/?p=275625",
+      "title": "Strive CEO Matt Cole opens poll on $SATA issuance policy as short sellers pile in",
+      "url": "https://cryptobriefing.com/?p=275856",
       "source": "Crypto Briefing",
-      "published": "2026-06-30T17:25:50+00:00",
-      "summary": "<p>Ripple's XRPL lending protocol could revolutionize institutional finance by enhancing liquidity management and yield generation on tokenized assets.</p> <p>The post <a href=\"https://cryptobriefing.com/ripple-xrpl-lending-protocol-institutions-2/\">Ripple unveils XRPL lending pr"
+      "published": "2026-06-30T19:22:28+00:00",
+      "summary": "<p>Suspending $SATA issuance could disrupt short sellers, potentially increasing volatility and altering the instrument's risk-reward profile.</p> <p>The post <a href=\"https://cryptobriefing.com/strive-sata-issuance-poll-short-sellers/\">Strive CEO Matt Cole opens poll on $SATA is"
     },
     {
-      "title": "Whales Rotate Back To Bitcoin And Ethereum As Altcoin Risk Cools",
-      "url": "https://www.newsbtc.com/?p=902996",
-      "source": "NewsBTC",
-      "published": "2026-06-30T17:15:00+00:00",
-      "summary": "Whales Rotate Back To Bitcoin And Ethereum As Altcoin Risk Cools: what the validated data shows, why it matters for crypto markets, and the caveat traders."
-    },
-    {
-      "title": "Crypto YouTube views collapse in 2026 as viewers turn off crypto channels",
-      "url": "https://cryptoslate.com/?p=545153",
+      "title": "DeFi hacks are turning high yields into a hidden liquidity tax",
+      "url": "https://cryptoslate.com/?p=545065",
       "source": "CryptoSlate",
-      "published": "2026-06-30T17:00:09+00:00",
-      "summary": "<p>Large channels still look big by audience size, but recent view velocity shows a thinner and more selective market.</p> <p>The post <a href=\"https://cryptoslate.com/crypto-youtubes-subscriber-counts-are-masking-a-weaker-retail-attention-signal/\">Crypto YouTube views collapse i"
+      "published": "2026-06-30T19:00:47+00:00",
+      "summary": "<p>DeFiLlama data shows $780.3 million in Q2 known losses as bridges, keys and protocol logic turn security into a live cost of participation.</p> <p>The post <a href=\"https://cryptoslate.com/defis-hack-problem-is-becoming-a-liquidity-tax/\">DeFi hacks are turning high yields into"
+    },
+    {
+      "title": "Nasdaq brings proprietary market data onchain through Pyth",
+      "url": "https://cointelegraph.com/news/nasdaq-brings-proprietary-market-data-onchain-through-pyth",
+      "source": "Cointelegraph",
+      "published": "2026-06-30T18:46:29+00:00",
+      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-cryptocurrency-vs-stocks-breaking-news.png\" alt=\"Nasdaq brings proprietary market data onchain through Pyth\" class=\"type:primaryImage\"></p><p>The partnership "
+    },
+    {
+      "title": "Bitcoin price risks drop below $58K as US dollar hits 40-year high against yen",
+      "url": "https://cointelegraph.com/markets/bitcoin-price-slumps-to-near-58k-as-us-dollar-hits-40-year-high-against-yen",
+      "source": "Cointelegraph",
+      "published": "2026-06-30T18:17:56+00:00",
+      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/article-covers-201145-japan-remixpoint-ceo-salary-bitcoin.jpg\" alt=\"Bitcoin price risks drop below $58K as US dollar hits 40-year high against yen\" class=\"type:p"
+    },
+    {
+      "title": "XRP Holds $1 Support As Wallet Growth Hits Three-Month High",
+      "url": "https://www.newsbtc.com/?p=902993",
+      "source": "NewsBTC",
+      "published": "2026-06-30T18:00:00+00:00",
+      "summary": "XRP Holds $1 Support As Wallet Growth Hits Three-Month High: what the validated data shows, why it matters for crypto markets, and the caveat traders should."
+    },
+    {
+      "title": "Why Is The US Stock Market Up Today?",
+      "url": "https://beincrypto.com/?p=804146",
+      "source": "BeInCrypto",
+      "published": "2026-06-30T17:52:26+00:00",
+      "summary": "<p>The US stock market trended higher on Tuesday as strong jobs data, a US-Iran ceasefire, and a semiconductor rebound powered a broad quarter-end rally that capped the best quarter since 2020. 1. Strong JOLTS Jobs Data Eased Recession Fears May job openings rose to 7.594 million"
+    },
+    {
+      "title": "AI’s power crunch turns Bitcoin miners’ grid access into an asset",
+      "url": "https://cointelegraph.com/features/bitcoin-miners-ai-data-centers-power-infrastructure",
+      "source": "Cointelegraph",
+      "published": "2026-06-30T17:44:31+00:00",
+      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-the-power-in-energy-and-how-new-technologies-can-shift-bitcoin-1.jpg\" alt=\"AI’s power crunch turns Bitcoin miners’ grid access into an asset\" class=\"type:prim"
+    },
+    {
+      "title": "Circle Stock Dives as Coinbase, BlackRock and Visa Back Open USD Stablecoin",
+      "url": "https://decrypt.co/?p=372429",
+      "source": "Decrypt",
+      "published": "2026-06-30T17:38:12+00:00",
+      "summary": "The forthcoming Open USD has more than 100 major supporters onboard, including Coinbase—a key backer of Circle’s USDC."
+    },
+    {
+      "title": "SpaceX Dominates as Tokenized Pre-IPO Trading Volume Surges 1,060%: CoinGecko",
+      "url": "https://cryptopotato.com/?p=1441496",
+      "source": "CryptoPotato",
+      "published": "2026-06-30T17:25:38+00:00",
+      "summary": "SpaceX, OpenAI, and Anthropic accounted for more than 95% of all tokenized pre-IPO perpetual trading volume in May."
+    },
+    {
+      "title": "Crypto companies have spent $189M so far on 2026 US election cycle: Report",
+      "url": "https://cointelegraph.com/news/crypto-companies-spent-2026-us-election-cycle-public-citizen",
+      "source": "Cointelegraph",
+      "published": "2026-06-30T17:19:17+00:00",
+      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/dollars-fly-away-us-senate.jpg\" alt=\"Crypto companies have spent $189M so far on 2026 US election cycle: Report\" class=\"type:primaryImage\"></p><p>The crypto indu"
     },
     {
       "title": "Ripple's USD Stablecoin Isn't 'Eating' XRP, Evernorth Breaks Down",
@@ -44,20 +93,6 @@
       "summary": "OKX founder explains back story about his ordeal with Binance's founder as new accusations emerge, prolonging."
     },
     {
-      "title": "What to Expect From Ethereum (ETH) in July 2026",
-      "url": "https://beincrypto.com/?p=844533",
-      "source": "BeInCrypto",
-      "published": "2026-06-30T16:00:00+00:00",
-      "summary": "<p>ETH holds near $1,570 as whale buying clashes with a bearish trend. Here is what could decide ETH in July 2026.</p> <p>The post <a href=\"https://beincrypto.com/what-to-expect-from-ethereum-eth-in-july-2026/\">What to Expect From Ethereum (ETH) in July 2026</a> appeared first on"
-    },
-    {
-      "title": "Sharplink Buys Ethereum for First Time in 2026—With ETH Down 68% From Peak",
-      "url": "https://decrypt.co/?p=372432",
-      "source": "Decrypt",
-      "published": "2026-06-30T15:54:01+00:00",
-      "summary": "Ethereum treasury firm Sharplink purchased around $16 million worth of ETH last week, marking its first crypto buy since last year."
-    },
-    {
       "title": "Here’s what happened in crypto today",
       "url": "https://cointelegraph.com/news/what-happened-in-crypto-today",
       "source": "Cointelegraph",
@@ -70,13 +105,6 @@
       "source": "U.Today",
       "published": "2026-06-30T15:21:09+00:00",
       "summary": "Ripple has joined an unprecedented consortium of over 140 financial, technological, and crypto heavyweights, including BlackRock, Mastercard, Google, and Visa, to adopt \"Open USD.\""
-    },
-    {
-      "title": "MiCA Deadline: New Rules Could Force 80% of Crypto Firms Out of EU",
-      "url": "https://cryptopotato.com/?p=1441490",
-      "source": "CryptoPotato",
-      "published": "2026-06-30T15:15:20+00:00",
-      "summary": "Investors are being urged to verify whether their crypto provider appears on the official MiCA register before using its services."
     },
     {
       "title": "'Only the First Round': Legendary Trader Peter Brandt Reacts to Potential $1.25 Billion Bitcoin Sale",
@@ -261,13 +289,6 @@
       "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/article-covers-253090-suckers-rally-why-bitcoin-analysts-say-btc-price-must-hold-70k.jpg\" alt=\"Bitcoin faces critical test as bulls aim to hold $60K: Did BTC bot"
     },
     {
-      "title": "Donald Trump has 10 days to decide on housing bill with CBDC ban",
-      "url": "https://cointelegraph.com/news/cbdc-ban-housing-bill-donald-trump",
-      "source": "Cointelegraph",
-      "published": "2026-06-29T21:34:08+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/white-house-crypto-trump.jpg\" alt=\"Donald Trump has 10 days to decide on housing bill with CBDC ban\" class=\"type:primaryImage\"></p><p>House Speaker Mike Johnson "
-    },
-    {
       "title": "Ripple's Garlinghouse Slams Strategy's Financial Engineering",
       "url": "https://u.today/ripples-garlinghouse-slams-strategys-financial-engineering",
       "source": "U.Today",
@@ -275,32 +296,11 @@
       "summary": "The long-standing ideological feud between Ripple CEO Brad Garlinghouse and Strategy Executive Chairman Michael Saylor has reignited over competing visions for the cryptocurrency industry's future."
     },
     {
-      "title": "Senate leaders push for July passage of CLARITY Act",
-      "url": "https://cointelegraph.com/news/senate-leaders-july-passage-clarity-act",
-      "source": "Cointelegraph",
-      "published": "2026-06-29T19:59:31+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-us-senate-infrastructure-bill-doom-and-gloom-for-crypto-clarity-act.jpg\" alt=\"Senate leaders push for July passage of CLARITY Act\" class=\"type:primaryImage\"><"
-    },
-    {
-      "title": "Bitcoin put-call ratio hits 1-year high: Are bears preparing for drop to $55K?",
-      "url": "https://cointelegraph.com/markets/bitcoin-put-call-ratio-hits-1-year-high-are-bears-preparing-for-drop-to-55k",
-      "source": "Cointelegraph",
-      "published": "2026-06-29T19:41:04+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/article-covers-191991-bitcoin-bears-analysis-dismisses-btc-price-double-top.jpg\" alt=\"Bitcoin put-call ratio hits 1-year high: Are bears preparing for drop to $5"
-    },
-    {
       "title": "Fundstrat's Top Strategist Tells Panic-Sellers to Hold the Line",
       "url": "https://u.today/fundstrats-top-strategist-tells-panic-sellers-to-hold-the-line",
       "source": "U.Today",
       "published": "2026-06-29T19:02:57+00:00",
       "summary": "In a recent interview on the All Things Markets show, the Wall Street veteran warned that panic-selling now could be a grave mistake."
-    },
-    {
-      "title": "Coinbase, Kraken and OKX move to swoop up EU users affected by MiCA restrictions",
-      "url": "https://cointelegraph.com/news/coinbase-okx-kraken-eu-users-mica",
-      "source": "Cointelegraph",
-      "published": "2026-06-29T17:50:00+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-heres-what-you-pay-for-using-crypto-mica-eu-1.jpg\" alt=\"Coinbase, Kraken and OKX move to swoop up EU users affected by MiCA restrictions\" class=\"type:primaryI"
     },
     {
       "title": "Shiba Inu (SHIB) Re-Enters Crypto Top 30 as Exchange Reserves Plunge to 87.18 Trillion Coins",
