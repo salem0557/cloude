@@ -1,12 +1,47 @@
 {
-  "updated": "2026-06-30T19:23:26.960402+00:00",
+  "updated": "2026-06-30T21:17:40.585191+00:00",
   "news": [
     {
-      "title": "Strive CEO Matt Cole opens poll on $SATA issuance policy as short sellers pile in",
-      "url": "https://cryptobriefing.com/?p=275856",
+      "title": "Binance, Changpeng Zhao Sued for $200M by British Investors: Reuters",
+      "url": "https://decrypt.co/?p=372452",
+      "source": "Decrypt",
+      "published": "2026-06-30T21:16:18+00:00",
+      "summary": "Crypto exchange Binance and its founder were sued for nearly $200 million in a new lawsuit filed in the United Kingdom."
+    },
+    {
+      "title": "ENS co-founder Nick Johnson blocks Security Council renewal with 80% vote",
+      "url": "https://cryptobriefing.com/?p=276162",
       "source": "Crypto Briefing",
-      "published": "2026-06-30T19:22:28+00:00",
-      "summary": "<p>Suspending $SATA issuance could disrupt short sellers, potentially increasing volatility and altering the instrument's risk-reward profile.</p> <p>The post <a href=\"https://cryptobriefing.com/strive-sata-issuance-poll-short-sellers/\">Strive CEO Matt Cole opens poll on $SATA is"
+      "published": "2026-06-30T21:16:00+00:00",
+      "summary": "<p>The event highlights the risks of concentrated voting power in DAOs, emphasizing the need for balanced governance to protect assets.</p> <p>The post <a href=\"https://cryptobriefing.com/ens-nick-johnson-blocks-security-council-renewal/\">ENS co-founder Nick Johnson blocks Securi"
+    },
+    {
+      "title": "Trump Reveals $600 Million Crypto Windfall in New Filing",
+      "url": "https://beincrypto.com/?p=844706",
+      "source": "BeInCrypto",
+      "published": "2026-06-30T20:59:33+00:00",
+      "summary": "<p>President Donald Trump has disclosed hundreds of millions of dollars in cryptocurrency-related income, offering the clearest picture yet of how central digital assets have become to his business interests. The filing, released just one day after a landmark U.S. Supreme Court r"
+    },
+    {
+      "title": "SEC seeks public comment on regulating next generation of ETFs",
+      "url": "https://cointelegraph.com/news/sec-seeks-public-comment-on-regulating-novel-etfs",
+      "source": "Cointelegraph",
+      "published": "2026-06-30T20:38:51+00:00",
+      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/sec-logo-smaller-background.jpg\" alt=\"SEC seeks public comment on regulating next generation of ETFs \" class=\"type:primaryImage\"></p><p>The request from the US a"
+    },
+    {
+      "title": "Ripple's RLUSD Rapidly Shrinks as New Major Stablecoin Emerges",
+      "url": "https://u.today/ripples-rlusd-rapidly-shrinks-as-new-major-stablecoin-emerges",
+      "source": "U.Today",
+      "published": "2026-06-30T19:57:39+00:00",
+      "summary": "Ripple's RLUSD stablecoin continues to contract as a newly announced consortium-backed rival promises to reshape the stablecoin landscape."
+    },
+    {
+      "title": "Financial companies join forces for US dollar stablecoin, keeping reserve earnings",
+      "url": "https://cointelegraph.com/news/financial-companies-us-dollar-payment-stablecoin",
+      "source": "Cointelegraph",
+      "published": "2026-06-30T19:31:41+00:00",
+      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-stablecoins-are-dominating-the-market.jpg\" alt=\"Financial companies join forces for US dollar stablecoin, keeping reserve earnings\" class=\"type:primaryImage\">"
     },
     {
       "title": "DeFi hacks are turning high yields into a hidden liquidity tax",
@@ -37,25 +72,11 @@
       "summary": "XRP Holds $1 Support As Wallet Growth Hits Three-Month High: what the validated data shows, why it matters for crypto markets, and the caveat traders should."
     },
     {
-      "title": "Why Is The US Stock Market Up Today?",
-      "url": "https://beincrypto.com/?p=804146",
-      "source": "BeInCrypto",
-      "published": "2026-06-30T17:52:26+00:00",
-      "summary": "<p>The US stock market trended higher on Tuesday as strong jobs data, a US-Iran ceasefire, and a semiconductor rebound powered a broad quarter-end rally that capped the best quarter since 2020. 1. Strong JOLTS Jobs Data Eased Recession Fears May job openings rose to 7.594 million"
-    },
-    {
       "title": "AI’s power crunch turns Bitcoin miners’ grid access into an asset",
       "url": "https://cointelegraph.com/features/bitcoin-miners-ai-data-centers-power-infrastructure",
       "source": "Cointelegraph",
       "published": "2026-06-30T17:44:31+00:00",
       "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-the-power-in-energy-and-how-new-technologies-can-shift-bitcoin-1.jpg\" alt=\"AI’s power crunch turns Bitcoin miners’ grid access into an asset\" class=\"type:prim"
-    },
-    {
-      "title": "Circle Stock Dives as Coinbase, BlackRock and Visa Back Open USD Stablecoin",
-      "url": "https://decrypt.co/?p=372429",
-      "source": "Decrypt",
-      "published": "2026-06-30T17:38:12+00:00",
-      "summary": "The forthcoming Open USD has more than 100 major supporters onboard, including Coinbase—a key backer of Circle’s USDC."
     },
     {
       "title": "SpaceX Dominates as Tokenized Pre-IPO Trading Volume Surges 1,060%: CoinGecko",
@@ -275,20 +296,6 @@
       "summary": "The market is being suffocated as no fresh inflows are being deposited."
     },
     {
-      "title": "UK sets final crypto rules as firms face 2027 FCA authorization deadline",
-      "url": "https://cointelegraph.com/news/uk-crypto-rules-2027-fca-authorization-deadline",
-      "source": "Cointelegraph",
-      "published": "2026-06-29T23:01:00+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/blockchainweekuk-fca.jpg\" alt=\"UK sets final crypto rules as firms face 2027 FCA authorization deadline\" class=\"type:primaryImage\"></p><p>The UK’s financial regu"
-    },
-    {
-      "title": "Bitcoin faces critical test as bulls aim to hold $60K: Did BTC bottom?",
-      "url": "https://cointelegraph.com/markets/bitcoin-faces-critical-test-as-bulls-aim-to-hold-60k-did-btc-bottom",
-      "source": "Cointelegraph",
-      "published": "2026-06-29T21:57:57+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/article-covers-253090-suckers-rally-why-bitcoin-analysts-say-btc-price-must-hold-70k.jpg\" alt=\"Bitcoin faces critical test as bulls aim to hold $60K: Did BTC bot"
-    },
-    {
       "title": "Ripple's Garlinghouse Slams Strategy's Financial Engineering",
       "url": "https://u.today/ripples-garlinghouse-slams-strategys-financial-engineering",
       "source": "U.Today",
@@ -336,13 +343,6 @@
       "source": "U.Today",
       "published": "2026-06-29T13:20:00+00:00",
       "summary": "XRP ETF inflows surge 115% ahead of historically strongest quarter, a dormant SHIB whale moves $2.7M on-chain, and Saylor approves a structured Bitcoin sell program at Strategy."
-    },
-    {
-      "title": "Tether CEO Confirms New Partnership to Offer Tokenized Gold-Backed Loans",
-      "url": "https://u.today/tether-ceo-confirms-new-partnership-to-offer-tokenized-gold-backed-loans",
-      "source": "U.Today",
-      "published": "2026-06-29T11:27:49+00:00",
-      "summary": "Tether enters new partnership to offer tokenized gold as collateral for crypto loans, further expanding its ecosystem and stablecoin use cases."
     }
   ],
   "rumors": [
