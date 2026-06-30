@@ -1,5 +1,5 @@
 {
- "updated": "2026-06-30T12:26:26+00:00",
+ "updated": "2026-06-30T17:19:27+00:00",
  "jobs": [
   {
    "title": "ENGINEER, TECHNICAL SUPPORT",
@@ -21,7 +21,32 @@
    "posted": "2026-06-30",
    "source": "LinkedIn",
    "keywords": [
-    "IT Specialist"
+    "IT Specialist",
+    "System Administrator"
+   ],
+   "first_seen": "2026-06-30"
+  },
+  {
+   "title": "Database Admin, Senior",
+   "company": "Master Works",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/database-admin-senior-at-master-works-4431577520",
+   "posted": "2026-06-30",
+   "source": "LinkedIn",
+   "keywords": [
+    "System Administrator"
+   ],
+   "first_seen": "2026-06-30"
+  },
+  {
+   "title": "Analyst, Information Security",
+   "company": "Tabby | تابي",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/analyst-information-security-at-tabby-%D8%AA%D8%A7%D8%A8%D9%8A-4434987609",
+   "posted": "2026-06-30",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Fresh Graduate"
    ],
    "first_seen": "2026-06-30"
   },
