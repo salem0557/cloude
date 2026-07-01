@@ -1,5 +1,5 @@
 {
- "updated": "2026-07-01T17:25:35+00:00",
+ "updated": "2026-07-01T21:53:13+00:00",
  "jobs": [
   {
    "title": "IT Specialist",
@@ -10,7 +10,56 @@
    "source": "LinkedIn",
    "keywords": [
     "IT Management",
-    "IT Manager"
+    "IT Manager",
+    "IT Infrastructure"
+   ],
+   "first_seen": "2026-07-01"
+  },
+  {
+   "title": "Technical Support Engineer",
+   "company": "Virtual Vision (V2)",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/technical-support-engineer-at-virtual-vision-v2-4432707095",
+   "posted": "2026-07-01",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Infrastructure"
+   ],
+   "first_seen": "2026-07-01"
+  },
+  {
+   "title": "Associate - Infrastructure",
+   "company": "Egis",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/associate-infrastructure-at-egis-4435814075",
+   "posted": "2026-07-01",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Infrastructure"
+   ],
+   "first_seen": "2026-07-01"
+  },
+  {
+   "title": "AI Tech Consultant - Riyadh | BCG Platinion",
+   "company": "Boston Consulting Group (BCG)",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/ai-tech-consultant-riyadh-bcg-platinion-at-boston-consulting-group-bcg-4435560062",
+   "posted": "2026-07-01",
+   "source": "LinkedIn",
+   "keywords": [
+    "Digital Transformation"
+   ],
+   "first_seen": "2026-07-01"
+  },
+  {
+   "title": "Senior Team Manager (Civil Engineering)",
+   "company": "Almarai - المراعي",
+   "location": "Hail Region",
+   "url": "https://sa.linkedin.com/jobs/view/senior-team-manager-civil-engineering-at-almarai-%D8%A7%D9%84%D9%85%D8%B1%D8%A7%D8%B9%D9%8A-4435882030",
+   "posted": "2026-07-01",
+   "source": "LinkedIn",
+   "keywords": [
+    "Program Manager"
    ],
    "first_seen": "2026-07-01"
   },

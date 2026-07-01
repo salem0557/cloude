@@ -1,5 +1,5 @@
 {
- "updated": "2026-07-01T17:26:00+00:00",
+ "updated": "2026-07-01T21:53:34+00:00",
  "jobs": [
   {
    "title": "IT Specialist",
@@ -50,6 +50,30 @@
    "source": "LinkedIn",
    "keywords": [
     "IT Fresh Graduate"
+   ],
+   "first_seen": "2026-07-01"
+  },
+  {
+   "title": "Associate - Infrastructure",
+   "company": "Egis",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/associate-infrastructure-at-egis-4435814075",
+   "posted": "2026-07-01",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Support"
+   ],
+   "first_seen": "2026-07-01"
+  },
+  {
+   "title": "Senior Team Manager (Civil Engineering)",
+   "company": "Almarai - المراعي",
+   "location": "Hail Region",
+   "url": "https://sa.linkedin.com/jobs/view/senior-team-manager-civil-engineering-at-almarai-%D8%A7%D9%84%D9%85%D8%B1%D8%A7%D8%B9%D9%8A-4435882030",
+   "posted": "2026-07-01",
+   "source": "LinkedIn",
+   "keywords": [
+    "Technical Support"
    ],
    "first_seen": "2026-07-01"
   },

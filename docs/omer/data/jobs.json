@@ -1,5 +1,5 @@
 {
- "updated": "2026-07-01T17:26:31+00:00",
+ "updated": "2026-07-01T21:54:04+00:00",
  "jobs": [
   {
    "title": "Procurement Officer",
@@ -70,6 +70,18 @@
    "source": "LinkedIn",
    "keywords": [
     "Logistics"
+   ],
+   "first_seen": "2026-07-01"
+  },
+  {
+   "title": "Supply Chain Manager - GCC",
+   "company": "Biogen",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/supply-chain-manager-gcc-at-biogen-4434658829",
+   "posted": "2026-07-01",
+   "source": "LinkedIn",
+   "keywords": [
+    "Supply Chain"
    ],
    "first_seen": "2026-07-01"
   },
