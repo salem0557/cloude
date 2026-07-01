@@ -1,19 +1,82 @@
 {
-  "updated": "2026-07-01T13:53:42.048761+00:00",
+  "updated": "2026-07-01T16:57:26.305820+00:00",
   "news": [
     {
-      "title": "SpaceX’s $75B IPO dominates Q2 2026 as US offerings hit record $104.8B",
-      "url": "https://cryptobriefing.com/?p=278370",
+      "title": "Rep. Brett Guthrie calls for AI regulation, data centers to bear costs",
+      "url": "https://cryptobriefing.com/?p=278915",
       "source": "Crypto Briefing",
-      "published": "2026-07-01T13:49:53+00:00",
-      "summary": "<p>The record-breaking IPO surge highlights a shift towards mega-deals, emphasizing AI and aerospace dominance while crypto remains sidelined.</p> <p>The post <a href=\"https://cryptobriefing.com/q2-2026-ipo-market-review-spacex/\">SpaceX&#8217;s $75B IPO dominates Q2 2026 as US of"
+      "published": "2026-07-01T16:56:22+00:00",
+      "summary": "<p>AI regulation and cost accountability could reshape tech industry practices, ensuring equitable resource distribution and fostering local input.</p> <p>The post <a href=\"https://cryptobriefing.com/guthrie-ai-regulation-data-center-costs/\">Rep. Brett Guthrie calls for AI regula"
     },
     {
-      "title": "AI Agents are Starting to Handle Money. This Blockchain Wants to Build Their Bank",
-      "url": "https://beincrypto.com/?p=844985",
-      "source": "BeInCrypto",
-      "published": "2026-07-01T13:45:08+00:00",
-      "summary": "<p>For now, most AI agents still live inside safe boxes. They summarize documents. Write code. Search databases. Help customer support teams move faster.&#160; In finance, they are already creeping into fraud detection, compliance, research, and back-office workflows. Cambridge J"
+      "title": "Bitcoin price returns to $60K as US dollar strength rejects weekly high",
+      "url": "https://cointelegraph.com/markets/bitcoin-price-returns-to-60k-as-us-dollar-strength-rejects-from-weekly-high",
+      "source": "Cointelegraph",
+      "published": "2026-07-01T16:47:01+00:00",
+      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/bitcoin-lazer-eyes-and-bull-run1.jpg\" alt=\"Bitcoin price returns to $60K as US dollar strength rejects weekly high\" class=\"type:primaryImage\"></p><p>Bitcoin star"
+    },
+    {
+      "title": "Bitcoin Pops Off 21-Month Low to $60K as Soft Data Eases Rate-Hike Fears",
+      "url": "https://decrypt.co/?p=372522",
+      "source": "Decrypt",
+      "published": "2026-07-01T16:40:31+00:00",
+      "summary": "BTC recovered from local lows to $60,000 after softer U.S. jobs and factory data revived hopes the Fed's hawkish turn could be easing."
+    },
+    {
+      "title": "Taiwan’s new crypto law gives banks the first real stablecoin advantage",
+      "url": "https://cryptoslate.com/?p=545328",
+      "source": "CryptoSlate",
+      "published": "2026-07-01T16:15:24+00:00",
+      "summary": "<p>The rules do not hand issuance to banks, but reserves, custody, audits and no-yield limits put financial infrastructure first.</p> <p>The post <a href=\"https://cryptoslate.com/taiwans-new-crypto-law-gives-banks-the-first-real-stablecoin-advantage/\">Taiwan’s new crypto law give"
+    },
+    {
+      "title": "Solana USDC Liquidity Jumps As Circle Mints Another $1 Billion",
+      "url": "https://www.newsbtc.com/?p=903145",
+      "source": "NewsBTC",
+      "published": "2026-07-01T16:15:00+00:00",
+      "summary": "Circle reportedly minted another $1 billion of USDC on Solana, adding to the network’s already large gross issuance total for 2026."
+    },
+    {
+      "title": "The Vanishing Bitcoin Bid: Where Are the ETF Billions Going?",
+      "url": "https://cryptopotato.com/?p=1441581",
+      "source": "CryptoPotato",
+      "published": "2026-07-01T16:08:57+00:00",
+      "summary": "HashKey's Sun argued that Bitcoin's weakness stems from capital shifting toward AI, not fading risk appetite."
+    },
+    {
+      "title": "Winklevoss Twins Sell $60 Million of Bitcoin",
+      "url": "https://u.today/winklevoss-twins-sell-60-million-of-bitcoin",
+      "source": "U.Today",
+      "published": "2026-07-01T15:24:47+00:00",
+      "summary": "The Winklevoss twins have made huge Bitcoin deposits into a major crypto exchange in a suspected attempt to sell and take profit while Bitcoin struggles to recover."
+    },
+    {
+      "title": "Tom Lee Welcomes New Ethereum NPO: Why Biggest ETH Treasuries Back This Alliance",
+      "url": "https://u.today/tom-lee-welcomes-new-ethereum-npo-why-biggest-eth-treasuries-back-this-alliance",
+      "source": "U.Today",
+      "published": "2026-07-01T15:21:45+00:00",
+      "summary": "Tom Lee links his Ethereum treasury firm, Bitmine, to the new non-profit alliance."
+    },
+    {
+      "title": "Citi Slashes Bitcoin Target to $82K",
+      "url": "https://u.today/citi-slashes-bitcoin-target-to-82k",
+      "source": "U.Today",
+      "published": "2026-07-01T15:00:14+00:00",
+      "summary": "Wall Street giant Citi has slashed its 12-month Bitcoin price target to $82,000 and its Ethereum target to $2,200."
+    },
+    {
+      "title": "Half a Trillion Shiba Inu (SHIB) In: What to Expect From Massive Exchange Supply Surge?",
+      "url": "https://u.today/half-a-trillion-shiba-inu-shib-in-what-to-expect-from-massive-exchange-supply-surge",
+      "source": "U.Today",
+      "published": "2026-07-01T14:18:00+00:00",
+      "summary": "Shiba Inu is seeing a substantial surge of selling pressure, which creates too much possibilities for bears."
+    },
+    {
+      "title": "2.6T Shiba Inu (SHIB) Exits to On-Chain Ahead of Q3; 3-Month Trend Saves XRP at $1, Citi Slashes Bitcoin Price Target by 27% Because of AI - Morning Crypto Report",
+      "url": "https://u.today/26t-shiba-inu-shib-exits-to-on-chain-ahead-of-q3-3-month-trend-saves-xrp-at-1-citi-slashes-bitcoin",
+      "source": "U.Today",
+      "published": "2026-07-01T13:59:00+00:00",
+      "summary": "Trillions of SHIB exit exchanges after a record Q2 loss, XRP defends $1 quarterly base, and Citi cuts its Bitcoin target as AI pulls capital from crypto ETFs."
     },
     {
       "title": "Bank of Korea governor outlines tokenized bond vision, unified ledger plan",
@@ -21,20 +84,6 @@
       "source": "Cointelegraph",
       "published": "2026-07-01T13:36:13+00:00",
       "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/digital-bank-south-korea.jpg\" alt=\"Bank of Korea governor outlines tokenized bond vision, unified ledger plan\" class=\"type:primaryImage\"></p><p>The Bank of Korea"
-    },
-    {
-      "title": "MiCA’s July 1 deadline is Europe’s first crypto user-migration test – OKX interview",
-      "url": "https://cryptoslate.com/?p=544324",
-      "source": "CryptoSlate",
-      "published": "2026-07-01T13:30:42+00:00",
-      "summary": "<p>Europe's crypto market resets on July 1, when MiCA's transitional period ends and unauthorized exchanges lose the legal right to operate in the EU. Whether the deadline holds depends on the app stores on European phones. Under the ESMA's June 23 statement, unauthorized crypto "
-    },
-    {
-      "title": "Bitcoin BIP-110 Proposal Reopens Fight Over Ordinals And On-Chain Spam",
-      "url": "https://www.newsbtc.com/?p=903148",
-      "source": "NewsBTC",
-      "published": "2026-07-01T13:15:00+00:00",
-      "summary": "A Bitcoin developer proposal has reignited debate over whether the network should filter inscription-heavy activity such as Ordinals and Runes."
     },
     {
       "title": "Here’s what happened in crypto today",
@@ -233,13 +282,6 @@
       "summary": "Crypto treasury Evernorth breaks down why Ripple USD expansion isn’t hurting XRP, revealing how the stablecoin actually drives network activity."
     },
     {
-      "title": "Business use of stablecoins set for growth surge: Cybrid report",
-      "url": "https://cointelegraph.com/news/42-of-businesses-surveyed-use-stablecoins-for-cross-border-payments-cybrid-report",
-      "source": "Cointelegraph",
-      "published": "2026-06-30T16:34:31+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/cross-border-transaction-stablecoin-1.jpg\" alt=\"Business use of stablecoins set for growth surge: Cybrid report \" class=\"type:primaryImage\"></p><p>The majority o"
-    },
-    {
       "title": "OKX Founder Slams CZ as EU Licensing Saga Sparks Fresh Criticism",
       "url": "https://u.today/okx-founder-slams-cz-as-eu-licensing-saga-sparks-fresh-criticism",
       "source": "U.Today",
@@ -301,53 +343,35 @@
       "source": "U.Today",
       "published": "2026-06-30T10:28:00+00:00",
       "summary": "The market is not the same anymore, as Bitcoin and its derivatives certainly lack liquidity and volumes."
-    },
-    {
-      "title": "Tether Advisor Gurbacs Breaks Down 'a Big Reason' Why Bitcoin Is Not at All-Time High",
-      "url": "https://u.today/tether-advisor-gurbacs-breaks-down-a-big-reason-why-bitcoin-is-not-at-all-time-high",
-      "source": "U.Today",
-      "published": "2026-06-30T09:42:00+00:00",
-      "summary": "Gabor Gurbacs drops a harsh reality check on why Bitcoin is failing to reach all-time highs in 2026."
-    },
-    {
-      "title": "Bought ETH in Past 5 Years? You Are Now Net Negative",
-      "url": "https://u.today/bought-eth-in-past-5-years-you-are-now-net-negative",
-      "source": "U.Today",
-      "published": "2026-06-30T08:18:58+00:00",
-      "summary": "Ethereum is facing one of the most brutal drawdowns in its history."
-    },
-    {
-      "title": "Will XRP Crash Help It Survive? FOMO Recorded for First Time in Ages",
-      "url": "https://u.today/will-xrp-crash-help-it-survive-fomo-recorded-for-first-time-in-ages",
-      "source": "U.Today",
-      "published": "2026-06-30T08:05:00+00:00",
-      "summary": "XRP's run to $1 could've attracted hungry investors who are trying to catch a knife."
-    },
-    {
-      "title": "Why Shiba Inu (SHIB) Buying Volume Is at 0, Dogecoin (DOGE) Bottom Established, Bitcoin (BTC) Struggles With $60,000: Crypto Market Review",
-      "url": "https://u.today/why-shiba-inu-shib-buying-volume-is-at-0-dogecoin-doge-bottom-established-bitcoin-btc-struggles",
-      "source": "U.Today",
-      "published": "2026-06-30T00:01:00+00:00",
-      "summary": "The market is being suffocated as no fresh inflows are being deposited."
     }
   ],
   "rumors": [
     {
-      "title": "XBTFX Launches MCP Server and Agent Stack for Crypto and CFD Trading Workflows",
-      "url": "https://cryptopotato.com/?p=1441598",
-      "source": "CryptoPotato",
-      "published": "2026-07-01T13:33:33+00:00",
-      "summary": "St. John's, Antigua and Barbuda, 1st July 2026",
+      "title": "Ethereum backers launch nonprofit to lead institutional adoption efforts",
+      "url": "https://cointelegraph.com/news/ethereum-institutional-nonprofit-launches-institutional-adoption",
+      "source": "Cointelegraph",
+      "published": "2026-07-01T16:39:28+00:00",
+      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-most-interesting-solutions-being-developed-for-ethereum-network.jpg\" alt=\"Ethereum backers launch nonprofit to lead institutional adoption efforts\" class=\"typ",
       "tags": [
         "Launch"
       ]
     },
     {
-      "title": "Morning Minute: Major New Stablecoin Launch Shakes Incumbents",
-      "url": "https://decrypt.co/?p=372513",
-      "source": "Decrypt",
-      "published": "2026-07-01T12:31:07+00:00",
-      "summary": "Open USD takes a shot at USDC and USDT, with backing from heavy hitters including Visa, Mastercard and Google.",
+      "title": "Could Open USD Crush Aave’s USDC Yields? Here’s What DeFi Users Need to Know",
+      "url": "https://beincrypto.com/?p=844951",
+      "source": "BeInCrypto",
+      "published": "2026-07-01T14:58:22+00:00",
+      "summary": "<p>Open USD launched with 140 backers. Here is how the new stablecoin could pressure the USDC yields earned on Aave.</p> <p>The post <a href=\"https://beincrypto.com/open-usd-aave-usdc-yields/\">Could Open USD Crush Aave&#8217;s USDC Yields? Here&#8217;s What DeFi Users Need to Kno",
+      "tags": [
+        "Launch"
+      ]
+    },
+    {
+      "title": "French banking giant Crédit Agricole launches EURXT euro stablecoin",
+      "url": "https://cointelegraph.com/news/credit-agricole-eurxt-euro-stablecoin-caceis",
+      "source": "Cointelegraph",
+      "published": "2026-07-01T14:24:19+00:00",
+      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-euro-pegged-stablecoin-the-ultimate-growth-driver-for-crypto-lending11.jpg\" alt=\"French banking giant Crédit Agricole launches EURXT euro stablecoin\" class=\"t",
       "tags": [
         "Launch"
       ]
@@ -363,16 +387,6 @@
       ]
     },
     {
-      "title": "French banking giant Crédit Agricole launches EURXT euro stablecoin",
-      "url": "https://cointelegraph.com/news/credit-agricole-eurxt-euro-stablecoin-caceis",
-      "source": "Cointelegraph",
-      "published": "2026-07-01T11:50:01+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-euro-pegged-stablecoin-the-ultimate-growth-driver-for-crypto-lending11.jpg\" alt=\"French banking giant Crédit Agricole launches EURXT euro stablecoin\" class=\"t",
-      "tags": [
-        "Launch"
-      ]
-    },
-    {
       "title": "Trump earned more from crypto than real estate in 2025, filings show",
       "url": "https://cointelegraph.com/news/trump-earned-more-from-crypto-than-real-estate-in-2025-filings-show",
       "source": "Cointelegraph",
@@ -380,16 +394,6 @@
       "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/trump-memecoin.jpg\" alt=\"Trump earned more from crypto than real estate in 2025, filings show\" class=\"type:primaryImage\"></p><p>Memecoin sales and royalties made",
       "tags": [
         "Meme"
-      ]
-    },
-    {
-      "title": "MetaMask launches stablecoin yield account with card spending",
-      "url": "https://cointelegraph.com/news/metamask-money-account-musd-stablecoin-yield",
-      "source": "Cointelegraph",
-      "published": "2026-06-30T14:00:00+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-how-to-sell-crypto-via-metamask-a-step-by-step-guide.jpg\" alt=\"MetaMask launches stablecoin yield account with card spending\" class=\"type:primaryImage\"></p><p",
-      "tags": [
-        "Launch"
       ]
     },
     {
@@ -410,16 +414,6 @@
       "summary": "Binance expands TradFi shift by listing tokenized Microsoft and Meta stocks as RWA perps volume explodes to $347 billion.",
       "tags": [
         "Listing"
-      ]
-    },
-    {
-      "title": "XRPL Crypto Credit Primitive Enters Key Voting Phase",
-      "url": "https://u.today/xrpl-crypto-credit-primitive-enters-key-voting-phase",
-      "source": "U.Today",
-      "published": "2026-06-30T06:02:48+00:00",
-      "summary": "The XRP Ledger (XRPL) is poised to enter a new phase focused on financing value as its proposed native Lending Protocol officially enters the validator voting phase.",
-      "tags": [
-        "Prediction"
       ]
     }
   ],
