@@ -1,33 +1,89 @@
 {
-  "updated": "2026-07-01T10:55:33.508755+00:00",
+  "updated": "2026-07-01T13:53:42.048761+00:00",
   "news": [
+    {
+      "title": "SpaceX’s $75B IPO dominates Q2 2026 as US offerings hit record $104.8B",
+      "url": "https://cryptobriefing.com/?p=278370",
+      "source": "Crypto Briefing",
+      "published": "2026-07-01T13:49:53+00:00",
+      "summary": "<p>The record-breaking IPO surge highlights a shift towards mega-deals, emphasizing AI and aerospace dominance while crypto remains sidelined.</p> <p>The post <a href=\"https://cryptobriefing.com/q2-2026-ipo-market-review-spacex/\">SpaceX&#8217;s $75B IPO dominates Q2 2026 as US of"
+    },
+    {
+      "title": "AI Agents are Starting to Handle Money. This Blockchain Wants to Build Their Bank",
+      "url": "https://beincrypto.com/?p=844985",
+      "source": "BeInCrypto",
+      "published": "2026-07-01T13:45:08+00:00",
+      "summary": "<p>For now, most AI agents still live inside safe boxes. They summarize documents. Write code. Search databases. Help customer support teams move faster.&#160; In finance, they are already creeping into fraud detection, compliance, research, and back-office workflows. Cambridge J"
+    },
+    {
+      "title": "Bank of Korea governor outlines tokenized bond vision, unified ledger plan",
+      "url": "https://cointelegraph.com/news/bank-korea-governor-tokenized-government-bonds",
+      "source": "Cointelegraph",
+      "published": "2026-07-01T13:36:13+00:00",
+      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/digital-bank-south-korea.jpg\" alt=\"Bank of Korea governor outlines tokenized bond vision, unified ledger plan\" class=\"type:primaryImage\"></p><p>The Bank of Korea"
+    },
+    {
+      "title": "MiCA’s July 1 deadline is Europe’s first crypto user-migration test – OKX interview",
+      "url": "https://cryptoslate.com/?p=544324",
+      "source": "CryptoSlate",
+      "published": "2026-07-01T13:30:42+00:00",
+      "summary": "<p>Europe's crypto market resets on July 1, when MiCA's transitional period ends and unauthorized exchanges lose the legal right to operate in the EU. Whether the deadline holds depends on the app stores on European phones. Under the ESMA's June 23 statement, unauthorized crypto "
+    },
+    {
+      "title": "Bitcoin BIP-110 Proposal Reopens Fight Over Ordinals And On-Chain Spam",
+      "url": "https://www.newsbtc.com/?p=903148",
+      "source": "NewsBTC",
+      "published": "2026-07-01T13:15:00+00:00",
+      "summary": "A Bitcoin developer proposal has reignited debate over whether the network should filter inscription-heavy activity such as Ordinals and Runes."
+    },
+    {
+      "title": "Here’s what happened in crypto today",
+      "url": "https://cointelegraph.com/news/what-happened-in-crypto-today",
+      "source": "Cointelegraph",
+      "published": "2026-07-01T13:12:41+00:00",
+      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/article-covers-110589-what-happened-in-crypto-today.jpg\" alt=\"Here’s what happened in crypto today\" class=\"type:primaryImage\"></p><p>Need to know what happened i"
+    },
+    {
+      "title": "Circle CEO touts USDC's network advantage as OUSD emerges",
+      "url": "https://cointelegraph.com/news/circle-ceo-challenges-ousd-revenue-sharing-governance",
+      "source": "Cointelegraph",
+      "published": "2026-07-01T12:38:05+00:00",
+      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/coins-red-arpet-stablecoin.jpg\" alt=\"Circle CEO touts USDC's network advantage as OUSD emerges\" class=\"type:primaryImage\"></p><p>Bernstein said OUSD could become"
+    },
+    {
+      "title": "Last-minute MiCA approvals mark end of EU transition period",
+      "url": "https://cointelegraph.com/news/new-licenses-issued-eu-mica-grace-period-ends",
+      "source": "Cointelegraph",
+      "published": "2026-07-01T12:17:54+00:00",
+      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-digital-c-man-europe-mica.jpg\" alt=\"Last-minute MiCA approvals mark end of EU transition period\" class=\"type:primaryImage\"></p><p>A final wave of MiCA approva"
+    },
+    {
+      "title": "Bitcoin ETFs See Historic Sell-Off as 100,000 BTC Exit Funds",
+      "url": "https://u.today/bitcoin-etfs-see-historic-sell-off-as-100000-btc-exit-funds",
+      "source": "U.Today",
+      "published": "2026-07-01T11:53:58+00:00",
+      "summary": "Bitcoin ETFs suffer over $11 billion in losses amid aggressive sell-offs seen over the past few months, marking the largest drawdown they have ever witnessed."
+    },
+    {
+      "title": "Ripple's Billion-Token Unlock Is Here",
+      "url": "https://u.today/ripples-billion-token-unlock-is-here",
+      "source": "U.Today",
+      "published": "2026-07-01T11:13:29+00:00",
+      "summary": "Ripple has executed its scheduled monthly cryptographic escrow release for July 1, unlocking 1 billion XRP (valued at roughly $1.04 billion) across three automated tranches."
+    },
+    {
+      "title": "Crypto enters Q3 with thinner liquidity but less leverage after Q2 reset: Talos",
+      "url": "https://cointelegraph.com/news/crypto-q3-less-leverage-thinner-liquidity-talos",
+      "source": "Cointelegraph",
+      "published": "2026-07-01T10:59:41+00:00",
+      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/market-bitcoin-ethereum.jpg\" alt=\"Crypto enters Q3 with thinner liquidity but less leverage after Q2 reset: Talos\" class=\"type:primaryImage\"></p><p>Bitcoin and E"
+    },
     {
       "title": "Ripple President Reveals What's Next for XRP in Global Payments Race",
       "url": "https://u.today/ripple-president-reveals-whats-next-for-xrp-in-global-payments-race",
       "source": "U.Today",
       "published": "2026-07-01T10:30:15+00:00",
       "summary": "Ripple president predicts future of payment with focus on XRPL, XRP and RLUSD."
-    },
-    {
-      "title": "Bitcoin can still fall to $53,000 if the ETF-era floor disappears",
-      "url": "https://cryptoslate.com/?p=545308",
-      "source": "CryptoSlate",
-      "published": "2026-07-01T10:30:09+00:00",
-      "summary": "<p>Bitcoin is close to losing $58,000, and the test below that level is whether the buyer stack that defined the post-ETF bull case still holds. Near $58,522 with an intraday low near $58,135, the market is asking whether anyone will buy in size at current prices, and the answer "
-    },
-    {
-      "title": "Taiwan Advances Crypto Regulation With New VASP and Stablecoin Framework",
-      "url": "https://beincrypto.com/?p=844854",
-      "source": "BeInCrypto",
-      "published": "2026-07-01T10:25:06+00:00",
-      "summary": "<p>Taiwan&#8217;s Legislative Yuan passed the Virtual Asset Service Act on its third reading on June 30, moving crypto oversight beyond narrow anti-money-laundering rules. The law rewrites how virtual asset service providers (VASPs) and stablecoin issuers operate, introducing lic"
-    },
-    {
-      "title": "Bitcoin (BTC) Starts July Under $60K, Cardano (ADA) Finally Rebounds: Market Watch",
-      "url": "https://cryptopotato.com/?p=1441574",
-      "source": "CryptoPotato",
-      "published": "2026-07-01T09:39:09+00:00",
-      "summary": "BTC bears remain in charge as the asset briefly tumbled to $58,000."
     },
     {
       "title": "'XRP Ledger Was 15 Years Ahead': Ripple's Ex Chief Engineer Reacts to New Visa-Mastercard Stablecoin",
@@ -42,13 +98,6 @@
       "source": "Cointelegraph",
       "published": "2026-07-01T09:22:09+00:00",
       "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-vanilla-drainer-how-one-scam-tool.jpg\" alt=\"Bitcoin ETFs lose record $4.5B in June, eclipsing Strategy's $1.25B raise\" class=\"type:primaryImage\"></p><p>US spo"
-    },
-    {
-      "title": "Goliath Ventures CEO Pleads Guilty to $250M Crypto Ponzi Scheme",
-      "url": "https://decrypt.co/?p=372502",
-      "source": "Decrypt",
-      "published": "2026-07-01T08:43:31+00:00",
-      "summary": "Christopher Delgado’s \"liquidity pool\" fraud took in at least $400 million, with the proceeds spent on mansions, Lamborghinis, and Rolexes."
     },
     {
       "title": "Former Goliath Ventures CEO pleads guilty in $400M crypto Ponzi case",
@@ -70,13 +119,6 @@
       "source": "Cointelegraph",
       "published": "2026-07-01T06:14:32+00:00",
       "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-business-to-give-the-access-to-ai-models.jpg\" alt=\"Anthropic to bring back Fable 5 as US lifts export controls\" class=\"type:primaryImage\"></p><p>Claude Fable "
-    },
-    {
-      "title": "Here’s what happened in crypto today",
-      "url": "https://cointelegraph.com/news/what-happened-in-crypto-today",
-      "source": "Cointelegraph",
-      "published": "2026-07-01T06:00:00+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/article-covers-110589-what-happened-in-crypto-today.jpg\" alt=\"Here’s what happened in crypto today\" class=\"type:primaryImage\"></p><p>Need to know what happened i"
     },
     {
       "title": "Bitcoin Records Extremely Rare Breakdown",
@@ -170,13 +212,6 @@
       "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/article-covers-201145-japan-remixpoint-ceo-salary-bitcoin.jpg\" alt=\"Bitcoin price risks drop below $58K as US dollar hits 40-year high against yen\" class=\"type:p"
     },
     {
-      "title": "XRP Holds $1 Support As Wallet Growth Hits Three-Month High",
-      "url": "https://www.newsbtc.com/?p=902993",
-      "source": "NewsBTC",
-      "published": "2026-06-30T18:00:00+00:00",
-      "summary": "XRP Holds $1 Support As Wallet Growth Hits Three-Month High: what the validated data shows, why it matters for crypto markets, and the caveat traders should."
-    },
-    {
       "title": "AI’s power crunch turns Bitcoin miners’ grid access into an asset",
       "url": "https://cointelegraph.com/features/bitcoin-miners-ai-data-centers-power-infrastructure",
       "source": "Cointelegraph",
@@ -240,39 +275,11 @@
       "summary": "XRP faces a 30% downside risk after breaking key $1.06 support, with analyst Martinez mapping fresh on-chain targets."
     },
     {
-      "title": "Strategy's new plan divides industry observers even as MSTR, STRC climb",
-      "url": "https://cointelegraph.com/news/strategy-new-plan-split-community-mstr-strc-climb",
-      "source": "Cointelegraph",
-      "published": "2026-06-30T13:14:47+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/futures-bitcoin-options-top-24.jpg\" alt=\"Strategy's new plan divides industry observers even as MSTR, STRC climb\" class=\"type:primaryImage\"></p><p>Strategy’s new"
-    },
-    {
-      "title": "Theo becomes first crypto-native investor in Fidelity tokenized fund",
-      "url": "https://cointelegraph.com/news/fidelity-tokenized-fund-first-crypto-native-investor",
-      "source": "Cointelegraph",
-      "published": "2026-06-30T13:00:00+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-what-are-tokenized-debt-instruments.png\" alt=\"Theo becomes first crypto-native investor in Fidelity tokenized fund\" class=\"type:primaryImage\"></p><p>The oncha"
-    },
-    {
-      "title": "Swan's Cory Klippsten sees record Bitcoin holder supply revealing early bottom",
-      "url": "https://cointelegraph.com/news/record-bitcoin-holder-supply-early-bottom-swan-ceo",
-      "source": "Cointelegraph",
-      "published": "2026-06-30T12:44:21+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/cory-klippsten2.jpg\" alt=\"Swan's Cory Klippsten sees record Bitcoin holder supply revealing early bottom\" class=\"type:primaryImage\"></p><p>The record Bitcoin sup"
-    },
-    {
       "title": "Shiba Inu (SHIB) Bulls Are Losing the Battle: Just 438 Billion in 24 Hours",
       "url": "https://u.today/shiba-inu-shib-bulls-are-losing-the-battle-just-438-billion-in-24-hours",
       "source": "U.Today",
       "published": "2026-06-30T12:40:00+00:00",
       "summary": "Shiba Inu has a huge room for recovery, but bulls don't have enough liquidity for it."
-    },
-    {
-      "title": "StarkWare unveils Starknet quantum roadmap, says industry has no excuse",
-      "url": "https://cointelegraph.com/news/starkware-ceo-blasts-crypto-complacency-in-quantum-threat-elliptic-illusion",
-      "source": "Cointelegraph",
-      "published": "2026-06-30T12:30:00+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-cryptocurrency-vs-quantum-computing-1.jpg\" alt=\"StarkWare unveils Starknet quantum roadmap, says industry has no excuse \" class=\"type:primaryImage\"></p><p>“Th"
     },
     {
       "title": "XRP ETF Demand Persists as Bitwise Surpasses $500 Million Inflow Milestone",
@@ -322,36 +329,45 @@
       "source": "U.Today",
       "published": "2026-06-30T00:01:00+00:00",
       "summary": "The market is being suffocated as no fresh inflows are being deposited."
-    },
-    {
-      "title": "Ripple's Garlinghouse Slams Strategy's Financial Engineering",
-      "url": "https://u.today/ripples-garlinghouse-slams-strategys-financial-engineering",
-      "source": "U.Today",
-      "published": "2026-06-29T20:28:06+00:00",
-      "summary": "The long-standing ideological feud between Ripple CEO Brad Garlinghouse and Strategy Executive Chairman Michael Saylor has reignited over competing visions for the cryptocurrency industry's future."
-    },
-    {
-      "title": "Fundstrat's Top Strategist Tells Panic-Sellers to Hold the Line",
-      "url": "https://u.today/fundstrats-top-strategist-tells-panic-sellers-to-hold-the-line",
-      "source": "U.Today",
-      "published": "2026-06-29T19:02:57+00:00",
-      "summary": "In a recent interview on the All Things Markets show, the Wall Street veteran warned that panic-selling now could be a grave mistake."
-    },
-    {
-      "title": "Shiba Inu (SHIB) Re-Enters Crypto Top 30 as Exchange Reserves Plunge to 87.18 Trillion Coins",
-      "url": "https://u.today/shiba-inu-shib-re-enters-crypto-top-30-as-exchange-reserves-plunge-to-8718-trillion-coins",
-      "source": "U.Today",
-      "published": "2026-06-29T16:51:00+00:00",
-      "summary": "Whales spark a supply squeeze by pulling 781 billion SHIB off exchanges, creating an on-chain deficit that forced Shiba Inu coin back into the top 30."
     }
   ],
   "rumors": [
     {
-      "title": "LINE NEXT to launch Unifi Pay supporting USDT, JPYC, and IDRP in Q3 2026",
-      "url": "https://cryptobriefing.com/?p=277706",
-      "source": "Crypto Briefing",
-      "published": "2026-07-01T10:52:56+00:00",
-      "summary": "<p>Unifi Pay's launch could accelerate stablecoin adoption in Asia, leveraging LINE's vast user base to transform digital payments and commerce.</p> <p>The post <a href=\"https://cryptobriefing.com/line-next-unifi-pay-stablecoin-launch/\">LINE NEXT to launch Unifi Pay supporting US",
+      "title": "XBTFX Launches MCP Server and Agent Stack for Crypto and CFD Trading Workflows",
+      "url": "https://cryptopotato.com/?p=1441598",
+      "source": "CryptoPotato",
+      "published": "2026-07-01T13:33:33+00:00",
+      "summary": "St. John's, Antigua and Barbuda, 1st July 2026",
+      "tags": [
+        "Launch"
+      ]
+    },
+    {
+      "title": "Morning Minute: Major New Stablecoin Launch Shakes Incumbents",
+      "url": "https://decrypt.co/?p=372513",
+      "source": "Decrypt",
+      "published": "2026-07-01T12:31:07+00:00",
+      "summary": "Open USD takes a shot at USDC and USDT, with backing from heavy hitters including Visa, Mastercard and Google.",
+      "tags": [
+        "Launch"
+      ]
+    },
+    {
+      "title": "Major Upgrade Ahead for XRP Ledger Ethereum Sidechain: What to Expect",
+      "url": "https://u.today/major-upgrade-ahead-for-xrp-ledger-ethereum-sidechain-what-to-expect",
+      "source": "U.Today",
+      "published": "2026-07-01T12:30:36+00:00",
+      "summary": "The XRPL EVM sidechain, which adds Ethereum-compatible smart contracts to the XRP Ledger set to welcome a new release.",
+      "tags": [
+        "Prediction"
+      ]
+    },
+    {
+      "title": "French banking giant Crédit Agricole launches EURXT euro stablecoin",
+      "url": "https://cointelegraph.com/news/credit-agricole-eurxt-euro-stablecoin-caceis",
+      "source": "Cointelegraph",
+      "published": "2026-07-01T11:50:01+00:00",
+      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-euro-pegged-stablecoin-the-ultimate-growth-driver-for-crypto-lending11.jpg\" alt=\"French banking giant Crédit Agricole launches EURXT euro stablecoin\" class=\"t",
       "tags": [
         "Launch"
       ]
@@ -372,16 +388,6 @@
       "source": "Cointelegraph",
       "published": "2026-06-30T14:00:00+00:00",
       "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-how-to-sell-crypto-via-metamask-a-step-by-step-guide.jpg\" alt=\"MetaMask launches stablecoin yield account with card spending\" class=\"type:primaryImage\"></p><p",
-      "tags": [
-        "Launch"
-      ]
-    },
-    {
-      "title": "OKX launches AI marketplace for autonomous agent economy",
-      "url": "https://cointelegraph.com/news/okx-ai-marketplace-autonomous-agent-economy",
-      "source": "Cointelegraph",
-      "published": "2026-06-30T13:39:39+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-what-happens-when-chatgpt-becomes-the-front-door-to-crypto-1.jpg\" alt=\"OKX launches AI marketplace for autonomous agent economy\" class=\"type:primaryImage\"></p",
       "tags": [
         "Launch"
       ]
