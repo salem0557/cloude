@@ -1,12 +1,33 @@
 {
-  "updated": "2026-07-01T21:10:54.309558+00:00",
+  "updated": "2026-07-01T22:50:19.878135+00:00",
   "news": [
     {
-      "title": "Meta targets cloud market, challenging Amazon, Microsoft, and Google",
-      "url": "https://cryptobriefing.com/?p=279229",
+      "title": "Alibaba to pay $600M to resolve US drug sales probe",
+      "url": "https://cryptobriefing.com/?p=279350",
       "source": "Crypto Briefing",
-      "published": "2026-07-01T21:07:24+00:00",
-      "summary": "<p>Meta's cloud venture could reshape the competitive landscape, challenging established giants and potentially redefining enterprise trust dynamics.</p> <p>The post <a href=\"https://cryptobriefing.com/meta-cloud-market-aws-azure-google/\">Meta targets cloud market, challenging Am"
+      "published": "2026-07-01T22:48:47+00:00",
+      "summary": "<p>The settlement highlights increasing regulatory scrutiny, prompting e-commerce firms to bolster compliance and verification measures globally.</p> <p>The post <a href=\"https://cryptobriefing.com/alibaba-600m-settlement-us-drug-probe/\">Alibaba to pay $600M to resolve US drug sa"
+    },
+    {
+      "title": "What to Expect From Solana (SOL) in July 2026",
+      "url": "https://beincrypto.com/?p=845086",
+      "source": "BeInCrypto",
+      "published": "2026-07-01T22:09:01+00:00",
+      "summary": "<p>Solana holds $73 support as on-chain activity nears yearly highs. A close above $80 could open the path toward $120 in July.</p> <p>The post <a href=\"https://beincrypto.com/what-to-expect-from-solana-sol-in-july-2026/\">What to Expect From Solana (SOL) in July 2026</a> appeared"
+    },
+    {
+      "title": "Bitcoin tops $60K amid Fed inflation talks: Is bull trap or $65K next?",
+      "url": "https://cointelegraph.com/markets/bitcoin-pings-60k-amid-fed-inflation-talks-is-bull-trap-or-65k-next",
+      "source": "Cointelegraph",
+      "published": "2026-07-01T22:02:40+00:00",
+      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/article-covers-224014-dead-cat-bounce-to-118k-5-things-bitcoin-this-week.jpg\" alt=\"Bitcoin tops $60K amid Fed inflation talks: Is bull trap or $65K next? \" class"
+    },
+    {
+      "title": "Robinhood rolls out public blockchain, plans crypto trading for UK residents",
+      "url": "https://cointelegraph.com/news/robinhood-public-blockchain-mainnet-launch",
+      "source": "Cointelegraph",
+      "published": "2026-07-01T21:38:49+00:00",
+      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/robinhood.png\" alt=\"Robinhood rolls out public blockchain, plans crypto trading for UK residents\" class=\"type:primaryImage\"></p><p>The company announced a suite "
     },
     {
       "title": "Tradeweb executes real-time tokenized US Treasury transaction on Canton Network",
@@ -268,20 +289,6 @@
       "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/article-covers-226789-bitcoin-scrapes-new-lows-as-tech-stocks-drop-data-forecasts-btc-dip-below-dollar.jpg\" alt=\"Bitcoin just $5K away from ‘best investment oppo"
     },
     {
-      "title": "Massachusetts AG files amended lawsuit against Kalshi over sports betting after court ruling",
-      "url": "https://cointelegraph.com/news/massachusetts-lawsuit-kalshi-sports-betting",
-      "source": "Cointelegraph",
-      "published": "2026-06-30T21:44:48+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/court-law-judge-flags-ma-us.png\" alt=\"Massachusetts AG files amended lawsuit against Kalshi over sports betting after court ruling\" class=\"type:primaryImage\"></p"
-    },
-    {
-      "title": "Bitmine Ether buys eclipsed by $345M ETH ETF outflows: Is sub $1.5K next?",
-      "url": "https://cointelegraph.com/markets/bitmine-ether-buys-eclipsed-by-345m-eth-etf-345m-outflows-is-sub-15k-next",
-      "source": "Cointelegraph",
-      "published": "2026-06-30T21:16:47+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/article-covers-251386-ethereum-price-drops-1-8k-data-eth-bears-not-done-yet.jpg\" alt=\"Bitmine Ether buys eclipsed by $345M ETH ETF outflows: Is sub $1.5K next?\" "
-    },
-    {
       "title": "Ripple's RLUSD Rapidly Shrinks as New Major Stablecoin Emerges",
       "url": "https://u.today/ripples-rlusd-rapidly-shrinks-as-new-major-stablecoin-emerges",
       "source": "U.Today",
@@ -352,16 +359,6 @@
       "source": "Decrypt",
       "published": "2026-07-01T20:56:38+00:00",
       "summary": "Brokerage and crypto exchange Robinhood opened the public mainnet for its Arbitrum-powered Ethereum layer-2 network on Wednesday.",
-      "tags": [
-        "Launch"
-      ]
-    },
-    {
-      "title": "Solana Prediction Market World Goes Live: Can It Take on Polymarket and Kalshi?",
-      "url": "https://beincrypto.com/?p=845031",
-      "source": "BeInCrypto",
-      "published": "2026-07-01T20:11:13+00:00",
-      "summary": "<p>World launched a Solana prediction market inside Phantom, using Chainlink oracles as it takes on Polymarket and Kalshi.</p> <p>The post <a href=\"https://beincrypto.com/world-solana-prediction-market-phantom/\">Solana Prediction Market World Goes Live: Can It Take on Polymarket ",
       "tags": [
         "Launch"
       ]
