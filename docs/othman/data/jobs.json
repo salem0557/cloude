@@ -1,5 +1,5 @@
 {
- "updated": "2026-07-01T08:57:58+00:00",
+ "updated": "2026-07-01T13:14:16+00:00",
  "jobs": [
   {
    "title": "IT Specialist",
@@ -12,7 +12,20 @@
     "IT Support",
     "Technical Support",
     "IT Specialist",
-    "System Administrator"
+    "System Administrator",
+    "IT Fresh Graduate"
+   ],
+   "first_seen": "2026-07-01"
+  },
+  {
+   "title": "Barista",
+   "company": "Summit End",
+   "location": "Hail Region",
+   "url": "https://sa.linkedin.com/jobs/view/barista-at-summit-end-4432338938",
+   "posted": "2026-07-01",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Fresh Graduate"
    ],
    "first_seen": "2026-07-01"
   },

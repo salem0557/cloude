@@ -1,6 +1,18 @@
 {
- "updated": "2026-07-01T08:57:34+00:00",
+ "updated": "2026-07-01T13:13:52+00:00",
  "jobs": [
+  {
+   "title": "IT Specialist",
+   "company": "Fakeeh Care Group",
+   "location": "Al Yasmin District, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/it-specialist-at-fakeeh-care-group-4435513229",
+   "posted": "2026-07-01",
+   "source": "LinkedIn",
+   "keywords": [
+    "IT Management"
+   ],
+   "first_seen": "2026-07-01"
+  },
   {
    "title": "Technology Strategy/ Enterprise Architect Senior Manager",
    "company": "Accenture Middle East",
@@ -1097,7 +1109,8 @@
    "posted": "2026-06-22",
    "source": "LinkedIn",
    "keywords": [
-    "IT Manager"
+    "IT Manager",
+    "IT Infrastructure"
    ],
    "first_seen": "2026-06-23"
   },
@@ -1672,7 +1685,8 @@
    "posted": "2026-06-03",
    "source": "LinkedIn",
    "keywords": [
-    "IT Manager"
+    "IT Manager",
+    "IT Infrastructure"
    ],
    "first_seen": "2026-06-18"
   },
