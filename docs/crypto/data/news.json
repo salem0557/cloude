@@ -1,40 +1,82 @@
 {
-  "updated": "2026-07-01T16:57:26.305820+00:00",
+  "updated": "2026-07-01T19:22:10.749062+00:00",
   "news": [
     {
-      "title": "Rep. Brett Guthrie calls for AI regulation, data centers to bear costs",
-      "url": "https://cryptobriefing.com/?p=278915",
+      "title": "USDC And Bitcoin Lead $850 Million Exchange Outflow Wave",
+      "url": "https://www.newsbtc.com/?p=903151",
+      "source": "NewsBTC",
+      "published": "2026-07-01T19:15:00+00:00",
+      "summary": "Centralized exchanges reportedly saw notable 24-hour withdrawals led by USDC and Bitcoin as traders moved funds off platforms."
+    },
+    {
+      "title": "Nebius, CoreWeave, and IREN shares tumble on Meta’s cloud ambitions",
+      "url": "https://cryptobriefing.com/?p=279036",
       "source": "Crypto Briefing",
-      "published": "2026-07-01T16:56:22+00:00",
-      "summary": "<p>AI regulation and cost accountability could reshape tech industry practices, ensuring equitable resource distribution and fostering local input.</p> <p>The post <a href=\"https://cryptobriefing.com/guthrie-ai-regulation-data-center-costs/\">Rep. Brett Guthrie calls for AI regula"
+      "published": "2026-07-01T19:08:24+00:00",
+      "summary": "<p>Meta's cloud move could signal a trend where hyperscalers monetize excess capacity, potentially shrinking the neocloud market's scope.</p> <p>The post <a href=\"https://cryptobriefing.com/nebius-coreweave-iren-shares-tumble-meta-cloud/\">Nebius, CoreWeave, and IREN shares tumble"
+    },
+    {
+      "title": "UN's First AI Safety Panel Says Scientists Can't Rule Out 'Catastrophic Harm'",
+      "url": "https://decrypt.co/?p=372543",
+      "source": "Decrypt",
+      "published": "2026-07-01T19:05:50+00:00",
+      "summary": "A 40-scientist panel found that AI capabilities are outrunning both scientific understanding and government oversight."
+    },
+    {
+      "title": "Is OpenUSD the answer to bank push back on CLARITY? Hints stablecoin yield concessions will fail",
+      "url": "https://cryptoslate.com/?p=545456",
+      "source": "CryptoSlate",
+      "published": "2026-07-01T19:00:47+00:00",
+      "summary": "<p>The 140-partner model challenges USDC reserve economics while leaving issuer, reserve and redemption tests unresolved.</p> <p>The post <a href=\"https://cryptoslate.com/is-openusd-the-industry-answer-to-bank-push-back-on-clarity-hints-stablecoin-yield-concessions-will-fail/\">Is"
+    },
+    {
+      "title": "Bitcoin bear market ‘dead’ after first TD9 reversal signal since July 2022 fires",
+      "url": "https://cointelegraph.com/markets/bitcoin-tests-claims-price-is-dead-with-first-td9-reversal-signal-since-july-2022",
+      "source": "Cointelegraph",
+      "published": "2026-07-01T18:59:27+00:00",
+      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/article-covers-169245-bitcoin-and-cryptocurrencies-contribute-to-record-negative-balance-of-us-844-bil.jpg\" alt=\"Bitcoin bear market ‘dead’ after first TD9 rever"
+    },
+    {
+      "title": "This US Stock Skyrocketed 70% in June Amid the AI Data Center Pivot",
+      "url": "https://beincrypto.com/?p=844991",
+      "source": "BeInCrypto",
+      "published": "2026-07-01T18:24:56+00:00",
+      "summary": "<p>FuelCell Energy stock skyrocketed nearly 70% in June. Shares now trade near $36.25, powered by a decisive pivot toward the AI data center power market. The move made FCEL one of the best-performing US stocks of the month. The rally reshaped how Wall Street values fuel-cell com"
+    },
+    {
+      "title": "XRPL Secures Key Transaction Feature",
+      "url": "https://u.today/xrpl-secures-key-transaction-feature",
+      "source": "U.Today",
+      "published": "2026-07-01T18:11:35+00:00",
+      "summary": "The XRP Ledger (XRPL) developer community is buzzing following the successful return of the highly anticipated \"Batch\" amendment."
+    },
+    {
+      "title": "Crypto ATM bans, restrictions now in effect in Tennessee and Georgia",
+      "url": "https://cointelegraph.com/news/crypto-atm-bans-restrictions-tennessee-georgia",
+      "source": "Cointelegraph",
+      "published": "2026-07-01T17:06:32+00:00",
+      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/btc-atm.png\" alt=\"Crypto ATM bans, restrictions now in effect in Tennessee and Georgia\" class=\"type:primaryImage\"></p><p>Crypto ATM's are fast disappearing in th"
+    },
+    {
+      "title": "Ripple Locks Away 70% of July Unlock: Why Exactly 300 Million XRP Were Released",
+      "url": "https://u.today/ripple-locks-away-70-of-july-unlock-why-exactly-300-million-xrp-were-released",
+      "source": "U.Today",
+      "published": "2026-07-01T17:04:00+00:00",
+      "summary": "Ripple locked 700 million XRP back in escrow, capping its July release at $319 million to match tight market capacity."
+    },
+    {
+      "title": "Anchorage Digital brings off-exchange settlement to Binance",
+      "url": "https://cointelegraph.com/news/anchorage-digital-expands-binance-access-with-off-exchange-settlement-for-institutions",
+      "source": "Cointelegraph",
+      "published": "2026-07-01T16:55:48+00:00",
+      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-banks-are-seeing-ways-to-make-money-from-crypto-custody.png\" alt=\"Anchorage Digital brings off-exchange settlement to Binance\" class=\"type:primaryImage\"></p><"
     },
     {
       "title": "Bitcoin price returns to $60K as US dollar strength rejects weekly high",
       "url": "https://cointelegraph.com/markets/bitcoin-price-returns-to-60k-as-us-dollar-strength-rejects-from-weekly-high",
       "source": "Cointelegraph",
       "published": "2026-07-01T16:47:01+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/bitcoin-lazer-eyes-and-bull-run1.jpg\" alt=\"Bitcoin price returns to $60K as US dollar strength rejects weekly high\" class=\"type:primaryImage\"></p><p>Bitcoin star"
-    },
-    {
-      "title": "Bitcoin Pops Off 21-Month Low to $60K as Soft Data Eases Rate-Hike Fears",
-      "url": "https://decrypt.co/?p=372522",
-      "source": "Decrypt",
-      "published": "2026-07-01T16:40:31+00:00",
-      "summary": "BTC recovered from local lows to $60,000 after softer U.S. jobs and factory data revived hopes the Fed's hawkish turn could be easing."
-    },
-    {
-      "title": "Taiwan’s new crypto law gives banks the first real stablecoin advantage",
-      "url": "https://cryptoslate.com/?p=545328",
-      "source": "CryptoSlate",
-      "published": "2026-07-01T16:15:24+00:00",
-      "summary": "<p>The rules do not hand issuance to banks, but reserves, custody, audits and no-yield limits put financial infrastructure first.</p> <p>The post <a href=\"https://cryptoslate.com/taiwans-new-crypto-law-gives-banks-the-first-real-stablecoin-advantage/\">Taiwan’s new crypto law give"
-    },
-    {
-      "title": "Solana USDC Liquidity Jumps As Circle Mints Another $1 Billion",
-      "url": "https://www.newsbtc.com/?p=903145",
-      "source": "NewsBTC",
-      "published": "2026-07-01T16:15:00+00:00",
-      "summary": "Circle reportedly minted another $1 billion of USDC on Solana, adding to the network’s already large gross issuance total for 2026."
+      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/bull-crypto-running2.jpg\" alt=\"Bitcoin price returns to $60K as US dollar strength rejects weekly high\" class=\"type:primaryImage\"></p><p>Bitcoin started July wit"
     },
     {
       "title": "The Vanishing Bitcoin Bid: Where Are the ETF Billions Going?",
@@ -254,27 +296,6 @@
       "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-cryptocurrency-vs-stocks-breaking-news.png\" alt=\"Nasdaq brings proprietary market data onchain through Pyth\" class=\"type:primaryImage\"></p><p>The partnership "
     },
     {
-      "title": "Bitcoin price risks drop below $58K as US dollar hits 40-year high against yen",
-      "url": "https://cointelegraph.com/markets/bitcoin-price-slumps-to-near-58k-as-us-dollar-hits-40-year-high-against-yen",
-      "source": "Cointelegraph",
-      "published": "2026-06-30T18:17:56+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/article-covers-201145-japan-remixpoint-ceo-salary-bitcoin.jpg\" alt=\"Bitcoin price risks drop below $58K as US dollar hits 40-year high against yen\" class=\"type:p"
-    },
-    {
-      "title": "AI’s power crunch turns Bitcoin miners’ grid access into an asset",
-      "url": "https://cointelegraph.com/features/bitcoin-miners-ai-data-centers-power-infrastructure",
-      "source": "Cointelegraph",
-      "published": "2026-06-30T17:44:31+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-the-power-in-energy-and-how-new-technologies-can-shift-bitcoin-1.jpg\" alt=\"AI’s power crunch turns Bitcoin miners’ grid access into an asset\" class=\"type:prim"
-    },
-    {
-      "title": "Crypto companies have spent $189M so far on 2026 US election cycle: Report",
-      "url": "https://cointelegraph.com/news/crypto-companies-spent-2026-us-election-cycle-public-citizen",
-      "source": "Cointelegraph",
-      "published": "2026-06-30T17:19:17+00:00",
-      "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/dollars-fly-away-us-senate.jpg\" alt=\"Crypto companies have spent $189M so far on 2026 US election cycle: Report\" class=\"type:primaryImage\"></p><p>The crypto indu"
-    },
-    {
       "title": "Ripple's USD Stablecoin Isn't 'Eating' XRP, Evernorth Breaks Down",
       "url": "https://u.today/ripples-usd-stablecoin-isnt-eating-xrp-evernorth-breaks-down",
       "source": "U.Today",
@@ -329,20 +350,6 @@
       "source": "U.Today",
       "published": "2026-06-30T12:21:59+00:00",
       "summary": "Bitwise leads XRP ETFs in latest daily inflow, solely attracting over $11 million in fresh capital within 24 hours, bringing its cumulative net inflow to over $500 million."
-    },
-    {
-      "title": "DOGE History Repeats? Founder's Move Back in Spotlight Amid Strategy's BTC Drama",
-      "url": "https://u.today/doge-history-repeats-founders-move-back-in-spotlight-amid-strategys-btc-drama",
-      "source": "U.Today",
-      "published": "2026-06-30T11:00:47+00:00",
-      "summary": "Dogecoin founder's Honda Civic story returns amid recent Strategy's Bitcoin decision."
-    },
-    {
-      "title": "Are All Bitcoin (BTC) Rallies Fake? Breaking Down Why",
-      "url": "https://u.today/are-all-bitcoin-btc-rallies-fake-breaking-down-why",
-      "source": "U.Today",
-      "published": "2026-06-30T10:28:00+00:00",
-      "summary": "The market is not the same anymore, as Bitcoin and its derivatives certainly lack liquidity and volumes."
     }
   ],
   "rumors": [
@@ -352,16 +359,6 @@
       "source": "Cointelegraph",
       "published": "2026-07-01T16:39:28+00:00",
       "summary": "<p style=\"float:right; margin:0 0 10px 15px; width:240px;\"><img src=\"https://s3-images.ctmedia.io/media/article-covers/hi-most-interesting-solutions-being-developed-for-ethereum-network.jpg\" alt=\"Ethereum backers launch nonprofit to lead institutional adoption efforts\" class=\"typ",
-      "tags": [
-        "Launch"
-      ]
-    },
-    {
-      "title": "Could Open USD Crush Aave’s USDC Yields? Here’s What DeFi Users Need to Know",
-      "url": "https://beincrypto.com/?p=844951",
-      "source": "BeInCrypto",
-      "published": "2026-07-01T14:58:22+00:00",
-      "summary": "<p>Open USD launched with 140 backers. Here is how the new stablecoin could pressure the USDC yields earned on Aave.</p> <p>The post <a href=\"https://beincrypto.com/open-usd-aave-usdc-yields/\">Could Open USD Crush Aave&#8217;s USDC Yields? Here&#8217;s What DeFi Users Need to Kno",
       "tags": [
         "Launch"
       ]
