@@ -1,6 +1,18 @@
 {
- "updated": "2026-06-30T21:50:54+00:00",
+ "updated": "2026-07-01T04:58:00+00:00",
  "jobs": [
+  {
+   "title": "Senior Linux Administrator",
+   "company": "DXC Technology",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/senior-linux-administrator-at-dxc-technology-4396321134",
+   "posted": "2026-06-12",
+   "source": "LinkedIn",
+   "keywords": [
+    "System Administrator"
+   ],
+   "first_seen": "2026-07-01"
+  },
   {
    "title": "ENGINEER, TECHNICAL SUPPORT",
    "company": "alfanar",
@@ -1464,7 +1476,8 @@
    "posted": "2026-06-11",
    "source": "LinkedIn",
    "keywords": [
-    "IT Support"
+    "IT Support",
+    "System Administrator"
    ],
    "first_seen": "2026-06-12"
   },
@@ -2199,7 +2212,8 @@
     "Help Desk",
     "IT Specialist",
     "IT Support",
-    "Technical Support"
+    "Technical Support",
+    "System Administrator"
    ],
    "first_seen": "2026-06-11"
   },
