@@ -1,6 +1,30 @@
 {
- "updated": "2026-07-01T21:54:04+00:00",
+ "updated": "2026-07-02T04:35:16+00:00",
  "jobs": [
+  {
+   "title": "Assistant Hospitality Manager",
+   "company": "TBK International",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/assistant-hospitality-manager-at-tbk-international-4432383858",
+   "posted": "2026-07-01",
+   "source": "LinkedIn",
+   "keywords": [
+    "Facilities Management"
+   ],
+   "first_seen": "2026-07-02"
+  },
+  {
+   "title": "Field Service Engineer",
+   "company": "Radiometer",
+   "location": "Riyadh, Riyadh, Saudi Arabia",
+   "url": "https://sa.linkedin.com/jobs/view/field-service-engineer-at-radiometer-4410397448",
+   "posted": "2026-06-25",
+   "source": "LinkedIn",
+   "keywords": [
+    "Maintenance Engineer"
+   ],
+   "first_seen": "2026-07-02"
+  },
   {
    "title": "Procurement Officer",
    "company": "Environment Icon Company",
